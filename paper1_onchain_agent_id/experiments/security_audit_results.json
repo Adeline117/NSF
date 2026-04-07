@@ -1,0 +1,844 @@
+{
+  "summary": {
+    "n_agents_audited": 22,
+    "agents_with_approvals": 2,
+    "agents_with_unlimited_approvals": 2,
+    "total_unlimited_approvals": 228,
+    "avg_revert_rate": 0.0599,
+    "agents_high_revert": 4,
+    "risk_distribution": {
+      "HIGH": 0,
+      "MEDIUM": 3,
+      "LOW": 19
+    }
+  },
+  "agent_audits": [
+    {
+      "address": "0x56178a0d5F301bAf6CF3e1Cd53d9863437345Bf9",
+      "total_txs": 5000,
+      "outgoing_txs": 4999,
+      "incoming_txs": 1,
+      "revert_count": 90,
+      "revert_rate": 0.018,
+      "approvals": {
+        "total_approve_calls": 10,
+        "unlimited_approvals": 10,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 5
+      },
+      "network": {
+        "unique_counterparties": 5,
+        "unique_destinations": 4,
+        "top_destination_pct": 0.998,
+        "incoming_outgoing_ratio": 0.0002
+      },
+      "behavior": {
+        "distinct_method_ids": 3,
+        "simple_eth_transfers": 0,
+        "contract_calls": 4999,
+        "burst_tx_count": 1238,
+        "burst_pct": 0.2477
+      },
+      "gas": {
+        "avg_gas_used": 75041.82,
+        "max_gas_used": 126663.0
+      },
+      "risk_assessment": {
+        "risk_score": 3,
+        "risk_level": "MEDIUM",
+        "risk_flags": [
+          "unlimited_approvals:10",
+          "single_target_dominance:1.00"
+        ]
+      },
+      "name": "jaredfromsubway.eth"
+    },
+    {
+      "address": "0x6b75d8AF000000e20B7a7DDf000Ba900b4009A80",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 5000,
+      "revert_count": 0,
+      "revert_rate": 0.0,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 1,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 98820.18,
+        "max_gas_used": 395661.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "MEV bot"
+    },
+    {
+      "address": "0xae2Fc483527B8EF99EB5D9B44875F005ba1FaE13",
+      "total_txs": 5000,
+      "outgoing_txs": 4997,
+      "incoming_txs": 3,
+      "revert_count": 1,
+      "revert_rate": 0.0002,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 6,
+        "unique_destinations": 4,
+        "top_destination_pct": 0.9994,
+        "incoming_outgoing_ratio": 0.0006
+      },
+      "behavior": {
+        "distinct_method_ids": 1113,
+        "simple_eth_transfers": 1,
+        "contract_calls": 4996,
+        "burst_tx_count": 3171,
+        "burst_pct": 0.6347
+      },
+      "gas": {
+        "avg_gas_used": 105726.19,
+        "max_gas_used": 521799.0
+      },
+      "risk_assessment": {
+        "risk_score": 1,
+        "risk_level": "LOW",
+        "risk_flags": [
+          "high_burst_activity:0.63",
+          "single_target_dominance:1.00"
+        ]
+      },
+      "name": "jaredfromsubway v2"
+    },
+    {
+      "address": "0xA69babEF1cA67A37Ffaf7a485DfFF3382056e78C",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 5000,
+      "revert_count": 1478,
+      "revert_rate": 0.2956,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 79,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 102065.06,
+        "max_gas_used": 2312820.0
+      },
+      "risk_assessment": {
+        "risk_score": 1,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "Wintermute"
+    },
+    {
+      "address": "0x280027dd00eE0050d3F9d168EFD6B40090009246",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 4999,
+      "revert_count": 2,
+      "revert_rate": 0.0004,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 40,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 132871.76,
+        "max_gas_used": 5479039.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "Wintermute 2"
+    },
+    {
+      "address": "0x51C72848c68a965f66FA7a88855F9f7784502a7F",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 4999,
+      "revert_count": 9,
+      "revert_rate": 0.0018,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 44,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 129974.48,
+        "max_gas_used": 4578760.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "MEV bot 3"
+    },
+    {
+      "address": "0x3B17056cc4439c61ceA41Fe1c9f517Af75A978F7",
+      "total_txs": 406,
+      "outgoing_txs": 0,
+      "incoming_txs": 405,
+      "revert_count": 4,
+      "revert_rate": 0.0099,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 7,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 45775.24,
+        "max_gas_used": 2519567.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "MEV bot 4"
+    },
+    {
+      "address": "0xDBF5E9c5206d0dB70a90108bf936DA60221dC080",
+      "total_txs": 5000,
+      "outgoing_txs": 4203,
+      "incoming_txs": 798,
+      "revert_count": 2,
+      "revert_rate": 0.0004,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 192,
+        "unique_destinations": 161,
+        "top_destination_pct": 0.1646,
+        "incoming_outgoing_ratio": 0.1899
+      },
+      "behavior": {
+        "distinct_method_ids": 1,
+        "simple_eth_transfers": 702,
+        "contract_calls": 3501,
+        "burst_tx_count": 413,
+        "burst_pct": 0.0983
+      },
+      "gas": {
+        "avg_gas_used": 44485.59,
+        "max_gas_used": 230839.0
+      },
+      "risk_assessment": {
+        "risk_score": 1,
+        "risk_level": "LOW",
+        "risk_flags": [
+          "single_method_bot_pattern"
+        ]
+      },
+      "name": "Wintermute 3"
+    },
+    {
+      "address": "0x75e89d5979E4f6Fba9F97c104c2F0AFB3F1dcB88",
+      "total_txs": 5000,
+      "outgoing_txs": 4985,
+      "incoming_txs": 15,
+      "revert_count": 0,
+      "revert_rate": 0.0,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 2470,
+        "unique_destinations": 2468,
+        "top_destination_pct": 0.0413,
+        "incoming_outgoing_ratio": 0.003
+      },
+      "behavior": {
+        "distinct_method_ids": 1,
+        "simple_eth_transfers": 4473,
+        "contract_calls": 512,
+        "burst_tx_count": 2903,
+        "burst_pct": 0.5825
+      },
+      "gas": {
+        "avg_gas_used": 23442.35,
+        "max_gas_used": 114163.0
+      },
+      "risk_assessment": {
+        "risk_score": 2,
+        "risk_level": "MEDIUM",
+        "risk_flags": [
+          "high_burst_activity:0.58",
+          "single_method_bot_pattern"
+        ]
+      },
+      "name": "MEXC hot wallet"
+    },
+    {
+      "address": "0xFa4FC4ec2F81A4897743C5b4f45907c02CE06199",
+      "total_txs": 3136,
+      "outgoing_txs": 3014,
+      "incoming_txs": 123,
+      "revert_count": 83,
+      "revert_rate": 0.0265,
+      "approvals": {
+        "total_approve_calls": 608,
+        "unlimited_approvals": 218,
+        "increase_allowance_calls": 6,
+        "unique_unlimited_spenders": 95
+      },
+      "network": {
+        "unique_counterparties": 528,
+        "unique_destinations": 480,
+        "top_destination_pct": 0.0959,
+        "incoming_outgoing_ratio": 0.0408
+      },
+      "behavior": {
+        "distinct_method_ids": 364,
+        "simple_eth_transfers": 51,
+        "contract_calls": 2963,
+        "burst_tx_count": 57,
+        "burst_pct": 0.0189
+      },
+      "gas": {
+        "avg_gas_used": 232843.45,
+        "max_gas_used": 6879929.0
+      },
+      "risk_assessment": {
+        "risk_score": 3,
+        "risk_level": "MEDIUM",
+        "risk_flags": [
+          "unlimited_approvals:218"
+        ]
+      },
+      "name": "1inch resolver"
+    },
+    {
+      "address": "0x1111111254EEB25477B68fb85Ed929f73A960582",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 4999,
+      "revert_count": 458,
+      "revert_rate": 0.0916,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 1983,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 243197.53,
+        "max_gas_used": 4916838.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "1inch v5 router"
+    },
+    {
+      "address": "0xDef1C0ded9bec7F1a1670819833240f027b25EfF",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 5000,
+      "revert_count": 314,
+      "revert_rate": 0.0628,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 1277,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 369031.97,
+        "max_gas_used": 2301103.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "0x Exchange Proxy"
+    },
+    {
+      "address": "0x3328F7f4A1D1C57c35df56bBf0c9dCAFCA309C49",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 4999,
+      "revert_count": 243,
+      "revert_rate": 0.0486,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 1438,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 177110.92,
+        "max_gas_used": 659168.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "Banana Gun Router"
+    },
+    {
+      "address": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 4999,
+      "revert_count": 1218,
+      "revert_rate": 0.2436,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 1549,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 124608.93,
+        "max_gas_used": 4756329.0
+      },
+      "risk_assessment": {
+        "risk_score": 1,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "Uniswap V2 Router"
+    },
+    {
+      "address": "0x000000000035B5e5ad9019092C665357240f594e",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 5000,
+      "revert_count": 0,
+      "revert_rate": 0.0,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 5,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 131867.02,
+        "max_gas_used": 3561543.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "Seaport Bot"
+    },
+    {
+      "address": "0x00000000006c3852cbEf3e08E8dF289169EdE581",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 5000,
+      "revert_count": 659,
+      "revert_rate": 0.1318,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 3123,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 131176.23,
+        "max_gas_used": 504776.0
+      },
+      "risk_assessment": {
+        "risk_score": 1,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "Seaport 1.1"
+    },
+    {
+      "address": "0x000000000000Ad05Ccc4F10045630fb830B95127",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 4999,
+      "revert_count": 439,
+      "revert_rate": 0.0878,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 3426,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 167449.12,
+        "max_gas_used": 3296404.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "Blur Exchange"
+    },
+    {
+      "address": "0x00000000003b3cc22aF3aE1EAc0440BcEe416B40",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 5000,
+      "revert_count": 2,
+      "revert_rate": 0.0004,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 3,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 177487.11,
+        "max_gas_used": 5857806.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "MEV bot 5"
+    },
+    {
+      "address": "0x000000000000cd17345801aa8147b8D3950260FF",
+      "total_txs": 260,
+      "outgoing_txs": 0,
+      "incoming_txs": 260,
+      "revert_count": 0,
+      "revert_rate": 0.0,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 94,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 35105.04,
+        "max_gas_used": 105281.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "MEV bot 6"
+    },
+    {
+      "address": "0x98C3d3183C4b8A650614ad179A1a98be0a8d6B8E",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 4999,
+      "revert_count": 849,
+      "revert_rate": 0.1698,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 7,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 101623.84,
+        "max_gas_used": 3200845.0
+      },
+      "risk_assessment": {
+        "risk_score": 1,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "MEV bot 8"
+    },
+    {
+      "address": "0xE8c060F8052E07423f71D445277c61AC5138A2e5",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 5000,
+      "revert_count": 169,
+      "revert_rate": 0.0338,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 7,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 160026.19,
+        "max_gas_used": 1319233.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "Flashbots builder"
+    },
+    {
+      "address": "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
+      "total_txs": 5000,
+      "outgoing_txs": 0,
+      "incoming_txs": 4999,
+      "revert_count": 469,
+      "revert_rate": 0.0938,
+      "approvals": {
+        "total_approve_calls": 0,
+        "unlimited_approvals": 0,
+        "increase_allowance_calls": 0,
+        "unique_unlimited_spenders": 0
+      },
+      "network": {
+        "unique_counterparties": 3653,
+        "unique_destinations": 0,
+        "top_destination_pct": 0.0,
+        "incoming_outgoing_ratio": "inf"
+      },
+      "behavior": {
+        "distinct_method_ids": 0,
+        "simple_eth_transfers": 0,
+        "contract_calls": 0,
+        "burst_tx_count": 0,
+        "burst_pct": 0.0
+      },
+      "gas": {
+        "avg_gas_used": 199964.99,
+        "max_gas_used": 5343272.0
+      },
+      "risk_assessment": {
+        "risk_score": 0,
+        "risk_level": "LOW",
+        "risk_flags": []
+      },
+      "name": "Uniswap V3 Router 02"
+    }
+  ]
+}
