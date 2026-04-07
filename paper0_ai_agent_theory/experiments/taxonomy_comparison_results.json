@@ -1,0 +1,672 @@
+{
+  "coverage_analysis": {
+    "Russell & Norvig (2020)": {
+      "n_their_categories": 5,
+      "n_our_categories": 8,
+      "our_categories_covered_strong": 6,
+      "our_categories_covered_partial": 8,
+      "our_categories_not_covered": 0,
+      "our_coverage_rate": 1.0,
+      "their_categories_mapped_strong": 5,
+      "their_categories_mapped_partial": 5,
+      "their_categories_unmapped": 0,
+      "coverage_density": 0.312
+    },
+    "Franklin & Graesser (1996)": {
+      "n_their_categories": 13,
+      "n_our_categories": 8,
+      "our_categories_covered_strong": 7,
+      "our_categories_covered_partial": 8,
+      "our_categories_not_covered": 0,
+      "our_coverage_rate": 1.0,
+      "their_categories_mapped_strong": 10,
+      "their_categories_mapped_partial": 12,
+      "their_categories_unmapped": 1,
+      "coverage_density": 0.476
+    },
+    "Parasuraman, Sheridan & Wickens (2000)": {
+      "n_their_categories": 10,
+      "n_our_categories": 8,
+      "our_categories_covered_strong": 2,
+      "our_categories_covered_partial": 8,
+      "our_categories_not_covered": 0,
+      "our_coverage_rate": 1.0,
+      "their_categories_mapped_strong": 2,
+      "their_categories_mapped_partial": 6,
+      "their_categories_unmapped": 4,
+      "coverage_density": 0.106
+    },
+    "Castelfranchi (1995)": {
+      "n_their_categories": 5,
+      "n_our_categories": 8,
+      "our_categories_covered_strong": 1,
+      "our_categories_covered_partial": 6,
+      "our_categories_not_covered": 2,
+      "our_coverage_rate": 0.75,
+      "their_categories_mapped_strong": 4,
+      "their_categories_mapped_partial": 5,
+      "their_categories_unmapped": 0,
+      "coverage_density": 0.212
+    },
+    "Jennings, Sycara & Wooldridge (1998)": {
+      "n_their_categories": 5,
+      "n_our_categories": 8,
+      "our_categories_covered_strong": 7,
+      "our_categories_covered_partial": 8,
+      "our_categories_not_covered": 0,
+      "our_coverage_rate": 1.0,
+      "their_categories_mapped_strong": 5,
+      "their_categories_mapped_partial": 5,
+      "their_categories_unmapped": 0,
+      "coverage_density": 0.3
+    }
+  },
+  "gap_analysis": {
+    "Russell & Norvig (2020)": {
+      "they_have_we_dont": [
+        {
+          "category": "Model-based reflex agent",
+          "note": "Our taxonomy does not explicitly model 'internal state' vs 'no internal state'. The distinction between REACTIVE and ADAPTIVE partially captures this, but not identically."
+        }
+      ],
+      "we_have_they_dont": [
+        {
+          "category": "Cross-Chain Bridge Agent",
+          "note": "R&N has no concept of execution environment. A bridge agent and a trading bot might both be 'goal-based' in their framework, but they serve fundamentally different roles."
+        },
+        {
+          "category": "Autonomous DAO Agent",
+          "note": "R&N does not model collective/collaborative decision-making as an agent architecture type."
+        },
+        {
+          "category": "MEV Searcher (as distinct from other adaptive agents)",
+          "note": "The domain-specific distinction between MEV extraction and general utility optimization is absent in R&N."
+        }
+      ],
+      "n_unique_to_them": 1,
+      "n_unique_to_us": 3
+    },
+    "Franklin & Graesser (1996)": {
+      "they_have_we_dont": [
+        {
+          "category": "Mobile",
+          "note": "Physical mobility is irrelevant to Web3 software agents, though 'cross-chain mobility' is captured by our Environment dimension."
+        },
+        {
+          "category": "Emotional / Character / Personality",
+          "note": "These properties could become relevant for LLM-powered social agents (e.g., AI16Z agents with Twitter personas) but are not observable on-chain."
+        }
+      ],
+      "we_have_they_dont": [
+        {
+          "category": "All domain-specific categories",
+          "note": "F&G provides properties, not categories. The mapping from property-subsets to concrete agent types (MEV, DeFi, Bridge) is entirely absent. Multiple categories share the same property subset, making classification ambiguous."
+        }
+      ],
+      "n_unique_to_them": 2,
+      "n_unique_to_us": 1
+    },
+    "Parasuraman, Sheridan & Wickens (2000)": {
+      "they_have_we_dont": [
+        {
+          "category": "Levels 1-4 (human-centric decision support)",
+          "note": "Our taxonomy starts at fully automated (Level 10 = NONE). Human-in-the-loop decision support levels are not covered because they describe human users, not autonomous agents."
+        }
+      ],
+      "we_have_they_dont": [
+        {
+          "category": "Environment Type (all)",
+          "note": "Parasuraman has no concept of execution environment. The framework was designed for aviation/industrial automation, not software agent deployment contexts."
+        },
+        {
+          "category": "Decision Model (all)",
+          "note": "The 10 levels describe degree of automation, not mechanism of decision-making. An RL agent and a rule-based bot at the same automation level would be indistinguishable."
+        }
+      ],
+      "n_unique_to_them": 1,
+      "n_unique_to_us": 2
+    },
+    "Castelfranchi (1995)": {
+      "they_have_we_dont": [
+        {
+          "category": "Social commitments and obligations",
+          "note": "Our taxonomy treats DAO governance under COLLABORATIVE but does not model commitment/obligation semantics. Future work could add a 'social commitment' sub-dimension."
+        },
+        {
+          "category": "Trust models",
+          "note": "Trust between agents is implicit in cross-chain bridge operations but not formalized in our taxonomy."
+        }
+      ],
+      "we_have_they_dont": [
+        {
+          "category": "All non-social categories",
+          "note": "Castelfranchi focuses exclusively on social/normative aspects. Solitary agent types (MEV Searcher, Trading Bot, RL Agent) are entirely outside scope."
+        }
+      ],
+      "n_unique_to_them": 2,
+      "n_unique_to_us": 1
+    },
+    "Jennings, Sycara & Wooldridge (1998)": {
+      "they_have_we_dont": [
+        {
+          "category": "BDI (Belief-Desire-Intention) architecture",
+          "note": "Our taxonomy does not model internal cognitive architecture. BDI is relevant to LLM-Powered Agents (beliefs from context, desires from goals, intentions from plans) but not directly observable on-chain."
+        }
+      ],
+      "we_have_they_dont": [
+        {
+          "category": "Domain-specific categories (MEV, Bridge, DeFi)",
+          "note": "Jennings et al. provide paradigm-level categories, not domain-specific types. Multiple of our categories map to 'Hybrid agent', losing critical distinctions."
+        },
+        {
+          "category": "Environment Type dimension",
+          "note": "No distinction between execution environments."
+        },
+        {
+          "category": "Decision Model dimension",
+          "note": "BDI is the only internal architecture discussed in detail. Statistical, RL, and LLM decision models are absent."
+        }
+      ],
+      "n_unique_to_them": 1,
+      "n_unique_to_us": 3
+    }
+  },
+  "web3_applicability_ranking": [
+    {
+      "name": "Web3 AI Agent Taxonomy (Ours)",
+      "score": 5,
+      "assessment": "Designed specifically for Web3 context with on-chain observability as core design principle. All categories operationalized through blockchain transaction features."
+    },
+    {
+      "name": "Russell & Norvig (2020)",
+      "score": 2,
+      "assessment": "Provides a useful theoretical foundation but lacks the environment and domain-specific dimensions needed for Web3. Cannot distinguish between an MEV searcher and a DeFi management agent (both could be 'utility-based'). No concept of on-chain vs off-chain execution."
+    },
+    {
+      "name": "Franklin & Graesser (1996)",
+      "score": 2,
+      "assessment": "The property-based approach is theoretically flexible but impractical for Web3 classification. The 2^13 combinatorial space is too large; most properties are either irrelevant (Emotional, Personality) or universally present (Reactive, Temporally continuous). Cannot operationalize on-chain."
+    },
+    {
+      "name": "Castelfranchi (1995)",
+      "score": 2,
+      "assessment": "Highly relevant to DAO governance and multi-agent coordination but covers only one aspect of the Web3 agent landscape. Cannot classify the majority of on-chain agents (trading bots, MEV searchers, scripts) that operate without social commitments. Complementary to our taxonomy for the COLLABORATIVE category."
+    },
+    {
+      "name": "Jennings, Sycara & Wooldridge (1998)",
+      "score": 2,
+      "assessment": "The deliberative/reactive/hybrid trichotomy roughly maps to our Autonomy dimension but with much less granularity. The multi-agent category is relevant to DAO agents. Overall, too abstract for practical Web3 classification -- multiple fundamentally different agent types collapse into 'Hybrid'."
+    },
+    {
+      "name": "Parasuraman, Sheridan & Wickens (2000)",
+      "score": 1,
+      "assessment": "Designed for human-machine interaction in physical systems. Most levels (1-4) are irrelevant to autonomous on-chain agents. The single dimension (automation level) cannot capture the multi-dimensional nature of Web3 agents. However, the insight that automation is stage-specific influenced our Decision Model dimension."
+    }
+  ],
+  "comparison_table_markdown": "| Framework | Categories | Dimensions | Covers Our Categories | Web3 Score |\n|-----------|-----------|-----------|---------------------|-----------|\n| **Web3 AI Agent Taxonomy (Ours)** | 8 | 3 (Autonomy, Environment, Decision) | N/A | **5/5** |\n| Russell & Norvig (2020) | 5 | 1 (architecture hierarchy) | 8/8 (100%) | 2/5 |\n| Franklin & Graesser (1996) | 13 | 13 (boolean properties) | 8/8 (100%) | 2/5 |\n| Parasuraman, Sheridan & Wickens (2000) | 10 | 1 (automation level) x 4 stages | 8/8 (100%) | 1/5 |\n| Castelfranchi (1995) | 5 | 1 (social commitment type) | 6/8 (75%) | 2/5 |\n| Jennings, Sycara & Wooldridge (1998) | 5 | 1 (agent paradigm) | 8/8 (100%) | 2/5 |",
+  "frameworks": {
+    "Russell & Norvig (2020)": {
+      "full_title": "Artificial Intelligence: A Modern Approach, 4th Edition",
+      "n_categories": 5,
+      "categories": [
+        "Simple reflex agent",
+        "Model-based reflex agent",
+        "Goal-based agent",
+        "Utility-based agent",
+        "Learning agent"
+      ],
+      "coverage_matrix": [
+        [
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          2,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          2,
+          1,
+          2,
+          0
+        ]
+      ],
+      "web3_score": 2
+    },
+    "Franklin & Graesser (1996)": {
+      "full_title": "Is it an Agent, or Just a Program?: A Taxonomy for Autonomous Agents",
+      "n_categories": 13,
+      "categories": [
+        "Reactive",
+        "Autonomous",
+        "Goal-oriented",
+        "Temporally continuous",
+        "Communicative",
+        "Learning",
+        "Mobile",
+        "Flexible",
+        "Character (personality)",
+        "Emotional",
+        "Modelling (of environment)",
+        "Personality",
+        "Adaptive"
+      ],
+      "coverage_matrix": [
+        [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          1,
+          2,
+          1,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          2,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          1,
+          2,
+          2,
+          2,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          1,
+          2,
+          2,
+          2,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          2,
+          2,
+          2,
+          1
+        ]
+      ],
+      "web3_score": 2
+    },
+    "Parasuraman, Sheridan & Wickens (2000)": {
+      "full_title": "A Model for Types and Levels of Human Interaction with Automation",
+      "n_categories": 10,
+      "categories": [
+        "Level 1: Manual (human does everything)",
+        "Level 2: System suggests alternatives",
+        "Level 3: System narrows selection",
+        "Level 4: System suggests one alternative",
+        "Level 5: System executes if human approves",
+        "Level 6: System allows human limited veto time",
+        "Level 7: System executes, informs human",
+        "Level 8: System executes, informs if asked",
+        "Level 9: System executes, informs if it decides to",
+        "Level 10: Fully automatic (ignores human)"
+      ],
+      "coverage_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "web3_score": 1
+    },
+    "Castelfranchi (1995)": {
+      "full_title": "Guarantees for Autonomy in Cognitive Agent Architecture / Social Commitment Framework",
+      "n_categories": 5,
+      "categories": [
+        "Autonomous agents with social commitments",
+        "Obligation-based agents",
+        "Delegation-capable agents",
+        "Trust-modeled agents",
+        "Normative agents (rule-following)"
+      ],
+      "coverage_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          2
+        ]
+      ],
+      "web3_score": 2
+    },
+    "Jennings, Sycara & Wooldridge (1998)": {
+      "full_title": "A Roadmap of Agent Research and Development",
+      "n_categories": 5,
+      "categories": [
+        "Deliberative (BDI) agents",
+        "Reactive agents",
+        "Hybrid agents",
+        "Multi-agent systems (MAS)",
+        "Collaborative agents"
+      ],
+      "coverage_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2
+        ]
+      ],
+      "web3_score": 2
+    }
+  }
+}
