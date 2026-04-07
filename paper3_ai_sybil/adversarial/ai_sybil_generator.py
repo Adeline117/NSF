@@ -62,8 +62,8 @@ HASCIDB_PROJECTS = [
 ]
 
 # HasciDB indicator trigger prevalence among real sybils
-# Derived from HasciDB statistics across 16 projects
-INDICATOR_PREVALENCE = {"BT": 0.08, "BW": 0.15, "HF": 0.45, "RF": 0.12, "MA": 0.20}
+# Updated from real HasciDB data (16 projects, 1.09M sybils, 2026-04-07)
+INDICATOR_PREVALENCE = {"BT": 0.28, "BW": 0.08, "HF": 0.22, "RF": 0.33, "MA": 0.31}
 
 AI_FEATURES = [
     "gas_price_precision",

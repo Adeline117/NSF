@@ -235,7 +235,7 @@ def generate_real_calibrated_traditional_sybil(n: int, seed: int = 43) -> pd.Dat
             ["BT", "BW", "HF", "RF", "MA"],
             size=rng.randint(1, 4),
             replace=False,
-            p=[0.08, 0.15, 0.45, 0.12, 0.20],
+            p=[0.230, 0.066, 0.180, 0.270, 0.254],  # Real HasciDB prevalence (normalized)
         )
         if "BT" in triggers:
             bt[i] = rng.randint(5, 50)
