@@ -1,0 +1,18 @@
+{
+  "metadata": {
+    "source": "/Users/adelinewen/NSF/paper2_agent_tool_security/experiments/cleaned_results.json",
+    "validated_at": "2026-04-07T23:34:20.243995+00:00",
+    "total_findings_in_source": 0,
+    "top_n_validated": 0
+  },
+  "overall": {
+    "true_positive": 0,
+    "false_positive": 0,
+    "uncertain": 0,
+    "precision_pct": 0.0
+  },
+  "precision_by_severity": {},
+  "precision_by_category": {},
+  "precision_by_repo": {},
+  "validated_findings": []
+}
