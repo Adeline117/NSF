@@ -1,0 +1,730 @@
+{
+  "metadata": {
+    "type": "unified_web3_analysis",
+    "timestamp": "2026-04-07T23:46:11.341585+00:00",
+    "static_scan": {
+      "repos_scanned": 42,
+      "total_findings": 2961,
+      "total_tools_found": 889,
+      "total_sensitive_tools": 98
+    },
+    "dynamic_testing": {
+      "repos_tested": 10,
+      "tools_tested": 136,
+      "total_vulnerabilities": 252
+    },
+    "overlap_repos": 9,
+    "total_unique_repos": 43
+  },
+  "static_scan_summary": {
+    "by_severity": {
+      "high": 886,
+      "medium": 1273,
+      "critical": 802
+    },
+    "by_category": {
+      "cross_tool_escalation": 589,
+      "no_slippage_protection": 59,
+      "unlimited_approval": 42,
+      "missing_input_validation": 1027,
+      "private_key_exposure": 744,
+      "tx_validation_missing": 61,
+      "no_gas_limit": 32,
+      "mev_exposure": 80,
+      "missing_harness": 62,
+      "state_confusion": 152,
+      "excessive_permissions": 21,
+      "tool_poisoning": 10,
+      "env_key_exposure": 24,
+      "hardcoded_credentials": 48,
+      "prompt_injection": 10
+    },
+    "by_protocol": {
+      "mcp": {
+        "repos": 31,
+        "total_findings": 2390,
+        "avg_findings": 77.1,
+        "avg_risk_score": 63.8,
+        "total_tools": 433,
+        "sensitive_tools": 66,
+        "by_severity": {
+          "high": 795,
+          "medium": 887,
+          "critical": 708
+        },
+        "by_category": {
+          "cross_tool_escalation": 573,
+          "no_slippage_protection": 22,
+          "unlimited_approval": 28,
+          "missing_input_validation": 708,
+          "private_key_exposure": 665,
+          "tx_validation_missing": 55,
+          "no_gas_limit": 32,
+          "mev_exposure": 78,
+          "missing_harness": 59,
+          "state_confusion": 88,
+          "excessive_permissions": 11,
+          "tool_poisoning": 4,
+          "env_key_exposure": 24,
+          "hardcoded_credentials": 43
+        }
+      },
+      "web3_native": {
+        "repos": 3,
+        "total_findings": 37,
+        "avg_findings": 12.3,
+        "avg_risk_score": 26.6,
+        "total_tools": 0,
+        "sensitive_tools": 0,
+        "by_severity": {
+          "medium": 21,
+          "critical": 11,
+          "high": 5
+        },
+        "by_category": {
+          "state_confusion": 7,
+          "missing_input_validation": 14,
+          "private_key_exposure": 11,
+          "tx_validation_missing": 2,
+          "mev_exposure": 2,
+          "no_slippage_protection": 1
+        }
+      },
+      "unknown": {
+        "repos": 5,
+        "total_findings": 322,
+        "avg_findings": 64.4,
+        "avg_risk_score": 48.0,
+        "total_tools": 412,
+        "sensitive_tools": 21,
+        "by_severity": {
+          "medium": 252,
+          "critical": 32,
+          "high": 38
+        },
+        "by_category": {
+          "missing_input_validation": 206,
+          "state_confusion": 43,
+          "private_key_exposure": 26,
+          "hardcoded_credentials": 3,
+          "missing_harness": 3,
+          "no_slippage_protection": 22,
+          "prompt_injection": 3,
+          "tool_poisoning": 4,
+          "unlimited_approval": 8,
+          "tx_validation_missing": 4
+        }
+      },
+      "openai": {
+        "repos": 3,
+        "total_findings": 212,
+        "avg_findings": 70.7,
+        "avg_risk_score": 81.5,
+        "total_tools": 44,
+        "sensitive_tools": 11,
+        "by_severity": {
+          "high": 48,
+          "medium": 113,
+          "critical": 51
+        },
+        "by_category": {
+          "tool_poisoning": 2,
+          "cross_tool_escalation": 16,
+          "unlimited_approval": 6,
+          "no_slippage_protection": 14,
+          "state_confusion": 14,
+          "excessive_permissions": 10,
+          "prompt_injection": 7,
+          "missing_input_validation": 99,
+          "private_key_exposure": 42,
+          "hardcoded_credentials": 2
+        }
+      }
+    },
+    "risk_ranking": [
+      {
+        "repo": "nirholas/free-crypto-news",
+        "risk_score": 100.0,
+        "risk_rating": "critical",
+        "findings": 273,
+        "protocol": "unknown",
+        "stars": 135,
+        "tools": 229,
+        "sensitive_tools": 9
+      },
+      {
+        "repo": "nirholas/UCAI",
+        "risk_score": 100.0,
+        "risk_rating": "critical",
+        "findings": 153,
+        "protocol": "openai",
+        "stars": 28,
+        "tools": 25,
+        "sensitive_tools": 10
+      },
+      {
+        "repo": "InjectiveLabs/mcp-server",
+        "risk_score": 100.0,
+        "risk_rating": "critical",
+        "findings": 210,
+        "protocol": "mcp",
+        "stars": 6,
+        "tools": 28,
+        "sensitive_tools": 16
+      },
+      {
+        "repo": "wallet-agent/wallet-agent",
+        "risk_score": 100.0,
+        "risk_rating": "critical",
+        "findings": 896,
+        "protocol": "mcp",
+        "stars": 5,
+        "tools": 71,
+        "sensitive_tools": 13
+      },
+      {
+        "repo": "agenticvault/agentic-vault",
+        "risk_score": 100.0,
+        "risk_rating": "critical",
+        "findings": 559,
+        "protocol": "mcp",
+        "stars": 4,
+        "tools": 9,
+        "sensitive_tools": 7
+      },
+      {
+        "repo": "dennisonbertram/mcp-web3-wallet-tester",
+        "risk_score": 97.6,
+        "risk_rating": "critical",
+        "findings": 103,
+        "protocol": "mcp",
+        "stars": 1,
+        "tools": 1,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "bnb-chain/bnbchain-mcp",
+        "risk_score": 93.5,
+        "risk_rating": "critical",
+        "findings": 101,
+        "protocol": "mcp",
+        "stars": 58,
+        "tools": 44,
+        "sensitive_tools": 7
+      },
+      {
+        "repo": "dcSpark/mcp-cryptowallet-evm",
+        "risk_score": 91.1,
+        "risk_rating": "critical",
+        "findings": 67,
+        "protocol": "mcp",
+        "stars": 9,
+        "tools": 35,
+        "sensitive_tools": 7
+      },
+      {
+        "repo": "mcpdotdirect/evm-mcp-server",
+        "risk_score": 85.8,
+        "risk_rating": "critical",
+        "findings": 63,
+        "protocol": "mcp",
+        "stars": 373,
+        "tools": 1,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "efekucuk/etherlink-mcp-server",
+        "risk_score": 85.8,
+        "risk_rating": "critical",
+        "findings": 63,
+        "protocol": "mcp",
+        "stars": 4,
+        "tools": 1,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "trailofbits/slither-mcp",
+        "risk_score": 84.1,
+        "risk_rating": "critical",
+        "findings": 46,
+        "protocol": "openai",
+        "stars": 81,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "alpacahq/alpaca-mcp-server",
+        "risk_score": 82.3,
+        "risk_rating": "critical",
+        "findings": 40,
+        "protocol": "mcp",
+        "stars": 613,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "hydra-mcp/hydra-mcp-solana",
+        "risk_score": 79.9,
+        "risk_rating": "high",
+        "findings": 37,
+        "protocol": "web3_native",
+        "stars": 238,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "base/base-mcp",
+        "risk_score": 79.6,
+        "risk_rating": "high",
+        "findings": 43,
+        "protocol": "mcp",
+        "stars": 342,
+        "tools": 10,
+        "sensitive_tools": 2
+      },
+      {
+        "repo": "nirholas/pump-fun-sdk",
+        "risk_score": 78.5,
+        "risk_rating": "high",
+        "findings": 39,
+        "protocol": "unknown",
+        "stars": 75,
+        "tools": 183,
+        "sensitive_tools": 12
+      },
+      {
+        "repo": "zhangzhongnan928/mcp-blockchain-server",
+        "risk_score": 76.9,
+        "risk_rating": "high",
+        "findings": 35,
+        "protocol": "mcp",
+        "stars": 10,
+        "tools": 5,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "caiovicentino/polymarket-mcp-server",
+        "risk_score": 76.7,
+        "risk_rating": "high",
+        "findings": 34,
+        "protocol": "mcp",
+        "stars": 348,
+        "tools": 37,
+        "sensitive_tools": 2
+      },
+      {
+        "repo": "dcSpark/mcp-cryptowallet-solana",
+        "risk_score": 73.5,
+        "risk_rating": "high",
+        "findings": 23,
+        "protocol": "mcp",
+        "stars": 1,
+        "tools": 12,
+        "sensitive_tools": 3
+      },
+      {
+        "repo": "armorwallet/armor-crypto-mcp",
+        "risk_score": 73.3,
+        "risk_rating": "high",
+        "findings": 27,
+        "protocol": "mcp",
+        "stars": 192,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "Suryansh-23/hyperlane-mcp",
+        "risk_score": 69.8,
+        "risk_rating": "high",
+        "findings": 20,
+        "protocol": "mcp",
+        "stars": 6,
+        "tools": 7,
+        "sensitive_tools": 3
+      },
+      {
+        "repo": "waifuai/mcp-solana-ico",
+        "risk_score": 68.6,
+        "risk_rating": "high",
+        "findings": 22,
+        "protocol": "mcp",
+        "stars": 3,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "NFTGo/mcp-nftgo-api",
+        "risk_score": 67.6,
+        "risk_rating": "high",
+        "findings": 12,
+        "protocol": "mcp",
+        "stars": 4,
+        "tools": 149,
+        "sensitive_tools": 6
+      },
+      {
+        "repo": "waifuai/mcp-solana-dex",
+        "risk_score": 66.6,
+        "risk_rating": "high",
+        "findings": 19,
+        "protocol": "mcp",
+        "stars": 2,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "solanamcp/solana-mcp",
+        "risk_score": 61.5,
+        "risk_rating": "high",
+        "findings": 10,
+        "protocol": "unknown",
+        "stars": 88,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "IQAIcom/mcp-defillama",
+        "risk_score": 60.4,
+        "risk_rating": "high",
+        "findings": 13,
+        "protocol": "openai",
+        "stars": 2,
+        "tools": 19,
+        "sensitive_tools": 1
+      },
+      {
+        "repo": "ozgureyilmaz/polymarket-mcp",
+        "risk_score": 58.1,
+        "risk_rating": "medium",
+        "findings": 11,
+        "protocol": "mcp",
+        "stars": 48,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "crazyrabbitLTC/mcp-web3-stats",
+        "risk_score": 58.1,
+        "risk_rating": "medium",
+        "findings": 11,
+        "protocol": "mcp",
+        "stars": 4,
+        "tools": 10,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "kukapay/wallet-inspector-mcp",
+        "risk_score": 56.7,
+        "risk_rating": "medium",
+        "findings": 10,
+        "protocol": "mcp",
+        "stars": 8,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "StronglyTypedSoul/sui-mcp-server-wallet-management",
+        "risk_score": 49.5,
+        "risk_rating": "medium",
+        "findings": 6,
+        "protocol": "mcp",
+        "stars": 2,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "truss44/mcp-crypto-price",
+        "risk_score": 43.9,
+        "risk_rating": "medium",
+        "findings": 4,
+        "protocol": "mcp",
+        "stars": 39,
+        "tools": 6,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "berlinbra/polymarket-mcp",
+        "risk_score": 40.0,
+        "risk_rating": "medium",
+        "findings": 2,
+        "protocol": "mcp",
+        "stars": 130,
+        "tools": 4,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "aryankeluskar/polymarket-mcp",
+        "risk_score": 37.5,
+        "risk_rating": "low",
+        "findings": 2,
+        "protocol": "mcp",
+        "stars": 6,
+        "tools": 1,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "rafael-pina/polymarket-mcp",
+        "risk_score": 34.6,
+        "risk_rating": "low",
+        "findings": 2,
+        "protocol": "mcp",
+        "stars": 5,
+        "tools": 1,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "N-45div/SolMCP-Solana-MCP-Server",
+        "risk_score": 34.6,
+        "risk_rating": "low",
+        "findings": 2,
+        "protocol": "mcp",
+        "stars": 2,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "lucianoayres/mcp-crypto-ticker",
+        "risk_score": 25.8,
+        "risk_rating": "low",
+        "findings": 1,
+        "protocol": "mcp",
+        "stars": 3,
+        "tools": 1,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "kukapay/chainlist-mcp",
+        "risk_score": 25.8,
+        "risk_rating": "low",
+        "findings": 1,
+        "protocol": "mcp",
+        "stars": 2,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "waifuai/mcp-solana-internet",
+        "risk_score": 25.8,
+        "risk_rating": "low",
+        "findings": 1,
+        "protocol": "mcp",
+        "stars": 1,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "magnetai/mcp-crypto",
+        "risk_score": 0.0,
+        "risk_rating": "safe",
+        "findings": 0,
+        "protocol": "unknown",
+        "stars": 8,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "pab1it0/polymarket-mcp",
+        "risk_score": 0.0,
+        "risk_rating": "safe",
+        "findings": 0,
+        "protocol": "mcp",
+        "stars": 7,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "z1labs/mcp-nft1155-badge",
+        "risk_score": 0.0,
+        "risk_rating": "safe",
+        "findings": 0,
+        "protocol": "unknown",
+        "stars": 6,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "z1labs/mcp-nft721-contract",
+        "risk_score": 0.0,
+        "risk_rating": "safe",
+        "findings": 0,
+        "protocol": "web3_native",
+        "stars": 5,
+        "tools": 0,
+        "sensitive_tools": 0
+      },
+      {
+        "repo": "z1labs/mcp-nft1155-contract",
+        "risk_score": 0.0,
+        "risk_rating": "safe",
+        "findings": 0,
+        "protocol": "web3_native",
+        "stars": 3,
+        "tools": 0,
+        "sensitive_tools": 0
+      }
+    ]
+  },
+  "dynamic_test_summary": {
+    "attack_vectors": {
+      "tool_poisoning": {
+        "tests": 136,
+        "vulnerable": 0,
+        "rate_pct": 0.0,
+        "by_severity": {}
+      },
+      "prompt_injection_output": {
+        "tests": 136,
+        "vulnerable": 92,
+        "rate_pct": 67.6,
+        "by_severity": {
+          "high": 79,
+          "medium": 13
+        }
+      },
+      "parameter_injection": {
+        "tests": 136,
+        "vulnerable": 136,
+        "rate_pct": 100.0,
+        "by_severity": {
+          "medium": 136
+        }
+      },
+      "tx_validation": {
+        "tests": 136,
+        "vulnerable": 19,
+        "rate_pct": 14.0,
+        "by_severity": {
+          "high": 15,
+          "medium": 4
+        }
+      },
+      "private_key_handling": {
+        "tests": 136,
+        "vulnerable": 5,
+        "rate_pct": 3.7,
+        "by_severity": {
+          "high": 4,
+          "medium": 1
+        }
+      }
+    },
+    "repos_by_risk": [
+      {
+        "repo": "armorwallet/armor-crypto-mcp",
+        "url": "https://github.com/armorwallet/armor-crypto-mcp",
+        "stars": 192,
+        "language": "Python",
+        "tools_found": 37,
+        "tools_tested": 37,
+        "vulnerabilities": 83,
+        "overall_score": 100.0,
+        "clone_success": true
+      },
+      {
+        "repo": "nirholas/free-crypto-news",
+        "url": "https://github.com/nirholas/free-crypto-news",
+        "stars": 135,
+        "language": "TypeScript",
+        "tools_found": 76,
+        "tools_tested": 76,
+        "vulnerabilities": 137,
+        "overall_score": 100.0,
+        "clone_success": true
+      },
+      {
+        "repo": "base/base-mcp",
+        "url": "https://github.com/base/base-mcp",
+        "stars": 342,
+        "language": "TypeScript",
+        "tools_found": 10,
+        "tools_tested": 10,
+        "vulnerabilities": 15,
+        "overall_score": 91.0,
+        "clone_success": true
+      },
+      {
+        "repo": "nirholas/pump-fun-sdk",
+        "url": "https://github.com/nirholas/pump-fun-sdk",
+        "stars": 75,
+        "language": "Rust",
+        "tools_found": 7,
+        "tools_tested": 7,
+        "vulnerabilities": 8,
+        "overall_score": 75.7,
+        "clone_success": true
+      },
+      {
+        "repo": "jamubc/gemini-mcp-tool",
+        "url": "https://github.com/jamubc/gemini-mcp-tool",
+        "stars": 2137,
+        "language": "TypeScript",
+        "tools_found": 5,
+        "tools_tested": 5,
+        "vulnerabilities": 6,
+        "overall_score": 72.1,
+        "clone_success": true
+      },
+      {
+        "repo": "mcpdotdirect/evm-mcp-server",
+        "url": "https://github.com/mcpdotdirect/evm-mcp-server",
+        "stars": 373,
+        "language": "TypeScript",
+        "tools_found": 1,
+        "tools_tested": 1,
+        "vulnerabilities": 3,
+        "overall_score": 60.0,
+        "clone_success": true
+      },
+      {
+        "repo": "alpacahq/alpaca-mcp-server",
+        "url": "https://github.com/alpacahq/alpaca-mcp-server",
+        "stars": 613,
+        "language": "Python",
+        "tools_found": 0,
+        "tools_tested": 0,
+        "vulnerabilities": 0,
+        "overall_score": 0.0,
+        "clone_success": true
+      },
+      {
+        "repo": "caiovicentino/polymarket-mcp-server",
+        "url": "https://github.com/caiovicentino/polymarket-mcp-server",
+        "stars": 347,
+        "language": "Python",
+        "tools_found": 0,
+        "tools_tested": 0,
+        "vulnerabilities": 0,
+        "overall_score": 0.0,
+        "clone_success": true
+      },
+      {
+        "repo": "solanamcp/solana-mcp",
+        "url": "https://github.com/solanamcp/solana-mcp",
+        "stars": 88,
+        "language": "JavaScript",
+        "tools_found": 0,
+        "tools_tested": 0,
+        "vulnerabilities": 0,
+        "overall_score": 0.0,
+        "clone_success": true
+      },
+      {
+        "repo": "trailofbits/slither-mcp",
+        "url": "https://github.com/trailofbits/slither-mcp",
+        "stars": 81,
+        "language": "Python",
+        "tools_found": 0,
+        "tools_tested": 0,
+        "vulnerabilities": 0,
+        "overall_score": 0.0,
+        "clone_success": true
+      }
+    ]
+  },
+  "combined_statistics": {
+    "total_repos_analyzed": 43,
+    "total_static_findings": 2961,
+    "total_dynamic_vulnerabilities": 252,
+    "combined_issues": 3213
+  }
+}
