@@ -1,0 +1,224 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-07T15:49:44",
+    "primary_project": "blur_s2",
+    "transfer_projects": [
+      "uniswap",
+      "eigenlayer",
+      "gitcoin"
+    ],
+    "max_rows": 50000,
+    "hascidb_indicators": [
+      "BT",
+      "BW",
+      "HF",
+      "RF",
+      "MA"
+    ],
+    "ai_features": [
+      "gas_price_precision",
+      "hour_entropy",
+      "behavioral_consistency",
+      "action_sequence_perplexity",
+      "error_recovery_pattern",
+      "response_latency_variance",
+      "gas_nonce_gap_regularity",
+      "eip1559_tip_precision"
+    ],
+    "thresholds": {
+      "BT": 5,
+      "BW": 10,
+      "HF": 0.8,
+      "RF": 0.5,
+      "MA": 5
+    },
+    "elapsed_seconds": 229.5
+  },
+  "exp1_real_baseline": {
+    "project": "blur_s2",
+    "n_total": 50000,
+    "n_sybil": 13567,
+    "n_nonsybil": 36433,
+    "sybil_rate": 0.27134,
+    "cv_folds": [
+      {
+        "fold": 1,
+        "auc": 1.0,
+        "ap": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      {
+        "fold": 2,
+        "auc": 1.0,
+        "ap": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      {
+        "fold": 3,
+        "auc": 1.0,
+        "ap": 1.0,
+        "precision": 0.9996315401621223,
+        "recall": 1.0,
+        "f1": 0.9998157361341441
+      },
+      {
+        "fold": 4,
+        "auc": 1.0,
+        "ap": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      {
+        "fold": 5,
+        "auc": 1.0,
+        "ap": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    ],
+    "mean_auc": 1.0,
+    "std_auc": 0.0,
+    "mean_ap": 1.0,
+    "feature_importances": {
+      "BT": 0.3220010876258136,
+      "BW": 0.013807576451447099,
+      "HF": 0.15667226147853866,
+      "RF": 0.4242072423536453,
+      "MA": 0.08331183209055536
+    }
+  },
+  "exp2_ai_evasion": {
+    "baseline_auc_in_dist": 0.9999999999999999,
+    "evasion_by_level": {
+      "basic": {
+        "rule_recall": 0.0,
+        "rule_evasion_rate": 1.0,
+        "ml_auc": 0.6578620000000001,
+        "ml_ap": 0.6531634730538922,
+        "ml_recall_at_05": 0.0,
+        "ml_evasion_at_05": 1.0
+      },
+      "moderate": {
+        "rule_recall": 0.0,
+        "rule_evasion_rate": 1.0,
+        "ml_auc": 0.6250899999999999,
+        "ml_ap": 0.6222388059701492,
+        "ml_recall_at_05": 0.0,
+        "ml_evasion_at_05": 1.0
+      },
+      "advanced": {
+        "rule_recall": 0.0,
+        "rule_evasion_rate": 1.0,
+        "ml_auc": 0.577426,
+        "ml_ap": 0.5743720930232559,
+        "ml_recall_at_05": 0.0,
+        "ml_evasion_at_05": 1.0
+      }
+    }
+  },
+  "exp3_enhanced_detector": {
+    "cv_folds": [
+      {
+        "fold": 1,
+        "auc": 0.9999995150859196,
+        "ap": 0.9999988669157247
+      },
+      {
+        "fold": 2,
+        "auc": 0.9999989420056425,
+        "ap": 0.9999975332195489
+      },
+      {
+        "fold": 3,
+        "auc": 1.0,
+        "ap": 1.0
+      },
+      {
+        "fold": 4,
+        "auc": 1.0,
+        "ap": 1.0
+      },
+      {
+        "fold": 5,
+        "auc": 0.9999999118500195,
+        "ap": 0.9999997937836653
+      }
+    ],
+    "mean_auc": 0.9999996737883163,
+    "std_auc": 4.0747854717029604e-07,
+    "feature_importances": {
+      "BT": 7.082880417634554e-05,
+      "BW": 5.173128360529066e-06,
+      "HF": 5.738410438381375e-05,
+      "RF": 0.003731217262054543,
+      "MA": 1.6769510958485675e-06,
+      "gas_price_precision": 0.8854529142191834,
+      "hour_entropy": 0.0011225648601386692,
+      "behavioral_consistency": 0.011731830199398894,
+      "action_sequence_perplexity": 0.0399734644185241,
+      "error_recovery_pattern": 0.0022878908449870056,
+      "response_latency_variance": 0.00704479043089711,
+      "gas_nonce_gap_regularity": 0.010531843974730856,
+      "eip1559_tip_precision": 0.03798842080206895
+    },
+    "ai_features_in_top5": 5,
+    "recovery_by_level": {
+      "basic": {
+        "enhanced_auc": 1.0,
+        "enhanced_ap": 1.0
+      },
+      "moderate": {
+        "enhanced_auc": 0.999996,
+        "enhanced_ap": 0.999996007984032
+      },
+      "advanced": {
+        "enhanced_auc": 0.999948,
+        "enhanced_ap": 0.9999483406857037
+      }
+    }
+  },
+  "exp4_cross_project": {
+    "train_project": "blur_s2",
+    "train_cv_auc": 1.0,
+    "transfer": {
+      "uniswap": {
+        "n_total": 50000,
+        "n_sybil": 26612,
+        "sybil_rate": 0.53224,
+        "transfer_auc": 1.0,
+        "transfer_ap": 1.0,
+        "rule_accuracy": 1.0,
+        "rule_auc": 1.0
+      },
+      "eigenlayer": {
+        "n_total": 50000,
+        "n_sybil": 4633,
+        "sybil_rate": 0.09266,
+        "transfer_auc": 1.0,
+        "transfer_ap": 1.0,
+        "rule_accuracy": 1.0,
+        "rule_auc": 1.0
+      },
+      "gitcoin": {
+        "n_total": 23878,
+        "n_sybil": 9991,
+        "sybil_rate": 0.4184186280257978,
+        "transfer_auc": 1.0,
+        "transfer_ap": 0.9999999999999999,
+        "rule_accuracy": 1.0,
+        "rule_auc": 1.0
+      }
+    }
+  },
+  "feasibility": {
+    "advanced_evasion_rate": 1.0,
+    "advanced_recovery": 0.42252199999999995,
+    "verdict": "CONFIRMED"
+  }
+}
