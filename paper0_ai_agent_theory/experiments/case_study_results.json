@@ -1,0 +1,908 @@
+{
+  "category_profiles": {
+    "Deterministic Script": {
+      "n_addresses": 2,
+      "addresses": [
+        {
+          "address": "0xD1220A0cf47c7B9Be7A2E6BA89F429762e7b9aDb",
+          "name": "Keeper bot alpha"
+        },
+        {
+          "address": "0x008300082C3000009e63680088f8c7f4D3ff2E87",
+          "name": "MEV bot iota"
+        }
+      ],
+      "mean_features": {
+        "tx_interval_mean": 116225.00476,
+        "tx_interval_std": 832356.806172,
+        "tx_interval_skewness": 39.732575,
+        "active_hour_entropy": 2.911528,
+        "night_activity_ratio": 0.151714,
+        "weekend_ratio": 0.141314,
+        "burst_frequency": 0.115945,
+        "gas_price_round_number_ratio": 0.405914,
+        "gas_price_trailing_zeros_mean": 3.926271,
+        "gas_limit_precision": 0.703244,
+        "gas_price_cv": 2.016112,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": -0.147855,
+        "unique_contracts_ratio": 0.040043,
+        "top_contract_concentration": 0.468041,
+        "method_id_diversity": 0.034241,
+        "contract_to_eoa_ratio": 0.912943,
+        "sequential_pattern_score": 0.768255,
+        "unlimited_approve_ratio": 0.224138,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.5,
+        "multi_protocol_interaction_count": 2.0,
+        "flash_loan_usage": 0.0
+      },
+      "std_features": {
+        "tx_interval_mean": 115824.835126,
+        "tx_interval_std": 821910.507741,
+        "tx_interval_skewness": 23.721991,
+        "active_hour_entropy": 0.254248,
+        "night_activity_ratio": 0.100286,
+        "weekend_ratio": 0.059886,
+        "burst_frequency": 0.022726,
+        "gas_price_round_number_ratio": 0.405514,
+        "gas_price_trailing_zeros_mean": 3.825871,
+        "gas_limit_precision": 0.174335,
+        "gas_price_cv": 0.678999,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.035445,
+        "unique_contracts_ratio": 0.039243,
+        "top_contract_concentration": 0.359349,
+        "method_id_diversity": 0.033358,
+        "contract_to_eoa_ratio": 0.006343,
+        "sequential_pattern_score": 0.230344,
+        "unlimited_approve_ratio": 0.224138,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.5,
+        "multi_protocol_interaction_count": 2.0,
+        "flash_loan_usage": 0.0
+      },
+      "description": "Fully deterministic scripts with no autonomous decision-making. Execute fixed transaction sequences.",
+      "address_rationales": [
+        {
+          "name": "Keeper bot alpha",
+          "rationale": "Keeper bots execute deterministic maintenance tasks: triggering harvests, poking oracles, and executing queued transactions on fixed schedules."
+        },
+        {
+          "name": "MEV bot iota",
+          "rationale": "Simple MEV bots that execute fixed arbitrage patterns with deterministic calldata and minimal behavioral variance approach the Deterministic Script boundary."
+        }
+      ]
+    },
+    "Simple Trading Bot": {
+      "n_addresses": 2,
+      "addresses": [
+        {
+          "address": "0xFa4FC4ec2F81A4897743C5b4f45907c02CE06199",
+          "name": "1inch resolver bot"
+        },
+        {
+          "address": "0x3FAB184622Dc19b6109349B94811493BF2a45362",
+          "name": "MEV bot eta"
+        }
+      ],
+      "mean_features": {
+        "tx_interval_mean": 6393338.667996,
+        "tx_interval_std": 8843070.200259,
+        "tx_interval_skewness": 4.236221,
+        "active_hour_entropy": 2.450113,
+        "night_activity_ratio": 0.290529,
+        "weekend_ratio": 0.355708,
+        "burst_frequency": 0.002392,
+        "gas_price_round_number_ratio": 0.15979,
+        "gas_price_trailing_zeros_mean": 1.662978,
+        "gas_limit_precision": 0.817414,
+        "gas_price_cv": 1.036348,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": -0.097781,
+        "unique_contracts_ratio": 0.176531,
+        "top_contract_concentration": 0.421178,
+        "method_id_diversity": 0.561564,
+        "contract_to_eoa_ratio": 0.529432,
+        "sequential_pattern_score": 0.525606,
+        "unlimited_approve_ratio": 0.17352,
+        "approve_revoke_ratio": 0.034271,
+        "unverified_contract_approve_ratio": 0.422697,
+        "multi_protocol_interaction_count": 4.0,
+        "flash_loan_usage": 0.0
+      },
+      "std_features": {
+        "tx_interval_mean": 6353682.109782,
+        "tx_interval_std": 8709496.368325,
+        "tx_interval_skewness": 2.901191,
+        "active_hour_entropy": 0.563416,
+        "night_activity_ratio": 0.090529,
+        "weekend_ratio": 0.144292,
+        "burst_frequency": 0.002392,
+        "gas_price_round_number_ratio": 0.04021,
+        "gas_price_trailing_zeros_mean": 0.537022,
+        "gas_limit_precision": 0.150717,
+        "gas_price_cv": 0.410848,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.401734,
+        "unique_contracts_ratio": 0.023469,
+        "top_contract_concentration": 0.398822,
+        "method_id_diversity": 0.438436,
+        "contract_to_eoa_ratio": 0.429432,
+        "sequential_pattern_score": 0.224394,
+        "unlimited_approve_ratio": 0.17352,
+        "approve_revoke_ratio": 0.034271,
+        "unverified_contract_approve_ratio": 0.422697,
+        "multi_protocol_interaction_count": 4.0,
+        "flash_loan_usage": 0.0
+      },
+      "description": "Reactive trading bots that follow pre-defined rules (grid, DCA, rebalancing) without strategy adaptation.",
+      "address_rationales": [
+        {
+          "name": "1inch resolver bot",
+          "rationale": "1inch resolvers execute predetermined swap routes. They respond to user requests with fixed routing logic, matching REACTIVE autonomy."
+        },
+        {
+          "name": "MEV bot eta",
+          "rationale": "Simpler MEV bots with reactive rule-based strategies and fixed trading patterns sit at the Simple Trading Bot level of autonomy."
+        }
+      ]
+    },
+    "MEV Searcher": {
+      "n_addresses": 2,
+      "addresses": [
+        {
+          "address": "0x56178a0d5F301bAf6CF3e1Cd53d9863437345Bf9",
+          "name": "jaredfromsubway.eth"
+        },
+        {
+          "address": "0xae2Fc483527B8EF99EB5D9B44875F005ba1FaE13",
+          "name": "jaredfromsubway v2"
+        }
+      ],
+      "mean_features": {
+        "tx_interval_mean": 479.663833,
+        "tx_interval_std": 2555.097543,
+        "tx_interval_skewness": 30.278121,
+        "active_hour_entropy": 3.132959,
+        "night_activity_ratio": 0.259,
+        "weekend_ratio": 0.1497,
+        "burst_frequency": 0.374775,
+        "gas_price_round_number_ratio": 0.5002,
+        "gas_price_trailing_zeros_mean": 4.5792,
+        "gas_limit_precision": 0.446896,
+        "gas_price_cv": 2.256557,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.107535,
+        "unique_contracts_ratio": 0.001,
+        "top_contract_concentration": 0.996604,
+        "method_id_diversity": 0.111981,
+        "contract_to_eoa_ratio": 0.9995,
+        "sequential_pattern_score": 0.678772,
+        "unlimited_approve_ratio": 0.5,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.5,
+        "multi_protocol_interaction_count": 0.0,
+        "flash_loan_usage": 0.0
+      },
+      "std_features": {
+        "tx_interval_mean": 455.385377,
+        "tx_interval_std": 2476.680189,
+        "tx_interval_skewness": 8.630309,
+        "active_hour_entropy": 0.012922,
+        "night_activity_ratio": 0.0276,
+        "weekend_ratio": 0.1497,
+        "burst_frequency": 0.135727,
+        "gas_price_round_number_ratio": 0.4998,
+        "gas_price_trailing_zeros_mean": 4.4672,
+        "gas_limit_precision": 0.052809,
+        "gas_price_cv": 1.741602,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.243329,
+        "unique_contracts_ratio": 0.0,
+        "top_contract_concentration": 0.000998,
+        "method_id_diversity": 0.111381,
+        "contract_to_eoa_ratio": 0.0003,
+        "sequential_pattern_score": 0.320028,
+        "unlimited_approve_ratio": 0.5,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.5,
+        "multi_protocol_interaction_count": 0.0,
+        "flash_loan_usage": 0.0
+      },
+      "description": "Adaptive agents that identify and extract MEV through statistical/algorithmic strategies.",
+      "address_rationales": [
+        {
+          "name": "jaredfromsubway.eth",
+          "rationale": "The most prolific sandwich attacker on Ethereum. Monitors mempool, calculates optimal sandwich parameters, submits via Flashbots bundles."
+        },
+        {
+          "name": "jaredfromsubway v2",
+          "rationale": "Second iteration of jaredfromsubway with evolved strategies. Shows adaptive gas bidding and statistical mempool analysis."
+        }
+      ]
+    },
+    "Cross-Chain Bridge Agent": {
+      "n_addresses": 2,
+      "addresses": [
+        {
+          "address": "0x000000000000084e91743124a982076C59f10084",
+          "name": "MEV multicall"
+        },
+        {
+          "address": "0x7F101fE45e6649A6fB8F3F8B43ed03D353f2B90c",
+          "name": "Searcher EOA 1"
+        }
+      ],
+      "mean_features": {
+        "tx_interval_mean": 2469.344069,
+        "tx_interval_std": 28287.308796,
+        "tx_interval_skewness": 41.552875,
+        "active_hour_entropy": 3.141166,
+        "night_activity_ratio": 0.265,
+        "weekend_ratio": 0.4721,
+        "burst_frequency": 0.753751,
+        "gas_price_round_number_ratio": 0.5708,
+        "gas_price_trailing_zeros_mean": 5.168,
+        "gas_limit_precision": 0.686448,
+        "gas_price_cv": 1.837312,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.302562,
+        "unique_contracts_ratio": 0.1681,
+        "top_contract_concentration": 0.501135,
+        "method_id_diversity": 0.0015,
+        "contract_to_eoa_ratio": 0.5,
+        "sequential_pattern_score": 0.994598,
+        "unlimited_approve_ratio": 0.0,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.0,
+        "multi_protocol_interaction_count": 0.0,
+        "flash_loan_usage": 0.0
+      },
+      "std_features": {
+        "tx_interval_mean": 2401.220644,
+        "tx_interval_std": 27405.535399,
+        "tx_interval_skewness": 17.315488,
+        "active_hour_entropy": 0.003644,
+        "night_activity_ratio": 0.0274,
+        "weekend_ratio": 0.1631,
+        "burst_frequency": 0.128226,
+        "gas_price_round_number_ratio": 0.2416,
+        "gas_price_trailing_zeros_mean": 2.0264,
+        "gas_limit_precision": 0.313441,
+        "gas_price_cv": 1.227479,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.171206,
+        "unique_contracts_ratio": 0.1679,
+        "top_contract_concentration": 0.498865,
+        "method_id_diversity": 0.0015,
+        "contract_to_eoa_ratio": 0.5,
+        "sequential_pattern_score": 0.005402,
+        "unlimited_approve_ratio": 0.0,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.0,
+        "multi_protocol_interaction_count": 0.0,
+        "flash_loan_usage": 0.0
+      },
+      "description": "Agents operating across multiple blockchain networks to relay messages and assets.",
+      "address_rationales": [
+        {
+          "name": "MEV multicall",
+          "rationale": "Multicall contracts coordinate transactions across multiple protocols with relay-like sequential execution patterns and deterministic routing."
+        },
+        {
+          "name": "Searcher EOA 1",
+          "rationale": "Cross-protocol searcher EOAs that submit matching transactions across venues show bridge-like relay and proof-submission patterns."
+        }
+      ]
+    },
+    "RL Trading Agent": {
+      "n_addresses": 2,
+      "addresses": [
+        {
+          "address": "0xDBF5E9c5206d0dB70a90108bf936DA60221dC080",
+          "name": "Wintermute 3"
+        },
+        {
+          "address": "0x11eDedebF63bef0ea2d2D071bdF88F71543ec6fB",
+          "name": "Wintermute 4"
+        }
+      ],
+      "mean_features": {
+        "tx_interval_mean": 51121.920606,
+        "tx_interval_std": 849598.529991,
+        "tx_interval_skewness": 38.178431,
+        "active_hour_entropy": 2.421219,
+        "night_activity_ratio": 0.025994,
+        "weekend_ratio": 0.064322,
+        "burst_frequency": 0.136408,
+        "gas_price_round_number_ratio": 0.468153,
+        "gas_price_trailing_zeros_mean": 4.193619,
+        "gas_limit_precision": 0.723351,
+        "gas_price_cv": 0.550487,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": -0.063496,
+        "unique_contracts_ratio": 0.134156,
+        "top_contract_concentration": 0.122136,
+        "method_id_diversity": 0.004163,
+        "contract_to_eoa_ratio": 0.8251,
+        "sequential_pattern_score": 0.977399,
+        "unlimited_approve_ratio": 0.241648,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.5,
+        "multi_protocol_interaction_count": 3.0,
+        "flash_loan_usage": 0.0
+      },
+      "std_features": {
+        "tx_interval_mean": 43504.393501,
+        "tx_interval_std": 747206.585044,
+        "tx_interval_skewness": 7.601014,
+        "active_hour_entropy": 0.179377,
+        "night_activity_ratio": 0.000394,
+        "weekend_ratio": 0.005122,
+        "burst_frequency": 0.055392,
+        "gas_price_round_number_ratio": 0.306153,
+        "gas_price_trailing_zeros_mean": 2.839019,
+        "gas_limit_precision": 0.043202,
+        "gas_price_cv": 0.058168,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.089126,
+        "unique_contracts_ratio": 0.101956,
+        "top_contract_concentration": 0.061274,
+        "method_id_diversity": 0.003878,
+        "contract_to_eoa_ratio": 0.1249,
+        "sequential_pattern_score": 0.022601,
+        "unlimited_approve_ratio": 0.241648,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.5,
+        "multi_protocol_interaction_count": 2.0,
+        "flash_loan_usage": 0.0
+      },
+      "description": "Agents using reinforcement learning to optimize trading strategies with observable learning curves.",
+      "address_rationales": [
+        {
+          "name": "Wintermute 3",
+          "rationale": "Wintermute's market-making strategies show adaptive behavior with gradual parameter shifts consistent with RL/optimization-based approaches."
+        },
+        {
+          "name": "Wintermute 4",
+          "rationale": "Second Wintermute address shows similar adaptive trading patterns with exploration-exploitation dynamics in trade sizing."
+        }
+      ]
+    },
+    "DeFi Management Agent": {
+      "n_addresses": 2,
+      "addresses": [
+        {
+          "address": "0x2c169DFe5fBbA12957Bdd0Ba47d9CEDbFE260CA7",
+          "name": "Instadapp automation"
+        },
+        {
+          "address": "0x7e2a2FA2a064F693f0a55C5639476d913Ff12D05",
+          "name": "Compound liquidator"
+        }
+      ],
+      "mean_features": {
+        "tx_interval_mean": 3567.064613,
+        "tx_interval_std": 10080.156335,
+        "tx_interval_skewness": 33.651193,
+        "active_hour_entropy": 3.164607,
+        "night_activity_ratio": 0.2882,
+        "weekend_ratio": 0.2763,
+        "burst_frequency": 0.097319,
+        "gas_price_round_number_ratio": 0.0321,
+        "gas_price_trailing_zeros_mean": 0.4101,
+        "gas_limit_precision": 0.473284,
+        "gas_price_cv": 0.786729,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": -0.453462,
+        "unique_contracts_ratio": 0.0005,
+        "top_contract_concentration": 0.935756,
+        "method_id_diversity": 0.000201,
+        "contract_to_eoa_ratio": 0.4965,
+        "sequential_pattern_score": 0.9994,
+        "unlimited_approve_ratio": 0.0,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.0,
+        "multi_protocol_interaction_count": 0.0,
+        "flash_loan_usage": 0.0
+      },
+      "std_features": {
+        "tx_interval_mean": 1659.796759,
+        "tx_interval_std": 1395.081972,
+        "tx_interval_skewness": 31.651106,
+        "active_hour_entropy": 0.004868,
+        "night_activity_ratio": 0.0182,
+        "weekend_ratio": 0.0027,
+        "burst_frequency": 0.074715,
+        "gas_price_round_number_ratio": 0.0299,
+        "gas_price_trailing_zeros_mean": 0.2871,
+        "gas_limit_precision": 0.411854,
+        "gas_price_cv": 0.066532,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.306318,
+        "unique_contracts_ratio": 0.0001,
+        "top_contract_concentration": 0.050342,
+        "method_id_diversity": 0.000201,
+        "contract_to_eoa_ratio": 0.4965,
+        "sequential_pattern_score": 0.0006,
+        "unlimited_approve_ratio": 0.0,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.0,
+        "multi_protocol_interaction_count": 0.0,
+        "flash_loan_usage": 0.0
+      },
+      "description": "Proactive agents managing DeFi positions across protocols with risk-aware strategies.",
+      "address_rationales": [
+        {
+          "name": "Instadapp automation",
+          "rationale": "Instadapp automation agents manage DeFi positions across multiple protocols (Aave, Compound, Maker), performing proactive rebalancing and risk management."
+        },
+        {
+          "name": "Compound liquidator",
+          "rationale": "Compound liquidation agents monitor health factors across lending positions and proactively manage liquidation opportunities with multi-protocol logic."
+        }
+      ]
+    },
+    "LLM-Powered Agent": {
+      "n_addresses": 2,
+      "addresses": [
+        {
+          "address": "0xDAFEA492D9c6733ae3d56b7Ed1ADB60692c98Bc5",
+          "name": "Flashbots builder 2"
+        },
+        {
+          "address": "0x5B76f5B8fc9D700624F78208132f91AD4e61a1f0",
+          "name": "coopahtroopa.eth"
+        }
+      ],
+      "mean_features": {
+        "tx_interval_mean": 434614.098719,
+        "tx_interval_std": 1715876.943947,
+        "tx_interval_skewness": 6.457346,
+        "active_hour_entropy": 3.007836,
+        "night_activity_ratio": 0.358142,
+        "weekend_ratio": 0.088926,
+        "burst_frequency": 0.020302,
+        "gas_price_round_number_ratio": 0.357883,
+        "gas_price_trailing_zeros_mean": 3.288244,
+        "gas_limit_precision": 0.874562,
+        "gas_price_cv": 1.316466,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.056937,
+        "unique_contracts_ratio": 0.22283,
+        "top_contract_concentration": 0.129495,
+        "method_id_diversity": 0.686508,
+        "contract_to_eoa_ratio": 0.211509,
+        "sequential_pattern_score": 0.800376,
+        "unlimited_approve_ratio": 0.5,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.4375,
+        "multi_protocol_interaction_count": 1.5,
+        "flash_loan_usage": 0.0
+      },
+      "std_features": {
+        "tx_interval_mean": 434551.921483,
+        "tx_interval_std": 1715816.758774,
+        "tx_interval_skewness": 1.242673,
+        "active_hour_entropy": 0.159918,
+        "night_activity_ratio": 0.044542,
+        "weekend_ratio": 0.088926,
+        "burst_frequency": 0.020102,
+        "gas_price_round_number_ratio": 0.356883,
+        "gas_price_trailing_zeros_mean": 3.174844,
+        "gas_limit_precision": 0.032227,
+        "gas_price_cv": 0.422482,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.146762,
+        "unique_contracts_ratio": 0.13623,
+        "top_contract_concentration": 0.047051,
+        "method_id_diversity": 0.313492,
+        "contract_to_eoa_ratio": 0.211309,
+        "sequential_pattern_score": 0.199024,
+        "unlimited_approve_ratio": 0.5,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.4375,
+        "multi_protocol_interaction_count": 1.5,
+        "flash_loan_usage": 0.0
+      },
+      "description": "Agents using LLM reasoning for decision-making, exhibiting high behavioral variability and multi-modal data integration.",
+      "address_rationales": [
+        {
+          "name": "Flashbots builder 2",
+          "rationale": "Block builders increasingly incorporate AI/ML models for block construction optimization. The high variability and complex multi-step sequences resemble LLM-driven behavior patterns."
+        },
+        {
+          "name": "coopahtroopa.eth",
+          "rationale": "Active DeFi power users who interact with diverse protocols show behavior patterns similar to LLM agents: high variability, context-dependent decisions, multi-modal information processing."
+        }
+      ]
+    },
+    "Autonomous DAO Agent": {
+      "n_addresses": 2,
+      "addresses": [
+        {
+          "address": "0x8103683202aa8DA10536036EDef04CDd865C225E",
+          "name": "Paradigm"
+        },
+        {
+          "address": "0x0716a17FBAeE714f1E6aB0f9d59edbC5f09815C0",
+          "name": "a16z wallet"
+        }
+      ],
+      "mean_features": {
+        "tx_interval_mean": 868145.183798,
+        "tx_interval_std": 2759478.21391,
+        "tx_interval_skewness": 6.37613,
+        "active_hour_entropy": 2.586892,
+        "night_activity_ratio": 0.135975,
+        "weekend_ratio": 0.305232,
+        "burst_frequency": 0.266075,
+        "gas_price_round_number_ratio": 0.653177,
+        "gas_price_trailing_zeros_mean": 6.488237,
+        "gas_limit_precision": 0.930809,
+        "gas_price_cv": 1.127571,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.030431,
+        "unique_contracts_ratio": 0.016252,
+        "top_contract_concentration": 0.669591,
+        "method_id_diversity": 0.580247,
+        "contract_to_eoa_ratio": 0.286303,
+        "sequential_pattern_score": 0.866512,
+        "unlimited_approve_ratio": 0.0,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.0,
+        "multi_protocol_interaction_count": 0.0,
+        "flash_loan_usage": 0.0
+      },
+      "std_features": {
+        "tx_interval_mean": 602747.56268,
+        "tx_interval_std": 1829235.036768,
+        "tx_interval_skewness": 1.461434,
+        "active_hour_entropy": 0.088556,
+        "night_activity_ratio": 0.024864,
+        "weekend_ratio": 0.268195,
+        "burst_frequency": 0.12523,
+        "gas_price_round_number_ratio": 0.093737,
+        "gas_price_trailing_zeros_mean": 1.320405,
+        "gas_limit_precision": 0.069191,
+        "gas_price_cv": 0.501856,
+        "eip1559_priority_fee_precision": 0.0,
+        "gas_price_nonce_correlation": 0.124641,
+        "unique_contracts_ratio": 0.002266,
+        "top_contract_concentration": 0.31652,
+        "method_id_diversity": 0.419753,
+        "contract_to_eoa_ratio": 0.28013,
+        "sequential_pattern_score": 0.114738,
+        "unlimited_approve_ratio": 0.0,
+        "approve_revoke_ratio": 0.0,
+        "unverified_contract_approve_ratio": 0.0,
+        "multi_protocol_interaction_count": 0.0,
+        "flash_loan_usage": 0.0
+      },
+      "description": "Collaborative agents governed by DAO rules, operating through collective decision-making with timelock and governance patterns.",
+      "address_rationales": [
+        {
+          "name": "Paradigm",
+          "rationale": "Institutional funds operate through multi-sig wallets with collective approval processes, matching the COLLABORATIVE autonomy pattern."
+        },
+        {
+          "name": "a16z wallet",
+          "rationale": "VC fund wallets governed by institutional decision-making processes with multi-signature requirements and committee-based governance."
+        }
+      ]
+    }
+  },
+  "distance_analysis": {
+    "within_category_distances": {
+      "Deterministic Script": 830031.4908,
+      "Simple Trading Bot": 10780751.5203,
+      "MEV Searcher": 2518.2174,
+      "Cross-Chain Bridge Agent": 27510.535,
+      "RL Trading Agent": 748471.9855,
+      "DeFi Management Agent": 2168.4514,
+      "LLM-Powered Agent": 1769989.413,
+      "Autonomous DAO Agent": 1925981.6832
+    },
+    "between_category_distances": {
+      "Deterministic Script vs Simple Trading Bot": 10177115.7518,
+      "Deterministic Script vs MEV Searcher": 837835.2223,
+      "Deterministic Script vs Cross-Chain Bridge Agent": 812076.4169,
+      "Deterministic Script vs RL Trading Agent": 67347.5212,
+      "Deterministic Script vs DeFi Management Agent": 829958.2522,
+      "Deterministic Script vs LLM-Powered Agent": 939137.6098,
+      "Deterministic Script vs Autonomous DAO Agent": 2068618.108,
+      "Simple Trading Bot vs MEV Searcher": 10909782.4694,
+      "Simple Trading Bot vs Cross-Chain Bridge Agent": 10887773.3325,
+      "Simple Trading Bot vs RL Trading Agent": 10203886.6426,
+      "Simple Trading Bot vs DeFi Management Agent": 10901875.7221,
+      "Simple Trading Bot vs LLM-Powered Agent": 9289955.9851,
+      "Simple Trading Bot vs Autonomous DAO Agent": 8218141.7908,
+      "MEV Searcher vs Cross-Chain Bridge Agent": 25809.0227,
+      "MEV Searcher vs RL Trading Agent": 848555.9585,
+      "MEV Searcher vs DeFi Management Agent": 8133.7928,
+      "MEV Searcher vs LLM-Powered Agent": 1767468.3752,
+      "MEV Searcher vs Autonomous DAO Agent": 2890236.7593,
+      "Cross-Chain Bridge Agent vs RL Trading Agent": 822750.9923,
+      "Cross-Chain Bridge Agent vs DeFi Management Agent": 18240.216,
+      "Cross-Chain Bridge Agent vs LLM-Powered Agent": 1742041.2931,
+      "Cross-Chain Bridge Agent vs Autonomous DAO Agent": 2865100.0717,
+      "RL Trading Agent vs DeFi Management Agent": 840864.177,
+      "RL Trading Agent vs LLM-Powered Agent": 947367.1633,
+      "RL Trading Agent vs Autonomous DAO Agent": 2077298.1059,
+      "DeFi Management Agent vs LLM-Powered Agent": 1759415.8766,
+      "DeFi Management Agent vs Autonomous DAO Agent": 2882132.024,
+      "LLM-Powered Agent vs Autonomous DAO Agent": 1130067.6141
+    },
+    "summary": {
+      "mean_within_category_distance": 2010927.9121,
+      "mean_between_category_distance": 3456035.2238,
+      "separation_ratio": 1.7186
+    }
+  },
+  "discriminating_features": {
+    "top_discriminating_features": [
+      {
+        "feature": "gas_price_nonce_correlation",
+        "between_category_std": 0.206025,
+        "between_category_mean": -0.033141,
+        "coefficient_of_variation": 6.2166
+      },
+      {
+        "feature": "approve_revoke_ratio",
+        "between_category_std": 0.011334,
+        "between_category_mean": 0.004284,
+        "coefficient_of_variation": 2.6458
+      },
+      {
+        "feature": "tx_interval_mean",
+        "between_category_std": 2064323.432952,
+        "between_category_mean": 983745.118549,
+        "coefficient_of_variation": 2.0984
+      },
+      {
+        "feature": "tx_interval_std",
+        "between_category_std": 2781507.856202,
+        "between_category_mean": 1880162.907119,
+        "coefficient_of_variation": 1.4794
+      },
+      {
+        "feature": "method_id_diversity",
+        "between_category_std": 0.284345,
+        "between_category_mean": 0.247551,
+        "coefficient_of_variation": 1.1486
+      }
+    ],
+    "all_features": {
+      "gas_price_nonce_correlation": {
+        "between_category_std": 0.206025,
+        "between_category_mean": -0.033141,
+        "coefficient_of_variation": 6.2166
+      },
+      "approve_revoke_ratio": {
+        "between_category_std": 0.011334,
+        "between_category_mean": 0.004284,
+        "coefficient_of_variation": 2.6458
+      },
+      "tx_interval_mean": {
+        "between_category_std": 2064323.432952,
+        "between_category_mean": 983745.118549,
+        "coefficient_of_variation": 2.0984
+      },
+      "tx_interval_std": {
+        "between_category_std": 2781507.856202,
+        "between_category_mean": 1880162.907119,
+        "coefficient_of_variation": 1.4794
+      },
+      "method_id_diversity": {
+        "between_category_std": 0.284345,
+        "between_category_mean": 0.247551,
+        "coefficient_of_variation": 1.1486
+      },
+      "multi_protocol_interaction_count": {
+        "between_category_std": 1.477699,
+        "between_category_mean": 1.3125,
+        "coefficient_of_variation": 1.1259
+      },
+      "burst_frequency": {
+        "between_category_std": 0.232126,
+        "between_category_mean": 0.220871,
+        "coefficient_of_variation": 1.051
+      },
+      "unlimited_approve_ratio": {
+        "between_category_std": 0.194559,
+        "between_category_mean": 0.204913,
+        "coefficient_of_variation": 0.9495
+      },
+      "unique_contracts_ratio": {
+        "between_category_std": 0.0843,
+        "between_category_mean": 0.094926,
+        "coefficient_of_variation": 0.8881
+      },
+      "unverified_contract_approve_ratio": {
+        "between_category_std": 0.230153,
+        "between_category_mean": 0.295025,
+        "coefficient_of_variation": 0.7801
+      },
+      "tx_interval_skewness": {
+        "between_category_std": 15.367195,
+        "between_category_mean": 25.057862,
+        "coefficient_of_variation": 0.6133
+      },
+      "weekend_ratio": {
+        "between_category_std": 0.134099,
+        "between_category_mean": 0.2317,
+        "coefficient_of_variation": 0.5788
+      },
+      "top_contract_concentration": {
+        "between_category_std": 0.305187,
+        "between_category_mean": 0.530492,
+        "coefficient_of_variation": 0.5753
+      },
+      "gas_price_round_number_ratio": {
+        "between_category_std": 0.194447,
+        "between_category_mean": 0.393502,
+        "coefficient_of_variation": 0.4941
+      },
+      "gas_price_trailing_zeros_mean": {
+        "between_category_std": 1.80755,
+        "between_category_mean": 3.714581,
+        "coefficient_of_variation": 0.4866
+      },
+      "night_activity_ratio": {
+        "between_category_std": 0.100989,
+        "between_category_mean": 0.221819,
+        "coefficient_of_variation": 0.4553
+      },
+      "contract_to_eoa_ratio": {
+        "between_category_std": 0.269963,
+        "between_category_mean": 0.595161,
+        "coefficient_of_variation": 0.4536
+      },
+      "gas_price_cv": {
+        "between_category_std": 0.570796,
+        "between_category_mean": 1.365948,
+        "coefficient_of_variation": 0.4179
+      },
+      "gas_limit_precision": {
+        "between_category_std": 0.163302,
+        "between_category_mean": 0.707001,
+        "coefficient_of_variation": 0.231
+      },
+      "sequential_pattern_score": {
+        "between_category_std": 0.157702,
+        "between_category_mean": 0.826365,
+        "coefficient_of_variation": 0.1908
+      },
+      "active_hour_entropy": {
+        "between_category_std": 0.296958,
+        "between_category_mean": 2.85204,
+        "coefficient_of_variation": 0.1041
+      },
+      "eip1559_priority_fee_precision": {
+        "between_category_std": 0.0,
+        "between_category_mean": 0.0,
+        "coefficient_of_variation": 0.0
+      },
+      "flash_loan_usage": {
+        "between_category_std": 0.0,
+        "between_category_mean": 0.0,
+        "coefficient_of_variation": 0.0
+      }
+    }
+  },
+  "feature_profiles": {
+    "Deterministic Script": {
+      "key_features": [
+        "tx_interval_std",
+        "burst_frequency",
+        "unique_contracts_ratio",
+        "gas_price_cv"
+      ],
+      "expected_profile": {
+        "tx_interval_std": "low (regular intervals)",
+        "burst_frequency": "low (no burst patterns)",
+        "unique_contracts_ratio": "very low (repetitive targets)",
+        "gas_price_cv": "low (fixed or legacy gas pricing)"
+      }
+    },
+    "Simple Trading Bot": {
+      "key_features": [
+        "tx_interval_mean",
+        "top_contract_concentration",
+        "method_id_diversity",
+        "gas_price_round_number_ratio"
+      ],
+      "expected_profile": {
+        "tx_interval_mean": "moderate (periodic with event triggers)",
+        "top_contract_concentration": "high (focused on trading venues)",
+        "method_id_diversity": "low (swap functions mainly)",
+        "gas_price_round_number_ratio": "varies by implementation"
+      }
+    },
+    "MEV Searcher": {
+      "key_features": [
+        "tx_interval_mean",
+        "tx_interval_skewness",
+        "burst_frequency",
+        "top_contract_concentration"
+      ],
+      "expected_profile": {
+        "tx_interval_mean": "very low (sub-minute)",
+        "tx_interval_skewness": "high (burst extraction patterns)",
+        "burst_frequency": "high (rapid MEV opportunities)",
+        "top_contract_concentration": "very high (focused on DEX routers)"
+      }
+    },
+    "Cross-Chain Bridge Agent": {
+      "key_features": [
+        "contract_to_eoa_ratio",
+        "sequential_pattern_score",
+        "unique_contracts_ratio",
+        "multi_protocol_interaction_count"
+      ],
+      "expected_profile": {
+        "contract_to_eoa_ratio": "high (bridge contract interactions)",
+        "sequential_pattern_score": "high (relay-proof-confirm sequences)",
+        "unique_contracts_ratio": "low (dedicated bridge contracts)",
+        "multi_protocol_interaction_count": "moderate (bridge + verification)"
+      }
+    },
+    "RL Trading Agent": {
+      "key_features": [
+        "gas_price_cv",
+        "tx_interval_std",
+        "burst_frequency",
+        "top_contract_concentration"
+      ],
+      "expected_profile": {
+        "gas_price_cv": "high (non-stationary gas bidding)",
+        "tx_interval_std": "high (variable as strategy evolves)",
+        "burst_frequency": "moderate (exploration vs exploitation)",
+        "top_contract_concentration": "high but changing over time"
+      }
+    },
+    "DeFi Management Agent": {
+      "key_features": [
+        "multi_protocol_interaction_count",
+        "method_id_diversity",
+        "unique_contracts_ratio",
+        "unlimited_approve_ratio"
+      ],
+      "expected_profile": {
+        "multi_protocol_interaction_count": "high (lending + DEX + yield)",
+        "method_id_diversity": "high (approve, swap, deposit, withdraw, etc.)",
+        "unique_contracts_ratio": "moderate (several protocol contracts)",
+        "unlimited_approve_ratio": "present (cross-protocol approvals)"
+      }
+    },
+    "LLM-Powered Agent": {
+      "key_features": [
+        "tx_interval_std",
+        "gas_price_cv",
+        "method_id_diversity",
+        "sequential_pattern_score"
+      ],
+      "expected_profile": {
+        "tx_interval_std": "very high (variable LLM inference time)",
+        "gas_price_cv": "high (non-deterministic gas decisions)",
+        "method_id_diversity": "high (diverse context-dependent actions)",
+        "sequential_pattern_score": "low (non-repetitive, context-driven)"
+      }
+    },
+    "Autonomous DAO Agent": {
+      "key_features": [
+        "tx_interval_mean",
+        "contract_to_eoa_ratio",
+        "night_activity_ratio",
+        "sequential_pattern_score"
+      ],
+      "expected_profile": {
+        "tx_interval_mean": "high (governance proposal cadence)",
+        "contract_to_eoa_ratio": "high (governance contract interactions)",
+        "night_activity_ratio": "low (human-driven governance hours)",
+        "sequential_pattern_score": "high (proposal-vote-execute sequence)"
+      }
+    }
+  }
+}
