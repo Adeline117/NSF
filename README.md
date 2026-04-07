@@ -1,6 +1,6 @@
 # NSF: On-Chain AI Agent Security Research
 
-An open-source framework for identifying on-chain AI agents, auditing their security posture, and scanning Web3 MCP server vulnerabilities.
+An open-source framework for identifying on-chain AI agents, auditing their security posture, and analyzing AI agent tool interface vulnerabilities across protocol families.
 
 ## Research Papers
 
@@ -8,7 +8,7 @@ An open-source framework for identifying on-chain AI agents, auditing their secu
 |-------|-------|-------|-------------|
 | Paper 0 | Theory | Understanding AI Agents | CHI |
 | Paper 1 | Foundation | On-chain AI Agent Identification & Security Posture | WWW |
-| Paper 2 | Protocol | Web3 MCP Server Security Audit | S&P/USENIX |
+| Paper 2 | Protocol | AI Agent Tool Interface Security | S&P/USENIX |
 | Paper 3 | Application | AI Agent-driven Sybil Attacks | GLOBECOM/CHI |
 
 ## Architecture
@@ -24,22 +24,26 @@ Paper 1 (Foundation Layer)
     └── Agent network topology
 
 Paper 2 (Protocol Layer)          Paper 3 (Application Layer)
-├── Web3 MCP server scanning      ├── AI Sybil evasion capability
-├── Tool poisoning detection       ├── LLM behavioral fingerprinting
-├── Private key extraction tests   ├── Cross-address correlation
-└── Risk scoring framework         └── Enhanced detection features
+├── Cross-protocol tool security   ├── AI Sybil evasion capability
+│   ├── MCP (Anthropic)            ├── LLM behavioral fingerprinting
+│   ├── OpenAI Function Calling    ├── Cross-address correlation
+│   ├── LangChain/Agent Tools      └── Enhanced detection features
+│   └── Web3-Native Modules
+├── Unified vulnerability taxonomy
+├── Harness & Skill attack surface
+└── Risk scoring framework
 ```
 
 ## Project Structure
 
 ```
 NSF/
-├── paper0_ai_agent_theory/    # Paper 0: Theoretical framework
-├── paper1_onchain_agent_id/   # Paper 1: On-chain agent identification
-├── paper2_mcp_security/       # Paper 2: MCP server security audit
-├── paper3_ai_sybil/           # Paper 3: AI Sybil attacks
-├── shared/                    # Shared utilities and data collection
-└── framework/                 # Open-source security audit framework
+├── paper0_ai_agent_theory/       # Paper 0: Theoretical framework
+├── paper1_onchain_agent_id/      # Paper 1: On-chain agent identification
+├── paper2_agent_tool_security/   # Paper 2: AI Agent Tool Interface Security
+├── paper3_ai_sybil/              # Paper 3: AI Sybil attacks
+├── shared/                       # Shared utilities and data collection
+└── framework/                    # Open-source security audit framework
 ```
 
 ## Setup

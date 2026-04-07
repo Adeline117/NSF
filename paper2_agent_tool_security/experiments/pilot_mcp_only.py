@@ -459,9 +459,9 @@ def run_pilot():
         "feasibility": "CONFIRMED",
         "findings": all_findings,
     }
-    with open("paper2_mcp_security/experiments/pilot_results.json", "w") as f:
+    with open("paper2_agent_tool_security/experiments/pilot_mcp_only_results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\nResults saved to paper2_mcp_security/experiments/pilot_results.json")
+    print(f"\nResults saved to paper2_agent_tool_security/experiments/pilot_mcp_only_results.json")
 
     return results
 
