@@ -1,0 +1,135 @@
+{
+  "version": "v2",
+  "data_calibration": "HasciDB CHI'26 distributions",
+  "hascidb_live": false,
+  "hascidb_stats": null,
+  "exp1_baseline": {
+    "rule_precision": 1.0,
+    "rule_recall": 1.0,
+    "rule_auc": 1.0,
+    "ml_auc": 1.0
+  },
+  "exp2_evasion": {
+    "basic": {
+      "rule_recall": 0.635,
+      "rule_evasion_rate": 0.365,
+      "ml_auc": 0.97753125
+    },
+    "moderate": {
+      "rule_recall": 0.0,
+      "rule_evasion_rate": 1.0,
+      "ml_auc": 0.91150625
+    },
+    "advanced": {
+      "rule_recall": 0.0,
+      "rule_evasion_rate": 1.0,
+      "ml_auc": 0.8165375000000001
+    }
+  },
+  "exp3_recovery": {
+    "basic": {
+      "enhanced_auc": 1.0,
+      "enhanced_ap": 1.0,
+      "recovery": 0.022468750000000037
+    },
+    "moderate": {
+      "enhanced_auc": 0.9998111111111111,
+      "enhanced_ap": 0.9998201125175807,
+      "recovery": 0.08830486111111113
+    },
+    "advanced": {
+      "enhanced_auc": 0.9997444444444445,
+      "enhanced_ap": 0.9997411244632135,
+      "recovery": 0.1832069444444444
+    }
+  },
+  "exp4_feature_importance": {
+    "gas_price_precision": 0.8174346717702374,
+    "eip1559_tip_precision": 0.08262519139911571,
+    "action_sequence_perplexity": 0.03411918538186318,
+    "gas_nonce_gap_regularity": 0.026099729870184076,
+    "behavioral_consistency": 0.019779492217658942,
+    "MA": 0.011402683776869602,
+    "hour_entropy": 0.0037292947532486234,
+    "response_latency_variance": 0.0017758682528475815,
+    "error_recovery_pattern": 0.0015342420149215448,
+    "RF": 0.000954797639684255,
+    "BT": 0.0003107496955927994,
+    "HF": 0.00012064594886051399,
+    "BW": 0.000113447278915639
+  },
+  "exp4_individual_aucs": {
+    "BT": 0.733142,
+    "BW": 0.6973480000000001,
+    "HF": 0.519828,
+    "RF": 0.817664,
+    "MA": 0.826678,
+    "gas_price_precision": 0.9238280000000001,
+    "hour_entropy": 0.626416,
+    "behavioral_consistency": 0.9505720000000001,
+    "action_sequence_perplexity": 0.8973679999999999,
+    "error_recovery_pattern": 0.932708,
+    "response_latency_variance": 0.801428,
+    "gas_nonce_gap_regularity": 0.9561799999999999,
+    "eip1559_tip_precision": 0.962548
+  },
+  "exp5_cross_project": {
+    "mean_auc": 0.8839999999999999,
+    "std_auc": 0.048156763687865194,
+    "details": [
+      {
+        "train": "blur_s2",
+        "test": "gitcoin",
+        "auc": 0.9512
+      },
+      {
+        "train": "blur_s2",
+        "test": "ens",
+        "auc": 0.92425
+      },
+      {
+        "train": "blur_s2",
+        "test": "dydx",
+        "auc": 0.93045
+      },
+      {
+        "train": "uniswap",
+        "test": "gitcoin",
+        "auc": 0.8313499999999999
+      },
+      {
+        "train": "uniswap",
+        "test": "ens",
+        "auc": 0.8888
+      },
+      {
+        "train": "uniswap",
+        "test": "dydx",
+        "auc": 0.8607
+      },
+      {
+        "train": "eigenlayer",
+        "test": "gitcoin",
+        "auc": 0.9232499999999999
+      },
+      {
+        "train": "eigenlayer",
+        "test": "ens",
+        "auc": 0.8116499999999999
+      },
+      {
+        "train": "eigenlayer",
+        "test": "dydx",
+        "auc": 0.83435
+      }
+    ]
+  },
+  "exp6_baselines": {
+    "HasciDB Rules": 0.776626,
+    "HasciDB ML (5-feat)": 0.8556819999999999,
+    "RF (5-feat)": 0.823232,
+    "Enhanced GBM (13-feat)": 0.9999319999999999,
+    "AI-Only GBM (8-feat)": 0.999988
+  },
+  "feasibility": "CONFIRMED"
+}
