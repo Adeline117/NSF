@@ -1,0 +1,128 @@
+[
+  {
+    "description": "Open-source AI agent skills for DeFi, MCP servers, Web3 tooling, and the Sperax ecosystem. Skills teaching agents crypto trading, yield optimization, smart contract auditing, protocol analytics, and more. Compatible with OpenClaw, ClawHub, Claude Code, GitHub Copilot, and more.",
+    "fullName": "Sperax/sperax-skills",
+    "language": "Shell",
+    "stargazersCount": 5,
+    "updatedAt": "2026-04-03T10:22:18Z",
+    "_protocol": "mcp",
+    "_query": "mcp server web3"
+  },
+  {
+    "description": "",
+    "fullName": "kydlikebtc/mcp-server-web3",
+    "language": "",
+    "stargazersCount": 0,
+    "updatedAt": "2025-01-06T15:35:51Z",
+    "_protocol": "mcp",
+    "_query": "mcp server web3"
+  },
+  {
+    "description": "The web3 function plugin server base on MCP of Anthropic.",
+    "fullName": "tdergouzi/mcp-server-web3",
+    "language": "TypeScript",
+    "stargazersCount": 0,
+    "updatedAt": "2025-03-19T08:53:42Z",
+    "_protocol": "mcp",
+    "_query": "mcp server web3"
+  },
+  {
+    "description": "DevAlpha MCP Server \u2014 Web3 builder intelligence for AI agents",
+    "fullName": "LibruaryNFT/devalpha-mcp",
+    "language": "Python",
+    "stargazersCount": 0,
+    "updatedAt": "2026-03-31T05:25:05Z",
+    "_protocol": "mcp",
+    "_query": "mcp server web3"
+  },
+  {
+    "description": "ETHOracle MCP Server \u2014 Ethereum intelligence for AI agents",
+    "fullName": "ToolOracle/ethoracle",
+    "language": "Python",
+    "stargazersCount": 0,
+    "updatedAt": "2026-04-05T16:54:53Z",
+    "_protocol": "mcp",
+    "_query": "mcp server ethereum"
+  },
+  {
+    "description": "",
+    "fullName": "dcSpark/mcp-server-defillama",
+    "language": "TypeScript",
+    "stargazersCount": 8,
+    "updatedAt": "2026-01-20T17:17:37Z",
+    "_protocol": "mcp",
+    "_query": "mcp server defi"
+  },
+  {
+    "description": "HederaOracle MCP Server \u2014 DeFi Risk & Compliance Intelligence. Live at https://tooloracle.io/hedera/mcp/",
+    "fullName": "ToolOracle/hederaoracle",
+    "language": "Dockerfile",
+    "stargazersCount": 0,
+    "updatedAt": "2026-04-05T16:54:54Z",
+    "_protocol": "mcp",
+    "_query": "mcp server defi"
+  },
+  {
+    "description": "TONOracle MCP Server \u2014 DeFi Risk & Compliance Intelligence. Live at https://tooloracle.io/ton/mcp/",
+    "fullName": "ToolOracle/tonoracle",
+    "language": "Dockerfile",
+    "stargazersCount": 0,
+    "updatedAt": "2026-04-05T16:55:15Z",
+    "_protocol": "mcp",
+    "_query": "mcp server defi"
+  },
+  {
+    "description": "SuiOracle MCP Server \u2014 DeFi Risk & Compliance Intelligence. Live at https://tooloracle.io/sui/mcp/",
+    "fullName": "ToolOracle/suioracle",
+    "language": "Dockerfile",
+    "stargazersCount": 0,
+    "updatedAt": "2026-04-05T16:55:10Z",
+    "_protocol": "mcp",
+    "_query": "mcp server defi"
+  },
+  {
+    "description": "MCP server providing Solana wallet management and transaction signing capabilities for agents.",
+    "fullName": "dahlinomine/mcp-server-solana-agent",
+    "language": "",
+    "stargazersCount": 0,
+    "updatedAt": "2026-03-28T12:02:56Z",
+    "_protocol": "mcp",
+    "_query": "mcp server solana"
+  },
+  {
+    "description": "RefundYourSOL MCP Server \u2014 Solana wallet cleanup, token trading, and metadata tools for AI agents",
+    "fullName": "RefundYourSOL/refundyoursol-mcp",
+    "language": "TypeScript",
+    "stargazersCount": 0,
+    "updatedAt": "2026-03-17T20:50:51Z",
+    "_protocol": "mcp",
+    "_query": "mcp server solana"
+  },
+  {
+    "description": "mcp server for blockchain",
+    "fullName": "Brush-Bot/mcp-server-blockchain",
+    "language": "TypeScript",
+    "stargazersCount": 0,
+    "updatedAt": "2025-04-17T15:37:40Z",
+    "_protocol": "mcp",
+    "_query": "mcp server blockchain"
+  },
+  {
+    "description": "Crypto APIs MCP servers \u2014 blockchain tools for AI agents (Claude, Cursor, Windsurf, n8n, and more)",
+    "fullName": "CryptoAPIs-io/cryptoapis-mcp-hub",
+    "language": "",
+    "stargazersCount": 0,
+    "updatedAt": "2026-03-13T11:05:14Z",
+    "_protocol": "mcp",
+    "_query": "mcp server blockchain"
+  },
+  {
+    "description": "The LayerHack 2022 hackathon solution - Account Abstraction plugins",
+    "fullName": "0x3327/layerhack_2022",
+    "language": "TypeScript",
+    "stargazersCount": 3,
+    "updatedAt": "2024-11-26T19:25:09Z",
+    "_protocol": "web3_native",
+    "_query": "account abstraction plugin"
+  }
+]
