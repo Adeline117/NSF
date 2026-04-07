@@ -1,0 +1,2238 @@
+{
+  "instrument": {
+    "study_title": "Delphi Expert Validation for Web3 AI Agent Taxonomy",
+    "version": "1.0",
+    "n_rounds": 2,
+    "target_experts": {
+      "n_target": "12-20",
+      "expertise_areas": [
+        "AI/ML researchers with agent systems experience",
+        "Blockchain security engineers",
+        "DeFi protocol designers",
+        "HCI researchers specializing in automation/AI",
+        "MEV researchers"
+      ],
+      "recruitment_criteria": [
+        "Minimum 3 years experience in relevant domain",
+        "Published at least 1 peer-reviewed paper in related area",
+        "Active involvement in Web3/blockchain ecosystem preferred"
+      ]
+    },
+    "round_1": {
+      "description": "Open-ended exploration: experts independently rate dimensions and categories, classify real-world entities, and compare against existing frameworks.",
+      "estimated_completion_time": "45-60 minutes",
+      "part_a_dimension_validation": [
+        {
+          "dimension": "Autonomy Level (自主性等级)",
+          "definition": "Degree of autonomous decision-making, ranging from NONE (pure deterministic script) through REACTIVE (fixed-rule responses), ADAPTIVE (parameter adjustment based on feedback), PROACTIVE (independent planning and goal pursuit), to COLLABORATIVE (multi-agent coordination).",
+          "levels": [
+            "NONE (Level 0): Pure script, deterministic, no adaptation",
+            "REACTIVE (Level 1): Responds to events with fixed rules",
+            "ADAPTIVE (Level 2): Adjusts parameters based on environment",
+            "PROACTIVE (Level 3): Plans and initiates actions independently",
+            "COLLABORATIVE (Level 4): Coordinates with other agents/humans"
+          ],
+          "literature_basis": "Derived from Russell & Norvig (2020) agent architecture hierarchy and Wooldridge & Jennings (1995) four-property framework. Simplified from Parasuraman et al. (2000) 10-level automation to 5 levels due to limited observability through blockchain transaction data.",
+          "questions": [
+            {
+              "id": "A1_necessity",
+              "text": "Is the dimension 'Autonomy Level (自主性等级)' necessary for distinguishing AI agents from other automated systems in the Web3 context?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all necessary",
+              "anchor_high": "Absolutely necessary"
+            },
+            {
+              "id": "A1_sufficiency",
+              "text": "Is the dimension 'Autonomy Level (自主性等级)' sufficient as defined, or are additional sub-dimensions or modifications needed? Please elaborate."
+            },
+            {
+              "id": "A1_clarity",
+              "text": "Rate the clarity of the definitions for 'Autonomy Level (自主性等级)' and its levels.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very unclear",
+              "anchor_high": "Very clear"
+            },
+            {
+              "id": "A1_completeness",
+              "text": "Rate the completeness of the levels within 'Autonomy Level (自主性等级)'. Are all meaningful levels covered?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Major gaps exist",
+              "anchor_high": "Fully complete"
+            },
+            {
+              "id": "A1_missing",
+              "text": "Are there additional dimensions not captured by our three-dimension framework that are essential for classifying Web3 AI agents? If so, please describe them."
+            }
+          ]
+        },
+        {
+          "dimension": "Environment Type (环境类型)",
+          "definition": "Where the agent operates and what data sources it accesses. On-chain Only (fully on-chain smart contract logic), Hybrid/Off-chain-to-On-chain (off-chain compute, on-chain execution), Cross-chain (operates across multiple blockchains), Multi-modal (combines on-chain actions with off-chain data sources such as APIs, LLMs, social media).",
+          "levels": [
+            "ON-CHAIN ONLY: Fully on-chain smart contract execution",
+            "HYBRID: Off-chain compute, on-chain execution",
+            "CROSS-CHAIN: Operates across multiple blockchain networks",
+            "MULTI-MODAL: Combines on-chain + off-chain services (APIs, LLMs)"
+          ],
+          "literature_basis": "Novel dimension specific to Web3 context. Traditional agent taxonomies do not distinguish environment types at this granularity. Motivated by the unique transparency and constraints of blockchain execution environments.",
+          "questions": [
+            {
+              "id": "A2_necessity",
+              "text": "Is the dimension 'Environment Type (环境类型)' necessary for distinguishing AI agents from other automated systems in the Web3 context?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all necessary",
+              "anchor_high": "Absolutely necessary"
+            },
+            {
+              "id": "A2_sufficiency",
+              "text": "Is the dimension 'Environment Type (环境类型)' sufficient as defined, or are additional sub-dimensions or modifications needed? Please elaborate."
+            },
+            {
+              "id": "A2_clarity",
+              "text": "Rate the clarity of the definitions for 'Environment Type (环境类型)' and its levels.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very unclear",
+              "anchor_high": "Very clear"
+            },
+            {
+              "id": "A2_completeness",
+              "text": "Rate the completeness of the levels within 'Environment Type (环境类型)'. Are all meaningful levels covered?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Major gaps exist",
+              "anchor_high": "Fully complete"
+            },
+            {
+              "id": "A2_missing",
+              "text": "Are there additional dimensions not captured by our three-dimension framework that are essential for classifying Web3 AI agents? If so, please describe them."
+            }
+          ]
+        },
+        {
+          "dimension": "Decision Model (决策模型)",
+          "definition": "The mechanism by which the agent makes decisions. Deterministic (if-then rules), Statistical (ML/probability-based), LLM-driven (large language model reasoning), Reinforcement Learning (policy optimization via reward signals), Hybrid (combination of multiple models).",
+          "levels": [
+            "DETERMINISTIC: If-then rules, fully predictable output",
+            "STATISTICAL: ML models, probability-based decisions",
+            "LLM-DRIVEN: Large language model reasoning",
+            "REINFORCEMENT LEARNING: RL-based policy optimization",
+            "HYBRID: Combination of multiple decision models"
+          ],
+          "literature_basis": "Extends Russell & Norvig (2020) agent architectures with modern AI decision paradigms (LLM, RL). The distinction between Statistical and LLM-driven is novel and reflects the emergence of foundation-model-based agents.",
+          "questions": [
+            {
+              "id": "A3_necessity",
+              "text": "Is the dimension 'Decision Model (决策模型)' necessary for distinguishing AI agents from other automated systems in the Web3 context?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all necessary",
+              "anchor_high": "Absolutely necessary"
+            },
+            {
+              "id": "A3_sufficiency",
+              "text": "Is the dimension 'Decision Model (决策模型)' sufficient as defined, or are additional sub-dimensions or modifications needed? Please elaborate."
+            },
+            {
+              "id": "A3_clarity",
+              "text": "Rate the clarity of the definitions for 'Decision Model (决策模型)' and its levels.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very unclear",
+              "anchor_high": "Very clear"
+            },
+            {
+              "id": "A3_completeness",
+              "text": "Rate the completeness of the levels within 'Decision Model (决策模型)'. Are all meaningful levels covered?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Major gaps exist",
+              "anchor_high": "Fully complete"
+            },
+            {
+              "id": "A3_missing",
+              "text": "Are there additional dimensions not captured by our three-dimension framework that are essential for classifying Web3 AI agents? If so, please describe them."
+            }
+          ]
+        }
+      ],
+      "part_b_category_validation": [
+        {
+          "category": "Deterministic Script",
+          "taxonomy_tuple": "(NONE, Hybrid, Deterministic)",
+          "definition": "Fully deterministic program that executes a fixed sequence of transactions without any autonomous decision-making.",
+          "examples": [
+            "Cron-scheduled token transfers",
+            "Hardcoded airdrop distribution scripts",
+            "Static payroll contracts"
+          ],
+          "on_chain_indicators": [
+            "Perfectly periodic transactions",
+            "Identical calldata across invocations",
+            "Fixed gas price or legacy gas pricing",
+            "Single-function interaction pattern"
+          ],
+          "questions": [
+            {
+              "id": "B1_well_defined",
+              "text": "Rate how well-defined the category 'Deterministic Script' is.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very poorly defined",
+              "anchor_high": "Very well-defined"
+            },
+            {
+              "id": "B1_distinguishable",
+              "text": "Rate how distinguishable 'Deterministic Script' is from the other 7 categories.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Highly overlapping",
+              "anchor_high": "Clearly distinct"
+            },
+            {
+              "id": "B1_examples_representative",
+              "text": "Rate how representative the provided examples are for 'Deterministic Script'.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not representative",
+              "anchor_high": "Highly representative"
+            },
+            {
+              "id": "B1_missing_examples",
+              "text": "Can you provide real-world examples that belong to 'Deterministic Script' that we missed?"
+            },
+            {
+              "id": "B1_structural",
+              "text": "Should the category 'Deterministic Script' be modified?",
+              "options": [
+                "Keep as-is",
+                "Split into multiple categories",
+                "Merge with another category",
+                "Remove entirely",
+                "Redefine boundaries"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "B1_structural_explanation",
+              "text": "If you selected anything other than 'Keep as-is', please explain your reasoning."
+            }
+          ]
+        },
+        {
+          "category": "Simple Trading Bot",
+          "taxonomy_tuple": "(REACTIVE, Hybrid, Deterministic)",
+          "definition": "Executes pre-defined trading rules; responds to market conditions with fixed execution paths.",
+          "examples": [
+            "Grid trading bots",
+            "DCA (Dollar Cost Averaging) bots",
+            "Rebalancing scripts"
+          ],
+          "on_chain_indicators": [
+            "Regular interval transactions",
+            "Fixed trade sizes",
+            "Deterministic gas pricing"
+          ],
+          "questions": [
+            {
+              "id": "B2_well_defined",
+              "text": "Rate how well-defined the category 'Simple Trading Bot' is.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very poorly defined",
+              "anchor_high": "Very well-defined"
+            },
+            {
+              "id": "B2_distinguishable",
+              "text": "Rate how distinguishable 'Simple Trading Bot' is from the other 7 categories.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Highly overlapping",
+              "anchor_high": "Clearly distinct"
+            },
+            {
+              "id": "B2_examples_representative",
+              "text": "Rate how representative the provided examples are for 'Simple Trading Bot'.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not representative",
+              "anchor_high": "Highly representative"
+            },
+            {
+              "id": "B2_missing_examples",
+              "text": "Can you provide real-world examples that belong to 'Simple Trading Bot' that we missed?"
+            },
+            {
+              "id": "B2_structural",
+              "text": "Should the category 'Simple Trading Bot' be modified?",
+              "options": [
+                "Keep as-is",
+                "Split into multiple categories",
+                "Merge with another category",
+                "Remove entirely",
+                "Redefine boundaries"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "B2_structural_explanation",
+              "text": "If you selected anything other than 'Keep as-is', please explain your reasoning."
+            }
+          ]
+        },
+        {
+          "category": "MEV Searcher",
+          "taxonomy_tuple": "(ADAPTIVE, Hybrid, Statistical)",
+          "definition": "Identifies and extracts Maximal Extractable Value through strategies like sandwich attacks, arbitrage, and liquidations.",
+          "examples": [
+            "jaredfromsubway.eth",
+            "Flashbots searchers"
+          ],
+          "on_chain_indicators": [
+            "Extremely low latency (sub-block response)",
+            "Bundle submissions via Flashbots",
+            "High gas priority fees",
+            "Interaction with DEX routers"
+          ],
+          "questions": [
+            {
+              "id": "B3_well_defined",
+              "text": "Rate how well-defined the category 'MEV Searcher' is.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very poorly defined",
+              "anchor_high": "Very well-defined"
+            },
+            {
+              "id": "B3_distinguishable",
+              "text": "Rate how distinguishable 'MEV Searcher' is from the other 7 categories.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Highly overlapping",
+              "anchor_high": "Clearly distinct"
+            },
+            {
+              "id": "B3_examples_representative",
+              "text": "Rate how representative the provided examples are for 'MEV Searcher'.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not representative",
+              "anchor_high": "Highly representative"
+            },
+            {
+              "id": "B3_missing_examples",
+              "text": "Can you provide real-world examples that belong to 'MEV Searcher' that we missed?"
+            },
+            {
+              "id": "B3_structural",
+              "text": "Should the category 'MEV Searcher' be modified?",
+              "options": [
+                "Keep as-is",
+                "Split into multiple categories",
+                "Merge with another category",
+                "Remove entirely",
+                "Redefine boundaries"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "B3_structural_explanation",
+              "text": "If you selected anything other than 'Keep as-is', please explain your reasoning."
+            }
+          ]
+        },
+        {
+          "category": "Cross-Chain Bridge Agent",
+          "taxonomy_tuple": "(ADAPTIVE, Cross-chain, Deterministic)",
+          "definition": "Relays messages and assets across blockchain networks, maintaining consistency between different consensus environments.",
+          "examples": [
+            "LayerZero relayers",
+            "Wormhole guardians",
+            "Axelar validators"
+          ],
+          "on_chain_indicators": [
+            "Bridge contract interactions",
+            "Matching transactions across chains",
+            "Proof submission patterns"
+          ],
+          "questions": [
+            {
+              "id": "B4_well_defined",
+              "text": "Rate how well-defined the category 'Cross-Chain Bridge Agent' is.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very poorly defined",
+              "anchor_high": "Very well-defined"
+            },
+            {
+              "id": "B4_distinguishable",
+              "text": "Rate how distinguishable 'Cross-Chain Bridge Agent' is from the other 7 categories.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Highly overlapping",
+              "anchor_high": "Clearly distinct"
+            },
+            {
+              "id": "B4_examples_representative",
+              "text": "Rate how representative the provided examples are for 'Cross-Chain Bridge Agent'.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not representative",
+              "anchor_high": "Highly representative"
+            },
+            {
+              "id": "B4_missing_examples",
+              "text": "Can you provide real-world examples that belong to 'Cross-Chain Bridge Agent' that we missed?"
+            },
+            {
+              "id": "B4_structural",
+              "text": "Should the category 'Cross-Chain Bridge Agent' be modified?",
+              "options": [
+                "Keep as-is",
+                "Split into multiple categories",
+                "Merge with another category",
+                "Remove entirely",
+                "Redefine boundaries"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "B4_structural_explanation",
+              "text": "If you selected anything other than 'Keep as-is', please explain your reasoning."
+            }
+          ]
+        },
+        {
+          "category": "RL Trading Agent",
+          "taxonomy_tuple": "(ADAPTIVE, Hybrid, Reinforcement Learning)",
+          "definition": "Uses reinforcement learning policies to optimize trading strategy; learns from reward signals derived from on-chain outcomes.",
+          "examples": [
+            "RL-based market-making agents",
+            "Policy-gradient DEX arbitrage agents",
+            "Multi-armed bandit liquidity allocators"
+          ],
+          "on_chain_indicators": [
+            "Exploration-exploitation trade size patterns",
+            "Gradual strategy convergence over time",
+            "Reward-correlated behavioral shifts",
+            "Non-stationary gas bidding strategies"
+          ],
+          "questions": [
+            {
+              "id": "B5_well_defined",
+              "text": "Rate how well-defined the category 'RL Trading Agent' is.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very poorly defined",
+              "anchor_high": "Very well-defined"
+            },
+            {
+              "id": "B5_distinguishable",
+              "text": "Rate how distinguishable 'RL Trading Agent' is from the other 7 categories.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Highly overlapping",
+              "anchor_high": "Clearly distinct"
+            },
+            {
+              "id": "B5_examples_representative",
+              "text": "Rate how representative the provided examples are for 'RL Trading Agent'.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not representative",
+              "anchor_high": "Highly representative"
+            },
+            {
+              "id": "B5_missing_examples",
+              "text": "Can you provide real-world examples that belong to 'RL Trading Agent' that we missed?"
+            },
+            {
+              "id": "B5_structural",
+              "text": "Should the category 'RL Trading Agent' be modified?",
+              "options": [
+                "Keep as-is",
+                "Split into multiple categories",
+                "Merge with another category",
+                "Remove entirely",
+                "Redefine boundaries"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "B5_structural_explanation",
+              "text": "If you selected anything other than 'Keep as-is', please explain your reasoning."
+            }
+          ]
+        },
+        {
+          "category": "DeFi Management Agent",
+          "taxonomy_tuple": "(PROACTIVE, Hybrid, Hybrid)",
+          "definition": "Manages DeFi positions with cross-protocol reasoning and risk-aware capability: yield farming, lending, liquidity provision.",
+          "examples": [
+            "Autonolas agents",
+            "Yearn strategy vaults",
+            "DeFi Saver automation"
+          ],
+          "on_chain_indicators": [
+            "Multi-protocol interactions in sequences",
+            "Approval management patterns",
+            "Position rebalancing transactions",
+            "Oracle price consultation"
+          ],
+          "questions": [
+            {
+              "id": "B6_well_defined",
+              "text": "Rate how well-defined the category 'DeFi Management Agent' is.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very poorly defined",
+              "anchor_high": "Very well-defined"
+            },
+            {
+              "id": "B6_distinguishable",
+              "text": "Rate how distinguishable 'DeFi Management Agent' is from the other 7 categories.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Highly overlapping",
+              "anchor_high": "Clearly distinct"
+            },
+            {
+              "id": "B6_examples_representative",
+              "text": "Rate how representative the provided examples are for 'DeFi Management Agent'.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not representative",
+              "anchor_high": "Highly representative"
+            },
+            {
+              "id": "B6_missing_examples",
+              "text": "Can you provide real-world examples that belong to 'DeFi Management Agent' that we missed?"
+            },
+            {
+              "id": "B6_structural",
+              "text": "Should the category 'DeFi Management Agent' be modified?",
+              "options": [
+                "Keep as-is",
+                "Split into multiple categories",
+                "Merge with another category",
+                "Remove entirely",
+                "Redefine boundaries"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "B6_structural_explanation",
+              "text": "If you selected anything other than 'Keep as-is', please explain your reasoning."
+            }
+          ]
+        },
+        {
+          "category": "LLM-Powered Agent",
+          "taxonomy_tuple": "(PROACTIVE, Multi-modal, LLM-driven)",
+          "definition": "Uses large language model reasoning to decide on-chain actions; behavior influenced by multi-modal context.",
+          "examples": [
+            "AI16Z/ELIZA agents",
+            "Virtuals Protocol agents",
+            "MCP-connected agents"
+          ],
+          "on_chain_indicators": [
+            "Variable latency (LLM inference time)",
+            "Complex multi-step transaction sequences",
+            "Natural language-influenced parameters",
+            "Non-deterministic gas pricing"
+          ],
+          "questions": [
+            {
+              "id": "B7_well_defined",
+              "text": "Rate how well-defined the category 'LLM-Powered Agent' is.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very poorly defined",
+              "anchor_high": "Very well-defined"
+            },
+            {
+              "id": "B7_distinguishable",
+              "text": "Rate how distinguishable 'LLM-Powered Agent' is from the other 7 categories.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Highly overlapping",
+              "anchor_high": "Clearly distinct"
+            },
+            {
+              "id": "B7_examples_representative",
+              "text": "Rate how representative the provided examples are for 'LLM-Powered Agent'.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not representative",
+              "anchor_high": "Highly representative"
+            },
+            {
+              "id": "B7_missing_examples",
+              "text": "Can you provide real-world examples that belong to 'LLM-Powered Agent' that we missed?"
+            },
+            {
+              "id": "B7_structural",
+              "text": "Should the category 'LLM-Powered Agent' be modified?",
+              "options": [
+                "Keep as-is",
+                "Split into multiple categories",
+                "Merge with another category",
+                "Remove entirely",
+                "Redefine boundaries"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "B7_structural_explanation",
+              "text": "If you selected anything other than 'Keep as-is', please explain your reasoning."
+            }
+          ]
+        },
+        {
+          "category": "Autonomous DAO Agent",
+          "taxonomy_tuple": "(COLLABORATIVE, On-chain, Hybrid)",
+          "definition": "Fully on-chain agent governed by DAO rules; acts through collective decision-making processes.",
+          "examples": [
+            "Gnosis Safe modules",
+            "Governor-controlled executors"
+          ],
+          "on_chain_indicators": [
+            "Transactions originate from multisig/timelock",
+            "Proposal-execution pattern",
+            "Governance token interactions"
+          ],
+          "questions": [
+            {
+              "id": "B8_well_defined",
+              "text": "Rate how well-defined the category 'Autonomous DAO Agent' is.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Very poorly defined",
+              "anchor_high": "Very well-defined"
+            },
+            {
+              "id": "B8_distinguishable",
+              "text": "Rate how distinguishable 'Autonomous DAO Agent' is from the other 7 categories.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Highly overlapping",
+              "anchor_high": "Clearly distinct"
+            },
+            {
+              "id": "B8_examples_representative",
+              "text": "Rate how representative the provided examples are for 'Autonomous DAO Agent'.",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not representative",
+              "anchor_high": "Highly representative"
+            },
+            {
+              "id": "B8_missing_examples",
+              "text": "Can you provide real-world examples that belong to 'Autonomous DAO Agent' that we missed?"
+            },
+            {
+              "id": "B8_structural",
+              "text": "Should the category 'Autonomous DAO Agent' be modified?",
+              "options": [
+                "Keep as-is",
+                "Split into multiple categories",
+                "Merge with another category",
+                "Remove entirely",
+                "Redefine boundaries"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "B8_structural_explanation",
+              "text": "If you selected anything other than 'Keep as-is', please explain your reasoning."
+            }
+          ]
+        }
+      ],
+      "part_c_classification_exercise": [
+        {
+          "entity": {
+            "id": "C1",
+            "name": "jaredfromsubway.eth",
+            "description": "One of Ethereum's most prolific MEV extractors. Conducts sandwich attacks on DEX trades by monitoring the mempool, front-running victim transactions, and back-running to capture price impact profit. Operates via Flashbots bundles."
+          },
+          "questions": [
+            {
+              "id": "C1_classify",
+              "text": "Which category does 'jaredfromsubway.eth' belong to?",
+              "options": [
+                "Deterministic Script",
+                "Simple Trading Bot",
+                "MEV Searcher",
+                "Cross-Chain Bridge Agent",
+                "RL Trading Agent",
+                "DeFi Management Agent",
+                "LLM-Powered Agent",
+                "Autonomous DAO Agent",
+                "Not an agent (Human / Smart Contract / Other)"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "C1_confidence",
+              "text": "How confident are you in your classification of 'jaredfromsubway.eth'?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all confident",
+              "anchor_high": "Completely confident"
+            },
+            {
+              "id": "C1_rationale",
+              "text": "Briefly explain your classification rationale for 'jaredfromsubway.eth'."
+            }
+          ],
+          "_expected_category": "MEV Searcher"
+        },
+        {
+          "entity": {
+            "id": "C2",
+            "name": "Wintermute",
+            "description": "A major crypto market maker providing liquidity across centralized and decentralized exchanges. Operates algorithmic trading strategies with high frequency and tight spreads. Interacts primarily with DEX router contracts."
+          },
+          "questions": [
+            {
+              "id": "C2_classify",
+              "text": "Which category does 'Wintermute' belong to?",
+              "options": [
+                "Deterministic Script",
+                "Simple Trading Bot",
+                "MEV Searcher",
+                "Cross-Chain Bridge Agent",
+                "RL Trading Agent",
+                "DeFi Management Agent",
+                "LLM-Powered Agent",
+                "Autonomous DAO Agent",
+                "Not an agent (Human / Smart Contract / Other)"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "C2_confidence",
+              "text": "How confident are you in your classification of 'Wintermute'?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all confident",
+              "anchor_high": "Completely confident"
+            },
+            {
+              "id": "C2_rationale",
+              "text": "Briefly explain your classification rationale for 'Wintermute'."
+            }
+          ],
+          "_expected_category": "Simple Trading Bot / RL Trading Agent (boundary)"
+        },
+        {
+          "entity": {
+            "id": "C3",
+            "name": "Autonolas OLAS agent",
+            "description": "An autonomous agent registered in the Autonolas ServiceRegistry. Manages DeFi positions across multiple protocols (Aave, Uniswap, Yearn), rebalances based on market conditions, and uses a hybrid decision model combining statistical risk assessment with rule-based execution."
+          },
+          "questions": [
+            {
+              "id": "C3_classify",
+              "text": "Which category does 'Autonolas OLAS agent' belong to?",
+              "options": [
+                "Deterministic Script",
+                "Simple Trading Bot",
+                "MEV Searcher",
+                "Cross-Chain Bridge Agent",
+                "RL Trading Agent",
+                "DeFi Management Agent",
+                "LLM-Powered Agent",
+                "Autonomous DAO Agent",
+                "Not an agent (Human / Smart Contract / Other)"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "C3_confidence",
+              "text": "How confident are you in your classification of 'Autonolas OLAS agent'?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all confident",
+              "anchor_high": "Completely confident"
+            },
+            {
+              "id": "C3_rationale",
+              "text": "Briefly explain your classification rationale for 'Autonolas OLAS agent'."
+            }
+          ],
+          "_expected_category": "DeFi Management Agent"
+        },
+        {
+          "entity": {
+            "id": "C4",
+            "name": "Uniswap V2 Router",
+            "description": "A smart contract that routes token swaps through Uniswap V2 liquidity pools. Executes deterministic swap logic based on the constant product formula. Has no off-chain component or autonomous decision-making."
+          },
+          "questions": [
+            {
+              "id": "C4_classify",
+              "text": "Which category does 'Uniswap V2 Router' belong to?",
+              "options": [
+                "Deterministic Script",
+                "Simple Trading Bot",
+                "MEV Searcher",
+                "Cross-Chain Bridge Agent",
+                "RL Trading Agent",
+                "DeFi Management Agent",
+                "LLM-Powered Agent",
+                "Autonomous DAO Agent",
+                "Not an agent (Human / Smart Contract / Other)"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "C4_confidence",
+              "text": "How confident are you in your classification of 'Uniswap V2 Router'?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all confident",
+              "anchor_high": "Completely confident"
+            },
+            {
+              "id": "C4_rationale",
+              "text": "Briefly explain your classification rationale for 'Uniswap V2 Router'."
+            }
+          ],
+          "_expected_category": "Deterministic Script (or not an agent at all)"
+        },
+        {
+          "entity": {
+            "id": "C5",
+            "name": "A personal wallet doing manual trades",
+            "description": "An externally owned account (EOA) controlled by a human user who manually initiates DEX trades via a frontend (e.g., Uniswap web app). Transactions show circadian rhythm, irregular intervals, and round-number gas prices."
+          },
+          "questions": [
+            {
+              "id": "C5_classify",
+              "text": "Which category does 'A personal wallet doing manual trades' belong to?",
+              "options": [
+                "Deterministic Script",
+                "Simple Trading Bot",
+                "MEV Searcher",
+                "Cross-Chain Bridge Agent",
+                "RL Trading Agent",
+                "DeFi Management Agent",
+                "LLM-Powered Agent",
+                "Autonomous DAO Agent",
+                "Not an agent (Human / Smart Contract / Other)"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "C5_confidence",
+              "text": "How confident are you in your classification of 'A personal wallet doing manual trades'?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all confident",
+              "anchor_high": "Completely confident"
+            },
+            {
+              "id": "C5_rationale",
+              "text": "Briefly explain your classification rationale for 'A personal wallet doing manual trades'."
+            }
+          ],
+          "_expected_category": "Not an agent (Human)"
+        },
+        {
+          "entity": {
+            "id": "C6",
+            "name": "An Aave liquidation bot",
+            "description": "A bot that monitors Aave lending positions and triggers liquidation transactions when health factors drop below thresholds. Uses statistical models to estimate gas costs and profitability. Adapts gas bidding strategy based on competition."
+          },
+          "questions": [
+            {
+              "id": "C6_classify",
+              "text": "Which category does 'An Aave liquidation bot' belong to?",
+              "options": [
+                "Deterministic Script",
+                "Simple Trading Bot",
+                "MEV Searcher",
+                "Cross-Chain Bridge Agent",
+                "RL Trading Agent",
+                "DeFi Management Agent",
+                "LLM-Powered Agent",
+                "Autonomous DAO Agent",
+                "Not an agent (Human / Smart Contract / Other)"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "C6_confidence",
+              "text": "How confident are you in your classification of 'An Aave liquidation bot'?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all confident",
+              "anchor_high": "Completely confident"
+            },
+            {
+              "id": "C6_rationale",
+              "text": "Briefly explain your classification rationale for 'An Aave liquidation bot'."
+            }
+          ],
+          "_expected_category": "MEV Searcher"
+        },
+        {
+          "entity": {
+            "id": "C7",
+            "name": "LayerZero relayer",
+            "description": "A relayer node that monitors source-chain events and submits proof transactions on destination chains. Operates across Ethereum, Arbitrum, Optimism, and Polygon. Deterministic relay logic with adaptive gas pricing."
+          },
+          "questions": [
+            {
+              "id": "C7_classify",
+              "text": "Which category does 'LayerZero relayer' belong to?",
+              "options": [
+                "Deterministic Script",
+                "Simple Trading Bot",
+                "MEV Searcher",
+                "Cross-Chain Bridge Agent",
+                "RL Trading Agent",
+                "DeFi Management Agent",
+                "LLM-Powered Agent",
+                "Autonomous DAO Agent",
+                "Not an agent (Human / Smart Contract / Other)"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "C7_confidence",
+              "text": "How confident are you in your classification of 'LayerZero relayer'?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all confident",
+              "anchor_high": "Completely confident"
+            },
+            {
+              "id": "C7_rationale",
+              "text": "Briefly explain your classification rationale for 'LayerZero relayer'."
+            }
+          ],
+          "_expected_category": "Cross-Chain Bridge Agent"
+        },
+        {
+          "entity": {
+            "id": "C8",
+            "name": "AI16Z ELIZA trading agent",
+            "description": "An agent built on the ELIZA framework that uses GPT-4 to analyze social media sentiment, news, and on-chain data to make trading decisions. Executes token swaps on Uniswap based on LLM reasoning. Posts updates on Twitter."
+          },
+          "questions": [
+            {
+              "id": "C8_classify",
+              "text": "Which category does 'AI16Z ELIZA trading agent' belong to?",
+              "options": [
+                "Deterministic Script",
+                "Simple Trading Bot",
+                "MEV Searcher",
+                "Cross-Chain Bridge Agent",
+                "RL Trading Agent",
+                "DeFi Management Agent",
+                "LLM-Powered Agent",
+                "Autonomous DAO Agent",
+                "Not an agent (Human / Smart Contract / Other)"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "C8_confidence",
+              "text": "How confident are you in your classification of 'AI16Z ELIZA trading agent'?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all confident",
+              "anchor_high": "Completely confident"
+            },
+            {
+              "id": "C8_rationale",
+              "text": "Briefly explain your classification rationale for 'AI16Z ELIZA trading agent'."
+            }
+          ],
+          "_expected_category": "LLM-Powered Agent"
+        },
+        {
+          "entity": {
+            "id": "C9",
+            "name": "A cron job that distributes payroll",
+            "description": "A cron-scheduled script that runs every two weeks and sends fixed amounts of USDC to a predefined list of employee addresses. No conditional logic, no adaptation, identical calldata every execution."
+          },
+          "questions": [
+            {
+              "id": "C9_classify",
+              "text": "Which category does 'A cron job that distributes payroll' belong to?",
+              "options": [
+                "Deterministic Script",
+                "Simple Trading Bot",
+                "MEV Searcher",
+                "Cross-Chain Bridge Agent",
+                "RL Trading Agent",
+                "DeFi Management Agent",
+                "LLM-Powered Agent",
+                "Autonomous DAO Agent",
+                "Not an agent (Human / Smart Contract / Other)"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "C9_confidence",
+              "text": "How confident are you in your classification of 'A cron job that distributes payroll'?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all confident",
+              "anchor_high": "Completely confident"
+            },
+            {
+              "id": "C9_rationale",
+              "text": "Briefly explain your classification rationale for 'A cron job that distributes payroll'."
+            }
+          ],
+          "_expected_category": "Deterministic Script"
+        },
+        {
+          "entity": {
+            "id": "C10",
+            "name": "A Chainlink oracle node",
+            "description": "A node operator that submits price feed updates to Chainlink aggregator contracts. Uses deterministic submission logic triggered by price deviation thresholds. Operates within the Chainlink consensus protocol alongside other oracle nodes."
+          },
+          "questions": [
+            {
+              "id": "C10_classify",
+              "text": "Which category does 'A Chainlink oracle node' belong to?",
+              "options": [
+                "Deterministic Script",
+                "Simple Trading Bot",
+                "MEV Searcher",
+                "Cross-Chain Bridge Agent",
+                "RL Trading Agent",
+                "DeFi Management Agent",
+                "LLM-Powered Agent",
+                "Autonomous DAO Agent",
+                "Not an agent (Human / Smart Contract / Other)"
+              ],
+              "allow_other": true
+            },
+            {
+              "id": "C10_confidence",
+              "text": "How confident are you in your classification of 'A Chainlink oracle node'?",
+              "scale_min": 1,
+              "scale_max": 5,
+              "anchor_low": "Not at all confident",
+              "anchor_high": "Completely confident"
+            },
+            {
+              "id": "C10_rationale",
+              "text": "Briefly explain your classification rationale for 'A Chainlink oracle node'."
+            }
+          ],
+          "_expected_category": "Cross-Chain Bridge Agent / Deterministic Script (boundary)"
+        }
+      ],
+      "part_d_taxonomy_comparison": {
+        "instructions": "Below we present our 8-category taxonomy side-by-side with 5 existing agent classification frameworks. Please review each and answer the following questions.",
+        "our_taxonomy": {
+          "name": "Web3 AI Agent Taxonomy (This Paper)",
+          "dimensions": [
+            "Autonomy Level (5)",
+            "Environment Type (4)",
+            "Decision Model (5)"
+          ],
+          "categories": [
+            "Deterministic Script",
+            "Simple Trading Bot",
+            "MEV Searcher",
+            "Cross-Chain Bridge Agent",
+            "RL Trading Agent",
+            "DeFi Management Agent",
+            "LLM-Powered Agent",
+            "Autonomous DAO Agent"
+          ],
+          "design_principles": [
+            "Observability: every category distinguishable via on-chain behavior",
+            "Mutual exclusivity: unique (autonomy, environment, decision) triple per category",
+            "Exhaustiveness: covers all known Web3 agent types"
+          ]
+        },
+        "comparison_frameworks": [
+          {
+            "framework": "Russell & Norvig (2020)",
+            "source": "Artificial Intelligence: A Modern Approach, 4th ed.",
+            "categories": [
+              "Simple reflex agents",
+              "Model-based reflex agents",
+              "Goal-based agents",
+              "Utility-based agents",
+              "Learning agents"
+            ],
+            "strengths": [
+              "Well-established theoretical foundation",
+              "Clear hierarchy of increasing capability",
+              "Widely taught and recognized"
+            ],
+            "limitations_for_web3": [
+              "No distinction for execution environment (on-chain vs off-chain)",
+              "Does not account for blockchain-specific constraints",
+              "Cannot distinguish MEV searchers from DeFi management agents"
+            ]
+          },
+          {
+            "framework": "Franklin & Graesser (1996)",
+            "source": "Is it an Agent, or Just a Program?",
+            "categories": [
+              "Property-based classification with 13 properties:",
+              "Reactive, Autonomous, Goal-oriented, Temporally continuous,",
+              "Communicative, Learning, Mobile, Flexible, Character,",
+              "Emotional, Modelling, Personality, Adaptive"
+            ],
+            "strengths": [
+              "Fine-grained property-based decomposition",
+              "Allows partial agent classification",
+              "Addresses the 'what is an agent' question directly"
+            ],
+            "limitations_for_web3": [
+              "Too many dimensions for practical classification",
+              "Properties like 'Emotional' and 'Personality' irrelevant to Web3",
+              "No operationalization for blockchain observability"
+            ]
+          },
+          {
+            "framework": "Parasuraman, Sheridan & Wickens (2000)",
+            "source": "A Model for Types and Levels of Human Interaction with Automation",
+            "categories": [
+              "10 levels of automation from fully manual to fully automatic,",
+              "applied across 4 information processing stages:",
+              "Information Acquisition, Information Analysis,",
+              "Decision Selection, Action Implementation"
+            ],
+            "strengths": [
+              "Granular 10-level automation scale",
+              "Stage-specific automation levels",
+              "Well-validated in HCI research"
+            ],
+            "limitations_for_web3": [
+              "Designed for human-machine systems, not autonomous software agents",
+              "10 levels too granular for blockchain observability",
+              "Does not account for multi-agent coordination",
+              "No concept of execution environment"
+            ]
+          },
+          {
+            "framework": "Castelfranchi (1995)",
+            "source": "Guarantees for Autonomy in Cognitive Agent Architecture (Social Commitment Agents)",
+            "categories": [
+              "Autonomous agents with social commitments",
+              "Obligation-based reasoning",
+              "Delegation and trust models",
+              "Normative agent architectures"
+            ],
+            "strengths": [
+              "Addresses social aspects of agent behavior",
+              "Relevant to DAO governance and collective decision-making",
+              "Models trust and delegation"
+            ],
+            "limitations_for_web3": [
+              "Focused on social/normative aspects, not operational classification",
+              "No observable on-chain indicators defined",
+              "Limited applicability to purely technical agent types (MEV, trading)"
+            ]
+          },
+          {
+            "framework": "Jennings, Sycara & Wooldridge (1998)",
+            "source": "A Roadmap of Agent Research and Development",
+            "categories": [
+              "Deliberative agents",
+              "Reactive agents",
+              "Hybrid agents",
+              "Multi-agent systems (MAS)",
+              "Collaborative agents"
+            ],
+            "strengths": [
+              "Broad coverage of agent paradigms",
+              "Includes multi-agent considerations",
+              "Establishes BDI (Belief-Desire-Intention) framework"
+            ],
+            "limitations_for_web3": [
+              "Too abstract for operational classification",
+              "BDI model hard to observe on-chain",
+              "Does not distinguish between blockchain execution environments",
+              "No decision-model dimension"
+            ]
+          }
+        ],
+        "questions": [
+          {
+            "id": "D1_ranking",
+            "text": "Rank the following taxonomies from most useful (1) to least useful (6) for classifying AI agents in the Web3/blockchain context.",
+            "items_to_rank": [
+              "Web3 AI Agent Taxonomy (This Paper)",
+              "Russell & Norvig (2020)",
+              "Franklin & Graesser (1996)",
+              "Parasuraman et al. (2000)",
+              "Castelfranchi (1995)",
+              "Jennings et al. (1998)"
+            ]
+          },
+          {
+            "id": "D2_unique_contribution",
+            "text": "What does our taxonomy capture that the other frameworks miss? Please be specific."
+          },
+          {
+            "id": "D3_missing_from_ours",
+            "text": "What do the other frameworks capture that our taxonomy misses? Should we incorporate any of these elements?"
+          },
+          {
+            "id": "D4_web3_applicability",
+            "text": "Rate the overall applicability of our taxonomy to the Web3 context compared to existing frameworks.",
+            "scale_min": 1,
+            "scale_max": 5,
+            "anchor_low": "Much less applicable",
+            "anchor_high": "Much more applicable"
+          },
+          {
+            "id": "D5_generalizability",
+            "text": "Rate the potential generalizability of our taxonomy beyond Web3 to other AI agent domains.",
+            "scale_min": 1,
+            "scale_max": 5,
+            "anchor_low": "Not generalizable",
+            "anchor_high": "Highly generalizable"
+          }
+        ]
+      }
+    },
+    "round_2_template": {
+      "description": "Convergence round: experts see group medians and IQR from Round 1, re-rate items where consensus not reached (IQR > 1), confirm or adjust their classifications.",
+      "estimated_completion_time": "20-30 minutes",
+      "note": "Round 2 instrument is generated dynamically based on Round 1 results. See build_round2_instrument()."
+    }
+  },
+  "simulated_results": {
+    "n_experts": 15,
+    "consensus_metrics": {
+      "per_question": {
+        "A1_necessity": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.27,
+          "std": 0.68,
+          "q25": 4.0,
+          "q75": 5.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "A1_clarity": {
+          "n": 15,
+          "median": 3.0,
+          "mean": 3.53,
+          "std": 0.62,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "A1_completeness": {
+          "n": 15,
+          "median": 3.0,
+          "mean": 3.27,
+          "std": 0.93,
+          "q25": 2.5,
+          "q75": 4.0,
+          "iqr": 1.5,
+          "consensus": false
+        },
+        "A2_necessity": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.27,
+          "std": 0.57,
+          "q25": 4.0,
+          "q75": 5.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "A2_clarity": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 1.09,
+          "q25": 3.0,
+          "q75": 5.0,
+          "iqr": 2.0,
+          "consensus": false
+        },
+        "A2_completeness": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.6,
+          "std": 0.8,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "A3_necessity": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.93,
+          "std": 0.44,
+          "q25": 4.0,
+          "q75": 4.0,
+          "iqr": 0.0,
+          "consensus": true
+        },
+        "A3_clarity": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.73,
+          "q25": 4.0,
+          "q75": 4.0,
+          "iqr": 0.0,
+          "consensus": true
+        },
+        "A3_completeness": {
+          "n": 15,
+          "median": 3.0,
+          "mean": 3.47,
+          "std": 0.88,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B1_well_defined": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.93,
+          "std": 0.77,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus": false
+        },
+        "B1_distinguishable": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 0.72,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B1_examples_representative": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.13,
+          "std": 0.72,
+          "q25": 4.0,
+          "q75": 5.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B2_well_defined": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.73,
+          "std": 0.57,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B2_distinguishable": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 0.81,
+          "q25": 3.5,
+          "q75": 4.0,
+          "iqr": 0.5,
+          "consensus": true
+        },
+        "B2_examples_representative": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.07,
+          "std": 0.68,
+          "q25": 4.0,
+          "q75": 4.5,
+          "iqr": 0.5,
+          "consensus": true
+        },
+        "B3_well_defined": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.73,
+          "std": 0.85,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B3_distinguishable": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.73,
+          "std": 0.93,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus": false
+        },
+        "B3_examples_representative": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.8,
+          "std": 0.83,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B4_well_defined": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.73,
+          "q25": 3.5,
+          "q75": 4.5,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B4_distinguishable": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.67,
+          "std": 0.7,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B4_examples_representative": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.33,
+          "std": 0.6,
+          "q25": 4.0,
+          "q75": 5.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B5_well_defined": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.63,
+          "q25": 4.0,
+          "q75": 4.0,
+          "iqr": 0.0,
+          "consensus": true
+        },
+        "B5_distinguishable": {
+          "n": 15,
+          "median": 3.0,
+          "mean": 3.53,
+          "std": 0.62,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B5_examples_representative": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.8,
+          "std": 0.65,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B6_well_defined": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.2,
+          "std": 0.54,
+          "q25": 4.0,
+          "q75": 4.5,
+          "iqr": 0.5,
+          "consensus": true
+        },
+        "B6_distinguishable": {
+          "n": 15,
+          "median": 3.0,
+          "mean": 3.6,
+          "std": 0.88,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B6_examples_representative": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.73,
+          "q25": 3.5,
+          "q75": 4.5,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B7_well_defined": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.93,
+          "std": 0.68,
+          "q25": 3.5,
+          "q75": 4.0,
+          "iqr": 0.5,
+          "consensus": true
+        },
+        "B7_distinguishable": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 1.09,
+          "q25": 3.0,
+          "q75": 5.0,
+          "iqr": 2.0,
+          "consensus": false
+        },
+        "B7_examples_representative": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.67,
+          "std": 0.6,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B8_well_defined": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.67,
+          "std": 0.7,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "B8_distinguishable": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.73,
+          "std": 1.0,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus": false
+        },
+        "B8_examples_representative": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 0.81,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus": false
+        },
+        "D4_web3_applicability": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.27,
+          "std": 0.57,
+          "q25": 4.0,
+          "q75": 5.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "D5_generalizability": {
+          "n": 15,
+          "median": 3.0,
+          "mean": 3.27,
+          "std": 1.18,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        },
+        "C1_confidence": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.82,
+          "q25": 3.0,
+          "q75": 5.0,
+          "iqr": 2.0,
+          "consensus": false
+        },
+        "C2_confidence": {
+          "n": 15,
+          "median": 3.0,
+          "mean": 3.07,
+          "std": 0.68,
+          "q25": 3.0,
+          "q75": 3.5,
+          "iqr": 0.5,
+          "consensus": true
+        },
+        "C3_confidence": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 0.81,
+          "q25": 3.5,
+          "q75": 4.0,
+          "iqr": 0.5,
+          "consensus": true
+        },
+        "C4_confidence": {
+          "n": 15,
+          "median": 3.0,
+          "mean": 2.8,
+          "std": 0.54,
+          "q25": 2.5,
+          "q75": 3.0,
+          "iqr": 0.5,
+          "consensus": true
+        },
+        "C5_confidence": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.93,
+          "std": 0.77,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus": false
+        },
+        "C6_confidence": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 0.81,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus": false
+        },
+        "C7_confidence": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.13,
+          "std": 0.81,
+          "q25": 3.5,
+          "q75": 5.0,
+          "iqr": 1.5,
+          "consensus": false
+        },
+        "C8_confidence": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.52,
+          "q25": 4.0,
+          "q75": 4.0,
+          "iqr": 0.0,
+          "consensus": true
+        },
+        "C9_confidence": {
+          "n": 15,
+          "median": 4.0,
+          "mean": 4.07,
+          "std": 0.57,
+          "q25": 4.0,
+          "q75": 4.0,
+          "iqr": 0.0,
+          "consensus": true
+        },
+        "C10_confidence": {
+          "n": 15,
+          "median": 3.0,
+          "mean": 3.4,
+          "std": 0.8,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus": true
+        }
+      },
+      "summary": {
+        "total_likert_questions": 45,
+        "consensus_reached": 34,
+        "consensus_rate": 0.756,
+        "consensus_threshold": "IQR <= 1.0"
+      }
+    },
+    "krippendorff_alpha": 0.5837,
+    "round2_instrument": {
+      "round": 2,
+      "instructions": "In Round 1, you and your fellow experts independently rated the taxonomy dimensions, categories, and comparison frameworks. Below we present the group's median ratings and spread (IQR). For items where consensus was NOT reached (IQR > 1), please re-rate considering the group feedback. For items where consensus WAS reached (IQR <= 1), no re-rating is needed unless you have strong objections.",
+      "consensus_threshold": "IQR <= 1.0",
+      "items_requiring_re_rating": [
+        {
+          "question_id": "A1_completeness",
+          "n_respondents": 15,
+          "median": 3.0,
+          "mean": 3.27,
+          "std": 0.93,
+          "q25": 2.5,
+          "q75": 4.0,
+          "iqr": 1.5,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 3.0 (IQR = 1.5). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        },
+        {
+          "question_id": "A2_clarity",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 1.09,
+          "q25": 3.0,
+          "q75": 5.0,
+          "iqr": 2.0,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 4.0 (IQR = 2.0). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        },
+        {
+          "question_id": "B1_well_defined",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.93,
+          "std": 0.77,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 4.0 (IQR = 1.5). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        },
+        {
+          "question_id": "B3_distinguishable",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.73,
+          "std": 0.93,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 4.0 (IQR = 1.5). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        },
+        {
+          "question_id": "B7_distinguishable",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 1.09,
+          "q25": 3.0,
+          "q75": 5.0,
+          "iqr": 2.0,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 4.0 (IQR = 2.0). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        },
+        {
+          "question_id": "B8_distinguishable",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.73,
+          "std": 1.0,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 4.0 (IQR = 1.5). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        },
+        {
+          "question_id": "B8_examples_representative",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 0.81,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 4.0 (IQR = 1.5). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        },
+        {
+          "question_id": "C1_confidence",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.82,
+          "q25": 3.0,
+          "q75": 5.0,
+          "iqr": 2.0,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 4.0 (IQR = 2.0). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        },
+        {
+          "question_id": "C5_confidence",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.93,
+          "std": 0.77,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 4.0 (IQR = 1.5). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        },
+        {
+          "question_id": "C6_confidence",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 0.81,
+          "q25": 3.0,
+          "q75": 4.5,
+          "iqr": 1.5,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 4.0 (IQR = 1.5). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        },
+        {
+          "question_id": "C7_confidence",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.13,
+          "std": 0.81,
+          "q25": 3.5,
+          "q75": 5.0,
+          "iqr": 1.5,
+          "consensus_reached": false,
+          "re_rate_question": {
+            "text": "The group median for this item was 4.0 (IQR = 1.5). Considering this, please re-rate.",
+            "your_round1_rating": "{{PERSONALIZED}}",
+            "scale": "1-5"
+          }
+        }
+      ],
+      "items_with_consensus": [
+        {
+          "question_id": "A1_necessity",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.27,
+          "std": 0.68,
+          "q25": 4.0,
+          "q75": 5.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "A1_clarity",
+          "n_respondents": 15,
+          "median": 3.0,
+          "mean": 3.53,
+          "std": 0.62,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "A2_necessity",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.27,
+          "std": 0.57,
+          "q25": 4.0,
+          "q75": 5.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "A2_completeness",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.6,
+          "std": 0.8,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "A3_necessity",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.93,
+          "std": 0.44,
+          "q25": 4.0,
+          "q75": 4.0,
+          "iqr": 0.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "A3_clarity",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.73,
+          "q25": 4.0,
+          "q75": 4.0,
+          "iqr": 0.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "A3_completeness",
+          "n_respondents": 15,
+          "median": 3.0,
+          "mean": 3.47,
+          "std": 0.88,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B1_distinguishable",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 0.72,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B1_examples_representative",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.13,
+          "std": 0.72,
+          "q25": 4.0,
+          "q75": 5.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B2_well_defined",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.73,
+          "std": 0.57,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B2_distinguishable",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 0.81,
+          "q25": 3.5,
+          "q75": 4.0,
+          "iqr": 0.5,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B2_examples_representative",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.07,
+          "std": 0.68,
+          "q25": 4.0,
+          "q75": 4.5,
+          "iqr": 0.5,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B3_well_defined",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.73,
+          "std": 0.85,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B3_examples_representative",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.8,
+          "std": 0.83,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B4_well_defined",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.73,
+          "q25": 3.5,
+          "q75": 4.5,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B4_distinguishable",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.67,
+          "std": 0.7,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B4_examples_representative",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.33,
+          "std": 0.6,
+          "q25": 4.0,
+          "q75": 5.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B5_well_defined",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.63,
+          "q25": 4.0,
+          "q75": 4.0,
+          "iqr": 0.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B5_distinguishable",
+          "n_respondents": 15,
+          "median": 3.0,
+          "mean": 3.53,
+          "std": 0.62,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B5_examples_representative",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.8,
+          "std": 0.65,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B6_well_defined",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.2,
+          "std": 0.54,
+          "q25": 4.0,
+          "q75": 4.5,
+          "iqr": 0.5,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B6_distinguishable",
+          "n_respondents": 15,
+          "median": 3.0,
+          "mean": 3.6,
+          "std": 0.88,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B6_examples_representative",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.73,
+          "q25": 3.5,
+          "q75": 4.5,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B7_well_defined",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.93,
+          "std": 0.68,
+          "q25": 3.5,
+          "q75": 4.0,
+          "iqr": 0.5,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B7_examples_representative",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.67,
+          "std": 0.6,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "B8_well_defined",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.67,
+          "std": 0.7,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "D4_web3_applicability",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.27,
+          "std": 0.57,
+          "q25": 4.0,
+          "q75": 5.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "D5_generalizability",
+          "n_respondents": 15,
+          "median": 3.0,
+          "mean": 3.27,
+          "std": 1.18,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "C2_confidence",
+          "n_respondents": 15,
+          "median": 3.0,
+          "mean": 3.07,
+          "std": 0.68,
+          "q25": 3.0,
+          "q75": 3.5,
+          "iqr": 0.5,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "C3_confidence",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 3.87,
+          "std": 0.81,
+          "q25": 3.5,
+          "q75": 4.0,
+          "iqr": 0.5,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "C4_confidence",
+          "n_respondents": 15,
+          "median": 3.0,
+          "mean": 2.8,
+          "std": 0.54,
+          "q25": 2.5,
+          "q75": 3.0,
+          "iqr": 0.5,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "C8_confidence",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.0,
+          "std": 0.52,
+          "q25": 4.0,
+          "q75": 4.0,
+          "iqr": 0.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "C9_confidence",
+          "n_respondents": 15,
+          "median": 4.0,
+          "mean": 4.07,
+          "std": 0.57,
+          "q25": 4.0,
+          "q75": 4.0,
+          "iqr": 0.0,
+          "consensus_reached": true
+        },
+        {
+          "question_id": "C10_confidence",
+          "n_respondents": 15,
+          "median": 3.0,
+          "mean": 3.4,
+          "std": 0.8,
+          "q25": 3.0,
+          "q75": 4.0,
+          "iqr": 1.0,
+          "consensus_reached": true
+        }
+      ]
+    }
+  }
+}
