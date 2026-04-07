@@ -1,0 +1,437 @@
+{
+  "dataset": {
+    "n_samples": 49,
+    "n_agents": 28,
+    "n_humans": 21,
+    "n_features": 23
+  },
+  "heuristic_baseline": {
+    "method": "Heuristic (interval<60s + burst>0.1)",
+    "auc": 0.6071,
+    "precision": 0.6667,
+    "recall": 0.0714,
+    "f1": 0.129,
+    "accuracy": 0.449,
+    "precision_at_90recall": 0.6047
+  },
+  "single_feature_baselines": [
+    {
+      "feature": "tx_interval_mean",
+      "auc": 0.182,
+      "auc_adjusted": 0.818,
+      "direction": "negative",
+      "precision_at_90recall": 0.7027
+    },
+    {
+      "feature": "tx_interval_std",
+      "auc": 0.1973,
+      "auc_adjusted": 0.8027,
+      "direction": "negative",
+      "precision_at_90recall": 0.6585
+    },
+    {
+      "feature": "active_hour_entropy",
+      "auc": 0.7619,
+      "auc_adjusted": 0.7619,
+      "direction": "positive",
+      "precision_at_90recall": 0.6047
+    },
+    {
+      "feature": "method_id_diversity",
+      "auc": 0.2602,
+      "auc_adjusted": 0.7398,
+      "direction": "negative",
+      "precision_at_90recall": 0.5714
+    },
+    {
+      "feature": "unique_contracts_ratio",
+      "auc": 0.2653,
+      "auc_adjusted": 0.7347,
+      "direction": "negative",
+      "precision_at_90recall": 0.619
+    },
+    {
+      "feature": "gas_limit_precision",
+      "auc": 0.2857,
+      "auc_adjusted": 0.7143,
+      "direction": "negative",
+      "precision_at_90recall": 0.587
+    },
+    {
+      "feature": "unlimited_approve_ratio",
+      "auc": 0.2874,
+      "auc_adjusted": 0.7126,
+      "direction": "negative",
+      "precision_at_90recall": 0.6842
+    },
+    {
+      "feature": "gas_price_trailing_zeros_mean",
+      "auc": 0.2891,
+      "auc_adjusted": 0.7109,
+      "direction": "negative",
+      "precision_at_90recall": 0.5745
+    },
+    {
+      "feature": "gas_price_round_number_ratio",
+      "auc": 0.29,
+      "auc_adjusted": 0.71,
+      "direction": "negative",
+      "precision_at_90recall": 0.5745
+    },
+    {
+      "feature": "sequential_pattern_score",
+      "auc": 0.7083,
+      "auc_adjusted": 0.7083,
+      "direction": "positive",
+      "precision_at_90recall": 0.5714
+    },
+    {
+      "feature": "contract_to_eoa_ratio",
+      "auc": 0.7066,
+      "auc_adjusted": 0.7066,
+      "direction": "positive",
+      "precision_at_90recall": 0.5714
+    },
+    {
+      "feature": "unverified_contract_approve_ratio",
+      "auc": 0.301,
+      "auc_adjusted": 0.699,
+      "direction": "negative",
+      "precision_at_90recall": 0.5714
+    },
+    {
+      "feature": "multi_protocol_interaction_count",
+      "auc": 0.3401,
+      "auc_adjusted": 0.6599,
+      "direction": "negative",
+      "precision_at_90recall": 0.6
+    },
+    {
+      "feature": "top_contract_concentration",
+      "auc": 0.6582,
+      "auc_adjusted": 0.6582,
+      "direction": "positive",
+      "precision_at_90recall": 0.5909
+    },
+    {
+      "feature": "tx_interval_skewness",
+      "auc": 0.6446,
+      "auc_adjusted": 0.6446,
+      "direction": "positive",
+      "precision_at_90recall": 0.5778
+    },
+    {
+      "feature": "weekend_ratio",
+      "auc": 0.4099,
+      "auc_adjusted": 0.5901,
+      "direction": "negative",
+      "precision_at_90recall": 0.6341
+    },
+    {
+      "feature": "approve_revoke_ratio",
+      "auc": 0.4107,
+      "auc_adjusted": 0.5893,
+      "direction": "negative",
+      "precision_at_90recall": 0.6341
+    },
+    {
+      "feature": "night_activity_ratio",
+      "auc": 0.4447,
+      "auc_adjusted": 0.5553,
+      "direction": "negative",
+      "precision_at_90recall": 0.675
+    },
+    {
+      "feature": "burst_frequency",
+      "auc": 0.5544,
+      "auc_adjusted": 0.5544,
+      "direction": "positive",
+      "precision_at_90recall": 0.5714
+    },
+    {
+      "feature": "gas_price_cv",
+      "auc": 0.4558,
+      "auc_adjusted": 0.5442,
+      "direction": "negative",
+      "precision_at_90recall": 0.5714
+    },
+    {
+      "feature": "eip1559_priority_fee_precision",
+      "auc": 0.5,
+      "auc_adjusted": 0.5,
+      "direction": "none"
+    },
+    {
+      "feature": "gas_price_nonce_correlation",
+      "auc": 0.5,
+      "auc_adjusted": 0.5,
+      "direction": "positive",
+      "precision_at_90recall": 0.587
+    },
+    {
+      "feature": "flash_loan_usage",
+      "auc": 0.5,
+      "auc_adjusted": 0.5,
+      "direction": "none"
+    }
+  ],
+  "feature_group_ablation": {
+    "temporal_only": {
+      "set_name": "temporal_only",
+      "n_features": 7,
+      "feature_names": [
+        "tx_interval_mean",
+        "tx_interval_std",
+        "tx_interval_skewness",
+        "active_hour_entropy",
+        "night_activity_ratio",
+        "weekend_ratio",
+        "burst_frequency"
+      ],
+      "repeated_cv": {
+        "mean": {
+          "auc": 0.7898,
+          "precision": 0.7649,
+          "recall": 0.804,
+          "f1": 0.7678,
+          "accuracy": 0.7344
+        },
+        "std": {
+          "auc": 0.1512,
+          "precision": 0.139,
+          "recall": 0.1946,
+          "f1": 0.1316,
+          "accuracy": 0.1356
+        },
+        "n_repeats": 10,
+        "n_splits": 5
+      },
+      "loo_cv": {
+        "auc": 0.7704,
+        "precision": 0.7333,
+        "recall": 0.7857,
+        "f1": 0.7586,
+        "accuracy": 0.7143,
+        "precision_at_90recall": 0.7429
+      }
+    },
+    "gas_only": {
+      "set_name": "gas_only",
+      "n_features": 6,
+      "feature_names": [
+        "gas_price_round_number_ratio",
+        "gas_price_trailing_zeros_mean",
+        "gas_limit_precision",
+        "gas_price_cv",
+        "eip1559_priority_fee_precision",
+        "gas_price_nonce_correlation"
+      ],
+      "repeated_cv": {
+        "mean": {
+          "auc": 0.7321,
+          "precision": 0.707,
+          "recall": 0.7173,
+          "f1": 0.6927,
+          "accuracy": 0.6527
+        },
+        "std": {
+          "auc": 0.1522,
+          "precision": 0.1261,
+          "recall": 0.1928,
+          "f1": 0.1182,
+          "accuracy": 0.1189
+        },
+        "n_repeats": 10,
+        "n_splits": 5
+      },
+      "loo_cv": {
+        "auc": 0.7262,
+        "precision": 0.6667,
+        "recall": 0.6429,
+        "f1": 0.6545,
+        "accuracy": 0.6122,
+        "precision_at_90recall": 0.7222
+      }
+    },
+    "interaction_only": {
+      "set_name": "interaction_only",
+      "n_features": 5,
+      "feature_names": [
+        "unique_contracts_ratio",
+        "top_contract_concentration",
+        "method_id_diversity",
+        "contract_to_eoa_ratio",
+        "sequential_pattern_score"
+      ],
+      "repeated_cv": {
+        "mean": {
+          "auc": 0.7432,
+          "precision": 0.7667,
+          "recall": 0.7113,
+          "f1": 0.7218,
+          "accuracy": 0.704
+        },
+        "std": {
+          "auc": 0.1659,
+          "precision": 0.151,
+          "recall": 0.2007,
+          "f1": 0.1475,
+          "accuracy": 0.1359
+        },
+        "n_repeats": 10,
+        "n_splits": 5
+      },
+      "loo_cv": {
+        "auc": 0.7075,
+        "precision": 0.7586,
+        "recall": 0.7857,
+        "f1": 0.7719,
+        "accuracy": 0.7347,
+        "precision_at_90recall": 0.6842
+      }
+    },
+    "approval_only": {
+      "set_name": "approval_only",
+      "n_features": 5,
+      "feature_names": [
+        "unlimited_approve_ratio",
+        "approve_revoke_ratio",
+        "unverified_contract_approve_ratio",
+        "multi_protocol_interaction_count",
+        "flash_loan_usage"
+      ],
+      "repeated_cv": {
+        "mean": {
+          "auc": 0.5725,
+          "precision": 0.6462,
+          "recall": 0.8307,
+          "f1": 0.7196,
+          "accuracy": 0.636
+        },
+        "std": {
+          "auc": 0.1835,
+          "precision": 0.1065,
+          "recall": 0.1439,
+          "f1": 0.0975,
+          "accuracy": 0.1165
+        },
+        "n_repeats": 10,
+        "n_splits": 5
+      },
+      "loo_cv": {
+        "auc": 0.4082,
+        "precision": 0.6579,
+        "recall": 0.8929,
+        "f1": 0.7576,
+        "accuracy": 0.6735,
+        "precision_at_90recall": 0.5909
+      }
+    },
+    "all_features": {
+      "set_name": "all_features",
+      "n_features": 23,
+      "feature_names": [
+        "tx_interval_mean",
+        "tx_interval_std",
+        "tx_interval_skewness",
+        "active_hour_entropy",
+        "night_activity_ratio",
+        "weekend_ratio",
+        "burst_frequency",
+        "gas_price_round_number_ratio",
+        "gas_price_trailing_zeros_mean",
+        "gas_limit_precision",
+        "gas_price_cv",
+        "eip1559_priority_fee_precision",
+        "gas_price_nonce_correlation",
+        "unique_contracts_ratio",
+        "top_contract_concentration",
+        "method_id_diversity",
+        "contract_to_eoa_ratio",
+        "sequential_pattern_score",
+        "unlimited_approve_ratio",
+        "approve_revoke_ratio",
+        "unverified_contract_approve_ratio",
+        "multi_protocol_interaction_count",
+        "flash_loan_usage"
+      ],
+      "repeated_cv": {
+        "mean": {
+          "auc": 0.7332,
+          "precision": 0.7359,
+          "recall": 0.714,
+          "f1": 0.711,
+          "accuracy": 0.6791
+        },
+        "std": {
+          "auc": 0.1429,
+          "precision": 0.1464,
+          "recall": 0.1789,
+          "f1": 0.1283,
+          "accuracy": 0.1313
+        },
+        "n_repeats": 10,
+        "n_splits": 5
+      },
+      "loo_cv": {
+        "auc": 0.6922,
+        "precision": 0.6552,
+        "recall": 0.6786,
+        "f1": 0.6667,
+        "accuracy": 0.6122,
+        "precision_at_90recall": 0.6341
+      }
+    }
+  },
+  "multi_model_comparison": {
+    "GradientBoosting": {
+      "auc": 0.6922,
+      "precision": 0.6552,
+      "recall": 0.6786,
+      "f1": 0.6667,
+      "accuracy": 0.6122,
+      "precision_at_90recall": 0.6341
+    },
+    "RandomForest": {
+      "auc": 0.8214,
+      "precision": 0.8519,
+      "recall": 0.8214,
+      "f1": 0.8364,
+      "accuracy": 0.8163,
+      "precision_at_90recall": 0.7429
+    },
+    "LogisticRegression": {
+      "auc": 0.6463,
+      "precision": 0.72,
+      "recall": 0.6429,
+      "f1": 0.6792,
+      "accuracy": 0.6531,
+      "precision_at_90recall": 0.5745
+    }
+  },
+  "gbm_feature_importance": {
+    "tx_interval_std": 0.2453,
+    "tx_interval_mean": 0.1391,
+    "night_activity_ratio": 0.1133,
+    "method_id_diversity": 0.1067,
+    "contract_to_eoa_ratio": 0.0819,
+    "tx_interval_skewness": 0.0679,
+    "gas_price_nonce_correlation": 0.045,
+    "active_hour_entropy": 0.0448,
+    "burst_frequency": 0.0382,
+    "approve_revoke_ratio": 0.0298,
+    "unverified_contract_approve_ratio": 0.0258,
+    "gas_limit_precision": 0.0213,
+    "gas_price_round_number_ratio": 0.0131,
+    "gas_price_cv": 0.0087,
+    "sequential_pattern_score": 0.0084,
+    "weekend_ratio": 0.004,
+    "unlimited_approve_ratio": 0.0038,
+    "gas_price_trailing_zeros_mean": 0.0013,
+    "top_contract_concentration": 0.001,
+    "multi_protocol_interaction_count": 0.0006,
+    "unique_contracts_ratio": 0.0001,
+    "flash_loan_usage": 0.0,
+    "eip1559_priority_fee_precision": 0.0
+  }
+}
