@@ -1,0 +1,1235 @@
+{
+  "likert_results": [
+    {
+      "question_id": "A_C1_necessity",
+      "question_text": "Is C1 (On-chain Actuation) necessary?",
+      "n_respondents": 12,
+      "ratings": [
+        5,
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        4,
+        5
+      ],
+      "median": 5.0,
+      "mean": 4.67,
+      "std": 0.49,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "A_C2_necessity",
+      "question_text": "Is C2 (Environmental Perception) necessary?",
+      "n_respondents": 12,
+      "ratings": [
+        5,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "median": 4.5,
+      "mean": 4.5,
+      "std": 0.52,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "A_C3_necessity",
+      "question_text": "Is C3 (Autonomous Decision-Making) necessary?",
+      "n_respondents": 12,
+      "ratings": [
+        5,
+        5,
+        4,
+        5,
+        5,
+        4,
+        5,
+        4,
+        4,
+        5,
+        5,
+        5
+      ],
+      "median": 5.0,
+      "mean": 4.67,
+      "std": 0.49,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "A_C4_necessity",
+      "question_text": "Is C4 (Adaptiveness) necessary?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        3,
+        5,
+        4,
+        3,
+        4,
+        3,
+        5,
+        4,
+        5,
+        4,
+        4
+      ],
+      "median": 4.0,
+      "mean": 4.0,
+      "std": 0.74,
+      "q25": 3.75,
+      "q75": 4.25,
+      "iqr": 0.5,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "A_C1_clarity",
+      "question_text": "Is C1 clearly defined?",
+      "n_respondents": 12,
+      "ratings": [
+        5,
+        4,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "median": 5.0,
+      "mean": 4.42,
+      "std": 0.79,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "A_C2_clarity",
+      "question_text": "Is C2 clearly defined?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        4,
+        5,
+        4,
+        4,
+        5,
+        4,
+        5,
+        3,
+        5,
+        5,
+        4
+      ],
+      "median": 4.0,
+      "mean": 4.33,
+      "std": 0.65,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "A_C3_clarity",
+      "question_text": "Is C3 clearly defined?",
+      "n_respondents": 12,
+      "ratings": [
+        3,
+        5,
+        5,
+        5,
+        5,
+        3,
+        4,
+        4,
+        5,
+        5,
+        4,
+        3
+      ],
+      "median": 4.5,
+      "mean": 4.25,
+      "std": 0.87,
+      "q25": 3.75,
+      "q75": 5.0,
+      "iqr": 1.25,
+      "consensus_reached": false
+    },
+    {
+      "question_id": "A_C4_clarity",
+      "question_text": "Is C4 clearly defined?",
+      "n_respondents": 12,
+      "ratings": [
+        3,
+        3,
+        5,
+        4,
+        5,
+        4,
+        3,
+        5,
+        5,
+        4,
+        5,
+        4
+      ],
+      "median": 4.0,
+      "mean": 4.17,
+      "std": 0.83,
+      "q25": 3.75,
+      "q75": 5.0,
+      "iqr": 1.25,
+      "consensus_reached": false
+    },
+    {
+      "question_id": "B1_well_defined",
+      "question_text": "Deterministic Script: well-defined?",
+      "n_respondents": 12,
+      "ratings": [
+        5,
+        5,
+        4,
+        4,
+        4,
+        5,
+        4,
+        5,
+        5,
+        4,
+        5,
+        5
+      ],
+      "median": 5.0,
+      "mean": 4.58,
+      "std": 0.51,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B1_distinguishable",
+      "question_text": "Deterministic Script: distinguishable?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        3,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5,
+        5,
+        4,
+        5,
+        5
+      ],
+      "median": 5.0,
+      "mean": 4.5,
+      "std": 0.67,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B3_well_defined",
+      "question_text": "MEV Searcher: well-defined?",
+      "n_respondents": 12,
+      "ratings": [
+        5,
+        5,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        4,
+        5,
+        5,
+        4
+      ],
+      "median": 5.0,
+      "mean": 4.58,
+      "std": 0.51,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B3_distinguishable",
+      "question_text": "MEV Searcher: distinguishable?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        4,
+        5,
+        4,
+        5,
+        5,
+        4,
+        5,
+        5,
+        4,
+        4,
+        4
+      ],
+      "median": 4.0,
+      "mean": 4.42,
+      "std": 0.51,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B7_well_defined",
+      "question_text": "LLM-Powered Agent: well-defined?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        4,
+        5,
+        5,
+        4,
+        4,
+        5,
+        4,
+        4,
+        5,
+        5,
+        4
+      ],
+      "median": 4.0,
+      "mean": 4.42,
+      "std": 0.51,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B7_distinguishable",
+      "question_text": "LLM-Powered Agent: distinguishable?",
+      "n_respondents": 12,
+      "ratings": [
+        5,
+        5,
+        4,
+        5,
+        4,
+        5,
+        5,
+        5,
+        3,
+        5,
+        4,
+        4
+      ],
+      "median": 5.0,
+      "mean": 4.5,
+      "std": 0.67,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B8_well_defined",
+      "question_text": "Autonomous DAO Agent: well-defined?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        5,
+        5,
+        4,
+        5,
+        4,
+        5,
+        4,
+        5,
+        4,
+        5,
+        4
+      ],
+      "median": 4.5,
+      "mean": 4.5,
+      "std": 0.52,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B8_distinguishable",
+      "question_text": "Autonomous DAO Agent: distinguishable?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        4,
+        5,
+        5,
+        4,
+        5,
+        5,
+        5,
+        5,
+        4,
+        3,
+        5
+      ],
+      "median": 5.0,
+      "mean": 4.5,
+      "std": 0.67,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B2_well_defined",
+      "question_text": "Simple Trading Bot: well-defined?",
+      "n_respondents": 12,
+      "ratings": [
+        5,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5,
+        4,
+        3,
+        3,
+        5
+      ],
+      "median": 4.5,
+      "mean": 4.33,
+      "std": 0.78,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B2_distinguishable",
+      "question_text": "Simple Trading Bot: distinguishable?",
+      "n_respondents": 12,
+      "ratings": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        4,
+        3
+      ],
+      "median": 3.0,
+      "mean": 2.75,
+      "std": 0.62,
+      "q25": 2.0,
+      "q75": 3.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B4_well_defined",
+      "question_text": "Cross-Chain Bridge Agent: well-defined?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        5,
+        4,
+        5,
+        4,
+        4,
+        3,
+        4,
+        3,
+        3,
+        5,
+        4
+      ],
+      "median": 4.0,
+      "mean": 4.0,
+      "std": 0.74,
+      "q25": 3.75,
+      "q75": 4.25,
+      "iqr": 0.5,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B4_distinguishable",
+      "question_text": "Cross-Chain Bridge Agent: distinguishable?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        3,
+        4,
+        3,
+        3,
+        3,
+        2,
+        4,
+        3,
+        2,
+        3,
+        2
+      ],
+      "median": 3.0,
+      "mean": 3.0,
+      "std": 0.74,
+      "q25": 2.75,
+      "q75": 3.25,
+      "iqr": 0.5,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B5_well_defined",
+      "question_text": "RL Trading Agent: well-defined?",
+      "n_respondents": 12,
+      "ratings": [
+        5,
+        5,
+        5,
+        4,
+        3,
+        5,
+        4,
+        5,
+        5,
+        5,
+        3,
+        4
+      ],
+      "median": 5.0,
+      "mean": 4.42,
+      "std": 0.79,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B5_distinguishable",
+      "question_text": "RL Trading Agent: distinguishable?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        3,
+        2,
+        3,
+        4,
+        3,
+        3,
+        2,
+        3,
+        4,
+        2,
+        3
+      ],
+      "median": 3.0,
+      "mean": 3.0,
+      "std": 0.74,
+      "q25": 2.75,
+      "q75": 3.25,
+      "iqr": 0.5,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B6_well_defined",
+      "question_text": "DeFi Management Agent: well-defined?",
+      "n_respondents": 12,
+      "ratings": [
+        5,
+        5,
+        4,
+        5,
+        4,
+        3,
+        5,
+        5,
+        5,
+        5,
+        4,
+        4
+      ],
+      "median": 5.0,
+      "mean": 4.5,
+      "std": 0.67,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "B6_distinguishable",
+      "question_text": "DeFi Management Agent: distinguishable?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        3,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        3,
+        2,
+        3,
+        3
+      ],
+      "median": 3.0,
+      "mean": 3.17,
+      "std": 0.72,
+      "q25": 3.0,
+      "q75": 4.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "D_web3_applicability",
+      "question_text": "Our taxonomy's Web3 applicability?",
+      "n_respondents": 12,
+      "ratings": [
+        4,
+        5,
+        4,
+        4,
+        5,
+        5,
+        4,
+        5,
+        5,
+        4,
+        5,
+        4
+      ],
+      "median": 4.5,
+      "mean": 4.5,
+      "std": 0.52,
+      "q25": 4.0,
+      "q75": 5.0,
+      "iqr": 1.0,
+      "consensus_reached": true
+    },
+    {
+      "question_id": "D_generalizability",
+      "question_text": "Our taxonomy's generalizability?",
+      "n_respondents": 12,
+      "ratings": [
+        3,
+        4,
+        4,
+        4,
+        5,
+        5,
+        4,
+        4,
+        5,
+        3,
+        4,
+        3
+      ],
+      "median": 4.0,
+      "mean": 4.0,
+      "std": 0.74,
+      "q25": 3.75,
+      "q75": 4.25,
+      "iqr": 0.5,
+      "consensus_reached": true
+    }
+  ],
+  "classification_results": [
+    {
+      "entity_id": "C1",
+      "entity_name": "jaredfromsubway.eth",
+      "expected_category": "MEV Searcher",
+      "responses": [
+        "MEV Searcher",
+        "MEV Searcher",
+        "MEV Searcher",
+        "MEV Searcher",
+        "MEV Searcher",
+        "RL Trading Agent",
+        "MEV Searcher",
+        "MEV Searcher",
+        "MEV Searcher",
+        "MEV Searcher",
+        "MEV Searcher",
+        "MEV Searcher"
+      ],
+      "modal_category": "MEV Searcher",
+      "agreement_rate": 0.917,
+      "confidence_ratings": [
+        3,
+        4,
+        5,
+        5,
+        3,
+        5,
+        4,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "confidence_median": 4.0,
+      "c1_votes": {
+        "Y": 10,
+        "N": 2
+      },
+      "c2_votes": {
+        "Y": 9,
+        "N": 3
+      },
+      "c3_votes": {
+        "Y": 8,
+        "N": 4
+      },
+      "c4_votes": {
+        "Y": 8,
+        "N": 4
+      }
+    },
+    {
+      "entity_id": "C2",
+      "entity_name": "Wintermute",
+      "expected_category": "RL Trading Agent",
+      "responses": [
+        "RL Trading Agent",
+        "RL Trading Agent",
+        "RL Trading Agent",
+        "RL Trading Agent",
+        "RL Trading Agent",
+        "RL Trading Agent",
+        "MEV Searcher",
+        "RL Trading Agent",
+        "MEV Searcher",
+        "RL Trading Agent",
+        "RL Trading Agent",
+        "Simple Trading Bot"
+      ],
+      "modal_category": "RL Trading Agent",
+      "agreement_rate": 0.75,
+      "confidence_ratings": [
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        5,
+        4
+      ],
+      "confidence_median": 4.0,
+      "c1_votes": {
+        "Y": 10,
+        "N": 2
+      },
+      "c2_votes": {
+        "Y": 9,
+        "N": 3
+      },
+      "c3_votes": {
+        "Y": 10,
+        "N": 2
+      },
+      "c4_votes": {
+        "Y": 9,
+        "N": 3
+      }
+    },
+    {
+      "entity_id": "C3",
+      "entity_name": "Autonolas OLAS agent",
+      "expected_category": "DeFi Management Agent",
+      "responses": [
+        "RL Trading Agent",
+        "DeFi Management Agent",
+        "DeFi Management Agent",
+        "DeFi Management Agent",
+        "RL Trading Agent",
+        "DeFi Management Agent",
+        "DeFi Management Agent",
+        "LLM-Powered Agent",
+        "DeFi Management Agent",
+        "DeFi Management Agent",
+        "DeFi Management Agent",
+        "DeFi Management Agent"
+      ],
+      "modal_category": "DeFi Management Agent",
+      "agreement_rate": 0.75,
+      "confidence_ratings": [
+        4,
+        4,
+        5,
+        5,
+        4,
+        3,
+        5,
+        4,
+        4,
+        4,
+        4,
+        3
+      ],
+      "confidence_median": 4.0,
+      "c1_votes": {
+        "Y": 11,
+        "N": 1
+      },
+      "c2_votes": {
+        "Y": 10,
+        "N": 2
+      },
+      "c3_votes": {
+        "Y": 9,
+        "N": 3
+      },
+      "c4_votes": {
+        "Y": 10,
+        "N": 2
+      }
+    },
+    {
+      "entity_id": "C4",
+      "entity_name": "Uniswap V2 Router",
+      "expected_category": "Not an Agent",
+      "responses": [
+        "Not an Agent",
+        "Deterministic Script",
+        "Deterministic Script",
+        "Not an Agent",
+        "Not an Agent",
+        "Not an Agent",
+        "Not an Agent",
+        "Deterministic Script",
+        "Not an Agent",
+        "Deterministic Script",
+        "Not an Agent",
+        "Not an Agent"
+      ],
+      "modal_category": "Not an Agent",
+      "agreement_rate": 0.667,
+      "confidence_ratings": [
+        3,
+        3,
+        4,
+        4,
+        3,
+        4,
+        4,
+        5,
+        4,
+        5,
+        5,
+        4
+      ],
+      "confidence_median": 4.0,
+      "c1_votes": {
+        "Y": 0,
+        "N": 12
+      },
+      "c2_votes": {
+        "Y": 0,
+        "N": 12
+      },
+      "c3_votes": {
+        "Y": 0,
+        "N": 12
+      },
+      "c4_votes": {
+        "Y": 0,
+        "N": 12
+      }
+    },
+    {
+      "entity_id": "C5",
+      "entity_name": "Personal wallet",
+      "expected_category": "Not an Agent",
+      "responses": [
+        "Not an Agent",
+        "Not an Agent",
+        "Not an Agent",
+        "Deterministic Script",
+        "Deterministic Script",
+        "Not an Agent",
+        "Not an Agent",
+        "Not an Agent",
+        "Not an Agent",
+        "Not an Agent",
+        "Not an Agent",
+        "Not an Agent"
+      ],
+      "modal_category": "Not an Agent",
+      "agreement_rate": 0.833,
+      "confidence_ratings": [
+        3,
+        5,
+        4,
+        5,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "confidence_median": 4.0,
+      "c1_votes": {
+        "Y": 0,
+        "N": 12
+      },
+      "c2_votes": {
+        "Y": 0,
+        "N": 12
+      },
+      "c3_votes": {
+        "Y": 0,
+        "N": 12
+      },
+      "c4_votes": {
+        "Y": 0,
+        "N": 12
+      }
+    },
+    {
+      "entity_id": "C6",
+      "entity_name": "Aave liquidation bot",
+      "expected_category": "MEV Searcher",
+      "responses": [
+        "MEV Searcher",
+        "MEV Searcher",
+        "RL Trading Agent",
+        "MEV Searcher",
+        "MEV Searcher",
+        "Simple Trading Bot",
+        "MEV Searcher",
+        "Simple Trading Bot",
+        "MEV Searcher",
+        "MEV Searcher",
+        "MEV Searcher",
+        "RL Trading Agent"
+      ],
+      "modal_category": "MEV Searcher",
+      "agreement_rate": 0.667,
+      "confidence_ratings": [
+        5,
+        3,
+        4,
+        4,
+        4,
+        5,
+        5,
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "confidence_median": 4.0,
+      "c1_votes": {
+        "Y": 12,
+        "N": 0
+      },
+      "c2_votes": {
+        "Y": 10,
+        "N": 2
+      },
+      "c3_votes": {
+        "Y": 10,
+        "N": 2
+      },
+      "c4_votes": {
+        "Y": 10,
+        "N": 2
+      }
+    },
+    {
+      "entity_id": "C7",
+      "entity_name": "LayerZero relayer",
+      "expected_category": "Cross-Chain Bridge Agent",
+      "responses": [
+        "Simple Trading Bot",
+        "Cross-Chain Bridge Agent",
+        "Deterministic Script",
+        "Cross-Chain Bridge Agent",
+        "Cross-Chain Bridge Agent",
+        "Cross-Chain Bridge Agent",
+        "Cross-Chain Bridge Agent",
+        "Deterministic Script",
+        "Deterministic Script",
+        "Cross-Chain Bridge Agent",
+        "Deterministic Script",
+        "Cross-Chain Bridge Agent"
+      ],
+      "modal_category": "Cross-Chain Bridge Agent",
+      "agreement_rate": 0.583,
+      "confidence_ratings": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        5,
+        3,
+        5,
+        5,
+        5,
+        5
+      ],
+      "confidence_median": 4.0,
+      "c1_votes": {
+        "Y": 10,
+        "N": 2
+      },
+      "c2_votes": {
+        "Y": 10,
+        "N": 2
+      },
+      "c3_votes": {
+        "Y": 9,
+        "N": 3
+      },
+      "c4_votes": {
+        "Y": 11,
+        "N": 1
+      }
+    },
+    {
+      "entity_id": "C8",
+      "entity_name": "AI16Z ELIZA agent",
+      "expected_category": "LLM-Powered Agent",
+      "responses": [
+        "LLM-Powered Agent",
+        "DeFi Management Agent",
+        "LLM-Powered Agent",
+        "LLM-Powered Agent",
+        "DeFi Management Agent",
+        "DeFi Management Agent",
+        "LLM-Powered Agent",
+        "LLM-Powered Agent",
+        "LLM-Powered Agent",
+        "LLM-Powered Agent",
+        "LLM-Powered Agent",
+        "DeFi Management Agent"
+      ],
+      "modal_category": "LLM-Powered Agent",
+      "agreement_rate": 0.667,
+      "confidence_ratings": [
+        4,
+        4,
+        4,
+        5,
+        4,
+        4,
+        3,
+        5,
+        5,
+        5,
+        5,
+        3
+      ],
+      "confidence_median": 4.0,
+      "c1_votes": {
+        "Y": 12,
+        "N": 0
+      },
+      "c2_votes": {
+        "Y": 12,
+        "N": 0
+      },
+      "c3_votes": {
+        "Y": 10,
+        "N": 2
+      },
+      "c4_votes": {
+        "Y": 7,
+        "N": 5
+      }
+    },
+    {
+      "entity_id": "C9",
+      "entity_name": "Cron payroll script",
+      "expected_category": "Deterministic Script",
+      "responses": [
+        "Deterministic Script",
+        "Deterministic Script",
+        "Deterministic Script",
+        "Not an Agent",
+        "Simple Trading Bot",
+        "Deterministic Script",
+        "Deterministic Script",
+        "Deterministic Script",
+        "Deterministic Script",
+        "Deterministic Script",
+        "Deterministic Script",
+        "Deterministic Script"
+      ],
+      "modal_category": "Deterministic Script",
+      "agreement_rate": 0.833,
+      "confidence_ratings": [
+        4,
+        5,
+        5,
+        5,
+        4,
+        3,
+        3,
+        4,
+        5,
+        5,
+        5,
+        4
+      ],
+      "confidence_median": 4.5,
+      "c1_votes": {
+        "Y": 10,
+        "N": 2
+      },
+      "c2_votes": {
+        "Y": 9,
+        "N": 3
+      },
+      "c3_votes": {
+        "Y": 8,
+        "N": 4
+      },
+      "c4_votes": {
+        "Y": 0,
+        "N": 12
+      }
+    },
+    {
+      "entity_id": "C10",
+      "entity_name": "Chainlink oracle node",
+      "expected_category": "Cross-Chain Bridge Agent",
+      "responses": [
+        "Simple Trading Bot",
+        "Cross-Chain Bridge Agent",
+        "Deterministic Script",
+        "Cross-Chain Bridge Agent",
+        "Cross-Chain Bridge Agent",
+        "Simple Trading Bot",
+        "Simple Trading Bot",
+        "Simple Trading Bot",
+        "Cross-Chain Bridge Agent",
+        "Cross-Chain Bridge Agent",
+        "Cross-Chain Bridge Agent",
+        "Cross-Chain Bridge Agent"
+      ],
+      "modal_category": "Cross-Chain Bridge Agent",
+      "agreement_rate": 0.583,
+      "confidence_ratings": [
+        5,
+        3,
+        5,
+        5,
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "confidence_median": 4.0,
+      "c1_votes": {
+        "Y": 11,
+        "N": 1
+      },
+      "c2_votes": {
+        "Y": 11,
+        "N": 1
+      },
+      "c3_votes": {
+        "Y": 12,
+        "N": 0
+      },
+      "c4_votes": {
+        "Y": 9,
+        "N": 3
+      }
+    }
+  ],
+  "krippendorff_alpha": 0.4989,
+  "round2_flags": {
+    "likert_non_consensus": [
+      {
+        "question_id": "A_C3_clarity",
+        "median": 4.5,
+        "iqr": 1.25,
+        "action": "Include in Round 2 for re-rating"
+      },
+      {
+        "question_id": "A_C4_clarity",
+        "median": 4.0,
+        "iqr": 1.25,
+        "action": "Include in Round 2 for re-rating"
+      }
+    ],
+    "classification_low_agreement": [],
+    "overall_classification_reliability": {
+      "krippendorff_alpha": 0.4989,
+      "acceptable": false,
+      "interpretation": "Low reliability -- taxonomy may need revision"
+    },
+    "summary": {
+      "total_likert_items": 26,
+      "consensus_reached": 24,
+      "needs_re_rating": 2,
+      "classification_items": 10,
+      "high_agreement_items": 5,
+      "low_agreement_items": 0
+    }
+  },
+  "summary_table_markdown": "| Question ID | Median | Mean | SD | Q25 | Q75 | IQR | Consensus? | N |\n|-------------|--------|------|----|-----|-----|-----|------------|---|\n| A_C1_necessity | 5.0 | 4.67 | 0.49 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| A_C2_necessity | 4.5 | 4.5 | 0.52 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| A_C3_necessity | 5.0 | 4.67 | 0.49 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| A_C4_necessity | 4.0 | 4.0 | 0.74 | 3.75 | 4.25 | 0.5 | Yes | 12 |\n| A_C1_clarity | 5.0 | 4.42 | 0.79 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| A_C2_clarity | 4.0 | 4.33 | 0.65 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| A_C3_clarity | 4.5 | 4.25 | 0.87 | 3.75 | 5.0 | 1.25 | **NO** | 12 |\n| A_C4_clarity | 4.0 | 4.17 | 0.83 | 3.75 | 5.0 | 1.25 | **NO** | 12 |\n| B1_well_defined | 5.0 | 4.58 | 0.51 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B1_distinguishable | 5.0 | 4.5 | 0.67 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B3_well_defined | 5.0 | 4.58 | 0.51 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B3_distinguishable | 4.0 | 4.42 | 0.51 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B7_well_defined | 4.0 | 4.42 | 0.51 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B7_distinguishable | 5.0 | 4.5 | 0.67 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B8_well_defined | 4.5 | 4.5 | 0.52 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B8_distinguishable | 5.0 | 4.5 | 0.67 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B2_well_defined | 4.5 | 4.33 | 0.78 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B2_distinguishable | 3.0 | 2.75 | 0.62 | 2.0 | 3.0 | 1.0 | Yes | 12 |\n| B4_well_defined | 4.0 | 4.0 | 0.74 | 3.75 | 4.25 | 0.5 | Yes | 12 |\n| B4_distinguishable | 3.0 | 3.0 | 0.74 | 2.75 | 3.25 | 0.5 | Yes | 12 |\n| B5_well_defined | 5.0 | 4.42 | 0.79 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B5_distinguishable | 3.0 | 3.0 | 0.74 | 2.75 | 3.25 | 0.5 | Yes | 12 |\n| B6_well_defined | 5.0 | 4.5 | 0.67 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| B6_distinguishable | 3.0 | 3.17 | 0.72 | 3.0 | 4.0 | 1.0 | Yes | 12 |\n| D_web3_applicability | 4.5 | 4.5 | 0.52 | 4.0 | 5.0 | 1.0 | Yes | 12 |\n| D_generalizability | 4.0 | 4.0 | 0.74 | 3.75 | 4.25 | 0.5 | Yes | 12 |",
+  "classification_table_markdown": "| Entity | Expected | Modal Response | Agreement | Confidence (Md) | C1 | C2 | C3 | C4 |\n|--------|----------|----------------|-----------|-----------------|----|----|----|----|\n| jaredfromsubway.eth | MEV Searcher | MEV Searcher | 92% | 4.0 | 83% | 75% | 67% | 67% |\n| Wintermute | RL Trading Agent | RL Trading Agent | 75% | 4.0 | 83% | 75% | 83% | 75% |\n| Autonolas OLAS agent | DeFi Management Agent | DeFi Management Agent | 75% | 4.0 | 92% | 83% | 75% | 83% |\n| Uniswap V2 Router | Not an Agent | Not an Agent | 67% | 4.0 | 0% | 0% | 0% | 0% |\n| Personal wallet | Not an Agent | Not an Agent | 83% | 4.0 | 0% | 0% | 0% | 0% |\n| Aave liquidation bot | MEV Searcher | MEV Searcher | 67% | 4.0 | 100% | 83% | 83% | 83% |\n| LayerZero relayer | Cross-Chain Bridge Agent | Cross-Chain Bridge Agent | 58% | 4.0 | 83% | 83% | 75% | 92% |\n| AI16Z ELIZA agent | LLM-Powered Agent | LLM-Powered Agent | 67% | 4.0 | 100% | 100% | 83% | 58% |\n| Cron payroll script | Deterministic Script | Deterministic Script | 83% | 4.5 | 83% | 75% | 67% | 0% |\n| Chainlink oracle node | Cross-Chain Bridge Agent | Cross-Chain Bridge Agent | 58% | 4.0 | 92% | 92% | 100% | 75% |"
+}
