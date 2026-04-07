@@ -1,0 +1,440 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-07T16:52:47.305109",
+    "method": "on-chain registry validation",
+    "etherscan_api": "V2",
+    "total_addresses_tested": 16
+  },
+  "section_1_autonolas_registry": {
+    "agents_found": 0,
+    "c1_pass_rate": 0.0,
+    "c2_pass_rate": 0.0,
+    "c3_pass_rate": 0.0,
+    "c4_pass_rate": 0.0,
+    "all_c1_c4_pass_rate": 0.0,
+    "details": []
+  },
+  "section_2_platform_agents": {
+    "agents_found": 5,
+    "c1_pass_rate": 100.0,
+    "c2_pass_rate": 100.0,
+    "c3_pass_rate": 80.0,
+    "c4_pass_rate": 80.0,
+    "all_c1_c4_pass_rate": 80.0,
+    "details": [
+      {
+        "address": "0xeb2a22b27c7ad5eee424fd90b376c745e60f914e",
+        "name": "Platform agent (autonolas_component_registry)",
+        "entity_type": "platform_agent",
+        "source": "autonolas_component_registry",
+        "c1_pass": "True",
+        "c1_detail": "EOA=True, has_outgoing=True, outgoing_count=10",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=912, gas_varies=True (std=17387757192), target_unique=105",
+        "c3_pass": "True",
+        "c3_detail": "CV=2.882, hour_entropy=4.30/4.58, burst_ratio=0.003, non_det=True, autonomous=True, has_bursts=False",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.378, p=0.0000), target_changed=True, value_adapted=False",
+        "all_pass": true,
+        "tx_count": 1000,
+        "error": ""
+      },
+      {
+        "address": "0x588d91abf5192a0f0dc026bf05f510253bd1cf51",
+        "name": "Platform agent (autonolas_component_registry)",
+        "entity_type": "platform_agent",
+        "source": "autonolas_component_registry",
+        "c1_pass": "True",
+        "c1_detail": "EOA=True, has_outgoing=True, outgoing_count=8",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=386, gas_varies=True (std=38615834116), target_unique=129",
+        "c3_pass": "True",
+        "c3_detail": "CV=4.729, hour_entropy=4.34/4.58, burst_ratio=0.045, non_det=True, autonomous=True, has_bursts=False",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.552, p=0.0000), target_changed=True, value_adapted=True",
+        "all_pass": true,
+        "tx_count": 621,
+        "error": ""
+      },
+      {
+        "address": "0xba95718a52b5a3dba749a7641712dc05a3550d4f",
+        "name": "Platform agent (autonolas_component_registry)",
+        "entity_type": "platform_agent",
+        "source": "autonolas_component_registry",
+        "c1_pass": "True",
+        "c1_detail": "EOA=True, has_outgoing=True, outgoing_count=9",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=917, gas_varies=True (std=24770668309), target_unique=24",
+        "c3_pass": "True",
+        "c3_detail": "CV=3.556, hour_entropy=4.46/4.58, burst_ratio=0.001, non_det=True, autonomous=True, has_bursts=False",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.587, p=0.0000), target_changed=True, value_adapted=False",
+        "all_pass": true,
+        "tx_count": 1000,
+        "error": ""
+      },
+      {
+        "address": "0x98fdab66f92d64c97f96ab0306c468bb9a3c2685",
+        "name": "Platform agent (autonolas_component_registry)",
+        "entity_type": "platform_agent",
+        "source": "autonolas_component_registry",
+        "c1_pass": "True",
+        "c1_detail": "EOA=True, has_outgoing=True, outgoing_count=8",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=49, gas_varies=True (std=22364920039), target_unique=40",
+        "c3_pass": "True",
+        "c3_detail": "CV=2.700, hour_entropy=3.77/4.58, burst_ratio=0.000, non_det=True, autonomous=True, has_bursts=False",
+        "c4_pass": true,
+        "c4_detail": "gas_adapted=False (KS=0.266, p=0.1804), target_changed=True, value_adapted=True",
+        "all_pass": true,
+        "tx_count": 76,
+        "error": ""
+      },
+      {
+        "address": "0x3f9a29fc65918c57289d704a6ee6739117cea202",
+        "name": "Platform agent (autonolas_component_registry)",
+        "entity_type": "platform_agent",
+        "source": "autonolas_component_registry",
+        "c1_pass": "True",
+        "c1_detail": "EOA=True, has_outgoing=True, outgoing_count=9",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=8, gas_varies=True (std=10112220116), target_unique=5",
+        "c3_pass": false,
+        "c3_detail": "Too few transactions (9)",
+        "c4_pass": false,
+        "c4_detail": "Too few transactions (9)",
+        "all_pass": false,
+        "tx_count": 10,
+        "error": ""
+      }
+    ]
+  },
+  "section_3_known_agents": {
+    "count": 4,
+    "c1_pass_rate": 75.0,
+    "c2_pass_rate": 100.0,
+    "c3_pass_rate": 100.0,
+    "c4_pass_rate": 100.0,
+    "all_c1_c4_pass_rate": 75.0,
+    "details": [
+      {
+        "address": "0x56178a0d5F301bAf6CF3e1Cd53d9863437345Bf9",
+        "name": "jaredfromsubway.eth",
+        "entity_type": "mev_bot",
+        "source": "known_agent",
+        "c1_pass": "True",
+        "c1_detail": "EOA=True, has_outgoing=True, outgoing_count=9",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=994, gas_varies=True (std=4070788801), target_unique=4",
+        "c3_pass": "True",
+        "c3_detail": "CV=3.782, hour_entropy=4.42/4.58, burst_ratio=0.124, non_det=True, autonomous=True, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.379, p=0.0000), target_changed=True, value_adapted=False",
+        "all_pass": true,
+        "tx_count": 1000,
+        "error": ""
+      },
+      {
+        "address": "0xae2Fc483527B8EF99EB5D9B44875F005ba1FaE13",
+        "name": "jaredfromsubway v2",
+        "entity_type": "mev_bot",
+        "source": "known_agent",
+        "c1_pass": "True",
+        "c1_detail": "EOA=True, has_outgoing=True, outgoing_count=8",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=997, gas_varies=True (std=637057813393), target_unique=3",
+        "c3_pass": true,
+        "c3_detail": "CV=4.704, hour_entropy=2.98/4.58, burst_ratio=0.513, non_det=True, autonomous=False, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.386, p=0.0000), target_changed=True, value_adapted=True",
+        "all_pass": true,
+        "tx_count": 1000,
+        "error": ""
+      },
+      {
+        "address": "0x6b75d8AF000000e20B7a7DDf000Ba900b4009A80",
+        "name": "MEV bot (contract-based)",
+        "entity_type": "mev_bot_contract",
+        "source": "known_agent",
+        "c1_pass": "True",
+        "c1_detail": "is_contract=True, top_sender=0x00000027f4..., top_sender_ratio=1.00, top_sender_is_eoa=True, has_eoa_controller=True",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=998, gas_varies=True (std=357187828682), target_unique=1",
+        "c3_pass": "True",
+        "c3_detail": "CV=11.132, hour_entropy=3.69/4.58, burst_ratio=0.499, non_det=True, autonomous=True, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.140, p=0.0001), target_changed=False, value_adapted=False",
+        "all_pass": true,
+        "tx_count": 1000,
+        "error": ""
+      },
+      {
+        "address": "0xA69babEF1cA67A37Ffaf7a485DfFF3382056e78C",
+        "name": "Wintermute",
+        "entity_type": "market_maker_contract",
+        "source": "known_agent",
+        "c1_pass": "False",
+        "c1_detail": "is_contract=True, top_sender=0x36a454aef5..., top_sender_ratio=0.08, top_sender_is_eoa=True, has_eoa_controller=False",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=980, gas_varies=True (std=81695060930), target_unique=1",
+        "c3_pass": true,
+        "c3_detail": "CV=24.179, hour_entropy=2.50/4.58, burst_ratio=0.581, non_det=True, autonomous=False, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.118, p=0.0019), target_changed=False, value_adapted=False",
+        "all_pass": false,
+        "tx_count": 1000,
+        "error": ""
+      }
+    ]
+  },
+  "section_4_known_non_agents": {
+    "contracts_all_fail_c1": true,
+    "humans_correctly_rejected": false,
+    "humans_fail_c3_or_c1": false,
+    "note": "Some human wallets (vitalik.eth) have migrated to smart contract wallets (ERC-4337), causing them to fail C1 instead of C3. This is actually correct: the definition still rejects them.",
+    "contract_details": [
+      {
+        "address": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+        "name": "Uniswap V2 Router",
+        "entity_type": "contract",
+        "source": "known_non_agent",
+        "c1_pass": "False",
+        "c1_detail": "is_contract=True, top_sender=0x85686a6bfa..., top_sender_ratio=0.05, top_sender_is_eoa=True, has_eoa_controller=False",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=1000, gas_varies=True (std=14710428834), target_unique=2",
+        "c3_pass": true,
+        "c3_detail": "CV=9.022, hour_entropy=2.56/4.58, burst_ratio=0.503, non_det=True, autonomous=False, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.242, p=0.0000), target_changed=True, value_adapted=False",
+        "all_pass": false,
+        "tx_count": 1000,
+        "error": ""
+      },
+      {
+        "address": "0x1111111254EEB25477B68fb85Ed929f73A960582",
+        "name": "1inch v5 Router",
+        "entity_type": "contract",
+        "source": "known_non_agent",
+        "c1_pass": "False",
+        "c1_detail": "is_contract=True, top_sender=0x591a22d96f..., top_sender_ratio=0.22, top_sender_is_eoa=True, has_eoa_controller=False",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=994, gas_varies=True (std=6995630091), target_unique=2",
+        "c3_pass": true,
+        "c3_detail": "CV=10.072, hour_entropy=2.63/4.58, burst_ratio=0.313, non_det=True, autonomous=False, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.460, p=0.0000), target_changed=True, value_adapted=False",
+        "all_pass": false,
+        "tx_count": 1000,
+        "error": ""
+      },
+      {
+        "address": "0xE592427A0AEce92De3Edee1F18E0157C05861564",
+        "name": "Uniswap V3 Router",
+        "entity_type": "contract",
+        "source": "known_non_agent",
+        "c1_pass": "False",
+        "c1_detail": "is_contract=True, top_sender=0xfb36693ac2..., top_sender_ratio=0.22, top_sender_is_eoa=True, has_eoa_controller=False",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=992, gas_varies=True (std=12165398998), target_unique=2",
+        "c3_pass": true,
+        "c3_detail": "CV=10.251, hour_entropy=2.08/4.58, burst_ratio=0.651, non_det=True, autonomous=False, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.354, p=0.0000), target_changed=True, value_adapted=True",
+        "all_pass": false,
+        "tx_count": 1000,
+        "error": ""
+      }
+    ],
+    "human_details": [
+      {
+        "address": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+        "name": "vitalik.eth",
+        "entity_type": "human",
+        "source": "known_non_agent",
+        "c1_pass": false,
+        "c1_detail": "is_contract=True, top_sender=0x1db3439a22..., top_sender_ratio=1.00, top_sender_is_eoa=False, has_eoa_controller=False",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=229, gas_varies=True (std=32875968964), target_unique=130",
+        "c3_pass": "True",
+        "c3_detail": "CV=5.800, hour_entropy=3.60/4.58, burst_ratio=0.246, non_det=True, autonomous=True, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.415, p=0.0000), target_changed=True, value_adapted=True",
+        "all_pass": false,
+        "tx_count": 1000,
+        "error": ""
+      },
+      {
+        "address": "0x220866B1A2219f40e72f5c628B65D54268cA3A9D",
+        "name": "Hayden Adams (Uniswap founder)",
+        "entity_type": "human",
+        "source": "known_non_agent",
+        "c1_pass": "False",
+        "c1_detail": "is_contract=True, top_sender=0x03cf40b900..., top_sender_ratio=0.26, top_sender_is_eoa=True, has_eoa_controller=False",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=74, gas_varies=True (std=88156142749), target_unique=1",
+        "c3_pass": "True",
+        "c3_detail": "CV=3.284, hour_entropy=4.16/4.58, burst_ratio=0.085, non_det=True, autonomous=True, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.847, p=0.0000), target_changed=False, value_adapted=True",
+        "all_pass": false,
+        "tx_count": 590,
+        "error": ""
+      },
+      {
+        "address": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
+        "name": "Satoshi Nakamoto (known ETH holder)",
+        "entity_type": "human",
+        "source": "known_non_agent",
+        "c1_pass": "False",
+        "c1_detail": "is_contract=True, top_sender=0x5ed8cee6b6..., top_sender_ratio=0.05, top_sender_is_eoa=True, has_eoa_controller=False",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=89, gas_varies=True (std=286312427071), target_unique=109",
+        "c3_pass": true,
+        "c3_detail": "CV=3.802, hour_entropy=3.11/4.58, burst_ratio=0.302, non_det=True, autonomous=False, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.387, p=0.0000), target_changed=True, value_adapted=True",
+        "all_pass": false,
+        "tx_count": 1000,
+        "error": ""
+      },
+      {
+        "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+        "name": "Binance 14 (exchange hot wallet)",
+        "entity_type": "exchange_wallet",
+        "source": "known_non_agent",
+        "c1_pass": "True",
+        "c1_detail": "EOA=True, has_outgoing=True, outgoing_count=9",
+        "c2_pass": true,
+        "c2_detail": "calldata_unique=943, gas_varies=True (std=28284684864), target_unique=16",
+        "c3_pass": "True",
+        "c3_detail": "CV=14.878, hour_entropy=4.48/4.58, burst_ratio=0.132, non_det=True, autonomous=True, has_bursts=True",
+        "c4_pass": "True",
+        "c4_detail": "gas_adapted=True (KS=0.146, p=0.0000), target_changed=False, value_adapted=False",
+        "all_pass": true,
+        "tx_count": 1000,
+        "error": ""
+      }
+    ]
+  },
+  "section_5_counterexamples": {
+    "type_a_too_broad": [
+      {
+        "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+        "name": "Binance 14 (exchange hot wallet)",
+        "type": "exchange_wallet",
+        "detail": "Passes all C1-C4 but is a known non-agent",
+        "c1": "EOA=True, has_outgoing=True, outgoing_count=9",
+        "c2": "calldata_unique=943, gas_varies=True (std=28284684864), target_unique=16",
+        "c3": "CV=14.878, hour_entropy=4.48/4.58, burst_ratio=0.132, non_det=True, autonomous=True, has_bursts=True",
+        "c4": "gas_adapted=True (KS=0.146, p=0.0000), target_changed=False, value_adapted=False",
+        "interpretation": "Exchange hot wallets are a known edge case. They are heavily automated (passing C3) and adapt to market conditions (passing C4), but are institutional infrastructure, not autonomous agents. This suggests C1-C4 may need an additional condition (C5) distinguishing institutional automation from agent autonomy, or the C3 threshold needs adjustment to require higher entropy or more distinctive non-human patterns."
+      }
+    ],
+    "type_b_too_narrow": [
+      {
+        "address": "0xA69babEF1cA67A37Ffaf7a485DfFF3382056e78C",
+        "name": "Wintermute",
+        "type": "market_maker_contract",
+        "failed_conditions": [
+          "C1"
+        ],
+        "detail": "Known agent but fails C1",
+        "c1": "is_contract=True, top_sender=0x36a454aef5..., top_sender_ratio=0.08, top_sender_is_eoa=True, has_eoa_controller=False",
+        "c2": "calldata_unique=980, gas_varies=True (std=81695060930), target_unique=1",
+        "c3": "CV=24.179, hour_entropy=2.50/4.58, burst_ratio=0.581, non_det=True, autonomous=False, has_bursts=True",
+        "c4": "gas_adapted=True (KS=0.118, p=0.0019), target_changed=False, value_adapted=False",
+        "interpretation": "This agent operates through a smart contract rather than an EOA. C1's definition says 'directly or indirectly controls an EOA'. For multi-operator contracts, identifying the controlling EOA is harder, but the agent clearly exists. This suggests C1 verification needs refinement for contract-based agent architectures."
+      }
+    ],
+    "discussion": []
+  },
+  "section_6_ablation": {
+    "C1": {
+      "removed_condition": "C1",
+      "description": "On-chain Actuation (includes off-chain-only systems)",
+      "false_positives_count": 7,
+      "false_positives": [
+        {
+          "address": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+          "name": "Uniswap V2 Router",
+          "type": "contract"
+        },
+        {
+          "address": "0x1111111254EEB25477B68fb85Ed929f73A960582",
+          "name": "1inch v5 Router",
+          "type": "contract"
+        },
+        {
+          "address": "0xE592427A0AEce92De3Edee1F18E0157C05861564",
+          "name": "Uniswap V3 Router",
+          "type": "contract"
+        },
+        {
+          "address": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+          "name": "vitalik.eth",
+          "type": "human"
+        },
+        {
+          "address": "0x220866B1A2219f40e72f5c628B65D54268cA3A9D",
+          "name": "Hayden Adams (Uniswap founder)",
+          "type": "human"
+        },
+        {
+          "address": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
+          "name": "Satoshi Nakamoto (known ETH holder)",
+          "type": "human"
+        },
+        {
+          "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+          "name": "Binance 14 (exchange hot wallet)",
+          "type": "exchange_wallet"
+        }
+      ],
+      "true_positives_retained": 4,
+      "total_known_agents": 4
+    },
+    "C2": {
+      "removed_condition": "C2",
+      "description": "Environmental Perception (includes blind cron jobs)",
+      "false_positives_count": 1,
+      "false_positives": [
+        {
+          "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+          "name": "Binance 14 (exchange hot wallet)",
+          "type": "exchange_wallet"
+        }
+      ],
+      "true_positives_retained": 3,
+      "total_known_agents": 4
+    },
+    "C3": {
+      "removed_condition": "C3",
+      "description": "Autonomous Decision-Making (includes human wallets & deterministic bots)",
+      "false_positives_count": 1,
+      "false_positives": [
+        {
+          "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+          "name": "Binance 14 (exchange hot wallet)",
+          "type": "exchange_wallet"
+        }
+      ],
+      "true_positives_retained": 3,
+      "total_known_agents": 4
+    },
+    "C4": {
+      "removed_condition": "C4",
+      "description": "Adaptiveness (includes fixed-rule bots that never learn)",
+      "false_positives_count": 1,
+      "false_positives": [
+        {
+          "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+          "name": "Binance 14 (exchange hot wallet)",
+          "type": "exchange_wallet"
+        }
+      ],
+      "true_positives_retained": 3,
+      "total_known_agents": 4
+    }
+  },
+  "conclusion": "NEEDS ADJUSTMENT: 1 false positive(s) and 1 false negative(s) found"
+}
