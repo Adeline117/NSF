@@ -1,9 +1,10 @@
 {
   "validation": {
-    "total_categories": 6,
+    "total_categories": 8,
     "autonomy_coverage": [
       "ADAPTIVE",
       "COLLABORATIVE",
+      "NONE",
       "PROACTIVE",
       "REACTIVE"
     ],
@@ -17,12 +18,10 @@
       "DETERMINISTIC",
       "HYBRID",
       "LLM_DRIVEN",
+      "REINFORCEMENT",
       "STATISTICAL"
     ],
-    "issues": [
-      "Autonomy levels not covered: {'NONE'}",
-      "Decision models not covered: {'REINFORCEMENT'}"
-    ]
+    "issues": []
   },
   "distinguishability": {
     "Simple Trading Bot vs MEV Searcher": {
@@ -67,6 +66,21 @@
       "n_dims": 2,
       "separable": true
     },
+    "Simple Trading Bot vs Deterministic Script": {
+      "distinguishable_dimensions": [
+        "autonomy"
+      ],
+      "n_dims": 1,
+      "separable": true
+    },
+    "Simple Trading Bot vs RL Trading Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "decision_model"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
     "MEV Searcher vs DeFi Management Agent": {
       "distinguishable_dimensions": [
         "autonomy",
@@ -101,6 +115,21 @@
       "n_dims": 2,
       "separable": true
     },
+    "MEV Searcher vs Deterministic Script": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "decision_model"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "MEV Searcher vs RL Trading Agent": {
+      "distinguishable_dimensions": [
+        "decision_model"
+      ],
+      "n_dims": 1,
+      "separable": true
+    },
     "DeFi Management Agent vs LLM-Powered Agent": {
       "distinguishable_dimensions": [
         "environment",
@@ -126,6 +155,22 @@
       "n_dims": 3,
       "separable": true
     },
+    "DeFi Management Agent vs Deterministic Script": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "decision_model"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "DeFi Management Agent vs RL Trading Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "decision_model"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
     "LLM-Powered Agent vs Autonomous DAO Agent": {
       "distinguishable_dimensions": [
         "autonomy",
@@ -144,6 +189,24 @@
       "n_dims": 3,
       "separable": true
     },
+    "LLM-Powered Agent vs Deterministic Script": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
+    "LLM-Powered Agent vs RL Trading Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
     "Autonomous DAO Agent vs Cross-Chain Bridge Agent": {
       "distinguishable_dimensions": [
         "autonomy",
@@ -151,6 +214,48 @@
         "decision_model"
       ],
       "n_dims": 3,
+      "separable": true
+    },
+    "Autonomous DAO Agent vs Deterministic Script": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
+    "Autonomous DAO Agent vs RL Trading Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
+    "Cross-Chain Bridge Agent vs Deterministic Script": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "Cross-Chain Bridge Agent vs RL Trading Agent": {
+      "distinguishable_dimensions": [
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "Deterministic Script vs RL Trading Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "decision_model"
+      ],
+      "n_dims": 2,
       "separable": true
     }
   },
@@ -285,6 +390,52 @@
         "Multi-chain presence",
         "Verification/proof patterns",
         "Message relay timing"
+      ]
+    },
+    {
+      "name": "Deterministic Script",
+      "autonomy": 0,
+      "environment": "hybrid",
+      "decision_model": "deterministic",
+      "description": "Fully deterministic script with no autonomous decision-making; executes a fixed sequence of transactions without adaptation",
+      "examples": [
+        "Cron-scheduled token transfers",
+        "Hardcoded airdrop distribution scripts",
+        "Static payroll contracts"
+      ],
+      "on_chain_indicators": [
+        "Perfectly periodic transactions",
+        "Identical calldata across invocations",
+        "Fixed gas price or legacy gas pricing",
+        "Single-function interaction pattern"
+      ],
+      "distinguishing_features": [
+        "Zero behavioral variance across runs",
+        "No environmental sensing beyond trigger condition",
+        "Fully reproducible transaction sequence"
+      ]
+    },
+    {
+      "name": "RL Trading Agent",
+      "autonomy": 2,
+      "environment": "hybrid",
+      "decision_model": "rl",
+      "description": "Uses reinforcement learning policies to optimize trading strategy; learns from reward signals derived from on-chain outcomes",
+      "examples": [
+        "RL-based market-making agents",
+        "Policy-gradient DEX arbitrage agents",
+        "Multi-armed bandit liquidity allocators"
+      ],
+      "on_chain_indicators": [
+        "Exploration-exploitation trade size patterns",
+        "Gradual strategy convergence over time",
+        "Reward-correlated behavioral shifts",
+        "Non-stationary gas bidding strategies"
+      ],
+      "distinguishing_features": [
+        "Observable learning curve in transaction history",
+        "Strategy drift as policy updates",
+        "Distinct exploration vs exploitation phases"
       ]
     }
   ]

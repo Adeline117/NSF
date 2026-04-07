@@ -173,6 +173,54 @@ TAXONOMY = [
             "Message relay timing",
         ],
     ),
+    AgentTaxonomyEntry(
+        name="Deterministic Script",
+        autonomy=AutonomyLevel.NONE,
+        environment=EnvironmentType.OFFCHAIN_TO_ONCHAIN,
+        decision_model=DecisionModel.DETERMINISTIC,
+        description="Fully deterministic script with no autonomous decision-making; "
+                    "executes a fixed sequence of transactions without adaptation",
+        examples=[
+            "Cron-scheduled token transfers",
+            "Hardcoded airdrop distribution scripts",
+            "Static payroll contracts",
+        ],
+        on_chain_indicators=[
+            "Perfectly periodic transactions",
+            "Identical calldata across invocations",
+            "Fixed gas price or legacy gas pricing",
+            "Single-function interaction pattern",
+        ],
+        distinguishing_features=[
+            "Zero behavioral variance across runs",
+            "No environmental sensing beyond trigger condition",
+            "Fully reproducible transaction sequence",
+        ],
+    ),
+    AgentTaxonomyEntry(
+        name="RL Trading Agent",
+        autonomy=AutonomyLevel.ADAPTIVE,
+        environment=EnvironmentType.OFFCHAIN_TO_ONCHAIN,
+        decision_model=DecisionModel.REINFORCEMENT,
+        description="Uses reinforcement learning policies to optimize trading strategy; "
+                    "learns from reward signals derived from on-chain outcomes",
+        examples=[
+            "RL-based market-making agents",
+            "Policy-gradient DEX arbitrage agents",
+            "Multi-armed bandit liquidity allocators",
+        ],
+        on_chain_indicators=[
+            "Exploration-exploitation trade size patterns",
+            "Gradual strategy convergence over time",
+            "Reward-correlated behavioral shifts",
+            "Non-stationary gas bidding strategies",
+        ],
+        distinguishing_features=[
+            "Observable learning curve in transaction history",
+            "Strategy drift as policy updates",
+            "Distinct exploration vs exploitation phases",
+        ],
+    ),
 ]
 
 
