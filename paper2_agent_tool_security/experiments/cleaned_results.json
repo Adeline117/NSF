@@ -1,0 +1,130 @@
+{
+  "metadata": {
+    "source": "/Users/adelinewen/NSF/paper2_agent_tool_security/experiments/scan_results.json",
+    "cleaned_at": "2026-04-07T23:34:14.424015+00:00",
+    "original_repos": 20,
+    "kept_repos": 0,
+    "removed_repos": 20,
+    "original_findings": 1415,
+    "kept_findings": 0,
+    "removed_findings": 1415
+  },
+  "classification_summary": {
+    "true_positive": 0,
+    "false_positive": 0,
+    "uncertain": 0,
+    "estimated_precision_pct": 0.0
+  },
+  "summary": {
+    "total_findings": 0,
+    "true_positive_findings": 0,
+    "by_severity": {},
+    "by_category": {},
+    "tp_by_severity": {},
+    "tp_by_category": {}
+  },
+  "removed_repos": [
+    {
+      "repo": "modelcontextprotocol/inspector",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 80
+    },
+    {
+      "repo": "0x4m4/hexstrike-ai",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 7
+    },
+    {
+      "repo": "executeautomation/mcp-playwright",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 21
+    },
+    {
+      "repo": "getsentry/XcodeBuildMCP",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 229
+    },
+    {
+      "repo": "sooperset/mcp-atlassian",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 275
+    },
+    {
+      "repo": "aipotheosis-labs/aci",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 67
+    },
+    {
+      "repo": "Pimzino/spec-workflow-mcp",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 54
+    },
+    {
+      "repo": "CodeGraphContext/CodeGraphContext",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 141
+    },
+    {
+      "repo": "av/harbor",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 78
+    },
+    {
+      "repo": "jamubc/gemini-mcp-tool",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 1
+    },
+    {
+      "repo": "taylorwilsdon/google_workspace_mcp",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 82
+    },
+    {
+      "repo": "timescale/pg-aiguide",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 15
+    },
+    {
+      "repo": "leonardsellem/n8n-mcp-server",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 7
+    },
+    {
+      "repo": "MicrosoftDocs/mcp",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 19
+    },
+    {
+      "repo": "apify/apify-mcp-server",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 91
+    },
+    {
+      "repo": "iannuttall/mcp-boilerplate",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 71
+    },
+    {
+      "repo": "ridafkih/keeper.sh",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 147
+    },
+    {
+      "repo": "Dataojitori/nocturne_memory",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 21
+    },
+    {
+      "repo": "open-webui/openapi-servers",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 8
+    },
+    {
+      "repo": "jlumbroso/passage-of-time-mcp",
+      "reason": "Not a Web3/blockchain tool server",
+      "findings_removed": 1
+    }
+  ],
+  "risk_ranking": [],
+  "repo_results": []
+}
