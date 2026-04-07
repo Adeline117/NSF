@@ -1,0 +1,291 @@
+{
+  "validation": {
+    "total_categories": 6,
+    "autonomy_coverage": [
+      "ADAPTIVE",
+      "COLLABORATIVE",
+      "PROACTIVE",
+      "REACTIVE"
+    ],
+    "environment_coverage": [
+      "CROSS_CHAIN",
+      "MULTI_MODAL",
+      "OFFCHAIN_TO_ONCHAIN",
+      "ONCHAIN_ONLY"
+    ],
+    "decision_coverage": [
+      "DETERMINISTIC",
+      "HYBRID",
+      "LLM_DRIVEN",
+      "STATISTICAL"
+    ],
+    "issues": [
+      "Autonomy levels not covered: {'NONE'}",
+      "Decision models not covered: {'REINFORCEMENT'}"
+    ]
+  },
+  "distinguishability": {
+    "Simple Trading Bot vs MEV Searcher": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "decision_model"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "Simple Trading Bot vs DeFi Management Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "decision_model"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "Simple Trading Bot vs LLM-Powered Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
+    "Simple Trading Bot vs Autonomous DAO Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
+    "Simple Trading Bot vs Cross-Chain Bridge Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "MEV Searcher vs DeFi Management Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "decision_model"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "MEV Searcher vs LLM-Powered Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
+    "MEV Searcher vs Autonomous DAO Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
+    "MEV Searcher vs Cross-Chain Bridge Agent": {
+      "distinguishable_dimensions": [
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "DeFi Management Agent vs LLM-Powered Agent": {
+      "distinguishable_dimensions": [
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "DeFi Management Agent vs Autonomous DAO Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment"
+      ],
+      "n_dims": 2,
+      "separable": true
+    },
+    "DeFi Management Agent vs Cross-Chain Bridge Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
+    "LLM-Powered Agent vs Autonomous DAO Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
+    "LLM-Powered Agent vs Cross-Chain Bridge Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    },
+    "Autonomous DAO Agent vs Cross-Chain Bridge Agent": {
+      "distinguishable_dimensions": [
+        "autonomy",
+        "environment",
+        "decision_model"
+      ],
+      "n_dims": 3,
+      "separable": true
+    }
+  },
+  "taxonomy": [
+    {
+      "name": "Simple Trading Bot",
+      "autonomy": 1,
+      "environment": "hybrid",
+      "decision_model": "deterministic",
+      "description": "Executes pre-defined trading rules (e.g., grid bot, limit orders)",
+      "examples": [
+        "Grid trading bots",
+        "DCA bots",
+        "Rebalancing scripts"
+      ],
+      "on_chain_indicators": [
+        "Regular interval transactions",
+        "Fixed trade sizes",
+        "Deterministic gas pricing"
+      ],
+      "distinguishing_features": [
+        "No adaptation to market conditions beyond pre-set rules",
+        "Predictable transaction patterns"
+      ]
+    },
+    {
+      "name": "MEV Searcher",
+      "autonomy": 2,
+      "environment": "hybrid",
+      "decision_model": "statistical",
+      "description": "Identifies and extracts MEV (sandwich, arbitrage, liquidation)",
+      "examples": [
+        "jaredfromsubway.eth",
+        "Flashbots searchers"
+      ],
+      "on_chain_indicators": [
+        "Extremely low latency (sub-block response)",
+        "Bundle submissions via Flashbots",
+        "High gas priority fees",
+        "Interaction with DEX routers"
+      ],
+      "distinguishing_features": [
+        "Mempool monitoring capability",
+        "Atomic transaction bundles",
+        "Profit-driven execution"
+      ]
+    },
+    {
+      "name": "DeFi Management Agent",
+      "autonomy": 3,
+      "environment": "hybrid",
+      "decision_model": "hybrid",
+      "description": "Manages DeFi positions: yield farming, lending, liquidity provision",
+      "examples": [
+        "Autonolas agents",
+        "Yearn strategy vaults",
+        "DeFi Saver automation"
+      ],
+      "on_chain_indicators": [
+        "Multi-protocol interactions in sequences",
+        "Approval management patterns",
+        "Position rebalancing transactions",
+        "Oracle price consultation"
+      ],
+      "distinguishing_features": [
+        "Cross-protocol reasoning",
+        "Risk-aware position management",
+        "Adaptive strategy adjustment"
+      ]
+    },
+    {
+      "name": "LLM-Powered Agent",
+      "autonomy": 3,
+      "environment": "multi_modal",
+      "decision_model": "llm",
+      "description": "Uses LLM for reasoning about on-chain actions",
+      "examples": [
+        "AI16Z/ELIZA agents",
+        "Virtuals Protocol agents",
+        "MCP-connected agents"
+      ],
+      "on_chain_indicators": [
+        "Variable latency (LLM inference time)",
+        "Complex multi-step transaction sequences",
+        "Natural language-influenced parameters",
+        "Non-deterministic gas pricing"
+      ],
+      "distinguishing_features": [
+        "Highly variable behavior patterns",
+        "Context-dependent decision making",
+        "May interact with off-chain data sources"
+      ]
+    },
+    {
+      "name": "Autonomous DAO Agent",
+      "autonomy": 4,
+      "environment": "onchain",
+      "decision_model": "hybrid",
+      "description": "Fully on-chain agent governed by DAO rules",
+      "examples": [
+        "Gnosis Safe modules",
+        "Governor-controlled executors"
+      ],
+      "on_chain_indicators": [
+        "Transactions originate from multisig/timelock",
+        "Proposal-execution pattern",
+        "Governance token interactions"
+      ],
+      "distinguishing_features": [
+        "Collective decision making",
+        "Timelock delays",
+        "On-chain governance trail"
+      ]
+    },
+    {
+      "name": "Cross-Chain Bridge Agent",
+      "autonomy": 2,
+      "environment": "cross_chain",
+      "decision_model": "deterministic",
+      "description": "Relays messages and assets across chains",
+      "examples": [
+        "LayerZero relayers",
+        "Wormhole guardians",
+        "Axelar validators"
+      ],
+      "on_chain_indicators": [
+        "Bridge contract interactions",
+        "Matching transactions across chains",
+        "Proof submission patterns"
+      ],
+      "distinguishing_features": [
+        "Multi-chain presence",
+        "Verification/proof patterns",
+        "Message relay timing"
+      ]
+    }
+  ]
+}

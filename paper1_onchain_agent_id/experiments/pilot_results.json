@@ -1,0 +1,10 @@
+{
+  "synthetic": true,
+  "feature_signals": {
+    "temporal_ks_pvalue": 9.237330203806311e-53,
+    "hour_entropy_delta": 0.5552892888803589,
+    "gas_round_delta": -1.0,
+    "gas_cv_delta": -0.08318633618100973
+  },
+  "feasibility": "CONFIRMED"
+}

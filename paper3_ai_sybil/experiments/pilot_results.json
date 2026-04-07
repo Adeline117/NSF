@@ -1,0 +1,34 @@
+{
+  "baseline_auc_trad": 0.999875,
+  "baseline_auc_ai": 0.6039000000000001,
+  "evasion_rate": 0.3960245030628827,
+  "enhanced_auc_ai": 0.9998374999999999,
+  "recovery": 0.39593749999999983,
+  "feature_importance": {
+    "gas_price_precision": 0.3357474513126256,
+    "behavioral_consistency": 0.2783475193123937,
+    "hour_entropy": 0.11979688194327301,
+    "error_recovery_pattern": 0.0718704498922306,
+    "response_latency_variance": 0.07097067763941008,
+    "action_sequence_perplexity": 0.0697404331401121,
+    "contract_interaction_overlap": 0.016079039289244045,
+    "bridge_usage_pattern": 0.015768844284598175,
+    "tx_timing_regularity": 0.008589331086850498,
+    "airdrop_claim_speed": 0.006849596087968583,
+    "funding_source_concentration": 0.006239776011293579
+  },
+  "individual_aucs": {
+    "tx_timing_regularity": 0.6439333333333332,
+    "funding_source_concentration": 0.5939888888888889,
+    "contract_interaction_overlap": 0.6813222222222223,
+    "bridge_usage_pattern": 0.6829222222222222,
+    "airdrop_claim_speed": 0.5924,
+    "gas_price_precision": 0.9907222222222223,
+    "hour_entropy": 0.892511111111111,
+    "behavioral_consistency": 0.9481777777777778,
+    "action_sequence_perplexity": 0.8090444444444445,
+    "error_recovery_pattern": 0.8503222222222222,
+    "response_latency_variance": 0.7485999999999999
+  },
+  "feasibility": "CONFIRMED"
+}
