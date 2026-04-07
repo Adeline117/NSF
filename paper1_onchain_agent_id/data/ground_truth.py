@@ -94,12 +94,20 @@ class AgentRegistry:
     virtuals_launchpad: str = ""
 
     # ---- Known MEV Bots (Flashbots / EigenPhi) ----
+    # All entries must be verified EOAs, NOT smart contracts
     known_mev_bots: list = field(default_factory=lambda: [
         "0x56178a0d5F301bAf6CF3e1Cd53d9863437345Bf9",  # jaredfromsubway.eth
         "0x6b75d8AF000000e20B7a7DDf000Ba900b4009A80",  # Known sandwich bot
-        "0xA69babEF1cA67A37Ffaf7a485DfFF3382056e78C",  # Known MEV searcher
+        "0xae2Fc483527B8EF99EB5D9B44875F005ba1FaE13",  # jaredfromsubway v2
         "0x000000000000cd17345801aa8147b8D3950260FF",  # MEV bot
         "0x00000000003b3cc22aF3aE1EAc0440BcEe416B40",  # MEV bot
+    ])
+
+    # ---- Market Maker EOAs ----
+    known_market_makers: list = field(default_factory=lambda: [
+        "0xA69babEF1cA67A37Ffaf7a485DfFF3382056e78C",  # Wintermute
+        "0x280027dd00eE0050d3F9d168EFD6B40090009246",  # Wintermute 2
+        "0xDBF5E9c5206d0dB70a90108bf936DA60221dC080",  # Wintermute 3
     ])
 
     # ---- Known AI Trading Bots (protocol-registered) ----
@@ -108,22 +116,21 @@ class AgentRegistry:
         # Populated during data collection phase
     ])
 
-    # ---- Known Human Addresses (ENS + social proof) ----
+    # ---- Known Human Addresses (ENS + social proof, verified EOAs) ----
     known_humans: list = field(default_factory=lambda: [
         "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",  # vitalik.eth
         "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",  # Vitalik older addr
         "0x220866B1A2219f40e72f5c628B65D54268cA3A9D",  # hayden.eth (Uniswap)
-        "0xB4EfDCaB28D37fFA792Bf01cda6D0adD67B0EB70",  # sassal.eth
+        "0x983110309620D911731Ac0932219af06091b6744",  # brantly.eth
+        "0xCB42Ac441fCadeB7a0B36E38F1d5E8cBe1832599",  # sassal.eth
     ])
 
-    # ---- Known Institutional / Whale Addresses ----
-    # Sourced from Arkham Intelligence and Nansen labels (public).
+    # NOTE: Exchange hot/cold wallets are EXCLUDED entirely.
+    # They are neither human-operated EOAs nor autonomous agents.
+    # Removed: Binance 7/8/14/15/16, Kraken 4/13, Bitfinex, Gemini,
+    #          FTX, DWF Labs hot, MEXC hot wallet.
     known_institutions: list = field(default_factory=lambda: [
-        "0x28C6c06298d514Db089934071355E5743bf21d60",  # Binance 14
-        "0x21a31Ee1afC51d94C2eFcCAa2092aD1028285549",  # Binance 15
-        "0xDFd5293D8e347dFe59E90eFd55b2956a1343963d",  # Binance 16
-        "0x47ac0Fb4F2D84898e4D9E7b4DaB3C24507a6D503",  # Binance cold
-        "0xBE0eB53F46cd790Cd13851d5EFf43D12404d33E8",  # Binance cold 2
+        # Intentionally empty -- exchange wallets excluded from study
     ])
 
 
@@ -167,6 +174,8 @@ class GroundTruthLabeler:
     def _build_lookup_sets(self) -> None:
         """Build O(1) lookup sets from registry lists."""
         for addr in self.registry.known_mev_bots:
+            self._agent_set.add(addr.lower())
+        for addr in self.registry.known_market_makers:
             self._agent_set.add(addr.lower())
         for addr in self.registry.known_ai_bots:
             self._agent_set.add(addr.lower())
@@ -356,6 +365,7 @@ class GroundTruthLabeler:
 
         # Collect from registries
         all_addresses.extend(self.registry.known_mev_bots)
+        all_addresses.extend(self.registry.known_market_makers)
         all_addresses.extend(self.registry.known_ai_bots)
         all_addresses.extend(self.registry.known_humans)
         all_addresses.extend(self.registry.known_institutions)
@@ -388,6 +398,9 @@ class GroundTruthLabeler:
         mev_set = {a.lower() for a in self.registry.known_mev_bots}
         if addr_lower in mev_set:
             return "flashbots_mev"
+        mm_set = {a.lower() for a in self.registry.known_market_makers}
+        if addr_lower in mm_set:
+            return "market_maker"
         ai_set = {a.lower() for a in self.registry.known_ai_bots}
         if addr_lower in ai_set:
             return "ai_protocol_registry"

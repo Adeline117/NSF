@@ -62,72 +62,71 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 # ==================================================================
 
 AGENT_ADDRESSES = {
-    # --- MEV Bots ---
+    # --- MEV Bots (verified EOAs) ---
     "0x56178a0d5F301bAf6CF3e1Cd53d9863437345Bf9": "jaredfromsubway.eth",
     "0x6b75d8AF000000e20B7a7DDf000Ba900b4009A80": "MEV bot",
     "0xae2Fc483527B8EF99EB5D9B44875F005ba1FaE13": "jaredfromsubway v2",
-    "0xA69babEF1cA67A37Ffaf7a485DfFF3382056e78C": "Wintermute",
-    "0x280027dd00eE0050d3F9d168EFD6B40090009246": "Wintermute 2",
     "0x51C72848c68a965f66FA7a88855F9f7784502a7F": "MEV bot 3",
     "0x3B17056cc4439c61ceA41Fe1c9f517Af75A978F7": "MEV bot 4",
-    "0xDBF5E9c5206d0dB70a90108bf936DA60221dC080": "Wintermute 3",
-
-    # --- Market Makers / Trading Bots ---
-    "0x9507c04B10486547584C37bCBd931B437623E531": "Jump Trading",
-    "0xe8c19dB00287e3536075114B2c8C5B0089b8F6Db": "DWF Labs",
-    "0x75e89d5979E4f6Fba9F97c104c2F0AFB3F1dcB88": "MEXC hot wallet",
-
-    # --- DeFi Automation / Routers ---
-    "0xFa4FC4ec2F81A4897743C5b4f45907c02CE06199": "1inch resolver",
-    "0x1111111254EEB25477B68fb85Ed929f73A960582": "1inch v5 router",
-    "0xDef1C0ded9bec7F1a1670819833240f027b25EfF": "0x Exchange Proxy",
-    "0x3328F7f4A1D1C57c35df56bBf0c9dCAFCA309C49": "Banana Gun Router",
-    "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D": "Uniswap V2 Router",
-
-    # --- Known Bot Operators / NFT Bots ---
-    "0x000000000035B5e5ad9019092C665357240f594e": "Seaport Bot",
-    "0x00000000006c3852cbEf3e08E8dF289169EdE581": "Seaport 1.1",
-    "0x000000000000Ad05Ccc4F10045630fb830B95127": "Blur Exchange",
-
-    # --- Additional MEV / Arbitrage Bots ---
     "0x00000000003b3cc22aF3aE1EAc0440BcEe416B40": "MEV bot 5",
     "0x000000000000cd17345801aa8147b8D3950260FF": "MEV bot 6",
     "0x00000000009726632680AF5D2882e70d69d89a5C": "MEV bot 7",
     "0x98C3d3183C4b8A650614ad179A1a98be0a8d6B8E": "MEV bot 8",
     "0x6F1cDea15B82C4fC0b8ABBc1Fa51B17B3409dACf": "MEV bot 9",
     "0xE8c060F8052E07423f71D445277c61AC5138A2e5": "Flashbots builder",
-    "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45": "Uniswap V3 Router 02",
+
+    # --- Market Makers (verified EOAs) ---
+    "0xA69babEF1cA67A37Ffaf7a485DfFF3382056e78C": "Wintermute",
+    "0x280027dd00eE0050d3F9d168EFD6B40090009246": "Wintermute 2",
+    "0xDBF5E9c5206d0dB70a90108bf936DA60221dC080": "Wintermute 3",
+    "0x9507c04B10486547584C37bCBd931B437623E531": "Jump Trading",
+    "0xe8c19dB00287e3536075114B2c8C5B0089b8F6Db": "DWF Labs",
+
+    # --- DeFi Automation Bot EOAs ---
+    "0xFa4FC4ec2F81A4897743C5b4f45907c02CE06199": "1inch resolver bot",
+
+    # REMOVED: Smart contracts (NOT EOAs, cannot be agents):
+    #   - 0x1111111254EEB25477B68fb85Ed929f73A960582 (1inch v5 router)
+    #   - 0xDef1C0ded9bec7F1a1670819833240f027b25EfF (0x Exchange Proxy)
+    #   - 0x3328F7f4A1D1C57c35df56bBf0c9dCAFCA309C49 (Banana Gun Router)
+    #   - 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D (Uniswap V2 Router)
+    #   - 0x000000000035B5e5ad9019092C665357240f594e (Seaport Bot)
+    #   - 0x00000000006c3852cbEf3e08E8dF289169EdE581 (Seaport 1.1)
+    #   - 0x000000000000Ad05Ccc4F10045630fb830B95127 (Blur Exchange)
+    #   - 0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45 (Uniswap V3 Router 02)
+    # REMOVED: Exchange hot wallet (not an agent):
+    #   - 0x75e89d5979E4f6Fba9F97c104c2F0AFB3F1dcB88 (MEXC hot wallet)
 }
 
 HUMAN_ADDRESSES = {
-    # --- Known Public Figures ---
+    # --- Known Public Figures (ENS + social proof, verified EOAs) ---
     "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045": "vitalik.eth",
     "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B": "vitalik old",
     "0x220866B1A2219f40e72f5c628B65D54268cA3A9D": "Hayden Adams",
-    "0xBE0eB53F46cd790Cd13851d5EFf43D12404d33E8": "Binance 7 (whale)",
-    "0xDA9dfA130Df4dE4673b89022EE50ff26f6EA73Cf": "Kraken 13",
-    "0xF977814e90dA44bFA03b6295A0616a897441aceC": "Binance 8",
     "0x8103683202aa8DA10536036EDef04CDd865C225E": "Paradigm Fund",
     "0x0716a17FBAeE714f1E6aB0f9d59edbC5f09815C0": "a16z wallet",
 
     # --- ENS-verified active users ---
     "0x983110309620D911731Ac0932219af06091b6744": "brantly.eth",
     "0xCB42Ac441fCadeB7a0B36E38F1d5E8cBe1832599": "sassal.eth",
-    "0x47ac0Fb4F2D84898e4D9E7b4DaB3C24507a6D503": "Binance 14",
     "0x36928500Bc1dCd7af6a2B4008875CC336b927D57": "Large ETH holder",
     "0x176F3DAb24a159341c0509bB36B833E7fdd0a132": "Justin Sun",
     "0x3DdfA8eC3052539b6C9549F12cEA2C295cfF5296": "SBF Alameda",
 
-    # --- Institutional / Exchange wallets (human-operated) ---
-    "0x28C6c06298d514Db089934071355E5743bf21d60": "Binance 14 hot",
-    "0x21a31Ee1afC51d94C2eFcCAa2092aD1028285549": "Binance 15",
-    "0xDFd5293D8e347dFe59E90eFd55b2956a1343963d": "Binance 16",
-    "0x4862733B5FdDFd35f35ea8CCf08F5045e57388B3": "Bitfinex cold",
-    "0x1B3cB81E51011b549d78bf720b0d924ac763A7C2": "Gemini 4",
-    "0xBF72Da2Bd84c5170618Fbe5914B0ECA9638d5eb5": "DWF Labs hot",
-    "0xC098B2a3Aa256D2140208C3de6543aAEf5cd3A94": "FTX Exchange",
-    "0x2FAF487A4414Fe77e2327F0bf4AE2a264a776AD2": "FTX Exchange 2",
-    "0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0": "Kraken 4",
+    # REMOVED: Exchange hot/cold wallets (not humans, not agents -- exclude):
+    #   - 0xBE0eB53F46cd790Cd13851d5EFf43D12404d33E8 (Binance 7)
+    #   - 0xDA9dfA130Df4dE4673b89022EE50ff26f6EA73Cf (Kraken 13)
+    #   - 0xF977814e90dA44bFA03b6295A0616a897441aceC (Binance 8)
+    #   - 0x47ac0Fb4F2D84898e4D9E7b4DaB3C24507a6D503 (Binance 14)
+    #   - 0x28C6c06298d514Db089934071355E5743bf21d60 (Binance 14 hot)
+    #   - 0x21a31Ee1afC51d94C2eFcCAa2092aD1028285549 (Binance 15)
+    #   - 0xDFd5293D8e347dFe59E90eFd55b2956a1343963d (Binance 16)
+    #   - 0x4862733B5FdDFd35f35ea8CCf08F5045e57388B3 (Bitfinex cold)
+    #   - 0x1B3cB81E51011b549d78bf720b0d924ac763A7C2 (Gemini 4)
+    #   - 0xBF72Da2Bd84c5170618Fbe5914B0ECA9638d5eb5 (DWF Labs hot)
+    #   - 0xC098B2a3Aa256D2140208C3de6543aAEf5cd3A94 (FTX Exchange)
+    #   - 0x2FAF487A4414Fe77e2327F0bf4AE2a264a776AD2 (FTX Exchange 2)
+    #   - 0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0 (Kraken 4)
 }
 
 # ==================================================================
