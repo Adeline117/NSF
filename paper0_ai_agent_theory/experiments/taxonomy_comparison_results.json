@@ -1,4 +1,96 @@
 {
+  "condition_coverage": {
+    "Russell & Norvig (2020)": {
+      "conditions_covered": [
+        "C2 (Environmental Perception)",
+        "C3 (Autonomous Decision-Making)",
+        "C4 (Adaptiveness)"
+      ],
+      "conditions_not_covered": [
+        "C1 (On-chain Actuation)"
+      ],
+      "coverage_count": 3,
+      "coverage_fraction": 0.75,
+      "details": {
+        "C1 (On-chain Actuation)": "R&N defines 'actuators' abstractly but has no concept of blockchain-specific actuation (EOA control, transaction signing). Their actuator model assumes physical or software effectors, not cryptographic key-based blockchain execution.",
+        "C2 (Environmental Perception)": "Core to R&N: all agents perceive through sensors. However, the distinction between on-chain state (blocks, transactions, mempool) and off-chain signals (APIs, social media) is not modeled.",
+        "C3 (Autonomous Decision-Making)": "Partially covered via the architecture hierarchy. Goal-based and utility-based agents make autonomous decisions, but the specific requirement for 'non-deterministic components' (ML, LLM, RL) is not part of R&N's definition.",
+        "C4 (Adaptiveness)": "Covered by the 'Learning agent' type but not as a necessary condition. In R&N, simple reflex agents are still 'agents' even without any adaptiveness."
+      }
+    },
+    "Wooldridge & Jennings (1995)": {
+      "conditions_covered": [
+        "C2 (Environmental Perception)",
+        "C3 (Autonomous Decision-Making)"
+      ],
+      "conditions_not_covered": [
+        "C1 (On-chain Actuation)",
+        "C4 (Adaptiveness)"
+      ],
+      "coverage_count": 2,
+      "coverage_fraction": 0.5,
+      "details": {
+        "C1 (On-chain Actuation)": "W&J assume generic effectors. No notion of blockchain-specific actuation: EOA ownership, private key control, or transaction signing. Their framework applies to any software system, not specifically to blockchain execution.",
+        "C2 (Environmental Perception)": "Covered by 'Reactivity': the agent perceives its environment and responds in a timely fashion. However, W&J do not distinguish between on-chain and off-chain perception.",
+        "C3 (Autonomous Decision-Making)": "Covered by 'Autonomy' and 'Pro-activeness'. W&J's autonomy means operating without direct human intervention. However, they do not require non-deterministic components -- a purely rule-based system could satisfy W&J's autonomy.",
+        "C4 (Adaptiveness)": "NOT explicitly covered. W&J's four properties do not include learning or adaptation. Their 'reactivity' is about timely response, not about modifying behavior over time. This is a key gap: a fixed-rule reactive system satisfies W&J but fails our C4."
+      }
+    },
+    "Franklin & Graesser (1996)": {
+      "conditions_covered": [
+        "C2 (Environmental Perception)",
+        "C3 (Autonomous Decision-Making)",
+        "C4 (Adaptiveness)"
+      ],
+      "conditions_not_covered": [
+        "C1 (On-chain Actuation)"
+      ],
+      "coverage_count": 3,
+      "coverage_fraction": 0.75,
+      "details": {
+        "C1 (On-chain Actuation)": "F&G define agents in terms of acting on environment but do not specify blockchain-specific actuation mechanisms.",
+        "C2 (Environmental Perception)": "Covered by 'Reactive' and 'Modelling' properties. The agent senses its environment. However, no distinction between on-chain vs off-chain perception.",
+        "C3 (Autonomous Decision-Making)": "Covered by 'Autonomous' and 'Goal-oriented'. However, no requirement for non-deterministic components.",
+        "C4 (Adaptiveness)": "Covered by 'Adaptive' and 'Learning' properties. But these are optional properties, not necessary conditions."
+      }
+    },
+    "Parasuraman, Sheridan & Wickens (2000)": {
+      "conditions_covered": [
+        "C2 (Environmental Perception)",
+        "C3 (Autonomous Decision-Making)"
+      ],
+      "conditions_not_covered": [
+        "C1 (On-chain Actuation)",
+        "C4 (Adaptiveness)"
+      ],
+      "coverage_count": 2,
+      "coverage_fraction": 0.5,
+      "details": {
+        "C1 (On-chain Actuation)": "Parasuraman models 'action implementation' as one of four stages but has no blockchain-specific actuation concept.",
+        "C2 (Environmental Perception)": "Covered by 'Information Acquisition' stage. The automation levels apply to how information is sensed and filtered.",
+        "C3 (Autonomous Decision-Making)": "Covered by 'Decision Selection' stage at levels 5-10. However, the framework focuses on degree of human involvement, not on the decision mechanism itself.",
+        "C4 (Adaptiveness)": "The 10 levels describe static automation settings, not adaptation over time. A system at Level 8 stays at Level 8; the framework does not model behavioral change."
+      }
+    },
+    "He et al. (2025)": {
+      "conditions_covered": [
+        "C2 (Environmental Perception)",
+        "C3 (Autonomous Decision-Making)",
+        "C4 (Adaptiveness)"
+      ],
+      "conditions_not_covered": [
+        "C1 (On-chain Actuation)"
+      ],
+      "coverage_count": 3,
+      "coverage_fraction": 0.75,
+      "details": {
+        "C1 (On-chain Actuation)": "He et al.'s 'Action module' covers tool use, API calls, and code generation, but does not address blockchain-specific actuation (EOA control, transaction signing, on-chain execution). Their action model is generic software agent actions.",
+        "C2 (Environmental Perception)": "Strongly covered by the 'Perception module'. He et al. model text, vision, audio, and multimodal perception. However, they do not distinguish on-chain state perception (block data, mempool, oracle feeds) from general data input.",
+        "C3 (Autonomous Decision-Making)": "Covered by 'Reasoning module' (chain-of-thought, planning, reflection). The emphasis on LLM-based reasoning implicitly requires non-deterministic components.",
+        "C4 (Adaptiveness)": "Covered by 'Learning module' (in-context learning, fine-tuning, RLHF). He et al. explicitly model learning as a core module. However, they focus on LLM-centric learning paradigms and do not cover statistical or RL-based adaptation used by MEV bots."
+      }
+    }
+  },
   "coverage_analysis": {
     "Russell & Norvig (2020)": {
       "n_their_categories": 5,
@@ -11,6 +103,18 @@
       "their_categories_mapped_partial": 5,
       "their_categories_unmapped": 0,
       "coverage_density": 0.312
+    },
+    "Wooldridge & Jennings (1995)": {
+      "n_their_categories": 4,
+      "n_our_categories": 8,
+      "our_categories_covered_strong": 7,
+      "our_categories_covered_partial": 8,
+      "our_categories_not_covered": 0,
+      "our_coverage_rate": 1.0,
+      "their_categories_mapped_strong": 4,
+      "their_categories_mapped_partial": 4,
+      "their_categories_unmapped": 0,
+      "coverage_density": 0.688
     },
     "Franklin & Graesser (1996)": {
       "n_their_categories": 13,
@@ -36,29 +140,17 @@
       "their_categories_unmapped": 4,
       "coverage_density": 0.106
     },
-    "Castelfranchi (1995)": {
-      "n_their_categories": 5,
+    "He et al. (2025)": {
+      "n_their_categories": 4,
       "n_our_categories": 8,
-      "our_categories_covered_strong": 1,
-      "our_categories_covered_partial": 6,
-      "our_categories_not_covered": 2,
-      "our_coverage_rate": 0.75,
-      "their_categories_mapped_strong": 4,
-      "their_categories_mapped_partial": 5,
-      "their_categories_unmapped": 0,
-      "coverage_density": 0.212
-    },
-    "Jennings, Sycara & Wooldridge (1998)": {
-      "n_their_categories": 5,
-      "n_our_categories": 8,
-      "our_categories_covered_strong": 7,
+      "our_categories_covered_strong": 3,
       "our_categories_covered_partial": 8,
       "our_categories_not_covered": 0,
       "our_coverage_rate": 1.0,
-      "their_categories_mapped_strong": 5,
-      "their_categories_mapped_partial": 5,
+      "their_categories_mapped_strong": 4,
+      "their_categories_mapped_partial": 4,
       "their_categories_unmapped": 0,
-      "coverage_density": 0.3
+      "coverage_density": 0.469
     }
   },
   "gap_analysis": {
@@ -85,6 +177,38 @@
       ],
       "n_unique_to_them": 1,
       "n_unique_to_us": 3
+    },
+    "Wooldridge & Jennings (1995)": {
+      "they_have_we_dont": [
+        {
+          "category": "Social ability",
+          "note": "W&J require agents to interact with other agents via an agent-communication language. Our taxonomy captures social interaction only in the COLLABORATIVE autonomy level (DAO Agent). We do not model inter-agent communication as a necessary property."
+        },
+        {
+          "category": "Strong agency (BDI mentalistic notions)",
+          "note": "W&J's 'strong notion of agency' includes beliefs, desires, and intentions. Our taxonomy does not model internal cognitive states -- they are not observable on-chain."
+        }
+      ],
+      "we_have_they_dont": [
+        {
+          "category": "Environment Type dimension (all)",
+          "note": "W&J have no concept of execution environment. On-chain, hybrid, cross-chain, and multi-modal are entirely absent."
+        },
+        {
+          "category": "Decision Model dimension (all)",
+          "note": "W&J do not distinguish between decision mechanisms (deterministic, statistical, LLM, RL). A rule-based bot and an RL agent both satisfy their four properties equally."
+        },
+        {
+          "category": "Adaptiveness (C4) as necessary condition",
+          "note": "W&J do not require adaptation/learning. Our C4 explicitly requires behavior modification over time, which excludes fixed-rule reactive systems from being classified as agents."
+        },
+        {
+          "category": "Domain-specific categories (MEV, Bridge, DeFi, etc.)",
+          "note": "W&J provide property-level criteria, not domain-specific types. All 8 of our categories that satisfy the four properties would be indistinguishable under W&J."
+        }
+      ],
+      "n_unique_to_them": 2,
+      "n_unique_to_us": 4
     },
     "Franklin & Graesser (1996)": {
       "they_have_we_dont": [
@@ -126,56 +250,48 @@
       "n_unique_to_them": 1,
       "n_unique_to_us": 2
     },
-    "Castelfranchi (1995)": {
+    "He et al. (2025)": {
       "they_have_we_dont": [
         {
-          "category": "Social commitments and obligations",
-          "note": "Our taxonomy treats DAO governance under COLLABORATIVE but does not model commitment/obligation semantics. Future work could add a 'social commitment' sub-dimension."
+          "category": "Perception module sub-types (vision, audio, multimodal)",
+          "note": "He et al. provide fine-grained perception modality distinctions. Our taxonomy treats perception as a binary condition (C2: yes/no) rather than decomposing by modality. For Web3, the relevant distinction is on-chain vs off-chain, not text vs vision."
         },
         {
-          "category": "Trust models",
-          "note": "Trust between agents is implicit in cross-chain bridge operations but not formalized in our taxonomy."
+          "category": "Reasoning sub-types (CoT, ReAct, reflexion, tree-of-thought)",
+          "note": "He et al. catalog diverse LLM reasoning patterns. Our Decision Model dimension distinguishes LLM from RL from statistical, but does not sub-categorize LLM reasoning approaches. This is appropriate for on-chain observability (reasoning internals are not visible on-chain)."
+        },
+        {
+          "category": "Application domain taxonomy (software dev, science, gaming)",
+          "note": "He et al. classify agents by application domain. Web3/blockchain is mentioned but not a primary domain. Our taxonomy is specifically designed for the Web3 domain, providing more granular classification within this niche."
         }
       ],
       "we_have_they_dont": [
         {
-          "category": "All non-social categories",
-          "note": "Castelfranchi focuses exclusively on social/normative aspects. Solitary agent types (MEV Searcher, Trading Bot, RL Agent) are entirely outside scope."
-        }
-      ],
-      "n_unique_to_them": 2,
-      "n_unique_to_us": 1
-    },
-    "Jennings, Sycara & Wooldridge (1998)": {
-      "they_have_we_dont": [
-        {
-          "category": "BDI (Belief-Desire-Intention) architecture",
-          "note": "Our taxonomy does not model internal cognitive architecture. BDI is relevant to LLM-Powered Agents (beliefs from context, desires from goals, intentions from plans) but not directly observable on-chain."
-        }
-      ],
-      "we_have_they_dont": [
-        {
-          "category": "Domain-specific categories (MEV, Bridge, DeFi)",
-          "note": "Jennings et al. provide paradigm-level categories, not domain-specific types. Multiple of our categories map to 'Hybrid agent', losing critical distinctions."
+          "category": "On-chain Actuation (C1) as a necessary condition",
+          "note": "He et al. do not distinguish between on-chain and off-chain action execution. A chatbot and an MEV searcher would both fall under the 'Action module' without distinction."
         },
         {
           "category": "Environment Type dimension",
-          "note": "No distinction between execution environments."
+          "note": "He et al. do not model where the agent operates. The on-chain / hybrid / cross-chain / multi-modal environment distinction is absent. This is critical for Web3 where the execution environment determines constraints, costs, and observability."
         },
         {
-          "category": "Decision Model dimension",
-          "note": "BDI is the only internal architecture discussed in detail. Statistical, RL, and LLM decision models are absent."
+          "category": "Domain-specific categories (MEV, Bridge, DeFi, DAO)",
+          "note": "He et al. provide a module-based architecture decomposition, not a category-based classification for Web3. Multiple of our categories (MEV Searcher, DeFi Manager, RL Agent) share the same module architecture but differ in domain function."
+        },
+        {
+          "category": "Non-LLM agent types",
+          "note": "He et al. focus heavily on LLM-based agents. Statistical (MEV), RL-based (trading), and deterministic (scripts, bridges) agent types are underrepresented in their framework. Our taxonomy covers the full spectrum of decision models."
         }
       ],
-      "n_unique_to_them": 1,
-      "n_unique_to_us": 3
+      "n_unique_to_them": 3,
+      "n_unique_to_us": 4
     }
   },
   "web3_applicability_ranking": [
     {
-      "name": "Web3 AI Agent Taxonomy (Ours)",
+      "name": "Web3 AI Agent Taxonomy (Ours: C1-C4 + 8 categories)",
       "score": 5,
-      "assessment": "Designed specifically for Web3 context with on-chain observability as core design principle. All categories operationalized through blockchain transaction features."
+      "assessment": "Designed specifically for Web3 context with on-chain observability as core design principle. All categories operationalized through blockchain transaction features. C1 (On-chain Actuation) is unique to our framework."
     },
     {
       "name": "Russell & Norvig (2020)",
@@ -183,19 +299,19 @@
       "assessment": "Provides a useful theoretical foundation but lacks the environment and domain-specific dimensions needed for Web3. Cannot distinguish between an MEV searcher and a DeFi management agent (both could be 'utility-based'). No concept of on-chain vs off-chain execution."
     },
     {
+      "name": "Wooldridge & Jennings (1995)",
+      "score": 2,
+      "assessment": "The four-property definition is influential and provides a good starting point, but it is too broad for Web3. A cron job payroll script arguably satisfies 'autonomy' and 'reactivity' under W&J, blurring the agent boundary. No environment-type or decision-model dimensions means all on-chain agents collapse into one class. The social-ability requirement is too strong (excludes solitary MEV bots) while the adaptiveness requirement is too weak (not required)."
+    },
+    {
       "name": "Franklin & Graesser (1996)",
       "score": 2,
       "assessment": "The property-based approach is theoretically flexible but impractical for Web3 classification. The 2^13 combinatorial space is too large; most properties are either irrelevant (Emotional, Personality) or universally present (Reactive, Temporally continuous). Cannot operationalize on-chain."
     },
     {
-      "name": "Castelfranchi (1995)",
+      "name": "He et al. (2025)",
       "score": 2,
-      "assessment": "Highly relevant to DAO governance and multi-agent coordination but covers only one aspect of the Web3 agent landscape. Cannot classify the majority of on-chain agents (trading bots, MEV searchers, scripts) that operate without social commitments. Complementary to our taxonomy for the COLLABORATIVE category."
-    },
-    {
-      "name": "Jennings, Sycara & Wooldridge (1998)",
-      "score": 2,
-      "assessment": "The deliberative/reactive/hybrid trichotomy roughly maps to our Autonomy dimension but with much less granularity. The multi-agent category is relevant to DAO agents. Overall, too abstract for practical Web3 classification -- multiple fundamentally different agent types collapse into 'Hybrid'."
+      "assessment": "The most modern and comprehensive of the comparison frameworks, but designed primarily for LLM-based software agents. The Perception-Reasoning-Action-Learning loop maps well to LLM-Powered Agents (Category 7) but poorly to MEV Searchers (Category 3) or Deterministic Scripts (Category 1). No blockchain-specific considerations: no concept of on-chain execution, gas optimization, mempool monitoring, or cross-chain coordination. The application domain taxonomy mentions blockchain but does not provide fine-grained categories. Overall, a strong general-purpose framework that lacks Web3-specific depth."
     },
     {
       "name": "Parasuraman, Sheridan & Wickens (2000)",
@@ -203,10 +319,13 @@
       "assessment": "Designed for human-machine interaction in physical systems. Most levels (1-4) are irrelevant to autonomous on-chain agents. The single dimension (automation level) cannot capture the multi-dimensional nature of Web3 agents. However, the insight that automation is stage-specific influenced our Decision Model dimension."
     }
   ],
-  "comparison_table_markdown": "| Framework | Categories | Dimensions | Covers Our Categories | Web3 Score |\n|-----------|-----------|-----------|---------------------|-----------|\n| **Web3 AI Agent Taxonomy (Ours)** | 8 | 3 (Autonomy, Environment, Decision) | N/A | **5/5** |\n| Russell & Norvig (2020) | 5 | 1 (architecture hierarchy) | 8/8 (100%) | 2/5 |\n| Franklin & Graesser (1996) | 13 | 13 (boolean properties) | 8/8 (100%) | 2/5 |\n| Parasuraman, Sheridan & Wickens (2000) | 10 | 1 (automation level) x 4 stages | 8/8 (100%) | 1/5 |\n| Castelfranchi (1995) | 5 | 1 (social commitment type) | 6/8 (75%) | 2/5 |\n| Jennings, Sycara & Wooldridge (1998) | 5 | 1 (agent paradigm) | 8/8 (100%) | 2/5 |",
+  "comparison_table_markdown": "| Framework | Type | Categories/Properties | Covers C1-C4 | Covers Our 8 Cats | Web3 Score |\n|-----------|------|----------------------|-------------|-------------------|------------|\n| **Web3 AI Agent Taxonomy (Ours)** | Definition + Taxonomy | 4 conditions + 8 categories (3 dims) | 4/4 | N/A | **5/5** |\n| Russell & Norvig (2020) | Architecture hierarchy | 5 | 3/4 | 8/8 (100%) | 2/5 |\n| Wooldridge & Jennings (1995) | Property definition | 4 | 2/4 | 8/8 (100%) | 2/5 |\n| Franklin & Graesser (1996) | Property taxonomy | 13 | 3/4 | 8/8 (100%) | 2/5 |\n| Parasuraman, Sheridan & Wickens (2000) | Automation scale | 10 | 2/4 | 8/8 (100%) | 1/5 |\n| He et al. (2025) | Module architecture | 4 | 3/4 | 8/8 (100%) | 2/5 |",
+  "condition_table_markdown": "| Framework | C1 (On-chain) | C2 (Perception) | C3 (Decision) | C4 (Adaptive) |\n|-----------|--------------|-----------------|--------------|---------------|\n| **Ours** | **Yes** (necessary) | **Yes** (necessary) | **Yes** (necessary) | **Yes** (necessary) |\n| Russell & Norvig (2020) | **No** | Yes | Yes | Yes |\n| Wooldridge & Jennings (1995) | **No** | Yes | Yes | **No** |\n| Franklin & Graesser (1996) | **No** | Yes | Yes | Yes |\n| Parasuraman, Sheridan & Wickens (2000) | **No** | Yes | Yes | **No** |\n| He et al. (2025) | **No** | Yes | Yes | Yes |",
   "frameworks": {
     "Russell & Norvig (2020)": {
       "full_title": "Artificial Intelligence: A Modern Approach, 4th Edition",
+      "key_idea": "Hierarchical agent architecture taxonomy based on increasing internal complexity: from condition-action rules to full learning.",
+      "definition_of_agent": "An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through actuators.",
       "n_categories": 5,
       "categories": [
         "Simple reflex agent",
@@ -267,10 +386,69 @@
           0
         ]
       ],
+      "condition_coverage_count": 3,
+      "web3_score": 2
+    },
+    "Wooldridge & Jennings (1995)": {
+      "full_title": "Intelligent Agents: Theory and Practice. The Knowledge Engineering Review.",
+      "key_idea": "Defines 'weak notion of agency' via four necessary properties. An entity is an agent iff it possesses all four: autonomy, social ability, reactivity, and pro-activeness. Also defines 'strong notion' with mentalistic properties (beliefs, desires, intentions).",
+      "definition_of_agent": "A hardware or software-based computer system that enjoys the properties of autonomy, social ability, reactivity, and pro-activeness.",
+      "n_categories": 4,
+      "categories": [
+        "Autonomy (operates without direct human intervention)",
+        "Social ability (interacts with other agents/humans via agent-communication language)",
+        "Reactivity (perceives environment and responds in a timely fashion)",
+        "Pro-activeness (takes initiative, goal-directed behavior)"
+      ],
+      "coverage_matrix": [
+        [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          2,
+          2
+        ]
+      ],
+      "condition_coverage_count": 2,
       "web3_score": 2
     },
     "Franklin & Graesser (1996)": {
       "full_title": "Is it an Agent, or Just a Program?: A Taxonomy for Autonomous Agents",
+      "key_idea": "Property-based taxonomy: an agent is classified by which subset of 13 boolean properties it possesses. Not a hierarchy but a combinatorial space of 2^13 possible agent types.",
+      "definition_of_agent": "An autonomous agent is a system situated within and a part of an environment that senses that environment and acts on it, over time, in pursuit of its own agenda and so as to effect what it senses in the future.",
       "n_categories": 13,
       "categories": [
         "Reactive",
@@ -419,10 +597,13 @@
           1
         ]
       ],
+      "condition_coverage_count": 3,
       "web3_score": 2
     },
     "Parasuraman, Sheridan & Wickens (2000)": {
       "full_title": "A Model for Types and Levels of Human Interaction with Automation",
+      "key_idea": "10-level automation scale applied across 4 information processing stages: acquisition, analysis, decision selection, action. Designed for human-in-the-loop systems.",
+      "definition_of_agent": "Not an agent definition per se but an automation taxonomy. Automation is 'the execution by a machine agent (usually a computer) of a function that was previously carried out by a human.'",
       "n_categories": 10,
       "categories": [
         "Level 1: Manual (human does everything)",
@@ -538,134 +719,63 @@
           0
         ]
       ],
+      "condition_coverage_count": 2,
       "web3_score": 1
     },
-    "Castelfranchi (1995)": {
-      "full_title": "Guarantees for Autonomy in Cognitive Agent Architecture / Social Commitment Framework",
-      "n_categories": 5,
+    "He et al. (2025)": {
+      "full_title": "A Survey on AI Agent. arXiv:2601.04583. Perception-Reasoning-Action-Learning agent loop.",
+      "key_idea": "Comprehensive survey defining AI agents through a four-module architecture: Perception -> Reasoning -> Action -> Learning. Focuses on LLM-based agents and their component modules. Classifies agents by application domain: software dev, science, gaming, social simulation, etc.",
+      "definition_of_agent": "An AI agent is an intelligent entity that perceives its environment, reasons about the perceived information, takes actions to achieve specific goals, and learns from experience to improve performance.",
+      "n_categories": 4,
       "categories": [
-        "Autonomous agents with social commitments",
-        "Obligation-based agents",
-        "Delegation-capable agents",
-        "Trust-modeled agents",
-        "Normative agents (rule-following)"
+        "Perception module (text, vision, audio, multimodal)",
+        "Reasoning module (CoT, planning, reflection, memory)",
+        "Action module (tool use, code generation, API calls)",
+        "Learning module (in-context, fine-tuning, RL from feedback)"
       ],
       "coverage_matrix": [
         [
           0,
-          0,
-          0,
-          0,
-          0,
-          0,
           1,
-          2
+          1,
+          1,
+          1,
+          1,
+          2,
+          1
         ],
         [
           0,
           0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          2
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          1,
-          2
-        ],
-        [
-          0,
-          0,
-          0,
           1,
           0,
-          0,
-          0,
+          1,
+          2,
+          2,
           1
         ],
         [
           1,
           1,
-          0,
           1,
-          0,
           1,
-          0,
-          2
-        ]
-      ],
-      "web3_score": 2
-    },
-    "Jennings, Sycara & Wooldridge (1998)": {
-      "full_title": "A Roadmap of Agent Research and Development",
-      "n_categories": 5,
-      "categories": [
-        "Deliberative (BDI) agents",
-        "Reactive agents",
-        "Hybrid agents",
-        "Multi-agent systems (MAS)",
-        "Collaborative agents"
-      ],
-      "coverage_matrix": [
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          2,
+          1,
+          1,
           2,
           1
         ],
         [
-          2,
+          0,
+          0,
+          1,
+          0,
           2,
           1,
-          1,
-          0,
-          0,
-          0,
+          2,
           0
-        ],
-        [
-          0,
-          0,
-          2,
-          1,
-          2,
-          1,
-          1,
-          1
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          2
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          2
         ]
       ],
+      "condition_coverage_count": 3,
       "web3_score": 2
     }
   }
