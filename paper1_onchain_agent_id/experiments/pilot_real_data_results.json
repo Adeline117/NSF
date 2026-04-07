@@ -1,0 +1,244 @@
+{
+  "agents": {
+    "0x56178a0d5F301bAf6CF3e1Cd53d9863437345Bf9": {
+      "label": "jaredfromsubway.eth (MEV)",
+      "address": "0x56178a0d5F301bAf6CF3e1Cd53d9863437345Bf9",
+      "temporal": {
+        "tx_count": 2000,
+        "tx_interval_mean": 1803.3591795897948,
+        "tx_interval_std": 7738.410900739821,
+        "tx_interval_skewness": 14.481703098002253,
+        "active_hour_entropy": 4.449276732041553,
+        "max_possible_entropy": 4.584962500721156,
+        "night_activity_ratio": 0.2155,
+        "weekend_ratio": 0.2375,
+        "burst_ratio": 0.19409704852426213
+      },
+      "gas": {
+        "gas_price_mean_gwei": 7.89745,
+        "gas_price_cv": 0.4802624532576736,
+        "gas_price_round_number_ratio": 0.8105,
+        "gas_price_trailing_zeros_mean": 9.0265,
+        "gas_limit_precision_mean": 0.39403147836013247,
+        "gas_limit_precision_std": 0.012969341151285988
+      },
+      "interaction": {
+        "unique_contracts_ratio": 0.0025,
+        "top_contract_concentration_hhi": 0.9890410000000002,
+        "method_id_diversity": 0.0010005002501250625,
+        "unique_method_ids": 2,
+        "contract_call_ratio": 0.9995
+      },
+      "approval": {
+        "total_approvals": 10,
+        "unlimited_approve_ratio": 1.0
+      }
+    },
+    "0x6b75d8AF000000e20B7a7DDf000Ba900b4009A80": {
+      "label": "MEV bot 2",
+      "address": "0x6b75d8AF000000e20B7a7DDf000Ba900b4009A80",
+      "temporal": {
+        "tx_count": 2000,
+        "tx_interval_mean": 63.60180090045022,
+        "tx_interval_std": 642.0879721648411,
+        "tx_interval_skewness": 36.45758886992467,
+        "active_hour_entropy": 4.331615342075497,
+        "max_possible_entropy": 4.584962500721156,
+        "night_activity_ratio": 0.2975,
+        "weekend_ratio": 0.0,
+        "burst_ratio": 0.49974987493746875
+      },
+      "gas": {
+        "gas_price_mean_gwei": 186.251347553212,
+        "gas_price_cv": 2.659174560720076,
+        "gas_price_round_number_ratio": 0.0,
+        "gas_price_trailing_zeros_mean": 0.1065,
+        "gas_limit_precision_mean": 0.4995908666666667,
+        "gas_limit_precision_std": 0.009141632067426797
+      },
+      "interaction": {
+        "unique_contracts_ratio": 0.0005,
+        "top_contract_concentration_hhi": 1.0,
+        "method_id_diversity": 0.3286573146292585,
+        "unique_method_ids": 656,
+        "contract_call_ratio": 1.0
+      },
+      "approval": {
+        "total_approvals": 0,
+        "unlimited_approve_ratio": 0
+      }
+    },
+    "0xae2Fc483527B8EF99EB5D9B44875F005ba1FaE13": {
+      "label": "jaredfromsubway v2",
+      "address": "0xae2Fc483527B8EF99EB5D9B44875F005ba1FaE13",
+      "temporal": {
+        "tx_count": 2000,
+        "tx_interval_mean": 28.028014007003502,
+        "tx_interval_std": 115.05856966273406,
+        "tx_interval_skewness": 30.531954063878867,
+        "active_hour_entropy": 3.7745771676645155,
+        "max_possible_entropy": 4.584962500721156,
+        "night_activity_ratio": 0.124,
+        "weekend_ratio": 0.0,
+        "burst_ratio": 0.5072536268134067
+      },
+      "gas": {
+        "gas_price_mean_gwei": 222.242713207185,
+        "gas_price_cv": 2.6554323910119035,
+        "gas_price_round_number_ratio": 0.0,
+        "gas_price_trailing_zeros_mean": 0.1155,
+        "gas_limit_precision_mean": 0.5009271016666667,
+        "gas_limit_precision_std": 0.0238906808385989
+      },
+      "interaction": {
+        "unique_contracts_ratio": 0.002,
+        "top_contract_concentration_hhi": 0.9950090000000001,
+        "method_id_diversity": 0.2961847389558233,
+        "unique_method_ids": 590,
+        "contract_call_ratio": 0.998
+      },
+      "approval": {
+        "total_approvals": 0,
+        "unlimited_approve_ratio": 0
+      }
+    },
+    "0xA69babEF1cA67A37Ffaf7a485DfFF3382056e78C": {
+      "label": "Wintermute (market maker)",
+      "address": "0xA69babEF1cA67A37Ffaf7a485DfFF3382056e78C",
+      "temporal": {
+        "tx_count": 2000,
+        "tx_interval_mean": 318.2631315657829,
+        "tx_interval_std": 10616.918125663398,
+        "tx_interval_skewness": 39.46119866613632,
+        "active_hour_entropy": 3.2627175641378443,
+        "max_possible_entropy": 4.584962500721156,
+        "night_activity_ratio": 0.072,
+        "weekend_ratio": 0.0,
+        "burst_ratio": 0.6173086543271635
+      },
+      "gas": {
+        "gas_price_mean_gwei": 27.1911304409525,
+        "gas_price_cv": 2.3042877985395878,
+        "gas_price_round_number_ratio": 0.0,
+        "gas_price_trailing_zeros_mean": 0.1265,
+        "gas_limit_precision_mean": 0.3628183574397708,
+        "gas_limit_precision_std": 0.1742614770572118
+      },
+      "interaction": {
+        "unique_contracts_ratio": 0.0005,
+        "top_contract_concentration_hhi": 1.0,
+        "method_id_diversity": 0.0015015015015015015,
+        "unique_method_ids": 3,
+        "contract_call_ratio": 0.999
+      },
+      "approval": {
+        "total_approvals": 0,
+        "unlimited_approve_ratio": 0
+      }
+    }
+  },
+  "humans": {
+    "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045": {
+      "label": "vitalik.eth",
+      "address": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "temporal": {
+        "tx_count": 2000,
+        "tx_interval_mean": 122818.79539769885,
+        "tx_interval_std": 834066.6398140884,
+        "tx_interval_skewness": 15.917942565716622,
+        "active_hour_entropy": 4.352843661710898,
+        "max_possible_entropy": 4.584962500721156,
+        "night_activity_ratio": 0.2115,
+        "weekend_ratio": 0.2735,
+        "burst_ratio": 0.14907453726863432
+      },
+      "gas": {
+        "gas_price_mean_gwei": 43.1089434699875,
+        "gas_price_cv": 1.2566188441473196,
+        "gas_price_round_number_ratio": 0.484,
+        "gas_price_trailing_zeros_mean": 4.856,
+        "gas_limit_precision_mean": 0.8106649394384211,
+        "gas_limit_precision_std": 0.30966869999847824
+      },
+      "interaction": {
+        "unique_contracts_ratio": 0.0905,
+        "top_contract_concentration_hhi": 0.24207050000000005,
+        "method_id_diversity": 0.1437908496732026,
+        "unique_method_ids": 176,
+        "contract_call_ratio": 0.6135
+      },
+      "approval": {
+        "total_approvals": 38,
+        "unlimited_approve_ratio": 0.39473684210526316
+      }
+    },
+    "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B": {
+      "label": "vitalik old address",
+      "address": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
+      "temporal": {
+        "tx_count": 1324,
+        "tx_interval_mean": 251860.60544217686,
+        "tx_interval_std": 827657.0642024961,
+        "tx_interval_skewness": 7.634729840958233,
+        "active_hour_entropy": 4.395750405137946,
+        "max_possible_entropy": 4.584962500721156,
+        "night_activity_ratio": 0.2258308157099698,
+        "weekend_ratio": 0.19561933534743203,
+        "burst_ratio": 0.22071050642479215
+      },
+      "gas": {
+        "gas_price_mean_gwei": 74.2835479581858,
+        "gas_price_cv": 2.101819332476827,
+        "gas_price_round_number_ratio": 0.30513595166163143,
+        "gas_price_trailing_zeros_mean": 3.4229607250755287,
+        "gas_limit_precision_mean": 0.8226225329373769,
+        "gas_limit_precision_std": 0.25958048049869686
+      },
+      "interaction": {
+        "unique_contracts_ratio": 0.1095166163141994,
+        "top_contract_concentration_hhi": 0.5905317585637224,
+        "method_id_diversity": 0.30987821380243574,
+        "unique_method_ids": 229,
+        "contract_call_ratio": 0.5626888217522659
+      },
+      "approval": {
+        "total_approvals": 130,
+        "unlimited_approve_ratio": 0.823076923076923
+      }
+    },
+    "0x220866B1A2219f40e72f5c628B65D54268cA3A9D": {
+      "label": "Hayden Adams (Uniswap)",
+      "address": "0x220866B1A2219f40e72f5c628B65D54268cA3A9D",
+      "temporal": {
+        "tx_count": 590,
+        "tx_interval_mean": 262513.96264855686,
+        "tx_interval_std": 861471.3716633222,
+        "tx_interval_skewness": 6.275140775342003,
+        "active_hour_entropy": 4.159884748123096,
+        "max_possible_entropy": 4.584962500721156,
+        "night_activity_ratio": 0.17288135593220338,
+        "weekend_ratio": 0.42203389830508475,
+        "burst_ratio": 0.08488964346349745
+      },
+      "gas": {
+        "gas_price_mean_gwei": 28.425282727205087,
+        "gas_price_cv": 3.101328616317773,
+        "gas_price_round_number_ratio": 0.3101694915254237,
+        "gas_price_trailing_zeros_mean": 4.433898305084746,
+        "gas_limit_precision_mean": 0.7713989184975368,
+        "gas_limit_precision_std": 0.17143975132742365
+      },
+      "interaction": {
+        "unique_contracts_ratio": 0.001694915254237288,
+        "top_contract_concentration_hhi": 1.0,
+        "method_id_diversity": 0.14847161572052403,
+        "unique_method_ids": 34,
+        "contract_call_ratio": 0.38813559322033897
+      },
+      "approval": {
+        "total_approvals": 0,
+        "unlimited_approve_ratio": 0
+      }
+    }
+  }
+}
