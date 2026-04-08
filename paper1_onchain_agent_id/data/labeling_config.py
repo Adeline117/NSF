@@ -68,6 +68,13 @@ SATISFIES_ALL_C1C4: dict[str, str] = {
     # ---- DeFi Management Agents (Autonolas / OLAS) ----
     # POST-DELPHI: Add confirmed Autonolas agent operator EOAs here
 
+
+    # ---- Auto-discovered agents (C1-C4 verified) ----
+    "0xeb2a22b27c7ad5eee424fd90b376c745e60f914e": "Paper0-validated: Platform agent (autonolas_component_registry) (auto-discovered)",
+    "0x588d91abf5192a0f0dc026bf05f510253bd1cf51": "Paper0-validated: Platform agent (autonolas_component_registry) (auto-discovered)",
+    "0xba95718a52b5a3dba749a7641712dc05a3550d4f": "Paper0-validated: Platform agent (autonolas_component_registry) (auto-discovered)",
+    "0x98fdab66f92d64c97f96ab0306c468bb9a3c2685": "Paper0-validated: Platform agent (autonolas_component_registry) (auto-discovered)",
+
     # ---- LLM-Driven Agents (AI16Z, Virtuals Protocol) ----
     # POST-DELPHI: Add confirmed LLM agent EOAs here
 }

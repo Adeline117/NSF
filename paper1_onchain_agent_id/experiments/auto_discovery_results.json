@@ -1,0 +1,390 @@
+{
+  "timestamp": "2026-04-07T17:11:43.702729",
+  "strategy1_candidates": 12,
+  "strategy2_candidates": 7,
+  "new_agents": {
+    "0xeb2a22b27c7ad5eee424fd90b376c745e60f914e": "Paper0-validated: Platform agent (autonolas_component_registry)",
+    "0x588d91abf5192a0f0dc026bf05f510253bd1cf51": "Paper0-validated: Platform agent (autonolas_component_registry)",
+    "0xba95718a52b5a3dba749a7641712dc05a3550d4f": "Paper0-validated: Platform agent (autonolas_component_registry)",
+    "0x98fdab66f92d64c97f96ab0306c468bb9a3c2685": "Paper0-validated: Platform agent (autonolas_component_registry)"
+  },
+  "new_humans": {},
+  "excluded": {
+    "0x00000000009726632680AF5D2882e70d0aDFCB6c": {
+      "name": "MEV bot (generalized arb)",
+      "reason": "C1 failed or ambiguous"
+    },
+    "0x6F1cDea15Cf891B29E8eFcDA5f57ac8fB5Bf91C4": {
+      "name": "MEV arb bot alpha",
+      "reason": "C1 failed or ambiguous"
+    },
+    "0xA7c5C86582dBFc60c76a0197Ab0C48F88BF4DdBd": {
+      "name": "Liquidation bot kappa",
+      "reason": "C1 failed or ambiguous"
+    },
+    "0x2910543af39abA0Cd09dBb2D50200b3E800A63D2": {
+      "name": "Aave liquidator bot",
+      "reason": "Etherscan error: None"
+    },
+    "0x0000000000007F150Bd6f54c40A34d7C3d5e9f56": {
+      "name": "Searcher omega",
+      "reason": "Etherscan error: None"
+    },
+    "0x7D9DA47e83B12C9d1e29d43FF84e13C5bb0e4485": {
+      "name": "Cross-DEX arb bot",
+      "reason": "C1 failed or ambiguous"
+    },
+    "0x5aA653A076c1dbB47cec8C1B4d152444CAD91941": {
+      "name": "Gelato Network relayer",
+      "reason": "C1 failed or ambiguous"
+    },
+    "0x3E286452b1C66abB08Eb5494C3894F40aB5a59AF": {
+      "name": "Keep3r job executor",
+      "reason": "C1 failed or ambiguous"
+    },
+    "0x0B0A5886664376F59C351BA3F598C8A8B4D0dE6b": {
+      "name": "MakerDAO keeper",
+      "reason": "C1 failed or ambiguous"
+    },
+    "0x774e8e80b392D58f7CF2dd3C86BD99e57f6c9eB2": {
+      "name": "Sandwich bot beta",
+      "reason": "C1 failed or ambiguous"
+    },
+    "0xB6fB6f1255f0d60b80C5fCb5de3d80bDB3a7E73D": {
+      "name": "Sandwich bot gamma",
+      "reason": "C1 failed or ambiguous"
+    }
+  },
+  "verification_results": [
+    {
+      "address": "0x00000000009726632680AF5D2882e70d0aDFCB6c",
+      "c1": false,
+      "c2": false,
+      "c3": false,
+      "c4": false,
+      "is_agent": false,
+      "confidence": 0.075,
+      "n_transactions": 0,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": false,
+        "c1_outgoing_tx_count": 0,
+        "c2_calldata_entropy": 0.0,
+        "c2_tx_timing_varies": false,
+        "c3_tx_interval_cv": 0.0,
+        "c3_hour_entropy": 0.0,
+        "c3_burst_ratio": 0.0,
+        "c4_gas_strategy_drift": 0.0,
+        "c4_target_set_evolution": 0.0
+      },
+      "name": "MEV bot (generalized arb)",
+      "source": "strategy1_high_activity",
+      "assigned_label": "EXCLUDE"
+    },
+    {
+      "address": "0x6F1cDea15Cf891B29E8eFcDA5f57ac8fB5Bf91C4",
+      "c1": false,
+      "c2": false,
+      "c3": false,
+      "c4": false,
+      "is_agent": false,
+      "confidence": 0.075,
+      "n_transactions": 0,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": false,
+        "c1_outgoing_tx_count": 0,
+        "c2_calldata_entropy": 0.0,
+        "c2_tx_timing_varies": false,
+        "c3_tx_interval_cv": 0.0,
+        "c3_hour_entropy": 0.0,
+        "c3_burst_ratio": 0.0,
+        "c4_gas_strategy_drift": 0.0,
+        "c4_target_set_evolution": 0.0
+      },
+      "name": "MEV arb bot alpha",
+      "source": "strategy1_high_activity",
+      "assigned_label": "EXCLUDE"
+    },
+    {
+      "address": "0xA7c5C86582dBFc60c76a0197Ab0C48F88BF4DdBd",
+      "c1": false,
+      "c2": false,
+      "c3": false,
+      "c4": false,
+      "is_agent": false,
+      "confidence": 0.075,
+      "n_transactions": 0,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": false,
+        "c1_outgoing_tx_count": 0,
+        "c2_calldata_entropy": 0.0,
+        "c2_tx_timing_varies": false,
+        "c3_tx_interval_cv": 0.0,
+        "c3_hour_entropy": 0.0,
+        "c3_burst_ratio": 0.0,
+        "c4_gas_strategy_drift": 0.0,
+        "c4_target_set_evolution": 0.0
+      },
+      "name": "Liquidation bot kappa",
+      "source": "strategy1_high_activity",
+      "assigned_label": "EXCLUDE"
+    },
+    {
+      "address": "0x7D9DA47e83B12C9d1e29d43FF84e13C5bb0e4485",
+      "c1": false,
+      "c2": false,
+      "c3": false,
+      "c4": false,
+      "is_agent": false,
+      "confidence": 0.075,
+      "n_transactions": 0,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": false,
+        "c1_outgoing_tx_count": 0,
+        "c2_calldata_entropy": 0.0,
+        "c2_tx_timing_varies": false,
+        "c3_tx_interval_cv": 0.0,
+        "c3_hour_entropy": 0.0,
+        "c3_burst_ratio": 0.0,
+        "c4_gas_strategy_drift": 0.0,
+        "c4_target_set_evolution": 0.0
+      },
+      "name": "Cross-DEX arb bot",
+      "source": "strategy1_high_activity",
+      "assigned_label": "EXCLUDE"
+    },
+    {
+      "address": "0x5aA653A076c1dbB47cec8C1B4d152444CAD91941",
+      "c1": false,
+      "c2": false,
+      "c3": false,
+      "c4": false,
+      "is_agent": false,
+      "confidence": 0.0,
+      "n_transactions": 0,
+      "details": {
+        "c1_is_eoa": false,
+        "c1_has_outgoing_txs": false,
+        "c1_outgoing_tx_count": 0,
+        "c2_calldata_entropy": 0.0,
+        "c2_tx_timing_varies": false,
+        "c3_tx_interval_cv": 0.0,
+        "c3_hour_entropy": 0.0,
+        "c3_burst_ratio": 0.0,
+        "c4_gas_strategy_drift": 0.0,
+        "c4_target_set_evolution": 0.0
+      },
+      "name": "Gelato Network relayer",
+      "source": "strategy1_high_activity",
+      "assigned_label": "EXCLUDE"
+    },
+    {
+      "address": "0x3E286452b1C66abB08Eb5494C3894F40aB5a59AF",
+      "c1": false,
+      "c2": false,
+      "c3": false,
+      "c4": false,
+      "is_agent": false,
+      "confidence": 0.075,
+      "n_transactions": 0,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": false,
+        "c1_outgoing_tx_count": 0,
+        "c2_calldata_entropy": 0.0,
+        "c2_tx_timing_varies": false,
+        "c3_tx_interval_cv": 0.0,
+        "c3_hour_entropy": 0.0,
+        "c3_burst_ratio": 0.0,
+        "c4_gas_strategy_drift": 0.0,
+        "c4_target_set_evolution": 0.0
+      },
+      "name": "Keep3r job executor",
+      "source": "strategy1_high_activity",
+      "assigned_label": "EXCLUDE"
+    },
+    {
+      "address": "0x0B0A5886664376F59C351BA3F598C8A8B4D0dE6b",
+      "c1": false,
+      "c2": false,
+      "c3": false,
+      "c4": false,
+      "is_agent": false,
+      "confidence": 0.075,
+      "n_transactions": 0,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": false,
+        "c1_outgoing_tx_count": 0,
+        "c2_calldata_entropy": 0.0,
+        "c2_tx_timing_varies": false,
+        "c3_tx_interval_cv": 0.0,
+        "c3_hour_entropy": 0.0,
+        "c3_burst_ratio": 0.0,
+        "c4_gas_strategy_drift": 0.0,
+        "c4_target_set_evolution": 0.0
+      },
+      "name": "MakerDAO keeper",
+      "source": "strategy1_high_activity",
+      "assigned_label": "EXCLUDE"
+    },
+    {
+      "address": "0x774e8e80b392D58f7CF2dd3C86BD99e57f6c9eB2",
+      "c1": false,
+      "c2": false,
+      "c3": false,
+      "c4": false,
+      "is_agent": false,
+      "confidence": 0.075,
+      "n_transactions": 0,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": false,
+        "c1_outgoing_tx_count": 0,
+        "c2_calldata_entropy": 0.0,
+        "c2_tx_timing_varies": false,
+        "c3_tx_interval_cv": 0.0,
+        "c3_hour_entropy": 0.0,
+        "c3_burst_ratio": 0.0,
+        "c4_gas_strategy_drift": 0.0,
+        "c4_target_set_evolution": 0.0
+      },
+      "name": "Sandwich bot beta",
+      "source": "strategy1_high_activity",
+      "assigned_label": "EXCLUDE"
+    },
+    {
+      "address": "0xB6fB6f1255f0d60b80C5fCb5de3d80bDB3a7E73D",
+      "c1": false,
+      "c2": false,
+      "c3": false,
+      "c4": false,
+      "is_agent": false,
+      "confidence": 0.075,
+      "n_transactions": 0,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": false,
+        "c1_outgoing_tx_count": 0,
+        "c2_calldata_entropy": 0.0,
+        "c2_tx_timing_varies": false,
+        "c3_tx_interval_cv": 0.0,
+        "c3_hour_entropy": 0.0,
+        "c3_burst_ratio": 0.0,
+        "c4_gas_strategy_drift": 0.0,
+        "c4_target_set_evolution": 0.0
+      },
+      "name": "Sandwich bot gamma",
+      "source": "strategy1_high_activity",
+      "assigned_label": "EXCLUDE"
+    },
+    {
+      "address": "0xeb2a22b27c7ad5eee424fd90b376c745e60f914e",
+      "c1": true,
+      "c2": true,
+      "c3": true,
+      "c4": true,
+      "is_agent": true,
+      "confidence": 0.867,
+      "n_transactions": 1144,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": true,
+        "c1_outgoing_tx_count": 1144,
+        "c2_calldata_entropy": 3.3094,
+        "c2_tx_timing_varies": "True",
+        "c3_tx_interval_cv": 2.8261,
+        "c3_hour_entropy": 2.9593,
+        "c3_burst_ratio": 0.0026,
+        "c4_gas_strategy_drift": 0.9196,
+        "c4_target_set_evolution": 0.8889
+      },
+      "name": "Paper0-validated: Platform agent (autonolas_component_registry)",
+      "source": "strategy2_paper0",
+      "assigned_label": "AGENT"
+    },
+    {
+      "address": "0x588d91abf5192a0f0dc026bf05f510253bd1cf51",
+      "c1": true,
+      "c2": true,
+      "c3": true,
+      "c4": true,
+      "is_agent": true,
+      "confidence": 0.867,
+      "n_transactions": 540,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": true,
+        "c1_outgoing_tx_count": 540,
+        "c2_calldata_entropy": 3.2377,
+        "c2_tx_timing_varies": "True",
+        "c3_tx_interval_cv": 4.729,
+        "c3_hour_entropy": 3.005,
+        "c3_burst_ratio": 0.0445,
+        "c4_gas_strategy_drift": 0.5037,
+        "c4_target_set_evolution": 0.9508
+      },
+      "name": "Paper0-validated: Platform agent (autonolas_component_registry)",
+      "source": "strategy2_paper0",
+      "assigned_label": "AGENT"
+    },
+    {
+      "address": "0xba95718a52b5a3dba749a7641712dc05a3550d4f",
+      "c1": true,
+      "c2": true,
+      "c3": true,
+      "c4": true,
+      "is_agent": true,
+      "confidence": 0.867,
+      "n_transactions": 3030,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": true,
+        "c1_outgoing_tx_count": 3030,
+        "c2_calldata_entropy": 1.6381,
+        "c2_tx_timing_varies": "True",
+        "c3_tx_interval_cv": 6.2348,
+        "c3_hour_entropy": 3.1281,
+        "c3_burst_ratio": 0.002,
+        "c4_gas_strategy_drift": 0.5218,
+        "c4_target_set_evolution": 0.8514
+      },
+      "name": "Paper0-validated: Platform agent (autonolas_component_registry)",
+      "source": "strategy2_paper0",
+      "assigned_label": "AGENT"
+    },
+    {
+      "address": "0x98fdab66f92d64c97f96ab0306c468bb9a3c2685",
+      "c1": true,
+      "c2": true,
+      "c3": true,
+      "c4": true,
+      "is_agent": true,
+      "confidence": 0.867,
+      "n_transactions": 63,
+      "details": {
+        "c1_is_eoa": true,
+        "c1_has_outgoing_txs": true,
+        "c1_outgoing_tx_count": 63,
+        "c2_calldata_entropy": 2.7556,
+        "c2_tx_timing_varies": "True",
+        "c3_tx_interval_cv": 2.7002,
+        "c3_hour_entropy": 2.6105,
+        "c3_burst_ratio": 0.0,
+        "c4_gas_strategy_drift": 0.5333,
+        "c4_target_set_evolution": 0.9565
+      },
+      "name": "Paper0-validated: Platform agent (autonolas_component_registry)",
+      "source": "strategy2_paper0",
+      "assigned_label": "AGENT"
+    }
+  ],
+  "final_dataset": {
+    "total": 53,
+    "agents": 32,
+    "humans": 21
+  }
+}
