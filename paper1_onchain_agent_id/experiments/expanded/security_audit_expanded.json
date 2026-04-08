@@ -1,0 +1,417 @@
+{
+  "timestamp": "2026-04-08T13:10:40.084237",
+  "n_total_labeled": 3316,
+  "n_audited": 3302,
+  "n_skipped": 14,
+  "n_agents_audited": 2579,
+  "n_humans_audited": 723,
+  "summary": {
+    "n_approvals": {
+      "agent": {
+        "mean": 108.7491,
+        "std": 201.5297,
+        "median": 44.0,
+        "n": 2579
+      },
+      "human": {
+        "mean": 14.4053,
+        "std": 54.4218,
+        "median": 4.0,
+        "n": 723
+      },
+      "agent_human_ratio": 7.549,
+      "cohens_d": 0.6392,
+      "mann_whitney_U": 1551315.5,
+      "mann_whitney_p": 0.0,
+      "significant_0.05": true,
+      "significant_0.01": true
+    },
+    "n_unlimited_approvals": {
+      "agent": {
+        "mean": 61.3761,
+        "std": 135.0564,
+        "median": 20.0,
+        "n": 2579
+      },
+      "human": {
+        "mean": 5.9308,
+        "std": 24.8252,
+        "median": 1.0,
+        "n": 723
+      },
+      "agent_human_ratio": 10.349,
+      "cohens_d": 0.571,
+      "mann_whitney_U": 1541034.5,
+      "mann_whitney_p": 0.0,
+      "significant_0.05": true,
+      "significant_0.01": true
+    },
+    "n_active_approvals": {
+      "agent": {
+        "mean": 102.0237,
+        "std": 192.5652,
+        "median": 41.0,
+        "n": 2579
+      },
+      "human": {
+        "mean": 13.4869,
+        "std": 48.4961,
+        "median": 4.0,
+        "n": 723
+      },
+      "agent_human_ratio": 7.565,
+      "cohens_d": 0.6305,
+      "mann_whitney_U": 1552440.5,
+      "mann_whitney_p": 0.0,
+      "significant_0.05": true,
+      "significant_0.01": true
+    },
+    "avg_approval_age_days": {
+      "agent": {
+        "mean": 1170.4714,
+        "std": 595.4649,
+        "median": 990.53,
+        "n": 2579
+      },
+      "human": {
+        "mean": 1134.904,
+        "std": 817.1372,
+        "median": 960.91,
+        "n": 723
+      },
+      "agent_human_ratio": 1.031,
+      "cohens_d": 0.0497,
+      "mann_whitney_U": 955788.5,
+      "mann_whitney_p": 0.299704,
+      "significant_0.05": false,
+      "significant_0.01": false
+    },
+    "max_approval_age_days": {
+      "agent": {
+        "mean": 1538.975,
+        "std": 743.6684,
+        "median": 1540.82,
+        "n": 2579
+      },
+      "human": {
+        "mean": 1295.5358,
+        "std": 909.5309,
+        "median": 1017.17,
+        "n": 723
+      },
+      "agent_human_ratio": 1.188,
+      "cohens_d": 0.293,
+      "mann_whitney_U": 1112305.5,
+      "mann_whitney_p": 0.0,
+      "significant_0.05": true,
+      "significant_0.01": true
+    },
+    "unlimited_approval_rate": {
+      "agent": {
+        "mean": 0.5015,
+        "std": 0.3289,
+        "median": 0.5039,
+        "n": 2579
+      },
+      "human": {
+        "mean": 0.3039,
+        "std": 0.3658,
+        "median": 0.1111,
+        "n": 723
+      },
+      "agent_human_ratio": 1.65,
+      "cohens_d": 0.568,
+      "mann_whitney_U": 1249816.5,
+      "mann_whitney_p": 0.0,
+      "significant_0.05": true,
+      "significant_0.01": true
+    },
+    "dex_interaction_rate": {
+      "agent": {
+        "mean": 0.2275,
+        "std": 0.2063,
+        "median": 0.1852,
+        "n": 2579
+      },
+      "human": {
+        "mean": 0.1334,
+        "std": 0.1875,
+        "median": 0.0281,
+        "n": 723
+      },
+      "agent_human_ratio": 1.705,
+      "cohens_d": 0.4772,
+      "mann_whitney_U": 1246311.0,
+      "mann_whitney_p": 0.0,
+      "significant_0.05": true,
+      "significant_0.01": true
+    },
+    "swap_rate": {
+      "agent": {
+        "mean": 0.1956,
+        "std": 0.1954,
+        "median": 0.137,
+        "n": 2579
+      },
+      "human": {
+        "mean": 0.1178,
+        "std": 0.1762,
+        "median": 0.0,
+        "n": 723
+      },
+      "agent_human_ratio": 1.66,
+      "cohens_d": 0.4181,
+      "mann_whitney_U": 1239353.0,
+      "mann_whitney_p": 0.0,
+      "significant_0.05": true,
+      "significant_0.01": true
+    },
+    "revert_rate": {
+      "agent": {
+        "mean": 0.049,
+        "std": 0.0467,
+        "median": 0.0389,
+        "n": 2579
+      },
+      "human": {
+        "mean": 0.0424,
+        "std": 0.0748,
+        "median": 0.0132,
+        "n": 723
+      },
+      "agent_human_ratio": 1.155,
+      "cohens_d": 0.1055,
+      "mann_whitney_U": 1210810.5,
+      "mann_whitney_p": 0.0,
+      "significant_0.05": true,
+      "significant_0.01": true
+    },
+    "gas_used_efficiency": {
+      "agent": {
+        "mean": 0.7117,
+        "std": 0.1223,
+        "median": 0.7449,
+        "n": 2579
+      },
+      "human": {
+        "mean": 0.6945,
+        "std": 0.1477,
+        "median": 0.7307,
+        "n": 723
+      },
+      "agent_human_ratio": 1.025,
+      "cohens_d": 0.1268,
+      "mann_whitney_U": 978303.0,
+      "mann_whitney_p": 0.042334,
+      "significant_0.05": true,
+      "significant_0.01": false
+    }
+  },
+  "elapsed_seconds": 12.19,
+  "trusted_subset_n64": {
+    "n_agents": 22,
+    "n_humans": 28,
+    "summary": {
+      "n_approvals": {
+        "agent": {
+          "mean": 110.0909,
+          "std": 198.4382,
+          "median": 4.0,
+          "n": 22
+        },
+        "human": {
+          "mean": 125.1071,
+          "std": 189.2139,
+          "median": 51.0,
+          "n": 28
+        },
+        "agent_human_ratio": 0.88,
+        "cohens_d": -0.0775,
+        "mann_whitney_U": 226.5,
+        "mann_whitney_p": 0.106278,
+        "significant_0.05": false,
+        "significant_0.01": false
+      },
+      "n_unlimited_approvals": {
+        "agent": {
+          "mean": 49.1364,
+          "std": 95.3988,
+          "median": 0.5,
+          "n": 22
+        },
+        "human": {
+          "mean": 66.1429,
+          "std": 97.0864,
+          "median": 19.0,
+          "n": 28
+        },
+        "agent_human_ratio": 0.743,
+        "cohens_d": -0.1767,
+        "mann_whitney_U": 217.0,
+        "mann_whitney_p": 0.071133,
+        "significant_0.05": false,
+        "significant_0.01": false
+      },
+      "n_active_approvals": {
+        "agent": {
+          "mean": 104.6818,
+          "std": 186.853,
+          "median": 4.0,
+          "n": 22
+        },
+        "human": {
+          "mean": 121.1429,
+          "std": 182.5002,
+          "median": 48.5,
+          "n": 28
+        },
+        "agent_human_ratio": 0.864,
+        "cohens_d": -0.0891,
+        "mann_whitney_U": 228.0,
+        "mann_whitney_p": 0.112921,
+        "significant_0.05": false,
+        "significant_0.01": false
+      },
+      "avg_approval_age_days": {
+        "agent": {
+          "mean": 795.5632,
+          "std": 921.9494,
+          "median": 354.11,
+          "n": 22
+        },
+        "human": {
+          "mean": 1235.8479,
+          "std": 739.217,
+          "median": 1574.36,
+          "n": 28
+        },
+        "agent_human_ratio": 0.644,
+        "cohens_d": -0.5269,
+        "mann_whitney_U": 220.0,
+        "mann_whitney_p": 0.081049,
+        "significant_0.05": false,
+        "significant_0.01": false
+      },
+      "max_approval_age_days": {
+        "agent": {
+          "mean": 1028.2177,
+          "std": 1179.6494,
+          "median": 455.495,
+          "n": 22
+        },
+        "human": {
+          "mean": 1811.9186,
+          "std": 1097.9263,
+          "median": 1876.88,
+          "n": 28
+        },
+        "agent_human_ratio": 0.567,
+        "cohens_d": -0.6877,
+        "mann_whitney_U": 199.0,
+        "mann_whitney_p": 0.030515,
+        "significant_0.05": true,
+        "significant_0.01": false
+      },
+      "unlimited_approval_rate": {
+        "agent": {
+          "mean": 0.2448,
+          "std": 0.3089,
+          "median": 0.0125,
+          "n": 22
+        },
+        "human": {
+          "mean": 0.4524,
+          "std": 0.3124,
+          "median": 0.4861,
+          "n": 28
+        },
+        "agent_human_ratio": 0.541,
+        "cohens_d": -0.6683,
+        "mann_whitney_U": 196.0,
+        "mann_whitney_p": 0.02619,
+        "significant_0.05": true,
+        "significant_0.01": false
+      },
+      "dex_interaction_rate": {
+        "agent": {
+          "mean": 0.0711,
+          "std": 0.168,
+          "median": 0.0,
+          "n": 22
+        },
+        "human": {
+          "mean": 0.041,
+          "std": 0.051,
+          "median": 0.0238,
+          "n": 28
+        },
+        "agent_human_ratio": 1.734,
+        "cohens_d": 0.2424,
+        "mann_whitney_U": 251.0,
+        "mann_whitney_p": 0.256055,
+        "significant_0.05": false,
+        "significant_0.01": false
+      },
+      "swap_rate": {
+        "agent": {
+          "mean": 0.0599,
+          "std": 0.1654,
+          "median": 0.0,
+          "n": 22
+        },
+        "human": {
+          "mean": 0.025,
+          "std": 0.0382,
+          "median": 0.0124,
+          "n": 28
+        },
+        "agent_human_ratio": 2.39,
+        "cohens_d": 0.2902,
+        "mann_whitney_U": 277.0,
+        "mann_whitney_p": 0.533165,
+        "significant_0.05": false,
+        "significant_0.01": false
+      },
+      "revert_rate": {
+        "agent": {
+          "mean": 0.0149,
+          "std": 0.019,
+          "median": 0.002,
+          "n": 22
+        },
+        "human": {
+          "mean": 0.0235,
+          "std": 0.0191,
+          "median": 0.0205,
+          "n": 28
+        },
+        "agent_human_ratio": 0.636,
+        "cohens_d": -0.4491,
+        "mann_whitney_U": 232.0,
+        "mann_whitney_p": 0.134689,
+        "significant_0.05": false,
+        "significant_0.01": false
+      },
+      "gas_used_efficiency": {
+        "agent": {
+          "mean": 0.6445,
+          "std": 0.2344,
+          "median": 0.6874,
+          "n": 22
+        },
+        "human": {
+          "mean": 0.7514,
+          "std": 0.1121,
+          "median": 0.7303,
+          "n": 28
+        },
+        "agent_human_ratio": 0.858,
+        "cohens_d": -0.5822,
+        "mann_whitney_U": 234.0,
+        "mann_whitney_p": 0.150716,
+        "significant_0.05": false,
+        "significant_0.01": false
+      }
+    }
+  }
+}
