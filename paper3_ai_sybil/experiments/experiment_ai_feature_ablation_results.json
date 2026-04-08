@@ -1,0 +1,415 @@
+{
+  "timestamp": "2026-04-08T13:23:45.085549",
+  "feature_effect_sizes": {
+    "gas_price_precision": 0.3133105835084735,
+    "hour_entropy": 1.983131352354365,
+    "behavioral_consistency": 1.2418260260733691,
+    "action_sequence_perplexity": 0.7788938311108539,
+    "error_recovery_pattern": 0.13576942199118178,
+    "response_latency_variance": 0.858002355579942,
+    "gas_nonce_gap_regularity": 0.5122535274900405,
+    "eip1559_tip_precision": 0.3305545316063547
+  },
+  "levels": {
+    "basic": {
+      "all_8_features": {
+        "auc": 0.978,
+        "std": 0.0026
+      },
+      "lofo": {
+        "gas_price_precision": {
+          "auc_without": 0.9751,
+          "std": 0.0027,
+          "delta_from_all": 0.0029
+        },
+        "hour_entropy": {
+          "auc_without": 0.9493,
+          "std": 0.0039,
+          "delta_from_all": 0.0286
+        },
+        "behavioral_consistency": {
+          "auc_without": 0.9757,
+          "std": 0.0027,
+          "delta_from_all": 0.0023
+        },
+        "action_sequence_perplexity": {
+          "auc_without": 0.9741,
+          "std": 0.0029,
+          "delta_from_all": 0.0039
+        },
+        "error_recovery_pattern": {
+          "auc_without": 0.9672,
+          "std": 0.0038,
+          "delta_from_all": 0.0108
+        },
+        "response_latency_variance": {
+          "auc_without": 0.9622,
+          "std": 0.0022,
+          "delta_from_all": 0.0157
+        },
+        "gas_nonce_gap_regularity": {
+          "auc_without": 0.9728,
+          "std": 0.0022,
+          "delta_from_all": 0.0051
+        },
+        "eip1559_tip_precision": {
+          "auc_without": 0.9749,
+          "std": 0.0021,
+          "delta_from_all": 0.003
+        }
+      },
+      "single_feature": {
+        "gas_price_precision": {
+          "auc": 0.6684,
+          "std": 0.0121
+        },
+        "hour_entropy": {
+          "auc": 0.8638,
+          "std": 0.0034
+        },
+        "behavioral_consistency": {
+          "auc": 0.648,
+          "std": 0.0077
+        },
+        "action_sequence_perplexity": {
+          "auc": 0.6792,
+          "std": 0.0056
+        },
+        "error_recovery_pattern": {
+          "auc": 0.7524,
+          "std": 0.0033
+        },
+        "response_latency_variance": {
+          "auc": 0.7847,
+          "std": 0.011
+        },
+        "gas_nonce_gap_regularity": {
+          "auc": 0.7265,
+          "std": 0.0055
+        },
+        "eip1559_tip_precision": {
+          "auc": 0.6812,
+          "std": 0.0071
+        }
+      },
+      "topn_by_cohens_d": {
+        "top_1": {
+          "features": [
+            "hour_entropy"
+          ],
+          "auc": 0.8638,
+          "std": 0.0034
+        },
+        "top_2": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency"
+          ],
+          "auc": 0.8842,
+          "std": 0.0039
+        },
+        "top_3": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency",
+            "response_latency_variance"
+          ],
+          "auc": 0.9358,
+          "std": 0.0042
+        },
+        "top_4": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency",
+            "response_latency_variance",
+            "action_sequence_perplexity"
+          ],
+          "auc": 0.9472,
+          "std": 0.0037
+        },
+        "top_5": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency",
+            "response_latency_variance",
+            "action_sequence_perplexity",
+            "gas_nonce_gap_regularity"
+          ],
+          "auc": 0.9576,
+          "std": 0.0038
+        }
+      },
+      "ops_only_baseline": {
+        "auc": 0.7236,
+        "std": 0.0098
+      }
+    },
+    "moderate": {
+      "all_8_features": {
+        "auc": 0.9588,
+        "std": 0.0029
+      },
+      "lofo": {
+        "gas_price_precision": {
+          "auc_without": 0.9503,
+          "std": 0.0031,
+          "delta_from_all": 0.0085
+        },
+        "hour_entropy": {
+          "auc_without": 0.9519,
+          "std": 0.0035,
+          "delta_from_all": 0.0069
+        },
+        "behavioral_consistency": {
+          "auc_without": 0.9417,
+          "std": 0.0034,
+          "delta_from_all": 0.0171
+        },
+        "action_sequence_perplexity": {
+          "auc_without": 0.9573,
+          "std": 0.0021,
+          "delta_from_all": 0.0014
+        },
+        "error_recovery_pattern": {
+          "auc_without": 0.9341,
+          "std": 0.0028,
+          "delta_from_all": 0.0247
+        },
+        "response_latency_variance": {
+          "auc_without": 0.9412,
+          "std": 0.0016,
+          "delta_from_all": 0.0176
+        },
+        "gas_nonce_gap_regularity": {
+          "auc_without": 0.9533,
+          "std": 0.0022,
+          "delta_from_all": 0.0055
+        },
+        "eip1559_tip_precision": {
+          "auc_without": 0.9485,
+          "std": 0.0013,
+          "delta_from_all": 0.0103
+        }
+      },
+      "single_feature": {
+        "gas_price_precision": {
+          "auc": 0.6916,
+          "std": 0.0027
+        },
+        "hour_entropy": {
+          "auc": 0.6528,
+          "std": 0.0075
+        },
+        "behavioral_consistency": {
+          "auc": 0.7618,
+          "std": 0.008
+        },
+        "action_sequence_perplexity": {
+          "auc": 0.5826,
+          "std": 0.0136
+        },
+        "error_recovery_pattern": {
+          "auc": 0.7811,
+          "std": 0.0037
+        },
+        "response_latency_variance": {
+          "auc": 0.7453,
+          "std": 0.0113
+        },
+        "gas_nonce_gap_regularity": {
+          "auc": 0.6744,
+          "std": 0.0107
+        },
+        "eip1559_tip_precision": {
+          "auc": 0.7001,
+          "std": 0.0065
+        }
+      },
+      "topn_by_cohens_d": {
+        "top_1": {
+          "features": [
+            "hour_entropy"
+          ],
+          "auc": 0.6528,
+          "std": 0.0075
+        },
+        "top_2": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency"
+          ],
+          "auc": 0.8067,
+          "std": 0.0092
+        },
+        "top_3": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency",
+            "response_latency_variance"
+          ],
+          "auc": 0.8734,
+          "std": 0.0031
+        },
+        "top_4": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency",
+            "response_latency_variance",
+            "action_sequence_perplexity"
+          ],
+          "auc": 0.88,
+          "std": 0.0037
+        },
+        "top_5": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency",
+            "response_latency_variance",
+            "action_sequence_perplexity",
+            "gas_nonce_gap_regularity"
+          ],
+          "auc": 0.8966,
+          "std": 0.0018
+        }
+      },
+      "ops_only_baseline": {
+        "auc": 0.7264,
+        "std": 0.0066
+      }
+    },
+    "advanced": {
+      "all_8_features": {
+        "auc": 0.9865,
+        "std": 0.0006
+      },
+      "lofo": {
+        "gas_price_precision": {
+          "auc_without": 0.9843,
+          "std": 0.001,
+          "delta_from_all": 0.0022
+        },
+        "hour_entropy": {
+          "auc_without": 0.9685,
+          "std": 0.0011,
+          "delta_from_all": 0.018
+        },
+        "behavioral_consistency": {
+          "auc_without": 0.9746,
+          "std": 0.0013,
+          "delta_from_all": 0.0119
+        },
+        "action_sequence_perplexity": {
+          "auc_without": 0.986,
+          "std": 0.0007,
+          "delta_from_all": 0.0004
+        },
+        "error_recovery_pattern": {
+          "auc_without": 0.9779,
+          "std": 0.0009,
+          "delta_from_all": 0.0086
+        },
+        "response_latency_variance": {
+          "auc_without": 0.9819,
+          "std": 0.0015,
+          "delta_from_all": 0.0046
+        },
+        "gas_nonce_gap_regularity": {
+          "auc_without": 0.986,
+          "std": 0.0007,
+          "delta_from_all": 0.0005
+        },
+        "eip1559_tip_precision": {
+          "auc_without": 0.9827,
+          "std": 0.0011,
+          "delta_from_all": 0.0038
+        }
+      },
+      "single_feature": {
+        "gas_price_precision": {
+          "auc": 0.7015,
+          "std": 0.0073
+        },
+        "hour_entropy": {
+          "auc": 0.8776,
+          "std": 0.0026
+        },
+        "behavioral_consistency": {
+          "auc": 0.8556,
+          "std": 0.0033
+        },
+        "action_sequence_perplexity": {
+          "auc": 0.5603,
+          "std": 0.0055
+        },
+        "error_recovery_pattern": {
+          "auc": 0.7956,
+          "std": 0.0047
+        },
+        "response_latency_variance": {
+          "auc": 0.7311,
+          "std": 0.0094
+        },
+        "gas_nonce_gap_regularity": {
+          "auc": 0.5982,
+          "std": 0.0081
+        },
+        "eip1559_tip_precision": {
+          "auc": 0.725,
+          "std": 0.0077
+        }
+      },
+      "topn_by_cohens_d": {
+        "top_1": {
+          "features": [
+            "hour_entropy"
+          ],
+          "auc": 0.8776,
+          "std": 0.0026
+        },
+        "top_2": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency"
+          ],
+          "auc": 0.9473,
+          "std": 0.0027
+        },
+        "top_3": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency",
+            "response_latency_variance"
+          ],
+          "auc": 0.9619,
+          "std": 0.0013
+        },
+        "top_4": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency",
+            "response_latency_variance",
+            "action_sequence_perplexity"
+          ],
+          "auc": 0.9632,
+          "std": 0.0012
+        },
+        "top_5": {
+          "features": [
+            "hour_entropy",
+            "behavioral_consistency",
+            "response_latency_variance",
+            "action_sequence_perplexity",
+            "gas_nonce_gap_regularity"
+          ],
+          "auc": 0.9655,
+          "std": 0.0011
+        }
+      },
+      "ops_only_baseline": {
+        "auc": 0.7911,
+        "std": 0.0052
+      }
+    }
+  },
+  "elapsed_seconds": 2024.38
+}
