@@ -1,0 +1,166 @@
+{
+  "timestamp": "2026-04-08T13:33:23.821289",
+  "platform_distribution": {
+    "Autonolas": 1780,
+    "Fetch.ai": 923,
+    "AI_Arena": 549,
+    "other": 23,
+    "MEV_curated": 21,
+    "ENS_human": 16,
+    "Paper0_validated": 4
+  },
+  "splits": {
+    "auto_train_to_trusted_test": {
+      "description": "Train on Autonolas (C1-C4 labeled), test on trusted provenance set",
+      "models": {
+        "GBM": {
+          "auc": 0.2688,
+          "accuracy": 0.5854,
+          "precision": 0.6,
+          "recall": 0.96,
+          "f1": 0.7385,
+          "n_train": 1780,
+          "n_test": 41,
+          "n_train_agent": 1479,
+          "n_test_agent": 25
+        },
+        "RF": {
+          "auc": 0.2425,
+          "accuracy": 0.6098,
+          "precision": 0.6154,
+          "recall": 0.96,
+          "f1": 0.75,
+          "n_train": 1780,
+          "n_test": 41,
+          "n_train_agent": 1479,
+          "n_test_agent": 25
+        },
+        "LR": {
+          "auc": 0.5775,
+          "accuracy": 0.5854,
+          "precision": 0.6,
+          "recall": 0.96,
+          "f1": 0.7385,
+          "n_train": 1780,
+          "n_test": 41,
+          "n_train_agent": 1479,
+          "n_test_agent": 25
+        }
+      }
+    },
+    "trusted_train_to_auto_test": {
+      "description": "Train on trusted provenance set, test on Autonolas (C1-C4 labeled)",
+      "models": {
+        "GBM": {
+          "auc": 0.3471,
+          "accuracy": 0.4848,
+          "precision": 0.7867,
+          "recall": 0.5213,
+          "f1": 0.6271,
+          "n_train": 41,
+          "n_test": 1780,
+          "n_train_agent": 25,
+          "n_test_agent": 1479
+        },
+        "RF": {
+          "auc": 0.341,
+          "accuracy": 0.409,
+          "precision": 0.7563,
+          "recall": 0.426,
+          "f1": 0.545,
+          "n_train": 41,
+          "n_test": 1780,
+          "n_train_agent": 25,
+          "n_test_agent": 1479
+        },
+        "LR": {
+          "auc": 0.6026,
+          "accuracy": 0.6331,
+          "precision": 0.8661,
+          "recall": 0.6606,
+          "f1": 0.7495,
+          "n_train": 41,
+          "n_test": 1780,
+          "n_train_agent": 25,
+          "n_test_agent": 1479
+        }
+      }
+    },
+    "fetch_to_ai_arena": {
+      "description": "Train on Fetch.ai holders, test on AI Arena holders (both C1-C4 labeled)",
+      "models": {
+        "GBM": {
+          "auc": 0.9797,
+          "accuracy": 0.929,
+          "precision": 0.9191,
+          "recall": 0.9778,
+          "f1": 0.9475,
+          "n_train": 923,
+          "n_test": 549,
+          "n_train_agent": 718,
+          "n_test_agent": 360
+        },
+        "RF": {
+          "auc": 0.969,
+          "accuracy": 0.8998,
+          "precision": 0.8861,
+          "recall": 0.9722,
+          "f1": 0.9272,
+          "n_train": 923,
+          "n_test": 549,
+          "n_train_agent": 718,
+          "n_test_agent": 360
+        },
+        "LR": {
+          "auc": 0.9623,
+          "accuracy": 0.8889,
+          "precision": 0.8883,
+          "recall": 0.95,
+          "f1": 0.9181,
+          "n_train": 923,
+          "n_test": 549,
+          "n_train_agent": 718,
+          "n_test_agent": 360
+        }
+      }
+    },
+    "ai_arena_to_fetch": {
+      "description": "Train on AI Arena, test on Fetch.ai (both C1-C4 labeled)",
+      "models": {
+        "GBM": {
+          "auc": 0.9919,
+          "accuracy": 0.9588,
+          "precision": 0.9735,
+          "recall": 0.9735,
+          "f1": 0.9735,
+          "n_train": 549,
+          "n_test": 923,
+          "n_train_agent": 360,
+          "n_test_agent": 718
+        },
+        "RF": {
+          "auc": 0.9754,
+          "accuracy": 0.922,
+          "precision": 0.9562,
+          "recall": 0.9429,
+          "f1": 0.9495,
+          "n_train": 549,
+          "n_test": 923,
+          "n_train_agent": 360,
+          "n_test_agent": 718
+        },
+        "LR": {
+          "auc": 0.9733,
+          "accuracy": 0.9339,
+          "precision": 0.9494,
+          "recall": 0.9666,
+          "f1": 0.9579,
+          "n_train": 549,
+          "n_test": 923,
+          "n_train_agent": 360,
+          "n_test_agent": 718
+        }
+      }
+    }
+  }
+}
