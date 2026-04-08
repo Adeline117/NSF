@@ -1,0 +1,913 @@
+{
+  "summary": {
+    "total_unique_sybil_addresses": 792577,
+    "serial_2plus": 181292,
+    "serial_3plus": 69423,
+    "serial_5plus": 11051,
+    "serial_2plus_pct": 22.87,
+    "serial_3plus_pct": 8.76,
+    "serial_5plus_pct": 1.39
+  },
+  "n_projects_distribution": {
+    "1": 611285,
+    "2": 111869,
+    "3": 40771,
+    "4": 17601,
+    "5": 6592,
+    "6": 2501,
+    "7": 1066,
+    "8": 497,
+    "9": 234,
+    "10": 93,
+    "11": 48,
+    "12": 15,
+    "13": 4,
+    "14": 1
+  },
+  "indicator_consistency": {
+    "same_all_projects": 51382,
+    "mixed": 50558,
+    "completely_different": 79352
+  },
+  "detection_difficulty": {
+    "serial_avg_n_indicators": 1.313,
+    "nonserial_avg_n_indicators": 1.157,
+    "serial_easier": true
+  },
+  "cross_project_correlations": {
+    "BT": 0.2053,
+    "BW": 0.7126,
+    "HF": 0.5186,
+    "RF": 0.0779,
+    "MA": 0.5416
+  },
+  "temporal_evolution": [
+    {
+      "project": "uniswap",
+      "date": "2020-09",
+      "total": 252802,
+      "sybils": 134552,
+      "sybil_rate": 0.5322,
+      "avg_n_indicators": 1.344,
+      "single_indicator_pct": 0.7038
+    },
+    {
+      "project": "1inch",
+      "date": "2020-12",
+      "total": 108451,
+      "sybils": 72887,
+      "sybil_rate": 0.6721,
+      "avg_n_indicators": 1.505,
+      "single_indicator_pct": 0.5793
+    },
+    {
+      "project": "badger",
+      "date": "2020-12",
+      "total": 31786,
+      "sybils": 8422,
+      "sybil_rate": 0.265,
+      "avg_n_indicators": 1.065,
+      "single_indicator_pct": 0.9353
+    },
+    {
+      "project": "ampleforth",
+      "date": "2021-04",
+      "total": 87296,
+      "sybils": 10208,
+      "sybil_rate": 0.1169,
+      "avg_n_indicators": 1.042,
+      "single_indicator_pct": 0.9581
+    },
+    {
+      "project": "gitcoin",
+      "date": "2021-05",
+      "total": 23878,
+      "sybils": 9991,
+      "sybil_rate": 0.4184,
+      "avg_n_indicators": 1.144,
+      "single_indicator_pct": 0.8595
+    },
+    {
+      "project": "dydx",
+      "date": "2021-09",
+      "total": 73952,
+      "sybils": 22385,
+      "sybil_rate": 0.3027,
+      "avg_n_indicators": 1.186,
+      "single_indicator_pct": 0.8193
+    },
+    {
+      "project": "ens",
+      "date": "2021-11",
+      "total": 137689,
+      "sybils": 58965,
+      "sybil_rate": 0.4282,
+      "avg_n_indicators": 1.195,
+      "single_indicator_pct": 0.8134
+    },
+    {
+      "project": "paraswap",
+      "date": "2021-11",
+      "total": 19999,
+      "sybils": 2602,
+      "sybil_rate": 0.1301,
+      "avg_n_indicators": 1.013,
+      "single_indicator_pct": 0.9881
+    },
+    {
+      "project": "looksrare",
+      "date": "2022-01",
+      "total": 187160,
+      "sybils": 94302,
+      "sybil_rate": 0.5039,
+      "avg_n_indicators": 1.116,
+      "single_indicator_pct": 0.8887
+    },
+    {
+      "project": "x2y2",
+      "date": "2022-02",
+      "total": 900362,
+      "sybils": 277560,
+      "sybil_rate": 0.3083,
+      "avg_n_indicators": 1.179,
+      "single_indicator_pct": 0.829
+    },
+    {
+      "project": "apecoin",
+      "date": "2022-03",
+      "total": 17190,
+      "sybils": 8440,
+      "sybil_rate": 0.491,
+      "avg_n_indicators": 1.228,
+      "single_indicator_pct": 0.7755
+    },
+    {
+      "project": "blur_s1",
+      "date": "2023-02",
+      "total": 1176233,
+      "sybils": 285477,
+      "sybil_rate": 0.2427,
+      "avg_n_indicators": 1.254,
+      "single_indicator_pct": 0.792
+    },
+    {
+      "project": "blur_s2",
+      "date": "2023-06",
+      "total": 157788,
+      "sybils": 42815,
+      "sybil_rate": 0.2713,
+      "avg_n_indicators": 1.033,
+      "single_indicator_pct": 0.967
+    },
+    {
+      "project": "etherfi",
+      "date": "2024-03",
+      "total": 98638,
+      "sybils": 36957,
+      "sybil_rate": 0.3747,
+      "avg_n_indicators": 1.183,
+      "single_indicator_pct": 0.8305
+    },
+    {
+      "project": "eigenlayer",
+      "date": "2024-05",
+      "total": 243229,
+      "sybils": 22542,
+      "sybil_rate": 0.0927,
+      "avg_n_indicators": 1.064,
+      "single_indicator_pct": 0.9369
+    },
+    {
+      "project": "pengu",
+      "date": "2024-12",
+      "total": 52202,
+      "sybils": 2849,
+      "sybil_rate": 0.0546,
+      "avg_n_indicators": 1.071,
+      "single_indicator_pct": 0.9305
+    }
+  ],
+  "temporal_trends": {
+    "sybil_rate_vs_time_corr": -0.4909,
+    "avg_n_indicators_vs_time_corr": -0.4118,
+    "single_indicator_pct_vs_time_corr": 0.4051
+  },
+  "top_serial_sybils": [
+    {
+      "address": "0x000f4432a40560bbff1b581a8b7aded8dab80026",
+      "n_projects": 14,
+      "projects": [
+        "1inch",
+        "ampleforth",
+        "badger",
+        "blur_s1",
+        "blur_s2",
+        "dydx",
+        "eigenlayer",
+        "ens",
+        "etherfi",
+        "gitcoin",
+        "looksrare",
+        "paraswap",
+        "uniswap",
+        "x2y2"
+      ],
+      "indicators": {
+        "1inch": [
+          "BT",
+          "RF",
+          "MA"
+        ],
+        "uniswap": [
+          "BT",
+          "RF"
+        ],
+        "looksrare": [
+          "MA"
+        ],
+        "ens": [
+          "MA"
+        ],
+        "gitcoin": [
+          "RF",
+          "MA"
+        ],
+        "etherfi": [
+          "BT"
+        ],
+        "x2y2": [
+          "MA"
+        ],
+        "dydx": [
+          "BT",
+          "MA"
+        ],
+        "badger": [
+          "BT",
+          "MA"
+        ],
+        "blur_s1": [
+          "BT"
+        ],
+        "blur_s2": [
+          "BT"
+        ],
+        "paraswap": [
+          "BT"
+        ],
+        "ampleforth": [
+          "BT",
+          "MA"
+        ],
+        "eigenlayer": [
+          "BT"
+        ]
+      }
+    },
+    {
+      "address": "0x11b1785d9ac81480c03210e89f1508c8c115888e",
+      "n_projects": 13,
+      "projects": [
+        "1inch",
+        "ampleforth",
+        "badger",
+        "blur_s1",
+        "dydx",
+        "eigenlayer",
+        "ens",
+        "etherfi",
+        "gitcoin",
+        "looksrare",
+        "paraswap",
+        "uniswap",
+        "x2y2"
+      ],
+      "indicators": {
+        "1inch": [
+          "BT"
+        ],
+        "uniswap": [
+          "BT",
+          "RF"
+        ],
+        "looksrare": [
+          "BT"
+        ],
+        "ens": [
+          "RF",
+          "MA"
+        ],
+        "gitcoin": [
+          "RF",
+          "MA"
+        ],
+        "etherfi": [
+          "BT"
+        ],
+        "x2y2": [
+          "BT"
+        ],
+        "dydx": [
+          "RF",
+          "MA"
+        ],
+        "badger": [
+          "BT"
+        ],
+        "blur_s1": [
+          "BT",
+          "RF"
+        ],
+        "paraswap": [
+          "BT"
+        ],
+        "ampleforth": [
+          "BT"
+        ],
+        "eigenlayer": [
+          "BT"
+        ]
+      }
+    },
+    {
+      "address": "0x201b5abfd44a8f9b75f0fe1bae74cdac7675e54b",
+      "n_projects": 13,
+      "projects": [
+        "1inch",
+        "ampleforth",
+        "badger",
+        "blur_s1",
+        "blur_s2",
+        "dydx",
+        "eigenlayer",
+        "ens",
+        "gitcoin",
+        "looksrare",
+        "paraswap",
+        "uniswap",
+        "x2y2"
+      ],
+      "indicators": {
+        "1inch": [
+          "BT",
+          "RF"
+        ],
+        "uniswap": [
+          "BT",
+          "RF"
+        ],
+        "looksrare": [
+          "MA"
+        ],
+        "ens": [
+          "RF",
+          "MA"
+        ],
+        "gitcoin": [
+          "MA"
+        ],
+        "x2y2": [
+          "RF",
+          "MA"
+        ],
+        "dydx": [
+          "MA"
+        ],
+        "badger": [
+          "BT"
+        ],
+        "blur_s1": [
+          "BT"
+        ],
+        "blur_s2": [
+          "MA"
+        ],
+        "paraswap": [
+          "BT"
+        ],
+        "ampleforth": [
+          "BT"
+        ],
+        "eigenlayer": [
+          "MA"
+        ]
+      }
+    },
+    {
+      "address": "0xd56ee5ba5a52e15f309108bdd6247c69b4f624c2",
+      "n_projects": 13,
+      "projects": [
+        "1inch",
+        "ampleforth",
+        "badger",
+        "blur_s1",
+        "blur_s2",
+        "dydx",
+        "ens",
+        "etherfi",
+        "gitcoin",
+        "looksrare",
+        "paraswap",
+        "uniswap",
+        "x2y2"
+      ],
+      "indicators": {
+        "1inch": [
+          "BT",
+          "RF"
+        ],
+        "uniswap": [
+          "BT",
+          "RF"
+        ],
+        "looksrare": [
+          "MA"
+        ],
+        "ens": [
+          "RF",
+          "MA"
+        ],
+        "gitcoin": [
+          "RF"
+        ],
+        "etherfi": [
+          "BT",
+          "RF"
+        ],
+        "x2y2": [
+          "RF",
+          "MA"
+        ],
+        "dydx": [
+          "RF"
+        ],
+        "badger": [
+          "BT"
+        ],
+        "blur_s1": [
+          "RF"
+        ],
+        "blur_s2": [
+          "BT"
+        ],
+        "paraswap": [
+          "BT"
+        ],
+        "ampleforth": [
+          "BT"
+        ]
+      }
+    },
+    {
+      "address": "0xf9107317b0ff77ed5b7adea15e50514a3564002b",
+      "n_projects": 13,
+      "projects": [
+        "1inch",
+        "ampleforth",
+        "badger",
+        "blur_s1",
+        "blur_s2",
+        "eigenlayer",
+        "ens",
+        "etherfi",
+        "gitcoin",
+        "looksrare",
+        "paraswap",
+        "uniswap",
+        "x2y2"
+      ],
+      "indicators": {
+        "1inch": [
+          "BT",
+          "MA"
+        ],
+        "uniswap": [
+          "BT",
+          "RF",
+          "MA"
+        ],
+        "looksrare": [
+          "MA"
+        ],
+        "ens": [
+          "RF",
+          "MA"
+        ],
+        "gitcoin": [
+          "RF",
+          "MA"
+        ],
+        "etherfi": [
+          "BT"
+        ],
+        "x2y2": [
+          "MA"
+        ],
+        "badger": [
+          "MA"
+        ],
+        "blur_s1": [
+          "BT"
+        ],
+        "blur_s2": [
+          "BT"
+        ],
+        "paraswap": [
+          "MA"
+        ],
+        "ampleforth": [
+          "MA"
+        ],
+        "eigenlayer": [
+          "BT"
+        ]
+      }
+    },
+    {
+      "address": "0x1fd7dae8ce6190509486e657629975e10ecfef60",
+      "n_projects": 12,
+      "projects": [
+        "1inch",
+        "badger",
+        "blur_s1",
+        "blur_s2",
+        "dydx",
+        "eigenlayer",
+        "ens",
+        "etherfi",
+        "looksrare",
+        "paraswap",
+        "uniswap",
+        "x2y2"
+      ],
+      "indicators": {
+        "1inch": [
+          "BT"
+        ],
+        "uniswap": [
+          "BT",
+          "RF"
+        ],
+        "looksrare": [
+          "BT"
+        ],
+        "ens": [
+          "RF"
+        ],
+        "etherfi": [
+          "BT",
+          "RF"
+        ],
+        "x2y2": [
+          "BT"
+        ],
+        "dydx": [
+          "RF"
+        ],
+        "badger": [
+          "BT"
+        ],
+        "blur_s1": [
+          "BT"
+        ],
+        "blur_s2": [
+          "RF"
+        ],
+        "paraswap": [
+          "BT"
+        ],
+        "eigenlayer": [
+          "RF"
+        ]
+      }
+    },
+    {
+      "address": "0x28ac9e4eeca87b5310cb64fbe8ff22f498deae07",
+      "n_projects": 12,
+      "projects": [
+        "1inch",
+        "ampleforth",
+        "apecoin",
+        "badger",
+        "blur_s1",
+        "dydx",
+        "ens",
+        "gitcoin",
+        "looksrare",
+        "paraswap",
+        "uniswap",
+        "x2y2"
+      ],
+      "indicators": {
+        "1inch": [
+          "BT",
+          "RF"
+        ],
+        "uniswap": [
+          "BT",
+          "RF"
+        ],
+        "looksrare": [
+          "MA"
+        ],
+        "apecoin": [
+          "MA"
+        ],
+        "ens": [
+          "RF",
+          "MA"
+        ],
+        "gitcoin": [
+          "MA"
+        ],
+        "x2y2": [
+          "RF",
+          "MA"
+        ],
+        "dydx": [
+          "RF",
+          "MA"
+        ],
+        "badger": [
+          "BT"
+        ],
+        "blur_s1": [
+          "BT"
+        ],
+        "paraswap": [
+          "BT"
+        ],
+        "ampleforth": [
+          "BT"
+        ]
+      }
+    },
+    {
+      "address": "0x5d47e5d242a8f66a6286b0a2353868875f5d6068",
+      "n_projects": 12,
+      "projects": [
+        "1inch",
+        "ampleforth",
+        "badger",
+        "blur_s1",
+        "dydx",
+        "eigenlayer",
+        "ens",
+        "etherfi",
+        "gitcoin",
+        "paraswap",
+        "uniswap",
+        "x2y2"
+      ],
+      "indicators": {
+        "1inch": [
+          "BT"
+        ],
+        "uniswap": [
+          "BT",
+          "RF"
+        ],
+        "ens": [
+          "RF",
+          "MA"
+        ],
+        "gitcoin": [
+          "MA"
+        ],
+        "etherfi": [
+          "BT",
+          "RF"
+        ],
+        "x2y2": [
+          "BT"
+        ],
+        "dydx": [
+          "RF"
+        ],
+        "badger": [
+          "BT",
+          "MA"
+        ],
+        "blur_s1": [
+          "BT"
+        ],
+        "paraswap": [
+          "BT"
+        ],
+        "ampleforth": [
+          "BT",
+          "MA"
+        ],
+        "eigenlayer": [
+          "BT"
+        ]
+      }
+    },
+    {
+      "address": "0x68575571e75d2cfa4222e0f8e7053f056eb91d6c",
+      "n_projects": 12,
+      "projects": [
+        "1inch",
+        "ampleforth",
+        "badger",
+        "blur_s1",
+        "dydx",
+        "eigenlayer",
+        "ens",
+        "gitcoin",
+        "looksrare",
+        "paraswap",
+        "uniswap",
+        "x2y2"
+      ],
+      "indicators": {
+        "1inch": [
+          "BT",
+          "MA"
+        ],
+        "uniswap": [
+          "BT",
+          "RF",
+          "MA"
+        ],
+        "looksrare": [
+          "MA"
+        ],
+        "ens": [
+          "MA"
+        ],
+        "gitcoin": [
+          "MA"
+        ],
+        "x2y2": [
+          "MA"
+        ],
+        "dydx": [
+          "RF",
+          "MA"
+        ],
+        "badger": [
+          "BT",
+          "MA"
+        ],
+        "blur_s1": [
+          "BT",
+          "MA"
+        ],
+        "paraswap": [
+          "BT"
+        ],
+        "ampleforth": [
+          "BT"
+        ],
+        "eigenlayer": [
+          "MA"
+        ]
+      }
+    },
+    {
+      "address": "0x6cf51fdef74d02296017a1129086ee9c3477dc01",
+      "n_projects": 12,
+      "projects": [
+        "1inch",
+        "ampleforth",
+        "apecoin",
+        "badger",
+        "blur_s1",
+        "dydx",
+        "etherfi",
+        "gitcoin",
+        "looksrare",
+        "paraswap",
+        "uniswap",
+        "x2y2"
+      ],
+      "indicators": {
+        "1inch": [
+          "BT",
+          "MA"
+        ],
+        "uniswap": [
+          "BT"
+        ],
+        "looksrare": [
+          "BT"
+        ],
+        "apecoin": [
+          "RF"
+        ],
+        "gitcoin": [
+          "RF",
+          "MA"
+        ],
+        "etherfi": [
+          "BT",
+          "RF"
+        ],
+        "x2y2": [
+          "BT"
+        ],
+        "dydx": [
+          "MA"
+        ],
+        "badger": [
+          "BT",
+          "MA"
+        ],
+        "blur_s1": [
+          "BT"
+        ],
+        "paraswap": [
+          "BT",
+          "RF"
+        ],
+        "ampleforth": [
+          "BT",
+          "RF"
+        ]
+      }
+    }
+  ],
+  "serial_indicator_combos": [
+    {
+      "combo": "MA",
+      "count": 133764
+    },
+    {
+      "combo": "BT",
+      "count": 120462
+    },
+    {
+      "combo": "RF",
+      "count": 65814
+    },
+    {
+      "combo": "MA+RF",
+      "count": 38613
+    },
+    {
+      "combo": "BT+RF",
+      "count": 31953
+    },
+    {
+      "combo": "HF",
+      "count": 20863
+    },
+    {
+      "combo": "BT+MA",
+      "count": 18123
+    },
+    {
+      "combo": "BT+MA+RF",
+      "count": 14403
+    },
+    {
+      "combo": "HF+MA",
+      "count": 12293
+    },
+    {
+      "combo": "BW",
+      "count": 8554
+    },
+    {
+      "combo": "BW+HF",
+      "count": 2568
+    },
+    {
+      "combo": "BW+MA",
+      "count": 2091
+    },
+    {
+      "combo": "BW+RF",
+      "count": 1624
+    },
+    {
+      "combo": "BT+HF",
+      "count": 1606
+    },
+    {
+      "combo": "HF+MA+RF",
+      "count": 1485
+    },
+    {
+      "combo": "HF+RF",
+      "count": 1276
+    },
+    {
+      "combo": "BW+MA+RF",
+      "count": 757
+    },
+    {
+      "combo": "BT+HF+MA",
+      "count": 754
+    },
+    {
+      "combo": "BW+HF+MA",
+      "count": 591
+    },
+    {
+      "combo": "BT+BW",
+      "count": 517
+    }
+  ]
+}
