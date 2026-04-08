@@ -1,0 +1,353 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-07T17:11:51.122614",
+    "source": "/Users/adelinewen/NSF/paper1_onchain_agent_id/data/features_expanded.parquet",
+    "n_agents": 32,
+    "n_humans": 21,
+    "features": [
+      "gas_price_precision",
+      "hour_entropy",
+      "behavioral_consistency",
+      "action_sequence_perplexity",
+      "error_recovery_pattern",
+      "response_latency_variance",
+      "gas_nonce_gap_regularity",
+      "eip1559_tip_precision"
+    ],
+    "description": "Real AI-specific feature distributions computed from Paper 1 labeled on-chain agent/human addresses. Includes Mann-Whitney U tests for each feature."
+  },
+  "agent_distributions": {
+    "gas_price_precision": {
+      "count": 32,
+      "mean": 0.7529899223192047,
+      "std": 0.3376835065026223,
+      "min": 0.010199999999999987,
+      "p10": 0.19058000000000003,
+      "p25": 0.6144826892109501,
+      "median": 0.9564864864864865,
+      "p75": 0.99985,
+      "p90": 1.0,
+      "max": 1.0
+    },
+    "hour_entropy": {
+      "count": 32,
+      "mean": 4.312036219187021,
+      "std": 0.4195657848771608,
+      "min": 2.721928094887362,
+      "p10": 3.83386661678425,
+      "p25": 4.274633556650923,
+      "median": 4.525002951217054,
+      "p75": 4.545064698919234,
+      "p90": 4.569818045101698,
+      "max": 4.578511952629306
+    },
+    "behavioral_consistency": {
+      "count": 32,
+      "mean": 0.2068231911781736,
+      "std": 0.11791810053227444,
+      "min": 0.029127122743774696,
+      "p10": 0.0733009916279507,
+      "p25": 0.13620838132525678,
+      "median": 0.17923584807784704,
+      "p75": 0.2616879698410082,
+      "p90": 0.3731857314804202,
+      "max": 0.5082167040250576
+    },
+    "action_sequence_perplexity": {
+      "count": 32,
+      "mean": 2.457740267626793,
+      "std": 2.9401893085735704,
+      "min": -0.0,
+      "p10": 0.00027460526282630497,
+      "p25": 0.053453384198124544,
+      "median": 1.1816134119647326,
+      "p75": 4.434832133959214,
+      "p90": 6.2678188523922955,
+      "max": 11.144589773495538
+    },
+    "error_recovery_pattern": {
+      "count": 32,
+      "mean": 0.026205293821248078,
+      "std": 0.05803847017560292,
+      "min": 0.0,
+      "p10": 0.0,
+      "p25": 0.0,
+      "median": 0.0023,
+      "p75": 0.028300127551020408,
+      "p90": 0.05275686274509807,
+      "max": 0.2956
+    },
+    "response_latency_variance": {
+      "count": 32,
+      "mean": 6.493265463326729,
+      "std": 6.748163806730838,
+      "min": 0.9676645652912349,
+      "p10": 1.6797515436281711,
+      "p25": 2.821354719906223,
+      "median": 4.579904816295718,
+      "p75": 6.346704718220637,
+      "p90": 12.702516268706924,
+      "max": 33.3322616791391
+    },
+    "gas_nonce_gap_regularity": {
+      "count": 32,
+      "mean": 0.7469809864420052,
+      "std": 0.32384035321484467,
+      "min": 0.04360872174434887,
+      "p10": 0.19537907581516303,
+      "p25": 0.5191812493772886,
+      "median": 0.9277855571114223,
+      "p75": 0.9925976184752022,
+      "p90": 0.9993998799759952,
+      "max": 1.0
+    },
+    "eip1559_tip_precision": {
+      "count": 32,
+      "mean": 0.7316837743727854,
+      "std": 0.3589187595345159,
+      "min": 0.0,
+      "p10": 0.08264285714285716,
+      "p25": 0.5999090650753055,
+      "median": 0.9551787271142109,
+      "p75": 0.9998,
+      "p90": 1.0,
+      "max": 1.0
+    }
+  },
+  "human_distributions": {
+    "gas_price_precision": {
+      "count": 21,
+      "mean": 0.5866442410540105,
+      "std": 0.2886418118549459,
+      "min": 0.0,
+      "p10": 0.18552556002297527,
+      "p25": 0.34540000000000004,
+      "median": 0.6898305084745763,
+      "p75": 0.8054054054054054,
+      "p90": 0.95,
+      "max": 0.9871794871794872
+    },
+    "hour_entropy": {
+      "count": 21,
+      "mean": 4.09430089086386,
+      "std": 0.38134318778965637,
+      "min": 2.995673062799813,
+      "p10": 3.6043377381032937,
+      "p25": 3.889235769020605,
+      "median": 4.177910611253008,
+      "p75": 4.352953964521653,
+      "p90": 4.529400402864251,
+      "max": 4.559431173295411
+    },
+    "behavioral_consistency": {
+      "count": 21,
+      "mean": 0.20064010570217075,
+      "std": 0.07631921173925331,
+      "min": 0.06501819239089551,
+      "p10": 0.09934491929552958,
+      "p25": 0.14586899231991315,
+      "median": 0.2299409364362709,
+      "p75": 0.2558197158976918,
+      "p90": 0.27371832638804905,
+      "max": 0.3305735794644775
+    },
+    "action_sequence_perplexity": {
+      "count": 21,
+      "mean": 2.8516752338992055,
+      "std": 1.8021723824821678,
+      "min": 0.015675449748350976,
+      "p10": 0.2539446840982618,
+      "p25": 1.123903949486285,
+      "median": 2.9707692955570124,
+      "p75": 4.4908018837631305,
+      "p90": 4.8177377452253465,
+      "max": 6.03595783986163
+    },
+    "error_recovery_pattern": {
+      "count": 21,
+      "mean": 0.028151034385756116,
+      "std": 0.07158618100546858,
+      "min": 0.0,
+      "p10": 0.0,
+      "p25": 0.0,
+      "median": 0.01282051282051282,
+      "p75": 0.022857142857142857,
+      "p90": 0.03331418724870764,
+      "max": 0.3440677966101695
+    },
+    "response_latency_variance": {
+      "count": 21,
+      "mean": 5.1685462833983165,
+      "std": 3.3749300073929214,
+      "min": 2.025045140086451,
+      "p10": 2.6533907436738633,
+      "p25": 2.909002855745188,
+      "median": 3.34894288724076,
+      "p75": 5.855466566923599,
+      "p90": 9.065940030864144,
+      "max": 14.380310698087252
+    },
+    "gas_nonce_gap_regularity": {
+      "count": 21,
+      "mean": 0.6325130223776073,
+      "std": 0.2907263054996788,
+      "min": 0.15342960288808663,
+      "p10": 0.2529711375212224,
+      "p25": 0.27845569113822766,
+      "median": 0.6666666666666666,
+      "p75": 0.8900212314225053,
+      "p90": 0.9867724867724867,
+      "max": 0.9983996799359872
+    },
+    "eip1559_tip_precision": {
+      "count": 21,
+      "mean": 0.5288416250775809,
+      "std": 0.29341677483108897,
+      "min": 0.0,
+      "p10": 0.15967834577828835,
+      "p25": 0.25308641975308643,
+      "median": 0.5229067930489731,
+      "p75": 0.7668,
+      "p90": 0.9434,
+      "max": 0.9871794871794872
+    }
+  },
+  "statistical_tests": {
+    "gas_price_precision": {
+      "cohens_d": 0.5295589271764758,
+      "mann_whitney": {
+        "U_statistic": 479.0,
+        "p_value": 0.009438842810743114,
+        "significant_0.05": true,
+        "significant_0.01": true,
+        "effect_size_r": 0.7127976190476191
+      }
+    },
+    "hour_entropy": {
+      "cohens_d": 0.5431024084856144,
+      "mann_whitney": {
+        "U_statistic": 499.0,
+        "p_value": 0.003126346658067895,
+        "significant_0.05": true,
+        "significant_0.01": true,
+        "effect_size_r": 0.7425595238095238
+      }
+    },
+    "behavioral_consistency": {
+      "cohens_d": 0.06225359043627831,
+      "mann_whitney": {
+        "U_statistic": 315.0,
+        "p_value": 0.7093055679544953,
+        "significant_0.05": false,
+        "significant_0.01": false,
+        "effect_size_r": 0.46875
+      }
+    },
+    "action_sequence_perplexity": {
+      "cohens_d": 0.16154824582623417,
+      "mann_whitney": {
+        "U_statistic": 255.0,
+        "p_value": 0.14314654192258924,
+        "significant_0.05": false,
+        "significant_0.01": false,
+        "effect_size_r": 0.3794642857142857
+      }
+    },
+    "error_recovery_pattern": {
+      "cohens_d": 0.029858515370470757,
+      "mann_whitney": {
+        "U_statistic": 316.5,
+        "p_value": 0.7253064547628509,
+        "significant_0.05": false,
+        "significant_0.01": false,
+        "effect_size_r": 0.47098214285714285
+      }
+    },
+    "response_latency_variance": {
+      "cohens_d": 0.24829979730344665,
+      "mann_whitney": {
+        "U_statistic": 357.0,
+        "p_value": 0.7093055679544953,
+        "significant_0.05": false,
+        "significant_0.01": false,
+        "effect_size_r": 0.53125
+      }
+    },
+    "gas_nonce_gap_regularity": {
+      "cohens_d": 0.3719764423250946,
+      "mann_whitney": {
+        "U_statistic": 434.0,
+        "p_value": 0.07621348929412834,
+        "significant_0.05": false,
+        "significant_0.01": false,
+        "effect_size_r": 0.6458333333333334
+      }
+    },
+    "eip1559_tip_precision": {
+      "cohens_d": 0.6187835311561467,
+      "mann_whitney": {
+        "U_statistic": 484.5,
+        "p_value": 0.007049302591336487,
+        "significant_0.05": true,
+        "significant_0.01": true,
+        "effect_size_r": 0.7209821428571429
+      }
+    }
+  },
+  "beta_params": {
+    "agent": {
+      "gas_price_precision": {
+        "alpha": 0.47758037946546045,
+        "beta": 0.15691252355268764,
+        "method": "moments"
+      },
+      "behavioral_consistency": {
+        "alpha": 2.233276262262032,
+        "beta": 8.564721049065177,
+        "method": "moments"
+      },
+      "error_recovery_pattern": {
+        "alpha": 0.17964343656407944,
+        "beta": 6.566186623363518,
+        "method": "moments"
+      },
+      "gas_nonce_gap_regularity": {
+        "alpha": 0.6001987518536935,
+        "beta": 0.20341491256773628,
+        "method": "moments"
+      },
+      "eip1559_tip_precision": {
+        "alpha": 0.38565606152656406,
+        "beta": 0.14160883988287123,
+        "method": "moments"
+      }
+    },
+    "human": {
+      "gas_price_precision": {
+        "alpha": 1.1220116099960182,
+        "beta": 0.7904260532803365,
+        "method": "moments"
+      },
+      "behavioral_consistency": {
+        "alpha": 5.324077684347155,
+        "beta": 21.2113832381575,
+        "method": "moments"
+      },
+      "error_recovery_pattern": {
+        "alpha": 0.12535060941262763,
+        "beta": 4.282699370590448,
+        "method": "moments"
+      },
+      "gas_nonce_gap_regularity": {
+        "alpha": 1.1069381319625355,
+        "beta": 0.6431256498100058,
+        "method": "moments"
+      },
+      "eip1559_tip_precision": {
+        "alpha": 1.0026796076091857,
+        "beta": 0.893141906529659,
+        "method": "moments"
+      }
+    }
+  }
+}
