@@ -1,0 +1,362 @@
+{
+  "timestamp": "2026-04-08T13:05:41.817546",
+  "n_samples": 2590,
+  "n_features": 23,
+  "feature_names": [
+    "tx_interval_mean",
+    "tx_interval_std",
+    "tx_interval_skewness",
+    "active_hour_entropy",
+    "night_activity_ratio",
+    "weekend_ratio",
+    "burst_frequency",
+    "gas_price_round_number_ratio",
+    "gas_price_trailing_zeros_mean",
+    "gas_limit_precision",
+    "gas_price_cv",
+    "eip1559_priority_fee_precision",
+    "gas_price_nonce_correlation",
+    "unique_contracts_ratio",
+    "top_contract_concentration",
+    "method_id_diversity",
+    "contract_to_eoa_ratio",
+    "sequential_pattern_score",
+    "unlimited_approve_ratio",
+    "approve_revoke_ratio",
+    "unverified_contract_approve_ratio",
+    "multi_protocol_interaction_count",
+    "flash_loan_usage"
+  ],
+  "classes_present": [
+    0,
+    1,
+    2,
+    3,
+    6
+  ],
+  "class_counts": {
+    "0": 130,
+    "1": 54,
+    "2": 1669,
+    "3": 71,
+    "6": 666
+  },
+  "models": {
+    "GradientBoosting": {
+      "accuracy_mean": 0.9737,
+      "accuracy_std": 0.004,
+      "f1_macro_mean": 0.8683,
+      "f1_macro_std": 0.0267,
+      "f1_weighted_mean": 0.9705,
+      "f1_weighted_std": 0.0046,
+      "confusion_matrix": [
+        [
+          128,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          45,
+          6,
+          2,
+          1
+        ],
+        [
+          1,
+          4,
+          1659,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          43,
+          28,
+          0
+        ],
+        [
+          0,
+          3,
+          1,
+          0,
+          662
+        ]
+      ],
+      "confusion_labels": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.9922480620155039,
+          "recall": 0.9846153846153847,
+          "f1-score": 0.9884169884169884,
+          "support": 130.0
+        },
+        "MEVSearcher": {
+          "precision": 0.8653846153846154,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.8490566037735849,
+          "support": 54.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.9696084161309176,
+          "recall": 0.994008388256441,
+          "f1-score": 0.9816568047337279,
+          "support": 1669.0
+        },
+        "LLMPoweredAgent": {
+          "precision": 0.8,
+          "recall": 0.39436619718309857,
+          "f1-score": 0.5283018867924528,
+          "support": 71.0
+        },
+        "DeterministicScript": {
+          "precision": 0.9984917043740573,
+          "recall": 0.993993993993994,
+          "f1-score": 0.9962377727614747,
+          "support": 666.0
+        },
+        "accuracy": 0.9737451737451738,
+        "macro avg": {
+          "precision": 0.9251465595810189,
+          "recall": 0.8400634594764502,
+          "f1-score": 0.8687340112956458,
+          "support": 2590.0
+        },
+        "weighted avg": {
+          "precision": 0.9713493972696559,
+          "recall": 0.9737451737451738,
+          "f1-score": 0.9705529972277916,
+          "support": 2590.0
+        }
+      }
+    },
+    "RandomForest": {
+      "accuracy_mean": 0.9471,
+      "accuracy_std": 0.0066,
+      "f1_macro_mean": 0.7278,
+      "f1_macro_std": 0.0335,
+      "f1_weighted_mean": 0.9357,
+      "f1_weighted_std": 0.0079,
+      "confusion_matrix": [
+        [
+          102,
+          0,
+          24,
+          0,
+          4
+        ],
+        [
+          0,
+          27,
+          10,
+          0,
+          17
+        ],
+        [
+          3,
+          2,
+          1652,
+          3,
+          9
+        ],
+        [
+          0,
+          0,
+          62,
+          8,
+          1
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          664
+        ]
+      ],
+      "confusion_labels": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.9714285714285714,
+          "recall": 0.7846153846153846,
+          "f1-score": 0.8680851063829788,
+          "support": 130.0
+        },
+        "MEVSearcher": {
+          "precision": 0.9310344827586207,
+          "recall": 0.5,
+          "f1-score": 0.6506024096385542,
+          "support": 54.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.944,
+          "recall": 0.9898142600359496,
+          "f1-score": 0.9663644340450425,
+          "support": 1669.0
+        },
+        "LLMPoweredAgent": {
+          "precision": 0.7272727272727273,
+          "recall": 0.11267605633802817,
+          "f1-score": 0.1951219512195122,
+          "support": 71.0
+        },
+        "DeterministicScript": {
+          "precision": 0.9553956834532374,
+          "recall": 0.996996996996997,
+          "f1-score": 0.9757531227038942,
+          "support": 666.0
+        },
+        "accuracy": 0.9471042471042471,
+        "macro avg": {
+          "precision": 0.9058262929826313,
+          "recall": 0.6768205395972717,
+          "f1-score": 0.7311854047979964,
+          "support": 2590.0
+        },
+        "weighted avg": {
+          "precision": 0.9420955463980307,
+          "recall": 0.9471042471042471,
+          "f1-score": 0.9361201052620942,
+          "support": 2590.0
+        }
+      }
+    },
+    "LogisticRegression": {
+      "accuracy_mean": 0.9124,
+      "accuracy_std": 0.0116,
+      "f1_macro_mean": 0.6914,
+      "f1_macro_std": 0.0339,
+      "f1_weighted_mean": 0.9046,
+      "f1_weighted_std": 0.011,
+      "confusion_matrix": [
+        [
+          65,
+          1,
+          38,
+          4,
+          22
+        ],
+        [
+          3,
+          38,
+          6,
+          2,
+          5
+        ],
+        [
+          13,
+          5,
+          1615,
+          6,
+          30
+        ],
+        [
+          1,
+          3,
+          45,
+          14,
+          8
+        ],
+        [
+          19,
+          3,
+          10,
+          3,
+          631
+        ]
+      ],
+      "confusion_labels": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.6435643564356436,
+          "recall": 0.5,
+          "f1-score": 0.5627705627705628,
+          "support": 130.0
+        },
+        "MEVSearcher": {
+          "precision": 0.76,
+          "recall": 0.7037037037037037,
+          "f1-score": 0.7307692307692307,
+          "support": 54.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.9422403733955659,
+          "recall": 0.9676452965847813,
+          "f1-score": 0.9547738693467337,
+          "support": 1669.0
+        },
+        "LLMPoweredAgent": {
+          "precision": 0.4827586206896552,
+          "recall": 0.19718309859154928,
+          "f1-score": 0.28,
+          "support": 71.0
+        },
+        "DeterministicScript": {
+          "precision": 0.9066091954022989,
+          "recall": 0.9474474474474475,
+          "f1-score": 0.9265785609397944,
+          "support": 666.0
+        },
+        "accuracy": 0.9123552123552123,
+        "macro avg": {
+          "precision": 0.7470345091846327,
+          "recall": 0.6631959092654964,
+          "f1-score": 0.6909784447652643,
+          "support": 2590.0
+        },
+        "weighted avg": {
+          "precision": 0.9016911721006678,
+          "recall": 0.9123552123552123,
+          "f1-score": 0.9046797765047543,
+          "support": 2590.0
+        }
+      }
+    }
+  },
+  "gbm_feature_importance": {
+    "gas_price_round_number_ratio": 0.7054,
+    "sequential_pattern_score": 0.1256,
+    "burst_frequency": 0.0991,
+    "gas_price_trailing_zeros_mean": 0.0302,
+    "gas_price_nonce_correlation": 0.0085,
+    "tx_interval_std": 0.0049,
+    "tx_interval_mean": 0.0033,
+    "contract_to_eoa_ratio": 0.0032,
+    "gas_price_cv": 0.003,
+    "top_contract_concentration": 0.003,
+    "unverified_contract_approve_ratio": 0.0028,
+    "gas_limit_precision": 0.0023,
+    "multi_protocol_interaction_count": 0.0016,
+    "night_activity_ratio": 0.0015,
+    "unique_contracts_ratio": 0.0015,
+    "weekend_ratio": 0.0013,
+    "approve_revoke_ratio": 0.0013,
+    "method_id_diversity": 0.0009,
+    "unlimited_approve_ratio": 0.0003,
+    "tx_interval_skewness": 0.0003,
+    "active_hour_entropy": 0.0001,
+    "flash_loan_usage": 0.0,
+    "eip1559_priority_fee_precision": 0.0
+  }
+}

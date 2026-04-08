@@ -1,0 +1,256 @@
+{
+  "timestamp": "2026-04-08T13:04:39.338810",
+  "n_agents": 2590,
+  "n_features": 23,
+  "n_taxonomy_categories_present": 5,
+  "kmeans_sweep": {
+    "3": {
+      "silhouette": 0.1509,
+      "ari_vs_taxonomy": 0.2642,
+      "nmi_vs_taxonomy": 0.2124,
+      "inertia": 41863.53
+    },
+    "4": {
+      "silhouette": 0.1226,
+      "ari_vs_taxonomy": 0.1798,
+      "nmi_vs_taxonomy": 0.2042,
+      "inertia": 38839.31
+    },
+    "5": {
+      "silhouette": 0.1318,
+      "ari_vs_taxonomy": 0.3189,
+      "nmi_vs_taxonomy": 0.3398,
+      "inertia": 36525.45
+    },
+    "6": {
+      "silhouette": 0.1246,
+      "ari_vs_taxonomy": 0.2383,
+      "nmi_vs_taxonomy": 0.3008,
+      "inertia": 34712.87
+    },
+    "7": {
+      "silhouette": 0.128,
+      "ari_vs_taxonomy": 0.2163,
+      "nmi_vs_taxonomy": 0.2931,
+      "inertia": 33166.49
+    },
+    "8": {
+      "silhouette": 0.1289,
+      "ari_vs_taxonomy": 0.2225,
+      "nmi_vs_taxonomy": 0.3132,
+      "inertia": 31768.25
+    },
+    "9": {
+      "silhouette": 0.1174,
+      "ari_vs_taxonomy": 0.174,
+      "nmi_vs_taxonomy": 0.2995,
+      "inertia": 30740.17
+    },
+    "10": {
+      "silhouette": 0.1151,
+      "ari_vs_taxonomy": 0.1673,
+      "nmi_vs_taxonomy": 0.3097,
+      "inertia": 29939.5
+    },
+    "11": {
+      "silhouette": 0.1213,
+      "ari_vs_taxonomy": 0.1624,
+      "nmi_vs_taxonomy": 0.2978,
+      "inertia": 29191.11
+    },
+    "12": {
+      "silhouette": 0.1214,
+      "ari_vs_taxonomy": 0.1592,
+      "nmi_vs_taxonomy": 0.2935,
+      "inertia": 28587.36
+    },
+    "13": {
+      "silhouette": 0.1109,
+      "ari_vs_taxonomy": 0.144,
+      "nmi_vs_taxonomy": 0.3158,
+      "inertia": 27970.26
+    },
+    "14": {
+      "silhouette": 0.1116,
+      "ari_vs_taxonomy": 0.1331,
+      "nmi_vs_taxonomy": 0.2928,
+      "inertia": 27282.78
+    },
+    "15": {
+      "silhouette": 0.106,
+      "ari_vs_taxonomy": 0.1204,
+      "nmi_vs_taxonomy": 0.2903,
+      "inertia": 26686.3
+    }
+  },
+  "k_8_detail": {
+    "ari": 0.2225,
+    "nmi": 0.3132,
+    "mean_purity": 0.7788,
+    "n_orphan_clusters": 1,
+    "confusion": {
+      "cluster_0": {
+        "size": 673,
+        "dominant_tax_category": 2,
+        "purity": 0.9792,
+        "tax_distribution": {
+          "2": 659,
+          "3": 7,
+          "6": 5,
+          "1": 2
+        },
+        "is_orphan": false
+      },
+      "cluster_1": {
+        "size": 189,
+        "dominant_tax_category": 6,
+        "purity": 0.8995,
+        "tax_distribution": {
+          "6": 170,
+          "2": 7,
+          "1": 5,
+          "3": 5,
+          "0": 2
+        },
+        "is_orphan": false
+      },
+      "cluster_2": {
+        "size": 162,
+        "dominant_tax_category": 6,
+        "purity": 0.3272,
+        "tax_distribution": {
+          "6": 53,
+          "2": 44,
+          "0": 44,
+          "3": 17,
+          "1": 4
+        },
+        "is_orphan": true
+      },
+      "cluster_3": {
+        "size": 68,
+        "dominant_tax_category": 1,
+        "purity": 0.6029,
+        "tax_distribution": {
+          "1": 41,
+          "6": 16,
+          "2": 9,
+          "3": 1,
+          "0": 1
+        },
+        "is_orphan": false
+      },
+      "cluster_4": {
+        "size": 133,
+        "dominant_tax_category": 2,
+        "purity": 0.9098,
+        "tax_distribution": {
+          "2": 121,
+          "3": 5,
+          "0": 4,
+          "6": 3
+        },
+        "is_orphan": false
+      },
+      "cluster_5": {
+        "size": 464,
+        "dominant_tax_category": 2,
+        "purity": 0.8728,
+        "tax_distribution": {
+          "2": 405,
+          "0": 34,
+          "3": 13,
+          "6": 12
+        },
+        "is_orphan": false
+      },
+      "cluster_6": {
+        "size": 505,
+        "dominant_tax_category": 2,
+        "purity": 0.7881,
+        "tax_distribution": {
+          "2": 398,
+          "6": 70,
+          "0": 28,
+          "3": 9
+        },
+        "is_orphan": false
+      },
+      "cluster_7": {
+        "size": 396,
+        "dominant_tax_category": 6,
+        "purity": 0.851,
+        "tax_distribution": {
+          "6": 337,
+          "2": 26,
+          "0": 17,
+          "3": 14,
+          "1": 2
+        },
+        "is_orphan": false
+      }
+    }
+  },
+  "k_3_detail": {
+    "ari": 0.2642,
+    "nmi": 0.2124,
+    "mean_purity": 0.7602,
+    "n_orphan_clusters": 0,
+    "confusion": {
+      "cluster_0": {
+        "size": 352,
+        "dominant_tax_category": 6,
+        "purity": 0.8722,
+        "tax_distribution": {
+          "6": 307,
+          "1": 19,
+          "3": 13,
+          "2": 11,
+          "0": 2
+        },
+        "is_orphan": false
+      },
+      "cluster_1": {
+        "size": 786,
+        "dominant_tax_category": 2,
+        "purity": 0.5814,
+        "tax_distribution": {
+          "2": 457,
+          "6": 186,
+          "0": 101,
+          "3": 35,
+          "1": 7
+        },
+        "is_orphan": false
+      },
+      "cluster_2": {
+        "size": 1452,
+        "dominant_tax_category": 2,
+        "purity": 0.8271,
+        "tax_distribution": {
+          "2": 1201,
+          "6": 173,
+          "1": 28,
+          "0": 27,
+          "3": 23
+        },
+        "is_orphan": false
+      }
+    }
+  },
+  "pca_2d": {
+    "explained_variance_ratio": [
+      0.2068,
+      0.1634
+    ],
+    "total_explained": 0.3701,
+    "x_range": [
+      -4.5546,
+      7.7272
+    ],
+    "y_range": [
+      -4.3404,
+      6.5888
+    ]
+  }
+}

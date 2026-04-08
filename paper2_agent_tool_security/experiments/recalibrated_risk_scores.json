@@ -1,0 +1,672 @@
+{
+  "n_repos": 62,
+  "raw_base_score_stats": {
+    "min": 0.0,
+    "max": 8862.75,
+    "mean": 610.5,
+    "median": 144.0,
+    "std": 1488.8,
+    "p75": 498.75,
+    "p90": 1460.7,
+    "p95": 1861.05,
+    "p99": 8193.73
+  },
+  "calibrations": {
+    "linear_p90": {
+      "expected_max": 1460.7,
+      "saturated_count": 7,
+      "mean": 25.54,
+      "median": 9.86,
+      "std": 32.47
+    },
+    "linear_p95": {
+      "expected_max": 1861.0,
+      "saturated_count": 4,
+      "mean": 21.54,
+      "median": 7.74,
+      "std": 29.18
+    },
+    "log_asymptotic": {
+      "k_parameter": 144.0,
+      "saturated_count": 12,
+      "mean": 57.83,
+      "median": 62.89,
+      "std": 38.25
+    },
+    "OLD_linear_200": {
+      "expected_max": 200.0,
+      "saturated_count": 29,
+      "mean": 60.57,
+      "median": 72.0,
+      "std": 41.71
+    }
+  },
+  "rank_correlation_with_old": {
+    "old_200_vs_linear_p90": 0.9481,
+    "old_200_vs_linear_p95": 0.9476,
+    "old_200_vs_log": 0.9475
+  },
+  "recommendation": "Use linear_p90 (expected_max=1460.7) \u2014 keeps Spearman rank >0.95 with old scheme while reducing saturation from 7/62 to ~6/62 and giving meaningful separation in the [80-99] range.",
+  "per_repo_scores": [
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 80,
+      "raw_base_score": 428.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 29.3,
+      "score_linear_p95": 23.0,
+      "score_log": 94.9
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 7,
+      "raw_base_score": 35.0,
+      "score_OLD_200": 17.5,
+      "score_linear_p90": 2.4,
+      "score_linear_p95": 1.9,
+      "score_log": 21.6
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 21,
+      "raw_base_score": 105.0,
+      "score_OLD_200": 52.5,
+      "score_linear_p90": 7.2,
+      "score_linear_p95": 5.6,
+      "score_log": 51.8
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 229,
+      "raw_base_score": 1520.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 100.0,
+      "score_linear_p95": 81.7,
+      "score_log": 100.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 275,
+      "raw_base_score": 1936.5,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 100.0,
+      "score_linear_p95": 100.0,
+      "score_log": 100.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "openai",
+      "total_findings": 67,
+      "raw_base_score": 501.5,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 34.3,
+      "score_linear_p95": 26.9,
+      "score_log": 96.9
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 54,
+      "raw_base_score": 276.25,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 18.9,
+      "score_linear_p95": 14.8,
+      "score_log": 85.3
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 141,
+      "raw_base_score": 813.5,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 55.7,
+      "score_linear_p95": 43.7,
+      "score_log": 99.6
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 78,
+      "raw_base_score": 479.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 32.8,
+      "score_linear_p95": 25.7,
+      "score_log": 96.4
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 1,
+      "raw_base_score": 5.0,
+      "score_OLD_200": 2.5,
+      "score_linear_p90": 0.3,
+      "score_linear_p95": 0.3,
+      "score_log": 3.4
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 82,
+      "raw_base_score": 590.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 40.4,
+      "score_linear_p95": 31.7,
+      "score_log": 98.3
+    },
+    {
+      "repo_name": "?",
+      "protocol": "openai",
+      "total_findings": 15,
+      "raw_base_score": 123.0,
+      "score_OLD_200": 61.5,
+      "score_linear_p90": 8.4,
+      "score_linear_p95": 6.6,
+      "score_log": 57.4
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 7,
+      "raw_base_score": 43.0,
+      "score_OLD_200": 21.5,
+      "score_linear_p90": 2.9,
+      "score_linear_p95": 2.3,
+      "score_log": 25.8
+    },
+    {
+      "repo_name": "?",
+      "protocol": "openai",
+      "total_findings": 19,
+      "raw_base_score": 100.0,
+      "score_OLD_200": 50.0,
+      "score_linear_p90": 6.8,
+      "score_linear_p95": 5.4,
+      "score_log": 50.1
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 91,
+      "raw_base_score": 649.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 44.4,
+      "score_linear_p95": 34.9,
+      "score_log": 98.9
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 71,
+      "raw_base_score": 355.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 24.3,
+      "score_linear_p95": 19.1,
+      "score_log": 91.5
+    },
+    {
+      "repo_name": "?",
+      "protocol": "unknown",
+      "total_findings": 147,
+      "raw_base_score": 883.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 60.5,
+      "score_linear_p95": 47.4,
+      "score_log": 99.8
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 21,
+      "raw_base_score": 120.5,
+      "score_OLD_200": 60.2,
+      "score_linear_p90": 8.2,
+      "score_linear_p95": 6.5,
+      "score_log": 56.7
+    },
+    {
+      "repo_name": "?",
+      "protocol": "langchain",
+      "total_findings": 8,
+      "raw_base_score": 58.5,
+      "score_OLD_200": 29.2,
+      "score_linear_p90": 4.0,
+      "score_linear_p95": 3.1,
+      "score_log": 33.4
+    },
+    {
+      "repo_name": "?",
+      "protocol": "unknown",
+      "total_findings": 1,
+      "raw_base_score": 13.0,
+      "score_OLD_200": 6.5,
+      "score_linear_p90": 0.9,
+      "score_linear_p95": 0.7,
+      "score_log": 8.6
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 40,
+      "raw_base_score": 300.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 20.5,
+      "score_linear_p95": 16.1,
+      "score_log": 87.5
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 63,
+      "raw_base_score": 498.75,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 34.1,
+      "score_linear_p95": 26.8,
+      "score_log": 96.9
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 34,
+      "raw_base_score": 214.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 14.7,
+      "score_linear_p95": 11.5,
+      "score_log": 77.4
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 43,
+      "raw_base_score": 247.5,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 16.9,
+      "score_linear_p95": 13.3,
+      "score_log": 82.1
+    },
+    {
+      "repo_name": "?",
+      "protocol": "web3_native",
+      "total_findings": 37,
+      "raw_base_score": 362.5,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 24.8,
+      "score_linear_p95": 19.5,
+      "score_log": 91.9
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 27,
+      "raw_base_score": 163.0,
+      "score_OLD_200": 81.5,
+      "score_linear_p90": 11.2,
+      "score_linear_p95": 8.8,
+      "score_log": 67.8
+    },
+    {
+      "repo_name": "?",
+      "protocol": "unknown",
+      "total_findings": 273,
+      "raw_base_score": 1879.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 100.0,
+      "score_linear_p95": 100.0,
+      "score_log": 100.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 2,
+      "raw_base_score": 15.0,
+      "score_OLD_200": 7.5,
+      "score_linear_p90": 1.0,
+      "score_linear_p95": 0.8,
+      "score_log": 9.9
+    },
+    {
+      "repo_name": "?",
+      "protocol": "unknown",
+      "total_findings": 10,
+      "raw_base_score": 70.0,
+      "score_OLD_200": 35.0,
+      "score_linear_p90": 4.8,
+      "score_linear_p95": 3.8,
+      "score_log": 38.5
+    },
+    {
+      "repo_name": "?",
+      "protocol": "openai",
+      "total_findings": 46,
+      "raw_base_score": 371.5,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 25.4,
+      "score_linear_p95": 20.0,
+      "score_log": 92.4
+    },
+    {
+      "repo_name": "?",
+      "protocol": "unknown",
+      "total_findings": 39,
+      "raw_base_score": 230.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 15.7,
+      "score_linear_p95": 12.4,
+      "score_log": 79.8
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 101,
+      "raw_base_score": 673.75,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 46.1,
+      "score_linear_p95": 36.2,
+      "score_log": 99.1
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 11,
+      "raw_base_score": 55.0,
+      "score_OLD_200": 27.5,
+      "score_linear_p90": 3.8,
+      "score_linear_p95": 3.0,
+      "score_log": 31.7
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 4,
+      "raw_base_score": 20.0,
+      "score_OLD_200": 10.0,
+      "score_linear_p90": 1.4,
+      "score_linear_p95": 1.1,
+      "score_log": 13.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "openai",
+      "total_findings": 153,
+      "raw_base_score": 1471.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 100.0,
+      "score_linear_p95": 79.0,
+      "score_log": 100.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 35,
+      "raw_base_score": 255.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 17.5,
+      "score_linear_p95": 13.7,
+      "score_log": 83.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 67,
+      "raw_base_score": 960.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 65.7,
+      "score_linear_p95": 51.6,
+      "score_log": 99.9
+    },
+    {
+      "repo_name": "?",
+      "protocol": "unknown",
+      "total_findings": 0,
+      "raw_base_score": 0.0,
+      "score_OLD_200": 0.0,
+      "score_linear_p90": 0.0,
+      "score_linear_p95": 0.0,
+      "score_log": 0.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 10,
+      "raw_base_score": 50.0,
+      "score_OLD_200": 25.0,
+      "score_linear_p90": 3.4,
+      "score_linear_p95": 2.7,
+      "score_log": 29.3
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 0,
+      "raw_base_score": 0.0,
+      "score_OLD_200": 0.0,
+      "score_linear_p90": 0.0,
+      "score_linear_p95": 0.0,
+      "score_log": 0.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "unknown",
+      "total_findings": 0,
+      "raw_base_score": 0.0,
+      "score_OLD_200": 0.0,
+      "score_linear_p90": 0.0,
+      "score_linear_p95": 0.0,
+      "score_log": 0.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 20,
+      "raw_base_score": 125.0,
+      "score_OLD_200": 62.5,
+      "score_linear_p90": 8.6,
+      "score_linear_p95": 6.7,
+      "score_log": 58.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 210,
+      "raw_base_score": 1368.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 93.7,
+      "score_linear_p95": 73.5,
+      "score_log": 100.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 2,
+      "raw_base_score": 12.5,
+      "score_OLD_200": 6.2,
+      "score_linear_p90": 0.9,
+      "score_linear_p95": 0.7,
+      "score_log": 8.3
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 896,
+      "raw_base_score": 8862.75,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 100.0,
+      "score_linear_p95": 100.0,
+      "score_log": 100.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "web3_native",
+      "total_findings": 0,
+      "raw_base_score": 0.0,
+      "score_OLD_200": 0.0,
+      "score_linear_p90": 0.0,
+      "score_linear_p95": 0.0,
+      "score_log": 0.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 2,
+      "raw_base_score": 10.0,
+      "score_OLD_200": 5.0,
+      "score_linear_p90": 0.7,
+      "score_linear_p95": 0.5,
+      "score_log": 6.7
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 11,
+      "raw_base_score": 55.0,
+      "score_OLD_200": 27.5,
+      "score_linear_p90": 3.8,
+      "score_linear_p95": 3.0,
+      "score_log": 31.7
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 12,
+      "raw_base_score": 197.5,
+      "score_OLD_200": 98.8,
+      "score_linear_p90": 13.5,
+      "score_linear_p95": 10.6,
+      "score_log": 74.6
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 63,
+      "raw_base_score": 498.75,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 34.1,
+      "score_linear_p95": 26.8,
+      "score_log": 96.9
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 559,
+      "raw_base_score": 7766.0,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 100.0,
+      "score_linear_p95": 100.0,
+      "score_log": 100.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 1,
+      "raw_base_score": 5.0,
+      "score_OLD_200": 2.5,
+      "score_linear_p90": 0.3,
+      "score_linear_p95": 0.3,
+      "score_log": 3.4
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 22,
+      "raw_base_score": 115.0,
+      "score_OLD_200": 57.5,
+      "score_linear_p90": 7.9,
+      "score_linear_p95": 6.2,
+      "score_log": 55.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "web3_native",
+      "total_findings": 0,
+      "raw_base_score": 0.0,
+      "score_OLD_200": 0.0,
+      "score_linear_p90": 0.0,
+      "score_linear_p95": 0.0,
+      "score_log": 0.0
+    },
+    {
+      "repo_name": "?",
+      "protocol": "openai",
+      "total_findings": 13,
+      "raw_base_score": 65.0,
+      "score_OLD_200": 32.5,
+      "score_linear_p90": 4.4,
+      "score_linear_p95": 3.5,
+      "score_log": 36.3
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 19,
+      "raw_base_score": 100.0,
+      "score_OLD_200": 50.0,
+      "score_linear_p90": 6.8,
+      "score_linear_p95": 5.4,
+      "score_log": 50.1
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 1,
+      "raw_base_score": 5.0,
+      "score_OLD_200": 2.5,
+      "score_linear_p90": 0.3,
+      "score_linear_p95": 0.3,
+      "score_log": 3.4
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 6,
+      "raw_base_score": 30.0,
+      "score_OLD_200": 15.0,
+      "score_linear_p90": 2.1,
+      "score_linear_p95": 1.6,
+      "score_log": 18.8
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 2,
+      "raw_base_score": 10.0,
+      "score_OLD_200": 5.0,
+      "score_linear_p90": 0.7,
+      "score_linear_p95": 0.5,
+      "score_log": 6.7
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 23,
+      "raw_base_score": 242.5,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 16.6,
+      "score_linear_p95": 13.0,
+      "score_log": 81.4
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 1,
+      "raw_base_score": 5.0,
+      "score_OLD_200": 2.5,
+      "score_linear_p90": 0.3,
+      "score_linear_p95": 0.3,
+      "score_log": 3.4
+    },
+    {
+      "repo_name": "?",
+      "protocol": "mcp",
+      "total_findings": 103,
+      "raw_base_score": 1507.5,
+      "score_OLD_200": 100.0,
+      "score_linear_p90": 100.0,
+      "score_linear_p95": 81.0,
+      "score_log": 100.0
+    }
+  ]
+}

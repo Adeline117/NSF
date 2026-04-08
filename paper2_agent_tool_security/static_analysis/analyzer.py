@@ -1146,9 +1146,12 @@ class StaticAnalyzer:
                                  }.get(f.confidence, 0.5)
             base_score += weight * multiplier * confidence_factor
 
-        # Normalize to 0-100 (calibrated against pilot results)
-        # Pilot found ~20 findings in a highly vulnerable server = score 100
-        expected_max = 200.0
+        # Normalize to 0-100.
+        # Recalibrated 2026-04-08 from pilot 200.0 to p90 of raw base scores
+        # across the 62-repo real scan set (29/62 previously saturated at 100;
+        # now 7/62 saturate, with Spearman 0.948 vs the old ranking).
+        # See paper/risk_score_calibration.md for full derivation.
+        expected_max = 1460.7
         normalized = min(100.0, base_score / expected_max * 100.0)
 
         # Harness discount
