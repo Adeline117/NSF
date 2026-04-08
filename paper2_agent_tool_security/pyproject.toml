@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-tool-scanner"
+version = "0.1.0"
+description = "Static analysis scanner for AI agent tool interfaces (MCP, OpenAI, LangChain, Web3-native)"
+authors = [{ name = "NSF Project Team" }]
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-cov"]
+
+[project.scripts]
+agent-tool-scanner = "scanner.cli:main"
+
+[project.urls]
+Repository = "https://github.com/Adeline117/NSF"
+"Bug Tracker" = "https://github.com/Adeline117/NSF/issues"
+
+[tool.setuptools]
+packages = [
+    "scanner",
+    "static_analysis",
+    "scripts",
+]
