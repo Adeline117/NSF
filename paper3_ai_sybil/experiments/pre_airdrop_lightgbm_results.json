@@ -1,0 +1,130 @@
+{
+  "model": "LightGBM",
+  "params": {
+    "objective": "binary",
+    "metric": "auc",
+    "num_leaves": 63,
+    "max_depth": 6,
+    "learning_rate": 0.05,
+    "n_estimators": 200,
+    "min_child_samples": 20,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "random_state": 42,
+    "verbose": -1,
+    "n_jobs": -1
+  },
+  "features": [
+    "BT",
+    "BW",
+    "HF",
+    "RF",
+    "MA",
+    "n_indicators"
+  ],
+  "blur_s2_5fold": {
+    "mean_auc": 1.0,
+    "std_auc": 0.0,
+    "folds": [
+      {
+        "auc": 1.0,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      {
+        "auc": 1.0,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      {
+        "auc": 1.0,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      {
+        "auc": 1.0,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      {
+        "auc": 1.0,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    ]
+  },
+  "cross_project_blur_s2": {
+    "blur_s1": {
+      "auc": 1.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "uniswap": {
+      "auc": 1.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "1inch": {
+      "auc": 1.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "ens": {
+      "auc": 1.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "looksrare": {
+      "auc": 1.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "ai_sybil_evasion": {
+    "llm_sybils": {
+      "n": 6,
+      "detected": 0,
+      "evasion_rate": 1.0,
+      "mean_score": 0.0
+    },
+    "rule_based_basic": {
+      "n": 3000,
+      "detected": 0,
+      "evasion_rate": 1.0,
+      "mean_score": 0.0
+    },
+    "rule_based_moderate": {
+      "n": 3000,
+      "detected": 0,
+      "evasion_rate": 1.0,
+      "mean_score": 0.0
+    },
+    "rule_based_advanced": {
+      "n": 3000,
+      "detected": 0,
+      "evasion_rate": 1.0,
+      "mean_score": 0.0
+    }
+  },
+  "elapsed_seconds": 6.98
+}
