@@ -1,0 +1,1235 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-07T17:29:02",
+    "projects": [
+      "1inch",
+      "uniswap",
+      "looksrare",
+      "apecoin",
+      "ens",
+      "gitcoin",
+      "etherfi",
+      "x2y2",
+      "dydx",
+      "badger",
+      "blur_s1",
+      "blur_s2",
+      "paraswap",
+      "ampleforth",
+      "eigenlayer",
+      "pengu"
+    ],
+    "max_rows_per_project": 25000,
+    "gbm_params": {
+      "n_estimators": 150,
+      "max_depth": 4,
+      "learning_rate": 0.1,
+      "subsample": 0.8,
+      "random_state": 42
+    },
+    "ai_calibration_available": true,
+    "design_note": "ALL ML evaluations use cross-axis prediction to avoid circular reasoning. is_sybil = f(BT,BW,HF,RF,MA), so predicting is_sybil from the same 5 indicators is trivially AUC=1.0. Cross-axis: OPS features predict fund_flag (derived only from RF, MA) and vice versa.",
+    "elapsed_seconds": 4364.9
+  },
+  "exp1_baseline_stats": {
+    "1inch": {
+      "n_eligible": 25000,
+      "n_sybils": 16801,
+      "sybil_rate": 67.2,
+      "ops_flag_rate": 60.38,
+      "fund_flag_rate": 30.01,
+      "trigger_rates": {
+        "BT": 0.55832,
+        "BW": 0.05056,
+        "HF": 0.06916,
+        "RF": 0.20656,
+        "MA": 0.12608
+      },
+      "launch_date": "2020-12"
+    },
+    "ampleforth": {
+      "n_eligible": 25000,
+      "n_sybils": 2923,
+      "sybil_rate": 11.69,
+      "ops_flag_rate": 6.15,
+      "fund_flag_rate": 5.96,
+      "trigger_rates": {
+        "BT": 0.0274,
+        "BW": 0.00512,
+        "HF": 0.029,
+        "RF": 0.00128,
+        "MA": 0.05868
+      },
+      "launch_date": "2021-04"
+    },
+    "apecoin": {
+      "n_eligible": 17190,
+      "n_sybils": 8440,
+      "sybil_rate": 49.1,
+      "ops_flag_rate": 1.96,
+      "fund_flag_rate": 47.8,
+      "trigger_rates": {
+        "BT": 0.005526468877254218,
+        "BW": 5.817335660267598e-05,
+        "HF": 0.01401977894124491,
+        "RF": 0.35555555555555557,
+        "MA": 0.2275741710296684
+      },
+      "launch_date": "2022-03"
+    },
+    "badger": {
+      "n_eligible": 25000,
+      "n_sybils": 6623,
+      "sybil_rate": 26.49,
+      "ops_flag_rate": 14.94,
+      "fund_flag_rate": 13.23,
+      "trigger_rates": {
+        "BT": 0.06408,
+        "BW": 0.00284,
+        "HF": 0.08252,
+        "RF": 0.0,
+        "MA": 0.13232
+      },
+      "launch_date": "2021-02"
+    },
+    "blur_s1": {
+      "n_eligible": 25000,
+      "n_sybils": 6067,
+      "sybil_rate": 24.27,
+      "ops_flag_rate": 16.33,
+      "fund_flag_rate": 12.1,
+      "trigger_rates": {
+        "BT": 0.1226,
+        "BW": 0.00412,
+        "HF": 0.03848,
+        "RF": 0.0616,
+        "MA": 0.07732
+      },
+      "launch_date": "2023-02"
+    },
+    "blur_s2": {
+      "n_eligible": 25000,
+      "n_sybils": 6783,
+      "sybil_rate": 27.13,
+      "ops_flag_rate": 11.86,
+      "fund_flag_rate": 15.38,
+      "trigger_rates": {
+        "BT": 0.08048,
+        "BW": 0.00432,
+        "HF": 0.03516,
+        "RF": 0.13672,
+        "MA": 0.024
+      },
+      "launch_date": "2023-05"
+    },
+    "dydx": {
+      "n_eligible": 25000,
+      "n_sybils": 7567,
+      "sybil_rate": 30.27,
+      "ops_flag_rate": 5.48,
+      "fund_flag_rate": 28.38,
+      "trigger_rates": {
+        "BT": 0.00504,
+        "BW": 0.04664,
+        "HF": 0.00368,
+        "RF": 0.24836,
+        "MA": 0.05444
+      },
+      "launch_date": "2021-09"
+    },
+    "eigenlayer": {
+      "n_eligible": 25000,
+      "n_sybils": 2316,
+      "sybil_rate": 9.26,
+      "ops_flag_rate": 3.61,
+      "fund_flag_rate": 5.77,
+      "trigger_rates": {
+        "BT": 0.01172,
+        "BW": 0.01892,
+        "HF": 0.00556,
+        "RF": 0.00952,
+        "MA": 0.05244
+      },
+      "launch_date": "2024-05"
+    },
+    "ens": {
+      "n_eligible": 25000,
+      "n_sybils": 10706,
+      "sybil_rate": 42.82,
+      "ops_flag_rate": 6.11,
+      "fund_flag_rate": 37.82,
+      "trigger_rates": {
+        "BT": 0.02536,
+        "BW": 0.00472,
+        "HF": 0.03188,
+        "RF": 0.315,
+        "MA": 0.13476
+      },
+      "launch_date": "2021-11"
+    },
+    "etherfi": {
+      "n_eligible": 25000,
+      "n_sybils": 9366,
+      "sybil_rate": 37.46,
+      "ops_flag_rate": 13.38,
+      "fund_flag_rate": 29.3,
+      "trigger_rates": {
+        "BT": 0.089,
+        "BW": 0.04224,
+        "HF": 0.00424,
+        "RF": 0.2658,
+        "MA": 0.04116
+      },
+      "launch_date": "2024-06"
+    },
+    "gitcoin": {
+      "n_eligible": 23878,
+      "n_sybils": 9991,
+      "sybil_rate": 41.84,
+      "ops_flag_rate": 9.71,
+      "fund_flag_rate": 32.83,
+      "trigger_rates": {
+        "BT": 0.0061144149426250105,
+        "BW": 0.0237038277912723,
+        "HF": 0.06725856436887512,
+        "RF": 0.24361336795376498,
+        "MA": 0.13799313175307815
+      },
+      "launch_date": "2021-05"
+    },
+    "looksrare": {
+      "n_eligible": 25000,
+      "n_sybils": 12596,
+      "sybil_rate": 50.38,
+      "ops_flag_rate": 21.8,
+      "fund_flag_rate": 32.38,
+      "trigger_rates": {
+        "BT": 0.07088,
+        "BW": 0.0236,
+        "HF": 0.13296,
+        "RF": 0.03764,
+        "MA": 0.2976
+      },
+      "launch_date": "2022-01"
+    },
+    "paraswap": {
+      "n_eligible": 19999,
+      "n_sybils": 2602,
+      "sybil_rate": 13.01,
+      "ops_flag_rate": 12.72,
+      "fund_flag_rate": 0.36,
+      "trigger_rates": {
+        "BT": 0.08125406270313516,
+        "BW": 0.0,
+        "HF": 0.04595229761488075,
+        "RF": 0.002750137506875344,
+        "MA": 0.001800090004500225
+      },
+      "launch_date": "2023-08"
+    },
+    "pengu": {
+      "n_eligible": 25000,
+      "n_sybils": 1364,
+      "sybil_rate": 5.46,
+      "ops_flag_rate": 3.32,
+      "fund_flag_rate": 2.47,
+      "trigger_rates": {
+        "BT": 0.01524,
+        "BW": 0.00832,
+        "HF": 0.01004,
+        "RF": 0.0,
+        "MA": 0.02468
+      },
+      "launch_date": "2024-12"
+    },
+    "uniswap": {
+      "n_eligible": 25000,
+      "n_sybils": 13306,
+      "sybil_rate": 53.22,
+      "ops_flag_rate": 21.36,
+      "fund_flag_rate": 44.64,
+      "trigger_rates": {
+        "BT": 0.17416,
+        "BW": 0.02864,
+        "HF": 0.02592,
+        "RF": 0.4204,
+        "MA": 0.0758
+      },
+      "launch_date": "2020-09"
+    },
+    "x2y2": {
+      "n_eligible": 25000,
+      "n_sybils": 7706,
+      "sybil_rate": 30.82,
+      "ops_flag_rate": 20.42,
+      "fund_flag_rate": 12.4,
+      "trigger_rates": {
+        "BT": 0.01252,
+        "BW": 0.05448,
+        "HF": 0.15644,
+        "RF": 0.0334,
+        "MA": 0.10912
+      },
+      "launch_date": "2022-02"
+    },
+    "_aggregate": {
+      "total_eligible": 386067,
+      "total_sybils": 125157,
+      "overall_sybil_rate": 32.42
+    }
+  },
+  "exp2_cross_axis_lopo": {
+    "ops_to_fund": {
+      "1inch": {
+        "auc_roc": 0.759148155334654,
+        "avg_precision": 0.49196673427804616,
+        "precision": 0.482489652976759,
+        "recall": 0.40397174463547914,
+        "f1": 0.43975335509611896,
+        "tn": 14246,
+        "fp": 3251,
+        "fn": 4472,
+        "tp": 3031
+      },
+      "ampleforth": {
+        "auc_roc": 0.31829770378262556,
+        "avg_precision": 0.06043487922315529,
+        "precision": 0.023391812865497075,
+        "recall": 0.002686366689053056,
+        "f1": 0.004819277108433735,
+        "tn": 23344,
+        "fp": 167,
+        "fn": 1485,
+        "tp": 4
+      },
+      "apecoin": {
+        "auc_roc": 0.6282438526293311,
+        "avg_precision": 0.513442240746082,
+        "precision": 0.2702702702702703,
+        "recall": 0.0012171372930866603,
+        "f1": 0.0024233612019871563,
+        "tn": 8947,
+        "fp": 27,
+        "fn": 8206,
+        "tp": 10
+      },
+      "badger": {
+        "auc_roc": 0.2566189653946055,
+        "avg_precision": 0.13413960164857025,
+        "precision": 0.21453287197231835,
+        "recall": 0.018742442563482467,
+        "f1": 0.03447317208785099,
+        "tn": 21465,
+        "fp": 227,
+        "fn": 3246,
+        "tp": 62
+      },
+      "blur_s1": {
+        "auc_roc": 0.2834299500503239,
+        "avg_precision": 0.09611466239302704,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 21949,
+        "fp": 25,
+        "fn": 3026,
+        "tp": 0
+      },
+      "blur_s2": {
+        "auc_roc": 0.38392709824292115,
+        "avg_precision": 0.13972038120187874,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 21138,
+        "fp": 17,
+        "fn": 3845,
+        "tp": 0
+      },
+      "dydx": {
+        "auc_roc": 0.8463104719943523,
+        "avg_precision": 0.7944938385255866,
+        "precision": 0.8064516129032258,
+        "recall": 0.0035241048773611504,
+        "f1": 0.007017543859649123,
+        "tn": 17900,
+        "fp": 6,
+        "fn": 7069,
+        "tp": 25
+      },
+      "eigenlayer": {
+        "auc_roc": 0.7026759911252842,
+        "avg_precision": 0.10032931065088109,
+        "precision": 0.02158273381294964,
+        "recall": 0.002079002079002079,
+        "f1": 0.0037926675094816687,
+        "tn": 23421,
+        "fp": 136,
+        "fn": 1440,
+        "tp": 3
+      },
+      "ens": {
+        "auc_roc": 0.5337063414115315,
+        "avg_precision": 0.4365929628762907,
+        "precision": 0.5957446808510638,
+        "recall": 0.005923418658768775,
+        "f1": 0.011730205278592375,
+        "tn": 15508,
+        "fp": 38,
+        "fn": 9398,
+        "tp": 56
+      },
+      "etherfi": {
+        "auc_roc": 0.8591992243043637,
+        "avg_precision": 0.6309745676923749,
+        "precision": 0.41368078175895767,
+        "recall": 0.0173402512288367,
+        "f1": 0.03328528371117809,
+        "tn": 17496,
+        "fp": 180,
+        "fn": 7197,
+        "tp": 127
+      },
+      "gitcoin": {
+        "auc_roc": 0.5594274432889452,
+        "avg_precision": 0.32916254097244035,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 15765,
+        "fp": 275,
+        "fn": 7838,
+        "tp": 0
+      },
+      "looksrare": {
+        "auc_roc": 0.6234083099630808,
+        "avg_precision": 0.39115282182105504,
+        "precision": 0.46153846153846156,
+        "recall": 0.025941939468807906,
+        "f1": 0.04912280701754386,
+        "tn": 16660,
+        "fp": 245,
+        "fn": 7885,
+        "tp": 210
+      },
+      "paraswap": {
+        "auc_roc": 0.782693753851895,
+        "avg_precision": 0.061358926170676224,
+        "precision": 0.14285714285714285,
+        "recall": 0.15492957746478872,
+        "f1": 0.14864864864864866,
+        "tn": 19862,
+        "fp": 66,
+        "fn": 60,
+        "tp": 11
+      },
+      "pengu": {
+        "auc_roc": 0.6811175666336597,
+        "avg_precision": 0.05015714605820497,
+        "precision": 0.12962962962962962,
+        "recall": 0.03403565640194489,
+        "f1": 0.05391527599486521,
+        "tn": 24242,
+        "fp": 141,
+        "fn": 596,
+        "tp": 21
+      },
+      "uniswap": {
+        "auc_roc": 0.8524250902090412,
+        "avg_precision": 0.7501846561774468,
+        "precision": 0.6895910780669146,
+        "recall": 0.033240749036824654,
+        "f1": 0.0634242242926746,
+        "tn": 13672,
+        "fp": 167,
+        "fn": 10790,
+        "tp": 371
+      },
+      "x2y2": {
+        "auc_roc": 0.8089919540470744,
+        "avg_precision": 0.3023830022253804,
+        "precision": 0.40166204986149584,
+        "recall": 0.04675910996452757,
+        "f1": 0.08376660889659157,
+        "tn": 21683,
+        "fp": 216,
+        "fn": 2956,
+        "tp": 145
+      }
+    },
+    "fund_to_ops": {
+      "1inch": {
+        "auc_roc": 0.5852205826166733,
+        "avg_precision": 0.6692245179255394,
+        "precision": 1.0,
+        "recall": 0.00019874130506790329,
+        "f1": 0.00039740362961981717,
+        "tn": 9905,
+        "fp": 0,
+        "fn": 15092,
+        "tp": 3
+      },
+      "ampleforth": {
+        "auc_roc": 0.5338986019392895,
+        "avg_precision": 0.06938555699142096,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 23459,
+        "fp": 3,
+        "fn": 1538,
+        "tp": 0
+      },
+      "apecoin": {
+        "auc_roc": 0.4650153421248953,
+        "avg_precision": 0.01938369068979206,
+        "precision": 0.05555555555555555,
+        "recall": 0.002967359050445104,
+        "f1": 0.005633802816901409,
+        "tn": 16836,
+        "fp": 17,
+        "fn": 336,
+        "tp": 1
+      },
+      "badger": {
+        "auc_roc": 0.5297216586436371,
+        "avg_precision": 0.1647557193203526,
+        "precision": 1.0,
+        "recall": 0.0002678093197643278,
+        "f1": 0.000535475234270415,
+        "tn": 21266,
+        "fp": 0,
+        "fn": 3733,
+        "tp": 1
+      },
+      "blur_s1": {
+        "auc_roc": 0.591920809137886,
+        "avg_precision": 0.218812829350088,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 20918,
+        "fp": 0,
+        "fn": 4082,
+        "tp": 0
+      },
+      "blur_s2": {
+        "auc_roc": 0.4249434691321602,
+        "avg_precision": 0.11728405864296992,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 22034,
+        "fp": 1,
+        "fn": 2965,
+        "tp": 0
+      },
+      "dydx": {
+        "auc_roc": 0.6457809950462181,
+        "avg_precision": 0.08772507768422752,
+        "precision": 1.0,
+        "recall": 0.0007304601899196494,
+        "f1": 0.00145985401459854,
+        "tn": 23631,
+        "fp": 0,
+        "fn": 1368,
+        "tp": 1
+      },
+      "eigenlayer": {
+        "auc_roc": 0.5108917718168507,
+        "avg_precision": 0.038735716120176684,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 24097,
+        "fp": 0,
+        "fn": 903,
+        "tp": 0
+      },
+      "ens": {
+        "auc_roc": 0.447757879017236,
+        "avg_precision": 0.05961568533036922,
+        "precision": 0.09523809523809523,
+        "recall": 0.0013097576948264572,
+        "f1": 0.002583979328165375,
+        "tn": 23454,
+        "fp": 19,
+        "fn": 1525,
+        "tp": 2
+      },
+      "etherfi": {
+        "auc_roc": 0.5809354122727001,
+        "avg_precision": 0.16951837408063705,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 21655,
+        "fp": 0,
+        "fn": 3345,
+        "tp": 0
+      },
+      "gitcoin": {
+        "auc_roc": 0.34703351083158185,
+        "avg_precision": 0.08815559222235492,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 21555,
+        "fp": 5,
+        "fn": 2318,
+        "tp": 0
+      },
+      "looksrare": {
+        "auc_roc": 0.44112316833146387,
+        "avg_precision": 0.20231416371648128,
+        "precision": 0.5,
+        "recall": 0.0005505597357313268,
+        "f1": 0.0010999083409715857,
+        "tn": 19548,
+        "fp": 3,
+        "fn": 5446,
+        "tp": 3
+      },
+      "paraswap": {
+        "auc_roc": 0.5009283417917413,
+        "avg_precision": 0.12844128825488582,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 17455,
+        "fp": 0,
+        "fn": 2544,
+        "tp": 0
+      },
+      "pengu": {
+        "auc_roc": 0.5872568384518448,
+        "avg_precision": 0.05583711714672926,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 24171,
+        "fp": 0,
+        "fn": 829,
+        "tp": 0
+      },
+      "uniswap": {
+        "auc_roc": 0.5922310966479505,
+        "avg_precision": 0.26517524848794405,
+        "precision": 0.14285714285714285,
+        "recall": 0.0001872308556450103,
+        "f1": 0.00037397157816005983,
+        "tn": 19653,
+        "fp": 6,
+        "fn": 5340,
+        "tp": 1
+      },
+      "x2y2": {
+        "auc_roc": 0.469558164736086,
+        "avg_precision": 0.19531158191560144,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 19892,
+        "fp": 2,
+        "fn": 5106,
+        "tp": 0
+      }
+    },
+    "_summary": {
+      "ops_to_fund_mean_auc": 0.6174763670164806,
+      "ops_to_fund_std_auc": 0.20275406848546218,
+      "fund_to_ops_mean_auc": 0.5158886026586385,
+      "fund_to_ops_std_auc": 0.0771064024376619,
+      "note": "NOT circular: features are DISJOINT from label derivation"
+    }
+  },
+  "exp3_ai_evasion": {
+    "basic": {
+      "n_ai_sybils": 5000,
+      "rule_detected": 0,
+      "rule_evasion_rate": 1.0,
+      "ml_5ind_detected": 0,
+      "ml_5ind_evasion_rate": 1.0,
+      "cross_axis_ops_detected": 107,
+      "cross_axis_ops_evasion_rate": 0.9786
+    },
+    "moderate": {
+      "n_ai_sybils": 5000,
+      "rule_detected": 0,
+      "rule_evasion_rate": 1.0,
+      "ml_5ind_detected": 0,
+      "ml_5ind_evasion_rate": 1.0,
+      "cross_axis_ops_detected": 6,
+      "cross_axis_ops_evasion_rate": 0.9988
+    },
+    "advanced": {
+      "n_ai_sybils": 5000,
+      "rule_detected": 0,
+      "rule_evasion_rate": 1.0,
+      "ml_5ind_detected": 0,
+      "ml_5ind_evasion_rate": 1.0,
+      "cross_axis_ops_detected": 3,
+      "cross_axis_ops_evasion_rate": 0.9994
+    }
+  },
+  "exp4_enhanced_detector": {
+    "1inch": {
+      "baseline_auc": 0.759148155334654,
+      "enhanced_auc": 0.8116162576519372,
+      "ai_only_auc": 0.727384624820701,
+      "improvement": 0.05246810231728327,
+      "top_features": {
+        "hour_entropy": 0.3494,
+        "behavioral_consistency": 0.1369,
+        "HF": 0.12,
+        "eip1559_tip_precision": 0.1178,
+        "BT": 0.0933
+      }
+    },
+    "ampleforth": {
+      "baseline_auc": 0.31829770378262556,
+      "enhanced_auc": 0.9587249487465378,
+      "ai_only_auc": 0.9487832724741765,
+      "improvement": 0.6404272449639122,
+      "top_features": {
+        "hour_entropy": 0.3421,
+        "behavioral_consistency": 0.1334,
+        "HF": 0.1222,
+        "BT": 0.1133,
+        "eip1559_tip_precision": 0.1125
+      }
+    },
+    "apecoin": {
+      "baseline_auc": 0.6282438526293311,
+      "enhanced_auc": 0.9796047990201705,
+      "ai_only_auc": 0.967322996717337,
+      "improvement": 0.35136094639083937,
+      "top_features": {
+        "hour_entropy": 0.3382,
+        "behavioral_consistency": 0.1297,
+        "BT": 0.12,
+        "HF": 0.1159,
+        "eip1559_tip_precision": 0.1135
+      }
+    },
+    "badger": {
+      "baseline_auc": 0.2566189653946055,
+      "enhanced_auc": 0.9361264920049205,
+      "ai_only_auc": 0.9057322744876551,
+      "improvement": 0.679507526610315,
+      "top_features": {
+        "hour_entropy": 0.3429,
+        "HF": 0.1335,
+        "behavioral_consistency": 0.1288,
+        "eip1559_tip_precision": 0.1104,
+        "BT": 0.1084
+      }
+    },
+    "blur_s1": {
+      "baseline_auc": 0.2834299500503239,
+      "enhanced_auc": 0.913007928435041,
+      "ai_only_auc": 0.9138940023512736,
+      "improvement": 0.6295779783847171,
+      "top_features": {
+        "hour_entropy": 0.3398,
+        "behavioral_consistency": 0.1316,
+        "HF": 0.1264,
+        "BT": 0.1128,
+        "eip1559_tip_precision": 0.1107
+      }
+    },
+    "blur_s2": {
+      "baseline_auc": 0.38392709824292115,
+      "enhanced_auc": 0.9659669865034197,
+      "ai_only_auc": 0.9127998527187557,
+      "improvement": 0.5820398882604986,
+      "top_features": {
+        "hour_entropy": 0.3455,
+        "behavioral_consistency": 0.1313,
+        "HF": 0.1247,
+        "eip1559_tip_precision": 0.1155,
+        "BT": 0.1062
+      }
+    },
+    "dydx": {
+      "baseline_auc": 0.8463104719943523,
+      "enhanced_auc": 0.9756481322078829,
+      "ai_only_auc": 0.96583267154845,
+      "improvement": 0.12933766021353066,
+      "top_features": {
+        "hour_entropy": 0.338,
+        "behavioral_consistency": 0.1319,
+        "BT": 0.1193,
+        "HF": 0.115,
+        "eip1559_tip_precision": 0.1113
+      }
+    },
+    "eigenlayer": {
+      "baseline_auc": 0.7026759911252842,
+      "enhanced_auc": 0.9787173300566347,
+      "ai_only_auc": 0.9615049396855229,
+      "improvement": 0.2760413389313505,
+      "top_features": {
+        "hour_entropy": 0.3433,
+        "behavioral_consistency": 0.1335,
+        "HF": 0.1256,
+        "BT": 0.1111,
+        "eip1559_tip_precision": 0.111
+      }
+    },
+    "ens": {
+      "baseline_auc": 0.5337063414115315,
+      "enhanced_auc": 0.9704080577751865,
+      "ai_only_auc": 0.9410662654361837,
+      "improvement": 0.43670171636365496,
+      "top_features": {
+        "hour_entropy": 0.3352,
+        "HF": 0.1405,
+        "behavioral_consistency": 0.1265,
+        "BT": 0.1108,
+        "eip1559_tip_precision": 0.1084
+      }
+    },
+    "etherfi": {
+      "baseline_auc": 0.8591992243043637,
+      "enhanced_auc": 0.9659390063067368,
+      "ai_only_auc": 0.9244181734291462,
+      "improvement": 0.10673978200237311,
+      "top_features": {
+        "hour_entropy": 0.3421,
+        "behavioral_consistency": 0.1338,
+        "BT": 0.118,
+        "HF": 0.1141,
+        "eip1559_tip_precision": 0.113
+      }
+    },
+    "gitcoin": {
+      "baseline_auc": 0.5594274432889452,
+      "enhanced_auc": 0.9731761435910098,
+      "ai_only_auc": 0.9163674683538666,
+      "improvement": 0.41374870030206456,
+      "top_features": {
+        "hour_entropy": 0.343,
+        "behavioral_consistency": 0.1344,
+        "HF": 0.1223,
+        "eip1559_tip_precision": 0.1126,
+        "BT": 0.1085
+      }
+    },
+    "looksrare": {
+      "baseline_auc": 0.6234083099630808,
+      "enhanced_auc": 0.94671934267705,
+      "ai_only_auc": 0.8546831976607278,
+      "improvement": 0.3233110327139692,
+      "top_features": {
+        "hour_entropy": 0.3487,
+        "behavioral_consistency": 0.1332,
+        "eip1559_tip_precision": 0.1148,
+        "BT": 0.1125,
+        "HF": 0.1108
+      }
+    },
+    "paraswap": {
+      "baseline_auc": 0.782693753851895,
+      "enhanced_auc": 0.9831279931697774,
+      "ai_only_auc": 0.9211555967680833,
+      "improvement": 0.2004342393178824,
+      "top_features": {
+        "hour_entropy": 0.3496,
+        "behavioral_consistency": 0.1337,
+        "eip1559_tip_precision": 0.114,
+        "HF": 0.111,
+        "BT": 0.1104
+      }
+    },
+    "pengu": {
+      "baseline_auc": 0.6811175666336597,
+      "enhanced_auc": 0.9655998868941222,
+      "ai_only_auc": 0.9596873529136696,
+      "improvement": 0.2844823202604625,
+      "top_features": {
+        "hour_entropy": 0.3435,
+        "behavioral_consistency": 0.1319,
+        "HF": 0.1179,
+        "BT": 0.1149,
+        "eip1559_tip_precision": 0.1101
+      }
+    },
+    "uniswap": {
+      "baseline_auc": 0.8524250902090412,
+      "enhanced_auc": 0.9547955357876475,
+      "ai_only_auc": 0.9055834728041179,
+      "improvement": 0.1023704455786063,
+      "top_features": {
+        "hour_entropy": 0.3369,
+        "behavioral_consistency": 0.1302,
+        "BT": 0.1192,
+        "eip1559_tip_precision": 0.117,
+        "HF": 0.1116
+      }
+    },
+    "x2y2": {
+      "baseline_auc": 0.8089919540470744,
+      "enhanced_auc": 0.9616260994396322,
+      "ai_only_auc": 0.8799478474063427,
+      "improvement": 0.15263414539255782,
+      "top_features": {
+        "hour_entropy": 0.3525,
+        "behavioral_consistency": 0.1328,
+        "eip1559_tip_precision": 0.1143,
+        "HF": 0.1127,
+        "BT": 0.1098
+      }
+    },
+    "_summary": {
+      "mean_baseline_auc": 0.6174763670164806,
+      "mean_enhanced_auc": 0.9525503087667316,
+      "mean_ai_only_auc": 0.9128852505985006,
+      "mean_improvement": 0.33507394175025107,
+      "recovery": {
+        "basic": {
+          "n_ai_sybils": 3000,
+          "baseline_detected": 51,
+          "baseline_rate": 0.017,
+          "enhanced_detected": 2143,
+          "enhanced_rate": 0.7143333333333334,
+          "recovery": 0.6973333333333334
+        },
+        "moderate": {
+          "n_ai_sybils": 3000,
+          "baseline_detected": 3,
+          "baseline_rate": 0.001,
+          "enhanced_detected": 2674,
+          "enhanced_rate": 0.8913333333333333,
+          "recovery": 0.8903333333333333
+        },
+        "advanced": {
+          "n_ai_sybils": 3000,
+          "baseline_detected": 0,
+          "baseline_rate": 0.0,
+          "enhanced_detected": 2938,
+          "enhanced_rate": 0.9793333333333333,
+          "recovery": 0.9793333333333333
+        }
+      }
+    }
+  },
+  "exp5_multi_baseline": {
+    "per_project_aucs": {
+      "random": [
+        0.49475383495417824,
+        0.5083569901507029,
+        0.4929778746303559,
+        0.5048109222196382,
+        0.5119192266580026,
+        0.4981582898410057,
+        0.5006886273337148,
+        0.4934245539585778,
+        0.5017345834663179,
+        0.502926161408416,
+        0.49781225203131496,
+        0.5026020385327372,
+        0.46579234540119074,
+        0.5073627499458101,
+        0.5057832020764811,
+        0.5056234465286303
+      ],
+      "rule_BT": [
+        0.6663294979963854,
+        0.5227369244506358,
+        0.4918612386448442,
+        0.537228387989175,
+        0.6430377882748048,
+        0.44299220042543136,
+        0.503149045334041,
+        0.4900666468565607,
+        0.4725331274926026,
+        0.5188723344615978,
+        0.49061720698254363,
+        0.43593611357586515,
+        0.55485593205964,
+        0.6941473757089973,
+        0.5491721651682925,
+        0.49015936800767157
+      ],
+      "rule_BW": [
+        0.4539270230449665,
+        0.3586406362979031,
+        0.34336795940192033,
+        0.36280656463212246,
+        0.47296805315372714,
+        0.5024230100512073,
+        0.7228126979627438,
+        0.49325772427186027,
+        0.4475758608360767,
+        0.5504547292122333,
+        0.3339775561097257,
+        0.5271712047066053,
+        0.5913761371924845,
+        0.5750462084970192,
+        0.5544292275525942,
+        0.5741846649356881
+      ],
+      "rule_HF": [
+        0.750655642564753,
+        0.2661993890004019,
+        0.6713949231567815,
+        0.1899936474610692,
+        0.3313688905069628,
+        0.384889700424663,
+        0.9004461863950045,
+        0.70347545569348,
+        0.5068362735283437,
+        0.8785999846561489,
+        0.5224522182041706,
+        0.5315709029805225,
+        0.6835866160431074,
+        0.8218026402139652,
+        0.8961781932960157,
+        0.6788717836108396
+      ],
+      "rule_any_ops": [
+        0.6111834666411577,
+        0.5044264035533258,
+        0.4943963264859708,
+        0.4869148205692045,
+        0.602438103410201,
+        0.43406556166802773,
+        0.5499666349574639,
+        0.4918646037209521,
+        0.4742922972940865,
+        0.5311924991802811,
+        0.44341217796284993,
+        0.42543036797392103,
+        0.5280456827678234,
+        0.5511576435770306,
+        0.5648634789992371,
+        0.4748078595823789
+      ],
+      "gbm_ops": [
+        0.759148155334654,
+        0.31829770378262556,
+        0.6282438526293311,
+        0.2566189653946055,
+        0.2834299500503239,
+        0.38392709824292115,
+        0.8463104719943523,
+        0.7026759911252842,
+        0.5337063414115315,
+        0.8591992243043637,
+        0.5594274432889452,
+        0.6234083099630808,
+        0.782693753851895,
+        0.6811175666336597,
+        0.8524250902090412,
+        0.8089919540470744
+      ],
+      "rf_ops": [
+        0.7584796299993651,
+        0.3131852261029581,
+        0.548983625258211,
+        0.25032253934995397,
+        0.2743874482797702,
+        0.37415766162134156,
+        0.8468788475644088,
+        0.684373721326644,
+        0.5181107292602984,
+        0.8706420187440931,
+        0.5174072784038882,
+        0.608541551916306,
+        0.7537236162862361,
+        0.6885788255773229,
+        0.8506304395410714,
+        0.7846614840000338
+      ],
+      "lr_ops": [
+        0.7616715025521292,
+        0.330363116257343,
+        0.6726393965342701,
+        0.26688292715584416,
+        0.45458027485586383,
+        0.3465785786314954,
+        0.841421720187663,
+        0.7065947972260321,
+        0.5123960171865252,
+        0.8582633644758514,
+        0.5269118365734045,
+        0.5295628899571215,
+        0.6756213212635912,
+        0.8200278829651952,
+        0.8833016484793165,
+        0.6876623013168
+      ]
+    },
+    "summary": {
+      "random": {
+        "mean_auc": 0.49967044369606717,
+        "std_auc": 0.010215857567602758,
+        "min_auc": 0.46579234540119074,
+        "max_auc": 0.5119192266580026,
+        "n_projects": 16
+      },
+      "rule_BT": {
+        "mean_auc": 0.5314809595893181,
+        "std_auc": 0.07336384669978105,
+        "min_auc": 0.43593611357586515,
+        "max_auc": 0.6941473757089973,
+        "n_projects": 16
+      },
+      "rule_BW": {
+        "mean_auc": 0.4915262036161798,
+        "std_auc": 0.1033146369808458,
+        "min_auc": 0.3339775561097257,
+        "max_auc": 0.7228126979627438,
+        "n_projects": 16
+      },
+      "rule_HF": {
+        "mean_auc": 0.6073951529835144,
+        "std_auc": 0.21979772549383259,
+        "min_auc": 0.1899936474610692,
+        "max_auc": 0.9004461863950045,
+        "n_projects": 16
+      },
+      "rule_any_ops": {
+        "mean_auc": 0.5105286205214945,
+        "std_auc": 0.05411582689063532,
+        "min_auc": 0.42543036797392103,
+        "max_auc": 0.6111834666411577,
+        "n_projects": 16
+      },
+      "gbm_ops": {
+        "mean_auc": 0.6174763670164806,
+        "std_auc": 0.20275406848546218,
+        "min_auc": 0.2566189653946055,
+        "max_auc": 0.8591992243043637,
+        "n_projects": 16
+      },
+      "rf_ops": {
+        "mean_auc": 0.6026915402019939,
+        "std_auc": 0.2050115988276594,
+        "min_auc": 0.25032253934995397,
+        "max_auc": 0.8706420187440931,
+        "n_projects": 16
+      },
+      "lr_ops": {
+        "mean_auc": 0.6171549734761529,
+        "std_auc": 0.19237751900876796,
+        "min_auc": 0.26688292715584416,
+        "max_auc": 0.8833016484793165,
+        "n_projects": 16
+      }
+    }
+  },
+  "exp6_temporal": {
+    "train_n": 241068,
+    "per_project": {
+      "blur_s1": {
+        "date": "2023-02",
+        "n_test": 25000,
+        "fund_flag_rate": 0.12104,
+        "metrics": {
+          "auc_roc": 0.2900678645573501,
+          "avg_precision": 0.09635698328022964,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 21926,
+          "fp": 48,
+          "fn": 3026,
+          "tp": 0
+        }
+      },
+      "blur_s2": {
+        "date": "2023-05",
+        "n_test": 25000,
+        "fund_flag_rate": 0.1538,
+        "metrics": {
+          "auc_roc": 0.44101071446463475,
+          "avg_precision": 0.14928379753500953,
+          "precision": 0.14516129032258066,
+          "recall": 0.0023407022106631988,
+          "f1": 0.004607115433836704,
+          "tn": 21102,
+          "fp": 53,
+          "fn": 3836,
+          "tp": 9
+        }
+      },
+      "paraswap": {
+        "date": "2023-08",
+        "n_test": 19999,
+        "fund_flag_rate": 0.003550177508875444,
+        "metrics": {
+          "auc_roc": 0.8011521053256512,
+          "avg_precision": 0.08230750571255627,
+          "precision": 0.18072289156626506,
+          "recall": 0.2112676056338028,
+          "f1": 0.19480519480519481,
+          "tn": 19860,
+          "fp": 68,
+          "fn": 56,
+          "tp": 15
+        }
+      },
+      "eigenlayer": {
+        "date": "2024-05",
+        "n_test": 25000,
+        "fund_flag_rate": 0.05772,
+        "metrics": {
+          "auc_roc": 0.7013886872527616,
+          "avg_precision": 0.09922867649524846,
+          "precision": 0.06818181818181818,
+          "recall": 0.008316008316008316,
+          "f1": 0.014823965410747375,
+          "tn": 23393,
+          "fp": 164,
+          "fn": 1431,
+          "tp": 12
+        }
+      },
+      "etherfi": {
+        "date": "2024-06",
+        "n_test": 25000,
+        "fund_flag_rate": 0.29296,
+        "metrics": {
+          "auc_roc": 0.8749095582552825,
+          "avg_precision": 0.6589329592717519,
+          "precision": 0.6631716906946264,
+          "recall": 0.06908793009284545,
+          "f1": 0.12513911215531098,
+          "tn": 17419,
+          "fp": 257,
+          "fn": 6818,
+          "tp": 506
+        }
+      },
+      "pengu": {
+        "date": "2024-12",
+        "n_test": 25000,
+        "fund_flag_rate": 0.02468,
+        "metrics": {
+          "auc_roc": 0.6206052241275789,
+          "avg_precision": 0.04351962636983792,
+          "precision": 0.12745098039215685,
+          "recall": 0.04213938411669368,
+          "f1": 0.06333739342265529,
+          "tn": 24205,
+          "fp": 178,
+          "fn": 591,
+          "tp": 26
+        }
+      }
+    },
+    "mean_test_auc": 0.6215223589972099,
+    "std_test_auc": 0.20219541939070593,
+    "circular_reference_for_comparison": {
+      "blur_s1": 1.0,
+      "blur_s2": 1.0,
+      "paraswap": 1.0,
+      "eigenlayer": 1.0,
+      "etherfi": 1.0,
+      "pengu": 1.0
+    },
+    "note": "Cross-axis AUC measures TRUE predictive power. Circular AUC (shown for reference) is always ~1.0 because is_sybil = f(BT,BW,HF,RF,MA)."
+  }
+}

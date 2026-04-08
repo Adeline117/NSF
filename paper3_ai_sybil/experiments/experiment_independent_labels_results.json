@@ -1,0 +1,3494 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-07T16:36:14",
+    "projects_loaded": [
+      "1inch",
+      "uniswap",
+      "looksrare",
+      "apecoin",
+      "ens",
+      "gitcoin",
+      "etherfi",
+      "x2y2",
+      "dydx",
+      "badger",
+      "blur_s1",
+      "blur_s2",
+      "paraswap",
+      "ampleforth",
+      "eigenlayer",
+      "pengu"
+    ],
+    "max_rows_per_project": 80000,
+    "indicator_cols": [
+      "BT",
+      "BW",
+      "HF",
+      "RF",
+      "MA"
+    ],
+    "thresholds": {
+      "BT": 5,
+      "BW": 10,
+      "HF": 0.8,
+      "RF": 0.5,
+      "MA": 5
+    },
+    "gbm_params": {
+      "n_estimators": 200,
+      "max_depth": 4,
+      "learning_rate": 0.1,
+      "subsample": 0.8,
+      "random_state": 42
+    },
+    "elapsed_seconds": 600.5
+  },
+  "approach_a_cross_axis": {
+    "1inch": {
+      "n_total": 80000,
+      "fund_flag_rate": 0.3029375,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.8652689634474565,
+          0.8680161863634219,
+          0.8708815958595738,
+          0.8713953809857901,
+          0.8642472294551664
+        ],
+        "mean_auc": 0.8679618712222817,
+        "std_auc": 0.0028763534946173136
+      },
+      "ops_flag_rate": 0.60195,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.6734432893678317,
+          0.6650725477124254,
+          0.6724677252576422,
+          0.6656819803521167,
+          0.6699823829012657
+        ],
+        "mean_auc": 0.6693295851182564,
+        "std_auc": 0.003424150088343371
+      }
+    },
+    "uniswap": {
+      "n_total": 80000,
+      "fund_flag_rate": 0.4451125,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.9555679527908163,
+          0.9544395022065468,
+          0.9501437913508074,
+          0.9514364315958489,
+          0.9527934646437252
+        ],
+        "mean_auc": 0.9528762285175489,
+        "std_auc": 0.001961391449698277
+      },
+      "ops_flag_rate": 0.212925,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.6253941819641954,
+          0.625446519398464,
+          0.6263050337249011,
+          0.6269834963824531,
+          0.6321456534792939
+        ],
+        "mean_auc": 0.6272549769898614,
+        "std_auc": 0.0025150700761034876
+      }
+    },
+    "looksrare": {
+      "n_total": 80000,
+      "fund_flag_rate": 0.3249375,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.7074027094475714,
+          0.7034941910784228,
+          0.7010894284524352,
+          0.7020106385610146,
+          0.7054856913347074
+        ],
+        "mean_auc": 0.7038965317748304,
+        "std_auc": 0.0022985652173510636
+      },
+      "ops_flag_rate": 0.2165625,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.5939243825801463,
+          0.603878145521544,
+          0.5979405313031161,
+          0.6063880010429672,
+          0.5987443988002425
+        ],
+        "mean_auc": 0.6001750918496033,
+        "std_auc": 0.0044367636166679015
+      }
+    },
+    "apecoin": {
+      "n_total": 17190,
+      "fund_flag_rate": 0.4779522978475858,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.8316790910031077,
+          0.8239701815925418,
+          0.8206926659399123,
+          0.8264698552311911,
+          0.831670077603908
+        ],
+        "mean_auc": 0.8268963742741322,
+        "std_auc": 0.004310293307657575
+      },
+      "ops_flag_rate": 0.019604421175101805,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.5812306016638846,
+          0.5906104304936308,
+          0.5720655104778687,
+          0.5103552103333916,
+          0.5690063710944319
+        ],
+        "mean_auc": 0.5646536248126416,
+        "std_auc": 0.028180674892400098
+      }
+    },
+    "ens": {
+      "n_total": 80000,
+      "fund_flag_rate": 0.3779375,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.6811077800738716,
+          0.6877172138520202,
+          0.6863767064222849,
+          0.6867313166989865,
+          0.6813104358801232
+        ],
+        "mean_auc": 0.6846486905854572,
+        "std_auc": 0.0028432796917384593
+      },
+      "ops_flag_rate": 0.0609625,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.6233614744656342,
+          0.6184817099705618,
+          0.6269009770041385,
+          0.6164670338933118,
+          0.6252325855134517
+        ],
+        "mean_auc": 0.6220887561694196,
+        "std_auc": 0.003981845998990924
+      }
+    },
+    "gitcoin": {
+      "n_total": 23878,
+      "fund_flag_rate": 0.32825194739927965,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.76863336318006,
+          0.7597375939933331,
+          0.7737263585296962,
+          0.7781788946586946,
+          0.7628836929692361
+        ],
+        "mean_auc": 0.7686319806662041,
+        "std_auc": 0.00677125070044011
+      },
+      "ops_flag_rate": 0.09707680710277243,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.6766456680634636,
+          0.6753611613140553,
+          0.675255451906468,
+          0.6814572923219946,
+          0.6779252836025438
+        ],
+        "mean_auc": 0.677328971441705,
+        "std_auc": 0.0022819853177444235
+      }
+    },
+    "etherfi": {
+      "n_total": 80000,
+      "fund_flag_rate": 0.2914875,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.9113008045050177,
+          0.9074392318344631,
+          0.9120488953663611,
+          0.9122493451243234,
+          0.9087024171085969
+        ],
+        "mean_auc": 0.9103481387877524,
+        "std_auc": 0.0019279455361025533
+      },
+      "ops_flag_rate": 0.1360625,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.5886825067804715,
+          0.5786254068307862,
+          0.5878603464611033,
+          0.5922887170766595,
+          0.5893371346132751
+        ],
+        "mean_auc": 0.5873588223524592,
+        "std_auc": 0.004615057853672144
+      }
+    },
+    "x2y2": {
+      "n_total": 80000,
+      "fund_flag_rate": 0.1245125,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.8426214136959029,
+          0.8465341054394621,
+          0.8455508391360989,
+          0.8540765180940781,
+          0.8478062416716521
+        ],
+        "mean_auc": 0.8473178236074388,
+        "std_auc": 0.003787115464707263
+      },
+      "ops_flag_rate": 0.20325,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.5368118062848342,
+          0.5295953377246355,
+          0.5284171870193757,
+          0.525827822013708,
+          0.533859337750108
+        ],
+        "mean_auc": 0.5309022981585323,
+        "std_auc": 0.003931935923564783
+      }
+    },
+    "dydx": {
+      "n_total": 73952,
+      "fund_flag_rate": 0.28452239290350495,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.9545908312491983,
+          0.9549182460800424,
+          0.9529157770602636,
+          0.9567906627079629,
+          0.9620595594930195
+        ],
+        "mean_auc": 0.9562550153180973,
+        "std_auc": 0.0031523522632618244
+      },
+      "ops_flag_rate": 0.05417027260926006,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.7161161575193266,
+          0.7131840229293092,
+          0.7300427061069652,
+          0.7209917655114965,
+          0.7161026467291179
+        ],
+        "mean_auc": 0.7192874597592431,
+        "std_auc": 0.005933500066033575
+      }
+    },
+    "badger": {
+      "n_total": 31786,
+      "fund_flag_rate": 0.13200780217705907,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.8461049552115156,
+          0.8419205365817622,
+          0.8492845605302572,
+          0.8365866007488332,
+          0.8375080622481156
+        ],
+        "mean_auc": 0.8422809430640967,
+        "std_auc": 0.004878720017287048
+      },
+      "ops_flag_rate": 0.15000314603913673,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.5281967546362892,
+          0.526302171723095,
+          0.5164100588503483,
+          0.5462850439095294,
+          0.5308768402987548
+        ],
+        "mean_auc": 0.5296141738836033,
+        "std_auc": 0.009662704831904682
+      }
+    },
+    "blur_s1": {
+      "n_total": 80000,
+      "fund_flag_rate": 0.1216375,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.7490593652057963,
+          0.7492098455655772,
+          0.7622169905215108,
+          0.753339179476724,
+          0.7553839121988513
+        ],
+        "mean_auc": 0.7538418585936919,
+        "std_auc": 0.004839447037050442
+      },
+      "ops_flag_rate": 0.1629375,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.608301112017393,
+          0.6010429994359819,
+          0.6049752444118669,
+          0.6238067387222387,
+          0.6029678294350846
+        ],
+        "mean_auc": 0.6082187848045131,
+        "std_auc": 0.008155685959339042
+      }
+    },
+    "blur_s2": {
+      "n_total": 80000,
+      "fund_flag_rate": 0.1524,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.6786075380239556,
+          0.6793984700531899,
+          0.6841469656748534,
+          0.6813196345222061,
+          0.6789461851553845
+        ],
+        "mean_auc": 0.6804837586859179,
+        "std_auc": 0.0020581526477876553
+      },
+      "ops_flag_rate": 0.119725,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.5826026799244794,
+          0.5889195494345687,
+          0.5859330113859048,
+          0.5843900954547099,
+          0.5855493344733269
+        ],
+        "mean_auc": 0.585478934134598,
+        "std_auc": 0.002074000190563403
+      }
+    },
+    "paraswap": {
+      "n_total": 19999,
+      "fund_flag_rate": 0.003550177508875444,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.7029155616084868,
+          0.7634219769192171,
+          0.6999946240412873,
+          0.7372312839815977,
+          0.7470783294497221
+        ],
+        "mean_auc": 0.7301283552000623,
+        "std_auc": 0.02487889209802112
+      },
+      "ops_flag_rate": 0.1272063603180159,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.5017153286109272,
+          0.5001634852235808,
+          0.4983274420499753,
+          0.4968116160612836,
+          0.498604961690015
+        ],
+        "mean_auc": 0.4991245667271563,
+        "std_auc": 0.001676098846068889
+      }
+    },
+    "ampleforth": {
+      "n_total": 80000,
+      "fund_flag_rate": 0.061225,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.7733982094798301,
+          0.7691897669445955,
+          0.7771539308133374,
+          0.7759507731188349,
+          0.7732267181173402
+        ],
+        "mean_auc": 0.7737838796947875,
+        "std_auc": 0.002742907732767712
+      },
+      "ops_flag_rate": 0.0604375,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.5290549347106822,
+          0.5357575278544389,
+          0.5326927777159811,
+          0.524460217167182,
+          0.5238579571684795
+        ],
+        "mean_auc": 0.5291646829233528,
+        "std_auc": 0.00460908750426202
+      }
+    },
+    "eigenlayer": {
+      "n_total": 80000,
+      "fund_flag_rate": 0.058625,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.7702842111879287,
+          0.773608494979812,
+          0.7738258977321598,
+          0.7665346418881558,
+          0.787203368932223
+        ],
+        "mean_auc": 0.7742913229440558,
+        "std_auc": 0.006980356035134832
+      },
+      "ops_flag_rate": 0.03525,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.519814771676784,
+          0.5392355004144314,
+          0.5263731945585435,
+          0.5182197621292401,
+          0.5272689659798685
+        ],
+        "mean_auc": 0.5261824389517735,
+        "std_auc": 0.007423621096706115
+      }
+    },
+    "pengu": {
+      "n_total": 52202,
+      "fund_flag_rate": 0.02371556645339259,
+      "ops_to_fund": {
+        "features": [
+          "BT",
+          "BW",
+          "HF"
+        ],
+        "target": "fund_flag",
+        "cv_aucs": [
+          0.8414412325979562,
+          0.8643957902798568,
+          0.8791305535949694,
+          0.8822465286369824,
+          0.8654394101002683
+        ],
+        "mean_auc": 0.8665307030420066,
+        "std_auc": 0.014428954972819397
+      },
+      "ops_flag_rate": 0.034232404888701586,
+      "fund_to_ops": {
+        "features": [
+          "RF",
+          "MA"
+        ],
+        "target": "ops_flag",
+        "cv_aucs": [
+          0.5694401273895938,
+          0.5633652693814524,
+          0.5852359589080105,
+          0.5668011526737046,
+          0.5974790193772639
+        ],
+        "mean_auc": 0.576464305546005,
+        "std_auc": 0.012906281034903861
+      }
+    }
+  },
+  "approach_b_cross_project": {
+    "transfer_matrix": {
+      "1inch": {
+        "1inch": {
+          "type": "within_project_cv",
+          "mean_auc": 1.0,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 0.9420544709993642,
+          "avg_precision": 0.8130344034128512,
+          "precision": 1.0,
+          "recall": 0.7622407526192003,
+          "f1": 0.8650812909487988,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9938191469194312,
+          "avg_precision": 0.9924733094793986,
+          "precision": 1.0,
+          "recall": 0.9817535545023697,
+          "f1": 0.9907927777113475,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 0.8979087851942542,
+          "avg_precision": 0.8000369583165156,
+          "precision": 1.0,
+          "recall": 0.690928520541439,
+          "f1": 0.8172178920019662,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 0.9746637594533112,
+          "avg_precision": 0.922949035098733,
+          "precision": 1.0,
+          "recall": 0.849711578079934,
+          "f1": 0.9187503480536838,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.9745894696372355,
+          "avg_precision": 0.9358857598985363,
+          "precision": 1.0,
+          "recall": 0.8790712673331184,
+          "f1": 0.9356444139351295,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.9818401203908325,
+          "avg_precision": 0.9559258786187907,
+          "precision": 1.0,
+          "recall": 0.9496897760992716,
+          "f1": 0.974195780006918,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.9897836056443144,
+          "avg_precision": 0.982227870639573,
+          "precision": 1.0,
+          "recall": 0.9490061005867071,
+          "f1": 0.9738359467433466,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 0.9997006800993663,
+          "avg_precision": 0.9992087046968583,
+          "precision": 1.0,
+          "recall": 0.9961965769192273,
+          "f1": 0.998094665062174,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9390863529174529,
+          "avg_precision": 0.9221115218419655,
+          "precision": 1.0,
+          "recall": 0.8557701931738565,
+          "f1": 0.9222803516530932,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.923831141760895,
+          "avg_precision": 0.9178052959747531,
+          "precision": 1.0,
+          "recall": 0.8181750520988389,
+          "f1": 0.8999959065045643,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9001863587407637,
+          "avg_precision": 0.7207144484138426,
+          "precision": 1.0,
+          "recall": 0.6468101460415066,
+          "f1": 0.7855309218203034,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 0.9496227231623257,
+          "avg_precision": 0.8390905097491923,
+          "precision": 1.0,
+          "recall": 0.8227448227448227,
+          "f1": 0.9027537069131523,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9999956459626552,
+          "avg_precision": 0.9999924136317232,
+          "precision": 1.0,
+          "recall": 0.999131027032105,
+          "f1": 0.9995653246554904,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9077452452616384,
+          "avg_precision": 0.7983250898971941,
+          "precision": 1.0,
+          "recall": 0.6067634417322196,
+          "f1": 0.7552616968656942,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "ampleforth": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999291044002,
+          "avg_precision": 0.9999999308223062,
+          "precision": 0.999758265461713,
+          "recall": 1.0,
+          "f1": 0.9998791181201938,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "within_project_cv",
+          "mean_auc": 1.0,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9999966486120514,
+          "avg_precision": 0.9999933093307877,
+          "precision": 0.9981078524124882,
+          "recall": 1.0,
+          "f1": 0.9990530303030303,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999987248139,
+          "avg_precision": 0.9999999920424503,
+          "precision": 0.9999484987382191,
+          "recall": 1.0,
+          "f1": 0.9999742487059975,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.999998909011436,
+          "avg_precision": 0.9999942796575106,
+          "precision": 0.997518496392629,
+          "recall": 1.0,
+          "f1": 0.9987577068188093,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 0.9999997920866975,
+          "avg_precision": 0.9999990624192703,
+          "precision": 0.9991519371540797,
+          "recall": 1.0,
+          "f1": 0.9995757886981178,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999702686564,
+          "avg_precision": 0.9999994181506305,
+          "precision": 0.9991913746630727,
+          "recall": 1.0,
+          "f1": 0.9995955237966833,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.9999995915869252,
+          "avg_precision": 0.9999989780592381,
+          "precision": 0.9988920313730064,
+          "recall": 1.0,
+          "f1": 0.9994457086177724,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999633201108,
+          "avg_precision": 0.9999998775656502,
+          "precision": 0.9997998599019313,
+          "recall": 1.0,
+          "f1": 0.9998999199359487,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9999998774730771,
+          "avg_precision": 0.9999996594553431,
+          "precision": 0.9991,
+          "recall": 1.0,
+          "f1": 0.999549797408834,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999959372591,
+          "avg_precision": 0.999999991998893,
+          "precision": 0.9999503845199702,
+          "recall": 1.0,
+          "f1": 0.9999751916445458,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0000000000000002,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.999997650859563,
+          "avg_precision": 0.999995945211497,
+          "precision": 0.9991083370485956,
+          "recall": 1.0,
+          "f1": 0.9995539696699376,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9999930466902291,
+          "avg_precision": 0.9999722183405366,
+          "precision": 0.999959453432267,
+          "recall": 1.0,
+          "f1": 0.9999797263051191,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "apecoin": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 0.9992111106307934,
+          "avg_precision": 0.999487645308286,
+          "precision": 1.0,
+          "recall": 0.998437645308286,
+          "f1": 0.9992182119390205,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 0.9950813431822204,
+          "avg_precision": 0.9913146354500748,
+          "precision": 1.0,
+          "recall": 0.9901646354500748,
+          "f1": 0.9950580146110872,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "within_project_cv",
+          "mean_auc": 0.9999407244414353,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 0.9987526249213758,
+          "avg_precision": 0.9981671987340297,
+          "precision": 1.0,
+          "recall": 0.997506530515317,
+          "f1": 0.9987517089698627,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 0.9992529836871128,
+          "avg_precision": 0.998868886485373,
+          "precision": 1.0,
+          "recall": 0.9985063864853729,
+          "f1": 0.9992526351055331,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.9997218512604262,
+          "avg_precision": 0.99959718293638,
+          "precision": 1.0,
+          "recall": 0.99944718293638,
+          "f1": 0.9997235150453896,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 0.9979902879278273,
+          "avg_precision": 0.9972240061685415,
+          "precision": 1.0,
+          "recall": 0.9958454322090686,
+          "f1": 0.9979183920137878,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.9969638630606718,
+          "avg_precision": 0.9944929019422714,
+          "precision": 1.0,
+          "recall": 0.9939304019422713,
+          "f1": 0.996955962930393,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.9995395917928802,
+          "avg_precision": 0.9994826282874573,
+          "precision": 1.0,
+          "recall": 0.9990951282874573,
+          "f1": 0.9995473593528699,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 0.99863902672152,
+          "avg_precision": 0.9983096795058174,
+          "precision": 1.0,
+          "recall": 0.9972642044506723,
+          "f1": 0.9986302285179741,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9973459371157092,
+          "avg_precision": 0.996973052613086,
+          "precision": 1.0,
+          "recall": 0.9947953157842058,
+          "f1": 0.9973908680381335,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.9989062876537947,
+          "avg_precision": 0.9989168105586983,
+          "precision": 1.0,
+          "recall": 0.997816810558698,
+          "f1": 0.998907212398172,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 0.9857839097095069,
+          "avg_precision": 0.9731206362561483,
+          "precision": 1.0,
+          "recall": 0.9715689715689716,
+          "f1": 0.9855794908314046,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9992540205066305,
+          "avg_precision": 0.9993184037122647,
+          "precision": 1.0,
+          "recall": 0.9985203973789897,
+          "f1": 0.9992596509783184,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9974240718576742,
+          "avg_precision": 0.99643787709837,
+          "precision": 1.0,
+          "recall": 0.99485037709837,
+          "f1": 0.9974185417810029,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "badger": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 0.9583465079512694,
+          "avg_precision": 0.9726805159025389,
+          "precision": 1.0,
+          "recall": 0.9166930159025388,
+          "f1": 0.9565360840748756,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 0.9958841137481291,
+          "avg_precision": 0.9927307274962581,
+          "precision": 1.0,
+          "recall": 0.9917682274962583,
+          "f1": 0.9958671032150717,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.7476303317535545,
+          "avg_precision": 0.7430791626345085,
+          "precision": 1.0,
+          "recall": 0.495260663507109,
+          "f1": 0.6624405705229794,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "within_project_cv",
+          "mean_auc": 1.0,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 0.9482128141738773,
+          "avg_precision": 0.9215631283477543,
+          "precision": 1.0,
+          "recall": 0.8964256283477544,
+          "f1": 0.945384427364819,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.7642004883217395,
+          "avg_precision": 0.6563634766434793,
+          "precision": 1.0,
+          "recall": 0.5284009766434791,
+          "f1": 0.6914428670464479,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 0.6758543667634577,
+          "avg_precision": 0.5479441294594121,
+          "precision": 1.0,
+          "recall": 0.35170873352691534,
+          "f1": 0.5203913014739904,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.9700566495818721,
+          "avg_precision": 0.9456632991637443,
+          "precision": 1.0,
+          "recall": 0.9401132991637443,
+          "f1": 0.9691323692992213,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.7222773577745993,
+          "avg_precision": 0.6824172155491988,
+          "precision": 1.0,
+          "recall": 0.44443795790887064,
+          "f1": 0.6153783974941902,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 0.7209488539685718,
+          "avg_precision": 0.6509977079371434,
+          "precision": 1.0,
+          "recall": 0.44189770793714345,
+          "f1": 0.6129390531722894,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.7756480832749475,
+          "avg_precision": 0.7390422089320039,
+          "precision": 1.0,
+          "recall": 0.551196076468822,
+          "f1": 0.7106723448186862,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.9746942121198366,
+          "avg_precision": 0.9748896993152724,
+          "precision": 1.0,
+          "recall": 0.9493648903443486,
+          "f1": 0.9740248170537703,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9942352036894697,
+          "avg_precision": 0.9899704823826895,
+          "precision": 1.0,
+          "recall": 0.9884704073789393,
+          "f1": 0.9942017781213761,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.7396016815801216,
+          "avg_precision": 0.7563908631602435,
+          "precision": 1.0,
+          "recall": 0.47917987740435425,
+          "f1": 0.6478993998285224,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9789145488282435,
+          "avg_precision": 0.9708298597031872,
+          "precision": 1.0,
+          "recall": 0.9578298597031871,
+          "f1": 0.9784607737552813,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "blur_s1": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999521454701,
+          "avg_precision": 0.9999999550311862,
+          "precision": 0.9999070113446159,
+          "recall": 1.0,
+          "f1": 0.999953503510485,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9999974881516588,
+          "avg_precision": 0.9999947960996838,
+          "precision": 0.999171303421333,
+          "recall": 1.0,
+          "f1": 0.9995854799549949,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "within_project_cv",
+          "mean_auc": 0.9999968650582882,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.9999994021493309,
+          "avg_precision": 0.9999968274260208,
+          "precision": 0.9992174553489228,
+          "recall": 1.0,
+          "f1": 0.9996085745205038,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 0.9999998622574371,
+          "avg_precision": 0.9999994013870026,
+          "precision": 0.9997320351927114,
+          "recall": 1.0,
+          "f1": 0.9998659996426658,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999851343282,
+          "avg_precision": 0.9999997089968564,
+          "precision": 0.999730312837109,
+          "recall": 1.0,
+          "f1": 0.9998651382333108,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.9999998391873518,
+          "avg_precision": 0.9999996063828777,
+          "precision": 0.9997957158699585,
+          "recall": 1.0,
+          "f1": 0.999897847500912,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999716564492,
+          "avg_precision": 0.9999999220519008,
+          "precision": 0.999966637752719,
+          "recall": 1.0,
+          "f1": 0.999983318598095,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999387365385,
+          "avg_precision": 0.9999998297106307,
+          "precision": 0.9998999199359487,
+          "recall": 1.0,
+          "f1": 0.9999499574638443,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.9999833008849094,
+          "avg_precision": 0.9999742325062018,
+          "precision": 0.9999503845199702,
+          "recall": 1.0,
+          "f1": 0.9999751916445458,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0000000000000002,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0000000000000002,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9999980155003843,
+          "avg_precision": 0.9999966898737216,
+          "precision": 0.999600901493098,
+          "recall": 1.0,
+          "f1": 0.9998004109186968,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9999893511301017,
+          "avg_precision": 0.999955879450506,
+          "precision": 0.999959453432267,
+          "recall": 1.0,
+          "f1": 0.9999797263051191,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "blur_s2": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0000000000000002,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "within_project_cv",
+          "mean_auc": 1.0,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999997,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9999898684425731,
+          "avg_precision": 0.9999588592131105,
+          "precision": 0.999959453432267,
+          "recall": 1.0,
+          "f1": 0.9999797263051191,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "dydx": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 0.9868315818841253,
+          "f1": 0.9933721518039356,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 0.8496501324703315,
+          "avg_precision": 0.6536976666473372,
+          "precision": 0.21221482345941742,
+          "recall": 0.9914475090870216,
+          "f1": 0.3495994722457827,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9942214691943129,
+          "avg_precision": 0.9928052228175431,
+          "precision": 0.5874982597800362,
+          "recall": 1.0,
+          "f1": 0.7401560992721213,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 0.7919354554443647,
+          "avg_precision": 0.6820789457691934,
+          "precision": 0.3514978362253687,
+          "recall": 0.9933507480408454,
+          "f1": 0.5192564317413028,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 0.868851432463753,
+          "avg_precision": 0.7357802052489557,
+          "precision": 0.45113792084262566,
+          "recall": 0.8647507210548002,
+          "f1": 0.5929405117157841,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.8882435262803232,
+          "avg_precision": 0.8156103807925911,
+          "precision": 0.41992469629875206,
+          "recall": 0.8169254157645,
+          "f1": 0.554710960960961,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "within_project_cv",
+          "mean_auc": 0.9999774708535936,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.9814041241729269,
+          "avg_precision": 0.955456528849204,
+          "precision": 0.12389646869983949,
+          "recall": 0.9994604801726463,
+          "f1": 0.22046353872244207,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.9797856420876271,
+          "avg_precision": 0.9732883652102814,
+          "precision": 0.6456016862297681,
+          "recall": 0.9745176449983945,
+          "f1": 0.7766714744335365,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 0.9996397067860071,
+          "avg_precision": 0.9991311589297173,
+          "precision": 0.7919078199741008,
+          "recall": 0.9997330931171388,
+          "f1": 0.8837668849171239,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.939557551821843,
+          "avg_precision": 0.922427085519567,
+          "precision": 0.4599696146586253,
+          "recall": 1.0,
+          "f1": 0.6301084762865792,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.9230712467067174,
+          "avg_precision": 0.9176059121784573,
+          "precision": 0.5478660484846837,
+          "recall": 0.9996774833779895,
+          "f1": 0.7078177011514444,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 0.5533833326772261,
+          "avg_precision": 0.18419784494780628,
+          "precision": 0.20193166139112084,
+          "recall": 0.9561875480399693,
+          "f1": 0.3334450177578235,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 0.9480288908287205,
+          "avg_precision": 0.8347281991359257,
+          "precision": 0.09217768568283365,
+          "recall": 0.9992979992979993,
+          "f1": 0.16878612716763006,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9999604317638283,
+          "avg_precision": 0.999961848062281,
+          "precision": 0.9912524201637547,
+          "recall": 0.9980037107494305,
+          "f1": 0.994616608931748,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9071633705816777,
+          "avg_precision": 0.7978448904681383,
+          "precision": 0.486775519886139,
+          "recall": 0.9984997161625172,
+          "f1": 0.654485049833887,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "eigenlayer": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999998,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0000000000000002,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "within_project_cv",
+          "mean_auc": 1.0,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999998,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0000000000000002,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9999956808805053,
+          "avg_precision": 0.9999816333477848,
+          "precision": 0.999959453432267,
+          "recall": 1.0,
+          "f1": 0.9999797263051191,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "ens": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0000000000000002,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "within_project_cv",
+          "mean_auc": 1.0,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "etherfi": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 0.9999340926145732,
+          "avg_precision": 0.9999603371186784,
+          "precision": 0.9999442047314387,
+          "recall": 1.0,
+          "f1": 0.9999721015874197,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9997969939065674,
+          "avg_precision": 0.9996497544502617,
+          "precision": 0.9996446760630108,
+          "recall": 1.0,
+          "f1": 0.9998223064621217,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.9999211647159036,
+          "avg_precision": 0.999610998833974,
+          "precision": 0.999585559034813,
+          "recall": 1.0,
+          "f1": 0.9997927365681781,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 0.9999273516269058,
+          "avg_precision": 0.9997253653059606,
+          "precision": 0.9997766860205449,
+          "recall": 1.0,
+          "f1": 0.9998883305415969,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.9999881325483654,
+          "avg_precision": 0.9997667494425702,
+          "precision": 0.9998651382333108,
+          "recall": 1.0,
+          "f1": 0.9999325645694248,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.9999734981393935,
+          "avg_precision": 0.9999402123915541,
+          "precision": 0.9999124394372775,
+          "recall": 1.0,
+          "f1": 0.9999562178018417,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "within_project_cv",
+          "mean_auc": 0.999989400753942,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.999955634442713,
+          "avg_precision": 0.9998811087146766,
+          "precision": 0.9998999199359487,
+          "recall": 1.0,
+          "f1": 0.9999499574638443,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.9999782934005158,
+          "avg_precision": 0.9999594269914106,
+          "precision": 0.9999751916445458,
+          "recall": 1.0,
+          "f1": 0.9999875956684074,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9998741615739383,
+          "avg_precision": 0.9998505641579085,
+          "precision": 0.9998356267317898,
+          "recall": 1.0,
+          "f1": 0.9999178066106968,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "gitcoin": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 0.9999590797687335,
+          "avg_precision": 0.9999736837815519,
+          "precision": 0.9999628024624769,
+          "recall": 1.0,
+          "f1": 0.9999814008853178,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9998206499661476,
+          "avg_precision": 0.9996547384001861,
+          "precision": 0.9996446760630108,
+          "recall": 1.0,
+          "f1": 0.9998223064621217,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.9999623757123878,
+          "avg_precision": 0.999787830749227,
+          "precision": 0.9998618148318748,
+          "recall": 1.0,
+          "f1": 0.9999309026418223,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 0.9999616018782611,
+          "avg_precision": 0.9998284519560384,
+          "precision": 0.9998213408370181,
+          "recall": 1.0,
+          "f1": 0.9999106624380221,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.999987466380447,
+          "avg_precision": 0.9997451500279539,
+          "precision": 0.9998651382333108,
+          "recall": 1.0,
+          "f1": 0.9999325645694248,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.9999765213533648,
+          "avg_precision": 0.99993969657359,
+          "precision": 0.9999416245877236,
+          "recall": 1.0,
+          "f1": 0.9999708114419148,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "within_project_cv",
+          "mean_auc": 0.9999543640112394,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.9999782465227363,
+          "avg_precision": 0.9999603896691399,
+          "precision": 0.9999751916445458,
+          "recall": 1.0,
+          "f1": 0.9999875956684074,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9999413358189962,
+          "avg_precision": 0.9999036038725319,
+          "precision": 0.9998825850084538,
+          "recall": 1.0,
+          "f1": 0.9999412890574545,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0000000000000002,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "looksrare": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "within_project_cv",
+          "mean_auc": 1.0,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "paraswap": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 0.9830664927526707,
+          "avg_precision": 0.9900828011945069,
+          "precision": 1.0,
+          "recall": 0.9630614712173347,
+          "f1": 0.9811832032138255,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 0.9752346909447195,
+          "avg_precision": 0.9587615958374757,
+          "precision": 1.0,
+          "recall": 0.8780200983536455,
+          "f1": 0.9350486708032105,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9995567027758971,
+          "avg_precision": 0.9995532672756233,
+          "precision": 1.0,
+          "recall": 0.9466824644549763,
+          "f1": 0.9726110772976263,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 0.9938904066891602,
+          "avg_precision": 0.9924529085563583,
+          "precision": 1.0,
+          "recall": 0.904298266445025,
+          "f1": 0.9497443571517645,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 0.9950764365389076,
+          "avg_precision": 0.9931720067098058,
+          "precision": 1.0,
+          "recall": 0.9506077461887104,
+          "f1": 0.9746785308795184,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.9949634285736477,
+          "avg_precision": 0.9928000202974302,
+          "precision": 1.0,
+          "recall": 0.9754917768461786,
+          "f1": 0.9875938622265753,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 0.9720245357275382,
+          "avg_precision": 0.9639410260151802,
+          "precision": 1.0,
+          "recall": 0.9213759213759214,
+          "f1": 0.959079283887468,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.896838101149465,
+          "avg_precision": 0.8294477092039532,
+          "precision": 1.0,
+          "recall": 0.6880226598327489,
+          "f1": 0.8151817818617659,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.9960207385624754,
+          "avg_precision": 0.9960238188653661,
+          "precision": 1.0,
+          "recall": 0.9601564552380396,
+          "f1": 0.9796732833976144,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 0.9682866941305537,
+          "avg_precision": 0.9634080259018432,
+          "precision": 1.0,
+          "recall": 0.9187602175291095,
+          "f1": 0.957660273686773,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9657541466876608,
+          "avg_precision": 0.9674210467102419,
+          "precision": 1.0,
+          "recall": 0.8984085677109398,
+          "f1": 0.9464860020034798,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.9871493368341808,
+          "avg_precision": 0.9899557644662256,
+          "precision": 1.0,
+          "recall": 0.8999454202639674,
+          "f1": 0.9473381821030777,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "within_project_cv",
+          "mean_auc": 0.9999997791371019,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 0.9267577133968234,
+          "avg_precision": 0.86721690762736,
+          "precision": 1.0,
+          "recall": 0.7904527904527905,
+          "f1": 0.882964124681435,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9913244436147955,
+          "avg_precision": 0.992728361545508,
+          "precision": 1.0,
+          "recall": 0.9656638248902041,
+          "f1": 0.982532020646148,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9423434122040237,
+          "avg_precision": 0.9307954374564655,
+          "precision": 1.0,
+          "recall": 0.8442948665963831,
+          "f1": 0.915574707589482,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "pengu": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 0.9583744071421929,
+          "avg_precision": 0.9726988142843859,
+          "precision": 1.0,
+          "recall": 0.9166930159025388,
+          "f1": 0.9565360840748756,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 0.9958838807052817,
+          "avg_precision": 0.9927307274962582,
+          "precision": 1.0,
+          "recall": 0.9917682274962583,
+          "f1": 0.9958671032150717,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.7476303317535545,
+          "avg_precision": 0.7430791626345086,
+          "precision": 1.0,
+          "recall": 0.495260663507109,
+          "f1": 0.6624405705229794,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 0.9999929385137718,
+          "avg_precision": 0.9999616783276551,
+          "precision": 0.9998812774545887,
+          "recall": 1.0,
+          "f1": 0.9999406352033244,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 0.948211959374164,
+          "avg_precision": 0.9215631283477544,
+          "precision": 1.0,
+          "recall": 0.8964256283477544,
+          "f1": 0.945384427364819,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.7641923981732937,
+          "avg_precision": 0.656363476643479,
+          "precision": 1.0,
+          "recall": 0.5284009766434791,
+          "f1": 0.6914428670464479,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 0.6758543667634577,
+          "avg_precision": 0.5479441294594122,
+          "precision": 1.0,
+          "recall": 0.35170873352691534,
+          "f1": 0.5203913014739904,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.9700566495818721,
+          "avg_precision": 0.9456632991637441,
+          "precision": 1.0,
+          "recall": 0.9401132991637443,
+          "f1": 0.9691323692992213,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.7222737372565061,
+          "avg_precision": 0.6824338992110707,
+          "precision": 1.0,
+          "recall": 0.44455471554919873,
+          "f1": 0.6154903109781972,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 0.7209488539685718,
+          "avg_precision": 0.6509977079371434,
+          "precision": 1.0,
+          "recall": 0.44189770793714345,
+          "f1": 0.6129390531722894,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.7756319277397905,
+          "avg_precision": 0.7390422089320039,
+          "precision": 1.0,
+          "recall": 0.5512961665498949,
+          "f1": 0.7107555326150075,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.9746816691886662,
+          "avg_precision": 0.974884064349819,
+          "precision": 0.999973869189161,
+          "recall": 0.9493896993152724,
+          "f1": 0.9740254781933645,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9942139078199008,
+          "avg_precision": 0.989696053591735,
+          "precision": 0.9992229992229992,
+          "recall": 0.9884704073789393,
+          "f1": 0.9938176197836167,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "within_project_cv",
+          "mean_auc": 1.0,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.7396603959698442,
+          "avg_precision": 0.7564457919396886,
+          "precision": 1.0,
+          "recall": 0.4792033631602433,
+          "f1": 0.6479208675356842,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9789074812114675,
+          "avg_precision": 0.970806358012875,
+          "precision": 0.9999576683740422,
+          "recall": 0.9578298597031871,
+          "f1": 0.9784405094749923,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "uniswap": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 0.9963597950581249,
+          "avg_precision": 0.9880694454374641,
+          "precision": 1.0,
+          "recall": 0.9712422493051102,
+          "f1": 0.9854113563642279,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9992895802301963,
+          "avg_precision": 0.9992292439636993,
+          "precision": 1.0,
+          "recall": 0.9962085308056872,
+          "f1": 0.9981006647673314,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 0.9963195757387926,
+          "avg_precision": 0.9927287142218677,
+          "precision": 1.0,
+          "recall": 0.9787461410591308,
+          "f1": 0.9892589258925892,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 0.9985229171471568,
+          "avg_precision": 0.9955802792047659,
+          "precision": 1.0,
+          "recall": 0.986763494025546,
+          "f1": 0.9933376539209332,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.9989197889488985,
+          "avg_precision": 0.9973451949051406,
+          "precision": 1.0,
+          "recall": 0.9917538121343346,
+          "f1": 0.9958598357811957,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0000000000000002,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.9971861875446765,
+          "avg_precision": 0.9930755402961254,
+          "precision": 1.0,
+          "recall": 0.9894793633666037,
+          "f1": 0.9947118644067796,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.9991009669990628,
+          "avg_precision": 0.9985070599920693,
+          "precision": 1.0,
+          "recall": 0.9941913073936776,
+          "f1": 0.9970871938992081,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 0.9999798100551409,
+          "avg_precision": 0.9999497831620154,
+          "precision": 1.0,
+          "recall": 0.9995996396757081,
+          "f1": 0.9997997797577335,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9969115503441826,
+          "avg_precision": 0.9961570139467991,
+          "precision": 1.0,
+          "recall": 0.9885897307576819,
+          "f1": 0.9942621300583854,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.9974237347532336,
+          "avg_precision": 0.99733276596004,
+          "precision": 1.0,
+          "recall": 0.987148953061427,
+          "f1": 0.9935329221703413,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 0.994919963097174,
+          "avg_precision": 0.9854768532847955,
+          "precision": 1.0,
+          "recall": 0.9619523443504996,
+          "f1": 0.9806072477962782,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 0.9962942519018138,
+          "avg_precision": 0.9861965097279763,
+          "precision": 1.0,
+          "recall": 0.9796419796419796,
+          "f1": 0.9897163120567376,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "within_project_cv",
+          "mean_auc": 0.9999999843097246,
+          "note": "CIRCULAR (same project, same label definition)"
+        },
+        "x2y2": {
+          "type": "cross_project",
+          "auc_roc": 0.9957961876966628,
+          "avg_precision": 0.9908900610589317,
+          "precision": 1.0,
+          "recall": 0.9697915821912254,
+          "f1": 0.9846641552934395,
+          "n_test": 80000,
+          "n_test_sybil": 24662
+        }
+      },
+      "x2y2": {
+        "1inch": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999181155822,
+          "avg_precision": 0.9999999543414483,
+          "precision": 0.9997954477833978,
+          "recall": 1.0,
+          "f1": 0.9998977134302266,
+          "n_test": 80000,
+          "n_test_sybil": 53765
+        },
+        "ampleforth": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 80000,
+          "n_test_sybil": 9354
+        },
+        "apecoin": {
+          "type": "cross_project",
+          "auc_roc": 0.999938740690589,
+          "avg_precision": 0.9999284707430729,
+          "precision": 0.9989347851816783,
+          "recall": 1.0,
+          "f1": 0.9994671087690212,
+          "n_test": 17190,
+          "n_test_sybil": 8440
+        },
+        "badger": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 31786,
+          "n_test_sybil": 8422
+        },
+        "blur_s1": {
+          "type": "cross_project",
+          "auc_roc": 0.9999999957493798,
+          "avg_precision": 0.9999999734748343,
+          "precision": 0.9999484987382191,
+          "recall": 1.0,
+          "f1": 0.9999742487059975,
+          "n_test": 80000,
+          "n_test_sybil": 19416
+        },
+        "blur_s2": {
+          "type": "cross_project",
+          "auc_roc": 0.9998297607377677,
+          "avg_precision": 0.9995215377802534,
+          "precision": 0.9982524718326052,
+          "recall": 1.0,
+          "f1": 0.9991254717849581,
+          "n_test": 80000,
+          "n_test_sybil": 21707
+        },
+        "dydx": {
+          "type": "cross_project",
+          "auc_roc": 0.9999998960433487,
+          "avg_precision": 0.9999995213845242,
+          "precision": 0.9992857461720459,
+          "recall": 1.0,
+          "f1": 0.9996427455008261,
+          "n_test": 73952,
+          "n_test_sybil": 22385
+        },
+        "eigenlayer": {
+          "type": "cross_project",
+          "auc_roc": 0.9999991777425274,
+          "avg_precision": 0.9999916296852334,
+          "precision": 0.9994607710973308,
+          "recall": 1.0,
+          "f1": 0.999730312837109,
+          "n_test": 80000,
+          "n_test_sybil": 7414
+        },
+        "ens": {
+          "type": "cross_project",
+          "auc_roc": 0.9998874659251957,
+          "avg_precision": 0.9998418832482386,
+          "precision": 0.9992999445789459,
+          "recall": 1.0,
+          "f1": 0.9996498497271746,
+          "n_test": 80000,
+          "n_test_sybil": 34259
+        },
+        "etherfi": {
+          "type": "cross_project",
+          "auc_roc": 0.9999971346337423,
+          "avg_precision": 0.9999950085983097,
+          "precision": 0.9998999199359487,
+          "recall": 1.0,
+          "f1": 0.9999499574638443,
+          "n_test": 80000,
+          "n_test_sybil": 29973
+        },
+        "gitcoin": {
+          "type": "cross_project",
+          "auc_roc": 0.9999675952326273,
+          "avg_precision": 0.9999518082096782,
+          "precision": 0.999499799919968,
+          "recall": 1.0,
+          "f1": 0.9997498373943063,
+          "n_test": 23878,
+          "n_test_sybil": 9991
+        },
+        "looksrare": {
+          "type": "cross_project",
+          "auc_roc": 0.999999909057108,
+          "avg_precision": 0.9999998724268877,
+          "precision": 0.9999751916445458,
+          "recall": 1.0,
+          "f1": 0.9999875956684074,
+          "n_test": 80000,
+          "n_test_sybil": 40308
+        },
+        "paraswap": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 19999,
+          "n_test_sybil": 2602
+        },
+        "pengu": {
+          "type": "cross_project",
+          "auc_roc": 1.0,
+          "avg_precision": 0.9999999999999999,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_test": 52202,
+          "n_test_sybil": 2849
+        },
+        "uniswap": {
+          "type": "cross_project",
+          "auc_roc": 0.9999997712365244,
+          "avg_precision": 0.9999995981524656,
+          "precision": 0.9993662864385298,
+          "recall": 1.0,
+          "f1": 0.9996830427892235,
+          "n_test": 80000,
+          "n_test_sybil": 42579
+        },
+        "x2y2": {
+          "type": "within_project_cv",
+          "mean_auc": 1.0,
+          "note": "CIRCULAR (same project, same label definition)"
+        }
+      }
+    },
+    "summary": {
+      "n_projects": 16,
+      "n_cross_pairs": 240,
+      "cross_project_mean_auc": 0.9727100684737829,
+      "cross_project_std_auc": 0.071176127997391,
+      "cross_project_min_auc": 0.5533833326772261,
+      "cross_project_max_auc": 1.0
+    }
+  },
+  "approach_c_independent_gt": {
+    "n_total": 23878,
+    "n_hasci_sybil": 9991,
+    "n_fdd_sybil": 140,
+    "hasci_sybil_rate": 0.4184186280257978,
+    "fdd_sybil_rate": 0.005863137616215763,
+    "agreement": {
+      "jaccard": 0.00605759682224429,
+      "overlap_coeff": 0.4357142857142857,
+      "hasci_only": 9930,
+      "fdd_only": 79,
+      "both": 61,
+      "neither": 13808
+    },
+    "hasci_features_predict_fdd": {
+      "features": [
+        "BT",
+        "BW",
+        "HF",
+        "RF",
+        "MA"
+      ],
+      "target": "fdd_sybil (independent label)",
+      "cv_folds": [
+        {
+          "auc_roc": 0.5545267180166085,
+          "avg_precision": 0.007392762929402486,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 4729,
+          "fp": 19,
+          "fn": 28,
+          "tp": 0
+        },
+        {
+          "auc_roc": 0.6007792754844145,
+          "avg_precision": 0.0073379030434416875,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 4720,
+          "fp": 28,
+          "fn": 28,
+          "tp": 0
+        },
+        {
+          "auc_roc": 0.6358579552292695,
+          "avg_precision": 0.010177268829838692,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 4734,
+          "fp": 14,
+          "fn": 28,
+          "tp": 0
+        },
+        {
+          "auc_roc": 0.6212607962923953,
+          "avg_precision": 0.008733357824372444,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 4733,
+          "fp": 14,
+          "fn": 28,
+          "tp": 0
+        },
+        {
+          "auc_roc": 0.5190759577477505,
+          "avg_precision": 0.00721511446115609,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 4586,
+          "fp": 161,
+          "fn": 28,
+          "tp": 0
+        }
+      ],
+      "mean_auc": 0.5863001405540876,
+      "std_auc": 0.04339702968427163,
+      "mean_f1": 0.0,
+      "note": "NOT circular: FDD labels are independently derived"
+    },
+    "cross_method_transfer": {
+      "blur_s2": {
+        "train_project": "blur_s2",
+        "train_label": "HasciDB is_sybil",
+        "test_label": "Gitcoin FDD sybil",
+        "metrics": {
+          "auc_roc": 0.5320614626337519,
+          "avg_precision": 0.006629343236341591,
+          "precision": 0.0061054949454509054,
+          "recall": 0.4357142857142857,
+          "f1": 0.012042246569933867,
+          "tn": 13808,
+          "fp": 9930,
+          "fn": 79,
+          "tp": 61
+        },
+        "note": "DOUBLY independent: different project + different label methodology"
+      },
+      "uniswap": {
+        "train_project": "uniswap",
+        "train_label": "HasciDB is_sybil",
+        "test_label": "Gitcoin FDD sybil",
+        "metrics": {
+          "auc_roc": 0.5465611196032882,
+          "avg_precision": 0.006887082786427078,
+          "precision": 0.006175964361648274,
+          "recall": 0.4357142857142857,
+          "f1": 0.012179295198163123,
+          "tn": 13922,
+          "fp": 9816,
+          "fn": 79,
+          "tp": 61
+        },
+        "note": "DOUBLY independent: different project + different label methodology"
+      },
+      "eigenlayer": {
+        "train_project": "eigenlayer",
+        "train_label": "HasciDB is_sybil",
+        "test_label": "Gitcoin FDD sybil",
+        "metrics": {
+          "auc_roc": 0.5056019281922897,
+          "avg_precision": 0.006307866633662222,
+          "precision": 0.0061054949454509054,
+          "recall": 0.4357142857142857,
+          "f1": 0.012042246569933867,
+          "tn": 13808,
+          "fp": 9930,
+          "fn": 79,
+          "tp": 61
+        },
+        "note": "DOUBLY independent: different project + different label methodology"
+      },
+      "1inch": {
+        "train_project": "1inch",
+        "train_label": "HasciDB is_sybil",
+        "test_label": "Gitcoin FDD sybil",
+        "metrics": {
+          "auc_roc": 0.5564537871766786,
+          "avg_precision": 0.006689132700500245,
+          "precision": 0.007134502923976608,
+          "recall": 0.4357142857142857,
+          "f1": 0.014039125431530495,
+          "tn": 15249,
+          "fp": 8489,
+          "fn": 79,
+          "tp": 61
+        },
+        "note": "DOUBLY independent: different project + different label methodology"
+      }
+    },
+    "per_indicator_vs_fdd": {
+      "BT": {
+        "threshold": 5,
+        "tp": 1,
+        "fp": 145,
+        "fn": 139,
+        "tn": 23593,
+        "precision_vs_fdd": 0.00684931506849315,
+        "recall_vs_fdd": 0.007142857142857143,
+        "f1_vs_fdd": 0.006993006993006993
+      },
+      "BW": {
+        "threshold": 10,
+        "tp": 0,
+        "fp": 566,
+        "fn": 140,
+        "tn": 23172,
+        "precision_vs_fdd": 0.0,
+        "recall_vs_fdd": 0.0,
+        "f1_vs_fdd": 0.0
+      },
+      "HF": {
+        "threshold": 0.8,
+        "tp": 0,
+        "fp": 1606,
+        "fn": 140,
+        "tn": 22132,
+        "precision_vs_fdd": 0.0,
+        "recall_vs_fdd": 0.0,
+        "f1_vs_fdd": 0.0
+      },
+      "RF": {
+        "threshold": 0.5,
+        "tp": 46,
+        "fp": 5771,
+        "fn": 94,
+        "tn": 17967,
+        "precision_vs_fdd": 0.007907856283307547,
+        "recall_vs_fdd": 0.32857142857142857,
+        "f1_vs_fdd": 0.015444015444015444
+      },
+      "MA": {
+        "threshold": 5,
+        "tp": 25,
+        "fp": 3270,
+        "fn": 115,
+        "tn": 20468,
+        "precision_vs_fdd": 0.007587253414264037,
+        "recall_vs_fdd": 0.17857142857142858,
+        "f1_vs_fdd": 0.01455604075691412
+      }
+    }
+  },
+  "approach_d_serial_sybil": {
+    "n_multi_project": 131249,
+    "consistency_rate": 0.5422365122781888,
+    "always_sybil": {
+      "count": 27042,
+      "pct": 20.60358555112801
+    },
+    "always_clean": {
+      "count": 44126,
+      "pct": 33.62006567669087
+    },
+    "mixed": {
+      "count": 60081,
+      "pct": 45.776348772181116
+    },
+    "top_disagreeing_pairs": {
+      "1inch|ampleforth": {
+        "agree": 782,
+        "disagree": 6975,
+        "disagree_rate": 0.8991878303467835
+      },
+      "eigenlayer|etherfi": {
+        "agree": 443,
+        "disagree": 6544,
+        "disagree_rate": 0.9365965364247889
+      },
+      "ampleforth|uniswap": {
+        "agree": 925,
+        "disagree": 5425,
+        "disagree_rate": 0.8543307086614174
+      },
+      "1inch|badger": {
+        "agree": 1267,
+        "disagree": 4677,
+        "disagree_rate": 0.7868438761776582
+      },
+      "apecoin|pengu": {
+        "agree": 305,
+        "disagree": 2928,
+        "disagree_rate": 0.9056603773584906
+      },
+      "badger|uniswap": {
+        "agree": 969,
+        "disagree": 2506,
+        "disagree_rate": 0.7211510791366906
+      },
+      "1inch|uniswap": {
+        "agree": 3187,
+        "disagree": 2353,
+        "disagree_rate": 0.4247292418772563
+      },
+      "looksrare|pengu": {
+        "agree": 681,
+        "disagree": 2089,
+        "disagree_rate": 0.7541516245487364
+      },
+      "ens|looksrare": {
+        "agree": 1202,
+        "disagree": 2082,
+        "disagree_rate": 0.6339829476248477
+      },
+      "blur_s2|pengu": {
+        "agree": 613,
+        "disagree": 2056,
+        "disagree_rate": 0.7703259647808168
+      }
+    },
+    "serial_cross_prediction": {
+      "blur_s2\u2192eigenlayer": {
+        "n_shared": 2205,
+        "auc": 0.9999276951728795
+      },
+      "blur_s2\u2192gitcoin": {
+        "n_shared": 712,
+        "auc": 1.0
+      },
+      "blur_s2\u2192ens": {
+        "n_shared": 2639,
+        "auc": 1.0
+      },
+      "uniswap\u2192eigenlayer": {
+        "n_shared": 589,
+        "auc": 1.0
+      },
+      "uniswap\u2192gitcoin": {
+        "n_shared": 2281,
+        "auc": 0.9982405809270575
+      },
+      "uniswap\u2192ens": {
+        "n_shared": 2739,
+        "auc": 0.9999999999999999
+      },
+      "1inch\u2192eigenlayer": {
+        "n_shared": 1033,
+        "auc": 0.9230088255996535
+      },
+      "1inch\u2192gitcoin": {
+        "n_shared": 3772,
+        "auc": 0.5196134045702697
+      },
+      "1inch\u2192ens": {
+        "n_shared": 3698,
+        "auc": 0.6336480372746862
+      }
+    }
+  }
+}
