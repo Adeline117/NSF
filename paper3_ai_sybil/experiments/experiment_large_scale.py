@@ -268,38 +268,47 @@ def augment_with_ai_features(
     ai_calibration: dict,
     rng: np.random.RandomState,
 ) -> pd.DataFrame:
-    """Add AI features to real HasciDB data using REAL calibration."""
+    """Add AI features to real HasciDB data.
+
+    CRITICAL FIX (2026-04-08): The previous version drew AI feature
+    values from class-conditional distributions indexed by is_sybil
+    (agent-side for sybils, human-side for non-sybils). Since
+    is_sybil is correlated with fund_flag (via RF, MA), the synthetic
+    AI features acted as a hidden proxy for the label, causing direct
+    target leakage.
+
+    New semantics: ALL real HasciDB rows get AI features drawn from
+    the Paper 1 HUMAN distribution, regardless of the HasciDB is_sybil
+    label. The assumption is that most HasciDB sybils are script-based
+    sybils, not LLM-based sybils, so their AI features (gas precision,
+    hour entropy, etc.) look more human than agent. Only explicitly
+    LLM-generated sybils (in generate_ai_sybils_calibrated) get
+    AI features from the Paper 1 AGENT distribution.
+
+    This removes the circular shortcut. The enhanced detector now
+    answers the honest question: "Given N real HasciDB addresses
+    (with human-like AI features) plus M LLM sybils (with agent-like
+    AI features) mixed in, can a 5+AI-feature detector separate the
+    LLM sybils from the real addresses better than the 5-indicator
+    detector alone?"
+    """
     df = df.copy()
     n = len(df)
-    is_sybil = df["is_sybil"].values.astype(bool)
-    n_s = is_sybil.sum()
-    n_ns = n - n_s
 
-    beta_agent = ai_calibration.get("beta_params", {}).get("agent", {})
     beta_human = ai_calibration.get("beta_params", {}).get("human", {})
-    dist_agent = ai_calibration.get("distributions", {}).get("agent", {})
     dist_human = ai_calibration.get("distributions", {}).get("human", {})
 
     for feat in AI_FEATURE_NAMES:
-        vals = np.zeros(n)
-        if feat in beta_human and n_ns > 0:
+        if feat in beta_human:
             bp = beta_human[feat]
-            vals[~is_sybil] = rng.beta(max(0.1, bp["alpha"]), max(0.1, bp["beta"]), n_ns)
-        elif feat in dist_human and n_ns > 0:
+            vals = rng.beta(max(0.1, bp["alpha"]), max(0.1, bp["beta"]), n)
+        elif feat in dist_human:
             d = dist_human[feat]
-            vals[~is_sybil] = np.clip(rng.normal(d.get("mean", 0.5), d.get("std", 0.2), n_ns), 0, None)
-        elif n_ns > 0:
-            vals[~is_sybil] = rng.beta(2, 5, n_ns)
-
-        if feat in beta_agent and n_s > 0:
-            bp = beta_agent[feat]
-            vals[is_sybil] = rng.beta(max(0.1, bp["alpha"] * 0.7), max(0.1, bp["beta"] * 1.3), n_s)
-        elif feat in dist_agent and n_s > 0:
-            d = dist_agent[feat]
-            vals[is_sybil] = np.clip(rng.normal(d.get("mean", 0.5) * 0.8, d.get("std", 0.2), n_s), 0, None)
-        elif n_s > 0:
-            vals[is_sybil] = rng.beta(5, 3, n_s)
-
+            vals = np.clip(
+                rng.normal(d.get("mean", 0.5), d.get("std", 0.2), n), 0, None,
+            )
+        else:
+            vals = rng.beta(2, 5, n)
         df[feat] = vals
     return df
 

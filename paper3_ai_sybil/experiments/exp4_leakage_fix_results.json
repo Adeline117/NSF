@@ -1,0 +1,84 @@
+{
+  "honest_results": {
+    "1inch": {
+      "baseline_auc": 0.7574,
+      "enhanced_auc": 0.7581,
+      "ai_only_auc": 0.4995,
+      "improvement": 0.0007
+    },
+    "uniswap": {
+      "baseline_auc": 0.7291,
+      "enhanced_auc": 0.7373,
+      "ai_only_auc": 0.5024,
+      "improvement": 0.0082
+    },
+    "ens": {
+      "baseline_auc": 0.5154,
+      "enhanced_auc": 0.5126,
+      "ai_only_auc": 0.4971,
+      "improvement": -0.0028
+    },
+    "blur_s2": {
+      "baseline_auc": 0.429,
+      "enhanced_auc": 0.4276,
+      "ai_only_auc": 0.506,
+      "improvement": -0.0015
+    }
+  },
+  "comparison": {
+    "1inch": {
+      "honest_base_auc": 0.7574,
+      "leaky_base_auc": 0.759148155334654,
+      "honest_enh_auc": 0.7581,
+      "leaky_enh_auc": 0.8116162576519372,
+      "honest_ai_only_auc": 0.4995,
+      "leaky_ai_only_auc": 0.727384624820701,
+      "honest_improvement": 0.0007,
+      "leaky_improvement": 0.05246810231728327,
+      "inflation_of_improvement": 0.0518
+    },
+    "uniswap": {
+      "honest_base_auc": 0.7291,
+      "leaky_base_auc": 0.8524250902090412,
+      "honest_enh_auc": 0.7373,
+      "leaky_enh_auc": 0.9547955357876475,
+      "honest_ai_only_auc": 0.5024,
+      "leaky_ai_only_auc": 0.9055834728041179,
+      "honest_improvement": 0.0082,
+      "leaky_improvement": 0.1023704455786063,
+      "inflation_of_improvement": 0.0942
+    },
+    "ens": {
+      "honest_base_auc": 0.5154,
+      "leaky_base_auc": 0.5337063414115315,
+      "honest_enh_auc": 0.5126,
+      "leaky_enh_auc": 0.9704080577751865,
+      "honest_ai_only_auc": 0.4971,
+      "leaky_ai_only_auc": 0.9410662654361837,
+      "honest_improvement": -0.0028,
+      "leaky_improvement": 0.43670171636365496,
+      "inflation_of_improvement": 0.4395
+    },
+    "blur_s2": {
+      "honest_base_auc": 0.429,
+      "leaky_base_auc": 0.38392709824292115,
+      "honest_enh_auc": 0.4276,
+      "leaky_enh_auc": 0.9659669865034197,
+      "honest_ai_only_auc": 0.506,
+      "leaky_ai_only_auc": 0.9127998527187557,
+      "honest_improvement": -0.0015,
+      "leaky_improvement": 0.5820398882604986,
+      "inflation_of_improvement": 0.5835
+    }
+  },
+  "summary": {
+    "honest_mean_enhanced_auc": 0.6089,
+    "leaky_mean_enhanced_auc": 0.9257,
+    "enhancement_inflation": 0.3168,
+    "honest_mean_ai_only_auc": 0.5012,
+    "leaky_mean_ai_only_auc": 0.8717,
+    "ai_only_inflation": 0.3705
+  },
+  "elapsed_seconds": 187.42,
+  "note": "4-project subset (1inch, uniswap, ens, blur_s2) used to verify the leakage fix without waiting 80 min for full 16-project rerun. Same pattern expected on all 16 projects."
+}
