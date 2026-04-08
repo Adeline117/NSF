@@ -1,0 +1,640 @@
+{
+  "n_patterns": 27,
+  "n_categories": 21,
+  "n_cwes": 16,
+  "n_attack_surfaces": 5,
+  "n_owasp_llm": 2,
+  "severity_distribution": {
+    "critical": 6,
+    "high": 11,
+    "medium": 10,
+    "low": 0
+  },
+  "categories": [
+    "approval_injection",
+    "command_injection",
+    "data_leakage",
+    "delegatecall_abuse",
+    "excessive_permissions",
+    "hardcoded_credentials",
+    "insecure_rpc",
+    "mev_exploitation",
+    "missing_harness",
+    "missing_input_validation",
+    "no_output_validation",
+    "private_key_exposure",
+    "privilege_escalation",
+    "prompt_injection",
+    "skill_scope_leak",
+    "state_confusion",
+    "tool_chain_escalation",
+    "tool_poisoning",
+    "tx_validation_missing",
+    "unchecked_external_call",
+    "unlimited_approval"
+  ],
+  "cwes": [
+    "CWE-116",
+    "CWE-20",
+    "CWE-200",
+    "CWE-250",
+    "CWE-252",
+    "CWE-269",
+    "CWE-284",
+    "CWE-319",
+    "CWE-345",
+    "CWE-362",
+    "CWE-74",
+    "CWE-78",
+    "CWE-798",
+    "CWE-829",
+    "CWE-862",
+    "CWE-913"
+  ],
+  "attack_surfaces": [
+    "S1_tool_definition",
+    "S2_input_construction",
+    "S3_execution",
+    "S4_output_handling",
+    "S5_cross_tool"
+  ],
+  "owasp_llm_categories": [
+    "LLM01",
+    "LLM06"
+  ],
+  "patterns": [
+    {
+      "id": "S1-TP-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "high",
+      "attack_surface": "S1_tool_definition",
+      "category": "tool_poisoning",
+      "description": "Tool/function description contains directive instructions for the LLM (e.g., 'always', 'must', 'never', 'ignore')",
+      "cwe": "CWE-913",
+      "owasp_llm": "LLM01",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Remove directive language from tool descriptions. Descriptions should be declarative, not imperative."
+    },
+    {
+      "id": "S1-TP-002",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "medium",
+      "attack_surface": "S1_tool_definition",
+      "category": "tool_poisoning",
+      "description": "Tool description references other tools by name, potentially directing the LLM to chain calls",
+      "cwe": "CWE-913",
+      "owasp_llm": "LLM01",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Tools should be independently usable. Cross-tool dependencies should be enforced programmatically, not via description text."
+    },
+    {
+      "id": "S1-EP-001",
+      "protocols": [
+        "openai",
+        "langchain"
+      ],
+      "severity": "high",
+      "attack_surface": "S1_tool_definition",
+      "category": "excessive_permissions",
+      "description": "Function/tool name indicates destructive operation without scope restriction (execute, delete, admin, sudo, transfer)",
+      "cwe": "CWE-250",
+      "owasp_llm": "LLM06",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Scope destructive operations by resource type and add confirmation requirements."
+    },
+    {
+      "id": "S1-SL-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "medium",
+      "attack_surface": "S1_tool_definition",
+      "category": "skill_scope_leak",
+      "description": "Tool description exposes internal implementation details (database, schema, endpoint, internal)",
+      "cwe": "CWE-200",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Redact implementation details from tool descriptions. Only expose the functional interface."
+    },
+    {
+      "id": "S2-PI-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "critical",
+      "attack_surface": "S2_input_construction",
+      "category": "prompt_injection",
+      "description": "User input interpolated into tool description, prompt template, or system message at runtime",
+      "cwe": "CWE-74",
+      "owasp_llm": "LLM01",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Never interpolate user input into tool descriptions or system prompts. Pass user data as structured parameters."
+    },
+    {
+      "id": "S2-IV-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "medium",
+      "attack_surface": "S2_input_construction",
+      "category": "missing_input_validation",
+      "description": "Address parameter accepted as string without Ethereum address validation",
+      "cwe": "CWE-20",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Validate Ethereum addresses using checksum verification (e.g., ethers.isAddress()) before processing."
+    },
+    {
+      "id": "S2-IV-002",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain",
+        "web3_native"
+      ],
+      "severity": "medium",
+      "attack_surface": "S2_input_construction",
+      "category": "missing_input_validation",
+      "description": "Amount/value parameter without bounds checking or numeric validation",
+      "cwe": "CWE-20",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Validate numeric inputs: check for negative values, overflow, and enforce per-transaction/per-session limits."
+    },
+    {
+      "id": "S3-PKE-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "critical",
+      "attack_surface": "S3_execution",
+      "category": "private_key_exposure",
+      "description": "Private key, mnemonic, or seed phrase accepted as tool parameter or present in tool code",
+      "cwe": "CWE-200",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Never accept private keys as parameters. Use a secure signing service (e.g., KMS, hardware wallet, session keys with limited scope)."
+    },
+    {
+      "id": "S3-PKE-002",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "critical",
+      "attack_surface": "S3_execution",
+      "category": "private_key_exposure",
+      "description": "Wallet signing operation without user confirmation flow",
+      "cwe": "CWE-862",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "All signing operations must require explicit user confirmation with clear display of what is being signed."
+    },
+    {
+      "id": "S3-HC-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "critical",
+      "attack_surface": "S3_execution",
+      "category": "hardcoded_credentials",
+      "description": "Hardcoded API keys, passwords, secrets, or tokens",
+      "cwe": "CWE-798",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Use environment variables or a secret manager. Never hardcode credentials in source code."
+    },
+    {
+      "id": "S3-CE-001",
+      "protocols": [
+        "langchain"
+      ],
+      "severity": "high",
+      "attack_surface": "S3_execution",
+      "category": "command_injection",
+      "description": "Tool executes OS commands or shell operations without sandboxing",
+      "cwe": "CWE-78",
+      "owasp_llm": "LLM06",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Avoid shell execution. If required, use allowlists, input escaping (shlex.quote), and process sandboxing."
+    },
+    {
+      "id": "S3-UA-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain",
+        "web3_native"
+      ],
+      "severity": "high",
+      "attack_surface": "S3_execution",
+      "category": "unlimited_approval",
+      "description": "Constructs unlimited token approval (MaxUint256 or equivalent)",
+      "cwe": "CWE-250",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Cap token approvals to the exact amount needed for the transaction. Never use unlimited approvals."
+    },
+    {
+      "id": "S3-TV-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "high",
+      "attack_surface": "S3_execution",
+      "category": "tx_validation_missing",
+      "description": "Transaction constructed and sent without validating target contract or parameters",
+      "cwe": "CWE-345",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Validate transaction targets against a whitelist of approved contracts. Check all parameters before signing."
+    },
+    {
+      "id": "S3-IR-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "medium",
+      "attack_surface": "S3_execution",
+      "category": "insecure_rpc",
+      "description": "HTTP (not HTTPS) RPC endpoint used for blockchain communication",
+      "cwe": "CWE-319",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Always use HTTPS for RPC endpoints. HTTP exposes transaction data and API keys to network sniffers."
+    },
+    {
+      "id": "S3-MH-001",
+      "protocols": [
+        "mcp"
+      ],
+      "severity": "medium",
+      "attack_surface": "S3_execution",
+      "category": "missing_harness",
+      "description": "MCP server instantiated without security wrapper, sandbox, or policy enforcement",
+      "cwe": "CWE-284",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Wrap MCP server instantiation with a security harness that enforces tool-level permissions and rate limits."
+    },
+    {
+      "id": "S3-MH-002",
+      "protocols": [
+        "langchain"
+      ],
+      "severity": "medium",
+      "attack_surface": "S3_execution",
+      "category": "missing_harness",
+      "description": "Agent initialized without safety constraints (max_iterations, callbacks, allowed_tools)",
+      "cwe": "CWE-284",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Set max_iterations, handle_parsing_errors, and restrict allowed_tools when initializing agents."
+    },
+    {
+      "id": "S3-DC-001",
+      "protocols": [
+        "web3_native"
+      ],
+      "severity": "critical",
+      "attack_surface": "S3_execution",
+      "category": "delegatecall_abuse",
+      "description": "delegatecall to user-supplied or unvalidated address",
+      "cwe": "CWE-829",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".sol"
+      ],
+      "remediation": "Restrict delegatecall targets to immutable, audited addresses. Never delegatecall to user-supplied addresses."
+    },
+    {
+      "id": "S3-UC-001",
+      "protocols": [
+        "web3_native"
+      ],
+      "severity": "high",
+      "attack_surface": "S3_execution",
+      "category": "unchecked_external_call",
+      "description": "External call (.call, .send, .transfer) without checking return value",
+      "cwe": "CWE-252",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".sol"
+      ],
+      "remediation": "Always check return values of external calls. Use require() to revert on failure."
+    },
+    {
+      "id": "S3-PE-001",
+      "protocols": [
+        "web3_native"
+      ],
+      "severity": "critical",
+      "attack_surface": "S3_execution",
+      "category": "privilege_escalation",
+      "description": "Module can change owner, add modules, or set fallback handler without timelock/multisig",
+      "cwe": "CWE-269",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".sol"
+      ],
+      "remediation": "Gate critical state changes behind timelock and/or multi-signature requirements."
+    },
+    {
+      "id": "S3-AI-001",
+      "protocols": [
+        "web3_native"
+      ],
+      "severity": "high",
+      "attack_surface": "S3_execution",
+      "category": "approval_injection",
+      "description": "Module can set ERC-20 approvals on behalf of the safe/account without whitelisting",
+      "cwe": "CWE-862",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".sol"
+      ],
+      "remediation": "Whitelist approved spender addresses and cap approval amounts."
+    },
+    {
+      "id": "S4-NV-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "medium",
+      "attack_surface": "S4_output_handling",
+      "category": "no_output_validation",
+      "description": "Tool/function result passed directly to LLM without sanitization or validation",
+      "cwe": "CWE-116",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Sanitize tool outputs before including in LLM context. Filter prompt injection patterns, truncate length, and redact sensitive data."
+    },
+    {
+      "id": "S4-DL-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain"
+      ],
+      "severity": "medium",
+      "attack_surface": "S4_output_handling",
+      "category": "data_leakage",
+      "description": "Tool returns raw internal data structures (DB rows, full API responses, error traces)",
+      "cwe": "CWE-200",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Map internal data to a response schema. Never return raw database results, full API responses, or stack traces."
+    },
+    {
+      "id": "S5-CE-001",
+      "protocols": [
+        "mcp",
+        "langchain"
+      ],
+      "severity": "high",
+      "attack_surface": "S5_cross_tool",
+      "category": "tool_chain_escalation",
+      "description": "Tool can invoke other tools or agents without permission check or access control",
+      "cwe": "CWE-284",
+      "owasp_llm": "LLM06",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Implement per-tool access control. Tools should not be able to invoke other tools without explicit authorization."
+    },
+    {
+      "id": "S5-SC-001",
+      "protocols": [
+        "openai",
+        "langchain"
+      ],
+      "severity": "medium",
+      "attack_surface": "S5_cross_tool",
+      "category": "state_confusion",
+      "description": "Mutable global state shared across tool/function invocations without isolation",
+      "cwe": "CWE-362",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Isolate state between tool invocations. Use immutable context objects or per-invocation namespaces."
+    },
+    {
+      "id": "S5-MH-003",
+      "protocols": [
+        "web3_native"
+      ],
+      "severity": "high",
+      "attack_surface": "S5_cross_tool",
+      "category": "missing_harness",
+      "description": "Module executes transactions without guard, sentinel, or spending limit",
+      "cwe": "CWE-284",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".sol"
+      ],
+      "remediation": "Install a transaction guard that enforces per-transaction and per-period spending limits."
+    },
+    {
+      "id": "W3-MEV-001",
+      "protocols": [
+        "mcp",
+        "openai",
+        "langchain",
+        "web3_native"
+      ],
+      "severity": "high",
+      "attack_surface": "S3_execution",
+      "category": "mev_exploitation",
+      "description": "Swap/trade constructed without slippage protection, deadline, or private relay",
+      "cwe": "CWE-200",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".ts",
+        ".js",
+        ".py",
+        ".sol",
+        ".tsx",
+        ".jsx"
+      ],
+      "remediation": "Set explicit slippage tolerance (e.g., 0.5-1%), transaction deadline, and use a private transaction relay."
+    },
+    {
+      "id": "W3-EP-001",
+      "protocols": [
+        "web3_native"
+      ],
+      "severity": "high",
+      "attack_surface": "S3_execution",
+      "category": "excessive_permissions",
+      "description": "Module uses DELEGATECALL operation type in Safe transaction (full storage access)",
+      "cwe": "CWE-250",
+      "owasp_llm": "",
+      "file_extensions": [
+        ".sol"
+      ],
+      "remediation": "Avoid DelegateCall operation type unless absolutely necessary. Prefer Call (operation=0)."
+    }
+  ]
+}

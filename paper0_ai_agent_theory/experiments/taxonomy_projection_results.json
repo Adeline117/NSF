@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-04-08T12:58:24.159468",
+  "n_total": 3316,
+  "n_agents_projected": 2590,
+  "n_humans": 726,
+  "category_counts": {
+    "DeFi Management Agent": 1669,
+    "Deterministic Script": 666,
+    "Simple Trading Bot": 130,
+    "LLM-Powered Agent": 71,
+    "MEV Searcher": 54
+  },
+  "confidence_distribution": {
+    "<0.5": 4,
+    "0.5-0.7": 1853,
+    "0.7-0.85": 688,
+    "0.85+": 45
+  },
+  "source_tier_distribution": {
+    "provenance_then_features": 2583,
+    "features_only": 7
+  },
+  "category_examples": {
+    "Simple Trading Bot": {
+      "count": 130,
+      "mean_confidence": 0.7,
+      "examples": [
+        "Platform interactor (OLAS Token (Autonolas governance))",
+        "Platform interactor (OLAS Token (Autonolas governance))",
+        "Platform interactor (OLAS Token (Autonolas governance))",
+        "Platform interactor (OLAS Token (Autonolas governance))",
+        "Platform interactor (OLAS Token (Autonolas governance))"
+      ]
+    },
+    "MEV Searcher": {
+      "count": 54,
+      "mean_confidence": 0.85,
+      "examples": [
+        "jaredfromsubway.eth",
+        "jaredfromsubway v2",
+        "MEV sandwich bot",
+        "MEV bot 3",
+        "MEV bot 4"
+      ]
+    },
+    "DeFi Management Agent": {
+      "count": 1669,
+      "mean_confidence": 0.603,
+      "examples": [
+        "Amber Group",
+        "1inch resolver bot",
+        "Instadapp automation",
+        "Compound liquidator",
+        "Paper0-validated: Platform agent (autonolas_component_registry)"
+      ]
+    },
+    "LLM-Powered Agent": {
+      "count": 71,
+      "mean_confidence": 0.6,
+      "examples": [
+        "Platform interactor (AI Arena NRN Token)",
+        "Platform interactor (AI Arena NRN Token)",
+        "Platform interactor (AI Arena NRN Token)",
+        "Platform interactor (AI Arena NRN Token)",
+        "Platform interactor (AI Arena NRN Token)"
+      ]
+    },
+    "Autonomous DAO Agent": {
+      "count": 0,
+      "mean_confidence": 0.0,
+      "examples": []
+    },
+    "Cross-Chain Bridge Agent": {
+      "count": 0,
+      "mean_confidence": 0.0,
+      "examples": []
+    },
+    "Deterministic Script": {
+      "count": 666,
+      "mean_confidence": 0.8,
+      "examples": [
+        "MEV searcher EOA",
+        "Flashbots relay bot",
+        "High-freq bot",
+        "Active bot",
+        "Wintermute 4"
+      ]
+    },
+    "RL Trading Agent": {
+      "count": 0,
+      "mean_confidence": 0.0,
+      "examples": []
+    }
+  },
+  "output_parquet": "/Users/adelinewen/NSF/paper1_onchain_agent_id/data/features_with_taxonomy.parquet"
+}
