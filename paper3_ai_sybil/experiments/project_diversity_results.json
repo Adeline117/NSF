@@ -1,0 +1,1164 @@
+{
+  "project_profiles": {
+    "1inch": {
+      "BT": 0.8304,
+      "BW": 0.0731,
+      "HF": 0.1009,
+      "RF": 0.3115,
+      "MA": 0.1895,
+      "sybil_rate": 0.6721
+    },
+    "uniswap": {
+      "BT": 0.3239,
+      "BW": 0.0529,
+      "HF": 0.0475,
+      "RF": 0.7864,
+      "MA": 0.1335,
+      "sybil_rate": 0.5322
+    },
+    "looksrare": {
+      "BT": 0.139,
+      "BW": 0.0488,
+      "HF": 0.2602,
+      "RF": 0.0769,
+      "MA": 0.591,
+      "sybil_rate": 0.5039
+    },
+    "apecoin": {
+      "BT": 0.0113,
+      "BW": 0.0001,
+      "HF": 0.0286,
+      "RF": 0.7242,
+      "MA": 0.4635,
+      "sybil_rate": 0.491
+    },
+    "ens": {
+      "BT": 0.0599,
+      "BW": 0.0118,
+      "HF": 0.073,
+      "RF": 0.7349,
+      "MA": 0.3153,
+      "sybil_rate": 0.4282
+    },
+    "gitcoin": {
+      "BT": 0.0146,
+      "BW": 0.0567,
+      "HF": 0.1607,
+      "RF": 0.5822,
+      "MA": 0.3298,
+      "sybil_rate": 0.4184
+    },
+    "etherfi": {
+      "BT": 0.2418,
+      "BW": 0.1158,
+      "HF": 0.0105,
+      "RF": 0.705,
+      "MA": 0.1096,
+      "sybil_rate": 0.3747
+    },
+    "x2y2": {
+      "BT": 0.0395,
+      "BW": 0.1737,
+      "HF": 0.5018,
+      "RF": 0.1045,
+      "MA": 0.3594,
+      "sybil_rate": 0.3083
+    },
+    "dydx": {
+      "BT": 0.0169,
+      "BW": 0.1511,
+      "HF": 0.013,
+      "RF": 0.8238,
+      "MA": 0.1809,
+      "sybil_rate": 0.3027
+    },
+    "badger": {
+      "BT": 0.2463,
+      "BW": 0.0108,
+      "HF": 0.3094,
+      "RF": 0.0,
+      "MA": 0.4982,
+      "sybil_rate": 0.265
+    },
+    "blur_s1": {
+      "BT": 0.5114,
+      "BW": 0.0162,
+      "HF": 0.1509,
+      "RF": 0.2536,
+      "MA": 0.322,
+      "sybil_rate": 0.2427
+    },
+    "blur_s2": {
+      "BT": 0.3057,
+      "BW": 0.0159,
+      "HF": 0.1259,
+      "RF": 0.499,
+      "MA": 0.0869,
+      "sybil_rate": 0.2713
+    },
+    "paraswap": {
+      "BT": 0.6245,
+      "BW": 0.0,
+      "HF": 0.3532,
+      "RF": 0.0211,
+      "MA": 0.0138,
+      "sybil_rate": 0.1301
+    },
+    "ampleforth": {
+      "BT": 0.2327,
+      "BW": 0.0475,
+      "HF": 0.2382,
+      "RF": 0.0096,
+      "MA": 0.5141,
+      "sybil_rate": 0.1169
+    },
+    "eigenlayer": {
+      "BT": 0.1237,
+      "BW": 0.195,
+      "HF": 0.0573,
+      "RF": 0.1125,
+      "MA": 0.5752,
+      "sybil_rate": 0.0927
+    },
+    "pengu": {
+      "BT": 0.2885,
+      "BW": 0.1492,
+      "HF": 0.199,
+      "RF": 0.0,
+      "MA": 0.4345,
+      "sybil_rate": 0.0546
+    }
+  },
+  "jsd_trigger_matrix": {
+    "1inch": {
+      "1inch": 0.0,
+      "uniswap": 0.286,
+      "looksrare": 0.4268,
+      "apecoin": 0.5233,
+      "ens": 0.4412,
+      "gitcoin": 0.4701,
+      "etherfi": 0.3297,
+      "x2y2": 0.5058,
+      "dydx": 0.5034,
+      "badger": 0.4499,
+      "blur_s1": 0.1618,
+      "blur_s2": 0.2422,
+      "paraswap": 0.3743,
+      "ampleforth": 0.4164,
+      "eigenlayer": 0.4198,
+      "pengu": 0.4014
+    },
+    "uniswap": {
+      "1inch": 0.286,
+      "uniswap": 0.0,
+      "looksrare": 0.4976,
+      "apecoin": 0.3525,
+      "ens": 0.2449,
+      "gitcoin": 0.3242,
+      "etherfi": 0.1073,
+      "x2y2": 0.5366,
+      "dydx": 0.2859,
+      "badger": 0.574,
+      "blur_s1": 0.3052,
+      "blur_s2": 0.1395,
+      "paraswap": 0.5597,
+      "ampleforth": 0.5417,
+      "eigenlayer": 0.4611,
+      "pengu": 0.5439
+    },
+    "looksrare": {
+      "1inch": 0.4268,
+      "uniswap": 0.4976,
+      "looksrare": 0.0,
+      "apecoin": 0.4677,
+      "ens": 0.4345,
+      "gitcoin": 0.3808,
+      "etherfi": 0.5287,
+      "x2y2": 0.2429,
+      "dydx": 0.5496,
+      "badger": 0.2004,
+      "blur_s1": 0.3075,
+      "blur_s2": 0.4559,
+      "paraswap": 0.5226,
+      "ampleforth": 0.1426,
+      "eigenlayer": 0.2352,
+      "pengu": 0.2368
+    },
+    "apecoin": {
+      "1inch": 0.5233,
+      "uniswap": 0.3525,
+      "looksrare": 0.4677,
+      "apecoin": 0.0,
+      "ens": 0.1435,
+      "gitcoin": 0.2116,
+      "etherfi": 0.3696,
+      "x2y2": 0.5195,
+      "dydx": 0.2683,
+      "badger": 0.5842,
+      "blur_s1": 0.4472,
+      "blur_s2": 0.4021,
+      "paraswap": 0.742,
+      "ampleforth": 0.5594,
+      "eigenlayer": 0.4399,
+      "pengu": 0.6041
+    },
+    "ens": {
+      "1inch": 0.4412,
+      "uniswap": 0.2449,
+      "looksrare": 0.4345,
+      "apecoin": 0.1435,
+      "ens": 0.0,
+      "gitcoin": 0.1548,
+      "etherfi": 0.2798,
+      "x2y2": 0.4743,
+      "dydx": 0.2311,
+      "badger": 0.5476,
+      "blur_s1": 0.3731,
+      "blur_s2": 0.2866,
+      "paraswap": 0.6669,
+      "ampleforth": 0.5212,
+      "eigenlayer": 0.4221,
+      "pengu": 0.5585
+    },
+    "gitcoin": {
+      "1inch": 0.4701,
+      "uniswap": 0.3242,
+      "looksrare": 0.3808,
+      "apecoin": 0.2116,
+      "ens": 0.1548,
+      "gitcoin": 0.0,
+      "etherfi": 0.3435,
+      "x2y2": 0.3668,
+      "dydx": 0.2439,
+      "badger": 0.5168,
+      "blur_s1": 0.3973,
+      "blur_s2": 0.3394,
+      "paraswap": 0.6659,
+      "ampleforth": 0.482,
+      "eigenlayer": 0.3818,
+      "pengu": 0.5156
+    },
+    "etherfi": {
+      "1inch": 0.3297,
+      "uniswap": 0.1073,
+      "looksrare": 0.5287,
+      "apecoin": 0.3696,
+      "ens": 0.2798,
+      "gitcoin": 0.3435,
+      "etherfi": 0.0,
+      "x2y2": 0.5484,
+      "dydx": 0.2367,
+      "badger": 0.6164,
+      "blur_s1": 0.3675,
+      "blur_s2": 0.2305,
+      "paraswap": 0.6131,
+      "ampleforth": 0.574,
+      "eigenlayer": 0.4515,
+      "pengu": 0.5595
+    },
+    "x2y2": {
+      "1inch": 0.5058,
+      "uniswap": 0.5366,
+      "looksrare": 0.2429,
+      "apecoin": 0.5195,
+      "ens": 0.4743,
+      "gitcoin": 0.3668,
+      "etherfi": 0.5484,
+      "x2y2": 0.0,
+      "dydx": 0.5236,
+      "badger": 0.3508,
+      "blur_s1": 0.4294,
+      "blur_s2": 0.4937,
+      "paraswap": 0.553,
+      "ampleforth": 0.3135,
+      "eigenlayer": 0.3348,
+      "pengu": 0.3329
+    },
+    "dydx": {
+      "1inch": 0.5034,
+      "uniswap": 0.2859,
+      "looksrare": 0.5496,
+      "apecoin": 0.2683,
+      "ens": 0.2311,
+      "gitcoin": 0.2439,
+      "etherfi": 0.2367,
+      "x2y2": 0.5236,
+      "dydx": 0.0,
+      "badger": 0.6717,
+      "blur_s1": 0.4969,
+      "blur_s2": 0.3812,
+      "paraswap": 0.7508,
+      "ampleforth": 0.6268,
+      "eigenlayer": 0.4601,
+      "pengu": 0.6226
+    },
+    "badger": {
+      "1inch": 0.4499,
+      "uniswap": 0.574,
+      "looksrare": 0.2004,
+      "apecoin": 0.5842,
+      "ens": 0.5476,
+      "gitcoin": 0.5168,
+      "etherfi": 0.6164,
+      "x2y2": 0.3508,
+      "dydx": 0.6717,
+      "badger": 0.0,
+      "blur_s1": 0.341,
+      "blur_s2": 0.5108,
+      "paraswap": 0.4397,
+      "ampleforth": 0.1065,
+      "eigenlayer": 0.3735,
+      "pengu": 0.2022
+    },
+    "blur_s1": {
+      "1inch": 0.1618,
+      "uniswap": 0.3052,
+      "looksrare": 0.3075,
+      "apecoin": 0.4472,
+      "ens": 0.3731,
+      "gitcoin": 0.3973,
+      "etherfi": 0.3675,
+      "x2y2": 0.4294,
+      "dydx": 0.4969,
+      "badger": 0.341,
+      "blur_s1": 0.0,
+      "blur_s2": 0.2389,
+      "paraswap": 0.3919,
+      "ampleforth": 0.3168,
+      "eigenlayer": 0.3566,
+      "pengu": 0.3461
+    },
+    "blur_s2": {
+      "1inch": 0.2422,
+      "uniswap": 0.1395,
+      "looksrare": 0.4559,
+      "apecoin": 0.4021,
+      "ens": 0.2866,
+      "gitcoin": 0.3394,
+      "etherfi": 0.2305,
+      "x2y2": 0.4937,
+      "dydx": 0.3812,
+      "badger": 0.5108,
+      "blur_s1": 0.2389,
+      "blur_s2": 0.0,
+      "paraswap": 0.456,
+      "ampleforth": 0.4927,
+      "eigenlayer": 0.4769,
+      "pengu": 0.507
+    },
+    "paraswap": {
+      "1inch": 0.3743,
+      "uniswap": 0.5597,
+      "looksrare": 0.5226,
+      "apecoin": 0.742,
+      "ens": 0.6669,
+      "gitcoin": 0.6659,
+      "etherfi": 0.6131,
+      "x2y2": 0.553,
+      "dydx": 0.7508,
+      "badger": 0.4397,
+      "blur_s1": 0.3919,
+      "blur_s2": 0.456,
+      "paraswap": 0.0,
+      "ampleforth": 0.4642,
+      "eigenlayer": 0.6271,
+      "pengu": 0.4672
+    },
+    "ampleforth": {
+      "1inch": 0.4164,
+      "uniswap": 0.5417,
+      "looksrare": 0.1426,
+      "apecoin": 0.5594,
+      "ens": 0.5212,
+      "gitcoin": 0.482,
+      "etherfi": 0.574,
+      "x2y2": 0.3135,
+      "dydx": 0.6268,
+      "badger": 0.1065,
+      "blur_s1": 0.3168,
+      "blur_s2": 0.4927,
+      "paraswap": 0.4642,
+      "ampleforth": 0.0,
+      "eigenlayer": 0.2902,
+      "pengu": 0.1413
+    },
+    "eigenlayer": {
+      "1inch": 0.4198,
+      "uniswap": 0.4611,
+      "looksrare": 0.2352,
+      "apecoin": 0.4399,
+      "ens": 0.4221,
+      "gitcoin": 0.3818,
+      "etherfi": 0.4515,
+      "x2y2": 0.3348,
+      "dydx": 0.4601,
+      "badger": 0.3735,
+      "blur_s1": 0.3566,
+      "blur_s2": 0.4769,
+      "paraswap": 0.6271,
+      "ampleforth": 0.2902,
+      "eigenlayer": 0.0,
+      "pengu": 0.279
+    },
+    "pengu": {
+      "1inch": 0.4014,
+      "uniswap": 0.5439,
+      "looksrare": 0.2368,
+      "apecoin": 0.6041,
+      "ens": 0.5585,
+      "gitcoin": 0.5156,
+      "etherfi": 0.5595,
+      "x2y2": 0.3329,
+      "dydx": 0.6226,
+      "badger": 0.2022,
+      "blur_s1": 0.3461,
+      "blur_s2": 0.507,
+      "paraswap": 0.4672,
+      "ampleforth": 0.1413,
+      "eigenlayer": 0.279,
+      "pengu": 0.0
+    }
+  },
+  "jsd_combo_matrix": {
+    "1inch": {
+      "1inch": 0.0,
+      "uniswap": 0.4358,
+      "looksrare": 0.6326,
+      "apecoin": 0.704,
+      "ens": 0.6458,
+      "gitcoin": 0.6852,
+      "etherfi": 0.4722,
+      "x2y2": 0.6904,
+      "dydx": 0.6662,
+      "badger": 0.6319,
+      "blur_s1": 0.391,
+      "blur_s2": 0.5249,
+      "paraswap": 0.5398,
+      "ampleforth": 0.6123,
+      "eigenlayer": 0.6303,
+      "pengu": 0.5764
+    },
+    "uniswap": {
+      "1inch": 0.4358,
+      "uniswap": 0.0,
+      "looksrare": 0.6275,
+      "apecoin": 0.4382,
+      "ens": 0.3623,
+      "gitcoin": 0.4493,
+      "etherfi": 0.182,
+      "x2y2": 0.6597,
+      "dydx": 0.3533,
+      "badger": 0.7076,
+      "blur_s1": 0.4688,
+      "blur_s2": 0.3796,
+      "paraswap": 0.68,
+      "ampleforth": 0.6818,
+      "eigenlayer": 0.6106,
+      "pengu": 0.6779
+    },
+    "looksrare": {
+      "1inch": 0.6326,
+      "uniswap": 0.6275,
+      "looksrare": 0.0,
+      "apecoin": 0.5301,
+      "ens": 0.5074,
+      "gitcoin": 0.4465,
+      "etherfi": 0.5954,
+      "x2y2": 0.2902,
+      "dydx": 0.6195,
+      "badger": 0.3016,
+      "blur_s1": 0.3904,
+      "blur_s2": 0.4936,
+      "paraswap": 0.5586,
+      "ampleforth": 0.257,
+      "eigenlayer": 0.2797,
+      "pengu": 0.2952
+    },
+    "apecoin": {
+      "1inch": 0.704,
+      "uniswap": 0.4382,
+      "looksrare": 0.5301,
+      "apecoin": 0.0,
+      "ens": 0.1738,
+      "gitcoin": 0.2384,
+      "etherfi": 0.4288,
+      "x2y2": 0.5686,
+      "dydx": 0.3155,
+      "badger": 0.645,
+      "blur_s1": 0.5508,
+      "blur_s2": 0.438,
+      "paraswap": 0.7612,
+      "ampleforth": 0.6209,
+      "eigenlayer": 0.5041,
+      "pengu": 0.6555
+    },
+    "ens": {
+      "1inch": 0.6458,
+      "uniswap": 0.3623,
+      "looksrare": 0.5074,
+      "apecoin": 0.1738,
+      "ens": 0.0,
+      "gitcoin": 0.1971,
+      "etherfi": 0.3471,
+      "x2y2": 0.5351,
+      "dydx": 0.2967,
+      "badger": 0.6217,
+      "blur_s1": 0.4986,
+      "blur_s2": 0.313,
+      "paraswap": 0.6822,
+      "ampleforth": 0.5982,
+      "eigenlayer": 0.5012,
+      "pengu": 0.621
+    },
+    "gitcoin": {
+      "1inch": 0.6852,
+      "uniswap": 0.4493,
+      "looksrare": 0.4465,
+      "apecoin": 0.2384,
+      "ens": 0.1971,
+      "gitcoin": 0.0,
+      "etherfi": 0.4106,
+      "x2y2": 0.4198,
+      "dydx": 0.3326,
+      "badger": 0.5622,
+      "blur_s1": 0.4928,
+      "blur_s2": 0.367,
+      "paraswap": 0.6772,
+      "ampleforth": 0.5287,
+      "eigenlayer": 0.4352,
+      "pengu": 0.553
+    },
+    "etherfi": {
+      "1inch": 0.4722,
+      "uniswap": 0.182,
+      "looksrare": 0.5954,
+      "apecoin": 0.4288,
+      "ens": 0.3471,
+      "gitcoin": 0.4106,
+      "etherfi": 0.0,
+      "x2y2": 0.6259,
+      "dydx": 0.2823,
+      "badger": 0.6718,
+      "blur_s1": 0.459,
+      "blur_s2": 0.3276,
+      "paraswap": 0.6631,
+      "ampleforth": 0.6342,
+      "eigenlayer": 0.5491,
+      "pengu": 0.6215
+    },
+    "x2y2": {
+      "1inch": 0.6904,
+      "uniswap": 0.6597,
+      "looksrare": 0.2902,
+      "apecoin": 0.5686,
+      "ens": 0.5351,
+      "gitcoin": 0.4198,
+      "etherfi": 0.6259,
+      "x2y2": 0.0,
+      "dydx": 0.6242,
+      "badger": 0.3988,
+      "blur_s1": 0.4757,
+      "blur_s2": 0.5409,
+      "paraswap": 0.5728,
+      "ampleforth": 0.3726,
+      "eigenlayer": 0.3863,
+      "pengu": 0.3755
+    },
+    "dydx": {
+      "1inch": 0.6662,
+      "uniswap": 0.3533,
+      "looksrare": 0.6195,
+      "apecoin": 0.3155,
+      "ens": 0.2967,
+      "gitcoin": 0.3326,
+      "etherfi": 0.2823,
+      "x2y2": 0.6242,
+      "dydx": 0.0,
+      "badger": 0.7208,
+      "blur_s1": 0.6017,
+      "blur_s2": 0.4405,
+      "paraswap": 0.7879,
+      "ampleforth": 0.6858,
+      "eigenlayer": 0.5669,
+      "pengu": 0.6935
+    },
+    "badger": {
+      "1inch": 0.6319,
+      "uniswap": 0.7076,
+      "looksrare": 0.3016,
+      "apecoin": 0.645,
+      "ens": 0.6217,
+      "gitcoin": 0.5622,
+      "etherfi": 0.6718,
+      "x2y2": 0.3988,
+      "dydx": 0.7208,
+      "badger": 0.0,
+      "blur_s1": 0.3744,
+      "blur_s2": 0.5525,
+      "paraswap": 0.4834,
+      "ampleforth": 0.1182,
+      "eigenlayer": 0.4179,
+      "pengu": 0.2356
+    },
+    "blur_s1": {
+      "1inch": 0.391,
+      "uniswap": 0.4688,
+      "looksrare": 0.3904,
+      "apecoin": 0.5508,
+      "ens": 0.4986,
+      "gitcoin": 0.4928,
+      "etherfi": 0.459,
+      "x2y2": 0.4757,
+      "dydx": 0.6017,
+      "badger": 0.3744,
+      "blur_s1": 0.0,
+      "blur_s2": 0.3791,
+      "paraswap": 0.4302,
+      "ampleforth": 0.3569,
+      "eigenlayer": 0.4438,
+      "pengu": 0.3863
+    },
+    "blur_s2": {
+      "1inch": 0.5249,
+      "uniswap": 0.3796,
+      "looksrare": 0.4936,
+      "apecoin": 0.438,
+      "ens": 0.313,
+      "gitcoin": 0.367,
+      "etherfi": 0.3276,
+      "x2y2": 0.5409,
+      "dydx": 0.4405,
+      "badger": 0.5525,
+      "blur_s1": 0.3791,
+      "blur_s2": 0.0,
+      "paraswap": 0.4712,
+      "ampleforth": 0.5322,
+      "eigenlayer": 0.5264,
+      "pengu": 0.5446
+    },
+    "paraswap": {
+      "1inch": 0.5398,
+      "uniswap": 0.68,
+      "looksrare": 0.5586,
+      "apecoin": 0.7612,
+      "ens": 0.6822,
+      "gitcoin": 0.6772,
+      "etherfi": 0.6631,
+      "x2y2": 0.5728,
+      "dydx": 0.7879,
+      "badger": 0.4834,
+      "blur_s1": 0.4302,
+      "blur_s2": 0.4712,
+      "paraswap": 0.0,
+      "ampleforth": 0.4973,
+      "eigenlayer": 0.6462,
+      "pengu": 0.505
+    },
+    "ampleforth": {
+      "1inch": 0.6123,
+      "uniswap": 0.6818,
+      "looksrare": 0.257,
+      "apecoin": 0.6209,
+      "ens": 0.5982,
+      "gitcoin": 0.5287,
+      "etherfi": 0.6342,
+      "x2y2": 0.3726,
+      "dydx": 0.6858,
+      "badger": 0.1182,
+      "blur_s1": 0.3569,
+      "blur_s2": 0.5322,
+      "paraswap": 0.4973,
+      "ampleforth": 0.0,
+      "eigenlayer": 0.3304,
+      "pengu": 0.1762
+    },
+    "eigenlayer": {
+      "1inch": 0.6303,
+      "uniswap": 0.6106,
+      "looksrare": 0.2797,
+      "apecoin": 0.5041,
+      "ens": 0.5012,
+      "gitcoin": 0.4352,
+      "etherfi": 0.5491,
+      "x2y2": 0.3863,
+      "dydx": 0.5669,
+      "badger": 0.4179,
+      "blur_s1": 0.4438,
+      "blur_s2": 0.5264,
+      "paraswap": 0.6462,
+      "ampleforth": 0.3304,
+      "eigenlayer": 0.0,
+      "pengu": 0.3071
+    },
+    "pengu": {
+      "1inch": 0.5764,
+      "uniswap": 0.6779,
+      "looksrare": 0.2952,
+      "apecoin": 0.6555,
+      "ens": 0.621,
+      "gitcoin": 0.553,
+      "etherfi": 0.6215,
+      "x2y2": 0.3755,
+      "dydx": 0.6935,
+      "badger": 0.2356,
+      "blur_s1": 0.3863,
+      "blur_s2": 0.5446,
+      "paraswap": 0.505,
+      "ampleforth": 0.1762,
+      "eigenlayer": 0.3071,
+      "pengu": 0.0
+    }
+  },
+  "clusters": {
+    "2_clusters": {
+      "2": [
+        "1inch",
+        "looksrare",
+        "x2y2",
+        "badger",
+        "blur_s1",
+        "blur_s2",
+        "paraswap",
+        "ampleforth",
+        "eigenlayer",
+        "pengu"
+      ],
+      "1": [
+        "uniswap",
+        "apecoin",
+        "ens",
+        "gitcoin",
+        "etherfi",
+        "dydx"
+      ]
+    },
+    "3_clusters": {
+      "3": [
+        "1inch",
+        "blur_s1",
+        "blur_s2",
+        "paraswap"
+      ],
+      "1": [
+        "uniswap",
+        "apecoin",
+        "ens",
+        "gitcoin",
+        "etherfi",
+        "dydx"
+      ],
+      "2": [
+        "looksrare",
+        "x2y2",
+        "badger",
+        "ampleforth",
+        "eigenlayer",
+        "pengu"
+      ]
+    },
+    "4_clusters": {
+      "4": [
+        "1inch",
+        "blur_s1",
+        "blur_s2",
+        "paraswap"
+      ],
+      "2": [
+        "uniswap",
+        "etherfi",
+        "dydx"
+      ],
+      "3": [
+        "looksrare",
+        "x2y2",
+        "badger",
+        "ampleforth",
+        "eigenlayer",
+        "pengu"
+      ],
+      "1": [
+        "apecoin",
+        "ens",
+        "gitcoin"
+      ]
+    },
+    "5_clusters": {
+      "5": [
+        "1inch"
+      ],
+      "2": [
+        "uniswap",
+        "etherfi",
+        "dydx"
+      ],
+      "3": [
+        "looksrare",
+        "x2y2",
+        "badger",
+        "ampleforth",
+        "eigenlayer",
+        "pengu"
+      ],
+      "1": [
+        "apecoin",
+        "ens",
+        "gitcoin"
+      ],
+      "4": [
+        "blur_s1",
+        "blur_s2",
+        "paraswap"
+      ]
+    }
+  },
+  "transferability": {
+    "1inch": {
+      "dominant_indicators": [
+        "BT",
+        "HF",
+        "MA",
+        "RF"
+      ],
+      "avg_jaccard": 0.6533
+    },
+    "uniswap": {
+      "dominant_indicators": [
+        "BT",
+        "MA",
+        "RF"
+      ],
+      "avg_jaccard": 0.5589
+    },
+    "looksrare": {
+      "dominant_indicators": [
+        "BT",
+        "HF",
+        "MA"
+      ],
+      "avg_jaccard": 0.5544
+    },
+    "apecoin": {
+      "dominant_indicators": [
+        "MA",
+        "RF"
+      ],
+      "avg_jaccard": 0.4467
+    },
+    "ens": {
+      "dominant_indicators": [
+        "MA",
+        "RF"
+      ],
+      "avg_jaccard": 0.4467
+    },
+    "gitcoin": {
+      "dominant_indicators": [
+        "HF",
+        "MA",
+        "RF"
+      ],
+      "avg_jaccard": 0.5356
+    },
+    "etherfi": {
+      "dominant_indicators": [
+        "BT",
+        "BW",
+        "MA",
+        "RF"
+      ],
+      "avg_jaccard": 0.54
+    },
+    "x2y2": {
+      "dominant_indicators": [
+        "BW",
+        "HF",
+        "MA",
+        "RF"
+      ],
+      "avg_jaccard": 0.5133
+    },
+    "dydx": {
+      "dominant_indicators": [
+        "BW",
+        "MA",
+        "RF"
+      ],
+      "avg_jaccard": 0.4389
+    },
+    "badger": {
+      "dominant_indicators": [
+        "BT",
+        "HF",
+        "MA"
+      ],
+      "avg_jaccard": 0.5544
+    },
+    "blur_s1": {
+      "dominant_indicators": [
+        "BT",
+        "HF",
+        "MA",
+        "RF"
+      ],
+      "avg_jaccard": 0.6533
+    },
+    "blur_s2": {
+      "dominant_indicators": [
+        "BT",
+        "HF",
+        "RF"
+      ],
+      "avg_jaccard": 0.4644
+    },
+    "paraswap": {
+      "dominant_indicators": [
+        "BT",
+        "HF"
+      ],
+      "avg_jaccard": 0.3511
+    },
+    "ampleforth": {
+      "dominant_indicators": [
+        "BT",
+        "HF",
+        "MA"
+      ],
+      "avg_jaccard": 0.5544
+    },
+    "eigenlayer": {
+      "dominant_indicators": [
+        "BT",
+        "BW",
+        "MA",
+        "RF"
+      ],
+      "avg_jaccard": 0.54
+    },
+    "pengu": {
+      "dominant_indicators": [
+        "BT",
+        "BW",
+        "HF",
+        "MA"
+      ],
+      "avg_jaccard": 0.5167
+    }
+  },
+  "most_similar_pairs": [
+    {
+      "a": "badger",
+      "b": "ampleforth",
+      "jsd": 0.1182
+    },
+    {
+      "a": "apecoin",
+      "b": "ens",
+      "jsd": 0.1738
+    },
+    {
+      "a": "ampleforth",
+      "b": "pengu",
+      "jsd": 0.1762
+    },
+    {
+      "a": "uniswap",
+      "b": "etherfi",
+      "jsd": 0.182
+    },
+    {
+      "a": "ens",
+      "b": "gitcoin",
+      "jsd": 0.1971
+    },
+    {
+      "a": "badger",
+      "b": "pengu",
+      "jsd": 0.2356
+    },
+    {
+      "a": "apecoin",
+      "b": "gitcoin",
+      "jsd": 0.2384
+    },
+    {
+      "a": "looksrare",
+      "b": "ampleforth",
+      "jsd": 0.257
+    },
+    {
+      "a": "looksrare",
+      "b": "eigenlayer",
+      "jsd": 0.2797
+    },
+    {
+      "a": "etherfi",
+      "b": "dydx",
+      "jsd": 0.2823
+    }
+  ],
+  "most_different_pairs": [
+    {
+      "a": "ens",
+      "b": "paraswap",
+      "jsd": 0.6822
+    },
+    {
+      "a": "1inch",
+      "b": "gitcoin",
+      "jsd": 0.6852
+    },
+    {
+      "a": "dydx",
+      "b": "ampleforth",
+      "jsd": 0.6858
+    },
+    {
+      "a": "1inch",
+      "b": "x2y2",
+      "jsd": 0.6904
+    },
+    {
+      "a": "dydx",
+      "b": "pengu",
+      "jsd": 0.6935
+    },
+    {
+      "a": "1inch",
+      "b": "apecoin",
+      "jsd": 0.704
+    },
+    {
+      "a": "uniswap",
+      "b": "badger",
+      "jsd": 0.7076
+    },
+    {
+      "a": "dydx",
+      "b": "badger",
+      "jsd": 0.7208
+    },
+    {
+      "a": "apecoin",
+      "b": "paraswap",
+      "jsd": 0.7612
+    },
+    {
+      "a": "dydx",
+      "b": "paraswap",
+      "jsd": 0.7879
+    }
+  ],
+  "avg_pairwise_jsd": 0.4947,
+  "per_indicator_jsd": {
+    "BT": {
+      "avg_jsd": 0.2666,
+      "min_jsd": 0.0403,
+      "max_jsd": 0.5403
+    },
+    "BW": {
+      "avg_jsd": 0.1274,
+      "min_jsd": 0.0159,
+      "max_jsd": 0.2237
+    },
+    "HF": {
+      "avg_jsd": 0.3983,
+      "min_jsd": 0.068,
+      "max_jsd": 0.6964
+    },
+    "RF": {
+      "avg_jsd": 0.3363,
+      "min_jsd": 0.0,
+      "max_jsd": 0.6736
+    },
+    "MA": {
+      "avg_jsd": 0.0411,
+      "min_jsd": 0.009,
+      "max_jsd": 0.1229
+    }
+  },
+  "project_dominant_indicators": {
+    "1inch": [
+      "BT",
+      "HF",
+      "MA",
+      "RF"
+    ],
+    "uniswap": [
+      "BT",
+      "MA",
+      "RF"
+    ],
+    "looksrare": [
+      "BT",
+      "HF",
+      "MA"
+    ],
+    "apecoin": [
+      "MA",
+      "RF"
+    ],
+    "ens": [
+      "MA",
+      "RF"
+    ],
+    "gitcoin": [
+      "HF",
+      "MA",
+      "RF"
+    ],
+    "etherfi": [
+      "BT",
+      "BW",
+      "MA",
+      "RF"
+    ],
+    "x2y2": [
+      "BW",
+      "HF",
+      "MA",
+      "RF"
+    ],
+    "dydx": [
+      "BW",
+      "MA",
+      "RF"
+    ],
+    "badger": [
+      "BT",
+      "HF",
+      "MA"
+    ],
+    "blur_s1": [
+      "BT",
+      "HF",
+      "MA",
+      "RF"
+    ],
+    "blur_s2": [
+      "BT",
+      "HF",
+      "RF"
+    ],
+    "paraswap": [
+      "BT",
+      "HF"
+    ],
+    "ampleforth": [
+      "BT",
+      "HF",
+      "MA"
+    ],
+    "eigenlayer": [
+      "BT",
+      "BW",
+      "MA",
+      "RF"
+    ],
+    "pengu": [
+      "BT",
+      "BW",
+      "HF",
+      "MA"
+    ]
+  }
+}
