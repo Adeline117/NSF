@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-04-08T14:29:35.976418",
+  "n_candidates": 69,
+  "n_processed": 16,
+  "n_skipped_too_few_txs": 24,
+  "n_skipped_no_data": 16,
+  "n_skipped_contract": 13,
+  "n_agent": 9,
+  "n_human": 7,
+  "c1c4_diagnostic_agreement": 0.75,
+  "elapsed_seconds": 87.02,
+  "categories": {
+    "mev_bot": 9,
+    "ens_human": 7
+  }
+}

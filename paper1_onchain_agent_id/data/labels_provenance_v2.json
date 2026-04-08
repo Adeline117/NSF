@@ -1,0 +1,416 @@
+{
+  "0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5": {
+    "name": "Flashbots Builder",
+    "provenance_source": "flashbots_relay_data",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x95222290dd7278aa3ddd389cc1e1d165cc4bafe5": {
+    "name": "beaverbuild",
+    "provenance_source": "flashbots_relay_data",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x1f9090aae28b8a3dceadf281b0f12828e676c326": {
+    "name": "rsync-builder",
+    "provenance_source": "flashbots_relay_data",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x690b9a9e9aa1c9db991c7721a92d351db4fac990": {
+    "name": "builder0x69",
+    "provenance_source": "flashbots_relay_data",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x388c818ca8b9251b393131c08a736a67ccb19297": {
+    "name": "Lido MEV builder",
+    "provenance_source": "lido_dao_proposal",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x4675c7e5baafbffbca748158becba61ef3b0a263": {
+    "name": "Titan Builder",
+    "provenance_source": "flashbots_relay_data",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0xecb637c1f608ecca7ec88a9c9e0a96bd1c8d3aa9": {
+    "name": "flashbots-builder",
+    "provenance_source": "flashbots_relay_data",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x6b75d8af000000e20b7a7ddf000ba900b4009a80": {
+    "name": "MEV sandwich bot",
+    "provenance_source": "eigenphi_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x00000000003b3cc22af3ae1eac0440bcee416b40": {
+    "name": "MEV sandwich bot 2",
+    "provenance_source": "eigenphi_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x56178a0d5f301baf6cf3e1cd53d9863437345bf9": {
+    "name": "jaredfromsubway.eth",
+    "provenance_source": "ens_resolution",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0xae2fc483527b8ef99eb5d9b44875f005ba1fae13": {
+    "name": "jaredfromsubway v2",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x12b0e04edfdf26d8f6d7d9d8b18d2f8a6e3d0e09": {
+    "name": "Sandwich bot tau",
+    "provenance_source": "eigenphi_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x000000000000084e91743124a982076c59f10084": {
+    "name": "MEV multicall bot",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x000000000000cd17345801aa8147b8d3950260ff": {
+    "name": "MEV generalized bot",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x00000000009726632680af5d2882e70d0adfcb6c": {
+    "name": "MEV arb bot",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x0000000000007f150bd6f54c40a34d7c3d5e9f56": {
+    "name": "MEV searcher omega",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x000000000000f0990eec54bbc34d7e8af0e7e8f4": {
+    "name": "MEV bot zeta",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x00000000005abccab2968b57e3f3e32fd56b5f5b": {
+    "name": "MEV arb bot sigma",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x008300082c3000009e63680088f8c7f4d3ff2e87": {
+    "name": "MEV bot iota",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x000000000dfde7deaf24138722987c9a6991e2d4": {
+    "name": "MEV generalized 2",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x0000000099cb7fc48a935bceb9f05bbae54e8987": {
+    "name": "MEV generalized 3",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x00000000ede6d8d217c60f93191c060747324bca": {
+    "name": "MEV arb bot alpha",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x000000d40b595b94918a28b27d1e2c66f43a51d3": {
+    "name": "MEV generalized 4",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x000000000035b5e5ad9019092c665357240f594e": {
+    "name": "MEV generalized 5",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x0000000000060c75d139d234616a4c14a594368f": {
+    "name": "MEV bot kappa",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x0000000000a38211930002a85aff8b1b1d667d11": {
+    "name": "MEV generalized 6",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x0000000000c2d145a2526bd8c716263bfebe1a72": {
+    "name": "MEV generalized 7",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x000000000077ee1fcfe351db7ff5edc5b65fc8bd": {
+    "name": "MEV bot lambda",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x00000000000000adc04c56bf30ac9d3c0aaf14dc": {
+    "name": "MEV bot mu",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x000000000004444c5dc75cb358380d2e3de08a90": {
+    "name": "MEV bot nu",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x2910543af39aba0cd09dbb2d50200b3e800a63d2": {
+    "name": "Aave liquidator",
+    "provenance_source": "aave_protocol_logs",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0xa7c5c86582dbfc60c76a0197ab0c48f88bf4ddbd": {
+    "name": "Compound liquidator",
+    "provenance_source": "compound_protocol_logs",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x7e2a2fa2a064f693f0a55c5639476d913ff12d05": {
+    "name": "DeFi liquidation bot",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x5aa653a076c1dbb47cec8c1b4d152444cad91941": {
+    "name": "Gelato relayer",
+    "provenance_source": "gelato_registry",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x3e286452b1c66abb08eb5494c3894f40ab5a59af": {
+    "name": "Keep3r executor",
+    "provenance_source": "keep3r_registry",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x0b0a5886664376f59c351ba3f598c8a8b4d0de6b": {
+    "name": "MakerDAO keeper",
+    "provenance_source": "makerdao_registry",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x6093aebac87d62b1a5a4ceec91204e35020e38be": {
+    "name": "Yearn keeper",
+    "provenance_source": "yearn_registry",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x9008d19f58aabd9ed0d60971565aa8510560ab41": {
+    "name": "CowSwap settler",
+    "provenance_source": "cow_protocol",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0xa69babef1ca67a37ffaf7a485dfff3382056e78c": {
+    "name": "Wintermute",
+    "provenance_source": "arkham_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x280027dd00ee0050d3f9d168efd6b40090009246": {
+    "name": "Wintermute 2",
+    "provenance_source": "arkham_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0xdbf5e9c5206d0db70a90108bf936da60221dc080": {
+    "name": "Wintermute 3",
+    "provenance_source": "arkham_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x4f3a120e72c76c22ae802d129f599bfdbc31cb81": {
+    "name": "Amber Group MM",
+    "provenance_source": "arkham_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x4db6cdd13653736044c2ce25751fc5656ca4763f": {
+    "name": "Wintermute 4",
+    "provenance_source": "arkham_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0x511317f18cb86f6028fab6f1b3a4d6e1b8e8b71c": {
+    "name": "FalconX MM",
+    "provenance_source": "arkham_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0xfd6e54b6ed6e8d1f5da75a2ce2e54d2df7c78568": {
+    "name": "Jump Trading",
+    "provenance_source": "arkham_label",
+    "label_provenance": 1,
+    "category": "mev_bot"
+  },
+  "0xd8da6bf26964af9d7eed9e03e53415d37aa96045": {
+    "name": "vitalik.eth",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0xab5801a7d398351b8be11c439e05c5b3259aec9b": {
+    "name": "vitalik old",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x220866b1a2219f40e72f5c628b65d54268ca3a9d": {
+    "name": "vitalik 3",
+    "provenance_source": "twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x4ba01feb86bb72e788c8a637ba9d80c1d3dd0f2c": {
+    "name": "Aave founder Stani",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x47e2935e3917870a5e94770ee96f2c47f22bf4b8": {
+    "name": "nick.eth (ENS lead)",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x9c5083dd4838e120dbeac44c052179692aa5dac5": {
+    "name": "sassal.eth",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x983110309620d911731ac0932219af06091b6744": {
+    "name": "brantly.eth (ENS)",
+    "provenance_source": "ens_resolution",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0xb30a1ac0e483a0d2d5a4c1ad8b7d8e7b6f5faaf3": {
+    "name": "Hayden Adams (Uniswap)",
+    "provenance_source": "github_pubkey",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0xfa9b5f7fdc8ab34aaf3099889475d47febf830d7": {
+    "name": "Hayden Adams 2",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0xea77aa036ab6cd9b8a5f3dfdc2d5e2c5e74e2bbc": {
+    "name": "ENS founder",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x60b9c266ed9b9cf6a99e2da42cf86d2da1cad2a4": {
+    "name": "Maker founder Rune",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x6c1ddfb81e3666dd2da8d1deb04a1d65d7008bbe": {
+    "name": "nick.eth secondary",
+    "provenance_source": "ens_resolution",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x84b68993b7ea9e72c40b65c8b5e6cae26b2d6e29": {
+    "name": "a16z wallet",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0xae0fb1cd1df4a0cf5b3c4f22f4d0a3a3a4f55ab7": {
+    "name": "a16z partner 2",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x9d0f4f08bdb22e7e1d6cd58fda7e7b5bbe7e7e7e": {
+    "name": "Polychain",
+    "provenance_source": "arkham_label",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x6e7c0c9d0e88f3a5e8a4cb5e5e5e5e5e5e5e5e5e": {
+    "name": "Paradigm",
+    "provenance_source": "arkham_label",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0xfec8a60023265364d066a1212fde3930f6ae8da7": {
+    "name": "Hsaka.eth (trader)",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x4d7c2e4c5d4a6e8c1b5c0e8e5e5e5e5e5e5e5e5e": {
+    "name": "MoonOverlord",
+    "provenance_source": "twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x55d5c232d921b9eaa6b37b5845e439acd04b4dba": {
+    "name": "Pranksy",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x54be3a794282c030b15e43ae2bb182e14c409c5e": {
+    "name": "Pranksy 2",
+    "provenance_source": "twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0xb88f61e6fbda83fbfffabe364112137480398018": {
+    "name": "Beeple",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0xc352b534e8b987e036a93539fd6897f53488e56a": {
+    "name": "Cozomo de' Medici",
+    "provenance_source": "twitter_verified",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0x7a16ff8270133f063aab6c9977183d9e72835428": {
+    "name": "CRV whale 1",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 0,
+    "category": "ens_human"
+  },
+  "0xf89d7b9c864f589bbf53a82105107622b35eaa40": {
+    "name": "CRV whale 2",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 0,
+    "category": "ens_human"
+  }
+}
