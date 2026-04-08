@@ -1,0 +1,228 @@
+{
+  "run_timestamp": "20260408_125258",
+  "labeling_scheme": "provenance_only_no_c1c4",
+  "leakage_note": "C1-C4 is DEMOTED from labeling oracle to a downstream evaluation tool. Labels come from external provenance only (original pilot manual labels + Paper 0 Delphi validation + curated MEV-bot/ENS-human lists). The 3252 platform-token holders are excluded from training because their prior labels were C1-C4 gated.",
+  "dataset": {
+    "n_samples_trusted": 64,
+    "n_agents": 33,
+    "n_humans": 31,
+    "n_features": 23,
+    "feature_names": [
+      "tx_interval_mean",
+      "tx_interval_std",
+      "tx_interval_skewness",
+      "active_hour_entropy",
+      "night_activity_ratio",
+      "weekend_ratio",
+      "burst_frequency",
+      "gas_price_round_number_ratio",
+      "gas_price_trailing_zeros_mean",
+      "gas_limit_precision",
+      "gas_price_cv",
+      "eip1559_priority_fee_precision",
+      "gas_price_nonce_correlation",
+      "unique_contracts_ratio",
+      "top_contract_concentration",
+      "method_id_diversity",
+      "contract_to_eoa_ratio",
+      "sequential_pattern_score",
+      "unlimited_approve_ratio",
+      "approve_revoke_ratio",
+      "unverified_contract_approve_ratio",
+      "multi_protocol_interaction_count",
+      "flash_loan_usage"
+    ],
+    "n_inference_dropped": 3252,
+    "inference_reason": "strategy_a_platform rows were labeled via C1-C4 which leaks tx_interval_cv, hour_entropy, burst_ratio into the classifier features."
+  },
+  "models": {
+    "GradientBoosting": {
+      "loo_cv": {
+        "auc": 0.6276,
+        "precision": 0.5882,
+        "recall": 0.6061,
+        "f1": 0.597,
+        "accuracy": 0.5781,
+        "precision_human": 0.5667,
+        "recall_human": 0.5484,
+        "f1_human": 0.5574
+      },
+      "repeated_5fold_10x": {
+        "mean_auc": 0.694,
+        "std_auc": 0.1194,
+        "mean_f1": 0.6548,
+        "mean_accuracy": 0.6499,
+        "mean_precision": 0.6731,
+        "mean_recall": 0.6638,
+        "n_splits": 5,
+        "n_repeats": 10
+      }
+    },
+    "RandomForest": {
+      "loo_cv": {
+        "auc": 0.7713,
+        "precision": 0.7419,
+        "recall": 0.697,
+        "f1": 0.7188,
+        "accuracy": 0.7188,
+        "precision_human": 0.697,
+        "recall_human": 0.7419,
+        "f1_human": 0.7188
+      },
+      "repeated_5fold_10x": {
+        "mean_auc": 0.803,
+        "std_auc": 0.1016,
+        "mean_f1": 0.7363,
+        "mean_accuracy": 0.7447,
+        "mean_precision": 0.8008,
+        "mean_recall": 0.7138,
+        "n_splits": 5,
+        "n_repeats": 10
+      }
+    },
+    "LogisticRegression": {
+      "loo_cv": {
+        "auc": 0.61,
+        "precision": 0.6667,
+        "recall": 0.6061,
+        "f1": 0.6349,
+        "accuracy": 0.6406,
+        "precision_human": 0.6176,
+        "recall_human": 0.6774,
+        "f1_human": 0.6462
+      },
+      "repeated_5fold_10x": {
+        "mean_auc": 0.6203,
+        "std_auc": 0.1249,
+        "mean_f1": 0.6459,
+        "mean_accuracy": 0.6614,
+        "mean_precision": 0.6974,
+        "mean_recall": 0.6238,
+        "n_splits": 5,
+        "n_repeats": 10
+      }
+    }
+  },
+  "per_feature_auc": {
+    "tx_interval_mean": 0.7683,
+    "tx_interval_std": 0.7527,
+    "unlimited_approve_ratio": 0.7116,
+    "unverified_contract_approve_ratio": 0.7107,
+    "gas_price_round_number_ratio": 0.7072,
+    "gas_price_trailing_zeros_mean": 0.7067,
+    "active_hour_entropy": 0.7028,
+    "multi_protocol_interaction_count": 0.696,
+    "unique_contracts_ratio": 0.695,
+    "method_id_diversity": 0.6911,
+    "sequential_pattern_score": 0.6877,
+    "gas_limit_precision": 0.6637,
+    "contract_to_eoa_ratio": 0.6637,
+    "top_contract_concentration": 0.6593,
+    "tx_interval_skewness": 0.6344,
+    "approve_revoke_ratio": 0.6315,
+    "gas_price_cv": 0.5904,
+    "weekend_ratio": 0.563,
+    "night_activity_ratio": 0.5528,
+    "gas_price_nonce_correlation": 0.5445,
+    "burst_frequency": 0.5288,
+    "flash_loan_usage": 0.5161,
+    "eip1559_priority_fee_precision": 0.5
+  },
+  "top10_features": [
+    "tx_interval_mean",
+    "tx_interval_std",
+    "unlimited_approve_ratio",
+    "unverified_contract_approve_ratio",
+    "gas_price_round_number_ratio",
+    "gas_price_trailing_zeros_mean",
+    "active_hour_entropy",
+    "multi_protocol_interaction_count",
+    "unique_contracts_ratio",
+    "method_id_diversity"
+  ],
+  "gbm_feature_importance": {
+    "tx_interval_mean": 0.2132,
+    "tx_interval_std": 0.1359,
+    "night_activity_ratio": 0.1273,
+    "burst_frequency": 0.0887,
+    "tx_interval_skewness": 0.0819,
+    "method_id_diversity": 0.0809,
+    "approve_revoke_ratio": 0.034,
+    "unverified_contract_approve_ratio": 0.0333,
+    "weekend_ratio": 0.0326,
+    "gas_price_nonce_correlation": 0.0309,
+    "active_hour_entropy": 0.0267,
+    "contract_to_eoa_ratio": 0.0257,
+    "gas_price_trailing_zeros_mean": 0.0192,
+    "gas_limit_precision": 0.019,
+    "unique_contracts_ratio": 0.0171,
+    "gas_price_round_number_ratio": 0.0169,
+    "gas_price_cv": 0.007,
+    "sequential_pattern_score": 0.0051,
+    "top_contract_concentration": 0.0045,
+    "multi_protocol_interaction_count": 0.0002,
+    "unlimited_approve_ratio": 0.0,
+    "flash_loan_usage": 0.0,
+    "eip1559_priority_fee_precision": 0.0
+  },
+  "confusion_matrix_gbm_loo": [
+    [
+      17,
+      14
+    ],
+    [
+      13,
+      20
+    ]
+  ],
+  "classification_report_gbm_loo": {
+    "Human": {
+      "precision": 0.5666666666666667,
+      "recall": 0.5483870967741935,
+      "f1-score": 0.5573770491803278,
+      "support": 31.0
+    },
+    "Agent": {
+      "precision": 0.5882352941176471,
+      "recall": 0.6060606060606061,
+      "f1-score": 0.5970149253731343,
+      "support": 33.0
+    },
+    "accuracy": 0.578125,
+    "macro avg": {
+      "precision": 0.5774509803921568,
+      "recall": 0.5772238514173997,
+      "f1-score": 0.577195987276731,
+      "support": 64.0
+    },
+    "weighted avg": {
+      "precision": 0.5777879901960785,
+      "recall": 0.578125,
+      "f1-score": 0.5778153290922436,
+      "support": 64.0
+    }
+  },
+  "transductive_inference": {
+    "n_inference_rows": 3252,
+    "predicted_agent_rate": 0.3838,
+    "predicted_human_rate": 0.6162,
+    "mean_prob": 0.3938,
+    "agreement_with_leaky_c1c4_label": 0.3742,
+    "note": "This is the GBM trained on 64 provenance-only labels, then applied transductively to the 3252 token-holder rows whose labels we DO NOT trust (they came from C1-C4 which leaks into classifier features)."
+  },
+  "honest_vs_leaky_comparison": {
+    "leaky_c1c4_gated": {
+      "n_samples": 3316,
+      "gbm_auc_5fold_5rep": 0.9803,
+      "source": "experiments/expanded/pipeline_results.json",
+      "issue": "C1-C4 labeling oracle uses the same 3 quantities (hour_entropy, burst_ratio, tx_interval_cv) that appear as top classifier features. Direct target leakage."
+    },
+    "provenance_only": {
+      "n_samples": 64,
+      "gbm_auc_loo": 0.6276,
+      "gbm_auc_5fold_10rep": 0.694,
+      "source": "experiments/expanded/pipeline_results_provenance.json"
+    }
+  },
+  "elapsed_seconds": 17.89
+}
