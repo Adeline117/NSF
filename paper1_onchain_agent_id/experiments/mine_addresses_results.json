@@ -1,0 +1,324 @@
+{
+  "timestamp": "2026-04-07T18:39:30.431839",
+  "strategy_a_platform_mined": 3973,
+  "strategy_b_mev_bots": 50,
+  "strategy_c_humans": 51,
+  "total_candidates": 4026,
+  "new_agents_found": 2558,
+  "new_humans_found": 705,
+  "excluded": 690,
+  "errors": 73,
+  "final_dataset": {
+    "total": 3316,
+    "agents": 2590,
+    "humans": 726
+  },
+  "new_agents": {
+    "0x0ddc94917100387909cb6141c2e7e453bd31d3f7": "Platform interactor (Autonolas Component Registry)",
+    "0x0363f3c31076a64b85ceb69a28f958a7c1181cee": "Platform interactor (Autonolas Component Registry)",
+    "0x179109b3252a71f4dc876a23f66c3c266e289849": "Platform interactor (Autonolas Component Registry)",
+    "0xd5d975da710fb3746f379dade13ccc3fa090b77e": "Platform interactor (Autonolas Agent Registry)",
+    "0x957b198875893ae57eafceb177212b972b4d38eb": "Platform interactor (Autonolas Component Registry)",
+    "0xb997b16b1b5b9934acdd3295edc557d396aee146": "Platform interactor (Autonolas Component Registry)",
+    "0x20d74dfd6f5df400be4df00703097bea450bfe0a": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x92fb345d4964bed76feb22ef76d73e14bc6869c5": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x12dbbcd4efc77633a83cb1d67251e3daa9268fe5": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xb16885d54e8ca9730aa3cc81f3f6ab9eac8ac766": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x9a719029edc50a1eeb12e8bdf31ad85863199488": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x0ebcb573dd98484a23311ae9b186b7ff00f74c68": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xa8e3364bfc13cf8d81fffa9ec670a326ab802158": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x0768dbc1def889ae409b0dd20baf30774c02a14c": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x83a6c0f94cce1a2341439652a397640522a074be": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xbc0be00de9ce76613f5d529290205a9e01f55060": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x19dc7cfae2bff62b2483d91b3428726493b84912": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x1ab0d64cf30775abeb4328b57808fb7f53001dcf": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x84b5241e96b15f5381112cb4dd7082b390df1e25": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x4ae6c835015d06169fa831529ac39d890b9a8e82": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x4768aafca4f5f35ee4b9733b2b12774a11e7500e": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xb45992ac3b561361bc00a5f0649fafc267ce5428": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x9a76c3cf9eb7b4c6cf4c226cbf302a743b6bc427": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x20ba9b1cad967c62cf9f10d0137b997b91e4e2f8": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xf8690b1ba8cae43190cac09eff23b0763bc670fc": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x37992dd23ab48dca5c9ef916475430315d083534": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x753a14419d496835b1d3da6962adbbf9d5ea1d6e": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x59a00feded30b6b158221b0308cb41ba9829328f": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x6340d11a2af24231e3c6da60209b22dc41811584": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xe8df1b2983a63b52989c1af3770c5e6edad5b888": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x0e42926abdfb00dcb6fe25a181ac1ce99c20e46b": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xb712fc6d63b1011c57501938e364dede0b8265e4": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xb399414a6fe8c78deb024c1b6880c272f3872e1d": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xc31300642c30c9df6201612db1a104dd41e5868d": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xa772433bdbf325ec9494a4714fba847c1e9af644": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xc5ccb1d2cfea20cb1d2b38cb66dd3dcdf3978b79": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xc8ef2326093c2491bb474be405fb04f5cb89a7ce": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x3e3173059fe75f62ff9ba5c079156c6b379116cb": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x728510af436f5ea8ce3c1dcc5b623e7ef1a09771": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x3053eb374ae824ac3e8603dba73f802bbeece27b": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x14ea74a79c0ff7fa3aaff84ab4cad60f0c737c55": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xb8b3ec7e00b2cac453475f3993fa206b22958015": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xa7d6e4ef8f81c0bbc52a2c525c3dac3d21d56da5": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x4f4715ca99c973a55303bc4a5f3e3acbb9ff75db": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x5f3ae95d6af9648ddab5f5e3ca450cde1f18be58": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x91c455ae2b6b22f1056de1843f1e29428375b9a2": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xf8a6c758b0478ddfacf5c95a1f507415ad51a831": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x660d80dc3352060b3e2e8710befaae40efb99c7e": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xf66b0cfe0fbc00b4ab49cc3b40528ac122bc43bd": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x9da9dd69ec52c3a19c58a08cbb374710ff315193": "Platform interactor (OLAS Token (Autonolas governance))"
+  },
+  "new_humans": {
+    "0xfd7005c719d4e61954c7f5c38343edb809985d6b": "Platform interactor (Autonolas Component Registry)",
+    "0x0dd1f3756bd0bbaa20dd3eaef072b0b7e35f2910": "Platform interactor (Autonolas Agent Registry)",
+    "0x5b208bc33adaa6a70684b4e18c643419aaddd7d8": "Platform interactor (Autonolas Component Registry)",
+    "0x3b8f07286104396ba97d06f633bc9a1e82ccac27": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xb1384310759b05c68e5c14bf18fcea7458a6f4af": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x89cd690ca89362a85f668e7d199c6430eda8597c": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x0b7860291efc65435d6ec5b85c53a9f491ef9c4b": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xfd84103c3915f035ce287f18f840fa0165daeb1a": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xb7cef8903846619621a4875df727cb390eabb859": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x48ec1c2e2c53ddaddb46159e565a668f3deaabdf": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x403a7c68c542d37d9a1ddeb58c75790c2bf4246d": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xded6a2424a1901040e3f3698d9000b8c52c539ab": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x44d44eb8c81a9abebdd39edb0b98101830abfb48": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xd8c17b5b562add51a55a7216c32cd6a9a1168724": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x7d12624ea1ecb57214c3e522194b005e4ec484a7": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x43da95667422778b1acf0988158dfdb6a1f37a32": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x284dc764e16a3b2a102a5db963d3a8b478ba4d8a": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x1192eabac58b2b2a20f4ad52052373c8eb6adf54": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x3c47e7481b4a9018ae9ba150c3b6fd4ee132f9d5": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x4ea72062bb86dee736f2b3a23bd800ba0f346c99": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xc4266788ed0984408ae202567d07fc16a87657f7": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x8894ea76f594f31a5c67533b5ae91f7aca09e2c3": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xe5394d4883e8e861c6b3b941ea47e2818de1acfc": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x0d1b37217b0027cd273a49cd77cdb0c1df8e53a9": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xd5237abfe2d34b8f7c56d3cba2527028a4ad47cb": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x2d1c3a10f30bbd414227389158d4cb97bb4546f7": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x76b94a125b856e47d83c43ff987042214d5527ea": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x37f27dd6ddd3f2d0a36d8d6a9514f7da02eafc57": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xbbf2641b918fe71185df3734c1716e6508f793b5": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xec5790f83e76948e5481d64625e1eebfc3ce668c": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xabfaae9c741203fb8f92d275399310fb76283ef2": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xa1fb0304fc70618fb28e582d40de7296e824aa29": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x9bb7df5e87ac5c3a5f7eec99743e97a0f6caaede": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x7bff838fa028ef0fe7bd8ab9bacf191100637c6e": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x8c1064df95577486694eb994ca160b29ce08ed31": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xc08eac556c4926a4ab9cab736f379e1cb9188e11": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xb3a102fcf06e79f8c307ace1007307b1e7383dc5": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xbb2c22422da41faf8127f00ad7d3ab1fa35982fc": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xbed8be769cf111acd785cf552c724c1a951bda1e": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xb1316840eb2b4ca2c1f4291e0f05a2fb79b84c88": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x6d81f19bda7fadfd94fa54dcbee7dd499616fc7d": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xf8362a8d26e5b33e618bf9a4440400ea760d044b": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xe1c5585917c53a931701ccc03e7dbf74e70d6a1e": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x12c89d857cebcd839a6a8f710ac4375426d708e4": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xc47d408113f8d4204f901e12cf67400f9bf5ce64": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x6450ee6e4493ac34f76845f82972d094a733156e": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x80ed9bf02c97e67ce859867963f1411b573752d0": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x80bba412e1ccee37bb7b47473b5c5c7c02abae38": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0x651141d072f5ca1f2655cdb20797f9808a8c5cb8": "Platform interactor (OLAS Token (Autonolas governance))",
+    "0xb6e774c364e8885ed4b15bcfba035566d289674a": "Platform interactor (OLAS Token (Autonolas governance))"
+  },
+  "excluded_addresses": {
+    "0x3f9a29fc65918c57289d704a6ee6739117cea202": {
+      "name": "Platform interactor (Autonolas Agent Registry)",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xbe519970889ce4b0e8a943546b3d2ca9d0ffcab0": {
+      "name": "Platform interactor (Autonolas Component Registry)",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xa9b6e58b87e1c4d9a023dee27308dcb68977c3c2": {
+      "name": "Platform interactor (Autonolas Component Registry)",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x85d375ce872072c015425c6c129b54f6c0fd004f": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x89ccd27c81b8a8c0d75630211f1825a87566e7d7": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "too_few_txs (6)"
+    },
+    "0xd8a87e25638bae5677da2f9d6a79211893d71b4b": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "too_few_txs (6)"
+    },
+    "0x7261d91123af17d9e09073705d1f2a00691a475f": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xa648a7a48805bdd3927960772f904d744ee58f29": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x7e3f8a5eb16b8a11e7de6732bfeab8e9ae187f38": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x5baac7ccda079839c9524b90df81720834fc039f": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x6d0aa5cfe9e40e32c82cd4dcb2a53b175af9727d": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xdea3e18aa866f46da789f0b908e90bf55a0dca90": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x1dac73f3d00052d7e815b41e7b1b5cb241aa4d70": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x374e87811313f94e13406d2dc56a52e87658f8df": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x7b730451d4bc9b6effa4cf9ddbea121f68c00d06": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xde055950ccaaf115c8d76b33e6503ee403875ccb": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xdc416010737c3804afdaf4245312e590b3971557": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "too_few_txs (3)"
+    },
+    "0xc6e2dcf6c60ac5262337b9eb182823812471351f": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xae5bd4ec07ff8c839019c995a83d3b45583652fb": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x8239143e934a4dbcd7feaf0beb4611ec616a4410": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xc5857e9a814723a41314679a9fab05a1e09c4dd3": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x5ded059d5a935f1cad0b3e71e958e4c08e5f1bf9": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xb53972ea4407acbc1168323684765850e621c043": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "too_few_txs (6)"
+    },
+    "0xbf0804d3523ea2f080bbd5359f423532efd653f7": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x923fe347df323393803ee44f3ecf83ffa9b3a54f": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "too_few_txs (5)"
+    },
+    "0x9ece64d35d7aa170568e4e8504e26a20d90021ed": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xbe8cb31044aa2d417e253586558f513cbdd3a5bd": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0xa0f7644beabbdea2d65d7f0e93275baf53cf6f1d": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x0f8fd417c4017110e8e61365d4aae65b16b45942": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    },
+    "0x80379da35ac599a59121991b00eccea355e67aea": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "reason": "C1-C4 exclude (EXCLUDE)"
+    }
+  },
+  "error_addresses": {
+    "0x3c8cbd613857965267bcd4bdec7b794dd53969a0": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0xaf2358e98683265cbd3a48509123d390ddf54534": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x1d283807630ffb876a5d78b8e0788e491449f241": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x5ee42438d0d8fc399c94ef3543665e993e847b49": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x7b9d4d8772b8705ddc7456daf821c3022dda0504": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x13b3a50f3947476eda74fe191344524e2d2d28e5": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x3511f837687ff7272a39a231cac1452ad71141fa": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0xc5c9f6dda68422984a06a66a3d1aebd7d979a158": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x06d9ca334a8a74474e9b6ee31280c494321ae759": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x96a6f29ca861b7420c586e070fbc767e357ba821": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0xf165d353abddb7cb00052d610254249fcc12a8c7": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x0e6ac8dd1ba5d5c16ef30e5f86b3a0804feab876": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x1ce2304369d957fc1f0dd32c983f445e449f4c7a": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x3fb65feeab83bf60b0d1ffbc4217d2d97a35c8d4": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0xc4cc364706fe781fb00a47badb297af36a482cc1": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0xe839b2e436782ec0f52724e72b68d1c70cbc8f35": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x2ec31068d6451510841578981081124a0f75cc64": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x966c5496e978621b24db1177187ff1f9a02f4b9f": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0x6e0d262ce9c6905cc9d75c05cfb5abf37b7aaf63": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    },
+    "0xeb89055e16ae1c1e42ad6770a7344ff5c7b4f31d": {
+      "name": "Platform interactor (OLAS Token (Autonolas governance))",
+      "error": "Etherscan error: None"
+    }
+  }
+}
