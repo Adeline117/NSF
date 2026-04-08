@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-04-08T14:47:36.956956",
+  "feature_set": "combined_31",
+  "n_features": 31,
+  "splits": {
+    "full_3316": {
+      "GraphSAGE": {
+        "mean_auc": 0.9681,
+        "std_auc": 0.0102,
+        "mean_f1": 0.9555
+      },
+      "GAT": {
+        "mean_auc": 0.9422,
+        "std_auc": 0.0109,
+        "mean_f1": 0.9335
+      }
+    },
+    "trusted_64": {
+      "GraphSAGE": {
+        "mean_auc": 0.7976,
+        "std_auc": 0.0872,
+        "mean_f1": 0.7512
+      },
+      "GAT": {
+        "mean_auc": 0.8802,
+        "std_auc": 0.0897,
+        "mean_f1": 0.787
+      }
+    }
+  },
+  "elapsed_seconds": 43.91
+}
