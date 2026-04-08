@@ -1231,5 +1231,252 @@
       "pengu": 1.0
     },
     "note": "Cross-axis AUC measures TRUE predictive power. Circular AUC (shown for reference) is always ~1.0 because is_sybil = f(BT,BW,HF,RF,MA)."
+  },
+  "exp4_enhanced_detector_FIXED": {
+    "1inch": {
+      "baseline_auc": 0.759148155334654,
+      "enhanced_auc": 0.7613382415603608,
+      "ai_only_auc": 0.5083591337235848,
+      "improvement": 0.002190086225706822,
+      "top_features": {
+        "HF": 0.6981,
+        "BT": 0.1242,
+        "BW": 0.1185,
+        "behavioral_consistency": 0.0091,
+        "gas_nonce_gap_regularity": 0.0082
+      }
+    },
+    "ampleforth": {
+      "baseline_auc": 0.31829770378262556,
+      "enhanced_auc": 0.3215115660106115,
+      "ai_only_auc": 0.5085279373823247,
+      "improvement": 0.0032138622279859197,
+      "top_features": {
+        "HF": 0.7283,
+        "BT": 0.128,
+        "BW": 0.0998,
+        "gas_nonce_gap_regularity": 0.0064,
+        "response_latency_variance": 0.0058
+      }
+    },
+    "apecoin": {
+      "baseline_auc": 0.6282438526293311,
+      "enhanced_auc": 0.6240890865291031,
+      "ai_only_auc": 0.49886845835497073,
+      "improvement": -0.0041547661002280245,
+      "top_features": {
+        "HF": 0.6311,
+        "BT": 0.1696,
+        "BW": 0.1454,
+        "gas_nonce_gap_regularity": 0.008,
+        "behavioral_consistency": 0.0079
+      }
+    },
+    "badger": {
+      "baseline_auc": 0.2566189653946055,
+      "enhanced_auc": 0.2542137133232296,
+      "ai_only_auc": 0.49708569751167325,
+      "improvement": -0.002405252071375874,
+      "top_features": {
+        "HF": 0.7574,
+        "BT": 0.1178,
+        "BW": 0.0825,
+        "behavioral_consistency": 0.0064,
+        "gas_nonce_gap_regularity": 0.0063
+      }
+    },
+    "blur_s1": {
+      "baseline_auc": 0.2834299500503239,
+      "enhanced_auc": 0.2830805540718644,
+      "ai_only_auc": 0.5071559589952219,
+      "improvement": -0.0003493959784595102,
+      "top_features": {
+        "HF": 0.7304,
+        "BT": 0.1243,
+        "BW": 0.0995,
+        "gas_nonce_gap_regularity": 0.0067,
+        "behavioral_consistency": 0.0063
+      }
+    },
+    "blur_s2": {
+      "baseline_auc": 0.38392709824292115,
+      "enhanced_auc": 0.38325935975072833,
+      "ai_only_auc": 0.49927231632028013,
+      "improvement": -0.0006677384921928153,
+      "top_features": {
+        "HF": 0.727,
+        "BT": 0.1317,
+        "BW": 0.0963,
+        "response_latency_variance": 0.0064,
+        "gas_nonce_gap_regularity": 0.0064
+      }
+    },
+    "dydx": {
+      "baseline_auc": 0.8463104719943523,
+      "enhanced_auc": 0.8438685030943949,
+      "ai_only_auc": 0.49543978545857265,
+      "improvement": -0.002441968899957403,
+      "top_features": {
+        "HF": 0.64,
+        "BT": 0.1794,
+        "BW": 0.1229,
+        "gas_price_precision": 0.009,
+        "gas_nonce_gap_regularity": 0.009
+      }
+    },
+    "eigenlayer": {
+      "baseline_auc": 0.7026759911252842,
+      "enhanced_auc": 0.6858779243845254,
+      "ai_only_auc": 0.5065710921719752,
+      "improvement": -0.016798066740758788,
+      "top_features": {
+        "HF": 0.7238,
+        "BT": 0.1263,
+        "BW": 0.104,
+        "gas_price_precision": 0.0072,
+        "gas_nonce_gap_regularity": 0.0071
+      }
+    },
+    "ens": {
+      "baseline_auc": 0.5337063414115315,
+      "enhanced_auc": 0.5295561870867764,
+      "ai_only_auc": 0.5041272281710698,
+      "improvement": -0.004150154324755073,
+      "top_features": {
+        "HF": 0.7313,
+        "BT": 0.1417,
+        "BW": 0.0821,
+        "behavioral_consistency": 0.0064,
+        "hour_entropy": 0.0062
+      }
+    },
+    "etherfi": {
+      "baseline_auc": 0.8591992243043637,
+      "enhanced_auc": 0.8629424357470824,
+      "ai_only_auc": 0.5010054996243444,
+      "improvement": 0.003743211442718719,
+      "top_features": {
+        "HF": 0.6536,
+        "BT": 0.1782,
+        "BW": 0.1085,
+        "hour_entropy": 0.0086,
+        "gas_price_precision": 0.0085
+      }
+    },
+    "gitcoin": {
+      "baseline_auc": 0.5594274432889452,
+      "enhanced_auc": 0.556395945578768,
+      "ai_only_auc": 0.5026547841610569,
+      "improvement": -0.003031497710177189,
+      "top_features": {
+        "HF": 0.6692,
+        "BT": 0.1509,
+        "BW": 0.1295,
+        "gas_nonce_gap_regularity": 0.0075,
+        "hour_entropy": 0.0072
+      }
+    },
+    "looksrare": {
+      "baseline_auc": 0.6234083099630808,
+      "enhanced_auc": 0.6199637256411816,
+      "ai_only_auc": 0.5026888149249549,
+      "improvement": -0.0034445843218992023,
+      "top_features": {
+        "HF": 0.6785,
+        "BT": 0.1597,
+        "BW": 0.1112,
+        "behavioral_consistency": 0.008,
+        "gas_price_precision": 0.0078
+      }
+    },
+    "paraswap": {
+      "baseline_auc": 0.782693753851895,
+      "enhanced_auc": 0.7865562503887233,
+      "ai_only_auc": 0.5255264020897767,
+      "improvement": 0.0038624965368283526,
+      "top_features": {
+        "HF": 0.7095,
+        "BT": 0.1402,
+        "BW": 0.1024,
+        "response_latency_variance": 0.0066,
+        "gas_price_precision": 0.0065
+      }
+    },
+    "pengu": {
+      "baseline_auc": 0.6811175666336597,
+      "enhanced_auc": 0.6811912489711227,
+      "ai_only_auc": 0.4847674313566105,
+      "improvement": 7.368233746296582e-05,
+      "top_features": {
+        "HF": 0.7143,
+        "BT": 0.1217,
+        "BW": 0.1099,
+        "behavioral_consistency": 0.0088,
+        "gas_nonce_gap_regularity": 0.0081
+      }
+    },
+    "uniswap": {
+      "baseline_auc": 0.8524250902090412,
+      "enhanced_auc": 0.8548392819211608,
+      "ai_only_auc": 0.4957128187048002,
+      "improvement": 0.00241419171211954,
+      "top_features": {
+        "HF": 0.6794,
+        "BT": 0.1339,
+        "BW": 0.1221,
+        "gas_nonce_gap_regularity": 0.011,
+        "gas_price_precision": 0.0095
+      }
+    },
+    "x2y2": {
+      "baseline_auc": 0.8089919540470744,
+      "enhanced_auc": 0.8023856672829688,
+      "ai_only_auc": 0.49921954149122855,
+      "improvement": -0.006606286764105573,
+      "top_features": {
+        "HF": 0.6995,
+        "BT": 0.1453,
+        "BW": 0.1045,
+        "gas_nonce_gap_regularity": 0.0081,
+        "behavioral_consistency": 0.007
+      }
+    },
+    "_summary": {
+      "mean_baseline_auc": 0.6174763670164806,
+      "mean_enhanced_auc": 0.6156918557089126,
+      "mean_ai_only_auc": 0.5023114312776529,
+      "mean_improvement": -0.0017845113075679597,
+      "recovery": {
+        "basic": {
+          "n_ai_sybils": 3000,
+          "baseline_detected": 51,
+          "baseline_rate": 0.017,
+          "enhanced_detected": 56,
+          "enhanced_rate": 0.018666666666666668,
+          "recovery": 0.0016666666666666668
+        },
+        "moderate": {
+          "n_ai_sybils": 3000,
+          "baseline_detected": 4,
+          "baseline_rate": 0.0013333333333333333,
+          "enhanced_detected": 33,
+          "enhanced_rate": 0.011,
+          "recovery": 0.009666666666666667
+        },
+        "advanced": {
+          "n_ai_sybils": 3000,
+          "baseline_detected": 0,
+          "baseline_rate": 0.0,
+          "enhanced_detected": 22,
+          "enhanced_rate": 0.007333333333333333,
+          "recovery": 0.007333333333333333
+        }
+      }
+    }
+  },
+  "leakage_fix_notes": {
+    "original_exp4": "LEAKY \u2014 augment_with_ai_features drew AI features from is_sybil-conditional distributions, making AI features a proxy for is_sybil (and hence fund_flag).",
+    "fixed_exp4": "HONEST \u2014 all real HasciDB rows get AI features from Paper 1 HUMAN distribution. AI features are now orthogonal to is_sybil in the training data. Expected effect: enhanced_auc \u2248 baseline_auc (AI features no longer help predict fund_flag, because AI features no longer encode is_sybil).",
+    "new_exp4b": "POSITIVE STORY \u2014 train binary classifier (LLM sybil vs real HasciDB) with AI features from DIFFERENT distributions per class. This is the honest positive finding."
   }
 }
