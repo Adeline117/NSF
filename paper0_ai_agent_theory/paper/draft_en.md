@@ -370,7 +370,15 @@ This three-cluster decomposition is almost exactly the structure that $C_3$ and 
 
 **This is a publishable finding in its own right.** Any future taxonomy of on-chain agents should distinguish behavioral from semantic granularity. A behavioral taxonomy (what you can learn from transactions) and a semantic taxonomy (what you can learn from provenance) should be different objects, and the dialogue between them is what makes the taxonomy interesting.
 
-### 5.3 Implications for HCI and governance
+### 5.3 Is C4 (Adaptiveness) necessary? A deliberate design choice
+
+A predictable reviewer objection targets C4. Wooldridge and Jennings [1995] do not require adaptiveness, and many practitioners would call a reactive MEV bot an "agent" even if its strategy is frozen from deployment to deprecation. Our C4 non-redundancy argument (Section 3.2) uses such a frozen bot as the counterexample, but the deeper motivation is *why* we draw the line here rather than at C3 alone.
+
+We deliberately take a **stronger-than-standard definition** because C4 operationalizes a concrete difference that matters for all three downstream papers: Paper 1's security audit shows that adaptive agents accumulate different approval patterns over time (the time-series drift is a C4 proxy); Paper 3's LLM sybils demonstrate that C4-capable entities can *evolve their evasion strategy* in response to detector feedback, which frozen scripts cannot. A definition that admits frozen scripts would conflate the two populations and lose the practical utility that motivates the taxonomy.
+
+We acknowledge that this is a design choice, not a logical necessity. An alternative definition dropping C4 would yield a coarser agent class that includes fixed-strategy bots. We report the empirical consequence: in our cluster validation, the k=3 super-cluster structure (Section 5.2) partially merges the C4-negative and C4-positive populations, suggesting that C4 adds discriminative value at the semantic level even if the behavioral signal is weak. We invite the community to treat C4 as the axis along which the definition can be relaxed or tightened depending on the application.
+
+### 5.4 Implications for HCI and governance
 
 The C1-C4 definition and the taxonomy let HCI researchers, regulators, and practitioners talk about *specific kinds* of on-chain agents rather than about "agents in general". Four implications are immediate:
 
