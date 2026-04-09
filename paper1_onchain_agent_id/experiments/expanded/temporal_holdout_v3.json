@@ -1,0 +1,19 @@
+{
+  "split_by": "n_transactions_median",
+  "median": 610.0,
+  "train_high_tx": {
+    "n": 282,
+    "agents": 164
+  },
+  "test_low_tx": {
+    "n": 281,
+    "agents": 164
+  },
+  "older_to_newer": {
+    "auc": 0.724,
+    "f1": 0.6845
+  },
+  "newer_to_older": {
+    "auc": 0.7046
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "RF_tuned": {
+    "mean_auc": 0.8032,
+    "std_auc": 0.0315
+  },
+  "RF_default": {
+    "mean_auc": 0.7956
+  },
+  "GBM_tuned": {
+    "mean_auc": 0.7742,
+    "std_auc": 0.0283
+  },
+  "GBM_default": {
+    "mean_auc": 0.7867
+  }
+}

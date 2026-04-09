@@ -1,0 +1,28 @@
+{
+  "n": 563,
+  "mean_abs_shap": {
+    "top_contract_concentration": 0.0567,
+    "gas_price_cv": 0.0438,
+    "unique_contracts_ratio": 0.0322,
+    "gas_price_round_number_ratio": 0.0241,
+    "gas_price_trailing_zeros_mean": 0.0232,
+    "method_id_diversity": 0.0171,
+    "contract_to_eoa_ratio": 0.0141,
+    "tx_interval_mean": 0.0132,
+    "unlimited_approve_ratio": 0.0127,
+    "sequential_pattern_score": 0.0125,
+    "gas_limit_precision": 0.0092,
+    "tx_interval_std": 0.0089,
+    "approve_revoke_ratio": 0.008,
+    "night_activity_ratio": 0.0052,
+    "multi_protocol_interaction_count": 0.005,
+    "unverified_contract_approve_ratio": 0.005,
+    "tx_interval_skewness": 0.0041,
+    "burst_frequency": 0.0041,
+    "weekend_ratio": 0.0033,
+    "gas_price_nonce_correlation": 0.0031,
+    "active_hour_entropy": 0.002,
+    "flash_loan_usage": 0.0,
+    "eip1559_priority_fee_precision": 0.0
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "round_0": {
+    "mean_auc": 0.9869,
+    "std": 0.0014
+  },
+  "round_0_detector_on_round_1_sybils": {
+    "detection_rate": 0.7507
+  },
+  "round_1_retrained": {
+    "mean_auc": 0.9787,
+    "std": 0.0025
+  },
+  "top3_features_round0": {
+    "behavioral_consistency": 0.3844,
+    "hour_entropy": 0.304,
+    "error_recovery_pattern": 0.1465
+  },
+  "auc_drop": 0.0082,
+  "elapsed_seconds": 47.1
+}
