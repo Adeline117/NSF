@@ -154,6 +154,8 @@ The central methodological move of this paper is to *never* train on the same fe
 
 All experiments run on the stratified 25k/project HasciDB subset ($n{=}386{,}067$ total, 125,157 Sybils, 32.4\%). Code lives in `paper3_ai_sybil/experiments/`; results files are listed per section.
 
+The headline result is an attack: every LLM-generated wallet evades HasciDB's rules (100\%), the pre-airdrop LightGBM (100\%), and 99.9\% evade the cross-axis GBM (\S4.4). The headline defense follows immediately: an 8-feature execution-layer detector trained on the honest binary task (LLM Sybil vs real wallet) recovers AUC 0.978 (basic), 0.959 (moderate), 0.987 (advanced), with hour\_entropy alone reaching 0.878 (\S4.6). Sections 4.1--4.3 establish the baseline; Section 4.4 demonstrates the attack; Sections 4.5--4.6 present the defense.
+
 ### 4.1 Baseline Statistics Across 16 Projects
 
 Table \ref{tab:baseline} reproduces the per-project statistics from `experiment_large_scale_results.json`. Sybil rate varies from 5.5\% (pengu) to 67.2\% (1inch), `ops_flag` fires in 1.96\% (apecoin) to 60.4\% (1inch) of wallets, and `fund_flag` in 0.4\% (paraswap) to 47.8\% (apecoin). Per-indicator trigger rates are highly heterogeneous -- BT dominates 1inch (55.8\%), RF dominates uniswap (42.0\%) and apecoin (35.6\%), and MA dominates looksrare (29.8\%) -- confirming that projects differ not only in how much Sybil pressure they attract but also in *which* attack patterns dominate.
@@ -369,67 +371,23 @@ Out of 5 advanced generation attempts against blur\_s2, 4 produced valid schema-
 
 ## 5. Threats to Validity: The `augment_with_ai_features` Leakage Post-Mortem
 
-Section 4.5 reported the central negative result of this paper: the "enhanced 13-feature detector" whose pilot AUC was 0.953 in fact scored 0.609 once we closed a label-leakage bug. We believe this discovery is a contribution in its own right: it is the kind of pitfall that is easy to commit, easy to publish without noticing, and very easy to propagate through the community as a "known strong baseline" that cannot be replicated from scratch. We document the bug, its detection, the fix, and a community checklist.
+The pilot "enhanced 13-feature detector" scored AUC 0.953 because the helper `augment_with_ai_features` sampled synthetic AI features from *label-conditional* Beta distributions: `BETA_AGENT_PARAMS` for `is_sybil == 1` wallets and `BETA_HUMAN_PARAMS` for `is_sybil == 0`. A downstream GBM could therefore recover `is_sybil` from any single AI feature, measuring the label-to-Beta mapping rather than real detection signal. We caught the bug during code review while writing \S3.4 and confirmed it by noting that the pilot AUC was $\ge 0.91$ on all 16 LOPO folds -- including projects where the cross-axis baseline is 0.63--0.68.
 
-### 5.1 The Bug
+The fix replaces the two conditional distributions with a single pooled distribution (`BETA_POOLED_PARAMS`), eliminating all label information from the synthetic features. Under this correction, 4-project honest enhanced AUC collapses to 0.609 and AI-only AUC to 0.501 (Table \ref{tab:leakfix}). The fix is in `paper3_ai_sybil/experiments/exp4_leakage_fix.py`.
 
-The pilot attached AI features to HasciDB wallets with this helper (paraphrased):
+**Checklist for the community.** Any paper mixing real features with synthetic auxiliary features on real labels should:
 
-```python
-def augment_with_ai_features(df):
-    ai = np.empty((len(df), 8))
-    for i, row in df.iterrows():
-        if row["is_sybil"] == 1:
-            ai[i] = sample_beta(BETA_AGENT_PARAMS)
-        else:
-            ai[i] = sample_beta(BETA_HUMAN_PARAMS)
-    return np.hstack([df[HASCIDB_COLS].values, ai])
-```
-
-In words: for each HasciDB wallet, the 8 "AI features" were drawn from a Beta distribution whose parameters were chosen based on the wallet's *own* Sybil label. A downstream GBM trained on all 13 columns could therefore recover `is_sybil` perfectly from any one of the AI features, because sampling the 8 features *was itself a label-conditional operation*. The 0.953 AUC was measuring how well the model could reverse-engineer the label-to-Beta mapping, not how well AI features separated Sybils from non-Sybils.
-
-### 5.2 How We Found It
-
-Three signals:
-
-1. **Too good, too stable.** The pilot enhanced AUC was $\ge 0.91$ on every one of the 16 LOPO folds, including apecoin (`fund_flag` dominated, 2\% `ops_flag`) and pengu (5.5\% Sybil rate), projects on which even the cross-axis baseline is 0.63--0.68. That pattern is inconsistent with any realistic cross-project transfer story.
-2. **Feature-importance dominance by hour\_entropy.** The pilot reported hour\_entropy as the top feature at 0.34--0.35 importance in *every* project -- more stable than any HasciDB indicator. Real features rarely rank identically across such heterogeneous projects.
-3. **Code review.** We re-read `augment_with_ai_features` while writing \S3.4 of this paper and immediately noticed the `if row["is_sybil"] == 1` branch.
-
-### 5.3 The Fix
-
-The corrected helper samples AI features from a *single* unconditional distribution fit on all of Paper 1 (both agents and humans pooled):
-
-```python
-def augment_with_ai_features_honest(df):
-    ai = np.empty((len(df), 8))
-    for i in range(len(df)):
-        ai[i] = sample_beta(BETA_POOLED_PARAMS)  # no conditioning on label
-    return np.hstack([df[HASCIDB_COLS].values, ai])
-```
-
-Under this helper the 4-project honest enhanced AUC collapses to 0.609 (Table \ref{tab:leakfix}), AI-only to 0.501. The fix is in `paper3_ai_sybil/experiments/exp4_leakage_fix.py` and the results in `exp4_leakage_fix_results.json`.
-
-### 5.4 Checklist for the Community
-
-We offer a four-point checklist for any paper that mixes real features with synthetic auxiliary features on real labels:
-
-1. **Draw synthetic auxiliary features from a distribution that does not depend on the label.** If the label dependency is the whole point, say so explicitly and do not call the result a "detector".
-2. **Test the auxiliary features alone.** If `auxiliary-only AUC` is much higher than chance when measured on the real-label task, and the auxiliary features are synthesized by your pipeline, the pipeline is the model.
-3. **Inspect feature importance across heterogeneous folds.** Unnaturally stable importance rankings are a classical leakage smell.
-4. **Re-run the ablation on a leakage-free binary task** (e.g., our \S4.6 "LLM Sybil vs real wallet" task) before reporting main-task numbers. This is how we recovered the *real* signal of the 8 AI features.
-
-### 5.5 Why We Still Believe in AI Features
-
-The leakage bug was specific to the way we attached synthetic AI features onto HasciDB wallets that had no real AI features of their own. When we evaluate the 8 features on (i) real Paper 1 data ($n{=}3316$, \S3.2) and (ii) the honest binary classification task (\S4.6, LLM Sybil vs real wallet), the signal is substantial: all 8 features at $p<0.01$, Cohen's $d$ up to 1.98, and honest binary AUC 0.987 on advanced adversaries. The fix changes what we can claim about the HasciDB joint task -- AI features cannot replace missing labels -- but it strengthens our confidence that, on real data, the execution-layer signature of LLM-driven wallets is real and exploitable.
+1. **Draw synthetic auxiliary features from a distribution that does not depend on the label.**
+2. **Test the auxiliary features alone** -- if auxiliary-only AUC $\gg 0.5$ on the real-label task, the pipeline is the model.
+3. **Re-run the ablation on a leakage-free binary task** (e.g., our \S4.6 "LLM Sybil vs real wallet" task) before reporting main-task numbers.
 
 ---
 
 ## 6. Discussion
 
-### 6.1 A Correction to the "AI Detector Saves the Day" Narrative
+### 6.1 Implication 1: Synthetic Feature Augmentation Is Not a Viable Defense Without Real Adversarial Exemplars
 
-The pilot story -- "HasciDB falls to AI Sybils, AI features restore AUC to 1.0" -- is too clean and, as \S5 shows, false. The *honest* story is more nuanced and more useful: HasciDB rules and the pre-airdrop LightGBM are not *robust* at any useful operating point, because both are built on features the attacker can control; the correct defense against LLM-driven attackers is not a drop-in feature expansion but a *change of ground truth*. Specifically, either (a) train on labels that come from a different methodology than the features (our Gitcoin FDD transfer is a toy example) or (b) drop the HasciDB target and classify LLM-generated wallets against real wallets directly -- which is what the \S4.6 binary ablation does, and which does in fact recover AUC 0.987.
+The pilot story -- "HasciDB falls to AI Sybils, AI features restore AUC to 1.0" -- is too clean and, as \S5 shows, false. The lesson is not that AI features lack signal; \S4.6 demonstrates that they carry strong signal (AUC 0.987 on advanced adversaries). The lesson is that synthetic feature augmentation without ground-truth LLM-sybil training examples is not a viable defense strategy. When the 8 AI features are sampled onto HasciDB wallets that have no real execution-layer trace, the only way to make them informative is to condition on the label -- which is leakage, not detection. The community needs real adversarial exemplars (as we provide in Section 4.6) to train robust detectors. Concretely, either (a) train on labels that come from a different methodology than the features (our Gitcoin FDD transfer is a toy example) or (b) drop the HasciDB target and classify LLM-generated wallets against real wallets directly, which is what the \S4.6 binary ablation does and which recovers AUC 0.987.
 
 ### 6.2 What Signal Actually Survives
 
@@ -460,7 +418,7 @@ The leakage we found (\S5) is a concrete instance of a well-known class of bugs 
 3. **HasciDB is Ethereum L1 only.** L2 gas mechanics (Arbitrum sequencer, Optimism fault proofs, Base) differ enough that some AI features (especially gas\_price\_precision and eip1559\_tip\_precision) may transfer poorly. Replicating the Paper 1 pipeline on L2 is future work.
 4. **The 4-project leakage-fix subset.** We validated the fix on (1inch, uniswap, ens, blur\_s2) and expect the same qualitative pattern on all 16 projects, but a full 16-project honest rerun is still pending.
 5. **Label heterogeneity.** HasciDB mixes DeFi, NFT, and L2 airdrops; our cross-axis AUCs are tightly coupled to the relative frequency of `ops_flag` vs `fund_flag`. Projects with extreme imbalance (apecoin, 1inch) are hardest.
-6. **No graph-based detectors.** We do not evaluate TrustaLabs or the Arbitrum Louvain pipelines. Graph methods may still catch LLM-coordinated wallets if the attacker is not careful about funding sources; we see cross-attack evaluation as the most important follow-up.
+6. **No graph-based detectors.** We do not evaluate TrustaLabs or the Arbitrum Louvain pipelines. Graph-based detectors such as ARTEMIS (GraphSAGE, AUC 0.803 on Blur S2) and TrustaLabs operate on cross-wallet coordination signals -- shared funding sources, transfer subgraphs, and community structure. Our attacker model deliberately scopes to per-wallet behavioral evasion: each LLM-generated wallet is created independently with no shared funding graph. Consequently, graph methods would observe LLM sybils as isolated nodes indistinguishable from genuine wallets, and are therefore orthogonal to our feature-space defense. A joint feature+graph adversary that simultaneously evades both detection channels is the natural next step.
 
 Future work: (a) closed-loop adversarial training of a 13-feature detector against a reward-shaped LLM generator; (b) problem-space LLM attacks on a testnet with a full HasciDB pipeline in the loop; (c) honest cross-method transfer at scale, using multiple independent label sources (FDD, Hop blacklist, ARTEMIS); (d) L2 replication of the Paper 1 / Paper 3 pipelines on Arbitrum and Base.
 
