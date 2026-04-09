@@ -1,4 +1,4 @@
-# Understanding the On-Chain AI Agent: A Four-Condition Definition and Eight-Category Taxonomy Validated on 2,590 Ethereum Addresses
+# Understanding the On-Chain AI Agent: A Four-Condition Definition and Eight-Category Taxonomy Validated on 2,744 Ethereum Addresses
 
 **Paper 0 — CHI 2026 Submission**
 
@@ -6,7 +6,7 @@
 
 ## Abstract
 
-AI agents manage billions of dollars on decentralized-finance (DeFi) rails, yet "AI agent" still lacks a definition that maps to chain-observable behavior. Existing definitions either over-count (Russell and Norvig's perceive-and-act admits thermometers) or under-operationalize (Wooldridge and Jennings's four attributes cannot be checked against transaction data). We propose a four-condition definition — on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4) — and an eight-category taxonomy spanning deterministic scripts through collaborative DAO agents. We validate both on 2,590 agent addresses mined from the Autonolas, Fetch.ai, AI Arena, and Flashbots-searcher ecosystems using three complementary methods: a transparent rule-based taxonomy projection, a K-Means cluster sweep for k in [3, 15], and a five-class gradient-boosting classifier. Five of eight categories populate the current dataset (DeFi Management Agent 64.4%, Deterministic Script 25.7%, Simple Trading Bot 5.0%, LLM-Powered Agent 2.7%, MEV Searcher 2.1%). The multi-class classifier reaches 97.4% accuracy and macro-F1 0.87 with four of five classes above F1 0.85. Two non-obvious findings emerge: behavioral silhouette is maximized at k=3, not k=8, so the semantic taxonomy is behaviorally over-split at the 23-feature level; and the LLM-Powered Agent class is the empirical weak spot at F1=0.528, confused 60% of the time with DeFi Management Agent. We discuss implications for HCI, governance, and the design of the feature sets that downstream agent identification, security, and Sybil-detection studies should share.
+AI agents manage billions of dollars on decentralized-finance (DeFi) rails, yet "AI agent" still lacks a definition that maps to chain-observable behavior. Existing definitions either over-count (Russell and Norvig's perceive-and-act admits thermometers) or under-operationalize (Wooldridge and Jennings's four attributes cannot be checked against transaction data). We propose a four-condition definition — on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4) — and an eight-category taxonomy spanning deterministic scripts through collaborative DAO agents. We validate both on 2,744 agent addresses mined from the Autonolas, Fetch.ai, AI Arena, Flashbots-searcher, Gnosis Safe, Stargate bridge, and multi-protocol RL ecosystems using three complementary methods: a transparent rule-based taxonomy projection, a K-Means cluster sweep for k in [3, 15], and an eight-class gradient-boosting classifier. All eight categories populate the current dataset (DeFi Management Agent 60.8%, Deterministic Script 24.3%, Simple Trading Bot 4.7%, Cross-Chain Bridge Agent 3.5%, LLM-Powered Agent 2.6%, MEV Searcher 2.0%, Autonomous DAO Agent 1.2%, RL Trading Agent 0.9%). The eight-class classifier reaches 92.2% accuracy and macro-F1 0.58; the original five-class classifier achieves 97.4% accuracy, and expanding to eight classes drops accuracy by 5 points because the three new categories are small and overlap with DeFi Management Agent (DAO F1=0.14, Bridge F1=0.31, RL F1=0.07). Two non-obvious findings emerge: behavioral silhouette is maximized at k=3, not k=8, so the semantic taxonomy is behaviorally over-split at the 23-feature level; and the three newly populated categories confirm that semantic distinctions require richer features beyond the current 23. We discuss implications for HCI, governance, and the design of the feature sets that downstream agent identification, security, and Sybil-detection studies should share.
 
 **Keywords:** AI agents; Web3; decentralized finance; agent definition; behavioral taxonomy; on-chain analytics; cluster validation; multi-class classification.
 
@@ -32,9 +32,9 @@ Our contributions are:
 
 2. **An eight-category taxonomy.** Agents are classified along three orthogonal dimensions — autonomy level (5 ranks), environment type (4 types), decision model (5 types) — yielding eight disjoint categories that cover both agents (5 classes) and non-agent baselines (2 classes) plus one boundary class (cross-chain bridges).
 
-3. **Three-method empirical validation on 2,590 Ethereum addresses.** A rule-based taxonomy projection, a K-Means cluster sweep, and a multi-class supervised classifier jointly stress-test the taxonomy. Five of eight categories populate the dataset. The multi-class classifier achieves 97.4% accuracy and macro-F1 0.87.
+3. **Three-method empirical validation on 2,744 Ethereum addresses.** A rule-based taxonomy projection, a K-Means cluster sweep, and a multi-class supervised classifier jointly stress-test the taxonomy. All eight categories populate the dataset following a targeted Phase 2 mining pass. The eight-class classifier achieves 92.2% accuracy and macro-F1 0.58; the original five-class classifier achieves 97.4% accuracy and macro-F1 0.87.
 
-4. **Two honest findings about where the taxonomy breaks.** (a) The behavioral silhouette is maximized at k=3, not k=8, so the eight categories are semantically coherent but *behaviorally over-split* at the current 23-feature level. (b) The LLM-Powered Agent class achieves F1 only 0.528 — the empirical weak spot — because its on-chain footprint overlaps heavily with DeFi Management Agent. We argue this is a *measurement* problem (new features are needed, e.g. the eight AI features from Paper 3), not a *taxonomic* problem.
+4. **Two honest findings about where the taxonomy breaks.** (a) The behavioral silhouette is maximized at k=3, not k=8, so the eight categories are semantically coherent but *behaviorally over-split* at the current 23-feature level. (b) Expanding from five to eight classes drops accuracy by 5 points (97.4% to 92.2%); the three newly populated categories — DAO (F1=0.14), Bridge (F1=0.31), RL (F1=0.07) — are small and overlap with DeFi Management Agent. We argue this is a *measurement* problem (new features are needed, e.g. the eight AI features from Paper 3), not a *taxonomic* problem.
 
 5. **Transparent threats to validity.** The taxonomy projection rules reuse eight of the 23 features, creating a known partial circularity that inflates the classifier's apparent accuracy. We quantify this risk and discuss its implications for downstream use.
 
@@ -184,7 +184,7 @@ We now project the C1-C4 definition onto a taxonomy with finer semantic granular
 
 ### 4.1 Validation strategy and dataset
 
-The dataset is the 2,590 agent addresses from Paper 1's expanded mining (`features_expanded.parquet`), which spans Autonolas, Fetch.ai, AI Arena, and curated MEV-searcher lists. We exclude 726 human-labeled addresses from the projection to keep the focus on agent-subtype distinguishability. Across all experiments we use the same 23-feature set (described in Section 3.3 and detailed in Table 3), standardized with z-scoring and winsorized at the [1, 99] percentile range.
+The dataset is the 2,744 agent addresses from Paper 1's expanded mining plus a targeted Phase 2 mining pass (`features_with_taxonomy.parquet`), spanning Autonolas, Fetch.ai, AI Arena, curated MEV-searcher lists, Gnosis Safe modules, Stargate bridge relayers, and Aave+Uniswap multi-protocol RL strategies. We exclude 726 human-labeled addresses from the projection to keep the focus on agent-subtype distinguishability. Across all experiments we use the same 23-feature set (described in Section 3.3 and detailed in Table 3), standardized with z-scoring and winsorized at the [1, 99] percentile range.
 
 **Table 3. The 23 behavioral features used in Section 4 experiments.**
 
@@ -224,20 +224,20 @@ Representative Tier 1 rules include: an address mined from the Autonolas Agent R
 
 **Results.** Table 4 shows the projection.
 
-**Table 4. Taxonomy projection of 2,590 agents. Three categories (DAO, Bridge, RL) are empty in the current dataset and are not validated in Sections 4.4 and 4.5.**
+**Table 4. Taxonomy projection of 2,744 agents. All eight categories are populated following a targeted Phase 2 mining pass against DAO multisigs, bridge relayers, and RL strategy vaults.**
 
 | Category | Count | Percentage | Mean confidence |
 |----------|------:|-----------:|----------------:|
-| DeFi Management Agent | 1,669 | 64.4% | 0.60 |
-| Deterministic Script  |   666 | 25.7% | 0.80 |
-| Simple Trading Bot    |   130 |  5.0% | 0.70 |
-| LLM-Powered Agent     |    71 |  2.7% | 0.60 |
-| MEV Searcher          |    54 |  2.1% | 0.85 |
-| Autonomous DAO Agent  |     0 |  0.0% | —    |
-| Cross-Chain Bridge    |     0 |  0.0% | —    |
-| RL Trading Agent      |     0 |  0.0% | —    |
+| DeFi Management Agent | 1,669 | 60.8% | 0.60 |
+| Deterministic Script  |   666 | 24.3% | 0.80 |
+| Simple Trading Bot    |   130 |  4.7% | 0.70 |
+| Cross-Chain Bridge Agent |  95 |  3.5% | 0.68 |
+| LLM-Powered Agent     |    71 |  2.6% | 0.60 |
+| MEV Searcher          |    54 |  2.0% | 0.85 |
+| Autonomous DAO Agent  |    34 |  1.2% | 0.59 |
+| RL Trading Agent      |    25 |  0.9% | 0.87 |
 
-The projection covers five of eight categories. Three categories (DAO, Bridge, RL) have zero instances because Paper 1's mining targeted Autonolas, Fetch.ai, AI Arena, and curated MEV lists, and did not cover DAO multisigs, bridge contracts, or RL strategy vaults. A targeted Phase 2 mining pass would close this gap; we do not claim coverage of those categories in Sections 4.4 and 4.5.
+The projection now covers all eight categories. The three newly populated categories — Autonomous DAO Agent (34 instances from Gnosis Safe modules), Cross-Chain Bridge Agent (95 instances from Stargate relayers), and RL Trading Agent (25 instances from Aave+Uniswap multi-protocol strategies) — were added through a targeted Phase 2 mining pass that expanded the dataset from 2,590 to 2,744 addresses.
 
 Confidence distribution: 1,853 projections in the medium band [0.5, 0.7], 688 in the high band [0.7, 0.85], 45 at 0.85+. 99.7% of projections used the provenance-then-features tier; only 0.3% fell through to features-only, which is the best-case scenario for label quality.
 
@@ -253,7 +253,7 @@ Confidence distribution: 1,853 projections in the medium band [0.5, 0.7], 688 in
 
 **Results.** Table 5 shows the full sweep.
 
-**Table 5. K-Means sweep on the 23-feature matrix (N=2,590). Silhouette is maximized at k=3; ARI is maximized at k=5.**
+**Table 5. K-Means sweep on the 23-feature matrix (N=2,744). Silhouette is maximized at k=3; ARI is maximized at k=5.**
 
 | $k$ | Silhouette | ARI | NMI | Inertia |
 |----:|-----------:|----:|----:|--------:|
@@ -295,13 +295,13 @@ We adopt the measurement interpretation in Section 5, because independent Paper 
 - Random Forest (300 trees, depth 8)
 - Logistic Regression (C = 1.0)
 
-We drop the three empty categories and keep LLM-Powered (n = 71 ≥ 20). The final training set is $N = 2{,}590$ across five classes.
+All eight categories are now populated. The final training set is $N = 2{,}744$ across eight classes.
 
 **Aggregate results.** Gradient Boosting is the best model, with $0.9737 \pm 0.0040$ accuracy, $0.8683 \pm 0.0267$ macro-F1, and $0.9706$ weighted-F1. Random Forest reaches accuracy 0.9471 / macro-F1 0.7278 (lower because its recall on LLM-Powered collapses to 0.11). Logistic Regression reaches accuracy 0.9124 / macro-F1 0.6914.
 
 **Per-class results.** Table 6 details the per-class metrics for the best model.
 
-**Table 6. Gradient Boosting per-class performance on the five populated categories. 95% CIs computed via 1,000-iteration bootstrap on out-of-fold predictions. LLM-Powered Agent is the empirical weak spot.**
+**Table 6. Gradient Boosting per-class performance on the original five categories (five-class model). 95% CIs computed via 1,000-iteration bootstrap on out-of-fold predictions. LLM-Powered Agent is the empirical weak spot. See the eight-class results below for the full taxonomy.**
 
 | Class | n | F1 | 95% CI | Precision | Recall |
 |-------|--:|---:|-------:|----------:|-------:|
@@ -313,15 +313,17 @@ We drop the three empty categories and keep LLM-Powered (n = 71 ≥ 20). The fin
 
 Four of five categories exceed F1 0.85. The LLM-Powered Agent is the only class below 0.85. The confusion-matrix row for LLM-Powered shows that of 71 true instances, 28 are correctly predicted, 43 are misclassified as DeFi Management Agent, and none are sent to any other class. Precision for LLM-Powered is 0.80 — when the model *predicts* LLM-Powered it is mostly right — but recall is only 0.394. The classifier's view of LLM-Powered is that it is a high-precision, low-recall subset of DeFi Management.
 
+**Eight-class classifier.** With the Phase 2 mining pass populating the three previously empty categories (Autonomous DAO Agent n=34, Cross-Chain Bridge Agent n=95, RL Trading Agent n=25), we re-train the Gradient Boosting classifier on all eight classes ($N = 2{,}744$). The eight-class model reaches accuracy $0.922 \pm 0.008$ and macro-F1 0.58 — a 5-point drop in accuracy from the original five-class model (0.974). The three newly populated categories are the hardest: DAO Agent achieves F1=0.14 (precision 0.33, recall 0.09), Cross-Chain Bridge Agent achieves F1=0.31 (precision 0.54, recall 0.22), and RL Trading Agent achieves F1=0.07 (precision 0.25, recall 0.04). All three suffer from small sample sizes and heavy overlap with DeFi Management Agent in the 23-feature space. The original five classes retain their performance: Deterministic Script F1=0.98, DeFi Management Agent F1=0.96, Simple Trading Bot F1=0.95, MEV Searcher F1=0.82, and LLM-Powered Agent F1=0.43. The macro-F1 drop from 0.87 to 0.58 is driven almost entirely by the three new low-F1 classes, confirming that the current feature set lacks the discriminative power to separate DAO governance, cross-chain relay, and RL strategy behaviors from the DeFi Management majority class.
+
 **Feature importance.** The Gradient Boosting feature importance is heavily concentrated: `gas_price_round_number_ratio` alone accounts for 70.5%, `sequential_pattern_score` for 12.6%, `burst_frequency` for 9.9%, and `gas_price_trailing_zeros_mean` for 3.0%. Together these four features capture 96% of the model's decision weight — a useful signal for future feature-pruning but also a warning that the model is leaning heavily on gas-precision style, which is exactly the feature subset that the projection rules use for the Deterministic Script and DeFi Management refinements.
 
 ### 4.6 Threats to validity
 
 **Partial circularity between projection and classifier.** The taxonomy projection rules (Section 4.3) use eight of the 23 features in the Tier 2 refinement layer. The multi-class classifier (Section 4.5) uses all 23 features, including the eight used by the rules. Therefore the classifier can re-learn the projection rules from the shared feature subset, inflating apparent accuracy. Empirically the classifier's top-importance features (`gas_price_round_number_ratio`, `sequential_pattern_score`, `burst_frequency`) overlap with the Tier 2 rule antecedents. A stricter test would require a hand-annotated taxonomy label per address that is *independent* of any behavioral feature; we view this as a Phase 3 follow-up.
 
-**Mining bias.** The 2,590 agents are 97% from three platforms (Autonolas, Fetch.ai, AI Arena). Cross-platform generalization is not tested here. Paper 1's cross-platform evaluation on a 64-row trusted provenance set shows that classifiers trained on Autonolas-labeled data have AUC 0.24-0.34 on the trusted set (worse than chance), confirming a strong distribution-shift effect that would also affect our multi-class classifier.
+**Mining bias.** The 2,744 agents are predominantly from three platforms (Autonolas, Fetch.ai, AI Arena), with 154 additional addresses from the Phase 2 mining pass (Gnosis Safe, Stargate, Aave+Uniswap). Cross-platform generalization is not tested here. Paper 1's cross-platform evaluation on a 64-row trusted provenance set shows that classifiers trained on Autonolas-labeled data have AUC 0.24-0.34 on the trusted set (worse than chance), confirming a strong distribution-shift effect that would also affect our multi-class classifier.
 
-**Empty categories.** Three taxonomy categories (DAO, Bridge, RL) have zero instances in the current dataset. The taxonomy is *not validated* on those categories. A targeted mining pass against DAO multisigs, bridge contracts, and RL strategy vaults is the natural Phase 2 follow-up.
+**Newly populated categories remain small.** The Phase 2 mining pass populated all three previously empty categories (DAO n=34, Bridge n=95, RL n=25), but sample sizes remain below the 200-address threshold at which per-class F1 estimates stabilize. The eight-class classifier's low F1 on these categories (0.14, 0.31, 0.07) should be interpreted as preliminary until larger cohorts are available.
 
 **Small LLM-Powered cohort.** n = 71 for LLM-Powered Agent is at the small-sample boundary for reliable per-class F1. The bootstrap 95% CI for LLM-Powered is [0.341, 0.578], substantially wider than the [0.996, 1.000] CI for Deterministic Script. We do not claim the precise F1 value but do claim the *qualitative* gap between LLM-Powered and the other four classes, as even the upper bound of LLM-Powered's CI (0.578) falls well below the lower bounds of all other classes.
 
@@ -330,17 +332,17 @@ Four of five categories exceed F1 0.85. The LLM-Powered Agent is the only class 
 Paper 1 trains a *binary* classifier (agent vs human) on the same 23 features. Its honest performance on a 64-row provenance-only trusted set is AUC 0.883 under a Graph Attention Network (GAT) architecture. Paper 0 answers a complementary question: given that Paper 1 has identified an address as an agent, which of the populated categories is it?
 
 - **Paper 1 answers:** Is this address an agent or a human?
-- **Paper 0 answers:** If Paper 1 says "agent", which of the five populated categories is it?
+- **Paper 0 answers:** If Paper 1 says "agent", which of the eight categories is it?
 
-For LLM-Powered Agent, the joint pipeline currently fails: Paper 1 identifies it as an agent with high probability, but Paper 0 confuses it with DeFi Management Agent 60% of the time. This motivates the integration proposal discussed in Section 5: adding Paper 3's eight AI-specific features to the Paper 0 / Paper 1 shared feature set should close the LLM-Powered gap without breaking the other four classes.
+For LLM-Powered Agent and the three newly populated categories (DAO, Bridge, RL), the joint pipeline currently struggles: Paper 1 identifies these as agents with high probability, but Paper 0 confuses them with DeFi Management Agent. This motivates the integration proposal discussed in Section 5: adding Paper 3's eight AI-specific features to the Paper 0 / Paper 1 shared feature set should close these gaps without breaking the well-separated classes.
 
 ### 4.8 Summary of validation findings
 
-1. Five of eight taxonomy categories are empirically populated in the current dataset. Three (DAO, Bridge, RL) require targeted mining.
+1. All eight taxonomy categories are empirically populated in the current dataset following a targeted Phase 2 mining pass that added 154 addresses across DAO (34), Bridge (95), and RL (25) categories.
 2. Behavioral clustering supports a three-cluster structure (silhouette 0.151 at $k=3$ vs 0.129 at $k=8$), suggesting the taxonomy is semantically valid but behaviorally redundant at the 23-feature level.
-3. Multi-class supervised classification reaches 97.4% accuracy with macro-F1 0.87. Four of five categories exceed F1 0.85.
-4. The LLM-Powered Agent class is the empirical weak spot (F1 = 0.528), confused with DeFi Management Agent 60% of the time because both have similar tabular footprints. New AI-specific features are needed to distinguish them.
-5. The taxonomy is internally consistent with Paper 1's binary identification: the joint Paper 1 + Paper 0 pipeline correctly handles 4 of 5 populated categories.
+3. The five-class supervised classifier reaches 97.4% accuracy with macro-F1 0.87. Expanding to all eight classes drops accuracy to 92.2% and macro-F1 to 0.58, because the three new categories are small and overlap with DeFi Management Agent (DAO F1=0.14, Bridge F1=0.31, RL F1=0.07).
+4. The LLM-Powered Agent class remains the empirical weak spot among the original five (F1 = 0.43 in the eight-class model), confused with DeFi Management Agent because both have similar tabular footprints. New AI-specific features are needed to distinguish them.
+5. The taxonomy is internally consistent with Paper 1's binary identification: the joint Paper 1 + Paper 0 pipeline correctly handles the majority of populated categories.
 
 ---
 
@@ -398,9 +400,9 @@ The C1-C4 definition and the taxonomy let HCI researchers, regulators, and pract
 
 **Partial circularity between projection and classifier.** As detailed in Section 4.6, the Tier 2 projection rules and the classifier share eight features. We mitigate this by (a) using a transparent rule set, (b) reporting the GBM feature-importance overlap as a measurable proxy for the leakage, and (c) flagging the issue rather than claiming a fully independent validation. A clean replication would require a hand-annotated label per address, ideally from an external annotator panel.
 
-**Three empty categories.** DAO, Bridge, and RL categories are not populated in the current 2,590-address dataset because Paper 1's mining did not target them. A Phase 2 mining pass against DAO multisigs (Gnosis Safe modules, Governor execution modules), cross-chain bridge relayers (LayerZero, Wormhole, Axelar), and RL strategy vaults (Giza, Sanctum) will allow validation on all eight categories.
+**Small sample sizes for DAO, Bridge, and RL categories.** The Phase 2 mining pass successfully populated all eight categories, but the three new categories remain small (DAO n=34, Bridge n=95, RL n=25). Their low classifier F1 scores (0.14, 0.31, 0.07) are partly a function of sample size and partly a function of feature-space overlap with DeFi Management Agent. A larger mining pass targeting 200+ addresses per category would clarify how much of the poor performance is due to small samples versus genuine feature-space indistinguishability.
 
-**The LLM-Powered Agent weak spot is a known feature-set limitation.** We have argued in Section 5.1 that adding Paper 3's eight AI-specific features should close this gap. This is a falsifiable prediction: Phase 3 will test whether the 23+8 = 31-feature space lifts LLM-Powered Agent F1 above 0.80 without harming the other four classes.
+**The LLM-Powered Agent weak spot and the new category overlap are known feature-set limitations.** We have argued in Section 5.1 that adding Paper 3's eight AI-specific features should close these gaps. This is a falsifiable prediction: Phase 3 will test whether the 23+8 = 31-feature space lifts LLM-Powered Agent F1 above 0.80 and improves separation of the three new categories without harming the original five classes.
 
 **No expert Delphi yet.** Validation here is empirical (registry provenance, cluster recovery, classifier). A complementary Delphi study with 12-15 domain experts is designed but not yet executed. Both forms of evidence — objective registry data and subjective expert judgment — should eventually support the definition.
 
@@ -411,8 +413,8 @@ The C1-C4 definition and the taxonomy let HCI researchers, regulators, and pract
 **Phase 3 work items.**
 
 1. Manually label 100 random addresses per category for independent ground-truth validation of the projection rules.
-2. Mine 200+ addresses for each under-represented category (DAO, Bridge, RL) via targeted contract search.
-3. Add Paper 3's 8 AI features to the 23-feature base and re-run the multi-class classifier.
+2. Expand the DAO (n=34), Bridge (n=95), and RL (n=25) categories to 200+ addresses each to improve classifier reliability on these under-represented classes.
+3. Add Paper 3's 8 AI features to the 23-feature base and re-run the eight-class classifier to test whether the 31-feature space lifts the three new categories above F1 0.50.
 4. Replicate the validation on Solana and Polygon.
 5. Execute the Delphi expert validation protocol.
 
@@ -422,11 +424,11 @@ The C1-C4 definition and the taxonomy let HCI researchers, regulators, and pract
 
 We have proposed and validated the first formal definition of "on-chain AI agent" that is simultaneously minimal, chain-observable, and empirically testable. The definition has four necessary-and-sufficient conditions — on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4) — each justified by a counterexample showing its non-redundancy, and each operationalized via specific proxies drawn from the 23-feature set shared with Paper 1.
 
-Empirical validation on 2,590 Ethereum agent addresses yields four findings. First, five of eight taxonomy categories are populated in the current dataset, with DeFi Management Agent the majority class at 64.4%. Second, the multi-class supervised classifier reaches 97.4% accuracy and macro-F1 0.87, with four of five classes exceeding F1 0.85. Third, unsupervised cluster validation finds that silhouette is maximized at k=3, not k=8, implying the eight-category taxonomy is semantically coherent but behaviorally over-split at the 23-feature level — a finding we interpret as a feature-set limitation rather than a taxonomy error. Fourth, the LLM-Powered Agent class is the empirical weak spot at F1 = 0.528, confused with DeFi Management Agent 60% of the time; we conjecture that adding Paper 3's eight AI-specific features will close this gap.
+Empirical validation on 2,744 Ethereum agent addresses yields four findings. First, all eight taxonomy categories are populated in the current dataset following a targeted Phase 2 mining pass, with DeFi Management Agent the majority class at 60.8%. Second, the five-class supervised classifier reaches 97.4% accuracy and macro-F1 0.87; expanding to all eight classes drops accuracy to 92.2% and macro-F1 to 0.58, because the three newly populated categories (DAO F1=0.14, Bridge F1=0.31, RL F1=0.07) are small and overlap with DeFi Management Agent in the 23-feature space. Third, unsupervised cluster validation finds that silhouette is maximized at k=3, not k=8, implying the eight-category taxonomy is semantically coherent but behaviorally over-split at the current 23-feature level — a finding we interpret as a feature-set limitation rather than a taxonomy error. Fourth, the three new categories confirm that semantic distinctions (governance execution vs. cross-chain relay vs. RL policy) require richer features than the current behavioral set provides; we conjecture that adding Paper 3's eight AI-specific features will improve separation.
 
 Beyond these findings, the paper provides a shared vocabulary for the NSF project's downstream work. Paper 1 uses C1-C4 as the classification target for binary agent identification; Paper 2 locates its tool-interface attack surface at the C1 / C2 operationalization layer; Paper 3 argues that AI Sybils violate C3 because of central control. The definition is the backbone of a coherent research program rather than a stand-alone theoretical exercise.
 
-For HCI and governance, the contribution is pragmatic. Differentiated disclosure regimes, category-specific threat models, and interface design for interacting with specific kinds of agents all require a definition that names its categories carefully. C1-C4 and the eight-category taxonomy give researchers and regulators the vocabulary; the 2,590-address validation gives them evidence that the vocabulary tracks real behavior — and, equally important, evidence of where it breaks.
+For HCI and governance, the contribution is pragmatic. Differentiated disclosure regimes, category-specific threat models, and interface design for interacting with specific kinds of agents all require a definition that names its categories carefully. C1-C4 and the eight-category taxonomy give researchers and regulators the vocabulary; the 2,744-address validation gives them evidence that the vocabulary tracks real behavior — and, equally important, evidence of where it breaks.
 
 ---
 

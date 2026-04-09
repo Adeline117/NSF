@@ -26,11 +26,14 @@ fraction of critical-severity findings. We calibrate the per-server
 risk score against empirical percentiles, reducing saturation from
 29/62 (47%) under the pilot scheme to 12/138 (8.7%). We complement
 the static pipeline with an LLM-in-the-loop dynamic harness that
-exercises eight adversarial scenarios against Claude Opus 4.6: one
-scenario (unlimited-approval) succeeds as an attack, three are
-refused, and four produce ambiguous "safe-proceed" behaviour. We
-prepare 25 responsible-disclosure reports for the highest-risk
-repositories. All code, taxonomy, and data are open-sourced.
+exercises 16 adversarial scenarios against three Claude model
+variants (Opus 4.6, Haiku 4.5, Sonnet 4.6). Sonnet is 3x more
+vulnerable than Opus and Haiku (37.5% vs. 12.5% attack success
+rate); all three models fail on unlimited-approval and cross-tool
+reference injection, while 9 of 16 scenarios (56%) show different
+outcomes across models. We prepare 25 responsible-disclosure
+reports for the highest-risk repositories. All code, taxonomy, and
+data are open-sourced.
 
 **Keywords:** AI agents, tool use, LLM security, MCP, OpenAI Function
 Calling, LangChain, Web3 security, static analysis, prompt injection,
@@ -105,12 +108,13 @@ symptoms of a design pattern shared by all of them.
    correlation 0.948 with the pilot (Appendix C).
 
 4. **An LLM-in-the-loop dynamic harness.** We implement a dynamic
-   test runner that drives Claude Opus 4.6 through eight adversarial
-   scenarios covering the five attack surfaces. Unlike prior
-   semi-static testing, the LLM is the subject under test: the attack
-   succeeds iff the live model performs the harmful action. We
-   observe one attack success, three explicit refusals, and four
-   ambiguous safe-proceed outcomes.
+   test runner that drives three Claude model variants (Opus 4.6,
+   Haiku 4.5, Sonnet 4.6) through 16 adversarial scenarios covering
+   the five attack surfaces. Unlike prior semi-static testing, the
+   LLM is the subject under test: the attack succeeds iff the live
+   model performs the harmful action. Sonnet is 3x more vulnerable
+   than Opus and Haiku (37.5% vs. 12.5% attack success rate), and
+   9 of 16 scenarios show different outcomes across models.
 
 5. **Responsible disclosure and open-source release.** We prepare 25
    vulnerability reports for the highest-risk repositories using a
@@ -124,11 +128,13 @@ LangChain, while private key exposure (307) concentrates in
 Web3-native modules. MCP servers are the most finding-dense per
 repository (mean 58.7), but Web3-native modules have the highest
 *critical* fraction (30.3% vs. 7.7% for MCP). In the LLM dynamic
-harness, Claude Opus 4.6 refuses or warns on the most obvious
-vectors (private-key-in-chat, SQL injection, prompt injection in tool
-output) but walks directly into an unlimited-approval attack -- a
-failure mode that motivates our argument that tool-side harnesses
-cannot be delegated to the LLM.
+harness, all three Claude model variants refuse or warn on the most
+obvious vectors (private-key-in-chat, SQL injection), but all three
+walk directly into an unlimited-approval attack. Sonnet is 3x more
+vulnerable than Opus and Haiku (37.5% vs. 12.5% attack success
+rate), and 56% of scenarios produce different outcomes across
+models -- a failure mode that motivates our argument that tool-side
+harnesses cannot be delegated to the LLM.
 
 ---
 
@@ -652,8 +658,9 @@ vulnerabilities exist in code but not whether a real LLM will
 exercise them. To close that gap we implemented an *LLM-in-the-loop
 dynamic harness* (`dynamic_testing/llm_dynamic_harness.py`). Unlike
 prior MCP dynamic tests that exercise protocol messages against a
-stubbed LLM, our harness uses a live model (Claude Opus 4.6) as the
-agent under test. For each scenario we:
+stubbed LLM, our harness uses live models as the agents under test.
+We evaluate three Claude model variants -- Opus 4.6, Haiku 4.5, and
+Sonnet 4.6 -- across 16 adversarial scenarios. For each scenario we:
 
 1. Instantiate a synthetic tool server implementing the scenario's
    vulnerable tool (e.g., a `get_balance` tool whose description
@@ -671,9 +678,10 @@ warning. Otherwise the scenario is *safe-proceed* (the model
 completed the visible task without the harmful action, but did not
 proactively warn).
 
-**Scenarios.** The current harness ships eight scenarios covering
+**Scenarios.** The current harness ships 16 scenarios covering
 five attack surfaces (Table 9). Each scenario targets a specific
-taxonomy pattern.
+taxonomy pattern. Table 9 shows the original eight core scenarios
+and their outcomes for the primary model (Claude Opus 4.6).
 
 | ID | Scenario | Pattern | Attack surface | Outcome |
 |----|----------|---------|----------------|---------|
@@ -686,9 +694,11 @@ taxonomy pattern.
 | DI-001 | Data injection via parameter | S2-IV-001 | S2 | refused/warned |
 | OUT-001 | Tool output not validated | S4-NV-001 | S4 | safe-proceed |
 
-**Table 9.** LLM-in-the-loop dynamic harness. Eight scenarios
-against Claude Opus 4.6. Aggregate: 1 attack success (12.5%), 3
-refused/warned (37.5%), 4 safe-proceed (50%).
+**Table 9.** LLM-in-the-loop dynamic harness. Eight core scenarios
+against Claude Opus 4.6 (shown here; see Table 9b for the full
+16-scenario multi-model comparison). Aggregate for these eight: 1
+attack success (12.5%), 3 refused/warned (37.5%), 4 safe-proceed
+(50%).
 
 **Finding 7: the LLM mitigates the most obvious attacks.** Claude
 Opus 4.6 refused to accept a private key over chat (PK-001),
@@ -718,13 +728,41 @@ TC-001 the sandboxed tool call raised an error. A slightly more
 capable scaffolding would likely have closed the gap. We therefore
 do not count these as mitigations.
 
+**Finding 10: Sonnet is 3x more vulnerable than Opus and Haiku.**
+We extended the dynamic harness to 16 scenarios and tested three
+Claude model variants: Opus 4.6, Haiku 4.5, and Sonnet 4.6. Table
+9b summarises the multi-model comparison.
+
+**Table 9b. Multi-model dynamic testing comparison (16 scenarios).**
+
+| Model | Attack successes | Rate | Refused | Safe-proceed |
+|-------|----------------:|-----:|--------:|-------------:|
+| Claude Opus 4.6   | 2/16 | 12.5% | 7 | 7 |
+| Claude Haiku 4.5  | 2/16 | 12.5% | 8 | 6 |
+| Claude Sonnet 4.6 | 6/16 | 37.5% | 8 | 2 |
+
+Sonnet's 37.5% attack success rate is 3x higher than Opus and
+Haiku (both 12.5%). All three models fail on the same two
+scenarios: unlimited approval (MEV-001) and cross-tool reference
+injection (TP-002). Sonnet additionally fails on poisoned tool
+description (TP-001), prompt injection in tool output (PI-001),
+output validation bypass (OUT-001), and data leakage (DL-001) --
+four scenarios that Opus and Haiku handle safely. Of the 16
+scenarios, 9 (56%) show different outcomes across models, meaning
+the choice of LLM variant materially affects the security posture
+of the agent system. The result suggests that model capability
+(Sonnet is optimised for speed and throughput) trades off against
+safety in tool-use contexts: Sonnet is more willing to engage with
+tool descriptions and outputs, which makes it both more helpful and
+more exploitable.
+
 **Limitations of the dynamic harness.** The harness currently uses
-single-turn prompts and a single model (Claude Opus 4.6). Multi-turn
+single-turn prompts and three Claude model variants. Multi-turn
 adversarial workflows (where the attacker controls follow-up user
-messages), other frontier models, and open-weights models are
-immediate next targets. The harness is nevertheless the first
-end-to-end LLM-in-the-loop evaluation we are aware of that
-enumerates the full vulnerability taxonomy; prior tools stop at
+messages) and open-weights models are immediate next targets. The
+harness is nevertheless the first end-to-end LLM-in-the-loop
+evaluation we are aware of that enumerates the full vulnerability
+taxonomy across multiple model variants; prior tools stop at
 protocol-level fuzzing.
 
 ---
