@@ -372,7 +372,8 @@ class LLMTestHarness:
 
     async def _ask(self, system_prompt: str, user_prompt: str,
                     timeout: float = 60.0) -> str:
-        opts = self._options(max_turns=1, system_prompt=system_prompt)
+        opts = self._options(max_turns=1, system_prompt=system_prompt,
+                             model=self.model)
         chunks = []
         try:
             async for msg in self._query(prompt=user_prompt, options=opts):
