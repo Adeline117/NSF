@@ -14,7 +14,7 @@ interactions: Anthropic's Model Context Protocol (MCP), OpenAI Function
 Calling, LangChain/agent framework tools, and Web3-native smart-contract
 modules. Despite the critical security implications of granting LLMs
 access to privileged operations, no systematic cross-protocol security
-analysis exists. We present the first such analysis, examining 200+ tool
+analysis exists. We present the first such analysis, examining 138 tool
 servers across all four protocol families. Using a combination of
 automated static analysis (36 vulnerability patterns, 12 CWE mappings)
 and targeted dynamic testing (50 servers), we find that 18 out of 20
@@ -39,7 +39,7 @@ adoption. Our tools and dataset are released as open source.
   indicating systemic design flaws, not implementation bugs
 - Contributions:
   1. Unified vulnerability taxonomy (20 categories) with CWE mapping
-  2. First cross-protocol empirical analysis (200+ servers, 4 protocols)
+  2. First cross-protocol empirical analysis (138 servers, 4 protocols)
   3. Five attack surfaces and four Web3-specific vectors
   4. Harness gap analysis and six mitigation requirements
   5. Open-source static analyzer and dataset

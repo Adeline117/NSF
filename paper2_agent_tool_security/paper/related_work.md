@@ -152,10 +152,10 @@ Our work makes several contributions not addressed by prior work:
 
 2. **Empirical scale.** Prior security analyses of AI agent tools are
    primarily conceptual or limited to a small number of case studies.
-   We analyze 200+ real tool servers from GitHub, providing statistical
+   We analyze 138 real tool servers from GitHub, providing statistical
    evidence of vulnerability prevalence.
 
-3. **Unified taxonomy.** Our 20-category vulnerability taxonomy with
+3. **Unified taxonomy.** Our 21-category vulnerability taxonomy with
    CWE mappings, 5 attack surfaces, and 3 attacker types provides a
    reusable framework for future research. Existing taxonomies are
    either too general (OWASP LLM Top 10) or too narrow (MCP-specific).

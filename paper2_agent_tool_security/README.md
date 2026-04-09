@@ -58,10 +58,10 @@ paper/
 | Attack surface | Patterns | Categories |
 |----------------|----------|------------|
 | S1 Tool Definition | 4 | tool_poisoning, excessive_permissions, skill_scope_leak |
-| S2 Input Construction | 6 | prompt_injection, command_injection, data_leakage, ... |
-| S3 Tool Execution | 6 | privilege_escalation, private_key_exposure, ... |
-| S4 Output Handling | 5 | state_confusion, no_output_validation, ... |
-| S5 Tool Chain | 6 | tool_chain_escalation, missing_harness, ... |
+| S2 Input Construction | 3 | prompt_injection, command_injection, missing_input_validation |
+| S3 Tool Execution | 15 | privilege_escalation, private_key_exposure, hardcoded_credentials, ... |
+| S4 Output Handling | 2 | state_confusion, no_output_validation |
+| S5 Cross-Tool | 3 | tool_chain_escalation, missing_harness, approval_injection |
 
 See `paper/taxonomy.md` for the full catalog with CWE mappings.
 

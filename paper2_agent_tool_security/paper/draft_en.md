@@ -555,13 +555,16 @@ by the four protocols (Table 4).
 | private_key_exposure | 26 | 184 | 80 | 17 |
 
 **Table 6.** Top-4 category x protocol contingency. Chi-squared
-statistic = 1,573.4, dof = 9, p < 10^-300. The null hypothesis of
-uniform per-category distribution is strongly rejected.
+statistic = 1,573.4, dof = 9, p < 10^-300, Cramer's V = 0.291
+(medium effect size). The null hypothesis of uniform per-category
+distribution is strongly rejected, and the effect is substantively
+meaningful, not merely an artifact of large N.
 
 **Finding 4: the distribution is not uniform.** The chi-squared
 result is unambiguous: categories are distributed differently across
-protocols (p < 10^-300). Yet the top categories still appear in
-every protocol -- every column in Table 6 is non-zero. We interpret
+protocols (p < 10^-300, Cramer's V = 0.29). Yet the top categories
+still appear in every protocol -- every column in Table 6 is
+non-zero. We interpret
 this as *systemic* presence combined with protocol-specific
 concentration. Cross-tool escalation is dominated by MCP (616/659 =
 93%) because MCP servers frequently expose a `callTool` primitive
@@ -740,21 +743,22 @@ Table 10.
 | Status | Count |
 |--------|------:|
 | Reports prepared | 25 |
-| Notifications sent | 25 |
-| Pending response | 25 |
+| Notifications sent | 0 |
+| Pending notification | 25 |
 | Acknowledged | 0 |
 | Fix in progress | 0 |
 | Fixed | 0 |
 | Disputed | 0 |
 | No response (within window) | 0 |
 
-**Table 10.** Disclosure status as of the submission date. The
-public disclosure deadline (90 days from notification) falls after
-review; we will update Table 10 in the camera-ready.
+**Table 10.** Disclosure status as of the submission date. All 25
+reports are prepared in GHSA-compatible format and will be filed
+prior to the camera-ready deadline. The 90-day public disclosure
+window begins upon notification.
 
 **Disclosure window.** We follow a 90-day disclosure window in line
-with Google Project Zero and CERT guidance. All affected repositories
-were notified simultaneously. For critical Web3 findings -- in
+with Google Project Zero and CERT guidance. Notifications will be
+sent simultaneously to all 25 affected repositories upon acceptance. For critical Web3 findings -- in
 particular `private_key_exposure` in widely-used MCP wallet servers
 -- we offered a 14-day expedited remediation path with direct
 co-ordination.
