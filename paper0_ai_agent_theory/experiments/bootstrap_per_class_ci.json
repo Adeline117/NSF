@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-04-09T15:50:13.341020",
+  "method": "GBM_5fold_CV_then_bootstrap_predictions",
+  "n_bootstrap": 1000,
+  "n_folds": 5,
+  "n_agents": 2590,
+  "per_class_ci": {
+    "SimpleTradingBot": {
+      "taxonomy_index": 0,
+      "f1_point": 0.9766,
+      "f1_boot_mean": 0.9768,
+      "f1_boot_std": 0.0097,
+      "ci_95_lower": 0.9555,
+      "ci_95_upper": 0.9931
+    },
+    "MEVSearcher": {
+      "taxonomy_index": 1,
+      "f1_point": 0.8868,
+      "f1_boot_mean": 0.8858,
+      "f1_boot_std": 0.0345,
+      "ci_95_lower": 0.8172,
+      "ci_95_upper": 0.9495
+    },
+    "DeFiManagementAgent": {
+      "taxonomy_index": 2,
+      "f1_point": 0.9796,
+      "f1_boot_mean": 0.9796,
+      "f1_boot_std": 0.0024,
+      "ci_95_lower": 0.975,
+      "ci_95_upper": 0.9841
+    },
+    "LLMPoweredAgent": {
+      "taxonomy_index": 3,
+      "f1_point": 0.466,
+      "f1_boot_mean": 0.4633,
+      "f1_boot_std": 0.0596,
+      "ci_95_lower": 0.3414,
+      "ci_95_upper": 0.5778
+    },
+    "DeterministicScript": {
+      "taxonomy_index": 6,
+      "f1_point": 0.9985,
+      "f1_boot_mean": 0.9985,
+      "f1_boot_std": 0.001,
+      "ci_95_lower": 0.9962,
+      "ci_95_upper": 1.0
+    }
+  }
+}
