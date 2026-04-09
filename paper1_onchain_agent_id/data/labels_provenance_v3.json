@@ -1,0 +1,3380 @@
+{
+  "0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5": {
+    "name": "Flashbots Builder",
+    "provenance_source": "flashbots_relay_data",
+    "label_provenance": 1,
+    "category": "curated_mev_bot"
+  },
+  "0x95222290dd7278aa3ddd389cc1e1d165cc4bafe5": {
+    "name": "beaverbuild",
+    "provenance_source": "flashbots_relay_data",
+    "label_provenance": 1,
+    "category": "curated_mev_bot"
+  },
+  "0x56178a0d5f301baf6cf3e1cd53d9863437345bf9": {
+    "name": "jaredfromsubway.eth",
+    "provenance_source": "ens_resolution",
+    "label_provenance": 1,
+    "category": "curated_mev_bot"
+  },
+  "0xae2fc483527b8ef99eb5d9b44875f005ba1fae13": {
+    "name": "jaredfromsubway v2",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "curated_mev_bot"
+  },
+  "0x008300082c3000009e63680088f8c7f4d3ff2e87": {
+    "name": "MEV bot iota",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "curated_mev_bot"
+  },
+  "0x0000000000060c75d139d234616a4c14a594368f": {
+    "name": "MEV bot kappa",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "curated_mev_bot"
+  },
+  "0x7e2a2fa2a064f693f0a55c5639476d913ff12d05": {
+    "name": "DeFi liquidation bot",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 1,
+    "category": "curated_mev_bot"
+  },
+  "0xdbf5e9c5206d0db70a90108bf936da60221dc080": {
+    "name": "Wintermute 3",
+    "provenance_source": "arkham_label",
+    "label_provenance": 1,
+    "category": "curated_mev_bot"
+  },
+  "0x4db6cdd13653736044c2ce25751fc5656ca4763f": {
+    "name": "Wintermute 4",
+    "provenance_source": "arkham_label",
+    "label_provenance": 1,
+    "category": "curated_mev_bot"
+  },
+  "0x75e89d5979e4f6fba9f97c104c2f0afb3f1dcb88": {
+    "name": "DWF Labs",
+    "provenance_source": "arkham_label",
+    "label_provenance": 1,
+    "category": "curated_mev_bot"
+  },
+  "0x54054ea2db6edc336cb87966815fd66cc337f224": {
+    "name": "Keep3r executor (0x54054ea2)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x9429cd74a3984396f3117d51cde46ea8e0e21487": {
+    "name": "Keep3r executor (0x9429cd74)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x6b0a3b444d74b74872a931841235f974c8022bef": {
+    "name": "Keep3r executor (0x6b0a3b44)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xfffcfccf41aab5753829be061d42839dbb1827f3": {
+    "name": "Keep3r executor (0xfffcfccf)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x73d23cdabbb25b0e039470ea940514ca30744277": {
+    "name": "Keep3r executor (0x73d23cda)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x2926261e26a2eb80a6df8226aac8f7d1a4c1dd66": {
+    "name": "Keep3r executor (0x2926261e)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x87197647557879ec8892a2f535a0f26c8f18c7e6": {
+    "name": "Keep3r executor (0x87197647)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xb33cb5d3ced2a477a6c80910c2962de697dbbe48": {
+    "name": "Keep3r executor (0xb33cb5d3)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xfb20864791b7dd70542dae2f4907ef0535a68cdc": {
+    "name": "Keep3r executor (0xfb208647)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x2be8fb391cc05cd2a2892760d1463c88a1840a2f": {
+    "name": "Keep3r executor (0x2be8fb39)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x4f559cb6a5194527b49dcde936c6c81e1e743432": {
+    "name": "Keep3r executor (0x4f559cb6)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x4f1f64701bfef0047c6882e495c09037ce895151": {
+    "name": "Keep3r executor (0x4f1f6470)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x2e4e97b2306eba1464161c77302cd8f305f3a1fe": {
+    "name": "Keep3r executor (0x2e4e97b2)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xf93bcdd99c8553e702350197ff66a89c38cb836d": {
+    "name": "Keep3r executor (0xf93bcdd9)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x96031b060abf020a2f57008e50d1ddce37e43410": {
+    "name": "Keep3r executor (0x96031b06)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xecc5acc39f800f0e1c9db3d9b351c4fd47aab0c6": {
+    "name": "Keep3r executor (0xecc5acc3)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xec9f20ddbb4daabe49ca819655e34aa017549124": {
+    "name": "Keep3r executor (0xec9f20dd)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xe4a74aee3f63ee2e2ed9fe650e81bd4f6fed729f": {
+    "name": "Keep3r executor (0xe4a74aee)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x56af0e613c8be78df064a04ab3f07e0cb1a4d631": {
+    "name": "Keep3r executor (0x56af0e61)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x8b0a7643f7a880cb635a5ed1ad96817c6eb39800": {
+    "name": "Keep3r executor (0x8b0a7643)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x26ad2bc6af97ec8c2935bb8010ef4204b4805922": {
+    "name": "Keep3r executor (0x26ad2bc6)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x1f708885bdf5d6e37b175b6b388ab6bba193bc0c": {
+    "name": "Keep3r executor (0x1f708885)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x8fd34c838ccf342ebb10fd61f8ffe14e11e06a18": {
+    "name": "Keep3r executor (0x8fd34c83)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xd86b5eff437b753af65340d1b54f31eadbd02a23": {
+    "name": "Keep3r executor (0xd86b5eff)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x14477894e3a908c4ff400de1223834b3e82b08af": {
+    "name": "Keep3r executor (0x14477894)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x06a52a3147a71321c5918f43749b810e074b6e8f": {
+    "name": "Keep3r executor (0x06a52a31)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x5fcdc32dfc361a32e9d5ab9a384b890c62d0b8ac": {
+    "name": "Keep3r executor (0x5fcdc32d)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x8862dff8730da03dffaf7cf713e3226f98190efb": {
+    "name": "Keep3r executor (0x8862dff8)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x5d95baebb8412ad827287240a5c281e3bb30d27e": {
+    "name": "Keep3r executor (0x5d95baeb)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xf5e58987bdae6b8f67419f28ce065a7b28da8d81": {
+    "name": "Keep3r executor (0xf5e58987)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x99d281c0bf62b7062387c88d27e4d00669e748c6": {
+    "name": "Keep3r executor (0x99d281c0)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xbad58e133138549936d2576ebc33251be841d3e9": {
+    "name": "Keep3r executor (0xbad58e13)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xf23f999ece302ea646509b51e6c4c19055471ab0": {
+    "name": "Keep3r executor (0xf23f999e)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x236fbe7a6dfb5c4e38b0adf4a87ff52b0fd82047": {
+    "name": "Keep3r executor (0x236fbe7a)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xfd722ca439fa9d5ca20471a6d1f64d1e7b18d127": {
+    "name": "Keep3r executor (0xfd722ca4)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xc5233c3b46c83adee1039d340094173f0f7c1ecf": {
+    "name": "Keep3r executor (0xc5233c3b)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x071f090356ceae8b317b23d264cc9152cb3b97d2": {
+    "name": "Keep3r executor (0x071f0903)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x9aacd2d5d10a7cac97260d581b70a69ecf7fbf06": {
+    "name": "Keep3r executor (0x9aacd2d5)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x46e612fa1af65afd6dc943e8f0295c43abe69449": {
+    "name": "Keep3r executor (0x46e612fa)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x588d91abf5192a0f0dc026bf05f510253bd1cf51": {
+    "name": "Keep3r executor (0x588d91ab)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xc3da7e434d29b93b290738ca6ab3e67d58ff64d5": {
+    "name": "Keep3r executor (0xc3da7e43)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x4bd047ca72fa05f0b89ad08fe5ba5ccdc07dffbf": {
+    "name": "Keep3r executor (0x4bd047ca)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x428455eb53e668bc222fc4446a1235e957ea8660": {
+    "name": "Keep3r executor (0x428455eb)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x9f7400eea9ef8d50911459d2d25b01213b47af03": {
+    "name": "Keep3r executor (0x9f7400ee)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x66d45a58cf49f054938c0a288793c420fe98bb04": {
+    "name": "Keep3r executor (0x66d45a58)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0x0679ca2b4ca6b50f7e59789d900faada704c60ff": {
+    "name": "Keep3r executor (0x0679ca2b)",
+    "provenance_source": "on_chain_keep3r_executor",
+    "label_provenance": 1,
+    "category": "keep3r_executor"
+  },
+  "0xf1108379d71ff2a785899f4c36010f841f1fea04": {
+    "name": "Gelato executor (0xf1108379)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x8474c43970481015019819936793ddc210a0050e": {
+    "name": "Gelato executor (0x8474c439)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x96e9886a56726873cdc6fc20fcdf806722f408d2": {
+    "name": "Gelato executor (0x96e9886a)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x826e0bb2276271efdf2a500597f37b94f6c153ba": {
+    "name": "Gelato executor (0x826e0bb2)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xd4f9ecb185fb8ff786200f9708a65b5bcb3fc157": {
+    "name": "Gelato executor (0xd4f9ecb1)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x53a806789bbfd366d9deb9cbe5d622089e845fdb": {
+    "name": "Gelato executor (0x53a80678)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x1e1e856e505948e8605d25e436ab4af50d84f90e": {
+    "name": "Gelato executor (0x1e1e856e)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x88215a2794ddc031439c72922ec8983bde831c78": {
+    "name": "Gelato executor (0x88215a27)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xb0c2cbffcd4c31affee14993b6d48f99d285f621": {
+    "name": "Gelato executor (0xb0c2cbff)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xe343cbcf9bdde523684ffcba7fa8238264e8a39a": {
+    "name": "Gelato executor (0xe343cbcf)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x5ce6047a715b1919a58c549e6fbc1921b4d9287d": {
+    "name": "Gelato executor (0x5ce6047a)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x5ba202f6b346fc25e3bc839a21a428e24d491dda": {
+    "name": "Gelato executor (0x5ba202f6)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x2dda45bc3bc7e00a4a10cad1d4b1dbd2a7c6d4a9": {
+    "name": "Gelato executor (0x2dda45bc)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xdb1b024855ac829681818aa7ed021f65509321b5": {
+    "name": "Gelato executor (0xdb1b0248)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xc02ec7a8a71486461fb1ded5faed5b99023961df": {
+    "name": "Gelato executor (0xc02ec7a8)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xf4f2b2f9da0546a57dbd01f96dc7e9956dba6afb": {
+    "name": "Gelato executor (0xf4f2b2f9)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xcafd432b7ecafff352d92fcb81c60380d437e99d": {
+    "name": "Gelato executor (0xcafd432b)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xd1236a6a111879d9862f8374ba15344b6b233fbd": {
+    "name": "Gelato executor (0xd1236a6a)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x5a95338f086d25130e2a27e14609d30f4ce155d6": {
+    "name": "Gelato executor (0x5a95338f)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xfbe09b7a6c6cc3a72b4ca41cdd9c88ac62bb7937": {
+    "name": "Gelato executor (0xfbe09b7a)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x1fccc097db89a86bfc474a1028f93958295b1fb7": {
+    "name": "Gelato executor (0x1fccc097)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x329c54289ff5d6b7b7dae13592c6b1eda1543ed4": {
+    "name": "Gelato executor (0x329c5428)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x5f7a009664b771e889751f4fd721adc439033ecd": {
+    "name": "Gelato executor (0x5f7a0096)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x4f122d7fce7971e38801af5d96fcd4ed83efd654": {
+    "name": "Gelato executor (0x4f122d7f)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x993a4af6acae0f6e8ae472f28f3b5deac77ae8d2": {
+    "name": "Gelato executor (0x993a4af6)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x886ff7a2d46dcc2276e2fd631957969441130847": {
+    "name": "Gelato executor (0x886ff7a2)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xbbbbb8c4364ec2ce52c59d2ed3e56f307e529a94": {
+    "name": "Gelato executor (0xbbbbb8c4)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x3ec92c9d09403a76bda445ffdfaf6de59717219f": {
+    "name": "Gelato executor (0x3ec92c9d)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x39e856863e5f6f0654a0b87b12bc921da23d06bb": {
+    "name": "Gelato executor (0x39e85686)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x1eeab8b3f0136f06bedf45170e8d5fa1e5289a29": {
+    "name": "Gelato executor (0x1eeab8b3)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xf7d44d5a28d5af27a7f9c8fc6efe0129e554d7c4": {
+    "name": "Gelato executor (0xf7d44d5a)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x0392c0d81934b52f64aa50c2cfbbcf28cd6141b2": {
+    "name": "Gelato executor (0x0392c0d8)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x96c72085652787725690116cb06b208598175def": {
+    "name": "Gelato executor (0x96c72085)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xbbff7c2df218839895695c6d13bbfd4acdf8191d": {
+    "name": "Gelato executor (0xbbff7c2d)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x60fab7c35e3728b46a88f82ddeee46df1d414a45": {
+    "name": "Gelato executor (0x60fab7c3)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x75e2bfe1c7fe6f69cf61f0067454be844c772eda": {
+    "name": "Gelato executor (0x75e2bfe1)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x48db95159c9966937928fcd8e6f4ce3bc419cfe7": {
+    "name": "Gelato executor (0x48db9515)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x752dfb1c709eea4621c8e95f48f3d0b6dde5d126": {
+    "name": "Gelato executor (0x752dfb1c)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xdc8a96b43cb8c16b06526520b049aec465475116": {
+    "name": "Gelato executor (0xdc8a96b4)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xef7183fa1c555d89f6835725343c34e7f05ec095": {
+    "name": "Gelato executor (0xef7183fa)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x5452e6abbc7bcb9e0907a3f8f24434cbaf438ba4": {
+    "name": "Gelato executor (0x5452e6ab)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xd83f4f3b01b804988bbca197b83b7d1551ff512b": {
+    "name": "Gelato executor (0xd83f4f3b)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0xd2d0540be9d6212677c1e9a2c14b0daffa54d218": {
+    "name": "Gelato executor (0xd2d0540b)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x026657125481828f38d1b5ae542cb19e9c04a157": {
+    "name": "Gelato executor (0x02665712)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x61ce1f6514c651c39964961db1948c6f70a4747a": {
+    "name": "Gelato executor (0x61ce1f65)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x9e9d5307451d11b2a9f84d9cfd853327f2b7e0f7": {
+    "name": "Gelato executor (0x9e9d5307)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x2c3b135cd7dc6c673b358bef214843dab3464278": {
+    "name": "Gelato executor (0x2c3b135c)",
+    "provenance_source": "on_chain_gelato_executor",
+    "label_provenance": 1,
+    "category": "gelato_executor"
+  },
+  "0x7f101fe45e6649a6fb8f3f8b43ed03d353f2b90c": {
+    "name": "MEV searcher EOA",
+    "provenance_source": "expanded_curated_nan",
+    "label_provenance": 1,
+    "category": "expanded_mev_bot"
+  },
+  "0x3fab184622dc19b6109349b94811493bf2a45362": {
+    "name": "MEV bot eta",
+    "provenance_source": "expanded_curated_nan",
+    "label_provenance": 1,
+    "category": "expanded_mev_bot"
+  },
+  "0x84d34f4f83a87596cd3fb6887cff8f17bf5a7b83": {
+    "name": "Flashbots relay bot",
+    "provenance_source": "expanded_curated_nan",
+    "label_provenance": 1,
+    "category": "expanded_mev_bot"
+  },
+  "0x80c67432656d59144ceff962e8faf8926599bcf8": {
+    "name": "MEV searcher EOA 2",
+    "provenance_source": "expanded_curated_nan",
+    "label_provenance": 1,
+    "category": "expanded_mev_bot"
+  },
+  "0x5dd596c901987a2b28c38a9c1dfbf86fffc15d77": {
+    "name": "High-freq bot",
+    "provenance_source": "expanded_curated_nan",
+    "label_provenance": 1,
+    "category": "expanded_mev_bot"
+  },
+  "0xf584f8728b874a6a5c7a8d4d387c9aae9172d621": {
+    "name": "Active bot",
+    "provenance_source": "expanded_curated_nan",
+    "label_provenance": 1,
+    "category": "expanded_mev_bot"
+  },
+  "0x11ededebf63bef0ea2d2d071bdf88f71543ec6fb": {
+    "name": "Wintermute 4",
+    "provenance_source": "expanded_curated_nan",
+    "label_provenance": 1,
+    "category": "expanded_mev_bot"
+  },
+  "0xfa4fc4ec2f81a4897743c5b4f45907c02ce06199": {
+    "name": "1inch resolver bot",
+    "provenance_source": "expanded_curated_nan",
+    "label_provenance": 1,
+    "category": "expanded_mev_bot"
+  },
+  "0xd1220a0cf47c7b9be7a2e6ba89f429762e7b9adb": {
+    "name": "Keeper bot",
+    "provenance_source": "expanded_curated_nan",
+    "label_provenance": 1,
+    "category": "expanded_mev_bot"
+  },
+  "0xfd495eeed737b002ea62cf0534e7707a9656ba19": {
+    "name": "DeFi strategy bot",
+    "provenance_source": "expanded_curated_strategy_b_mev",
+    "label_provenance": 1,
+    "category": "expanded_mev_bot"
+  },
+  "0xd8da6bf26964af9d7eed9e03e53415d37aa96045": {
+    "name": "vitalik.eth",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "curated_human"
+  },
+  "0xab5801a7d398351b8be11c439e05c5b3259aec9b": {
+    "name": "vitalik old",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "curated_human"
+  },
+  "0x983110309620d911731ac0932219af06091b6744": {
+    "name": "brantly.eth (ENS)",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "curated_human"
+  },
+  "0xfa9b5f7fdc8ab34aaf3099889475d47febf830d7": {
+    "name": "Hayden Adams (Uniswap)",
+    "provenance_source": "etherscan_label",
+    "label_provenance": 0,
+    "category": "curated_human"
+  },
+  "0xfec8a60023265364d066a1212fde3930f6ae8da7": {
+    "name": "Hsaka.eth (trader)",
+    "provenance_source": "ens_twitter_verified",
+    "label_provenance": 0,
+    "category": "curated_human"
+  },
+  "0x54be3a794282c030b15e43ae2bb182e14c409c5e": {
+    "name": "Pranksy 2",
+    "provenance_source": "twitter_verified",
+    "label_provenance": 0,
+    "category": "curated_human"
+  },
+  "0xc352b534e8b987e036a93539fd6897f53488e56a": {
+    "name": "Cozomo de' Medici",
+    "provenance_source": "twitter_verified",
+    "label_provenance": 0,
+    "category": "curated_human"
+  },
+  "0x0716a17fbaee714f1e6ab0f9d59edbc5f09815c0": {
+    "name": "a16z wallet",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x8103683202aa8da10536036edef04cdd865c225e": {
+    "name": "Paradigm",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x176f3dab24a159341c0509bb36b833e7fdd0a132": {
+    "name": "Justin Sun",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x3ddfa8ec3052539b6c9549f12cea2c295cff5296": {
+    "name": "SBF/Alameda",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x36928500bc1dcd7af6a2b4008875cc336b927d57": {
+    "name": "Large ETH holder",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x148d59faf10b52063071eddf4aaf63a395f2d41c": {
+    "name": "gallaghersart.eth",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x5b76f5b8fc9d700624f78208132f91ad4e61a1f0": {
+    "name": "coopahtroopa.eth",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x5f350bf5fee8e254d6077f8661e9c7b83a30364e": {
+    "name": "pooltogether.eth contributor",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x2b888954421b424c5d3d9ce9bb67c9bd47537d12": {
+    "name": "lefteris.eth",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0xb1adceddb2941033a090dd166a462fe1c2029484": {
+    "name": "fire-eyes.eth",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x1db3439a222c519ab44bb1144fc28167b4fa6ee6": {
+    "name": "Alameda Research wallet",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0xe21dc18513e3e68a52f9fcdacfd56948d43a11c6": {
+    "name": "Crypto investor alpha",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x3cd751e6b0078be393132286c442345e5dc49699": {
+    "name": "Active DeFi user 2",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x73bceb1cd57c711feac4224d062b0f6ff338501e": {
+    "name": "Active DeFi user 3",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x4de23f3f0fb3318287378adbde030cf61714b2f3": {
+    "name": "Active DeFi user 4",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0xe92d1a43df510f82c66382592a047d288f85226f": {
+    "name": "ETH accumulator",
+    "provenance_source": "expanded_pilot",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0xb8c2c29ee19d8307cb7255e1cd9cbde883a267d5": {
+    "name": "nick.eth (ENS lead dev)",
+    "provenance_source": "expanded_human_strategy_c_human",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x179a862703a4adfb29896552df9e307980d19285": {
+    "name": "sassal.eth (Ethereum educator)",
+    "provenance_source": "expanded_human_strategy_c_human",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x48a63097e1ac123b1f5a8bbffafa4afa8192fab0": {
+    "name": "bankless.eth",
+    "provenance_source": "expanded_human_strategy_c_human",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0xa679c6154b8d4619af9f83f0bf9a13a680e01ecf": {
+    "name": "austingriffith.eth (BuidlGuidl)",
+    "provenance_source": "expanded_human_strategy_c_human",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x839395e20bbb182fa440d08f850e6c7a8f6f0780": {
+    "name": "griff.eth (Giveth founder)",
+    "provenance_source": "expanded_human_strategy_c_human",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x4e60be84870fe6ae350b563a121042396abe1eaf": {
+    "name": "defidad.eth",
+    "provenance_source": "expanded_human_strategy_c_human",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x54becc7560a7be76d72ed76a1f5fee6c5a2a7ab6": {
+    "name": "Active governance voter 2",
+    "provenance_source": "expanded_human_strategy_c_human",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x9531c059098e3d194ff87febb587ab07b30b1306": {
+    "name": "Active wallet delta",
+    "provenance_source": "expanded_human_strategy_c_human",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x9b5ea8c719e29a5bd0959faf79c9e5c8206d0499": {
+    "name": "Active trader eta",
+    "provenance_source": "expanded_human_strategy_c_human",
+    "label_provenance": 0,
+    "category": "expanded_human"
+  },
+  "0x6b75d8af000000e20b7a7ddf000ba900b4009a80": {
+    "name": "MEV sandwich bot",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x51c72848c68a965f66fa7a88855f9f7784502a7f": {
+    "name": "MEV bot 3",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x3b17056cc4439c61cea41fe1c9f517af75a978f7": {
+    "name": "MEV bot 4",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x00000000003b3cc22af3ae1eac0440bcee416b40": {
+    "name": "MEV bot 5",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x000000000000cd17345801aa8147b8d3950260ff": {
+    "name": "MEV bot 6",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x98c3d3183c4b8a650614ad179a1a98be0a8d6b8e": {
+    "name": "MEV bot 8",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x000000000000084e91743124a982076c59f10084": {
+    "name": "MEV multicall bot",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0xe8c060f8052e07423f71d445277c61ac5138a2e5": {
+    "name": "Flashbots builder 3",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0xa69babef1ca67a37ffaf7a485dfff3382056e78c": {
+    "name": "Wintermute",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x280027dd00ee0050d3f9d168efd6b40090009246": {
+    "name": "Wintermute 2",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x4f3a120e72c76c22ae802d129f599bfdbc31cb81": {
+    "name": "Amber Group",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x2c169dfe5fbba12957bdd0ba47d9cedbfe260ca7": {
+    "name": "Instadapp automation",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x220866b1a2219f40e72f5c628b65d54268ca3a9d": {
+    "name": "Hayden Adams",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 0,
+    "category": "pilot_human"
+  },
+  "0xf0d4c12a5768d806021f80a262b4d39d26c58b8d": {
+    "name": "Active DeFi user 1",
+    "provenance_source": "pilot_trusted",
+    "label_provenance": 0,
+    "category": "pilot_human"
+  },
+  "0xeb2a22b27c7ad5eee424fd90b376c745e60f914e": {
+    "name": "Paper0-validated: Platform agent (autonolas_component_registry)",
+    "provenance_source": "strategy2_paper0",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0xba95718a52b5a3dba749a7641712dc05a3550d4f": {
+    "name": "Paper0-validated: Platform agent (autonolas_component_registry)",
+    "provenance_source": "strategy2_paper0",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0x98fdab66f92d64c97f96ab0306c468bb9a3c2685": {
+    "name": "Paper0-validated: Platform agent (autonolas_component_registry)",
+    "provenance_source": "strategy2_paper0",
+    "label_provenance": 1,
+    "category": "pilot_agent"
+  },
+  "0xb10daee1fcf62243ae27776d7a92d39dc8740f95": {
+    "name": "DeFi user zeta",
+    "provenance_source": "strategy_c_human",
+    "label_provenance": 0,
+    "category": "pilot_human"
+  },
+  "0x00000012616b0cb849db9a897bc338b709bc56e5": {
+    "name": "Human (ens_interaction) (0x00000012)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0018573bbfdedcea76f6a7fa24b4dea3fdaa0333": {
+    "name": "Human (ens_interaction) (0x0018573b)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x001b76d8a6559a798e0921ab9849b9829c33e168": {
+    "name": "Human (exchange_depositor) (0x001b76d8)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x004857e61922d3c99688f00db3cd228f683e23f8": {
+    "name": "Human (ens_interaction) (0x004857e6)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0101a64a09290ec5075e1887eb7b6686e9050dac": {
+    "name": "Human (ens_interaction) (0x0101a64a)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x01909d7ded4d972c0171f2d5a85424cd0250f9bd": {
+    "name": "Human (ens_interaction) (0x01909d7d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x020df683398737a76052d0eedc392c1a4e0df927": {
+    "name": "Human (exchange_depositor) (0x020df683)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x0363f3c31076a64b85ceb69a28f958a7c1181cee": {
+    "name": "Human (ens_interaction) (0x0363f3c3)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x03b72d2d2a7d4a6352002549646f5b9f3bd2f521": {
+    "name": "Human (ens_interaction) (0x03b72d2d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0517414451423b1c36f101f68f021e2781cfd2ac": {
+    "name": "Human (ens_interaction) (0x05174144)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x065c84641ee62d032ea5f20c49d59817c87a2747": {
+    "name": "Human (ens_interaction) (0x065c8464)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x068c03f070bb8b8130c23106ee04dc982661e0ea": {
+    "name": "Human (ens_interaction) (0x068c03f0)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x06cacea44227d431ffc18859ae0bb8fa838ed0dc": {
+    "name": "Human (ens_interaction) (0x06cacea4)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0876eb62838cba373bc62fe56327f4ec2c76018d": {
+    "name": "Human (ens_interaction) (0x0876eb62)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x08dd871a1eb517c8d2212af10c9735ff057c54bb": {
+    "name": "Human (exchange_depositor) (0x08dd871a)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x091ff5ff1fbeb093f538146bf78018826822d2b3": {
+    "name": "Human (ens_interaction) (0x091ff5ff)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0943f00da86e8c38ea929fbf652d1e720ffd0865": {
+    "name": "Human (ens_interaction) (0x0943f00d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0957689e8a8f05ad3e0e870b81088f1d90a51ce5": {
+    "name": "Human (ens_interaction) (0x0957689e)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0960da039bb8151cacfef620476e8baf34bd9565": {
+    "name": "Human (ens_interaction) (0x0960da03)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0a46e8998752fbd9a8c1282d03f12ed54fbba76e": {
+    "name": "Human (ens_interaction) (0x0a46e899)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0a80fa1faf7d66279f1449200f5b733e7cc82807": {
+    "name": "Human (ens_interaction) (0x0a80fa1f)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0ab9bddb85ac5a42b132b3136d9bffec0832feba": {
+    "name": "Human (ens_interaction) (0x0ab9bddb)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0acf585775885ec0061e63fd2751503a8d8cc4c7": {
+    "name": "Human (ens_interaction) (0x0acf5857)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0c75974ddb2879471ff52467a9f0260b3aed8bf9": {
+    "name": "Human (ens_interaction) (0x0c75974d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0c9e5a7e401f16642f9546343eff8da29534e8e8": {
+    "name": "Human (ens_interaction) (0x0c9e5a7e)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0ce5f33bdd30986500a872cf34b05a6a34f2f7a8": {
+    "name": "Human (ens_interaction) (0x0ce5f33b)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0cf86283ad1a1b7d04669696ed13bae3d5925a0a": {
+    "name": "Human (ens_interaction) (0x0cf86283)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0d4155ef143e4a5c456d5fc2ea5c66e7035f10d8": {
+    "name": "Human (ens_interaction) (0x0d4155ef)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0d421e6a1c4ccf4567b3f8317c63eebf25de50a6": {
+    "name": "Human (ens_interaction) (0x0d421e6a)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0d6e94d085a597f316be1833649e05a45103e873": {
+    "name": "Human (ens_interaction) (0x0d6e94d0)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0d8a07b52be59c8df6877a886d4c804de9154b2c": {
+    "name": "Human (ens_interaction) (0x0d8a07b5)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0da492cd26580d9bf9efb2a57e511ad9c8704895": {
+    "name": "Human (ens_interaction) (0x0da492cd)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0e5e906d99dc9b4467940e8e3d2d69a8c4ed7fdd": {
+    "name": "Human (ens_interaction) (0x0e5e906d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0ebcb573dd98484a23311ae9b186b7ff00f74c68": {
+    "name": "Human (ens_interaction) (0x0ebcb573)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0f02253f52dcc313d77b0e78c44e4d9a3503b50c": {
+    "name": "Human (ens_interaction) (0x0f02253f)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0f2595e256d679518f77cf8432b21a1cdb01dcb6": {
+    "name": "Human (ens_interaction) (0x0f2595e2)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0fb00b9d74684444f2ff41cb17544ee9f98c83b8": {
+    "name": "Human (ens_interaction) (0x0fb00b9d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0fc0b2b6428c94b13cb644eb2bc489df7ffd03a5": {
+    "name": "Human (ens_interaction) (0x0fc0b2b6)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x0fda4ac09a12c10fae30e429f4d6b47c9a83c87e": {
+    "name": "Human (ens_interaction) (0x0fda4ac0)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x102547bd0075f7228f351452f762be6047356814": {
+    "name": "Human (ens_interaction) (0x102547bd)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x10c663c71dd117b84470aa2f9797d845bee01d9a": {
+    "name": "Human (ens_interaction) (0x10c663c7)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x10f3d354e4ea2d115b03e71616e5eb5d057a6d16": {
+    "name": "Human (ens_interaction) (0x10f3d354)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x112af92409b81bd996cd3aa6d33d366e19230fea": {
+    "name": "Human (ens_interaction) (0x112af924)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x125edbf1a2890fcf454769f64a5fa29f1fafd7a2": {
+    "name": "Human (ens_interaction) (0x125edbf1)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x127961faf3a885dc6ee996433cb4139f29bcf500": {
+    "name": "Human (ens_interaction) (0x127961fa)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x12dbbcd4efc77633a83cb1d67251e3daa9268fe5": {
+    "name": "Human (ens_interaction) (0x12dbbcd4)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x133d93566f9699b3af46fe150daa8a67a9563ed6": {
+    "name": "Human (ens_interaction) (0x133d9356)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x134fbce675bf313ee28dd2d2b281ba1fa90758ba": {
+    "name": "Human (ens_interaction) (0x134fbce6)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x136375924b8a10b957949aa0885a33f7eb7b3814": {
+    "name": "Human (ens_interaction) (0x13637592)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x13bc311b10653f454d3b624e5422ac1745c7d3e7": {
+    "name": "Human (ens_interaction) (0x13bc311b)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x148b68cfb4626ca52688d74eb0a53d1235ff879c": {
+    "name": "Human (ens_interaction) (0x148b68cf)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x160117459ad2845fd1852bfa2f22f2638ff9319d": {
+    "name": "Human (exchange_depositor) (0x16011745)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x160e5b66f58924736b0a264f25ffd01e6732c39f": {
+    "name": "Human (ens_interaction) (0x160e5b66)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x1616ecdd3dc368f4970a93ec32bf12176c9e9fe5": {
+    "name": "Human (ens_interaction) (0x1616ecdd)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x16c1ac8e698b1285bf1b9e971359823e60221bbb": {
+    "name": "Human (exchange_depositor) (0x16c1ac8e)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x170d2fb91e2c30c3776ce707ba047424a2e88947": {
+    "name": "Human (exchange_depositor) (0x170d2fb9)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x1732068e12f8494311dc7a11f3cb937da488b7dd": {
+    "name": "Human (exchange_depositor) (0x1732068e)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x18b4c7bd37727dff1b56ac1a02198f324b513197": {
+    "name": "Human (ens_interaction) (0x18b4c7bd)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x1918e53476bfb2ac2b696b0a1c3f2df506596531": {
+    "name": "Human (ens_interaction) (0x1918e534)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x1a20c03abc748bde9c563504c372297dd5c5ce8f": {
+    "name": "Human (exchange_depositor) (0x1a20c03a)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x1a4d76fa257461bfabc2f28640aba9d947be0f8b": {
+    "name": "Human (ens_interaction) (0x1a4d76fa)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x1ab0d64cf30775abeb4328b57808fb7f53001dcf": {
+    "name": "Human (ens_interaction) (0x1ab0d64c)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x1c4bc8f676f0cb3e173660b78454267f59705255": {
+    "name": "Human (ens_interaction) (0x1c4bc8f6)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x1c690881cecbb59dc3c6ad7007c200491cbd4c1d": {
+    "name": "Human (ens_interaction) (0x1c690881)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x1dac73f3d00052d7e815b41e7b1b5cb241aa4d70": {
+    "name": "Human (ens_interaction) (0x1dac73f3)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x1e296073f62ea9b829c0240d823f995cd71804a6": {
+    "name": "Human (ens_interaction) (0x1e296073)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x1e9fc55079f5690ceb6450702995398362263165": {
+    "name": "Human (ens_interaction) (0x1e9fc550)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x1ec64f674f32307373e24d629062c966a4a74552": {
+    "name": "Human (ens_interaction+governance_voter) (0x1ec64f67)",
+    "provenance_source": "on_chain_ens_interaction+governance_voter",
+    "label_provenance": 0,
+    "category": "human_ens_interaction_governance_voter"
+  },
+  "0x2067bed542762d26e2755ce7d8776728f3429f48": {
+    "name": "Human (ens_interaction) (0x2067bed5)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x206e3058eb8ddae476ca1e3936259209dc01c2db": {
+    "name": "Human (ens_interaction) (0x206e3058)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x20b0818de68e8dd7f51ee25790bffb83509c3a16": {
+    "name": "Human (ens_interaction) (0x20b0818d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x212044fbeaf10bfcb57c69c7f29b8bf2195fb367": {
+    "name": "Human (ens_interaction) (0x212044fb)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x212d0945fabe82a312f0ea6c61a50b4d66897029": {
+    "name": "Human (ens_interaction) (0x212d0945)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x220808166d8268d8f14ce310ebc833d80a900844": {
+    "name": "Human (ens_interaction) (0x22080816)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2208c903935b2015c3ecfd32f301feba432ac653": {
+    "name": "Human (ens_interaction) (0x2208c903)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x22c9d7031de28bd8f354923f624cd7c8e399f162": {
+    "name": "Human (ens_interaction) (0x22c9d703)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x22cef00c6338ee7a15cbe5ff9eae65c95960c374": {
+    "name": "Human (ens_interaction) (0x22cef00c)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x22e8ce18d2d1155bf65730476d2a8b87ffa69394": {
+    "name": "Human (ens_interaction+governance_voter) (0x22e8ce18)",
+    "provenance_source": "on_chain_ens_interaction+governance_voter",
+    "label_provenance": 0,
+    "category": "human_ens_interaction_governance_voter"
+  },
+  "0x22f128126f2f0c797b8bc4db2e9aae5de4c459e9": {
+    "name": "Human (ens_interaction) (0x22f12812)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2320dc297a459e7fc09ab8da6b601a7f339138a7": {
+    "name": "Human (ens_interaction) (0x2320dc29)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x23b720f07e14ea1354686aab2d416542f893003f": {
+    "name": "Human (ens_interaction) (0x23b720f0)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x249cf8dbc14c0650ecb763e67ddd08ac6d5b78df": {
+    "name": "Human (ens_interaction) (0x249cf8db)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x24db8a0a16da2812b55af4d0f3a8ada8a68a330f": {
+    "name": "Human (ens_interaction) (0x24db8a0a)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x25570364ce95f11e24e671c4831da7fa3add15a9": {
+    "name": "Human (exchange_depositor) (0x25570364)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x25659eefd7cae21566a257420bbcb0c8317ef94f": {
+    "name": "Human (ens_interaction) (0x25659eef)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x25b7c780f0b822425c4f9723e6d3e11dc44abdf2": {
+    "name": "Human (ens_interaction) (0x25b7c780)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x25d00658267608c0ed8ebceb0804f4f1115a5c62": {
+    "name": "Human (ens_interaction) (0x25d00658)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x25e8c609ac1dfca0a7211df78239312e6055717b": {
+    "name": "Human (exchange_depositor) (0x25e8c609)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x266d8e3b85dd66758854e4e2ae27c4a161236828": {
+    "name": "Human (ens_interaction) (0x266d8e3b)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2707af541b5fcb3e1a83cfe171610b8837fd82ab": {
+    "name": "Human (exchange_depositor) (0x2707af54)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x27b044afd81cb49e690c651e30c8377c26d92dc7": {
+    "name": "Human (exchange_depositor) (0x27b044af)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x28f6928614c2cc9099349a64b5a20924a18dba86": {
+    "name": "Human (ens_interaction) (0x28f69286)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x294b7bfd2cdc6b2ebeb039bacc1bd67eb60be74c": {
+    "name": "Human (ens_interaction) (0x294b7bfd)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2a2fcb7aeab6ea91bc6e52ab570752fffbf92f4f": {
+    "name": "Human (ens_interaction) (0x2a2fcb7a)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2aacccc2c6eb6678fe8b6f1e90209e638bcc8767": {
+    "name": "Human (ens_interaction) (0x2aacccc2)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2aae25d89500d436e4d37f3bc20333d87db46d21": {
+    "name": "Human (ens_interaction) (0x2aae25d8)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2abef8bacfa3041efea9860be01a079ffe05c4bc": {
+    "name": "Human (ens_interaction) (0x2abef8ba)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2bb515fb5e88e3f513d90b10019366bfe3ca1c07": {
+    "name": "Human (ens_interaction) (0x2bb515fb)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2c61eb8ca0bd5e41e88c08054bc87b30797ac06d": {
+    "name": "Human (ens_interaction) (0x2c61eb8c)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2ca6c85d527947614a020db92ac28181f3c62e90": {
+    "name": "Human (ens_interaction) (0x2ca6c85d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2ce108b5f12287183aa7f33195548952a3806a34": {
+    "name": "Human (exchange_depositor) (0x2ce108b5)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x2d16bf6c8bad562cb1b3cbd87ea7913993cd8e39": {
+    "name": "Human (ens_interaction) (0x2d16bf6c)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2dcddce18dd8935a498364096436b0d8f33e3801": {
+    "name": "Human (exchange_depositor) (0x2dcddce1)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x2dd47d3e097ee9d94bba842cbb4410ea02972142": {
+    "name": "Human (exchange_depositor) (0x2dd47d3e)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x2e7ab5ae9362d080dad49530e9bebf6f965fe315": {
+    "name": "Human (ens_interaction) (0x2e7ab5ae)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2e9259c0ca7c01a228b761c672cc3faeed8d0189": {
+    "name": "Human (ens_interaction) (0x2e9259c0)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2ec9da87a3ec07a5bb2113e4ae4ce97be796215f": {
+    "name": "Human (ens_interaction) (0x2ec9da87)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2f02f8e0ea13f20333a51b19c14ed8d16a20a943": {
+    "name": "Human (ens_interaction) (0x2f02f8e0)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2f909e5dbd15932ba83eb3d8b29cb1b6069c7d62": {
+    "name": "Human (ens_interaction) (0x2f909e5d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x2fcc020f72e5d2edd2a24d04f3dc90d7fdfbd1dd": {
+    "name": "Human (ens_interaction+governance_voter) (0x2fcc020f)",
+    "provenance_source": "on_chain_ens_interaction+governance_voter",
+    "label_provenance": 0,
+    "category": "human_ens_interaction_governance_voter"
+  },
+  "0x303cfaf8ce123640959095dbfbcd152ec1dd12dd": {
+    "name": "Human (ens_interaction) (0x303cfaf8)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3053eb374ae824ac3e8603dba73f802bbeece27b": {
+    "name": "Human (ens_interaction) (0x3053eb37)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x305ad938a16dcdcab5c8b8b4684258ad69d5b3f2": {
+    "name": "Human (ens_interaction) (0x305ad938)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x30ceb5248d27cc826a7563a7abc1ce5ab166c412": {
+    "name": "Human (ens_interaction) (0x30ceb524)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x312660af07ba31354b230f36574eda379f882c5e": {
+    "name": "Human (ens_interaction) (0x312660af)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3194770e03ec3b0ebeaa7eb93b01290a85acc905": {
+    "name": "Human (ens_interaction) (0x3194770e)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x33a2dab6f33ea7e1aba7ea6d4ff3a20fb07ece8d": {
+    "name": "Human (ens_interaction) (0x33a2dab6)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x33abbe4e5aa3eb29bfe54f10026edfe756b2ba41": {
+    "name": "Human (ens_interaction) (0x33abbe4e)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x33b8dbfcd046cef86806a83007a5b2f810ea4473": {
+    "name": "Human (ens_interaction) (0x33b8dbfc)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x34b582909ed9f23627c8be633ffc01173c68b13e": {
+    "name": "Human (exchange_depositor) (0x34b58290)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x35e0980f0301119ac8c4a2f9b577a928c24a4ec5": {
+    "name": "Human (ens_interaction) (0x35e0980f)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x374e87811313f94e13406d2dc56a52e87658f8df": {
+    "name": "Human (ens_interaction) (0x374e8781)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x37f7ff1864f5d5cba2b63592656049f2d7d06fb4": {
+    "name": "Human (ens_interaction) (0x37f7ff18)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x380edcf8b38cac2cc7538cb92edd99e9f4b8af54": {
+    "name": "Human (exchange_depositor) (0x380edcf8)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x393502295327fbcb02b10ba596cd3885ecd378ca": {
+    "name": "Human (ens_interaction) (0x39350229)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x393c4dbd93a8921da8c7633d2f2a98e55867c789": {
+    "name": "Human (ens_interaction) (0x393c4dbd)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x393ce05d52ad57a349aade03a27293676554d64d": {
+    "name": "Human (ens_interaction) (0x393ce05d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3a6e97ab7d78eb5d294cb417b49d869b0ba21147": {
+    "name": "Human (ens_interaction) (0x3a6e97ab)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3acf5f2b23662089ccb5da44d050db80cd2800b2": {
+    "name": "Human (ens_interaction) (0x3acf5f2b)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3b20bb04885708c1401345ee8921bad8698420e5": {
+    "name": "Human (ens_interaction) (0x3b20bb04)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3be22ab8e8888e2c2f94470c0058791379f63530": {
+    "name": "Human (exchange_depositor) (0x3be22ab8)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x3c1ee8b2e80d86a46c5ed8d239f005f992ec17f1": {
+    "name": "Human (ens_interaction) (0x3c1ee8b2)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3c9d4468afb7000c53be63d63209587fc9bf52c3": {
+    "name": "Human (ens_interaction) (0x3c9d4468)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3d16451a4b73e778bfec126025ba79716a17e32d": {
+    "name": "Human (ens_interaction) (0x3d16451a)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3d330b1322d01dae01d0642380351cd7aa6a3b49": {
+    "name": "Human (ens_interaction) (0x3d330b13)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3dadf855b9e30e63bee10ec4d92cbfe789e5f8a8": {
+    "name": "Human (ens_interaction) (0x3dadf855)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3dd54285c649135127404e30a335c6667cd5709b": {
+    "name": "Human (ens_interaction+governance_voter) (0x3dd54285)",
+    "provenance_source": "on_chain_ens_interaction+governance_voter",
+    "label_provenance": 0,
+    "category": "human_ens_interaction_governance_voter"
+  },
+  "0x3e078e57ce8650c1f31e02e1733d69bac0477918": {
+    "name": "Human (ens_interaction) (0x3e078e57)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3e238207184db63b0883e8b63488173014a26165": {
+    "name": "Human (ens_interaction) (0x3e238207)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x3fd0ef5e035871ab6c9e7dbc4dd2f2ac2e58acec": {
+    "name": "Human (ens_interaction) (0x3fd0ef5e)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x40db8365d1252bcb06598927698238a99d39228e": {
+    "name": "Human (ens_interaction) (0x40db8365)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x413b3ccbc7aeaf6deb91f9e83c4dd38c5c9bc91a": {
+    "name": "Human (exchange_depositor) (0x413b3ccb)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x415858878308ffad804b68cf3def4d3496240f0f": {
+    "name": "Human (exchange_depositor) (0x41585887)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x4209c9ea64fb4fa437eb950b3839a43c99d96c06": {
+    "name": "Human (ens_interaction) (0x4209c9ea)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x427070e33d630b0476bedba5d53db224913eb946": {
+    "name": "Human (ens_interaction) (0x427070e3)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x42807a80326fcf60b8c0e3dd819cec2f7dc0b6a4": {
+    "name": "Human (ens_interaction) (0x42807a80)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x429667453b245c126085dfdc3c74f1f097d494ce": {
+    "name": "Human (ens_interaction) (0x42966745)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x42aa8560db6ace1784d6e893de4ea76448cefc64": {
+    "name": "Human (ens_interaction) (0x42aa8560)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x42f6d5a50091b1effe737e8211a336dbdbe89617": {
+    "name": "Human (ens_interaction) (0x42f6d5a5)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4350498c5e5336f57f939c93a92037221fcdc6c7": {
+    "name": "Human (ens_interaction) (0x4350498c)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x43e3bba2305e0a8881d1a341a185444aa88087e1": {
+    "name": "Human (ens_interaction) (0x43e3bba2)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x43f778201c898eb332ab1af9ddcb4bdaa7ef8d2a": {
+    "name": "Human (ens_interaction) (0x43f77820)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4442b1f594e6cf47fad51c5ecb3d977f6ec7a66d": {
+    "name": "Human (ens_interaction) (0x4442b1f5)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x44c04a965a8fcab013839b966e1cf6ae69d2216b": {
+    "name": "Human (ens_interaction) (0x44c04a96)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x451e29e4958bf698826ad026a6940dd33a21c1f8": {
+    "name": "Human (ens_interaction) (0x451e29e4)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x45bb7f2d7683e10328be7446cd0d87923f60d3af": {
+    "name": "Human (ens_interaction) (0x45bb7f2d)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x460eb5ca9d4955c535d5267ac581c7ea40b41f2a": {
+    "name": "Human (ens_interaction) (0x460eb5ca)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x461ae8c33224aceb7f1259095dd2a334ad20f322": {
+    "name": "Human (ens_interaction) (0x461ae8c3)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x46bf8ba9cc50458925b7adca0dc0ef78bebc1f2a": {
+    "name": "Human (ens_interaction) (0x46bf8ba9)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4704b05b28fb7c48a998d60ce0eff609aca3d6c1": {
+    "name": "Human (ens_interaction) (0x4704b05b)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4753ed137942f709989f12f7e29e873e0c2c035b": {
+    "name": "Human (exchange_depositor) (0x4753ed13)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x4780d1c76c8f43cfdfda0c56b53b59fd0d0317e5": {
+    "name": "Human (ens_interaction) (0x4780d1c7)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x485493c144461c217c7c7a6394e7e8a67537f629": {
+    "name": "Human (ens_interaction) (0x485493c1)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4857ad420a2b2641a53886f7745cdd365f7ac32e": {
+    "name": "Human (ens_interaction) (0x4857ad42)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x486ac172e03b10da4d9eae422525d034009cd4f3": {
+    "name": "Human (ens_interaction) (0x486ac172)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x48b211039586619b04cfb3b040cdd12165e3a9cf": {
+    "name": "Human (ens_interaction) (0x48b21103)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x48ed8ea896fa7950818c2643c90ff37bfcb6fc2f": {
+    "name": "Human (ens_interaction) (0x48ed8ea8)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x49074bafcb5036fd9904d0acfdd54885caffe699": {
+    "name": "Human (ens_interaction) (0x49074baf)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x491ddec18b5e63f97af8a35c516ed272ee2e738e": {
+    "name": "Human (exchange_depositor) (0x491ddec1)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x4943e71e681bf92a643c13c97982319f0fa1fe98": {
+    "name": "Human (ens_interaction) (0x4943e71e)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4a02e1b7de486cd1edb23a0719c5b3999a4b350b": {
+    "name": "Human (ens_interaction) (0x4a02e1b7)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4a3bb151ac39a46349fd99f4c473a15a6a567d38": {
+    "name": "Human (ens_interaction) (0x4a3bb151)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4b282bbacb08f20b3edff2bf8428bc2dfadc8dd3": {
+    "name": "Human (exchange_depositor) (0x4b282bba)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x4b552e7f97e7c884deea2abd04bb7352b0c6ddcc": {
+    "name": "Human (ens_interaction) (0x4b552e7f)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4bb3d45e1efcea2b8d733836970a96d65603b733": {
+    "name": "Human (ens_interaction) (0x4bb3d45e)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4bebf513393d75516779a4861b9b94122e83d7a9": {
+    "name": "Human (ens_interaction) (0x4bebf513)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4c5e7dd8570ab0356835543cd85513ba6e7a9c7d": {
+    "name": "Human (exchange_depositor) (0x4c5e7dd8)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x4c6676c42cdafa21134f84633ecfc126c8ffc635": {
+    "name": "Human (exchange_depositor) (0x4c6676c4)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x4cf9faf73714b65b98557c822b6b514dfda0e339": {
+    "name": "Human (ens_interaction) (0x4cf9faf7)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4d33d84f667f22644b09f501f09ccbd3e876c68e": {
+    "name": "Human (ens_interaction) (0x4d33d84f)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4d681ef4edc1e3418d3a7d57a69a120736a0fd50": {
+    "name": "Human (ens_interaction) (0x4d681ef4)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4dcdb1bea466136c287d1c522db829571f93b62f": {
+    "name": "Human (ens_interaction) (0x4dcdb1be)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4ea72062bb86dee736f2b3a23bd800ba0f346c99": {
+    "name": "Human (ens_interaction) (0x4ea72062)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4eaa41528da85f0fe270d07686baf38ac3a38552": {
+    "name": "Human (ens_interaction) (0x4eaa4152)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4f4715ca99c973a55303bc4a5f3e3acbb9ff75db": {
+    "name": "Human (ens_interaction) (0x4f4715ca)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4fa075accdbdd6bebbd71e6d352f505c5befa8f1": {
+    "name": "Human (ens_interaction) (0x4fa075ac)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x4ffb72b66eba24521736924f87dfe10677d82286": {
+    "name": "Human (ens_interaction) (0x4ffb72b6)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x5004451e331fca06a5479c3e05a05b5e3f72ad17": {
+    "name": "Human (ens_interaction) (0x5004451e)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x505aca45ae3ef9e7997215e0b90267c9695b4735": {
+    "name": "Human (ens_interaction) (0x505aca45)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x50a3ba1611b11995f557a0147d0729262bb5954d": {
+    "name": "Human (ens_interaction) (0x50a3ba16)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x523c00131ef14dfe144137088fca435cc38a697f": {
+    "name": "Human (exchange_depositor) (0x523c0013)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x537f3555c8644471247e7c4b01e0d65264c4eb6f": {
+    "name": "Human (exchange_depositor) (0x537f3555)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x54881c1b56e0e7a62a3f0752180036976435b891": {
+    "name": "Human (ens_interaction) (0x54881c1b)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x54bec524ec3f945d8945bc344b6aec72b532b8fb": {
+    "name": "Human (ens_interaction) (0x54bec524)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x557adb91031c40ae6f5788166b1f7c498b83c8ff": {
+    "name": "Human (ens_interaction) (0x557adb91)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x55b95c53f4ee1d2d12dac65de1db5bb7c6de84ce": {
+    "name": "Human (ens_interaction) (0x55b95c53)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x5601221a8b92884e289d86cf5879f8f9550bfc84": {
+    "name": "Human (exchange_depositor) (0x5601221a)",
+    "provenance_source": "on_chain_exchange_depositor",
+    "label_provenance": 0,
+    "category": "human_exchange_depositor"
+  },
+  "0x5691ccea44fc4a53886ff1b8666c89321f73c49d": {
+    "name": "Human (ens_interaction) (0x5691ccea)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x57c9065b163f264dec7be25b4015f7164816983c": {
+    "name": "Human (ens_interaction) (0x57c9065b)",
+    "provenance_source": "on_chain_ens_interaction",
+    "label_provenance": 0,
+    "category": "human_ens_interaction"
+  },
+  "0x57f88f9e40a85f70b39c537441e9b965183e744e": {
+    "name": "Human (ens_interaction+governance_voter) (0x57f88f9e)",
+    "provenance_source": "on_chain_ens_interaction+governance_voter",
+    "label_provenance": 0,
+    "category": "human_ens_interaction_governance_voter"
+  },
+  "0x00388373e88205068aabf1564449bba3ffcaa5aa": {
+    "name": "DeFi HF trader (308 router txs) (0x00388373)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0080f24e16cda319792cedd89f186808a666ae88": {
+    "name": "DeFi HF trader (247 router txs) (0x0080f24e)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x00af32324743e26e598697bb87a49b3435d02eac": {
+    "name": "DeFi HF trader (143 router txs) (0x00af3232)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x00fa08456a8a2cd6595065f02ae178c7b155624c": {
+    "name": "DeFi HF trader (341 router txs) (0x00fa0845)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x01368f7aa6f1ad5d0ce99b0f37e994e874f630b4": {
+    "name": "DeFi HF trader (111 router txs) (0x01368f7a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x01484c4dc4ee12067c3be6dccb918317aa2d348a": {
+    "name": "DeFi HF trader (261 router txs) (0x01484c4d)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0167767e7ffabd6e9fe1f958535bf296622d4b21": {
+    "name": "DeFi HF trader (108 router txs) (0x0167767e)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x019cdfd2a70dd4b899f330877752edfda5bd34c4": {
+    "name": "DeFi HF trader (334 router txs) (0x019cdfd2)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0299771354135c7350eae2535e863475e35cbdd7": {
+    "name": "DeFi HF trader (506 router txs) (0x02997713)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x02c0a7e57fd97b9cd65396585cbeb494555e0e68": {
+    "name": "DeFi HF trader (772 router txs) (0x02c0a7e5)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x037ee95896de421056099aabe5cae32a1b537dd6": {
+    "name": "DeFi HF trader (101 router txs) (0x037ee958)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x03caa2a24d3652859dfed00ce2bada5fb1029b0c": {
+    "name": "DeFi HF trader (610 router txs) (0x03caa2a2)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x03ebe614e84e527f0add31d04d2efc0c4c43e9f6": {
+    "name": "DeFi HF trader (497 router txs) (0x03ebe614)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x044a074320b04a2a9411b84e704f8452557f5799": {
+    "name": "DeFi HF trader (487 router txs) (0x044a0743)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0498612320a256d3fc6e37afd9efe4ef9d0edb6e": {
+    "name": "DeFi HF trader (224 router txs) (0x04986123)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x04a20712a54428ffacee2a9edb404ae803fccb0e": {
+    "name": "DeFi HF trader (361 router txs) (0x04a20712)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0508f5f237d475421bcbd3851e80ca05009d7e28": {
+    "name": "DeFi HF trader (295 router txs) (0x0508f5f2)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0530f30d85a6ceb341544ab7a740b2bdbbc69444": {
+    "name": "DeFi HF trader (1556 router txs) (0x0530f30d)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x06185869b7d687e56e707f7a6fb23f6c752ee08b": {
+    "name": "DeFi HF trader (228 router txs) (0x06185869)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x066fe74a14700627b914626cb28665c1d9e2a6b8": {
+    "name": "DeFi HF trader (102 router txs) (0x066fe74a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x06831a104e06dbbdc3c12b754deea30b06a74596": {
+    "name": "DeFi HF trader (103 router txs) (0x06831a10)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x075efe62888d2e48effa4a39ff3b590b83f074fd": {
+    "name": "DeFi HF trader (1131 router txs) (0x075efe62)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0768dbc1def889ae409b0dd20baf30774c02a14c": {
+    "name": "DeFi HF trader (188 router txs) (0x0768dbc1)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0783abc1e6f1eb93b80024a056492e314d949986": {
+    "name": "DeFi HF trader (331 router txs) (0x0783abc1)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x078d696ed3b2ad6252e37da6691e6184d52bf23d": {
+    "name": "DeFi HF trader (125 router txs) (0x078d696e)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x09437d2d45ddfeea802b20416f4ae9df2e334d05": {
+    "name": "DeFi HF trader (499 router txs) (0x09437d2d)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0970fd31ee0be84d5f563af219a3d9da670f04f0": {
+    "name": "DeFi HF trader (439 router txs) (0x0970fd31)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x099ce7f0173f9d9a9f3c3de6454a6dcc31a6f36f": {
+    "name": "DeFi HF trader (131 router txs) (0x099ce7f0)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0a3f9f7d1b86a8109b00fcfe3c340e079f5b90dc": {
+    "name": "DeFi HF trader (546 router txs) (0x0a3f9f7d)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0a9921b838c241a2e31956cd10469f08b3e9c778": {
+    "name": "DeFi HF trader (151 router txs) (0x0a9921b8)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0b3071c91837c1754d4c8c123e794339fea3b369": {
+    "name": "DeFi HF trader (170 router txs) (0x0b3071c9)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0b83f617ad1b093e071248930366ca447aa81971": {
+    "name": "DeFi HF trader (677 router txs) (0x0b83f617)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0ba48b0aea8f86423254b787461ca35c2496f2d0": {
+    "name": "DeFi HF trader (2862 router txs) (0x0ba48b0a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0c69f72986f8f4495615015bb838bb2c9299192b": {
+    "name": "DeFi HF trader (159 router txs) (0x0c69f729)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0c6dac12096dc7ff6bdda303b3d9e3a814e9cc84": {
+    "name": "DeFi HF trader (161 router txs) (0x0c6dac12)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0c716b5ea22619046f867404f15685b5bfad795e": {
+    "name": "DeFi HF trader (198 router txs) (0x0c716b5e)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0ccb1abb72002355331c521d4994e360ede35fba": {
+    "name": "DeFi HF trader (112 router txs) (0x0ccb1abb)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0cdd61fe995b50b7881bfc1b08221066266fb0b6": {
+    "name": "DeFi HF trader (278 router txs) (0x0cdd61fe)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0d0b83bc7f25e696edc0c615bd9ce9d275b6e201": {
+    "name": "DeFi HF trader (313 router txs) (0x0d0b83bc)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0d28cd1b904df488994bc5b716e123fce0c075f3": {
+    "name": "DeFi HF trader (821 router txs) (0x0d28cd1b)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0d39cc2c61c0c585d066217359dd45b2af2479ec": {
+    "name": "DeFi HF trader (633 router txs) (0x0d39cc2c)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0d46bda2bb9165507c03d98cf0b809f10a831607": {
+    "name": "DeFi HF trader (131 router txs) (0x0d46bda2)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0d74893e945bdd6ed2c6936f41ae8769e719adb1": {
+    "name": "DeFi HF trader (402 router txs) (0x0d74893e)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0e212efc22a0eb36184d7cbb78aa7632484db6e6": {
+    "name": "DeFi HF trader (145 router txs) (0x0e212efc)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0e42926abdfb00dcb6fe25a181ac1ce99c20e46b": {
+    "name": "DeFi HF trader (286 router txs) (0x0e42926a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0f46456f2d00d6a6f10fb18f6c36c0f03129c979": {
+    "name": "DeFi HF trader (127 router txs) (0x0f46456f)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x0fad565a1269f3d623379e496fc48a698fb7a4e7": {
+    "name": "DeFi HF trader (168 router txs) (0x0fad565a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x101010101010b1aa5be139a5b19cab7e1ab005f7": {
+    "name": "DeFi HF trader (241 router txs) (0x10101010)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1129974ab68becc1b56e3f8bce909f495d6e2cfd": {
+    "name": "DeFi HF trader (117 router txs) (0x1129974a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1185881673ebd0cc86cf36e9d15ca0fd6c3b29ae": {
+    "name": "DeFi HF trader (226 router txs) (0x11858816)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x11e1557fa536dbec2ebe660c03e7ab5e931ec60d": {
+    "name": "DeFi HF trader (390 router txs) (0x11e1557f)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1256d61968a62465e473eca891d8112a5270ee81": {
+    "name": "DeFi HF trader (252 router txs) (0x1256d619)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x13964f6ceb5da01748634c1a998d536708976d95": {
+    "name": "DeFi HF trader (271 router txs) (0x13964f6c)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x13b0e3c27b73dbab64e7232f1233d888807284f1": {
+    "name": "DeFi HF trader (423 router txs) (0x13b0e3c2)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1415eac19aaf43554ae45ed7219011c610bbf180": {
+    "name": "DeFi HF trader (374 router txs) (0x1415eac1)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x14bcf65463a500f8dd90804aabf475f8acb882a0": {
+    "name": "DeFi HF trader (148 router txs) (0x14bcf654)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x14c617f6329322d41a45aa71c75fdaa991c0f7bc": {
+    "name": "DeFi HF trader (1293 router txs) (0x14c617f6)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x15879c395de915bfe9825b247ae7a748f62d2e7d": {
+    "name": "DeFi HF trader (245 router txs) (0x15879c39)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x15bc08460f1fc6cb9ca5562202897757b3b2fd8f": {
+    "name": "DeFi HF trader (605 router txs) (0x15bc0846)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x161cd172e00540f4f0a851e43d0d4d1a271e73cb": {
+    "name": "DeFi HF trader (250 router txs) (0x161cd172)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1643a40b27283fccf284fdb42b1e4af4b8f62070": {
+    "name": "DeFi HF trader (160 router txs) (0x1643a40b)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x16dfaacce7e5431693729eda06599466d9cb90c3": {
+    "name": "DeFi HF trader (112 router txs) (0x16dfaacc)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x16ffd7bc578659af3037b22d558c0b23a13df0e9": {
+    "name": "DeFi HF trader (186 router txs) (0x16ffd7bc)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1705601a4b7c6d16bb2b50bbd65353afbd5e985e": {
+    "name": "DeFi HF trader (325 router txs) (0x1705601a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x171c9c36fe9906db7dffe6183889d9009eeb5854": {
+    "name": "DeFi HF trader (653 router txs) (0x171c9c36)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x17358c7d0289cc60f9c3683b20cd2a06f62d858a": {
+    "name": "DeFi HF trader (216 router txs) (0x17358c7d)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1795dac5061d0a2184e447860f9dfee1c6bd31b8": {
+    "name": "DeFi HF trader (1865 router txs) (0x1795dac5)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x17dab0262c9c968c84e354903fac092501f43d20": {
+    "name": "DeFi HF trader (361 router txs) (0x17dab026)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x184e33354381c179311d493309585d1f2ab56edd": {
+    "name": "DeFi HF trader (117 router txs) (0x184e3335)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1855e315dc75c03b765ed0bf961495d38d33c08d": {
+    "name": "DeFi HF trader (161 router txs) (0x1855e315)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1863b4cac9c0b1ab4719960ec8c613fef83bc771": {
+    "name": "DeFi HF trader (140 router txs) (0x1863b4ca)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x18876098748c96d79a442ac97f2d1976115fad08": {
+    "name": "DeFi HF trader (277 router txs) (0x18876098)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x18bd6cf4c44b3d3ce257d4c3e7418d6800bd05dd": {
+    "name": "DeFi HF trader (586 router txs) (0x18bd6cf4)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x19dc7cfae2bff62b2483d91b3428726493b84912": {
+    "name": "DeFi HF trader (1432 router txs) (0x19dc7cfa)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1a13a2863bce16bdb9e4139744c6244b44badf39": {
+    "name": "DeFi HF trader (172 router txs) (0x1a13a286)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1a29c9f96997a1b67dd6c48d6b9e1bee518f03c2": {
+    "name": "DeFi HF trader (139 router txs) (0x1a29c9f9)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1a4b77aa33f0fcbde2f1a6bdad2004cf938c34b0": {
+    "name": "DeFi HF trader (1450 router txs) (0x1a4b77aa)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1ac95d574bfcb01ba62fb82773dd33cda7a3955f": {
+    "name": "DeFi HF trader (106 router txs) (0x1ac95d57)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1aec8b5b09105d9b0cf2f50e98fc518c1f14ade0": {
+    "name": "DeFi HF trader (128 router txs) (0x1aec8b5b)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1b49bad8c51c1af18fe4f4dbbfe46e8863f68f83": {
+    "name": "DeFi HF trader (324 router txs) (0x1b49bad8)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1ca06d867e4958b499e98322f2d16bff33ff923f": {
+    "name": "DeFi HF trader (1396 router txs) (0x1ca06d86)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1d932e6489b5e4091ee078db497799237b354191": {
+    "name": "DeFi HF trader (164 router txs) (0x1d932e64)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1dbc2ced7b2307bfcca71da1f6a850a33b475860": {
+    "name": "DeFi HF trader (294 router txs) (0x1dbc2ced)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1e340464470412a69869eff1c57a7cf4d51aaa3c": {
+    "name": "DeFi HF trader (218 router txs) (0x1e340464)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1e822acf0739b664eec5067df3963e37a45413f8": {
+    "name": "DeFi HF trader (419 router txs) (0x1e822acf)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1f5bbef0722b6188b87b29dff530d6cfb5a46967": {
+    "name": "DeFi HF trader (968 router txs) (0x1f5bbef0)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1f6b8ede7dd8874fece379037f6c840ba8b922e2": {
+    "name": "DeFi HF trader (175 router txs) (0x1f6b8ede)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x1f6e4148565c6051fa122190cf4d408c90c4e4fb": {
+    "name": "DeFi HF trader (316 router txs) (0x1f6e4148)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x20d74dfd6f5df400be4df00703097bea450bfe0a": {
+    "name": "DeFi HF trader (1044 router txs) (0x20d74dfd)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2110a51a699d6ab218ca97a71cfda4a9c23df1c6": {
+    "name": "DeFi HF trader (105 router txs) (0x2110a51a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2130fd01026867a6c8dde24ad5e64f2e2dfce196": {
+    "name": "DeFi HF trader (812 router txs) (0x2130fd01)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x219d37e6052dfcd935d22fa0032e1af29f6c550f": {
+    "name": "DeFi HF trader (155 router txs) (0x219d37e6)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x21d0501dda8cc4de8b86218dc33a1fd4e40794c4": {
+    "name": "DeFi HF trader (530 router txs) (0x21d0501d)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2303d64736eb0ca0a257d896e6ec715cb4182f7c": {
+    "name": "DeFi HF trader (375 router txs) (0x2303d647)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x231b69f570a90f7425c4215bd76a93dd77423e90": {
+    "name": "DeFi HF trader (149 router txs) (0x231b69f5)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x23f3213e8873a3e34d90855006b79e05cdc8835c": {
+    "name": "DeFi HF trader (711 router txs) (0x23f3213e)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x25213095e8484eaa8d0031561d722f6e058278c3": {
+    "name": "DeFi HF trader (792 router txs) (0x25213095)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2556cb832d7cebd7442850e9e9f2a3d9856c8cc3": {
+    "name": "DeFi HF trader (440 router txs) (0x2556cb83)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x25e75e8868a8ba21c3d841d0882878d3ea8025f8": {
+    "name": "DeFi HF trader (3543 router txs) (0x25e75e88)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2642f0cacdab8179e62429921cb8d285a28ff244": {
+    "name": "DeFi HF trader (4271 router txs) (0x2642f0ca)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x269502e7ee2ba8269f019b50985a2a290e32362b": {
+    "name": "DeFi HF trader (289 router txs) (0x269502e7)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x270584a4af7b72dca8ac8e7c40a56678eae18c96": {
+    "name": "DeFi HF trader (216 router txs) (0x270584a4)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x273d7d8a8cb309d07936fb9a5ede8226977a93b5": {
+    "name": "DeFi HF trader (114 router txs) (0x273d7d8a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x274d9f61dca1ec0d63daac222d15d8218d36a126": {
+    "name": "DeFi HF trader (984 router txs) (0x274d9f61)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x278238123931cd028d122a5265e3acfb02743b70": {
+    "name": "DeFi HF trader (118 router txs) (0x27823812)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x27f17bc1ae91339a0589546e8dc7a88e839aef62": {
+    "name": "DeFi HF trader (453 router txs) (0x27f17bc1)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x28f2378e38324484680d59977e349c905de0d352": {
+    "name": "DeFi HF trader (191 router txs) (0x28f2378e)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x29488e5fd6bf9b3cc98a9d06a25204947cccbe4d": {
+    "name": "DeFi HF trader (3592 router txs) (0x29488e5f)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2a1fe898254b13d735ae861f661792903cfa5849": {
+    "name": "DeFi HF trader (401 router txs) (0x2a1fe898)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2a6bdb4f48edeb6f581d76cd373bb7215b0bdabc": {
+    "name": "DeFi HF trader (222 router txs) (0x2a6bdb4f)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2b31798dbcad18b008e391cf79a49b88daf8ab9c": {
+    "name": "DeFi HF trader (1101 router txs) (0x2b31798d)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2b70b237f86260499ff87237193286d1cf89a60d": {
+    "name": "DeFi HF trader (251 router txs) (0x2b70b237)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2b996249c82fdb361c63d42cb087029638ee7590": {
+    "name": "DeFi HF trader (149 router txs) (0x2b996249)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2c04c49a46791f783391ec370fa3f953f2f61d97": {
+    "name": "DeFi HF trader (110 router txs) (0x2c04c49a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2c521eee9161625751cc74782e28f5627c325f95": {
+    "name": "DeFi HF trader (469 router txs) (0x2c521eee)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2cb7940d17a9f1695ddad679d50d9c51043414fe": {
+    "name": "DeFi HF trader (625 router txs) (0x2cb7940d)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2ce659924b3c22688d3a474a71fa7b8cd5ee88f5": {
+    "name": "DeFi HF trader (106 router txs) (0x2ce65992)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2d2eda37d8da1e038d72b2f34d3dcd87249d5d8d": {
+    "name": "DeFi HF trader (903 router txs) (0x2d2eda37)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2d461f5b209e6cc6e74d1d3ca300aed7dec0e299": {
+    "name": "Flash loan user (0x2d461f5b)",
+    "provenance_source": "on_chain_flash_loan",
+    "label_provenance": 1,
+    "category": "flash_loan_user"
+  },
+  "0x2dbb9bfc72dd4918e09f79b1bbe216519d6e13ea": {
+    "name": "DeFi HF trader (158 router txs) (0x2dbb9bfc)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2df54b97fed60103a3b74bb03da98fdc57d3066e": {
+    "name": "DeFi HF trader (178 router txs) (0x2df54b97)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2ea10c8a562b5e91955d35102acd230858e19a45": {
+    "name": "DeFi HF trader (116 router txs) (0x2ea10c8a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2f79095332865b146fe65e0525888238c24f7a9e": {
+    "name": "DeFi HF trader (166 router txs) (0x2f790953)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2fba909aed4345ac0c67c75c51d955f822b14629": {
+    "name": "DeFi HF trader (442 router txs) (0x2fba909a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x2fbce75f2a313172ec2eb0f2781fba9f6c9c3734": {
+    "name": "DeFi HF trader (112 router txs) (0x2fbce75f)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x31033a55e9d58affdde7869d2e6fe723b2b0186a": {
+    "name": "DeFi HF trader (279 router txs) (0x31033a55)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x311044f9cdcd447f1a15ff32810c36255f61d361": {
+    "name": "DeFi HF trader (1852 router txs) (0x311044f9)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x31b6020cef40b72d1e53562229c1f9200d00cc12": {
+    "name": "DeFi HF trader (434 router txs) (0x31b6020c)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x32de547d2a6e9828c1e21b99956de947fbd30609": {
+    "name": "DeFi HF trader (134 router txs) (0x32de547d)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x345fa4f148bfdca72ad3590f7986c537e8067ea3": {
+    "name": "DeFi HF trader (125 router txs) (0x345fa4f1)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x348cf14a29023e7aaee40665f2de1101be0a2af0": {
+    "name": "DeFi HF trader (500 router txs) (0x348cf14a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x34ab714a56aad5091fdd624da412fccf8bfac82f": {
+    "name": "DeFi HF trader (122 router txs) (0x34ab714a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x34c9c2e48f43dace5192002c0d1c3c40edf463bd": {
+    "name": "DeFi HF trader (566 router txs) (0x34c9c2e4)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x34cfd8add2f9007bfb5f56ab0eebf076b8fdbd60": {
+    "name": "DeFi HF trader (101 router txs) (0x34cfd8ad)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x35118f902392651ed7fe640e5cb7e717c92bb518": {
+    "name": "DeFi HF trader (333 router txs) (0x35118f90)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x358efdbf79a4f8171591f8718d848636b07c37f1": {
+    "name": "DeFi HF trader (134 router txs) (0x358efdbf)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x35a518ce1f7d5dbc318ad67e744bb851addb20f7": {
+    "name": "DeFi HF trader (564 router txs) (0x35a518ce)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x36acf9475b2985948730b50cfa0a057cb64a9f67": {
+    "name": "DeFi HF trader (172 router txs) (0x36acf947)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x37854412603c3a0ccc919d0bc827e9a518af0058": {
+    "name": "DeFi HF trader (107 router txs) (0x37854412)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x37992dd23ab48dca5c9ef916475430315d083534": {
+    "name": "DeFi HF trader (753 router txs) (0x37992dd2)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x379f2fa61c6e1db98eb5eef1601d17a7c263c02f": {
+    "name": "DeFi HF trader (132 router txs) (0x379f2fa6)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x387c9557014803aa1d16d0565bdb5472fed5e39a": {
+    "name": "DeFi HF trader (118 router txs) (0x387c9557)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3887871fdda1e959d6028dbeb7747c9c2951755d": {
+    "name": "DeFi HF trader (921 router txs) (0x3887871f)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3927b89a6fc5038021ea4c4cc560865a2139a808": {
+    "name": "DeFi HF trader (123 router txs) (0x3927b89a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x395ac087bf51012065a57edfd89489a77f962b69": {
+    "name": "DeFi HF trader (275 router txs) (0x395ac087)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x39cbc6515548e259b383af4f9c74a267c8bfd404": {
+    "name": "DeFi HF trader (109 router txs) (0x39cbc651)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3b281fb69b2af236d9a8ff882236ebb1b82baedb": {
+    "name": "DeFi HF trader (1268 router txs) (0x3b281fb6)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3b687a0ae6a2f40aaea75428e26aeb89ba382c01": {
+    "name": "DeFi HF trader (387 router txs) (0x3b687a0a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3b7a1573bcd33db70c8b17d33cabb724380ec1d4": {
+    "name": "DeFi HF trader (1211 router txs) (0x3b7a1573)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3bcdd67753690e219d28af555b95c22143d08b8c": {
+    "name": "DeFi HF trader (458 router txs) (0x3bcdd677)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3c8cf14750960925ed386f837657632318b83494": {
+    "name": "DeFi HF trader (817 router txs) (0x3c8cf147)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3ca987dafd662a102820b57ba226dde1b4f6ef0f": {
+    "name": "DeFi HF trader (173 router txs) (0x3ca987da)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3d884d2f776cd53feb82b42a941517bcd9056fd7": {
+    "name": "DeFi HF trader (114 router txs) (0x3d884d2f)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3d8a9a50a2c5e82378abcdf16d763924ed69fc5a": {
+    "name": "DeFi HF trader (145 router txs) (0x3d8a9a50)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3d9f6dcd969b6588249793a38ec2905b288cac25": {
+    "name": "DeFi HF trader (1529 router txs) (0x3d9f6dcd)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3e720e486eeda2a69ca8a4c8f27fa22e30bbae30": {
+    "name": "DeFi HF trader (736 router txs) (0x3e720e48)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3ebf99eab58cc56c0bbeea39042295a0911f8c54": {
+    "name": "DeFi HF trader (186 router txs) (0x3ebf99ea)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x3fb6c2c679a98728454442fa0ee28f3f24a134c0": {
+    "name": "DeFi HF trader (424 router txs) (0x3fb6c2c6)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4004b529c89cf404f0ba151fb8ccfb1c1174d9aa": {
+    "name": "DeFi HF trader (353 router txs) (0x4004b529)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x40825712e02d01388b0668c6b92051354106a9b0": {
+    "name": "DeFi HF trader (161 router txs) (0x40825712)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x40da1406eeb71083290e2e068926f5fc8d8e0264": {
+    "name": "DeFi HF trader (1009 router txs) (0x40da1406)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x40e2bd045809dde84904e54bf86d1c6663894092": {
+    "name": "DeFi HF trader (334 router txs) (0x40e2bd04)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4100bdc718d3026bc2e25f054fa8dd406f267abf": {
+    "name": "DeFi HF trader (102 router txs) (0x4100bdc7)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x414318c8fe2e515135b237b0a1531535d44ab798": {
+    "name": "DeFi HF trader (109 router txs) (0x414318c8)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x421349d8252db91af2f29b310d33020cb0ca2e97": {
+    "name": "DeFi HF trader (362 router txs) (0x421349d8)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4253fd64d3ebbc73ce259dd080f28c78812909ab": {
+    "name": "DeFi HF trader (104 router txs) (0x4253fd64)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x42a7826b91b6f4e899815c8f00f24f8add782adb": {
+    "name": "DeFi HF trader (467 router txs) (0x42a7826b)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4303835a3776c29daf8c1140d1da7cd152a35aeb": {
+    "name": "DeFi HF trader (516 router txs) (0x4303835a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4487c7d49f7abe57f21bb4104b35791d94644e30": {
+    "name": "DeFi HF trader (228 router txs) (0x4487c7d4)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4510476585783c8e03fc95688cc9a1298124d1b4": {
+    "name": "DeFi HF trader (377 router txs) (0x45104765)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x45c9d5d590dbb4d4cca85045108e7354063e7906": {
+    "name": "DeFi HF trader (117 router txs) (0x45c9d5d5)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x45df70a01a165ecad9a484ecc88f1e4f37c60683": {
+    "name": "DeFi HF trader (188 router txs) (0x45df70a0)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x45f13a91e655dcc253fba2ec9bdd56edeb96cf5e": {
+    "name": "DeFi HF trader (114 router txs) (0x45f13a91)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x465e4e3859494fcdf755aa0884c90e9a048a4d3b": {
+    "name": "DeFi HF trader (667 router txs) (0x465e4e38)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x466ff702d5218c125ce001507a227a967de8a395": {
+    "name": "DeFi HF trader (110 router txs) (0x466ff702)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x472acab55cbf302178c87da8f176a887d33d2235": {
+    "name": "DeFi HF trader (545 router txs) (0x472acab5)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x47540c04bed7f227fa2b322229375341eeabf305": {
+    "name": "DeFi HF trader (673 router txs) (0x47540c04)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4768aafca4f5f35ee4b9733b2b12774a11e7500e": {
+    "name": "DeFi HF trader (348 router txs) (0x4768aafc)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x47e05c5e43d308acebaccf056ad8fa3c0b17fdf8": {
+    "name": "DeFi HF trader (227 router txs) (0x47e05c5e)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x48e68c7fbeded45c16679e17cdb0454798d5e9b5": {
+    "name": "DeFi HF trader (410 router txs) (0x48e68c7f)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x490067925f9dbf04f06fc0c62dcc7e0b4df7eb1a": {
+    "name": "DeFi HF trader (108 router txs) (0x49006792)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x499a1b7cd389033ceb0c7a0fadf5161adc068592": {
+    "name": "DeFi HF trader (2989 router txs) (0x499a1b7c)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x49eef225ead71b6dba4bd44ac2fe83c52d65bcf0": {
+    "name": "DeFi HF trader (158 router txs) (0x49eef225)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x49fd12c68923db898e9ac9e0aefb53db4678ece8": {
+    "name": "DeFi HF trader (488 router txs) (0x49fd12c6)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4aa58ce576d0269591cd3ecef65b846ba7bbe5aa": {
+    "name": "DeFi HF trader (583 router txs) (0x4aa58ce5)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4ab49092f2da6f0b89443298582cf3bce89a24b2": {
+    "name": "DeFi HF trader (295 router txs) (0x4ab49092)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4ae6c835015d06169fa831529ac39d890b9a8e82": {
+    "name": "DeFi HF trader (258 router txs) (0x4ae6c835)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4b00a17a8a4c7dc2f71777207b1c1bd6c132d394": {
+    "name": "DeFi HF trader (326 router txs) (0x4b00a17a)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4b52db0454d9593b633dab3ae5f037976899e576": {
+    "name": "DeFi HF trader (1024 router txs) (0x4b52db04)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4b59e397140bce4747d7161784fbc5da403425cf": {
+    "name": "DeFi HF trader (225 router txs) (0x4b59e397)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4bb06f1e2b6f8eb41619f99175b52b79fb6ac541": {
+    "name": "DeFi HF trader (148 router txs) (0x4bb06f1e)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4bba4ba9d1d3bf9773ebaf41db1a49a813170fdc": {
+    "name": "DeFi HF trader (231 router txs) (0x4bba4ba9)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4c8f9d39c3707be9b3078d1dcebab9e725885367": {
+    "name": "DeFi HF trader (242 router txs) (0x4c8f9d39)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4cc459a562c8b51a198b5dcb958aa1079d881d34": {
+    "name": "DeFi HF trader (385 router txs) (0x4cc459a5)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4d0f89c6b18dca95ee1a249b22b77cd70d1b2d24": {
+    "name": "DeFi HF trader (507 router txs) (0x4d0f89c6)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4df86dcd6f836e8974a49d14fd7f4cabba78c012": {
+    "name": "DeFi HF trader (431 router txs) (0x4df86dcd)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4e028103f2cd169e9e48836b38defd8b7022fd5f": {
+    "name": "DeFi HF trader (543 router txs) (0x4e028103)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4e22d075361767efa9eacb1f7187af8fab12628f": {
+    "name": "DeFi HF trader (636 router txs) (0x4e22d075)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4ee5e0e66f1bb573c82bb48fda43a449390ffa73": {
+    "name": "DeFi HF trader (245 router txs) (0x4ee5e0e6)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  },
+  "0x4efb789e4dc67e469799b91dca9ced6abd3c2414": {
+    "name": "DeFi HF trader (870 router txs) (0x4efb789e)",
+    "provenance_source": "on_chain_defi_high_frequency",
+    "label_provenance": 1,
+    "category": "defi_hf_trader"
+  }
+}

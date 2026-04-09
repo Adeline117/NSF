@@ -1,0 +1,119 @@
+{
+  "timestamp": "2026-04-08T23:32:04.150561",
+  "elapsed_seconds": 91.53,
+  "dataset": {
+    "n_processed": 563,
+    "n_agents": 328,
+    "n_humans": 235,
+    "n_features": 23,
+    "agent_to_human_ratio": 1.4
+  },
+  "categories": {
+    "defi_hf_trader": 199,
+    "human_ens_interaction": 167,
+    "gelato_executor": 47,
+    "keep3r_executor": 46,
+    "human_exchange_depositor": 28,
+    "expanded_human": 25,
+    "pilot_agent": 15,
+    "curated_mev_bot": 10,
+    "expanded_mev_bot": 10,
+    "curated_human": 7,
+    "human_ens_interaction_governance_voter": 5,
+    "pilot_human": 3,
+    "flash_loan_user": 1
+  },
+  "classifiers": {
+    "RandomForest": {
+      "cv_10fold": {
+        "auc": 0.7956,
+        "f1": 0.7908,
+        "accuracy": 0.7425,
+        "precision": 0.7507,
+        "recall": 0.8354,
+        "f1_human": 0.6651
+      },
+      "repeated_5fold_10x": {
+        "mean_auc": 0.7934,
+        "std_auc": 0.0386
+      },
+      "top10_features": {
+        "top_contract_concentration": 0.1374,
+        "gas_price_cv": 0.1105,
+        "gas_price_round_number_ratio": 0.0894,
+        "unique_contracts_ratio": 0.0813,
+        "gas_price_trailing_zeros_mean": 0.075,
+        "sequential_pattern_score": 0.0555,
+        "method_id_diversity": 0.053,
+        "tx_interval_mean": 0.0504,
+        "contract_to_eoa_ratio": 0.0471,
+        "gas_limit_precision": 0.0418
+      },
+      "confusion_matrix": [
+        [
+          144,
+          91
+        ],
+        [
+          54,
+          274
+        ]
+      ]
+    },
+    "GradientBoosting": {
+      "cv_10fold": {
+        "auc": 0.7867,
+        "f1": 0.7824,
+        "accuracy": 0.7371
+      }
+    },
+    "GAT": {
+      "mean_auc": 0.812,
+      "std_auc": 0.0239,
+      "mean_f1": 0.792,
+      "n_edges": 555,
+      "folds": [
+        {
+          "auc": 0.8491,
+          "f1": 0.8333,
+          "accuracy": 0.8053
+        },
+        {
+          "auc": 0.7963,
+          "f1": 0.7879,
+          "accuracy": 0.7522
+        },
+        {
+          "auc": 0.7876,
+          "f1": 0.7704,
+          "accuracy": 0.7257
+        },
+        {
+          "auc": 0.8311,
+          "f1": 0.8244,
+          "accuracy": 0.7946
+        },
+        {
+          "auc": 0.7957,
+          "f1": 0.7438,
+          "accuracy": 0.7232
+        }
+      ]
+    }
+  },
+  "c1c4_diagnostic_agreement": 0.5578,
+  "comparison_to_prior": {
+    "original_trusted_64": {
+      "n_samples": 64,
+      "rf_loo_auc": 0.9355,
+      "note": "33 agents, 31 humans, LOO CV"
+    },
+    "v3_provenance_expanded": {
+      "n_samples": 563,
+      "rf_10fold_auc": 0.7956,
+      "rf_5x10_auc": 0.7934,
+      "gbm_10fold_auc": 0.7867,
+      "gat_5fold_auc": 0.812
+    }
+  }
+}
