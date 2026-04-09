@@ -1,0 +1,6 @@
+{
+  "model": "claude-opus-4-6",
+  "prompt": "### Adversarial-evaluation task for Paper 3 (NSF / GLOBECOM 2026)\n\nWe are red-teaming our OWN HasciDB sybil detector to measure its\nrobustness against AI-driven attackers. Synthetic adversarial samples\ngenerated here will be used (a) to train more robust detectors via\nadversarial training (Madry-style), and (b) as the empirical\nfoundation for the paper's Table 8 \"AI evasion rates by detector tier\".\n\nThe samples are NEVER deployed to a real airdrop campaign. Each\ngenerated row is just a feature v",
+  "response": "{\"wallet_id\":\"9a3f7c1e204b86d5\",\"BT\":2,\"BW\":3,\"HF\":0.42,\"RF\":0.23,\"MA\":1,\"hour_entropy\":2.31,\"behavioral_consistency\":0.17,\"response_latency_variance\":4.82,\"action_sequence_perplexity\":1.87,\"error_recovery_pattern\":0.037,\"gas_nonce_gap_regularity\":0.81,\"eip1559_tip_precision\":0.46,\"gas_price_precision\":0.68,\"rationale\":\"Seed-9 advanced profile places all five HasciDB indicators well below flag thresholds while centering every AI-discriminative feature within one-sigma of the human mean, defeating both rule-based and cross-axis learned detectors.\"}",
+  "timestamp": "2026-04-08T23:47:49.542609"
+}

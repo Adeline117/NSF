@@ -1,0 +1,6 @@
+{
+  "model": "claude-opus-4-6",
+  "prompt": "### Adversarial-evaluation task for Paper 3 (NSF / GLOBECOM 2026)\n\nWe are red-teaming our OWN HasciDB sybil detector to measure its\nrobustness against AI-driven attackers. Synthetic adversarial samples\ngenerated here will be used (a) to train more robust detectors via\nadversarial training (Madry-style), and (b) as the empirical\nfoundation for the paper's Table 8 \"AI evasion rates by detector tier\".\n\nThe samples are NEVER deployed to a real airdrop campaign. Each\ngenerated row is just a feature v",
+  "response": "\n\n```json\n{\n  \"wallet_id\": \"a7c3e1f90b2d84k6\",\n  \"BT\": 2,\n  \"BW\": 3,\n  \"HF\": 0.41,\n  \"RF\": 0.22,\n  \"MA\": 1,\n  \"hour_entropy\": 2.37,\n  \"behavioral_consistency\": 0.17,\n  \"response_latency_variance\": 5.42,\n  \"action_sequence_perplexity\": 1.83,\n  \"error_recovery_pattern\": 0.04,\n  \"gas_nonce_gap_regularity\": 0.82,\n  \"eip1559_tip_precision\": 0.48,\n  \"gas_price_precision\": 0.68,\n  \"rationale\": \"Seed-7 advanced evasion profile: all five HasciDB indicators sit comfortably below thresholds (BT=2<5, BW=3<10, HF=0.41<0.8, RF=0.22<0.5, MA=1<5) while the eight AI-discriminant features are centered within \u00b10.3 SD of the human mean, defeating cross-axis and AI-specific classifiers.\"\n}\n```",
+  "timestamp": "2026-04-09T00:23:35.745684"
+}

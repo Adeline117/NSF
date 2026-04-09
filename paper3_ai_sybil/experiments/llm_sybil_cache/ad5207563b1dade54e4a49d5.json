@@ -1,0 +1,6 @@
+{
+  "model": "claude-opus-4-6",
+  "prompt": "### Adversarial-evaluation task for Paper 3 (NSF / GLOBECOM 2026)\n\nWe are red-teaming our OWN HasciDB sybil detector to measure its\nrobustness against AI-driven attackers. Synthetic adversarial samples\ngenerated here will be used (a) to train more robust detectors via\nadversarial training (Madry-style), and (b) as the empirical\nfoundation for the paper's Table 8 \"AI evasion rates by detector tier\".\n\nThe samples are NEVER deployed to a real airdrop campaign. Each\ngenerated row is just a feature v",
+  "response": "\n\n```json\n{\n  \"wallet_id\": \"a3f7c9e21b4d6082\",\n  \"BT\": 4,\n  \"BW\": 9,\n  \"HF\": 0.78,\n  \"RF\": 0.48,\n  \"MA\": 4,\n  \"hour_entropy\": 2.31,\n  \"behavioral_consistency\": 0.18,\n  \"response_latency_variance\": 5.2,\n  \"action_sequence_perplexity\": 1.87,\n  \"error_recovery_pattern\": 0.04,\n  \"gas_nonce_gap_regularity\": 0.83,\n  \"eip1559_tip_precision\": 0.48,\n  \"gas_price_precision\": 0.72,\n  \"rationale\": \"Basic evasion profile: all five HasciDB indicators set just below their respective flag thresholds, with AI-discriminative features shifted toward human-side means to reduce cross-axis detectability.\"\n}\n```",
+  "timestamp": "2026-04-08T23:58:04.677455"
+}

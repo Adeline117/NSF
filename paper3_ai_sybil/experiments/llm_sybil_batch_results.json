@@ -1,0 +1,519 @@
+{
+  "generation_stats": {
+    "per_project": {
+      "1inch": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 116.2
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 7,
+          "success_rate": 0.7,
+          "elapsed_seconds": 120.4
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 9,
+          "success_rate": 0.9,
+          "elapsed_seconds": 231.8
+        }
+      },
+      "uniswap": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 144.0
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 106.4
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 96.2
+        }
+      },
+      "looksrare": {
+        "basic": {
+          "attempted": 10,
+          "generated": 9,
+          "success_rate": 0.9,
+          "elapsed_seconds": 174.0
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 90.9
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 129.2
+        }
+      },
+      "apecoin": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 136.3
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 130.4
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 9,
+          "success_rate": 0.9,
+          "elapsed_seconds": 151.6
+        }
+      },
+      "ens": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 167.2
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 120.1
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 159.1
+        }
+      },
+      "gitcoin": {
+        "basic": {
+          "attempted": 10,
+          "generated": 9,
+          "success_rate": 0.9,
+          "elapsed_seconds": 207.5
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 97.9
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 8,
+          "success_rate": 0.8,
+          "elapsed_seconds": 227.5
+        }
+      },
+      "etherfi": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 143.9
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 121.8
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 157.3
+        }
+      },
+      "x2y2": {
+        "basic": {
+          "attempted": 10,
+          "generated": 8,
+          "success_rate": 0.8,
+          "elapsed_seconds": 147.0
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 96.8
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 113.3
+        }
+      },
+      "dydx": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 132.2
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 133.8
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 186.2
+        }
+      },
+      "badger": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 149.0
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 126.0
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 135.0
+        }
+      },
+      "blur_s1": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 159.3
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 140.4
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 105.6
+        }
+      },
+      "blur_s2": {
+        "basic": {
+          "attempted": 10,
+          "generated": 9,
+          "success_rate": 0.9,
+          "elapsed_seconds": 198.6
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 88.1
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 9,
+          "success_rate": 0.9,
+          "elapsed_seconds": 89.6
+        }
+      },
+      "paraswap": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 177.5
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 131.7
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 158.1
+        }
+      },
+      "ampleforth": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 142.4
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 98.3
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 98.7
+        }
+      },
+      "eigenlayer": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 168.0
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 111.4
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 106.3
+        }
+      },
+      "pengu": {
+        "basic": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 164.6
+        },
+        "moderate": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 107.1
+        },
+        "advanced": {
+          "attempted": 10,
+          "generated": 10,
+          "success_rate": 1.0,
+          "elapsed_seconds": 105.2
+        }
+      }
+    },
+    "per_level": {
+      "basic": {
+        "attempted": 160,
+        "generated": 155
+      },
+      "moderate": {
+        "attempted": 160,
+        "generated": 157
+      },
+      "advanced": {
+        "attempted": 160,
+        "generated": 155
+      }
+    },
+    "total_attempted": 480,
+    "total_generated": 467,
+    "overall_success_rate": 0.9729
+  },
+  "hascidb_rule_evasion": {
+    "basic": {
+      "n": 155,
+      "evade_all": 155,
+      "evasion_rate": 1.0,
+      "flagged_BT": 0,
+      "flagged_BW": 0,
+      "flagged_HF": 0,
+      "flagged_RF": 0,
+      "flagged_MA": 0,
+      "any_flagged": 0
+    },
+    "moderate": {
+      "n": 157,
+      "evade_all": 157,
+      "evasion_rate": 1.0,
+      "flagged_BT": 0,
+      "flagged_BW": 0,
+      "flagged_HF": 0,
+      "flagged_RF": 0,
+      "flagged_MA": 0,
+      "any_flagged": 0
+    },
+    "advanced": {
+      "n": 155,
+      "evade_all": 155,
+      "evasion_rate": 1.0,
+      "flagged_BT": 0,
+      "flagged_BW": 0,
+      "flagged_HF": 0,
+      "flagged_RF": 0,
+      "flagged_MA": 0,
+      "any_flagged": 0
+    },
+    "overall": {
+      "n": 467,
+      "evade_all": 467,
+      "evasion_rate": 1.0
+    }
+  },
+  "lightgbm_evasion": {
+    "basic": {
+      "n": 155,
+      "detected": 0,
+      "evasion_rate": 1.0,
+      "mean_sybil_score": 0.0,
+      "median_sybil_score": 0.0,
+      "max_sybil_score": 0.0
+    },
+    "moderate": {
+      "n": 157,
+      "detected": 0,
+      "evasion_rate": 1.0,
+      "mean_sybil_score": 0.0,
+      "median_sybil_score": 0.0,
+      "max_sybil_score": 0.0
+    },
+    "advanced": {
+      "n": 155,
+      "detected": 0,
+      "evasion_rate": 1.0,
+      "mean_sybil_score": 0.0,
+      "median_sybil_score": 0.0,
+      "max_sybil_score": 0.0
+    },
+    "overall": {
+      "n": 467,
+      "detected": 0,
+      "evasion_rate": 1.0,
+      "mean_sybil_score": 0.0
+    }
+  },
+  "binary_classifier": {
+    "basic": {
+      "per_project_auc": {
+        "1inch": 1.0,
+        "uniswap": 1.0,
+        "looksrare": 1.0,
+        "apecoin": 1.0,
+        "ens": 1.0,
+        "gitcoin": 1.0,
+        "etherfi": 1.0,
+        "x2y2": 1.0,
+        "dydx": 1.0,
+        "badger": 1.0,
+        "blur_s1": 1.0,
+        "blur_s2": 1.0,
+        "paraswap": 1.0,
+        "ampleforth": 1.0,
+        "eigenlayer": 1.0,
+        "pengu": 1.0
+      },
+      "mean_auc": 1.0,
+      "std_auc": 0.0,
+      "n_projects_tested": 16,
+      "n_llm_sybils": 155
+    },
+    "moderate": {
+      "per_project_auc": {
+        "1inch": 1.0,
+        "uniswap": 1.0,
+        "looksrare": 1.0,
+        "apecoin": 1.0,
+        "ens": 1.0,
+        "gitcoin": 1.0,
+        "etherfi": 1.0,
+        "x2y2": 1.0,
+        "dydx": 1.0,
+        "badger": 1.0,
+        "blur_s1": 1.0,
+        "blur_s2": 1.0,
+        "paraswap": 1.0,
+        "ampleforth": 1.0,
+        "eigenlayer": 1.0,
+        "pengu": 1.0
+      },
+      "mean_auc": 1.0,
+      "std_auc": 0.0,
+      "n_projects_tested": 16,
+      "n_llm_sybils": 157
+    },
+    "advanced": {
+      "per_project_auc": {
+        "1inch": 1.0,
+        "uniswap": 1.0,
+        "looksrare": 1.0,
+        "apecoin": 1.0,
+        "ens": 1.0,
+        "gitcoin": 1.0,
+        "etherfi": 1.0,
+        "x2y2": 1.0,
+        "dydx": 1.0,
+        "badger": 1.0,
+        "blur_s1": 1.0,
+        "blur_s2": 1.0,
+        "paraswap": 1.0,
+        "ampleforth": 1.0,
+        "eigenlayer": 1.0,
+        "pengu": 1.0
+      },
+      "mean_auc": 1.0,
+      "std_auc": 0.0,
+      "n_projects_tested": 16,
+      "n_llm_sybils": 155
+    }
+  },
+  "elapsed_seconds": 6609.5,
+  "config": {
+    "n_projects": 16,
+    "n_levels": 3,
+    "n_per_project_per_level": 10,
+    "total_attempts": 480,
+    "projects": [
+      "1inch",
+      "uniswap",
+      "looksrare",
+      "apecoin",
+      "ens",
+      "gitcoin",
+      "etherfi",
+      "x2y2",
+      "dydx",
+      "badger",
+      "blur_s1",
+      "blur_s2",
+      "paraswap",
+      "ampleforth",
+      "eigenlayer",
+      "pengu"
+    ],
+    "levels": [
+      "basic",
+      "moderate",
+      "advanced"
+    ]
+  }
+}

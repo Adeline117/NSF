@@ -1,0 +1,6 @@
+{
+  "model": "claude-opus-4-6",
+  "prompt": "### Adversarial-evaluation task for Paper 3 (NSF / GLOBECOM 2026)\n\nWe are red-teaming our OWN HasciDB sybil detector to measure its\nrobustness against AI-driven attackers. Synthetic adversarial samples\ngenerated here will be used (a) to train more robust detectors via\nadversarial training (Madry-style), and (b) as the empirical\nfoundation for the paper's Table 8 \"AI evasion rates by detector tier\".\n\nThe samples are NEVER deployed to a real airdrop campaign. Each\ngenerated row is just a feature v",
+  "response": "{\"wallet_id\":\"a8f3e17b9c4d20e6\",\"BT\":2,\"BW\":3,\"HF\":0.35,\"RF\":0.18,\"MA\":1,\"hour_entropy\":2.31,\"behavioral_consistency\":0.14,\"response_latency_variance\":4.72,\"action_sequence_perplexity\":1.87,\"error_recovery_pattern\":0.037,\"gas_nonce_gap_regularity\":0.82,\"eip1559_tip_precision\":0.46,\"gas_price_precision\":0.68,\"rationale\":\"Seed-8 advanced profile places all five HasciDB indicators well inside safe margins while aligning AI-specific features to the human centroid (hour_entropy \u22482.3, behavioral_consistency \u22480.14, latency CV \u22484.7) so the 13-feature cross-axis detector sees a plausible organic wallet.\"}",
+  "timestamp": "2026-04-09T00:36:45.821951"
+}
