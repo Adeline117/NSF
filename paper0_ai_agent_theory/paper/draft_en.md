@@ -228,11 +228,11 @@ Representative Tier 1 rules include: an address mined from the Autonolas Agent R
 
 | Category | Count | Percentage | Mean confidence |
 |----------|------:|-----------:|----------------:|
-| DeFi Management Agent | 1,669 | 64.4% | 0.62 |
-| Deterministic Script  |   666 | 25.7% | 0.59 |
-| Simple Trading Bot    |   130 |  5.0% | 0.63 |
-| LLM-Powered Agent     |    71 |  2.7% | 0.71 |
-| MEV Searcher          |    54 |  2.1% | 0.86 |
+| DeFi Management Agent | 1,669 | 64.4% | 0.60 |
+| Deterministic Script  |   666 | 25.7% | 0.80 |
+| Simple Trading Bot    |   130 |  5.0% | 0.70 |
+| LLM-Powered Agent     |    71 |  2.7% | 0.60 |
+| MEV Searcher          |    54 |  2.1% | 0.85 |
 | Autonomous DAO Agent  |     0 |  0.0% | —    |
 | Cross-Chain Bridge    |     0 |  0.0% | —    |
 | RL Trading Agent      |     0 |  0.0% | —    |
@@ -327,7 +327,7 @@ Four of five categories exceed F1 0.85. The LLM-Powered Agent is the only class 
 
 ### 4.7 Cross-reference to Paper 1
 
-Paper 1 trains a *binary* classifier (agent vs human) on the same 23 features. Its honest performance on a 64-row provenance-only trusted set is AUC 0.870 under a GraphSAGE-GAT architecture. Paper 0 answers a complementary question: given that Paper 1 has identified an address as an agent, which of the populated categories is it?
+Paper 1 trains a *binary* classifier (agent vs human) on the same 23 features. Its honest performance on a 64-row provenance-only trusted set is AUC 0.883 under a Graph Attention Network (GAT) architecture. Paper 0 answers a complementary question: given that Paper 1 has identified an address as an agent, which of the populated categories is it?
 
 - **Paper 1 answers:** Is this address an agent or a human?
 - **Paper 0 answers:** If Paper 1 says "agent", which of the five populated categories is it?
