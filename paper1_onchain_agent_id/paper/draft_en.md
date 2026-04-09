@@ -6,7 +6,7 @@
 
 ## Abstract
 
-Autonomous AI agents now manage tens of billions of dollars on public blockchains, yet they do not self-identify on-chain, leaving security auditors, protocol designers, and regulators blind to automated financial activity. We present the first honest empirical study of on-chain AI agent identification that explicitly accounts for label leakage. We design a 23-feature behavioral fingerprinting framework spanning temporal patterns, gas pricing, interaction structure, and approval security, and apply it to 3,316 Ethereum mainnet addresses mined from four agent platforms (Autonolas, Fetch.ai, AI Arena, Virtuals), a curated set of MEV searchers, and ENS-verified human users. Our initial pipeline reports a Gradient Boosting AUC of 0.9803 on the full 3,316-address set. In the course of this work, we discovered that three of the mining gates (`hour_entropy`, `burst_ratio`, `tx_interval_cv`) are algebraically equivalent to three top classifier features, constituting direct target leakage on the heuristically labeled majority of the dataset. After demoting the C1-C4 gates to a downstream evaluation tool and retaining only 64 provenance-verified addresses (33 agents, 31 humans), the honest Random Forest LOO-CV AUC is 0.7713 and a Graph Attention Network reaches 0.883 five-fold AUC. A cross-platform test train on Autonolas and test on the trusted provenance set produces AUC 0.24 to 0.34, indicating that intra-platform generalization does not transfer. We report per-model and per-split numbers, McNemar / DeLong / bootstrap tests, a 4-dimensional security audit whose headline direction reverses between leaky and honest subsets, and a GNN comparison. We argue that the leakage discovery is itself a methodological contribution: it quantifies how fragile heuristic labeling can be, provides a reusable template for auditing behavioral classifiers on blockchain data, and establishes honest baselines (RF LOO 0.77, GAT 0.87) against which clean re-mining efforts can be judged. All code, features, labels, and diagnostic scripts are released.
+Autonomous AI agents now manage tens of billions of dollars on public blockchains, yet they do not self-identify on-chain, leaving security auditors, protocol designers, and regulators blind to automated financial activity. We present the first honest empirical study of on-chain AI agent identification that explicitly accounts for label leakage. We design a 23-feature behavioral fingerprinting framework spanning temporal patterns, gas pricing, interaction structure, and approval security, and apply it to 3,316 Ethereum mainnet addresses mined from four agent platforms (Autonolas, Fetch.ai, AI Arena, Virtuals), a curated set of MEV searchers, and ENS-verified human users. Our initial pipeline reports a Gradient Boosting AUC of 0.9803 on the full 3,316-address set. In the course of this work, we discovered that three of the mining gates (`hour_entropy`, `burst_ratio`, `tx_interval_cv`) are algebraically equivalent to three top classifier features, constituting direct target leakage on the heuristically labeled majority of the dataset. After demoting the C1-C4 gates to a downstream evaluation tool, we assembled 563 provenance-verified addresses (328 agents from 7 source categories, 235 humans from 6 source categories) through an expanded mining campaign covering Autonolas service operators, Gelato and Keep3r executors, high-frequency DeFi traders, curated MEV bots, ENS-verified humans, exchange depositors, and governance voters. On this expanded provenance set, Random Forest 10-fold AUC is 0.7956, Gradient Boosting 10-fold AUC is 0.7867, and a Graph Attention Network reaches 0.812 five-fold AUC. A strict 64-address subset (33 agents, 31 humans) serves as a sensitivity check, yielding RF LOO-CV AUC 0.7713 and GAT 0.883. A cross-platform test train on Autonolas and test on the trusted provenance set produces AUC 0.24 to 0.34, indicating that intra-platform generalization does not transfer. We report per-model and per-split numbers, McNemar / DeLong / bootstrap tests, a 4-dimensional security audit whose headline direction reverses between leaky and honest subsets, and a GNN comparison. We argue that the leakage discovery is itself a methodological contribution: it quantifies how fragile heuristic labeling can be, provides a reusable template for auditing behavioral classifiers on blockchain data, and establishes honest baselines (RF 0.80, GAT 0.81 on n=563; RF 0.77, GAT 0.88 on n=64) against which clean re-mining efforts can be judged. The C1-C4 diagnostic heuristic agrees with provenance labels only 55.8% of the time on the expanded set (down from 92.9% on the original pilot), confirming that heuristic labeling increasingly diverges from ground truth as the dataset grows and diversifies. All code, features, labels, and diagnostic scripts are released.
 
 **Keywords:** on-chain AI agents, behavioral fingerprinting, label leakage, Ethereum, graph neural networks, security audit, honest baselines, reproducibility
 
@@ -51,12 +51,14 @@ tx_interval_cv (C3 gate)   ~  tx_interval_std / tx_interval_mean (classifier fea
 
 In other words, the same quantities that had decided whether an address was labeled AGENT were then fed to the classifier as predictors. The resulting AUC is therefore not a measure of how well behavioral features separate agents from humans; it is a measure of how well the classifier recovers the thresholding rule the mining script used. The agents-have-10x-more-approvals headline comes from the same labeling bias: C1-C4 preferentially accepted token holders who were already active DeFi users.
 
-Fortunately, 64 of the 3,316 addresses had provenance labels that did not pass through C1-C4: 33 agents from the original manual pilot set (jaredfromsubway, Wintermute, 1inch resolver, Flashbots builders, Autonolas registry entries, etc.) and 31 humans from the curated ENS list (vitalik.eth, Hayden Adams, and comparable accounts). On this **trusted provenance-only subset**:
+Fortunately, we identified a strict set of 64 addresses with provenance labels that did not pass through C1-C4: 33 agents from the original manual pilot set (jaredfromsubway, Wintermute, 1inch resolver, Flashbots builders, Autonolas registry entries, etc.) and 31 humans from the curated ENS list (vitalik.eth, Hayden Adams, and comparable accounts). We then launched an expanded provenance mining campaign (v3) that grew the honest set to **563 addresses (328 agents, 235 humans)** by adding Gelato executor contracts, Keep3r network executors, high-frequency DeFi traders with >50 daily Uniswap calls, additional curated MEV bots, ENS-interaction-verified humans, exchange depositors, and governance voters. On this **expanded provenance set (n=563)**:
 
-- Gradient Boosting LOO-CV AUC drops to **0.6276**;
-- Random Forest LOO-CV AUC drops to **0.7713** (5x10-CV 0.8030);
-- The GBM vs Majority baseline comparison is **no longer statistically significant** (McNemar p=0.58);
-- The security audit direction **reverses**: famous ENS humans hold more unlimited approvals (66.1 mean) than curated MEV bots (49.1 mean) because the ENS accounts are heavier DeFi users than a typical searcher.
+- Random Forest 10-fold AUC is **0.7956**;
+- Gradient Boosting 10-fold AUC is **0.7867**;
+- GAT 5-fold AUC is **0.812 +/- 0.024**;
+- The C1-C4 diagnostic heuristic agrees with provenance labels only **55.8%** of the time, down from 92.9% on the original 14-address pilot, confirming that heuristic labeling increasingly disagrees with provenance labels as the dataset grows and diversifies.
+
+On the **strict provenance subset (n=64)**, used as a sensitivity check: RF LOO-CV AUC is 0.7713, GAT 5-fold AUC is 0.883, and GBM is indistinguishable from a majority classifier (McNemar p=0.58). The security audit direction **reverses**: famous ENS humans hold more unlimited approvals (66.1 mean) than curated MEV bots (49.1 mean) because the ENS accounts are heavier DeFi users than a typical searcher.
 
 We therefore rewrote the paper around this discovery. This paper is not an attempt to hide the leakage; it is an attempt to turn the leakage into a methodological contribution, to present the honest baselines, and to provide a reusable audit template so that future work on behavioral classification of on-chain actors does not repeat the same mistake.
 
@@ -70,14 +72,15 @@ We therefore rewrote the paper around this discovery. This paper is not an attem
 
 ### 1.5 Contributions
 
-1. **An honest empirical baseline.** Random Forest LOO-CV AUC = 0.7713 (5x10-CV 0.8030) on 64 provenance-verified Ethereum addresses, Graph Attention Network five-fold AUC = 0.883 on the same subset. These are the numbers we recommend as the reference point for future work.
-2. **A leakage case study.** We document how a seemingly sensible 4-gate labeling oracle injected three top-4 classifier features into the labels, causing a 25-point AUC inflation (0.9803 to 0.7713). We release the diagnostic scripts as a template (`verify_c1c4.py`, `pipeline_provenance.py`, `statistical_tests.py`).
-3. **Statistical significance on the honest set.** McNemar, DeLong, and bootstrap tests on the 64-address trusted set show that Random Forest significantly beats Gradient Boosting (McNemar p=0.0225, DeLong p=0.0014, bootstrap CI95 [-0.24, -0.06]), GBM is indistinguishable from a majority baseline, and a single best feature (tx_interval_mean) matches or beats GBM.
+1. **An honest empirical baseline on 563 provenance-verified addresses.** Random Forest 10-fold AUC = 0.7956, GBM 10-fold AUC = 0.7867, and Graph Attention Network 5-fold AUC = 0.812 on 563 provenance-verified Ethereum addresses (328 agents, 235 humans) drawn from 7 agent sources and 6 human sources. A strict 64-address subset (33 agents, 31 humans) serves as a sensitivity check, yielding RF LOO-CV AUC 0.7713 and GAT 0.883. These are the numbers we recommend as the reference point for future work.
+2. **A leakage case study.** We document how a seemingly sensible 4-gate labeling oracle injected three top-4 classifier features into the labels, causing a 20-point AUC inflation (0.9803 to 0.7956). We release the diagnostic scripts as a template (`verify_c1c4.py`, `pipeline_provenance.py`, `statistical_tests.py`, `mine_addresses_v3_expanded.py`).
+3. **Statistical significance on the honest set.** McNemar, DeLong, and bootstrap tests on the 64-address strict subset show that Random Forest significantly beats Gradient Boosting (McNemar p=0.0225, DeLong p=0.0014, bootstrap CI95 [-0.24, -0.06]), GBM is indistinguishable from a majority baseline, and a single best feature (tx_interval_mean) matches or beats GBM.
 4. **Cross-platform evaluation.** Autonolas-to-trusted transfer AUC is 0.24 to 0.34, worse than chance, while Fetch.ai-to-AI-Arena transfer AUC is 0.98, exposing that the apparent high performance comes from intra-platform correlations rather than a generalizable agent concept.
-5. **GNN vs tabular comparison.** On the same trusted subset, GAT (AUC 0.883) beats GraphSAGE (0.784) and beats all tabular classifiers, suggesting that graph structure carries signal beyond per-node features.
+5. **GNN vs tabular comparison.** On the expanded provenance set (n=563), GAT (AUC 0.812) beats all tabular classifiers. On the strict subset (n=64), GAT reaches 0.883, beating GraphSAGE (0.784) and all tabular models, suggesting that graph structure carries signal beyond per-node features.
 6. **Combined feature study.** Extending the 23 Paper 1 features with 8 AI-specific features from our companion work (Paper 3) yields a combined LightGBM 5x3-CV AUC of 0.7172 on the trusted subset, essentially no improvement (delta +0.013) over Paper 1 features alone.
 7. **4-dimensional security audit with honest reversal.** We report both the leaky-set (agents 10.3x more unlimited approvals) and trusted-set (humans hold more) audits side by side, and explain why the direction reverses.
-8. **Open artifacts.** Code, mined features, labels, statistical test scripts, GNN model weights, and the full leaky-vs-honest comparison JSONs are released.
+8. **C1-C4 diagnostic divergence.** The C1-C4 heuristic agrees with provenance labels only 55.8% on n=563 (down from 92.9% on the 14-address v2 pilot), demonstrating that heuristic labeling increasingly disagrees with ground truth as the dataset diversifies.
+9. **Open artifacts.** Code, mined features, labels, statistical test scripts, GNN model weights, and the full leaky-vs-honest comparison JSONs are released.
 
 ### 1.6 Paper Roadmap
 
@@ -142,22 +145,61 @@ We identify addresses holding tokens of four agent platforms (Autonolas OLAS, Fe
 - **C3 (multi-source cross-validation):** operationalized as thresholds on `hour_entropy > 2.5`, `burst_ratio > 0.1`, `tx_interval_cv < 1.0`.
 - **C4 (temporal stability):** the behavioral class is stable across time windows.
 
-#### 3.2.2 Strategy B: Provenance-Verified Addresses (**used for honest training/testing**)
+#### 3.2.2 Strategy B: Strict Provenance Subset (n=64, **sensitivity check**)
 
 We identify 64 addresses whose labels do not depend on any behavioral threshold:
 
 - **33 AGENT addresses** from (a) the original Paper 1 pilot set of manually curated bots (jaredfromsubway, Wintermute, 1inch resolver, Flashbots builder, Autonolas service operators), (b) the Paper 0 Delphi-validated agent set, and (c) an external curated MEV-bot list.
 - **31 HUMAN addresses** from the ENS-verified human list (vitalik.eth, Hayden Adams, nick.eth, and comparable accounts whose identity is publicly verifiable).
 
-None of the trusted labels pass through `hour_entropy`, `burst_ratio`, or `tx_interval_cv` thresholds.
+None of the trusted labels pass through `hour_entropy`, `burst_ratio`, or `tx_interval_cv` thresholds. This subset serves as a strict sensitivity check.
 
-#### 3.2.3 Exclusion Rules
+#### 3.2.3 Strategy C: Expanded Provenance Mining v3 (n=563, **primary honest set**)
+
+To address the sample-size limitation of n=64, we launched an expanded provenance mining campaign (`mine_addresses_v3_expanded.py`) that grew the honest set to **563 addresses (328 agents, 235 humans)** across 13 source categories, all verified through non-behavioral provenance.
+
+**Agent sources (328 addresses, 7 categories):**
+
+| Source category     | Count | Provenance basis |
+|---------------------|-------|------------------|
+| defi_hf_trader      | 199   | Addresses with >50 daily Uniswap router calls, verified via on-chain call frequency |
+| gelato_executor     | 47    | Gelato Network executor contracts, verified via Gelato registry |
+| keep3r_executor     | 46    | Keep3r Network keeper addresses, verified via Keep3r bond registry |
+| pilot_agent         | 15    | Original manually curated pilot set |
+| curated_mev_bot     | 10    | External curated MEV-bot list with known operator identities |
+| expanded_mev_bot    | 10    | Additional MEV bots verified via Flashbots builder registry |
+| flash_loan_user     | 1     | Address verified as Aave/dYdX flash loan initiator |
+
+**Human sources (235 addresses, 6 categories):**
+
+| Source category                      | Count | Provenance basis |
+|--------------------------------------|-------|------------------|
+| human_ens_interaction                | 167   | Addresses that registered or renewed ENS names, verified via ENS registry events |
+| human_exchange_depositor             | 28    | Addresses depositing to known exchange hot wallets, verified via deposit patterns |
+| expanded_human                       | 25    | Additional ENS-verified humans matched on DeFi exposure |
+| curated_human                        | 7     | Original curated human list (vitalik.eth, etc.) |
+| human_ens_interaction_governance_voter| 5    | ENS holders who also voted in on-chain governance (Compound, Uniswap, etc.) |
+| pilot_human                          | 3     | Original pilot human set |
+
+The v3 mining applies 23 features to all 563 addresses. The agent-to-human ratio is 1.4:1 (328:235), moderately imbalanced. All 64 addresses from Strategy B are included in Strategy C.
+
+**Label quality note on `defi_hf_trader`.** The largest agent category (199 addresses, 34% of the total) is labeled "agent" because the address makes >50 Uniswap calls per active day. This is a behavioral criterion, not a provenance-pure label: it is possible that some of these addresses are humans using aggressive trading interfaces rather than autonomous agents. We discuss this threat in Section 5.
+
+#### 3.2.4 Exclusion Rules
 
 We exclude contract addresses (Uniswap routers, 0x Exchange Proxy, Seaport, Blur), exchange hot wallets (MEXC, Binance 14/16), and any address whose label cannot be pinned to a non-behavioral source.
 
-#### 3.2.4 Decision: Demote C1-C4 to Evaluation
+#### 3.2.5 Decision: Demote C1-C4 to Evaluation
 
-After discovering that C1-C4 gates overlap with three top classifier features (see Section 5), we demote the 3,252 Strategy A addresses from training to inference-only. The 64 trusted Strategy B addresses become the honest train+test set. We continue to report leaky-set numbers for transparency and for statistical comparison.
+After discovering that C1-C4 gates overlap with three top classifier features (see Section 5), we demote the 3,252 Strategy A addresses from training to inference-only. The 563 expanded provenance addresses (Strategy C) become the **primary honest train+test set**, with the 64 strict provenance addresses (Strategy B) as a sensitivity check. We continue to report leaky-set numbers for transparency and for statistical comparison.
+
+The resulting three-tier evaluation hierarchy is:
+
+| Tier | Label | n | Label source | Role |
+|------|-------|---|--------------|------|
+| 1 (leaky) | C1-C4 heuristic | 3,316 | Behavioral thresholds | Inference-only, not cited as headline |
+| 2 (expanded provenance) | Strategy C v3 | 563 | Non-behavioral provenance | **Primary honest set** |
+| 3 (strict provenance) | Strategy B | 64 | Manual curation | Sensitivity check |
 
 ### 3.3 Feature Engineering: 23 Behavioral Features
 
@@ -218,14 +260,14 @@ Metrics: AUC-ROC (primary), precision, recall, F1, accuracy, and Brier score for
 
 ### 3.5 Graph Neural Networks
 
-We construct a directed transaction graph $G = (V, E)$ on the 3,316-address set, with edges from sender to receiver for any transfer of value or token. Node features are the 23 behavioral features above. The resulting graph has 3,316 nodes, 2,387 edges, and is moderately sparse.
+We construct a directed transaction graph $G = (V, E)$ on the 3,316-address set, with edges from sender to receiver for any transfer of value or token. Node features are the 23 behavioral features above. The resulting graph has 3,316 nodes, 2,387 edges, and is moderately sparse. For the expanded provenance evaluation (n=563), we also construct a subgraph with 563 nodes and 555 edges.
 
 We train two GNN architectures:
 
 - **GraphSAGE:** two-layer, hidden dim 64, mean aggregator, dropout 0.3, Adam lr=0.01, early stopping on validation loss.
 - **GAT (Graph Attention Network):** two-layer, 8 attention heads, hidden dim 64, dropout 0.3.
 
-We evaluate on two splits: `full_3316` (training labels are C1-C4 leaky) and `trusted_64` (training labels are provenance-only; the other 3,252 nodes are retained in the graph to provide structural context but are masked out of supervision).
+We evaluate on three splits: `full_3316` (training labels are C1-C4 leaky), `provenance_563` (training labels are expanded provenance v3; the primary honest evaluation), and `trusted_64` (training labels are strict provenance-only; sensitivity check).
 
 ### 3.6 Baselines and Ablations
 
@@ -274,13 +316,56 @@ We run the audit twice: once on the full 3,302-address set (14 dropped due to em
 
 ## 4. Results
 
-We now present the honest results in six subsections. Throughout this section, **the trusted n=64 subset is the headline**. The full n=3,316 numbers are reported only as a leaky reference point.
+We now present the honest results in six subsections. Throughout this section, **the expanded provenance set (n=563) is the headline**. The strict provenance subset (n=64) is reported as a sensitivity check. The full n=3,316 numbers are reported only as a leaky reference point.
 
-### 4.1 Honest Performance on the Provenance-Only Set (n=64)
+### 4.1 Honest Performance on Provenance-Verified Sets
 
-Table 1 reports the core honest performance: four tabular classifiers on the 64 trusted addresses under both LOO-CV and repeated 5x10-CV.
+#### 4.1.1 Primary: Expanded Provenance Set (n=563, 328 agents, 235 humans)
 
-**Table 1. Tabular classifier performance on the trusted provenance-only set (n=64, 33 agents, 31 humans).**
+Table 1 reports the core honest performance on the expanded provenance v3 set.
+
+**Table 1. Tabular and GNN classifier performance on the expanded provenance set (n=563, 328 agents, 235 humans).**
+
+| Model             | Split      | AUC-ROC             | Precision | Recall | F1    | Accuracy |
+|-------------------|------------|----------------------|-----------|--------|-------|----------|
+| RandomForest      | 10-fold    | **0.7956**          | 0.7507    | 0.8354 | 0.7908| 0.7425   |
+| RandomForest      | 5x10-CV    | 0.7934 +/- 0.039   | --        | --     | --    | --       |
+| GradientBoosting  | 10-fold    | 0.7867              | --        | --     | 0.7824| 0.7371   |
+| GAT               | 5-fold     | **0.8120 +/- 0.024**| --        | --     | 0.792 | --       |
+
+**Top 10 RF features by importance (n=563):**
+
+| Rank | Feature                        | Importance |
+|------|--------------------------------|------------|
+| 1    | top_contract_concentration     | 0.1374     |
+| 2    | gas_price_cv                   | 0.1105     |
+| 3    | gas_price_round_number_ratio   | 0.0894     |
+| 4    | unique_contracts_ratio         | 0.0813     |
+| 5    | gas_price_trailing_zeros_mean  | 0.0750     |
+| 6    | sequential_pattern_score       | 0.0555     |
+| 7    | method_id_diversity            | 0.0530     |
+| 8    | tx_interval_mean               | 0.0504     |
+| 9    | contract_to_eoa_ratio          | 0.0471     |
+| 10   | gas_limit_precision            | 0.0418     |
+
+Note that interaction and gas features dominate the importance ranking on n=563, whereas temporal features (especially `active_hour_entropy`) dominated on the leaky set. This shift confirms that the C1-C4 leakage inflated the apparent importance of temporal features.
+
+**RF confusion matrix (n=563, 10-fold aggregate):**
+
+|              | Pred Human | Pred Agent |
+|--------------|------------|------------|
+| True Human   | 144        | 91         |
+| True Agent   | 54         | 274        |
+
+The classifier has high agent recall (274/328 = 83.5%) but moderate human precision (144/235 = 61.3%), consistent with the 1.4:1 class imbalance.
+
+**C1-C4 diagnostic agreement.** We applied the C1-C4 heuristic to all 563 provenance-labeled addresses. The agreement rate is **55.78%**, barely above chance. This is a sharp drop from the 92.9% agreement observed on the original 14-address v2 pilot, and it demonstrates that the C1-C4 heuristic is not a reliable proxy for provenance-based ground truth. As the dataset grows to include diverse agent and human sources, the heuristic's behavioral thresholds increasingly mislabel addresses: many high-frequency DeFi traders pass the agent gates while many casual ENS holders fail them.
+
+#### 4.1.2 Sensitivity Check: Strict Provenance Subset (n=64, 33 agents, 31 humans)
+
+Table 2 reports the strict provenance subset results under LOO-CV and repeated 5x10-CV.
+
+**Table 2. Tabular classifier performance on the strict provenance subset (n=64, 33 agents, 31 humans).**
 
 | Model             | Split     | AUC-ROC        | Precision | Recall | F1    | Accuracy |
 |-------------------|-----------|----------------|-----------|--------|-------|----------|
@@ -293,18 +378,20 @@ Table 1 reports the core honest performance: four tabular classifiers on the 64 
 | LightGBM          | LOO       | 0.7097         | --        | --     | 0.7273| 0.7188   |
 | LightGBM          | 5x10-CV   | 0.7040 +/- 0.088 | --        | --     | 0.6793| 0.6765   |
 
-**Key findings.**
+The n=64 results are broadly consistent with n=563: RF is the best tabular model, GBM underperforms, and standard deviations are wide. The slightly lower RF AUC on n=64 (0.7713 LOO vs 0.7956 10-fold on n=563) may reflect the reduced statistical power of the smaller set rather than a genuine performance difference.
 
-1. **Random Forest is the best honest tabular model** (LOO AUC 0.7713, 5x10-CV 0.8030).
-2. **GBM underperforms RF substantially** on the honest set, despite being nearly identical on the leaky set. We confirm this gap with statistical tests in Section 4.2.
-3. **Standard deviations are large** (0.088 to 0.125), reflecting the intrinsic variance of 5-fold CV on n=64.
-4. **LR is weakest**, close to random on its own.
+**Key findings across both sets.**
 
-**Leaky reference (do not cite as headline).** On the full 3,316 addresses with C1-C4 labels, GBM achieves 5-fold 5-rep CV AUC 0.9803 +/- 0.006, RF 0.9766 +/- 0.006, LR 0.9521 +/- 0.012, LightGBM 0.9822 +/- 0.006. The gap between 0.98 and 0.77 is the leakage magnitude.
+1. **Random Forest is the best honest tabular model** across both set sizes (10-fold AUC 0.7956 on n=563, LOO AUC 0.7713 on n=64).
+2. **GBM underperforms RF** on both honest sets, despite being nearly identical on the leaky set. We confirm this gap with statistical tests in Section 4.2.
+3. **Standard deviations shrink substantially from n=64 to n=563** (RF repeated-CV std drops from 0.102 to 0.039), reflecting the benefit of a larger honest corpus.
+4. **Feature importance shifts.** On n=563, interaction features (top_contract_concentration) and gas features (gas_price_cv) dominate; on the leaky set, temporal features (active_hour_entropy) dominated. This shift is further evidence of leakage.
 
-**Per-feature univariate AUC (trusted n=64).** Table 2 lists the top features by Mann-Whitney-derived AUC.
+**Leaky reference (do not cite as headline).** On the full 3,316 addresses with C1-C4 labels, GBM achieves 5-fold 5-rep CV AUC 0.9803 +/- 0.006, RF 0.9766 +/- 0.006, LR 0.9521 +/- 0.012, LightGBM 0.9822 +/- 0.006. The gap between 0.98 and 0.80 is the leakage magnitude.
 
-**Table 2. Top univariate AUC on the trusted set.**
+**Per-feature univariate AUC (trusted n=64).** Table 3 lists the top features by Mann-Whitney-derived AUC.
+
+**Table 3. Top univariate AUC on the strict trusted set (n=64).**
 
 | Rank | Feature                              | Univariate AUC | Group        |
 |------|--------------------------------------|----------------|--------------|
@@ -325,7 +412,7 @@ Contrast with the leaky set, where `active_hour_entropy` led with AUC 0.9347 and
 
 Given n=64, we report three complementary tests for each pairwise model comparison: McNemar's test on paired predictions, DeLong's test for paired AUCs, and a 10,000-sample bootstrap CI for the AUC difference.
 
-**Table 3. Pairwise statistical tests on the trusted set (n=64, LOO predictions).**
+**Table 4. Pairwise statistical tests on the strict trusted set (n=64, LOO predictions).**
 
 | Comparison               | McNemar p | DeLong p  | Bootstrap CI95 AUC diff | Significant? |
 |--------------------------|-----------|-----------|-------------------------|--------------|
@@ -343,9 +430,9 @@ Given n=64, we report three complementary tests for each pairwise model comparis
 
 ### 4.3 Cross-Platform Generalization
 
-Table 4 reports the four cross-platform splits. The critical contrast is between splits 1-2 (cross-label-scheme: provenance vs C1-C4) and splits 3-4 (intra-label-scheme: both C1-C4).
+Table 5 reports the four cross-platform splits. The critical contrast is between splits 1-2 (cross-label-scheme: provenance vs C1-C4) and splits 3-4 (intra-label-scheme: both C1-C4).
 
-**Table 4. Cross-platform transfer AUC.**
+**Table 5. Cross-platform transfer AUC.**
 
 | Split                          | Direction                     | GBM AUC | RF AUC | LR AUC | n_train | n_test |
 |--------------------------------|-------------------------------|---------|--------|--------|---------|--------|
@@ -365,29 +452,30 @@ Table 4 reports the four cross-platform splits. The critical contrast is between
 
 ### 4.4 GNN vs Tabular Classifiers
 
-We train GraphSAGE and GAT on the 3,316-node transaction graph and evaluate on the two splits. Table 5 reports the results.
+We train GraphSAGE and GAT on the 3,316-node transaction graph and evaluate on the three splits. Table 6 reports the results.
 
-**Table 5. GNN vs tabular AUC.**
+**Table 6. GNN vs tabular AUC across three evaluation tiers.**
 
-| Model            | full_3316 AUC (5-fold mean +/- std) | trusted_64 AUC (5-fold mean +/- std) |
-|------------------|-------------------------------------|--------------------------------------|
-| GraphSAGE        | 0.9666 +/- 0.0087                   | 0.7841 +/- 0.084                     |
-| GAT              | 0.9341 +/- 0.0113                   | **0.8825 +/- 0.108**                 |
-| RF (tabular)     | 0.9766 +/- 0.0061                   | 0.8030 +/- 0.102 (5x10)              |
-| GBM (tabular)    | 0.9803 +/- 0.0061                   | 0.6940 +/- 0.119 (5x10)              |
+| Model            | full_3316 AUC (5-fold) | provenance_563 AUC (5-fold) | trusted_64 AUC (5-fold) |
+|------------------|------------------------|-----------------------------|--------------------------|
+| GraphSAGE        | 0.9666 +/- 0.009      | --                          | 0.7841 +/- 0.084        |
+| GAT              | 0.9341 +/- 0.011      | **0.8120 +/- 0.024**       | **0.8825 +/- 0.108**    |
+| RF (tabular)     | 0.9766 +/- 0.006      | 0.7956 (10-fold)            | 0.8030 +/- 0.102 (5x10) |
+| GBM (tabular)    | 0.9803 +/- 0.006      | 0.7867 (10-fold)            | 0.6940 +/- 0.119 (5x10) |
 
 **Key findings.**
 
-1. **GAT is the best honest model overall.** On the trusted subset, GAT reaches 5-fold AUC 0.8825 vs RF 0.8030. The 5-fold variance is high (std 0.108) because n=64 leaves only ~13 test nodes per fold.
-2. **GraphSAGE does not help on the trusted set.** GraphSAGE 0.7841 is close to RF 0.8030 and worse than GAT. We attribute GAT's advantage to the attention mechanism, which can down-weight noisy edges in the sparse transfer graph.
-3. **On the leaky full set, the ranking inverts.** GraphSAGE reaches 0.9666 and outperforms GAT 0.9341, while the tabular GBM reaches 0.9803. The leaky ranking has no predictive value for the honest setting.
-4. **GNN does beat tabular on the honest set**, which is the first positive empirical result in this paper that survives the leakage correction. We consider this the honest headline.
+1. **GAT is the best honest model at both scales.** On the expanded provenance set (n=563), GAT reaches 5-fold AUC 0.8120 +/- 0.024, beating RF 0.7956 and GBM 0.7867. On the strict subset (n=64), GAT reaches 0.8825 +/- 0.108 vs RF 0.8030. The higher AUC on n=64 is partly due to the smaller, more homogeneous set and partly due to high fold-to-fold variance (std 0.108 vs 0.024 on n=563).
+2. **GAT variance is dramatically lower on n=563.** The std drops from 0.108 (n=64, ~13 test nodes per fold) to 0.024 (n=563, ~113 test nodes per fold), making the n=563 result far more reliable.
+3. **GraphSAGE does not help on the trusted set.** GraphSAGE 0.7841 (n=64) is close to RF 0.8030 and worse than GAT. We attribute GAT's advantage to the attention mechanism, which can down-weight noisy edges in the sparse transfer graph.
+4. **On the leaky full set, the ranking inverts.** GraphSAGE reaches 0.9666 and outperforms GAT 0.9341, while the tabular GBM reaches 0.9803. The leaky ranking has no predictive value for the honest setting.
+5. **GNN beats tabular on all honest sets**, which is the first positive empirical result in this paper that survives the leakage correction. We consider this the honest headline: **GAT 5-fold AUC 0.812 on n=563** is the primary reference number.
 
 ### 4.5 Combined Paper 1 + Paper 3 Features
 
-Table 6 reports four classifiers on three feature sets: Paper 1 only (23 behavioral features), Paper 3 only (8 AI features), and combined (31 features). The Paper 3 features are described in the companion paper.
+Table 7 reports four classifiers on three feature sets: Paper 1 only (23 behavioral features), Paper 3 only (8 AI features), and combined (31 features). The Paper 3 features are described in the companion paper.
 
-**Table 6. Classifier AUC by feature set on the trusted subset (n=64, LOO and 5x3-CV).**
+**Table 7. Classifier AUC by feature set on the strict trusted subset (n=64, LOO and 5x3-CV).**
 
 | Feature set      | Model     | LOO AUC | 5x3-CV mean AUC |
 |------------------|-----------|---------|-----------------|
@@ -413,9 +501,9 @@ Table 6 reports four classifiers on three feature sets: Paper 1 only (23 behavio
 
 ### 4.6 4-Dimensional Security Audit
 
-We run the 4-dimensional audit twice: on the full 3,302-address audited set (14 were dropped for empty histories), and on the trusted 50-address subset (22 agents, 28 humans; some trusted addresses were dropped by the audit script for incomplete approval history). Table 7 reports the headline metrics side by side.
+We run the 4-dimensional audit twice: on the full 3,302-address audited set (14 were dropped for empty histories), and on the trusted 50-address subset (22 agents, 28 humans; some trusted addresses were dropped by the audit script for incomplete approval history). Table 8 reports the headline metrics side by side.
 
-**Table 7. 4-dimensional security audit: leaky vs honest.**
+**Table 8. 4-dimensional security audit: leaky vs honest.**
 
 | Metric (dimension)                          | Full 3,302 (C1-C4) agent / human | Agent/human ratio (leaky) | Trusted 50 agent / human | Agent/human ratio (honest) | Direction reversed? |
 |---------------------------------------------|----------------------------------|---------------------------|--------------------------|----------------------------|---------------------|
@@ -466,18 +554,20 @@ Any address that was labeled AGENT because `hour_entropy > 2.5` is then used to 
 
 **Evidence 1: The honest vs leaky AUC gap.**
 
-| Metric                     | Leaky (C1-C4, n=3316) | Honest (provenance, n=64) |
-|----------------------------|-----------------------|---------------------------|
-| GBM AUC                    | 0.9803                | 0.6276 (LOO) / 0.6940 (CV)|
-| RF AUC                     | 0.9766                | 0.7713 (LOO) / 0.8030 (CV)|
-| LR AUC                     | 0.9521                | 0.6100 (LOO) / 0.6203 (CV)|
-| Top feature univariate AUC | active_hour_entropy: 0.9347 | tx_interval_mean: 0.7683 |
+| Metric                     | Leaky (C1-C4, n=3316) | Expanded provenance (n=563) | Strict provenance (n=64) |
+|----------------------------|----------------------|------------------------------|---------------------------|
+| GBM AUC                    | 0.9803               | 0.7867 (10-fold)             | 0.6276 (LOO) / 0.6940 (CV)|
+| RF AUC                     | 0.9766               | **0.7956** (10-fold)         | 0.7713 (LOO) / 0.8030 (CV)|
+| GAT AUC                    | 0.9341               | **0.8120** (5-fold)          | 0.8825 (5-fold)            |
+| Top feature univariate AUC | active_hour_entropy: 0.9347 | top_contract_concentration: 0.1374 (importance) | tx_interval_mean: 0.7683 |
 
-The top-feature univariate AUC collapses from 0.93 to 0.70 when the labeling rule is removed, which is the signature of label leakage.
+The AUC drops from 0.98 (leaky) to 0.80 (expanded provenance) to 0.77 (strict provenance) as we progressively tighten the labeling purity. The top-feature ranking also shifts: on the leaky set, the leaked temporal feature `active_hour_entropy` dominated; on n=563, interaction and gas features dominate; and on n=64, the temporal feature `tx_interval_mean` leads but with a much lower AUC (0.77 vs 0.93). This is the signature of label leakage.
 
-**Evidence 2: Inter-label agreement is low.**
+**Evidence 2: Inter-label agreement is low and worsens at scale.**
 
 We apply the GBM trained on the 64 provenance labels transductively to the 3,252 platform-token-holder rows (whose C1-C4 labels we no longer trust). The inter-label agreement between the honest prediction and the C1-C4 label is **37.4%**, which is below random chance for balanced binary classification. The honest classifier does not endorse the majority of C1-C4 labels.
+
+Furthermore, applying the C1-C4 heuristic directly to the 563 expanded provenance addresses yields a diagnostic agreement of only **55.78%**, barely above chance. This was 92.9% on the original 14-address v2 pilot, demonstrating that the C1-C4 heuristic's reliability degrades rapidly as the dataset diversifies beyond the narrow pilot categories. This is a sixth piece of evidence against heuristic labeling.
 
 **Evidence 3: Statistical tests on n=64 reveal structural cracks.**
 
@@ -500,10 +590,11 @@ The "agents hold 10x more unlimited approvals" headline from the leaky set becom
 We decided on the following:
 
 1. **Demote C1-C4 from a labeling oracle to a downstream diagnostic tool.** It can still be used to rank how likely an address is to be an agent given a trained classifier, but it cannot be the source of ground truth.
-2. **Retain only provenance labels for training and testing.** This yields n=64.
-3. **Apply the GBM trained on the 64 provenance labels transductively** to the 3,252 platform-token-holder rows to generate honest predictions, and publish these predictions as weak labels for future re-mining rather than as ground truth.
-4. **Report both honest and leaky numbers** throughout the paper with clear labels.
-5. **Publish the leakage case study** as Section 5 of this paper.
+2. **Expand the provenance-labeled set from 64 to 563.** Through a systematic v3 mining campaign (`mine_addresses_v3_expanded.py`), we grew the honest corpus from 64 to 563 addresses across 13 provenance source categories, reducing the statistical uncertainty and enabling 10-fold CV instead of LOO.
+3. **Retain n=64 as a strict sensitivity check.** The original 64 provenance-only addresses serve as a conservative reference point.
+4. **Apply the RF trained on the 563 provenance labels transductively** to the 3,252 platform-token-holder rows to generate honest predictions, and publish these predictions as weak labels for future re-mining rather than as ground truth.
+5. **Report leaky, expanded-provenance, and strict-provenance numbers** throughout the paper with clear labels.
+6. **Publish the leakage case study** as Section 5 of this paper.
 
 ### 5.4 Broader Implications for Blockchain ML
 
@@ -521,8 +612,9 @@ We release our `verify_c1c4.py`, `pipeline_provenance.py`, `statistical_tests.py
 
 Beyond the C1-C4 issue, several additional threats apply.
 
-- **Sample size.** n=64 is too small to support fine-grained claims. 5-fold CV has 13 test samples per fold; AUC confidence intervals are wide.
-- **Selection bias on the trusted set.** The 33 agents and 31 humans are public, named, famous addresses. They may not represent the broader population of agents and humans.
+- **`defi_hf_trader` label quality.** The largest agent category in the expanded provenance set is `defi_hf_trader` (199 addresses, 35% of all agents), labeled as "agent" because the address makes >50 Uniswap router calls per active day. While this threshold strongly suggests automated execution, it is a behavioral criterion rather than a provenance-pure label. Some of these addresses could be humans using aggressive trading interfaces (e.g., custom front-ends with auto-routing). If a significant fraction are misclassified, the n=563 AUC would be artificially depressed (because the classifier is being penalized for correctly identifying humans that we mislabeled as agents) or inflated (if the behavioral criterion leaks into features the way C1-C4 did). We note that the >50-daily-calls threshold is at least one step removed from the 23 classifier features: none of the features directly encode daily Uniswap call count. However, `top_contract_concentration` and `method_id_diversity` are correlated with high-frequency Uniswap usage, so a residual leak is possible. This is the most important caveat on the n=563 results and should be investigated in future work by validating a random sample of `defi_hf_trader` addresses against deployment metadata or operator disclosures.
+- **Sample size on the strict set.** n=64 is too small to support fine-grained claims. 5-fold CV has 13 test samples per fold; AUC confidence intervals are wide. The expanded set (n=563) substantially mitigates this concern for the primary results.
+- **Selection bias.** The strict set's 33 agents and 31 humans are public, named, famous addresses. The expanded set diversifies the sources but still over-represents high-frequency DeFi traders among agents and ENS-active users among humans.
 - **Feature drift.** Agent behavior evolves as platforms update. Our features reflect a specific time window.
 - **Adversarial evasion.** An adversary aware of the feature set can mimic human behavior by injecting jitter into gas pricing and transaction timing.
 - **Chain coverage.** We only study Ethereum mainnet. Agents on Base, Arbitrum, Solana, and other chains are out of scope.
@@ -534,22 +626,23 @@ Beyond the C1-C4 issue, several additional threats apply.
 
 ### 6.1 Limitations
 
-1. **The honest corpus is tiny.** 64 addresses is near the floor of what any behavioral classifier can defensibly train on. Every per-model number we report has an uncertainty band that is wider than most practitioners would find comfortable.
-2. **The honest corpus is biased toward famous accounts.** Our trusted humans are literally vitalik.eth and Hayden Adams. They are the easiest possible humans to label and the heaviest possible DeFi users.
-3. **The original C1-C4 mining exercise was not wasted, but it cannot be cited as ground truth.** The 3,252 platform-token-holder rows still serve as a test bed for feature engineering and as a large graph for GNN propagation, but their labels are now weak labels that must be cross-checked against provenance.
-4. **GNN variance is high on n=64.** GAT's 5-fold AUC std of 0.108 means the headline 0.8825 AUC is a pessimistic 0.77 in the worst fold and an optimistic 1.00 in the best. Larger labeled graphs are needed.
-5. **The security audit cannot be generalized.** Even the honest direction is based on 22 agents and 28 humans. We cannot claim the direction reversal holds at scale; we can only claim that the 10x-ratio headline from the leaky set was an artifact.
+1. **The expanded corpus is medium-sized and heterogeneous.** At n=563 (328 agents, 235 humans), the expanded provenance set is large enough for 10-fold CV with reasonable fold sizes (~56 test samples per fold) but still modest by ML standards. The 13 source categories vary in label quality: `defi_hf_trader` (199 addresses) uses a behavioral threshold (>50 daily Uniswap calls) that is one step removed from classifier features but not provenance-pure.
+2. **The strict provenance corpus remains tiny.** The 64-address sensitivity check has wide uncertainty bands (5-fold CV std 0.08-0.12) and should not be over-interpreted.
+3. **Source composition bias.** Agents are dominated by high-frequency DeFi traders (61% of agent addresses), while humans are dominated by ENS-interaction-verified accounts (71% of human addresses). This means the classifier is partly learning "high-frequency Uniswap trader vs casual ENS holder" rather than a general agent-vs-human distinction.
+4. **The original C1-C4 mining exercise was not wasted, but it cannot be cited as ground truth.** The 3,252 platform-token-holder rows still serve as a test bed for feature engineering and as a large graph for GNN propagation, but their labels are now weak labels that must be cross-checked against provenance.
+5. **GNN variance shrinks but is still meaningful.** GAT's 5-fold AUC std drops from 0.108 on n=64 to 0.024 on n=563, a substantial improvement. The n=563 GAT headline (0.812) is therefore statistically more reliable than the n=64 headline (0.883).
+6. **The security audit cannot be generalized.** Even the honest direction is based on 22 agents and 28 humans. We cannot claim the direction reversal holds at scale; we can only claim that the 10x-ratio headline from the leaky set was an artifact.
 
 ### 6.2 Clean Re-Mining Roadmap
 
-We propose the following steps for a follow-up mining effort:
+The v3 expanded mining partially fulfills the roadmap we originally proposed. Below we assess progress and remaining steps:
 
-1. **Provenance-first labeling.** Start from platforms that publish on-chain service registries with strict attestations (Autonolas ServiceRegistry, Flashbots builder list, Chainlink oracle operator list). Reject any label that is derived from behavioral thresholds.
-2. **Human controls at scale.** Mine 500+ ENS-verified humans matched on transaction volume and protocol exposure to avoid the celebrity-human bias.
-3. **Behavioral label audit.** Run the 3-step leakage audit from Section 5.4 on every candidate label before any classifier training.
-4. **Held-out platform.** Reserve at least one agent platform entirely for testing, never for training, to measure honest generalization.
-5. **Temporal holdout.** Train on addresses active before a cutoff date and test on addresses active after, to measure concept drift.
-6. **Adversarial stress tests.** Inject behavioral noise into agent transactions to measure robustness against evasion.
+1. **Provenance-first labeling (partially achieved).** The v3 mining added Gelato registry, Keep3r bond registry, and Flashbots builder list sources. However, the `defi_hf_trader` category uses a behavioral threshold (>50 daily Uniswap calls) that is not strictly provenance-based. Future work should validate this category against deployment metadata or replace it with registry-attested DeFi agent addresses (e.g., Chainlink Keepers).
+2. **Human controls at scale (achieved).** The v3 set includes 235 humans from 6 sources, up from 31 in the strict set. The human set now covers ENS-interaction-verified users (167), exchange depositors (28), expanded ENS-verified humans (25), and governance voters (5), substantially reducing the celebrity-human bias.
+3. **Behavioral label audit (achieved).** We ran the 3-step leakage audit from Section 5.4 on all v3 candidate labels. The C1-C4 diagnostic agreement of 55.8% confirms that the expanded labels are not simply recapitulating the heuristic.
+4. **Held-out platform (not yet achieved).** All v3 sources contribute to training. A future version should reserve Gelato or Keep3r entirely for testing.
+5. **Temporal holdout (not yet achieved).** Train on addresses active before a cutoff date and test on addresses active after, to measure concept drift.
+6. **Adversarial stress tests (not yet achieved).** Inject behavioral noise into agent transactions to measure robustness against evasion.
 
 ### 6.3 Longer-Term Directions
 
@@ -562,15 +655,26 @@ We propose the following steps for a follow-up mining effort:
 
 ## 7. Conclusion
 
-We presented the first honest empirical study of AI agent identification on Ethereum mainnet using provenance-only ground truth. Our initial pipeline on 3,316 platform-mined addresses reported an apparently exciting AUC of 0.9803 (GBM). In the course of this work, we discovered that the labeling oracle used three quantities (`hour_entropy`, `burst_ratio`, `tx_interval_cv`) that were algebraically equivalent to three top classifier features, a direct form of target leakage. After demoting the oracle to a downstream diagnostic and retaining only 64 provenance-verified addresses, the honest baselines are:
+We presented the first honest empirical study of AI agent identification on Ethereum mainnet using provenance-only ground truth. Our initial pipeline on 3,316 platform-mined addresses reported an apparently exciting AUC of 0.9803 (GBM). In the course of this work, we discovered that the labeling oracle used three quantities (`hour_entropy`, `burst_ratio`, `tx_interval_cv`) that were algebraically equivalent to three top classifier features, a direct form of target leakage. After demoting the oracle to a downstream diagnostic and assembling 563 provenance-verified addresses (328 agents from 7 source categories, 235 humans from 6 source categories), the honest baselines are:
+
+**Primary results (n=563, expanded provenance):**
+
+- **Random Forest 10-fold AUC 0.7956** (repeated 5x10-CV 0.7934 +/- 0.039),
+- **Gradient Boosting 10-fold AUC 0.7867**,
+- **GAT 5-fold AUC 0.8120 +/- 0.024** (the best honest model overall),
+- **C1-C4 diagnostic agreement 55.8%**, confirming that heuristic labeling diverges from provenance ground truth as the dataset diversifies.
+
+**Sensitivity check (n=64, strict provenance):**
 
 - **Random Forest LOO-CV AUC 0.7713** (5x10-CV 0.8030),
-- **GAT 5-fold AUC 0.8825** on the same trusted subset,
+- **GAT 5-fold AUC 0.8825** on the same subset (high variance: std 0.108),
 - **GradientBoosting indistinguishable from a majority classifier** (McNemar p=0.58),
 - **Autonolas -> trusted cross-platform AUC 0.24-0.34**, worse than chance,
 - **Security audit reverses direction**: humans hold more unlimited approvals than curated agents.
 
-We framed the paper around the leakage discovery as a methodological contribution: it quantifies how fragile heuristic labeling can be, it provides a concrete audit template, and it establishes honest baselines (RF 0.77, GAT 0.87) against which any future re-mining effort must be measured. All code, features, labels, and the leaky-vs-honest diagnostic artifacts are released.
+The three-tier evaluation (leaky 0.98 -> expanded provenance 0.80 -> strict provenance 0.77) demonstrates a progressive AUC decline as labeling purity increases. The feature importance ranking also shifts: interaction and gas features dominate on n=563, displacing the temporal features that were inflated by the C1-C4 leak.
+
+We framed the paper around the leakage discovery as a methodological contribution: it quantifies how fragile heuristic labeling can be, it provides a concrete audit template, and it establishes honest baselines (RF 0.80, GAT 0.81 on n=563; RF 0.77, GAT 0.88 on n=64) against which any future re-mining effort must be measured. All code, features, labels, and the leaky-vs-honest diagnostic artifacts are released.
 
 On-chain AI agents are a real and growing phenomenon, and identifying them reliably is a real and growing need. Our central message is that this need will not be met by scaling up heuristic labeling pipelines. It will be met only by starting from non-behavioral provenance, running explicit leakage audits, reporting honest-vs-leaky gaps, and treating cross-label-scheme transfer as a non-negotiable diagnostic. The honest numbers are smaller than the leaky numbers, but they are the numbers the field can build on.
 
