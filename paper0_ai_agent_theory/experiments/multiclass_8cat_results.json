@@ -1,0 +1,57 @@
+{
+  "n_classes": 8,
+  "n_samples": 2744,
+  "accuracy": 0.9224,
+  "accuracy_std": 0.008,
+  "f1_macro": 0.58,
+  "per_class": {
+    "SimpleTradingBot": {
+      "f1": 0.9545,
+      "precision": 0.9403,
+      "recall": 0.9692,
+      "n": 130
+    },
+    "MEVSearcher": {
+      "f1": 0.8246,
+      "precision": 0.7833,
+      "recall": 0.8704,
+      "n": 54
+    },
+    "DeFiManagementAgent": {
+      "f1": 0.9554,
+      "precision": 0.9244,
+      "recall": 0.9886,
+      "n": 1669
+    },
+    "LLMPoweredAgent": {
+      "f1": 0.4272,
+      "precision": 0.6875,
+      "recall": 0.3099,
+      "n": 71
+    },
+    "AutonomousDAOAgent": {
+      "f1": 0.1395,
+      "precision": 0.3333,
+      "recall": 0.0882,
+      "n": 34
+    },
+    "CrossChainBridgeAgent": {
+      "f1": 0.3134,
+      "precision": 0.5385,
+      "recall": 0.2211,
+      "n": 95
+    },
+    "DeterministicScript": {
+      "f1": 0.9814,
+      "precision": 0.9706,
+      "recall": 0.9925,
+      "n": 666
+    },
+    "RLTradingAgent": {
+      "f1": 0.069,
+      "precision": 0.25,
+      "recall": 0.04,
+      "n": 25
+    }
+  }
+}
