@@ -1,0 +1,57 @@
+{
+  "n_sybils": 467,
+  "per_feature": {
+    "hour_entropy": {
+      "llm_mean": 2.3602,
+      "llm_std": 0.0505,
+      "llm_min": 2.18,
+      "llm_max": 2.48
+    },
+    "behavioral_consistency": {
+      "llm_mean": 0.1765,
+      "llm_std": 0.0121,
+      "llm_min": 0.14,
+      "llm_max": 0.26
+    },
+    "response_latency_variance": {
+      "llm_mean": 5.1663,
+      "llm_std": 0.1887,
+      "llm_min": 4.72,
+      "llm_max": 5.73
+    },
+    "action_sequence_perplexity": {
+      "llm_mean": 1.8733,
+      "llm_std": 0.0298,
+      "llm_min": 1.82,
+      "llm_max": 2.09
+    },
+    "error_recovery_pattern": {
+      "llm_mean": 0.0399,
+      "llm_std": 0.0015,
+      "llm_min": 0.035,
+      "llm_max": 0.05
+    },
+    "gas_nonce_gap_regularity": {
+      "llm_mean": 0.8287,
+      "llm_std": 0.0065,
+      "llm_min": 0.81,
+      "llm_max": 0.86
+    },
+    "eip1559_tip_precision": {
+      "llm_mean": 0.4786,
+      "llm_std": 0.0086,
+      "llm_min": 0.44,
+      "llm_max": 0.52
+    },
+    "gas_price_precision": {
+      "llm_mean": 0.7104,
+      "llm_std": 0.0152,
+      "llm_min": 0.67,
+      "llm_max": 0.73
+    }
+  },
+  "pairwise_l2": {
+    "mean": 0.2257,
+    "std": 0.1679
+  }
+}
