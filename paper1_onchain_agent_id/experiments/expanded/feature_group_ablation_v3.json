@@ -1,0 +1,51 @@
+{
+  "temporal": {
+    "auc": 0.6229,
+    "std": 0.0558,
+    "n_features": 7
+  },
+  "gas": {
+    "auc": 0.7132,
+    "std": 0.0722,
+    "n_features": 6
+  },
+  "interaction": {
+    "auc": 0.7512,
+    "std": 0.0518,
+    "n_features": 5
+  },
+  "approval_security": {
+    "auc": 0.6564,
+    "std": 0.0821,
+    "n_features": 5
+  },
+  "all_23": {
+    "auc": 0.7941,
+    "std": 0.0604,
+    "n_features": 23
+  },
+  "without_temporal": {
+    "auc": 0.7993,
+    "std": 0.057,
+    "n_features": 16,
+    "delta": -0.0052
+  },
+  "without_gas": {
+    "auc": 0.7666,
+    "std": 0.0548,
+    "n_features": 17,
+    "delta": 0.0275
+  },
+  "without_interaction": {
+    "auc": 0.7476,
+    "std": 0.077,
+    "n_features": 18,
+    "delta": 0.0465
+  },
+  "without_approval_security": {
+    "auc": 0.7892,
+    "std": 0.064,
+    "n_features": 18,
+    "delta": 0.0049
+  }
+}

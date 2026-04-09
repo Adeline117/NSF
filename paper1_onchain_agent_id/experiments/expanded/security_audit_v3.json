@@ -1,0 +1,22 @@
+{
+  "n_agents": 317,
+  "n_humans": 232,
+  "metrics": {
+    "n_unlimited_approvals": {
+      "agent_mean": 97.2397,
+      "human_mean": 99.7759
+    },
+    "unlimited_approval_rate": {
+      "agent_mean": 0.5335,
+      "human_mean": 0.4393
+    },
+    "dex_interaction_rate": {
+      "agent_mean": 0.2923,
+      "human_mean": 0.1493
+    },
+    "revert_rate": {
+      "agent_mean": 0.0409,
+      "human_mean": 0.0422
+    }
+  }
+}
