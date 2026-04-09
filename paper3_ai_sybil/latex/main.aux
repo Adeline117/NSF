@@ -1,0 +1,75 @@
+\relax 
+\citation{hascidb2026}
+\@writefile{toc}{\contentsline {section}{\numberline {I}When the Attacker Is an LLM: Measuring AI-Agent Sybil Evasion Against Consensus-Driven Airdrop Detection}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {II}Abstract}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}1. Introduction}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}1.1 Motivation}{1}{}\protected@file@percent }
+\citation{wen2026agent}
+\citation{hascidb2026}
+\citation{hascidb2026}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}1.2 Attacker Model}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}1.3 Research Questions}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}1.4 Contributions}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}2. Background and Related Work}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}2.1 HasciDB: The Baseline Detector Under Attack}{2}{}\protected@file@percent }
+\citation{goodfellow2014}
+\citation{madry2018}
+\citation{tramer2020}
+\citation{carlini2017}
+\citation{apruzzese2023}
+\citation{pierazzi2020}
+\citation{trustalabs}
+\citation{arbitrum}
+\citation{wen2026preairdrop}
+\citation{artemis}
+\citation{heiding2024}
+\citation{llmhunter}
+\citation{heiding2024}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}2.2 Adversarial Machine Learning for Security}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}2.3 Sybil Detection in Airdrops}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}2.4 LLM as Adversary in Security}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}3. Methodology}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}3.1 HasciDB Indicator Definitions}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}3.2 AI-Feature Extraction from Real Paper 1 Data}{3}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces  Paper 1 AI-specific features on real data ($n{=}3316$: 2590 agents + 726 humans). All 8 features reach $p<0.01$.}}{4}{}\protected@file@percent }
+\newlabel{tab:ai_features}{{I}{4}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}3.3 LLM-Based Sybil Generator}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}3.4 Cross-Axis Evaluation Framework}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}4. Experiments}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}4.1 Baseline Statistics Across 16 Projects}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces  Per-project HasciDB statistics (25k per-project stratified sample). \textbf  {Totals}: 386,067 eligible, 125,157 Sybils, 32.4\% overall.}}{4}{}\protected@file@percent }
+\newlabel{tab:baseline}{{II}{4}{}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}4.2 Cross-Axis LOPO: Honest Baseline Performance}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces  Cross-axis LOPO AUC (mean over 16 LOPO folds). The features are disjoint from the target, so AUC $>0.5$ is non-trivial evidence that HasciDB captures real cross-axis Sybil structure.}}{5}{}\protected@file@percent }
+\newlabel{tab:crossaxis}{{III}{5}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}4.3 Independent-Label Cross-Method Transfer (HasciDB $\to $ Gitcoin FDD)}{5}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces  HasciDB-trained detectors predicting the independent Gitcoin FDD Sybil label.}}{5}{}\protected@file@percent }
+\newlabel{tab:fdd}{{IV}{5}{}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}4.4 AI Sybil Evasion vs Three Detector Tiers}{5}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces  Evasion rates against three detector tiers. 5,000 adversarial wallets per level were generated via the rule-templated ai\_sybil\_generator; 6 were produced by the claude\_agent\_sdk LLM (Claude Opus 4.6) pilot at advanced level.}}{5}{}\protected@file@percent }
+\newlabel{tab:evasion}{{V}{5}{}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}4.5 Enhanced Detector with AI Features --- After Leakage Fix}{5}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces  Enhanced detector with and without label leakage in \texttt  {augment\_with\_ai\_features}. The 4-project subset was used to validate the fix without a 90-minute 16-project rerun; qualitatively identical results are expected on all 16.}}{6}{}\protected@file@percent }
+\newlabel{tab:leakfix}{{VI}{6}{}{table.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-F}}4.6 AI-Feature Ablation: The Honest Binary Task}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-G}}4.7 Pre-Airdrop LightGBM Baseline}{6}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces  AI-feature ablation on the honest binary task (LLM Sybil vs real HasciDB wallet, blur\_s2). Top-$N$ uses Cohen's $d$ from Table \ref {tab:ai_features}.}}{6}{}\protected@file@percent }
+\newlabel{tab:ablation}{{VII}{6}{}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces  Pre-airdrop LightGBM (features = BT,BW,HF,RF,MA,n\_indicators). The within-fold/cross-project AUC of 1.0 is an artefact of the circular \texttt  {is\_sybil} label. Under adversarial wallets, the detector collapses completely.}}{6}{}\protected@file@percent }
+\newlabel{tab:preairdrop}{{VIII}{6}{}{table.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-H}}4.8 LLM-Generated Sybils vs Rule-Templated Sybils}{6}{}\protected@file@percent }
+\citation{kaufman2012leakage}
+\citation{pierazzi2020}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}5. Threats to Validity: The \texttt  {augment\_with\_ai\_features} Leakage Post-Mortem}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}6. Discussion}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-A}}6.1 Implication 1: Synthetic Feature Augmentation Is Not a Viable Defense Without Real Adversarial Exemplars}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-B}}6.2 What Signal Actually Survives}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-C}}6.3 The Cross-Axis Floor}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-D}}6.4 Implications for Airdrop Designers}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-E}}6.5 Implications for Adversarial ML}{7}{}\protected@file@percent }
+\bibstyle{ACM-Reference-Format}
+\bibdata{main}
+\@writefile{toc}{\contentsline {section}{\numberline {IX}7. Limitations and Future Work}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {X}8. Conclusion}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {XI}References (BibTeX)}{8}{}\protected@file@percent }
+\gdef \@abspage@last{8}

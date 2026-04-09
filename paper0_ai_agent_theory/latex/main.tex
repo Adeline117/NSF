@@ -3,27 +3,29 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{xcolor}
+\usepackage{textcomp}
 
 \begin{document}
 \title{Understanding the On-Chain AI Agent: A Four-Condition Definition and Eight-Category Taxonomy Validated on 2,590 Ethereum Addresses}
 \author{NSF Project Team}
-\affiliation{\institution{University}}
-\maketitle
+\affiliation{\institution{University}\country{USA}}
 
 \begin{abstract}
-AI agents manage billions of dollars on decentralized-finance (DeFi) rails, yet "AI agent" still lacks a definition that maps to chain-observable behavior. Existing definitions either over-count (Russell and Norvig's perceive-and-act admits thermometers) or under-operationalize (Wooldridge and Jennings's four attributes cannot be checked against transaction data). We propose a four-condition definition — on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4) — and an eight-category taxonomy spanning deterministic scripts through collaborative DAO agents. We validate both on 2,590 agent addresses mined from the Autonolas, Fetch.ai, AI Arena, and Flashbots-searcher ecosystems using three complementary methods: a transparent rule-based taxonomy projection, a K-Means cluster sweep for k in [3, 15], and a five-class gradient-boosting classifier. Five of eight categories populate the current dataset (DeFi Management Agent 64.4\%, Deterministic Script 25.7\%, Simple Trading Bot 5.0\%, LLM-Powered Agent 2.7\%, MEV Searcher 2.1\%). The multi-class classifier reaches 97.4\% accuracy and macro-F1 0.87 with four of five classes above F1 0.85. Two non-obvious findings emerge: behavioral silhouette is maximized at k=3, not k=8, so the semantic taxonomy is behaviorally over-split at the 23-feature level; and the LLM-Powered Agent class is the empirical weak spot at F1=0.528, confused 60\% of the time with DeFi Management Agent. We discuss implications for HCI, governance, and the design of the feature sets that downstream agent identification, security, and Sybil-detection studies should share.
+AI agents manage billions of dollars on decentralized-finance (DeFi) rails, yet "AI agent" still lacks a definition that maps to chain-observable behavior. Existing definitions either over-count (Russell and Norvig's perceive-and-act admits thermometers) or under-operationalize (Wooldridge and Jennings's four attributes cannot be checked against transaction data). We propose a four-condition definition --- on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4) --- and an eight-category taxonomy spanning deterministic scripts through collaborative DAO agents. We validate both on 2,590 agent addresses mined from the Autonolas, Fetch.ai, AI Arena, and Flashbots-searcher ecosystems using three complementary methods: a transparent rule-based taxonomy projection, a K-Means cluster sweep for k in [3, 15], and a five-class gradient-boosting classifier. Five of eight categories populate the current dataset (DeFi Management Agent 64.4\%, Deterministic Script 25.7\%, Simple Trading Bot 5.0\%, LLM-Powered Agent 2.7\%, MEV Searcher 2.1\%). The multi-class classifier reaches 97.4\% accuracy and macro-F1 0.87 with four of five classes above F1 0.85. Two non-obvious findings emerge: behavioral silhouette is maximized at k=3, not k=8, so the semantic taxonomy is behaviorally over-split at the 23-feature level; and the LLM-Powered Agent class is the empirical weak spot at F1=0.528, confused 60\% of the time with DeFi Management Agent. We discuss implications for HCI, governance, and the design of the feature sets that downstream agent identification, security, and Sybil-detection studies should share.
 \end{abstract}
 
 \keywords{AI agents; Web3; decentralized finance; agent definition; behavioral taxonomy; on-chain analytics; cluster validation; multi-class classification.}
 
+\maketitle
+
 \section{Understanding the On-Chain AI Agent: A Four-Condition Definition and Eight-Category Taxonomy Validated on 2,590 Ethereum Addresses}
 
-\textbf{Paper 0 — CHI 2026 Submission}
+\textbf{Paper 0 --- CHI 2026 Submission}
 
 
 \section{Abstract}
 
-AI agents manage billions of dollars on decentralized-finance (DeFi) rails, yet "AI agent" still lacks a definition that maps to chain-observable behavior. Existing definitions either over-count (Russell and Norvig's perceive-and-act admits thermometers) or under-operationalize (Wooldridge and Jennings's four attributes cannot be checked against transaction data). We propose a four-condition definition — on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4) — and an eight-category taxonomy spanning deterministic scripts through collaborative DAO agents. We validate both on 2,590 agent addresses mined from the Autonolas, Fetch.ai, AI Arena, and Flashbots-searcher ecosystems using three complementary methods: a transparent rule-based taxonomy projection, a K-Means cluster sweep for k in [3, 15], and a five-class gradient-boosting classifier. Five of eight categories populate the current dataset (DeFi Management Agent 64.4\%, Deterministic Script 25.7\%, Simple Trading Bot 5.0\%, LLM-Powered Agent 2.7\%, MEV Searcher 2.1\%). The multi-class classifier reaches 97.4\% accuracy and macro-F1 0.87 with four of five classes above F1 0.85. Two non-obvious findings emerge: behavioral silhouette is maximized at k=3, not k=8, so the semantic taxonomy is behaviorally over-split at the 23-feature level; and the LLM-Powered Agent class is the empirical weak spot at F1=0.528, confused 60\% of the time with DeFi Management Agent. We discuss implications for HCI, governance, and the design of the feature sets that downstream agent identification, security, and Sybil-detection studies should share.
+AI agents manage billions of dollars on decentralized-finance (DeFi) rails, yet "AI agent" still lacks a definition that maps to chain-observable behavior. Existing definitions either over-count (Russell and Norvig's perceive-and-act admits thermometers) or under-operationalize (Wooldridge and Jennings's four attributes cannot be checked against transaction data). We propose a four-condition definition --- on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4) --- and an eight-category taxonomy spanning deterministic scripts through collaborative DAO agents. We validate both on 2,590 agent addresses mined from the Autonolas, Fetch.ai, AI Arena, and Flashbots-searcher ecosystems using three complementary methods: a transparent rule-based taxonomy projection, a K-Means cluster sweep for k in [3, 15], and a five-class gradient-boosting classifier. Five of eight categories populate the current dataset (DeFi Management Agent 64.4\%, Deterministic Script 25.7\%, Simple Trading Bot 5.0\%, LLM-Powered Agent 2.7\%, MEV Searcher 2.1\%). The multi-class classifier reaches 97.4\% accuracy and macro-F1 0.87 with four of five classes above F1 0.85. Two non-obvious findings emerge: behavioral silhouette is maximized at k=3, not k=8, so the semantic taxonomy is behaviorally over-split at the 23-feature level; and the LLM-Powered Agent class is the empirical weak spot at F1=0.528, confused 60\% of the time with DeFi Management Agent. We discuss implications for HCI, governance, and the design of the feature sets that downstream agent identification, security, and Sybil-detection studies should share.
 
 \textbf{Keywords:} AI agents; Web3; decentralized finance; agent definition; behavioral taxonomy; on-chain analytics; cluster validation; multi-class classification.
 
@@ -40,17 +42,17 @@ This paper proposes the first definition of "on-chain AI agent" that is simultan
 
 \textbf{RQ1.} What formal conditions distinguish an AI agent from a bot, a script, or a human user operating through software, \textit{when the only observation channel is the blockchain itself}?
 
-\textbf{RQ2.} Does a semantically motivated eight-category taxonomy of on-chain agents survive contact with real on-chain data — are all eight categories distinguishable from 23 behavioral features?
+\textbf{RQ2.} Does a semantically motivated eight-category taxonomy of on-chain agents survive contact with real on-chain data --- are all eight categories distinguishable from 23 behavioral features?
 
 Our contributions are:
 
 1. \textbf{A four-condition definition (C1-C4).} On-chain actuation, environmental perception, autonomous decision-making, and adaptiveness are proposed as \textit{necessary and jointly sufficient} for on-chain AI agency. Each condition is justified by a counterexample-based non-redundancy argument (Section 3) and mapped to an operationalization in transaction-level features.
 
-2. \textbf{An eight-category taxonomy.} Agents are classified along three orthogonal dimensions — autonomy level (5 ranks), environment type (4 types), decision model (5 types) — yielding eight disjoint categories that cover both agents (5 classes) and non-agent baselines (2 classes) plus one boundary class (cross-chain bridges).
+2. \textbf{An eight-category taxonomy.} Agents are classified along three orthogonal dimensions --- autonomy level (5 ranks), environment type (4 types), decision model (5 types) --- yielding eight disjoint categories that cover both agents (5 classes) and non-agent baselines (2 classes) plus one boundary class (cross-chain bridges).
 
 3. \textbf{Three-method empirical validation on 2,590 Ethereum addresses.} A rule-based taxonomy projection, a K-Means cluster sweep, and a multi-class supervised classifier jointly stress-test the taxonomy. Five of eight categories populate the dataset. The multi-class classifier achieves 97.4\% accuracy and macro-F1 0.87.
 
-4. \textbf{Two honest findings about where the taxonomy breaks.} (a) The behavioral silhouette is maximized at k=3, not k=8, so the eight categories are semantically coherent but \textit{behaviorally over-split} at the current 23-feature level. (b) The LLM-Powered Agent class achieves F1 only 0.528 — the empirical weak spot — because its on-chain footprint overlaps heavily with DeFi Management Agent. We argue this is a \textit{measurement} problem (new features are needed, e.g. the eight AI features from Paper 3), not a \textit{taxonomic} problem.
+4. \textbf{Two honest findings about where the taxonomy breaks.} (a) The behavioral silhouette is maximized at k=3, not k=8, so the eight categories are semantically coherent but \textit{behaviorally over-split} at the current 23-feature level. (b) The LLM-Powered Agent class achieves F1 only 0.528 --- the empirical weak spot --- because its on-chain footprint overlaps heavily with DeFi Management Agent. We argue this is a \textit{measurement} problem (new features are needed, e.g. the eight AI features from Paper 3), not a \textit{taxonomic} problem.
 
 5. \textbf{Transparent threats to validity.} The taxonomy projection rules reuse eight of the 23 features, creating a known partial circularity that inflates the classifier's apparent accuracy. We quantify this risk and discuss its implications for downstream use.
 
@@ -70,25 +72,25 @@ Four strands of prior work inform our framing: classical AI-agent definitions, H
 \toprule
 Work & Year & Discipline & C1 & C2 & C3 & C4 & Web3 applicable? \\
 \midrule
-Russell \& Norvig [2020] & 2020 & AI textbook & — & ✓ & partial & — & too broad (thermometers qualify) \\
-Wooldridge \& Jennings [1995] & 1995 & Multi-agent systems & — & ✓ & ✓ & ✓ & no actuation spec \\
-Franklin \& Graesser [1996] & 1996 & Taxonomy & — & ✓ & ✓ & ✓ & property enumeration, not necessity \\
-Maes [1995] & 1995 & Artificial life & — & ✓ & ✓ & ✓ & no persistence criterion \\
-Shoham [1993] & 1993 & Agent programming & — & — & ✓ & — & requires BDI layer \\
-Dennett [1987] & 1987 & Philosophy & — & ✓ & ✓ & — & observer-dependent \\
-Park et al. [2023] & 2023 & NLP / HCI & — & ✓ & ✓ & ✓ & text simulacra, not Web3 \\
-Chan et al. [2023] & 2023 & AI safety & — & ✓ & ✓ & — & counterfactual influence \\
-Shavit et al. [2023] & 2023 & Governance & — & ✓ & ✓ & — & no actuation spec \\
-Autonolas whitepaper [2022] & 2022 & Web3 engineering & ✓ & ✓ & ✓ & ✓ & native \\
-Eliza / AI16Z docs [2024] & 2024 & Web3 engineering & ✓ & ✓ & ✓ & ✓ & native \\
-\textbf{This paper (C1-C4)} & 2026 & Web3 systems & ✓ & ✓ & ✓ & ✓ & native \\
+Russell \& Norvig [2020] & 2020 & AI textbook & --- & $\checkmark$ & partial & --- & too broad (thermometers qualify) \\
+Wooldridge \& Jennings [1995] & 1995 & Multi-agent systems & --- & $\checkmark$ & $\checkmark$ & $\checkmark$ & no actuation spec \\
+Franklin \& Graesser [1996] & 1996 & Taxonomy & --- & $\checkmark$ & $\checkmark$ & $\checkmark$ & property enumeration, not necessity \\
+Maes [1995] & 1995 & Artificial life & --- & $\checkmark$ & $\checkmark$ & $\checkmark$ & no persistence criterion \\
+Shoham [1993] & 1993 & Agent programming & --- & --- & $\checkmark$ & --- & requires BDI layer \\
+Dennett [1987] & 1987 & Philosophy & --- & $\checkmark$ & $\checkmark$ & --- & observer-dependent \\
+Park et al. [2023] & 2023 & NLP / HCI & --- & $\checkmark$ & $\checkmark$ & $\checkmark$ & text simulacra, not Web3 \\
+Chan et al. [2023] & 2023 & AI safety & --- & $\checkmark$ & $\checkmark$ & --- & counterfactual influence \\
+Shavit et al. [2023] & 2023 & Governance & --- & $\checkmark$ & $\checkmark$ & --- & no actuation spec \\
+Autonolas whitepaper [2022] & 2022 & Web3 engineering & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & native \\
+Eliza / AI16Z docs [2024] & 2024 & Web3 engineering & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & native \\
+\textbf{This paper (C1-C4)} & 2026 & Web3 systems & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & native \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{2.1 Classical AI-agent definitions}
 
-Russell and Norvig [2020] define an agent as "anything that can be viewed as perceiving its environment through sensors and acting upon that environment through actuators." This is the weakest possible framing — a thermostat satisfies it. Their book refines the notion via architectural tiers (simple reflex, model-based, goal-based, utility-based, learning), tiers that inspired our autonomy dimension. Wooldridge and Jennings [1995] advance four attributes for \textit{intelligent} agents: autonomy, social ability, reactivity, and pro-activeness. We retain autonomy (C3), reactivity (C2), and pro-activeness (~C4) but drop social ability, because a lone MEV bot is uncontroversially an agent. Franklin and Graesser [1996] enumerate candidate properties (reactive, autonomous, goal-oriented, temporally continuous, communicative, learning, mobile, flexible, character) without committing to necessity; our C1-C4 are a specific minimal necessary subset. Maes [1995] argues for \textit{behavioral} definition — agents should be identified by observable behavior, not architecture. This philosophical stance is the foundation of our operationalization in Section 3.3.
+Russell and Norvig [2020] define an agent as "anything that can be viewed as perceiving its environment through sensors and acting upon that environment through actuators." This is the weakest possible framing --- a thermostat satisfies it. Their book refines the notion via architectural tiers (simple reflex, model-based, goal-based, utility-based, learning), tiers that inspired our autonomy dimension. Wooldridge and Jennings [1995] advance four attributes for \textit{intelligent} agents: autonomy, social ability, reactivity, and pro-activeness. We retain autonomy (C3), reactivity (C2), and pro-activeness (~C4) but drop social ability, because a lone MEV bot is uncontroversially an agent. Franklin and Graesser [1996] enumerate candidate properties (reactive, autonomous, goal-oriented, temporally continuous, communicative, learning, mobile, flexible, character) without committing to necessity; our C1-C4 are a specific minimal necessary subset. Maes [1995] argues for \textit{behavioral} definition --- agents should be identified by observable behavior, not architecture. This philosophical stance is the foundation of our operationalization in Section 3.3.
 
 \subsection{2.2 HCI automation-level work}
 
@@ -96,7 +98,7 @@ Shneiderman [2022] argues against framing full autonomy as the design goal, prop
 
 \subsection{2.3 Blockchain bot and MEV empirics}
 
-Daian et al. [2020] are the canonical reference for the measurement of on-chain automated agents. Their "Flash Boys 2.0" paper quantifies priority-gas auctions, front-running, and sandwich attacks, and establishes that a substantial fraction of DEX volume is driven by automated programs. Qin, Zhou, and Gervais [2022] extend this to quantify extractable value across DeFi protocols. Torres et al. [2021] contribute a USENIX Security empirical study that itemizes the behavioral fingerprints of front-runners (gas-price sequences, timing relative to target transactions). All three works treat automation as a single undifferentiated category — "bots" — and do not distinguish between what we will call Deterministic Scripts, Simple Trading Bots, MEV Searchers, and DeFi Management Agents. Our taxonomy provides the missing granularity.
+Daian et al. [2020] are the canonical reference for the measurement of on-chain automated agents. Their "Flash Boys 2.0" paper quantifies priority-gas auctions, front-running, and sandwich attacks, and establishes that a substantial fraction of DEX volume is driven by automated programs. Qin, Zhou, and Gervais [2022] extend this to quantify extractable value across DeFi protocols. Torres et al. [2021] contribute a USENIX Security empirical study that itemizes the behavioral fingerprints of front-runners (gas-price sequences, timing relative to target transactions). All three works treat automation as a single undifferentiated category --- "bots" --- and do not distinguish between what we will call Deterministic Scripts, Simple Trading Bots, MEV Searchers, and DeFi Management Agents. Our taxonomy provides the missing granularity.
 
 \subsection{2.4 On-chain AI-agent platforms}
 
@@ -122,30 +124,30 @@ This section presents a formal statement of the four-condition definition, justi
 \textbf{Definition (On-chain AI agent).} Let $E$ be a software entity and let $B$ be the sequence of blockchain events associated with $E$ over a time window $[t_0, t_1]$. Then $E$ is an on-chain AI agent iff it satisfies all four conditions:
 
 $$
-\mathrm{Agent}(E) \iff C_1(E) \land C_2(E) \land C_3(E) \land C_4(E).
+\mathrm{Agent}(E) \iff C\_1(E) \land C\_2(E) \land C\_3(E) \land C\_4(E).
 $$
 
-\textbf{C1 — On-chain actuation.}
+\textbf{C1 --- On-chain actuation.}
 $$
-C_1(E) \iff \mathrm{Control}(E, \alpha) \text{ where } \alpha \text{ is an EOA and } \exists\,\mathrm{tx} \in B : \mathrm{tx.from} = \alpha.
+C\_1(E) \iff \mathrm{Control}(E, \alpha) \text{ where } \alpha \text{ is an EOA and } \exists\,\mathrm{tx} \in B : \mathrm{tx.from} = \alpha.
 $$
 $E$ directly or indirectly controls an externally-owned account $\alpha$, and $\alpha$ initiates at least one transaction in the observation window.
 
-\textbf{C2 — Environmental perception.}
+\textbf{C2 --- Environmental perception.}
 $$
-C_2(E) \iff I(\mathrm{state}_t ;\, \mathrm{action}_{t+1}) > 0,
+C\_2(E) \iff I(\mathrm{state}\_t ;\, \mathrm{action}\_{t+1}) > 0,
 $$
 where $I$ is the mutual information between the chain state at time $t$ (and any off-chain signals observable by $E$) and the parameters of the next transaction.
 
-\textbf{C3 — Autonomous decision-making.}
+\textbf{C3 --- Autonomous decision-making.}
 $$
-C_3(E) \iff H(\mathrm{action} \mid \mathrm{environment}) > 0 \;\land\; \lnot\,\mathrm{human\text{-}gated}(E).
+C\_3(E) \iff H(\mathrm{action} \mid \mathrm{environment}) > 0 \;\land\; \lnot\,\mathrm{human\text{-}gated}(E).
 $$
 The conditional entropy of actions given environment is positive (there is genuine non-determinism) \textit{and} each individual transaction is not preceded by a per-transaction human approval signal.
 
-\textbf{C4 — Adaptiveness.}
+\textbf{C4 --- Adaptiveness.}
 $$
-C_4(E) \iff \exists\,\text{window } w :\; \mathrm{KS\text{-}dist}\!\left(\mathrm{params}_{t \leq w},\, \mathrm{params}_{t > w}\right) > \delta.
+C\_4(E) \iff \exists\,\text{window } w :\; \mathrm{KS\text{-}dist}\!\left(\mathrm{params}\_{t \leq w},\, \mathrm{params}\_{t > w}\right) > \delta.
 $$
 Some behavioral-parameter distribution drifts by more than a Kolmogorov-Smirnov threshold between an early and a late sub-window.
 
@@ -153,25 +155,25 @@ Some behavioral-parameter distribution drifts by more than a Kolmogorov-Smirnov 
 
 Each $C_i$ excludes a class of entities that satisfy the other three. We present one counterexample per condition.
 
-\textbf{$C_1$ is non-redundant — smart contracts.} A Uniswap V3 pool reacts to calldata ($C_2$), its output curve is non-trivial for varied inputs ($C_3$-like), and its fee tier can evolve via governance ($C_4$). But it cannot initiate transactions — it is only callable. Removing $C_1$ would admit every non-trivial contract as an agent.
+\textbf{$C_1$ is non-redundant --- smart contracts.} A Uniswap V3 pool reacts to calldata ($C_2$), its output curve is non-trivial for varied inputs ($C_3$-like), and its fee tier can evolve via governance ($C_4$). But it cannot initiate transactions --- it is only callable. Removing $C_1$ would admit every non-trivial contract as an agent.
 
-\textbf{$C_2$ is non-redundant — blind relayers.} An entity that signs pre-computed transaction batches and submits them on a fixed schedule without reading chain state satisfies $C_1$ (EOA), and its inter-transaction interval has positive variance due to mempool latency ($\sim C_3$), and its batch sizes drift due to external queue dynamics ($\sim C_4$). But its transaction parameters are not conditioned on chain state; $C_2$ would be violated by construction. Removing $C_2$ would admit every scheduled relayer.
+\textbf{$C_2$ is non-redundant --- blind relayers.} An entity that signs pre-computed transaction batches and submits them on a fixed schedule without reading chain state satisfies $C_1$ (EOA), and its inter-transaction interval has positive variance due to mempool latency ($\sim C_3$), and its batch sizes drift due to external queue dynamics ($\sim C_4$). But its transaction parameters are not conditioned on chain state; $C_2$ would be violated by construction. Removing $C_2$ would admit every scheduled relayer.
 
-\textbf{$C_3$ is non-redundant — deterministic DCA bots.} A grid / DCA trading bot has an EOA ($C_1$), reads price before each trade ($C_2$), and may have its grid width parameter-tuned by its owner ($C_4$). But given the same price it always executes the same trade — conditional entropy is zero. Removing $C_3$ would admit every DCA bot.
+\textbf{$C_3$ is non-redundant --- deterministic DCA bots.} A grid / DCA trading bot has an EOA ($C_1$), reads price before each trade ($C_2$), and may have its grid width parameter-tuned by its owner ($C_4$). But given the same price it always executes the same trade --- conditional entropy is zero. Removing $C_3$ would admit every DCA bot.
 
-\textbf{$C_4$ is non-redundant — frozen MEV sandwich bots.} A bot that runs exactly the same sandwich logic from deployment to deprecation has an EOA ($C_1$), observes the mempool ($C_2$), and is non-deterministic in which mempool target it chooses ($C_3$). But its sandwich parameters (slippage, gas strategy, target selection) never change. Removing $C_4$ would admit frozen-strategy bots, losing a key property of \textit{intelligent} agency: the ability to learn from experience.
+\textbf{$C_4$ is non-redundant --- frozen MEV sandwich bots.} A bot that runs exactly the same sandwich logic from deployment to deprecation has an EOA ($C_1$), observes the mempool ($C_2$), and is non-deterministic in which mempool target it chooses ($C_3$). But its sandwich parameters (slippage, gas strategy, target selection) never change. Removing $C_4$ would admit frozen-strategy bots, losing a key property of \textit{intelligent} agency: the ability to learn from experience.
 
 \subsection{3.3 Operationalization on transaction-level features}
 
-The four conditions are latent — we cannot inspect the source code or the internal decision graph of an entity from its blockchain footprint alone. We propose the following observable proxies, which form the theoretical grounding for the 23-feature set shared with Paper 1:
+The four conditions are latent --- we cannot inspect the source code or the internal decision graph of an entity from its blockchain footprint alone. We propose the following observable proxies, which form the theoretical grounding for the 23-feature set shared with Paper 1:
 
-- \textbf{C1 is observable from:} \texttt{eth_getCode(address) == "0x"} (the address is an EOA, not a contract) and the existence of at least one transaction with \texttt{from == address}.
+- \textbf{C1 is observable from:} \texttt{eth\_getCode(address) == "0x"} (the address is an EOA, not a contract) and the existence of at least one transaction with \texttt{from == address}.
 
 - \textbf{C2 is observable from:} calldata entropy > 0 (diverse method calls indicate reaction to environment), short latency between on-chain events and subsequent transactions relative to a fixed schedule, and positive correlation between transaction timing and on-chain event timing.
 
-- \textbf{C3 is observable from:} \texttt{tx_interval_cv} above a threshold (non-deterministic timing), \texttt{active_hour_entropy > 2.5} or \texttt{burst_ratio > 0.05} (non-circadian or humanly-impossible burst patterns).
+- \textbf{C3 is observable from:} \texttt{tx\_interval\_cv} above a threshold (non-deterministic timing), \texttt{active\_hour\_entropy > 2.5} or \texttt{burst\_ratio > 0.05} (non-circadian or humanly-impossible burst patterns).
 
-- \textbf{C4 is observable from:} \texttt{gas_strategy_drift > 0.15} between early and late sub-windows, Jaccard change of the target-contract set above a threshold, and detectable strategy switch points via changepoint analysis.
+- \textbf{C4 is observable from:} \texttt{gas\_strategy\_drift > 0.15} between early and late sub-windows, Jaccard change of the target-contract set above a threshold, and detectable strategy switch points via changepoint analysis.
 
 Table 2 summarizes the observability of each condition.
 
@@ -184,7 +186,7 @@ Table 2 summarizes the observability of each condition.
 \toprule
 Condition & Robustness & Primary proxy & False-positive sources \\
 \midrule
-$C_1$ & high & \texttt{eth_getCode}, outgoing tx count & multisig-controlled contracts \\
+$C_1$ & high & \texttt{eth\_getCode}, outgoing tx count & multisig-controlled contracts \\
 $C_2$ & medium & calldata entropy, event-driven latency & pre-computed batched txs \\
 $C_3$ & low & tx-interval CV, hour entropy, burst ratio & heavy human DeFi users \\
 $C_4$ & low & distributional drift, KS-distance & external market regime shifts \\
@@ -192,7 +194,7 @@ $C_4$ & low & distributional drift, KS-distance & external market regime shifts 
 \end{tabular}
 \end{table}
 
-\textbf{A critical caveat on label leakage.} If the $C_3$ proxies (\texttt{tx_interval_cv}, \texttt{active_hour_entropy}, \texttt{burst_ratio}) are used both as \textit{labeling gates} (to decide which addresses are agents) and as \textit{classifier features} (to learn an agent-vs-human separator), the classifier exhibits direct target leakage. The formal definition above is independent of this: $C_3$ requires the \textit{concept} of non-determinism and non-human-gating. For downstream use in Paper 1, labels are derived from external provenance (platform registry membership, Flashbots searcher list, ENS) and the 23 features are used only to test how well the concept is \textit{recoverable} from behavior, not to define the label.
+\textbf{A critical caveat on label leakage.} If the $C_3$ proxies (\texttt{tx\_interval\_cv}, \texttt{active\_hour\_entropy}, \texttt{burst\_ratio}) are used both as \textit{labeling gates} (to decide which addresses are agents) and as \textit{classifier features} (to learn an agent-vs-human separator), the classifier exhibits direct target leakage. The formal definition above is independent of this: $C_3$ requires the \textit{concept} of non-determinism and non-human-gating. For downstream use in Paper 1, labels are derived from external provenance (platform registry membership, Flashbots searcher list, ENS) and the 23 features are used only to test how well the concept is \textit{recoverable} from behavior, not to define the label.
 
 \subsection{3.4 Boundary cases}
 
@@ -213,7 +215,7 @@ We now project the C1-C4 definition onto a taxonomy with finer semantic granular
 
 \subsection{4.1 Validation strategy and dataset}
 
-The dataset is the 2,590 agent addresses from Paper 1's expanded mining (\texttt{features_expanded.parquet}), which spans Autonolas, Fetch.ai, AI Arena, and curated MEV-searcher lists. We exclude 726 human-labeled addresses from the projection to keep the focus on agent-subtype distinguishability. Across all experiments we use the same 23-feature set (described in Section 3.3 and detailed in Table 3), standardized with z-scoring and winsorized at the [1, 99] percentile range.
+The dataset is the 2,590 agent addresses from Paper 1's expanded mining (\texttt{features\_expanded.parquet}), which spans Autonolas, Fetch.ai, AI Arena, and curated MEV-searcher lists. We exclude 726 human-labeled addresses from the projection to keep the focus on agent-subtype distinguishability. Across all experiments we use the same 23-feature set (described in Section 3.3 and detailed in Table 3), standardized with z-scoring and winsorized at the [1, 99] percentile range.
 
 \textbf{Table 3. The 23 behavioral features used in Section 4 experiments.}
 
@@ -224,10 +226,10 @@ The dataset is the 2,590 agent addresses from Paper 1's expanded mining (\texttt
 \toprule
 Group & Features \\
 \midrule
-Timing (7) & tx_interval_mean, tx_interval_std, tx_interval_skewness, active_hour_entropy, night_activity_ratio, weekend_ratio, burst_frequency \\
-Gas (6) & gas_price_round_number_ratio, gas_price_trailing_zeros_mean, gas_limit_precision, gas_price_cv, eip1559_priority_fee_precision, gas_price_nonce_correlation \\
-Interaction (5) & unique_contracts_ratio, top_contract_concentration, method_id_diversity, contract_to_eoa_ratio, sequential_pattern_score \\
-Approval (5) & unlimited_approve_ratio, approve_revoke_ratio, unverified_contract_approve_ratio, multi_protocol_interaction_count, flash_loan_usage \\
+Timing (7) & tx\_interval\_mean, tx\_interval\_std, tx\_interval\_skewness, active\_hour\_entropy, night\_activity\_ratio, weekend\_ratio, burst\_frequency \\
+Gas (6) & gas\_price\_round\_number\_ratio, gas\_price\_trailing\_zeros\_mean, gas\_limit\_precision, gas\_price\_cv, eip1559\_priority\_fee\_precision, gas\_price\_nonce\_correlation \\
+Interaction (5) & unique\_contracts\_ratio, top\_contract\_concentration, method\_id\_diversity, contract\_to\_eoa\_ratio, sequential\_pattern\_score \\
+Approval (5) & unlimited\_approve\_ratio, approve\_revoke\_ratio, unverified\_contract\_approve\_ratio, multi\_protocol\_interaction\_count, flash\_loan\_usage \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -242,22 +244,22 @@ We organize agent subtypes along three orthogonal dimensions.
 
 The Cartesian product has 100 cells, but only a small minority are semantically populated by actual systems. We define eight categories covering the Web3 agent ecosystem as of 2026:
 
-1. \textbf{Deterministic Script} (NONE, hybrid, deterministic) — scheduled transfers, hard-coded airdrop distributors. \textit{Not an agent under C1-C4.}
-2. \textbf{Simple Trading Bot} (REACTIVE, hybrid, deterministic) — grid, DCA, rule-based rebalancers. \textit{Not an agent under C1-C4.}
-3. \textbf{MEV Searcher} (ADAPTIVE, hybrid, statistical) — sandwich / arbitrage / liquidation. \textit{Agent.}
-4. \textbf{Cross-Chain Bridge Agent} (ADAPTIVE, cross-chain, deterministic) — LayerZero / Wormhole relayers. \textit{Boundary.}
+1. \textbf{Deterministic Script} (NONE, hybrid, deterministic) --- scheduled transfers, hard-coded airdrop distributors. \textit{Not an agent under C1-C4.}
+2. \textbf{Simple Trading Bot} (REACTIVE, hybrid, deterministic) --- grid, DCA, rule-based rebalancers. \textit{Not an agent under C1-C4.}
+3. \textbf{MEV Searcher} (ADAPTIVE, hybrid, statistical) --- sandwich / arbitrage / liquidation. \textit{Agent.}
+4. \textbf{Cross-Chain Bridge Agent} (ADAPTIVE, cross-chain, deterministic) --- LayerZero / Wormhole relayers. \textit{Boundary.}
 5. \textbf{RL Trading Agent} (ADAPTIVE, hybrid, reinforcement learning). \textit{Agent.}
-6. \textbf{DeFi Management Agent} (PROACTIVE, hybrid, hybrid) — Autonolas services, Yearn strategists, DeFi Saver. \textit{Agent.}
-7. \textbf{LLM-Powered Agent} (PROACTIVE, multi-modal, LLM-driven) — AI16Z / Eliza, Virtuals. \textit{Agent.}
-8. \textbf{Autonomous DAO Agent} (COLLABORATIVE, on-chain, hybrid) — Gnosis Safe modules, Governor execution. \textit{Agent.}
+6. \textbf{DeFi Management Agent} (PROACTIVE, hybrid, hybrid) --- Autonolas services, Yearn strategists, DeFi Saver. \textit{Agent.}
+7. \textbf{LLM-Powered Agent} (PROACTIVE, multi-modal, LLM-driven) --- AI16Z / Eliza, Virtuals. \textit{Agent.}
+8. \textbf{Autonomous DAO Agent} (COLLABORATIVE, on-chain, hybrid) --- Gnosis Safe modules, Governor execution. \textit{Agent.}
 
-Categories 1-2 are non-agents by C1-C4 and serve as reference baselines. Category 4 is a boundary class. The remaining five — 3, 5, 6, 7, 8 — are agents. The taxonomy thus spans both agents and non-agents; the C1-C4 definition draws the boundary \textit{within} the taxonomy between REACTIVE and ADAPTIVE.
+Categories 1-2 are non-agents by C1-C4 and serve as reference baselines. Category 4 is a boundary class. The remaining five --- 3, 5, 6, 7, 8 --- are agents. The taxonomy thus spans both agents and non-agents; the C1-C4 definition draws the boundary \textit{within} the taxonomy between REACTIVE and ADAPTIVE.
 
 \subsection{4.3 Rule-based taxonomy projection}
 
-\textbf{Method.} Each agent in the dataset is assigned to one of the eight categories by a two-tier rule system. Tier 1 uses \textit{provenance}: the contract source from which the address was mined and any name annotation (Etherscan label, ENS resolution, Flashbots searcher list). Tier 2 uses \textit{feature-based refinement}: when provenance is ambiguous, the rule consults a four-dimensional subspace of the behavioral feature set (\texttt{burst_frequency}, \texttt{gas_price_round_number_ratio}, \texttt{unique_contracts_ratio}, \texttt{multi_protocol_interaction_count}).
+\textbf{Method.} Each agent in the dataset is assigned to one of the eight categories by a two-tier rule system. Tier 1 uses \textit{provenance}: the contract source from which the address was mined and any name annotation (Etherscan label, ENS resolution, Flashbots searcher list). Tier 2 uses \textit{feature-based refinement}: when provenance is ambiguous, the rule consults a four-dimensional subspace of the behavioral feature set (\texttt{burst\_frequency}, \texttt{gas\_price\_round\_number\_ratio}, \texttt{unique\_contracts\_ratio}, \texttt{multi\_protocol\_interaction\_count}).
 
-Representative Tier 1 rules include: an address mined from the Autonolas Agent Registry maps to DeFi Management Agent with confidence 0.90; a name containing \texttt{MEV|Flashbots|sandwich|builder} maps to MEV Searcher with confidence 0.95; a name containing \texttt{AI Arena NRN} maps to LLM-Powered Agent candidate with confidence 0.75. Representative Tier 2 rules include: \texttt{burst_frequency > 0.20 ∧ gas_price_cv > 0.30} maps to MEV Searcher; \texttt{gas_price_round_number_ratio > 0.60 ∧ method_id_diversity < 1.5} maps to Deterministic Script; \texttt{multi_protocol_interaction_count ≥ 5 ∧ unique_contracts_ratio > 0.40} maps to DeFi Management Agent. We use a \textit{transparent} rule set rather than a learned mapping, because Section 4.5's classifier will consume the projection as ground truth and we want the relationship to be as non-circular as possible: the projection rules use four features in the refinement layer, the classifier uses all 23.
+Representative Tier 1 rules include: an address mined from the Autonolas Agent Registry maps to DeFi Management Agent with confidence 0.90; a name containing \texttt{MEV|Flashbots|sandwich|builder} maps to MEV Searcher with confidence 0.95; a name containing \texttt{AI Arena NRN} maps to LLM-Powered Agent candidate with confidence 0.75. Representative Tier 2 rules include: \texttt{burst\_frequency > 0.20 $\wedge$ gas\_price\_cv > 0.30} maps to MEV Searcher; \texttt{gas\_price\_round\_number\_ratio > 0.60 $\wedge$ method\_id\_diversity < 1.5} maps to Deterministic Script; \texttt{multi\_protocol\_interaction\_count $\geq$ 5 $\wedge$ unique\_contracts\_ratio > 0.40} maps to DeFi Management Agent. We use a \textit{transparent} rule set rather than a learned mapping, because Section 4.5's classifier will consume the projection as ground truth and we want the relationship to be as non-circular as possible: the projection rules use four features in the refinement layer, the classifier uses all 23.
 
 \textbf{Results.} Table 4 shows the projection.
 
@@ -275,9 +277,9 @@ Deterministic Script & 666 & 25.7\% & 0.80 \\
 Simple Trading Bot & 130 & 5.0\% & 0.70 \\
 LLM-Powered Agent & 71 & 2.7\% & 0.60 \\
 MEV Searcher & 54 & 2.1\% & 0.85 \\
-Autonomous DAO Agent & 0 & 0.0\% & — \\
-Cross-Chain Bridge & 0 & 0.0\% & — \\
-RL Trading Agent & 0 & 0.0\% & — \\
+Autonomous DAO Agent & 0 & 0.0\% & --- \\
+Cross-Chain Bridge & 0 & 0.0\% & --- \\
+RL Trading Agent & 0 & 0.0\% & --- \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -288,7 +290,7 @@ Confidence distribution: 1,853 projections in the medium band [0.5, 0.7], 688 in
 
 \subsection{4.4 Unsupervised cluster validation}
 
-\textbf{Method.} We run K-Means on the 23-feature matrix with \texttt{n_init=10} for $k \in \{3, 4, \ldots, 15\}$. For each $k$ we report:
+\textbf{Method.} We run K-Means on the 23-feature matrix with \texttt{n\_init=10} for $k \in \{3, 4, \ldots, 15\}$. For each $k$ we report:
 
 - Silhouette score (sample size 2,000);
 - Adjusted Rand Index (ARI) against the 5-category projection labels;
@@ -324,13 +326,13 @@ $k$ & Silhouette & ARI & NMI & Inertia \\
 \end{tabular}
 \end{table}
 
-At $k=8$ (the full taxonomy), mean cluster purity is 0.779 with one orphan cluster (cluster 2 in the k=8 run, purity 0.327 — a mixed cluster containing DeFi Management, Deterministic Script, and Simple Trading Bot addresses in roughly equal proportions). At $k=3$, there are no orphan clusters and mean purity is 0.760.
+At $k=8$ (the full taxonomy), mean cluster purity is 0.779 with one orphan cluster (cluster 2 in the k=8 run, purity 0.327 --- a mixed cluster containing DeFi Management, Deterministic Script, and Simple Trading Bot addresses in roughly equal proportions). At $k=3$, there are no orphan clusters and mean purity is 0.760.
 
-\textbf{Interpretation: behavioral super-clusters.} The silhouette result is the strongest empirical finding of this section — the 23-feature space supports a three-cluster structure much more clearly than an eight-cluster structure. The three super-clusters correspond roughly to:
+\textbf{Interpretation: behavioral super-clusters.} The silhouette result is the strongest empirical finding of this section --- the 23-feature space supports a three-cluster structure much more clearly than an eight-cluster structure. The three super-clusters correspond roughly to:
 
-- \textbf{Cluster A — static / deterministic.} High \texttt{gas_price_round_number_ratio}, low \texttt{method_id_diversity}, low \texttt{burst_frequency}. Covers Deterministic Script and Simple Trading Bot.
-- \textbf{Cluster B — active DeFi.} High \texttt{multi_protocol_interaction_count}, moderate \texttt{unique_contracts_ratio}, moderate \texttt{burst_frequency}. Covers DeFi Management Agent.
-- \textbf{Cluster C — adaptive / high-frequency.} Very high \texttt{burst_frequency}, low \texttt{tx_interval_mean}, high \texttt{gas_price_cv}. Covers MEV Searcher and, surprisingly, most LLM-Powered Agent instances.
+- \textbf{Cluster A --- static / deterministic.} High \texttt{gas\_price\_round\_number\_ratio}, low \texttt{method\_id\_diversity}, low \texttt{burst\_frequency}. Covers Deterministic Script and Simple Trading Bot.
+- \textbf{Cluster B --- active DeFi.} High \texttt{multi\_protocol\_interaction\_count}, moderate \texttt{unique\_contracts\_ratio}, moderate \texttt{burst\_frequency}. Covers DeFi Management Agent.
+- \textbf{Cluster C --- adaptive / high-frequency.} Very high \texttt{burst\_frequency}, low \texttt{tx\_interval\_mean}, high \texttt{gas\_price\_cv}. Covers MEV Searcher and, surprisingly, most LLM-Powered Agent instances.
 
 The eight-category taxonomy is \textbf{semantically coherent but behaviorally over-split} at the 23-feature level. The taxonomy distinguishes DeFi Management from LLM-Powered, but these two classes are largely overlapping in feature space. Two interpretations are possible:
 
@@ -338,7 +340,7 @@ The eight-category taxonomy is \textbf{semantically coherent but behaviorally ov
 
 2. \textbf{Measurement interpretation.} Current LLM-driven agents \textit{mimic} rule-based DeFi agents because their on-chain footprint is similar; they differ in \textit{off-chain} prompt-driven action diversity that does not yet appear in transaction-level features. New features are needed.
 
-We adopt the measurement interpretation in Section 5, because independent Paper 3 work shows that eight AI-specific features drawn from real agent/human data separate the two populations with Cohen's $d > 1.0$ on \texttt{hour_entropy} and \texttt{behavioral_consistency}. This cross-paper corroboration is the main reason we believe the over-splitting is a feature-set limitation, not a taxonomy error.
+We adopt the measurement interpretation in Section 5, because independent Paper 3 work shows that eight AI-specific features drawn from real agent/human data separate the two populations with Cohen's $d > 1.0$ on \texttt{hour\_entropy} and \texttt{behavioral\_consistency}. This cross-paper corroboration is the main reason we believe the over-splitting is a feature-set limitation, not a taxonomy error.
 
 \subsection{4.5 Multi-class supervised classifier}
 
@@ -348,7 +350,7 @@ We adopt the measurement interpretation in Section 5, because independent Paper 
 - Random Forest (300 trees, depth 8)
 - Logistic Regression (C = 1.0)
 
-We drop the three empty categories and keep LLM-Powered (n = 71 ≥ 20). The final training set is $N = 2{,}590$ across five classes.
+We drop the three empty categories and keep LLM-Powered (n = 71 $\geq$ 20). The final training set is $N = 2{,}590$ across five classes.
 
 \textbf{Aggregate results.} Gradient Boosting is the best model, with $0.9737 \pm 0.0040$ accuracy, $0.8683 \pm 0.0267$ macro-F1, and $0.9706$ weighted-F1. Random Forest reaches accuracy 0.9471 / macro-F1 0.7278 (lower because its recall on LLM-Powered collapses to 0.11). Logistic Regression reaches accuracy 0.9124 / macro-F1 0.6914.
 
@@ -372,13 +374,13 @@ MEV Searcher & 54 & 0.887 & [0.817, 0.950] & 0.865 & 0.833 \\
 \end{tabular}
 \end{table}
 
-Four of five categories exceed F1 0.85. The LLM-Powered Agent is the only class below 0.85. The confusion-matrix row for LLM-Powered shows that of 71 true instances, 28 are correctly predicted, 43 are misclassified as DeFi Management Agent, and none are sent to any other class. Precision for LLM-Powered is 0.80 — when the model \textit{predicts} LLM-Powered it is mostly right — but recall is only 0.394. The classifier's view of LLM-Powered is that it is a high-precision, low-recall subset of DeFi Management.
+Four of five categories exceed F1 0.85. The LLM-Powered Agent is the only class below 0.85. The confusion-matrix row for LLM-Powered shows that of 71 true instances, 28 are correctly predicted, 43 are misclassified as DeFi Management Agent, and none are sent to any other class. Precision for LLM-Powered is 0.80 --- when the model \textit{predicts} LLM-Powered it is mostly right --- but recall is only 0.394. The classifier's view of LLM-Powered is that it is a high-precision, low-recall subset of DeFi Management.
 
-\textbf{Feature importance.} The Gradient Boosting feature importance is heavily concentrated: \texttt{gas_price_round_number_ratio} alone accounts for 70.5\%, \texttt{sequential_pattern_score} for 12.6\%, \texttt{burst_frequency} for 9.9\%, and \texttt{gas_price_trailing_zeros_mean} for 3.0\%. Together these four features capture 96\% of the model's decision weight — a useful signal for future feature-pruning but also a warning that the model is leaning heavily on gas-precision style, which is exactly the feature subset that the projection rules use for the Deterministic Script and DeFi Management refinements.
+\textbf{Feature importance.} The Gradient Boosting feature importance is heavily concentrated: \texttt{gas\_price\_round\_number\_ratio} alone accounts for 70.5\%, \texttt{sequential\_pattern\_score} for 12.6\%, \texttt{burst\_frequency} for 9.9\%, and \texttt{gas\_price\_trailing\_zeros\_mean} for 3.0\%. Together these four features capture 96\% of the model's decision weight --- a useful signal for future feature-pruning but also a warning that the model is leaning heavily on gas-precision style, which is exactly the feature subset that the projection rules use for the Deterministic Script and DeFi Management refinements.
 
 \subsection{4.6 Threats to validity}
 
-\textbf{Partial circularity between projection and classifier.} The taxonomy projection rules (Section 4.3) use eight of the 23 features in the Tier 2 refinement layer. The multi-class classifier (Section 4.5) uses all 23 features, including the eight used by the rules. Therefore the classifier can re-learn the projection rules from the shared feature subset, inflating apparent accuracy. Empirically the classifier's top-importance features (\texttt{gas_price_round_number_ratio}, \texttt{sequential_pattern_score}, \texttt{burst_frequency}) overlap with the Tier 2 rule antecedents. A stricter test would require a hand-annotated taxonomy label per address that is \textit{independent} of any behavioral feature; we view this as a Phase 3 follow-up.
+\textbf{Partial circularity between projection and classifier.} The taxonomy projection rules (Section 4.3) use eight of the 23 features in the Tier 2 refinement layer. The multi-class classifier (Section 4.5) uses all 23 features, including the eight used by the rules. Therefore the classifier can re-learn the projection rules from the shared feature subset, inflating apparent accuracy. Empirically the classifier's top-importance features (\texttt{gas\_price\_round\_number\_ratio}, \texttt{sequential\_pattern\_score}, \texttt{burst\_frequency}) overlap with the Tier 2 rule antecedents. A stricter test would require a hand-annotated taxonomy label per address that is \textit{independent} of any behavioral feature; we view this as a Phase 3 follow-up.
 
 \textbf{Mining bias.} The 2,590 agents are 97\% from three platforms (Autonolas, Fetch.ai, AI Arena). Cross-platform generalization is not tested here. Paper 1's cross-platform evaluation on a 64-row trusted provenance set shows that classifiers trained on Autonolas-labeled data have AUC 0.24-0.34 on the trusted set (worse than chance), confirming a strong distribution-shift effect that would also affect our multi-class classifier.
 
@@ -410,21 +412,21 @@ For LLM-Powered Agent, the joint pipeline currently fails: Paper 1 identifies it
 
 The single most important empirical finding of this paper is that the LLM-Powered Agent class has F1 = 0.528 under the best classifier, while every other populated class exceeds F1 = 0.85. The confusion is one-directional: 60\% of true LLM-Powered instances are predicted as DeFi Management Agent, not the reverse. Why?
 
-\textbf{The feature set does not yet capture what makes an LLM agent different.} The 23 features measure \textit{when} transactions happen (timing), \textit{how much} gas they pay (gas), \textit{what} contracts they interact with (interaction), and \textit{how risky} the approvals are (approvals). None of these capture prompt-driven action diversity, LLM response latency signatures, or the semantic \textit{novelty} of successive action sequences. From the perspective of the 23-feature representation, an Autonolas rule engine and a prompt-driven Eliza agent look nearly identical: both are busy, both interact with multiple protocols, both have adaptive gas strategies. The distinguishing features of LLM reasoning — context sensitivity, plan revision, prompt injection vulnerability — do not project onto the 23 features at all.
+\textbf{The feature set does not yet capture what makes an LLM agent different.} The 23 features measure \textit{when} transactions happen (timing), \textit{how much} gas they pay (gas), \textit{what} contracts they interact with (interaction), and \textit{how risky} the approvals are (approvals). None of these capture prompt-driven action diversity, LLM response latency signatures, or the semantic \textit{novelty} of successive action sequences. From the perspective of the 23-feature representation, an Autonolas rule engine and a prompt-driven Eliza agent look nearly identical: both are busy, both interact with multiple protocols, both have adaptive gas strategies. The distinguishing features of LLM reasoning --- context sensitivity, plan revision, prompt injection vulnerability --- do not project onto the 23 features at all.
 
-\textbf{This is good news for the taxonomy.} It means the eight categories are not wrong; the \textit{feature set} is incomplete. Paper 3 has developed an independent eight-feature set that distinguishes AI-driven entities from humans with large effect sizes (Cohen's $d > 1.0$ on \texttt{hour_entropy} and \texttt{behavioral_consistency}). The natural Phase 3 experiment is to union the 23 Paper 1 features with the 8 Paper 3 features, giving a 31-feature space, and re-run Section 4.5's classifier. We predict the LLM-Powered Agent F1 will climb above 0.80 without harming the other four classes, because the Paper 3 features target the exact dimension on which LLM agents and DeFi management agents differ.
+\textbf{This is good news for the taxonomy.} It means the eight categories are not wrong; the \textit{feature set} is incomplete. Paper 3 has developed an independent eight-feature set that distinguishes AI-driven entities from humans with large effect sizes (Cohen's $d > 1.0$ on \texttt{hour\_entropy} and \texttt{behavioral\_consistency}). The natural Phase 3 experiment is to union the 23 Paper 1 features with the 8 Paper 3 features, giving a 31-feature space, and re-run Section 4.5's classifier. We predict the LLM-Powered Agent F1 will climb above 0.80 without harming the other four classes, because the Paper 3 features target the exact dimension on which LLM agents and DeFi management agents differ.
 
-\textbf{It is also a concrete policy implication.} A regulator or platform that wants to enforce disclosure on "LLM-powered agents specifically" — for instance, because the governance risk profile of a prompt-driven agent is different from that of a rule-driven one — cannot do so with today's 23-feature behavioral tooling. Any rule that says "flag all LLM agents" will either over-capture (catching DeFi management agents too) or under-capture (missing 60\% of LLM agents). This is a concrete example of where feature engineering has practical governance implications.
+\textbf{It is also a concrete policy implication.} A regulator or platform that wants to enforce disclosure on "LLM-powered agents specifically" --- for instance, because the governance risk profile of a prompt-driven agent is different from that of a rule-driven one --- cannot do so with today's 23-feature behavioral tooling. Any rule that says "flag all LLM agents" will either over-capture (catching DeFi management agents too) or under-capture (missing 60\% of LLM agents). This is a concrete example of where feature engineering has practical governance implications.
 
 \subsection{5.2 k = 3 versus k = 8: behavioral versus semantic taxonomies}
 
-The cluster-validation result is the second key finding. Silhouette is maximized at $k = 3$ (0.151) and declines monotonically past $k = 5$; ARI against the projection labels peaks at $k = 5$ (the number of populated categories), then decays. At $k = 8$ — the full taxonomy — silhouette is 0.129 and one cluster is an orphan (mean purity 0.327, mixing DeFi Management, Deterministic Script, and Simple Trading Bot addresses in roughly equal proportions).
+The cluster-validation result is the second key finding. Silhouette is maximized at $k = 3$ (0.151) and declines monotonically past $k = 5$; ARI against the projection labels peaks at $k = 5$ (the number of populated categories), then decays. At $k = 8$ --- the full taxonomy --- silhouette is 0.129 and one cluster is an orphan (mean purity 0.327, mixing DeFi Management, Deterministic Script, and Simple Trading Bot addresses in roughly equal proportions).
 
 The natural reading is that \textbf{behavioral taxonomies saturate at three super-clusters, and semantic taxonomies require external provenance signals}. The three super-clusters have intuitive labels:
 
-1. \textbf{Static / deterministic} — the cluster of entities that satisfy $C_1 \land C_2 \land \lnot C_3 \land \lnot C_4$. Scripts and simple bots.
-2. \textbf{Active but non-adaptive} — satisfies $C_1 \land C_2 \land C_3 \land \lnot C_4$, or has weak $C_4$. Rule-based DeFi management.
-3. \textbf{Fully adaptive} — satisfies all four. MEV searchers, liquidation bots, LLM agents.
+1. \textbf{Static / deterministic} --- the cluster of entities that satisfy $C_1 \land C_2 \land \lnot C_3 \land \lnot C_4$. Scripts and simple bots.
+2. \textbf{Active but non-adaptive} --- satisfies $C_1 \land C_2 \land C_3 \land \lnot C_4$, or has weak $C_4$. Rule-based DeFi management.
+3. \textbf{Fully adaptive} --- satisfies all four. MEV searchers, liquidation bots, LLM agents.
 
 This three-cluster decomposition is almost exactly the structure that $C_3$ and $C_4$ are designed to pick out. It is a reassuring sanity check: the definition slices the population at the same place that behavioral clustering slices it. The eight categories refine cluster 3 into MEV-searcher / DeFi-management / LLM-powered / DAO / RL subtypes by \textit{provenance}, not by \textit{behavioral distinguishability}.
 
@@ -461,11 +463,11 @@ The C1-C4 definition and the taxonomy let HCI researchers, regulators, and pract
 
 \textbf{The LLM-Powered Agent weak spot is a known feature-set limitation.} We have argued in Section 5.1 that adding Paper 3's eight AI-specific features should close this gap. This is a falsifiable prediction: Phase 3 will test whether the 23+8 = 31-feature space lifts LLM-Powered Agent F1 above 0.80 without harming the other four classes.
 
-\textbf{No expert Delphi yet.} Validation here is empirical (registry provenance, cluster recovery, classifier). A complementary Delphi study with 12-15 domain experts is designed but not yet executed. Both forms of evidence — objective registry data and subjective expert judgment — should eventually support the definition.
+\textbf{No expert Delphi yet.} Validation here is empirical (registry provenance, cluster recovery, classifier). A complementary Delphi study with 12-15 domain experts is designed but not yet executed. Both forms of evidence --- objective registry data and subjective expert judgment --- should eventually support the definition.
 
 \textbf{Observability limits.} Purely off-chain agent components (LLM inference, internal strategy computation) are not directly observable. Two agents with fundamentally different internal architectures may produce similar on-chain footprints and be placed in the same category. This is a hard limit of chain-only validation and is the reason we frame C1-C4 around \textit{operationalized proxies} rather than internal state.
 
-\textbf{Temporal evolution.} The Web3 agent ecosystem is evolving fast. New categories — agent-of-agents architectures, on-chain AI inference, decentralized federated learning agents — may require new taxonomy cells. The taxonomy is a snapshot of 2026, not a timeless claim.
+\textbf{Temporal evolution.} The Web3 agent ecosystem is evolving fast. New categories --- agent-of-agents architectures, on-chain AI inference, decentralized federated learning agents --- may require new taxonomy cells. The taxonomy is a snapshot of 2026, not a timeless claim.
 
 \textbf{Phase 3 work items.}
 
@@ -478,13 +480,13 @@ The C1-C4 definition and the taxonomy let HCI researchers, regulators, and pract
 
 \section{7. Conclusion}
 
-We have proposed and validated the first formal definition of "on-chain AI agent" that is simultaneously minimal, chain-observable, and empirically testable. The definition has four necessary-and-sufficient conditions — on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4) — each justified by a counterexample showing its non-redundancy, and each operationalized via specific proxies drawn from the 23-feature set shared with Paper 1.
+We have proposed and validated the first formal definition of "on-chain AI agent" that is simultaneously minimal, chain-observable, and empirically testable. The definition has four necessary-and-sufficient conditions --- on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4) --- each justified by a counterexample showing its non-redundancy, and each operationalized via specific proxies drawn from the 23-feature set shared with Paper 1.
 
-Empirical validation on 2,590 Ethereum agent addresses yields four findings. First, five of eight taxonomy categories are populated in the current dataset, with DeFi Management Agent the majority class at 64.4\%. Second, the multi-class supervised classifier reaches 97.4\% accuracy and macro-F1 0.87, with four of five classes exceeding F1 0.85. Third, unsupervised cluster validation finds that silhouette is maximized at k=3, not k=8, implying the eight-category taxonomy is semantically coherent but behaviorally over-split at the 23-feature level — a finding we interpret as a feature-set limitation rather than a taxonomy error. Fourth, the LLM-Powered Agent class is the empirical weak spot at F1 = 0.528, confused with DeFi Management Agent 60\% of the time; we conjecture that adding Paper 3's eight AI-specific features will close this gap.
+Empirical validation on 2,590 Ethereum agent addresses yields four findings. First, five of eight taxonomy categories are populated in the current dataset, with DeFi Management Agent the majority class at 64.4\%. Second, the multi-class supervised classifier reaches 97.4\% accuracy and macro-F1 0.87, with four of five classes exceeding F1 0.85. Third, unsupervised cluster validation finds that silhouette is maximized at k=3, not k=8, implying the eight-category taxonomy is semantically coherent but behaviorally over-split at the 23-feature level --- a finding we interpret as a feature-set limitation rather than a taxonomy error. Fourth, the LLM-Powered Agent class is the empirical weak spot at F1 = 0.528, confused with DeFi Management Agent 60\% of the time; we conjecture that adding Paper 3's eight AI-specific features will close this gap.
 
 Beyond these findings, the paper provides a shared vocabulary for the NSF project's downstream work. Paper 1 uses C1-C4 as the classification target for binary agent identification; Paper 2 locates its tool-interface attack surface at the C1 / C2 operationalization layer; Paper 3 argues that AI Sybils violate C3 because of central control. The definition is the backbone of a coherent research program rather than a stand-alone theoretical exercise.
 
-For HCI and governance, the contribution is pragmatic. Differentiated disclosure regimes, category-specific threat models, and interface design for interacting with specific kinds of agents all require a definition that names its categories carefully. C1-C4 and the eight-category taxonomy give researchers and regulators the vocabulary; the 2,590-address validation gives them evidence that the vocabulary tracks real behavior — and, equally important, evidence of where it breaks.
+For HCI and governance, the contribution is pragmatic. Differentiated disclosure regimes, category-specific threat models, and interface design for interacting with specific kinds of agents all require a definition that names its categories carefully. C1-C4 and the eight-category taxonomy give researchers and regulators the vocabulary; the 2,590-address validation gives them evidence that the vocabulary tracks real behavior --- and, equally important, evidence of where it breaks.
 
 
 \section{References}

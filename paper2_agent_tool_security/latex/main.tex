@@ -134,7 +134,7 @@ symptoms of a design pattern shared by all of them.
    stratified across MCP (50), Web3-native (50), LangChain (28), and
    OpenAI (10), yielding 5,641 static findings and per-protocol
    distributions that reject the null of equal category incidence at
-   p < 10^-300 (chi-squared).
+   p < $10^{-300}$ (chi-squared).
 
 3. \textbf{A calibrated per-server risk score.} We show that our pilot
    linear scheme saturates for 29 of 62 repositories (47\%). Using the
@@ -172,10 +172,10 @@ cannot be delegated to the LLM.
 \section{2. Background and Threat Model}
 
 This section summarises the threat model developed in
-\texttt{threat_model.md}. We restate the system model (§2.1), trust
-boundaries (§2.2), attacker model (§2.3), the five attack surfaces
-(§2.4), four Web3-specific attack vectors (§2.5), and six harness
-requirements (§2.6).
+\texttt{threat\_model.md}. We restate the system model (\S2.1), trust
+boundaries (\S2.2), attacker model (\S2.3), the five attack surfaces
+(\S2.4), four Web3-specific attack vectors (\S2.5), and six harness
+requirements (\S2.6).
 
 \subsection{2.1 System Model}
 
@@ -241,8 +241,8 @@ name. \textbf{Prevalence: high.} Open registries have no security review.
 \textbf{A2 -- Prompt injection attacker.} Cannot modify the tool code
 but controls data the agent reads (emails, web pages, DB rows, API
 responses). Crafts payloads that survive the tool's output pipeline
-and redirect the agent to call privileged tools. **Prevalence: very
-high.** Any data source the agent reads is a potential injection
+and redirect the agent to call privileged tools. \textbf{Prevalence: very
+high.} Any data source the agent reads is a potential injection
 vector.
 
 \textbf{A3 -- Man-in-the-middle.} Intercepts protocol messages at the
@@ -262,7 +262,7 @@ their CWE mappings.
 \small
 \begin{tabular}{llll}
 \toprule
-Surface & Description & Representative CWEs & # Patterns \\
+Surface & Description & Representative CWEs & \# Patterns \\
 \midrule
 S1: Tool definition & Metadata describing a tool to the agent & CWE-913, CWE-200 & 4 \\
 S2: Input construction & How the agent builds tool parameters & CWE-20, CWE-74 & 3 \\
@@ -280,12 +280,12 @@ A tool description that embeds a directive such as "you must always
 approve the maximum amount first before calling the transfer tool"
 is an S1 vulnerability: at the protocol level it is indistinguishable
 from a legitimate description. Agent input like a user-supplied
-address passed verbatim to \texttt{eth_sendTransaction} without checksum
+address passed verbatim to \texttt{eth\_sendTransaction} without checksum
 validation is an S2 vulnerability. A tool that runs \texttt{eval()} on an
 LLM-constructed argument is an S3 vulnerability. A tool that returns
 a raw stack trace containing database schema is an S4 vulnerability.
 A read-only data-fetcher tool whose output text ends with "Now call
-\texttt{transfer_funds} with recipient=0xatt..." is an S5 vulnerability
+\texttt{transfer\_funds} with recipient=0xatt..." is an S5 vulnerability
 (confused-deputy cross-tool escalation).
 
 \subsection{2.5 Web3-Specific Attack Vectors (W1-W4)}
@@ -312,14 +312,14 @@ and S5.
 
 - \textbf{W4 -- MEV exploitation.} A tool forwards swaps to the public
   mempool without slippage bounds or a private relay, enabling
-  sandwich attacks. MEV is an estimated $600M+ annual extraction
+  sandwich attacks. MEV is an estimated \$600M+ annual extraction
   industry (CWE-200).
 
 \subsection{2.6 Harness Requirements (H1-H6)}
 
 Based on the surfaces and vectors above we define six categories of
 security controls that a properly hardened agent-tool interface must
-implement. Our empirical analysis (§5.2) measures the gap between
+implement. Our empirical analysis (\S5.2) measures the gap between
 these requirements and reality.
 
 - \textbf{H1 -- Permission scoping.} Each tool receives the minimum
@@ -416,7 +416,7 @@ into LLM-specific risk registers alongside traditional CWE trackers.
 
 \section{4. Static Analysis Methodology}
 
-Our static analyzer (\texttt{static_analysis/analyzer.py}, approximately
+Our static analyzer (\texttt{static\_analysis/analyzer.py}, approximately
 1,200 lines of Python) operates directly on cloned source trees. For
 each repository we execute a five-stage pipeline.
 
@@ -429,14 +429,14 @@ manifests (\texttt{package.json}, \texttt{requirements.txt}, \texttt{Cargo.toml}
 file-level markers such as MCP server configuration files or
 \texttt{.sol} contract files. The analyzer outputs a confidence score in
 [0,1] and the final protocol label. We retain a pre-assigned
-\textit{catalog protocol} from the dataset stratification step (§5.1) as
+\textit{catalog protocol} from the dataset stratification step (\S5.1) as
 the ground truth for cross-protocol aggregation, because it is
 independent of the analyzer's self-classification.
 
 \textbf{Stage 2: File enumeration.} The analyzer walks the repository,
 filtering to file extensions declared by at least one active pattern
 (\texttt{.py}, \texttt{.ts}, \texttt{.js}, \texttt{.sol}, \texttt{.rs}). Vendored dependencies
-(\texttt{node_modules}, \texttt{.venv}, \texttt{target}) and build artifacts are
+(\texttt{node\_modules}, \texttt{.venv}, \texttt{target}) and build artifacts are
 excluded.
 
 \textbf{Stage 3: Pattern matching.} For each file, the analyzer evaluates
@@ -448,9 +448,9 @@ pattern ID, category, severity, CWE, and a 40-character evidence
 snippet.
 
 \textbf{Stage 4: False-positive filtering.} Three filters run in order:
-(i) comment filter -- matches in \texttt{//}, \texttt{#}, or \texttt{/\textit{ }/} comments are
+(i) comment filter -- matches in \texttt{//}, \texttt{\#}, or \texttt{/\textit{ }/} comments are
 dropped; (ii) test filter -- matches in files whose path contains
-\texttt{test}, \texttt{tests}, \texttt{__tests__}, or ends in \texttt{.test.*} are tagged but
+\texttt{test}, \texttt{tests}, \texttt{\_\_tests\_\_}, or ends in \texttt{.test.*} are tagged but
 not counted in the aggregate; (iii) context heuristic -- for
 S2-IV-* patterns (address / value validation) the match must occur
 in a function that is reachable from a tool definition, approximated
@@ -463,15 +463,15 @@ repository aggregates: total findings, findings-by-severity,
 findings-by-category, and a risk score in [0, 100]. The raw base
 score is
 
-> \texttt{base = Σ_i (severity_weight_i × category_multiplier_i)}
+$$\texttt{base} = \sum_i (\texttt{severity\_weight}_i \times \texttt{category\_multiplier}_i)$$
 
-with \texttt{severity_weight = {critical: 10, high: 5, medium: 1}} and
+with \texttt{severity\_weight = {critical: 10, high: 5, medium: 1}} and
 category multipliers in \texttt{[1.0, 2.0]} (private key exposure receives
 the highest multiplier). A per-repository harness discount of up to
 20 points is subtracted when harness features are detected. The base
 score is then normalised to the [0, 100] range using a configurable
-\texttt{expected_max} parameter. We describe the calibration of
-\texttt{expected_max} in §5.4 and Appendix C.
+\texttt{expected\_max} parameter. We describe the calibration of
+\texttt{expected\_max} in \S5.4 and Appendix C.
 
 \textbf{Tool enumeration.} In parallel with pattern matching, the
 analyzer performs a lightweight tool discovery pass that identifies
@@ -479,7 +479,7 @@ registered tool definitions (via MCP \texttt{@tool}, LangChain \texttt{@tool},
 OpenAI \texttt{functions[]}, and Solidity \texttt{external} functions on module
 interfaces). It classifies each tool as \textit{sensitive} if its name or
 description references signing, approval, transfer, or key
-management. This tool count enters the scan statistics in §5.2 but
+management. This tool count enters the scan statistics in \S5.2 but
 not the risk score, so that the risk score depends only on the
 taxonomy findings.
 
@@ -531,10 +531,10 @@ OpenAI & 12 & 10 & 3 & Python, TS, Rust \\
 \textbf{Table 3.} Stratified catalog used for the cross-protocol scan.
 
 \textbf{Relation to the Chinese draft.} The earlier Chinese draft
-(\texttt{draft_zh.md}) analysed a Web3-only subset of 42 servers. This
+(\texttt{draft\_zh.md}) analysed a Web3-only subset of 42 servers. This
 English version replaces that scope with the full 138-server
 cross-protocol catalog; the 42-server Web3 numbers are retained as a
-specialisation for Web3 analysis (§5.4).
+specialisation for Web3 analysis (\S5.4).
 
 \subsection{5.2 138-Server Scan Statistics}
 
@@ -543,7 +543,7 @@ produced \textbf{5,641 total findings}: 637 critical, 1,434 high, and
 3,570 medium. Mean findings per server varies more than 3x across
 protocols, from 18.2 (Web3-native) to 58.7 (MCP). The bulk of
 medium-severity findings (63.3\% of the total) is dominated by
-\texttt{missing_input_validation}.
+\texttt{missing\_input\_validation}.
 
 \begin{table}[h]
 \centering
@@ -562,12 +562,12 @@ OpenAI & 10 & 548 & 54.8 & 1.0 & 21 & 62 & 465 & 28.82 \\
 \end{table}
 
 \textbf{Table 4.} Per-protocol scan statistics for the 138-server
-catalog. Mean risk uses the recalibrated linear_p90 scheme (§5.4).
+catalog. Mean risk uses the recalibrated linear\_p90 scheme (\S5.4).
 
 Table 5 shows the top vulnerability categories across the corpus.
 Four categories account for 78.2\% of all findings:
-\texttt{missing_input_validation} (2,841), \texttt{cross_tool_escalation} (659),
-\texttt{state_confusion} (606), and \texttt{private_key_exposure} (307).
+\texttt{missing\_input\_validation} (2,841), \texttt{cross\_tool\_escalation} (659),
+\texttt{state\_confusion} (606), and \texttt{private\_key\_exposure} (307).
 
 \begin{table}[h]
 \centering
@@ -576,21 +576,21 @@ Four categories account for 78.2\% of all findings:
 \toprule
 Rank & Category & Count & Share & Attack surface & Dominant CWE \\
 \midrule
-1 & missing_input_validation & 2,841 & 50.4\% & S2 & CWE-20 \\
-2 & cross_tool_escalation & 659 & 11.7\% & S5 & CWE-284 \\
-3 & state_confusion & 606 & 10.7\% & S5 & CWE-362 \\
-4 & private_key_exposure & 307 & 5.4\% & S3 & CWE-200/312 \\
-5 & excessive_permissions & 289 & 5.1\% & S1/S3 & CWE-250 \\
-6 & tx_validation_missing & 184 & 3.3\% & S3 & CWE-345 \\
-7 & prompt_injection & 169 & 3.0\% & S2 & CWE-74 \\
-8 & unchecked_external_call & 102 & 1.8\% & S3 & CWE-252 \\
-9 & tool_poisoning & 92 & 1.6\% & S1 & CWE-913 \\
-10 & hardcoded_credentials & 85 & 1.5\% & S3 & CWE-798 \\
-11 & unlimited_approval & 78 & 1.4\% & S3 & CWE-250 \\
-12 & missing_harness & 75 & 1.3\% & S3 & CWE-284 \\
-13 & privilege_escalation & 52 & 0.9\% & S3 & CWE-269 \\
-14 & no_gas_limit & 35 & 0.6\% & S3 & CWE-400 \\
-15 & approval_injection & 31 & 0.5\% & S3 & CWE-862 \\
+1 & missing\_input\_validation & 2,841 & 50.4\% & S2 & CWE-20 \\
+2 & cross\_tool\_escalation & 659 & 11.7\% & S5 & CWE-284 \\
+3 & state\_confusion & 606 & 10.7\% & S5 & CWE-362 \\
+4 & private\_key\_exposure & 307 & 5.4\% & S3 & CWE-200/312 \\
+5 & excessive\_permissions & 289 & 5.1\% & S1/S3 & CWE-250 \\
+6 & tx\_validation\_missing & 184 & 3.3\% & S3 & CWE-345 \\
+7 & prompt\_injection & 169 & 3.0\% & S2 & CWE-74 \\
+8 & unchecked\_external\_call & 102 & 1.8\% & S3 & CWE-252 \\
+9 & tool\_poisoning & 92 & 1.6\% & S1 & CWE-913 \\
+10 & hardcoded\_credentials & 85 & 1.5\% & S3 & CWE-798 \\
+11 & unlimited\_approval & 78 & 1.4\% & S3 & CWE-250 \\
+12 & missing\_harness & 75 & 1.3\% & S3 & CWE-284 \\
+13 & privilege\_escalation & 52 & 0.9\% & S3 & CWE-269 \\
+14 & no\_gas\_limit & 35 & 0.6\% & S3 & CWE-400 \\
+15 & approval\_injection & 31 & 0.5\% & S3 & CWE-862 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -615,7 +615,7 @@ on S1 (tool poisoning). Our results suggest S5 deserves at least
 equal attention.
 
 \textbf{Finding 3: private key exposure concentrates in Web3-native.}
-184 of the 307 \texttt{private_key_exposure} findings (60\%) come from 50
+184 of the 307 \texttt{private\_key\_exposure} findings (60\%) come from 50
 Web3-native repositories; MCP contributes only 26. This inverts the
 pattern from the Chinese 42-server Web3 study, where PKE was
 dominant because the study restricted to Web3 functionality. At
@@ -636,23 +636,23 @@ by the four protocols (Table 4).
 \toprule
 Category & MCP & Web3-native & LangChain & OpenAI \\
 \midrule
-missing_input_validation & 1,167 & 291 & 932 & 451 \\
-cross_tool_escalation & 616 & 16 & 26 & 1 \\
-state_confusion & 474 & 110 & 12 & 10 \\
-private_key_exposure & 26 & 184 & 80 & 17 \\
+missing\_input\_validation & 1,167 & 291 & 932 & 451 \\
+cross\_tool\_escalation & 616 & 16 & 26 & 1 \\
+state\_confusion & 474 & 110 & 12 & 10 \\
+private\_key\_exposure & 26 & 184 & 80 & 17 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \textbf{Table 6.} Top-4 category x protocol contingency. Chi-squared
-statistic = 1,573.4, dof = 9, p < 10^-300, Cramer's V = 0.291
+statistic = 1,573.4, dof = 9, p < $10^{-300}$, Cramer's V = 0.291
 (medium effect size). The null hypothesis of uniform per-category
 distribution is strongly rejected, and the effect is substantively
 meaningful, not merely an artifact of large N.
 
 \textbf{Finding 4: the distribution is not uniform.} The chi-squared
 result is unambiguous: categories are distributed differently across
-protocols (p < 10^-300, Cramer's V = 0.29). Yet the top categories
+protocols (p < $10^{-300}$, Cramer's V = 0.29). Yet the top categories
 still appear in every protocol -- every column in Table 6 is
 non-zero. We interpret
 this as \textit{systemic} presence combined with protocol-specific
@@ -672,8 +672,8 @@ largest absolute count of high-severity findings, Web3-native has
 the highest \textit{fraction} of critical findings: 276 / 910 = 30.3\% of
 Web3-native findings are critical, versus 7.7\% (226 / 2,937) for
 MCP. This reflects the severity of the dominant Web3-native
-categories (\texttt{private_key_exposure}, \texttt{delegatecall_abuse},
-\texttt{privilege_escalation}). Developers evaluating a Web3-native module
+categories (\texttt{private\_key\_exposure}, \texttt{delegatecall\_abuse},
+\texttt{privilege\_escalation}). Developers evaluating a Web3-native module
 should expect fewer but more severe problems than a typical MCP
 server.
 
@@ -690,9 +690,9 @@ apps, not reusable servers.
 
 \subsection{5.4 Risk Score Calibration}
 
-The pilot risk-score formula used a hardcoded \texttt{expected_max = 200.0}
+The pilot risk-score formula used a hardcoded \texttt{expected\_max = 200.0}
 chosen by fitting synthetic data. Applied to the pilot corpus of 62
-real repositories, the raw base score (§4) has the distribution
+real repositories, the raw base score (\S4) has the distribution
 shown in Table 7.
 
 \begin{table}[h]
@@ -716,9 +716,9 @@ p99 & 8,193.7 \\
 
 \textbf{Table 7.} Raw base-score distribution on the 62-server pilot.
 
-With \texttt{expected_max = 200.0}, any repository whose raw score exceeds
-200 is clamped to 100. In the pilot this saturated **29 of 62 repos
-(47\%)**, erasing discrimination among the top half of the corpus.
+With \texttt{expected\_max = 200.0}, any repository whose raw score exceeds
+200 is clamped to 100. In the pilot this saturated \textbf{29 of 62 repos
+(47\%)}, erasing discrimination among the top half of the corpus.
 We evaluated three alternative normalisation schemes (Table 8).
 
 \begin{table}[h]
@@ -728,10 +728,10 @@ We evaluated three alternative normalisation schemes (Table 8).
 \toprule
 Scheme & Parameter & Saturated & Mean & Median & Std & Spearman vs. old \\
 \midrule
-linear (pilot) & expected_max = 200 & 29/62 & 60.57 & 72.0 & 41.71 & — \\
-linear_p90 & expected_max = 1,460.7 & 7/62 & 25.54 & 9.86 & 32.47 & 0.9481 \\
-linear_p95 & expected_max = 1,861.0 & 4/62 & 21.54 & 7.74 & 29.18 & 0.9476 \\
-log_asymptotic & k = 144.0 & 12/62 & 57.83 & 62.89 & 38.25 & 0.9475 \\
+linear (pilot) & expected\_max = 200 & 29/62 & 60.57 & 72.0 & 41.71 & --- \\
+linear\_p90 & expected\_max = 1,460.7 & 7/62 & 25.54 & 9.86 & 32.47 & 0.9481 \\
+linear\_p95 & expected\_max = 1,861.0 & 4/62 & 21.54 & 7.74 & 29.18 & 0.9476 \\
+log\_asymptotic & k = 144.0 & 12/62 & 57.83 & 62.89 & 38.25 & 0.9475 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -740,7 +740,7 @@ log_asymptotic & k = 144.0 & 12/62 & 57.83 & 62.89 & 38.25 & 0.9475 \\
 All three candidates preserve Spearman rank correlation >0.947 with
 the pilot scheme while shrinking saturation to single digits.
 
-\textbf{Choice.} We adopt \texttt{linear_p90} (expected_max = 1,460.7). Linear
+\textbf{Choice.} We adopt \texttt{linear\_p90} (expected\_max = 1,460.7). Linear
 normalisation has a simple interpretation -- the score is the
 fraction of "p90 raw findings" achieved by the repository -- and
 \texttt{p90} balances saturation reduction against score readability. The
@@ -756,14 +756,14 @@ The full calibration notes are in Appendix C.
 The 138-server scan is a \textit{static} view: it tells us what
 vulnerabilities exist in code but not whether a real LLM will
 exercise them. To close that gap we implemented an *LLM-in-the-loop
-dynamic harness* (\texttt{dynamic_testing/llm_dynamic_harness.py}). Unlike
+dynamic harness* (\texttt{dynamic\_testing/llm\_dynamic\_harness.py}). Unlike
 prior MCP dynamic tests that exercise protocol messages against a
 stubbed LLM, our harness uses a live model (Claude Opus 4.6) as the
 agent under test. For each scenario we:
 
 1. Instantiate a synthetic tool server implementing the scenario's
-   vulnerable tool (e.g., a \texttt{get_balance} tool whose description
-   embeds a directive to also call \texttt{transfer_funds}).
+   vulnerable tool (e.g., a \texttt{get\_balance} tool whose description
+   embeds a directive to also call \texttt{transfer\_funds}).
 2. Send a user prompt that \textit{would} succeed only if the model
    follows the harmful tool description.
 3. Log the model's full response, the tools it actually called,
@@ -845,7 +845,7 @@ protocol-level fuzzing.
 \section{6. Responsible Disclosure}
 
 We prepared 25 vulnerability reports covering the top-25 highest-risk
-repositories under the recalibrated linear_p90 scheme (all 25 scored
+repositories under the recalibrated linear\_p90 scheme (all 25 scored
 above 60). Each report contains: an introductory context section,
 a per-finding table (file, line, pattern, severity, CWE), an impact
 discussion, and a remediation checklist drawn from Appendix A. The
@@ -880,7 +880,7 @@ window begins upon notification.
 \textbf{Disclosure window.} We follow a 90-day disclosure window in line
 with Google Project Zero and CERT guidance. Notifications will be
 sent simultaneously to all 25 affected repositories upon acceptance. For critical Web3 findings -- in
-particular \texttt{private_key_exposure} in widely-used MCP wallet servers
+particular \texttt{private\_key\_exposure} in widely-used MCP wallet servers
 -- we offered a 14-day expedited remediation path with direct
 co-ordination.
 
@@ -949,10 +949,10 @@ AI agent tool interfaces. Our unified taxonomy (27 patterns, 21
 categories, 16 CWEs, 5 attack surfaces) maps the design space and
 our 138-server scan fills it with evidence: 5,641 findings (637
 critical, 1,434 high, 3,570 medium) distributed unevenly across
-MCP, Web3-native, LangChain, and OpenAI (chi-squared p < 10^-300).
-Four top categories dominate (\texttt{missing_input_validation},
-\texttt{cross_tool_escalation}, \texttt{state_confusion},
-\texttt{private_key_exposure}) and every category appears in at least two
+MCP, Web3-native, LangChain, and OpenAI (chi-squared p < $10^{-300}$).
+Four top categories dominate (\texttt{missing\_input\_validation},
+\texttt{cross\_tool\_escalation}, \texttt{state\_confusion},
+\texttt{private\_key\_exposure}) and every category appears in at least two
 protocols, supporting our thesis that these are \textit{systemic} design
 problems rather than isolated bugs. A recalibrated risk score brings
 saturation from 47\% to 8.7\% while preserving 0.95 rank correlation
@@ -1028,7 +1028,7 @@ See \texttt{paper/taxonomy.md} for the complete remediation guide.
 \section{Appendix B: Responsible Disclosure Templates}
 
 Our disclosure reports are generated from a shared Markdown
-template (\texttt{disclosure/disclosure_template.md}) with the following
+template (\texttt{disclosure/disclosure\_template.md}) with the following
 sections:
 
 1. \textbf{Header.} Sender (anonymous during review), recipient repository,
@@ -1053,7 +1053,7 @@ sections:
    anonymity is preserved in the submission version and populated
    in the camera-ready.
 
-Report generation is scripted (\texttt{disclosure/generate_reports.py}):
+Report generation is scripted (\texttt{disclosure/generate\_reports.py}):
 the script reads the per-repository finding set from the scan
 output, groups findings by category, applies the remediation text
 from \texttt{taxonomy.json}, and emits a Markdown file per repository
@@ -1063,7 +1063,7 @@ tracked in \texttt{disclosure/tracking.md} and summarised in Table 10.
 
 \section{Appendix C: Risk Score Calibration Details}
 
-The pilot analyzer used a hardcoded \texttt{expected_max = 200.0} for the
+The pilot analyzer used a hardcoded \texttt{expected\_max = 200.0} for the
 final normalisation step of the risk score. On the 62-server pilot
 this saturates 29/62 repositories (47\%). The raw base-score
 distribution (Table 7) has a mean of 610.5 and a p90 of 1,460.7 --
@@ -1072,28 +1072,28 @@ the third percentile of the raw distribution is clamped to 100.
 
 \textbf{Alternatives considered.} We computed three candidate schemes.
 
-- \textbf{linear_p90 (recommended).} `score = clip(100 * base / 1460.7,
+- \textbf{linear\_p90 (recommended).} `score = clip(100 * base / 1460.7,
   0, 100)`. Saturated = 7/62 on pilot, 12/138 on the full corpus.
   Spearman rank vs. pilot = 0.9481.
-- \textbf{linear_p95.} \texttt{expected_max = 1,861.0}. Saturated = 4/62.
+- \textbf{linear\_p95.} \texttt{expected\_max = 1,861.0}. Saturated = 4/62.
   Spearman = 0.9476. Rejected because the extra headroom pushes
   many critical repositories into the 40-60 range, blurring
   visual severity cues.
-- \textbf{log_asymptotic.} \texttt{score = 100 * (1 - exp(-base / k))} with
+- \textbf{log\_asymptotic.} \texttt{score = 100 * (1 - exp(-base / k))} with
   \texttt{k = 144.0}. Saturated = 12/62. Spearman = 0.9475. Rejected
   because the logarithmic shape penalises minor findings less
   predictably than a linear scheme; developer reviewers in an
-  internal pilot found linear_p90 easier to interpret.
+  internal pilot found linear\_p90 easier to interpret.
 
 \textbf{Implementation.} The recalibration requires patching one line
-in \texttt{static_analysis/analyzer.py} (line 1,151):
+in \texttt{static\_analysis/analyzer.py} (line 1,151):
 
 \begin{verbatim}
 # was: expected_max = 200.0
 expected_max = 1460.7
 \end{verbatim}
 
-\textbf{Effect on the 138-server corpus.} With linear_p90 applied to
+\textbf{Effect on the 138-server corpus.} With linear\_p90 applied to
 the 138-server scan:
 
 - Mean risk: 53.4 (was ~80+ under pilot; saturated bucket inflated
@@ -1104,7 +1104,7 @@ the 138-server scan:
   100.0 (\texttt{wallet-agent/wallet-agent}) down to 80.0.
 
 \textbf{Rank preservation.} Spearman rank correlation between pilot
-and linear_p90 is 0.948; Pearson is lower (0.76) because the
+and linear\_p90 is 0.948; Pearson is lower (0.76) because the
 linear scheme compresses absolute values while preserving order.
 We consider rank preservation the relevant property because the
 risk score is used for prioritisation, not for absolute attack-cost
