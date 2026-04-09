@@ -301,15 +301,15 @@ We drop the three empty categories and keep LLM-Powered (n = 71 ≥ 20). The fin
 
 **Per-class results.** Table 6 details the per-class metrics for the best model.
 
-**Table 6. Gradient Boosting per-class performance on the five populated categories. LLM-Powered Agent is the empirical weak spot.**
+**Table 6. Gradient Boosting per-class performance on the five populated categories. 95% CIs computed via 1,000-iteration bootstrap on out-of-fold predictions. LLM-Powered Agent is the empirical weak spot.**
 
-| Class | n | F1 | Precision | Recall |
-|-------|--:|---:|----------:|-------:|
-| Deterministic Script   |   666 | **0.996** | 0.999 | 0.994 |
-| Simple Trading Bot     |   130 | 0.988 | 0.992 | 0.985 |
-| DeFi Management Agent  | 1,669 | 0.982 | 0.970 | 0.994 |
-| MEV Searcher           |    54 | 0.849 | 0.865 | 0.833 |
-| **LLM-Powered Agent**  |    71 | **0.528** | 0.800 | 0.394 |
+| Class | n | F1 | 95% CI | Precision | Recall |
+|-------|--:|---:|-------:|----------:|-------:|
+| Deterministic Script   |   666 | **0.999** | [0.996, 1.000] | 0.999 | 0.994 |
+| Simple Trading Bot     |   130 | 0.977 | [0.956, 0.993] | 0.992 | 0.985 |
+| DeFi Management Agent  | 1,669 | 0.980 | [0.975, 0.984] | 0.970 | 0.994 |
+| MEV Searcher           |    54 | 0.887 | [0.817, 0.950] | 0.865 | 0.833 |
+| **LLM-Powered Agent**  |    71 | **0.466** | [0.341, 0.578] | 0.800 | 0.394 |
 
 Four of five categories exceed F1 0.85. The LLM-Powered Agent is the only class below 0.85. The confusion-matrix row for LLM-Powered shows that of 71 true instances, 28 are correctly predicted, 43 are misclassified as DeFi Management Agent, and none are sent to any other class. Precision for LLM-Powered is 0.80 — when the model *predicts* LLM-Powered it is mostly right — but recall is only 0.394. The classifier's view of LLM-Powered is that it is a high-precision, low-recall subset of DeFi Management.
 
@@ -323,7 +323,7 @@ Four of five categories exceed F1 0.85. The LLM-Powered Agent is the only class 
 
 **Empty categories.** Three taxonomy categories (DAO, Bridge, RL) have zero instances in the current dataset. The taxonomy is *not validated* on those categories. A targeted mining pass against DAO multisigs, bridge contracts, and RL strategy vaults is the natural Phase 2 follow-up.
 
-**Small LLM-Powered cohort.** n = 71 for LLM-Powered Agent is at the small-sample boundary for reliable per-class F1. The 0.53 estimate has a wider confidence interval than the 0.996 estimate for Deterministic Script. We do not claim the precise value but do claim the *qualitative* gap between LLM-Powered and the other four classes.
+**Small LLM-Powered cohort.** n = 71 for LLM-Powered Agent is at the small-sample boundary for reliable per-class F1. The bootstrap 95% CI for LLM-Powered is [0.341, 0.578], substantially wider than the [0.996, 1.000] CI for Deterministic Script. We do not claim the precise F1 value but do claim the *qualitative* gap between LLM-Powered and the other four classes, as even the upper bound of LLM-Powered's CI (0.578) falls well below the lower bounds of all other classes.
 
 ### 4.7 Cross-reference to Paper 1
 
