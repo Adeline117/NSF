@@ -607,4 +607,69 @@ For HCI and governance, the contribution is pragmatic. Differentiated disclosure
   pages={115--152},
   year={1995}
 }
+
+@article{xi2023rise,
+  title={The Rise and Potential of Large Language Model Based Agents: A Survey},
+  author={Xi, Zhiheng and Chen, Wenxiang and Guo, Xin and He, Wei and Ding, Yiwen and Hong, Boyang and Zhang, Ming and Wang, Junzhe and Jin, Senjie and Zhou, Enyu and others},
+  journal={arXiv preprint arXiv:2309.07864},
+  year={2023}
+}
+
+@article{wang2024survey,
+  title={A Survey on Large Language Model based Autonomous Agents},
+  author={Wang, Lei and Ma, Chen and Feng, Xueyang and Zhang, Zeyu and Yang, Hao and Zhang, Jingsen and Chen, Zhiyuan and Tang, Jiakai and Chen, Xu and Lin, Yankai and Zhao, Wayne Xin and Wei, Zhewei and Wen, Ji-Rong},
+  journal={Frontiers of Computer Science},
+  volume={18},
+  number={6},
+  year={2024}
+}
+
+@inproceedings{yao2023react,
+  title={ReAct: Synergizing Reasoning and Acting in Language Models},
+  author={Yao, Shunyu and Zhao, Jeffrey and Yu, Dian and Du, Nan and Shafran, Izhak and Narasimhan, Karthik and Cao, Yuan},
+  booktitle={ICLR},
+  year={2023}
+}
+
+@inproceedings{schick2023toolformer,
+  title={Toolformer: Language Models Can Teach Themselves to Use Tools},
+  author={Schick, Timo and Dwivedi-Yu, Jane and Dess{\`\i}, Roberto and Raileanu, Roberta and Lomeli, Maria and Zettlemoyer, Luke and Cancedda, Nicola and Scialom, Thomas},
+  booktitle={NeurIPS},
+  year={2023}
+}
+
+@article{mialon2023augmented,
+  title={Augmented Language Models: A Survey},
+  author={Mialon, Gr{\'e}goire and Dess{\`\i}, Roberto and Lomeli, Maria and Nalmpantis, Christoforos and Pasunuru, Ram and Raileanu, Roberta and Rozi{\`e}re, Baptiste and Schick, Timo and Dwivedi-Yu, Jane and Celikyilmaz, Asli and Grave, Edouard and LeCun, Yann and Scialom, Thomas},
+  journal={Transactions on Machine Learning Research},
+  year={2023}
+}
+
+@inproceedings{guo2024large,
+  title={Large Language Model based Multi-Agents: A Survey of Progress and Challenges},
+  author={Guo, Taicheng and Chen, Xiuying and Wang, Yaqi and Chang, Ruidi and Pei, Shichao and Chawla, Nitesh V and Wiest, Olaf and Zhang, Xiangliang},
+  booktitle={IJCAI},
+  year={2024}
+}
+
+@misc{erc6551,
+  title={ERC-6551: Non-fungible Token Bound Accounts},
+  author={{Ethereum Foundation}},
+  year={2023},
+  howpublished={\url{https://eips.ethereum.org/EIPS/eip-6551}}
+}
+
+@misc{erc4337,
+  title={ERC-4337: Account Abstraction Using Alt Mempool},
+  author={Vitalik Buterin and Yoav Weiss and Dror Tirosh and Shahaf Nacson and Alex Forshtat and Kristof Gazso and Tjaden Hess},
+  year={2023},
+  howpublished={\url{https://eips.ethereum.org/EIPS/eip-4337}}
+}
+
+@misc{mcp2024,
+  title={Model Context Protocol Specification},
+  author={{Anthropic}},
+  year={2024},
+  howpublished={\url{https://modelcontextprotocol.io/specification}}
+}
 ```
