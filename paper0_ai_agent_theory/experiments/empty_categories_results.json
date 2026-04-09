@@ -1,0 +1,169 @@
+{
+  "timestamp": "2026-04-09T16:33:08.086395",
+  "new_addresses_featurized": 154,
+  "failed_addresses": 5,
+  "category_counts_new": {
+    "AutonomousDAOAgent": 34,
+    "CrossChainBridgeAgent": 95,
+    "RLTradingAgent": 25
+  },
+  "category_counts_final": {
+    "AutonomousDAOAgent": 34,
+    "CrossChainBridgeAgent": 95,
+    "RLTradingAgent": 25
+  },
+  "c1c4_pass_rates": {
+    "cat4_c1": 0.765,
+    "cat4_c2": 0.735,
+    "cat4_c3": 0.676,
+    "cat4_c4": 0.735,
+    "cat4_is_agent_c1c4": 0.588,
+    "cat5_c1": 0.926,
+    "cat5_c2": 0.905,
+    "cat5_c3": 0.726,
+    "cat5_c4": 0.905,
+    "cat5_is_agent_c1c4": 0.684,
+    "cat7_c1": 1.0,
+    "cat7_c2": 1.0,
+    "cat7_c3": 0.867,
+    "cat7_c4": 1.0,
+    "cat7_is_agent_c1c4": 0.867
+  },
+  "updated_parquet": "/Users/adelinewen/NSF/paper1_onchain_agent_id/data/features_with_taxonomy.parquet",
+  "total_rows_in_parquet": 3470,
+  "examples_per_category": {
+    "AutonomousDAOAgent": [
+      {
+        "address": "0xf30798bb33ecc64e696a7f73ae72c023f5f10522",
+        "name": "DAO Agent: safe_execTransaction (0xf30798bb...)",
+        "provenance": "gnosis_safe_execTransaction",
+        "c1c4_confidence": 0.867,
+        "n_transactions": 1192
+      },
+      {
+        "address": "0x2e0ece61d3f2353a851b268f34dca0bc3904df2a",
+        "name": "DAO Agent: safe_execTransaction (0x2e0ece61...)",
+        "provenance": "gnosis_safe_execTransaction",
+        "c1c4_confidence": 0.617,
+        "n_transactions": 1041
+      },
+      {
+        "address": "0x91b51c173a4bdaa1a60e234fc3f705a16d228740",
+        "name": "DAO Agent: safe_proxy_factory (0x91b51c17...)",
+        "provenance": "gnosis_safe_proxy_factory",
+        "c1c4_confidence": 0.867,
+        "n_transactions": 491
+      },
+      {
+        "address": "0xe30d5fd45a4516f24219c26e15d3e4d7628262a1",
+        "name": "DAO Agent: safe_proxy_factory (0xe30d5fd4...)",
+        "provenance": "gnosis_safe_proxy_factory",
+        "c1c4_confidence": 0.075,
+        "n_transactions": 7
+      },
+      {
+        "address": "0x5ef3f2c03b78bb006f56abc431f5da2534c2870d",
+        "name": "DAO Agent: safe_proxy_factory (0x5ef3f2c0...)",
+        "provenance": "gnosis_safe_proxy_factory",
+        "c1c4_confidence": 0.867,
+        "n_transactions": 78
+      }
+    ],
+    "CrossChainBridgeAgent": [
+      {
+        "address": "0x1d7c6783328c145393e84fb47a7f7c548f5ee28d",
+        "name": "Bridge Agent: stargate_relay (0x1d7c6783...)",
+        "provenance": "stargate_router",
+        "c1c4_confidence": 0.95,
+        "n_transactions": 2415
+      },
+      {
+        "address": "0xe672486151ee8d7508df79d98153b1d65dc4b1bd",
+        "name": "Bridge Agent: stargate_relay (0xe6724861...)",
+        "provenance": "stargate_router",
+        "c1c4_confidence": 0.25,
+        "n_transactions": 16
+      },
+      {
+        "address": "0x5c8494ffcfba5ab54f9a812c2f3157fb07a974a5",
+        "name": "Bridge Agent: stargate_relay (0x5c8494ff...)",
+        "provenance": "stargate_router",
+        "c1c4_confidence": 0.95,
+        "n_transactions": 3377
+      },
+      {
+        "address": "0x22acb6b1e93869226df1f0fbbeeda47c799ecdfe",
+        "name": "Bridge Agent: stargate_relay (0x22acb6b1...)",
+        "provenance": "stargate_router",
+        "c1c4_confidence": 0.867,
+        "n_transactions": 203
+      },
+      {
+        "address": "0xf2b70dd04c29cb968b133af98bc8de6fabe12388",
+        "name": "Bridge Agent: stargate_relay (0xf2b70dd0...)",
+        "provenance": "stargate_router",
+        "c1c4_confidence": 0.867,
+        "n_transactions": 737
+      }
+    ],
+    "RLTradingAgent": [
+      {
+        "address": "0x5115563fe64378f3a645c97e24c4c8d640a04c67",
+        "name": "RL Agent (Aave+Uniswap): 0x5115563f...",
+        "provenance": "aave_uniswap_multi_protocol",
+        "c1c4_confidence": 0.95,
+        "n_transactions": 729
+      },
+      {
+        "address": "0x7872c6a21d268004b85223a5661f92cc2ad92f51",
+        "name": "RL Agent (Aave+Uniswap): 0x7872c6a2...",
+        "provenance": "aave_uniswap_multi_protocol",
+        "c1c4_confidence": 0.867,
+        "n_transactions": 125
+      },
+      {
+        "address": "0x2ceb5d4d3c325485d4d977c929504954ee92f194",
+        "name": "RL Agent (Aave+Uniswap): 0x2ceb5d4d...",
+        "provenance": "aave_uniswap_multi_protocol",
+        "c1c4_confidence": 0.867,
+        "n_transactions": 1218
+      },
+      {
+        "address": "0xb149f353383ab92e74c4cba3feb848b04bfb3617",
+        "name": "RL Agent (Aave+Uniswap): 0xb149f353...",
+        "provenance": "aave_uniswap_multi_protocol",
+        "c1c4_confidence": 0.95,
+        "n_transactions": 4106
+      },
+      {
+        "address": "0x523b27014b865c4d8f3dac9c6e3b1bad13d22b87",
+        "name": "RL Agent (Aave+Uniswap): 0x523b2701...",
+        "provenance": "aave_uniswap_multi_protocol",
+        "c1c4_confidence": 0.867,
+        "n_transactions": 5628
+      }
+    ]
+  },
+  "failed_list": [
+    {
+      "address": "0x1ec4de886d40d487366cde7664767db1df6a02e7",
+      "reason": "too_few_txs"
+    },
+    {
+      "address": "0xb957dccaa1ccfb1eb78b495b499801d591d8a403",
+      "reason": "too_few_txs"
+    },
+    {
+      "address": "0xe93685f3bba03016f02bd1828badd6195988d950",
+      "reason": "too_few_txs"
+    },
+    {
+      "address": "0x65a8f07bd9a8598e1b5b6c0a88f4779dbc077675",
+      "reason": "too_few_txs"
+    },
+    {
+      "address": "0x4cb6f0ef0eeb503f8065af1a6e6d5dd46197d3d9",
+      "reason": "too_few_txs"
+    }
+  ]
+}
