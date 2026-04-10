@@ -1058,6 +1058,12 @@ estimation.
 
 ---
 
+## Reproducibility
+
+All code, data, and experiment scripts are available at [anonymous repo URL]. The scanner is installable via `pip install -e paper2_agent_tool_security/` and reproduces the 138-repository audit with a single command. The 25 responsible-disclosure reports, risk-score configurations, and per-repository scan results are included in `paper2_agent_tool_security/experiments/`. All LLM API responses used during the security analysis are cached for deterministic reruns.
+
+---
+
 ## References
 
 ```bibtex

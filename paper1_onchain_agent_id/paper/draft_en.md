@@ -601,6 +601,28 @@ Table 8 below shows the leaky-vs-strict extremes.
 
 **The audit direction is not a minor wrinkle. It is a full 180-degree reversal on the headline "agents are riskier than humans on approvals".**
 
+### 4.9 Error Analysis
+
+To understand the classifier's failure modes, we trained a Random Forest (200 trees, max depth 4) on the full $n = 1{,}147$ provenance v4 dataset with 5-fold stratified CV, collected out-of-fold predictions, and identified the 10 addresses for which the model was most confidently wrong (highest probability assigned to the incorrect class). The model misclassifies 312 of 1,147 addresses (27.2% error rate). Table 9 presents the five most informative cases.
+
+**Table 9. Five most confidently misclassified addresses on the provenance v4 dataset.**
+
+| Address | True | Pred | P(agent) | Category | Key behavioral feature |
+|---------|------|------|----------|----------|----------------------|
+| `0x1ab0...1dcf` | Human | Agent | 0.87 | ENS human | 455 tx in 43 days, 160 Uniswap V2 calls, gas\_round\_ratio = 0.00 |
+| `0xd50c...99bf` | Agent | Human | 0.15 | Compound V3 liquidator | 271 tx over 7.7 years, gas\_round\_ratio = 0.69, 121 unique contracts |
+| `0xfd49...ba19` | Agent | Human | 0.16 | Expanded MEV bot | 231 tx over 8.6 years, gas\_round\_ratio = 0.76, calls own contract |
+| `0x3c1e...17f1` | Human | Agent | 0.84 | ENS human | 8,580 tx, 4,328 Banana Gun Router calls, seq\_pattern = 0.95 |
+| `0xf0d4...58b8d` | Human | Agent | 0.81 | Pilot human | 5,000 tx in 31 days, 4,999 self-calls, top\_contract\_conc = 1.00 |
+
+**Two dominant failure modes emerge.**
+
+**False positives (humans classified as agents, 8 of 10).** The overwhelming pattern is ENS-verified humans who use automated trading frontends — Uniswap Universal Router, Banana Gun, and similar Telegram-based bots. These tools set gas prices programmatically (gas\_price\_round\_number\_ratio near zero), batch transactions in repetitive patterns (sequential\_pattern\_score > 0.80), and concentrate activity on a single router contract. The most extreme case (`0x3c1e...`) made 4,328 calls to Banana Gun in 3 years with 2,019 token approvals, producing a behavioral fingerprint indistinguishable from an autonomous DeFi agent. The classifier is correct about the *execution-level behavior* but wrong about the *provenance*: these humans initiated trades, but every execution detail — gas pricing, routing, timing — was delegated to automated infrastructure. This reveals a fundamental limitation of behavioral features: when the human-agent boundary is defined by initiation rather than execution, execution-level features cannot reliably distinguish the two.
+
+**False negatives (agents classified as humans, 2 of 10).** Both are event-driven agents: a Compound V3 liquidation bot and an early-era MEV searcher. These agents transact infrequently (0.07-0.10 tx/day), span many years, interact with many diverse contracts, and use default wallet gas settings. The temporal features — designed to capture high-frequency, regular-interval bot behavior — see only a sparse, irregular transaction stream indistinguishable from a long-lived human wallet. This failure mode suggests that the 23-feature set is biased toward detecting *continuously active* agents and underperforms on *event-driven* agents that activate only during specific market conditions.
+
+**Implications.** The error analysis identifies the "human using bot tools" population as the primary source of classification noise. Future work should incorporate provenance signals (e.g., contract deployment metadata, transaction initiation source) alongside behavioral features to disambiguate tool-assisted humans from autonomous agents.
+
 ---
 
 ## 5. Threats to Validity: The C1-C4 Label Leakage Discovery
@@ -750,6 +772,12 @@ The three-tier evaluation (leaky 0.98 -> full provenance 0.80 -> strict provenan
 We framed the paper around the leakage discovery as a methodological contribution: it quantifies how fragile heuristic labeling can be, it provides a concrete audit template, and it establishes honest baselines (RF 0.803, GAT 0.832 on n=1,147; RF 0.77, GAT 0.88 on n=64) against which any future re-mining effort must be measured. All code, features, labels, and the leaky-vs-honest diagnostic artifacts are released.
 
 On-chain AI agents are a real and growing phenomenon, and identifying them reliably is a real and growing need. Our central message is that this need will not be met by scaling up heuristic labeling pipelines. It will be met only by starting from non-behavioral provenance, running explicit leakage audits, reporting honest-vs-leaky gaps, and treating cross-label-scheme transfer as a non-negotiable diagnostic. The honest numbers are smaller than the leaky numbers, but they are the numbers the field can build on.
+
+---
+
+## Reproducibility
+
+All code, data, and experiment scripts are available at [anonymous repo URL]. The feature extraction pipeline, labeled datasets (including both leaky and honest label sets), and the leakage audit notebook are provided in `paper1_onchain_agent_id/`. The Random Forest, GradientBoosting, and GAT models can be retrained from scratch using the included configuration files. All random seeds and train/test splits are fixed; feature parquet files and provenance ground-truth CSVs are versioned for deterministic reruns.
 
 ---
 

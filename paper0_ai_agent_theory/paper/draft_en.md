@@ -432,6 +432,12 @@ For HCI and governance, the contribution is pragmatic. Differentiated disclosure
 
 ---
 
+## Reproducibility
+
+All code, data, and experiment scripts for reproducing the results in this paper are available at [anonymous repo URL]. The 23-feature extraction pipeline, the C1--C4 operationalization rules, and the 2,744-address labeled dataset are included in `paper0_ai_agent_theory/` and `paper1_onchain_agent_id/data/`. The GBM five-fold cross-validation, PCA scatter, and cluster-sweep analyses can be rerun end-to-end with a single `make` invocation. All random seeds are fixed for deterministic reproduction.
+
+---
+
 ## References
 
 ```bibtex

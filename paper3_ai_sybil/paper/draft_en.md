@@ -779,6 +779,12 @@ Along the way we documented a label-leakage bug in our own pipeline and publishe
 
 ---
 
+## Reproducibility
+
+All code, data, and experiment scripts are available at [anonymous repo URL]. The LLM-driven sybil generation pipeline, adversarial training pilot, and all 16-project evaluation scripts are provided in `paper3_ai_sybil/experiments/`. All LLM API responses are cached in `llm_sybil_cache/` for deterministic reruns without incurring API costs. The leakage audit, honest-baseline retraining, and figure generation can be reproduced end-to-end with the included Makefile targets.
+
+---
+
 ## References (BibTeX)
 
 ```bibtex
