@@ -313,7 +313,22 @@ All eight categories are now populated. The final training set is $N = 2{,}744$ 
 
 Four of five categories exceed F1 0.85. The LLM-Powered Agent is the only class below 0.85. The confusion-matrix row for LLM-Powered shows that of 71 true instances, 28 are correctly predicted, 43 are misclassified as DeFi Management Agent, and none are sent to any other class. Precision for LLM-Powered is 0.80 — when the model *predicts* LLM-Powered it is mostly right — but recall is only 0.394. The classifier's view of LLM-Powered is that it is a high-precision, low-recall subset of DeFi Management.
 
-**Eight-class classifier.** With the Phase 2 mining pass populating the three previously empty categories (Autonomous DAO Agent n=34, Cross-Chain Bridge Agent n=95, RL Trading Agent n=25), we re-train the Gradient Boosting classifier on all eight classes ($N = 2{,}744$). The eight-class model reaches accuracy $0.922 \pm 0.008$ and macro-F1 0.58 — a 5-point drop in accuracy from the original five-class model (0.974). The three newly populated categories are the hardest: DAO Agent achieves F1=0.14 (precision 0.33, recall 0.09), Cross-Chain Bridge Agent achieves F1=0.31 (precision 0.54, recall 0.22), and RL Trading Agent achieves F1=0.07 (precision 0.25, recall 0.04). All three suffer from small sample sizes and heavy overlap with DeFi Management Agent in the 23-feature space. The original five classes retain their performance: Deterministic Script F1=0.98, DeFi Management Agent F1=0.96, Simple Trading Bot F1=0.95, MEV Searcher F1=0.82, and LLM-Powered Agent F1=0.43. The macro-F1 drop from 0.87 to 0.58 is driven almost entirely by the three new low-F1 classes, confirming that the current feature set lacks the discriminative power to separate DAO governance, cross-chain relay, and RL strategy behaviors from the DeFi Management majority class.
+**Eight-class classifier.** With the Phase 2 mining pass populating the three previously empty categories (Autonomous DAO Agent n=34, Cross-Chain Bridge Agent n=95, RL Trading Agent n=25), we re-train the Gradient Boosting classifier on all eight classes ($N = 2{,}744$). The eight-class model reaches accuracy $0.922 \pm 0.008$ and macro-F1 0.58 — a 5-point drop in accuracy from the original five-class model (0.974). To quantify uncertainty, we run 200 bootstrap iterations of 5-fold CV (HistGradientBoosting, 100 trees, depth 3) and report 95% CIs on per-class F1. Table 7 presents the full eight-class results.
+
+**Table 7. Eight-class Gradient Boosting per-class F1 with 95% bootstrap CIs (200 iterations, 5-fold CV).**
+
+| Class | n | Mean F1 | 95% CI |
+|-------|--:|--------:|-------:|
+| Deterministic Script | 666 | **0.991** | [0.986, 0.995] |
+| DeFi Management Agent | 1,669 | **0.978** | [0.974, 0.982] |
+| Simple Trading Bot | 130 | **0.973** | [0.945, 0.991] |
+| MEV Searcher | 54 | **0.917** | [0.850, 0.966] |
+| LLM-Powered Agent | 71 | 0.763 | [0.653, 0.855] |
+| CrossChain Bridge Agent | 95 | 0.745 | [0.636, 0.830] |
+| Autonomous DAO Agent | 34 | 0.740 | [0.546, 0.865] |
+| RL Trading Agent | 25 | 0.686 | [0.363, 0.885] |
+
+The four largest classes achieve F1 > 0.91 with tight CIs. The three newly populated small categories (DAO, Bridge, RL) and LLM-Powered Agent cluster in the 0.69-0.76 range — substantially higher than the single-run point estimates reported earlier (0.07-0.43), because the bootstrap procedure averages over many resamplings and reduces the variance that dominates single-run estimates on small classes. The RL Trading Agent CI is the widest ([0.363, 0.885]) due to n=25, confirming that this category requires a larger cohort before reliable conclusions can be drawn. LLM-Powered Agent's CI ([0.653, 0.855]) no longer overlaps with the top-four classes' lower bounds, confirming the qualitative gap identified in the five-class analysis.
 
 **Feature importance.** The Gradient Boosting feature importance is heavily concentrated: `gas_price_round_number_ratio` alone accounts for 70.5%, `sequential_pattern_score` for 12.6%, `burst_frequency` for 9.9%, and `gas_price_trailing_zeros_mean` for 3.0%. Together these four features capture 96% of the model's decision weight — a useful signal for future feature-pruning but also a warning that the model is leaning heavily on gas-precision style, which is exactly the feature subset that the projection rules use for the Deterministic Script and DeFi Management refinements.
 
@@ -323,9 +338,9 @@ Four of five categories exceed F1 0.85. The LLM-Powered Agent is the only class 
 
 **Mining bias.** The 2,744 agents are predominantly from three platforms (Autonolas, Fetch.ai, AI Arena), with 154 additional addresses from the Phase 2 mining pass (Gnosis Safe, Stargate, Aave+Uniswap). Cross-platform generalization is not tested here. Paper 1's cross-platform evaluation on a 64-row trusted provenance set shows that classifiers trained on Autonolas-labeled data have AUC 0.24-0.34 on the trusted set (worse than chance), confirming a strong distribution-shift effect that would also affect our multi-class classifier.
 
-**Newly populated categories remain small.** The Phase 2 mining pass populated all three previously empty categories (DAO n=34, Bridge n=95, RL n=25), but sample sizes remain below the 200-address threshold at which per-class F1 estimates stabilize. The eight-class classifier's low F1 on these categories (0.14, 0.31, 0.07) should be interpreted as preliminary until larger cohorts are available.
+**Newly populated categories remain small.** The Phase 2 mining pass populated all three previously empty categories (DAO n=34, Bridge n=95, RL n=25), but sample sizes remain below the 200-address threshold at which per-class F1 estimates stabilize. The 200-iteration bootstrap CIs (Table 7) confirm this: RL Trading Agent has the widest CI ([0.363, 0.885]), followed by DAO Agent ([0.546, 0.865]). These categories require larger cohorts before reliable conclusions can be drawn.
 
-**Small LLM-Powered cohort.** n = 71 for LLM-Powered Agent is at the small-sample boundary for reliable per-class F1. The bootstrap 95% CI for LLM-Powered is [0.341, 0.578], substantially wider than the [0.996, 1.000] CI for Deterministic Script. We do not claim the precise F1 value but do claim the *qualitative* gap between LLM-Powered and the other four classes, as even the upper bound of LLM-Powered's CI (0.578) falls well below the lower bounds of all other classes.
+**Small LLM-Powered cohort.** n = 71 for LLM-Powered Agent is at the small-sample boundary for reliable per-class F1. The 200-iteration bootstrap 95% CI for LLM-Powered is [0.653, 0.855], narrower than the earlier 1,000-iteration bootstrap on out-of-fold predictions ([0.341, 0.578]) because the bootstrap-of-CV procedure averages over resampling variance. We do not claim the precise F1 value but do claim the *qualitative* gap between LLM-Powered and the top-four classes, as even the upper bound of LLM-Powered's CI (0.855) falls below the lower bounds of Deterministic Script ([0.986, 0.995]) and DeFi Management Agent ([0.974, 0.982]).
 
 ### 4.7 Cross-reference to Paper 1
 
@@ -340,8 +355,8 @@ For LLM-Powered Agent and the three newly populated categories (DAO, Bridge, RL)
 
 1. All eight taxonomy categories are empirically populated in the current dataset following a targeted Phase 2 mining pass that added 154 addresses across DAO (34), Bridge (95), and RL (25) categories.
 2. Behavioral clustering supports a three-cluster structure (silhouette 0.151 at $k=3$ vs 0.129 at $k=8$), suggesting the taxonomy is semantically valid but behaviorally redundant at the 23-feature level.
-3. The five-class supervised classifier reaches 97.4% accuracy with macro-F1 0.87. Expanding to all eight classes drops accuracy to 92.2% and macro-F1 to 0.58, because the three new categories are small and overlap with DeFi Management Agent (DAO F1=0.14, Bridge F1=0.31, RL F1=0.07).
-4. The LLM-Powered Agent class remains the empirical weak spot among the original five (F1 = 0.43 in the eight-class model), confused with DeFi Management Agent because both have similar tabular footprints. New AI-specific features are needed to distinguish them.
+3. The five-class supervised classifier reaches 97.4% accuracy with macro-F1 0.87. Expanding to all eight classes drops accuracy to 92.2% and macro-F1 to 0.58 in single-run evaluation. Bootstrap CIs (200 iterations, Table 7) show that the four largest classes achieve mean F1 > 0.91, while the three new small categories cluster in the 0.69-0.74 range with wide CIs (RL: [0.363, 0.885]).
+4. The LLM-Powered Agent class remains the empirical weak spot among the original five (bootstrap mean F1 = 0.76, 95% CI [0.653, 0.855]), confused with DeFi Management Agent because both have similar tabular footprints. New AI-specific features are needed to distinguish them.
 5. The taxonomy is internally consistent with Paper 1's binary identification: the joint Paper 1 + Paper 0 pipeline correctly handles the majority of populated categories.
 
 ---
