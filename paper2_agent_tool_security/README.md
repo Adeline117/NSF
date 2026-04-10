@@ -1,5 +1,7 @@
 # Agent Tool Scanner
 
+[![CI](https://github.com/Adeline117/NSF/actions/workflows/ci.yml/badge.svg)](https://github.com/Adeline117/NSF/actions/workflows/ci.yml)
+
 Static analysis scanner for AI agent tool interface security. Detects vulnerabilities across four protocol families:
 
 - **MCP** (Model Context Protocol)

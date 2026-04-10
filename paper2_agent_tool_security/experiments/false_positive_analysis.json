@@ -1,0 +1,1316 @@
+{
+  "metadata": {
+    "description": "Heuristic false-positive analysis of 138-server scan",
+    "sample_size": 100,
+    "stratification": {
+      "critical": 20,
+      "high": 30,
+      "medium": 50
+    },
+    "seed": 20260409,
+    "total_findings_in_corpus": 5641,
+    "heuristic_rules": [
+      "R1: file in node_modules/vendor/dist/build -> FP",
+      "R2: file is test/spec (non-critical) -> FP",
+      "R3: file is example/demo/mock -> FP",
+      "R4: generic pattern + comment-only matched line -> FP",
+      "R5: high-precision pattern with substantive match -> TP",
+      "R6: context shows real function call/definition -> TP",
+      "R7: generic pattern + matched_text < 10 chars -> FP",
+      "R8: test file + critical -> FP (test secrets)",
+      "R9: default -> TP (conservative)"
+    ]
+  },
+  "overall": {
+    "true_positives": 66,
+    "false_positives": 34,
+    "total": 100,
+    "precision": {
+      "point": 0.66,
+      "lower": 0.5628,
+      "upper": 0.7454
+    }
+  },
+  "precision_by_severity": {
+    "critical": {
+      "n": 20,
+      "tp": 17,
+      "fp": 3,
+      "point": 0.85,
+      "lower": 0.6396,
+      "upper": 0.9476
+    },
+    "high": {
+      "n": 30,
+      "tp": 12,
+      "fp": 18,
+      "point": 0.4,
+      "lower": 0.2459,
+      "upper": 0.5768
+    },
+    "medium": {
+      "n": 50,
+      "tp": 37,
+      "fp": 13,
+      "point": 0.74,
+      "lower": 0.6045,
+      "upper": 0.8413
+    }
+  },
+  "precision_by_category": {
+    "missing_input_validation": {
+      "n": 39,
+      "tp": 36,
+      "fp": 3,
+      "point": 0.9231,
+      "lower": 0.7968,
+      "upper": 0.9735
+    },
+    "cross_tool_escalation": {
+      "n": 15,
+      "tp": 1,
+      "fp": 14,
+      "point": 0.0667,
+      "lower": 0.0119,
+      "upper": 0.2982
+    },
+    "private_key_exposure": {
+      "n": 14,
+      "tp": 14,
+      "fp": 0,
+      "point": 1.0,
+      "lower": 0.7847,
+      "upper": 1.0
+    },
+    "state_confusion": {
+      "n": 11,
+      "tp": 1,
+      "fp": 10,
+      "point": 0.0909,
+      "lower": 0.0162,
+      "upper": 0.3774
+    },
+    "excessive_permissions": {
+      "n": 4,
+      "tp": 3,
+      "fp": 1,
+      "point": 0.75,
+      "lower": 0.3006,
+      "upper": 0.9544
+    },
+    "tx_validation_missing": {
+      "n": 4,
+      "tp": 3,
+      "fp": 1,
+      "point": 0.75,
+      "lower": 0.3006,
+      "upper": 0.9544
+    },
+    "unchecked_external_call": {
+      "n": 3,
+      "tp": 2,
+      "fp": 1,
+      "point": 0.6667,
+      "lower": 0.2077,
+      "upper": 0.9385
+    },
+    "prompt_injection": {
+      "n": 2,
+      "tp": 1,
+      "fp": 1,
+      "point": 0.5,
+      "lower": 0.0945,
+      "upper": 0.9055
+    },
+    "privilege_escalation": {
+      "n": 2,
+      "tp": 1,
+      "fp": 1,
+      "point": 0.5,
+      "lower": 0.0945,
+      "upper": 0.9055
+    },
+    "unlimited_approval": {
+      "n": 2,
+      "tp": 2,
+      "fp": 0,
+      "point": 1.0,
+      "lower": 0.3424,
+      "upper": 1.0
+    },
+    "hardcoded_credentials": {
+      "n": 1,
+      "tp": 1,
+      "fp": 0,
+      "point": 1.0,
+      "lower": 0.2065,
+      "upper": 1.0
+    },
+    "delegatecall_abuse": {
+      "n": 1,
+      "tp": 0,
+      "fp": 1,
+      "point": 0.0,
+      "lower": 0.0,
+      "upper": 0.7935
+    },
+    "approval_injection": {
+      "n": 1,
+      "tp": 0,
+      "fp": 1,
+      "point": 0.0,
+      "lower": 0.0,
+      "upper": 0.7935
+    },
+    "tool_poisoning": {
+      "n": 1,
+      "tp": 1,
+      "fp": 0,
+      "point": 1.0,
+      "lower": 0.2065,
+      "upper": 1.0
+    }
+  },
+  "precision_by_protocol": {
+    "langchain": {
+      "n": 21,
+      "tp": 21,
+      "fp": 0,
+      "point": 1.0,
+      "lower": 0.8454,
+      "upper": 1.0
+    },
+    "mcp": {
+      "n": 48,
+      "tp": 23,
+      "fp": 25,
+      "point": 0.4792,
+      "lower": 0.3447,
+      "upper": 0.6167
+    },
+    "openai": {
+      "n": 4,
+      "tp": 4,
+      "fp": 0,
+      "point": 1.0,
+      "lower": 0.5101,
+      "upper": 1.0
+    },
+    "web3_native": {
+      "n": 27,
+      "tp": 18,
+      "fp": 9,
+      "point": 0.6667,
+      "lower": 0.4782,
+      "upper": 0.8136
+    }
+  },
+  "fp_reason_breakdown": {
+    "test/spec file": 24,
+    "comment-only match (generic pattern)": 8,
+    "example/demo/mock": 1,
+    "overly short generic match": 1
+  },
+  "sample_classifications": [
+    {
+      "repo": "tommyz7/ethwaterloo-contract-account-metamask-plugin",
+      "file": "metamask/ui/app/pages/first-time-flow/seed-phrase/tests/confirm-seed-phrase-component.test.js",
+      "line": 37,
+      "pattern_id": "PKE-001",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "seedPhrase: '",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "Synthetixio/safe-synthetix-module",
+      "file": "test/SynthetixSafeModuleTest.sol",
+      "line": 200,
+      "pattern_id": "PKE-001",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "mnemonic = \"",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "tommyz7/ethwaterloo-contract-account-metamask-plugin",
+      "file": "metamask/ui/app/components/app/transaction-activity-log/tests/transaction-activity-log.component.test.js",
+      "line": 17,
+      "pattern_id": "PKE-002",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "'0xe46c7f9b39af2fbf1c53e66f72f80343ab54c2c6dba902d51fb98ada08fe1a63'",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "waybarrios/vllm-mlx",
+      "file": "tests/test_mllm_cache.py",
+      "line": 972,
+      "pattern_id": "PI-001",
+      "category": "prompt_injection",
+      "severity": "critical",
+      "matched_text": "prompt = f\"",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "aimaster-dev/ai-agent-solana",
+      "file": "src/providers/wallet.ts",
+      "line": 69,
+      "pattern_id": "PKE-003",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "signTransaction",
+      "verdict": "TP",
+      "catalog_protocol": "openai"
+    },
+    {
+      "repo": "AaronAbuUsama/bico-safe-module",
+      "file": "src/mocks/TestAvatar.sol",
+      "line": 16,
+      "pattern_id": "PE-001",
+      "category": "privilege_escalation",
+      "severity": "critical",
+      "matched_text": "enableModule(",
+      "verdict": "FP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "taylorwilsdon/google_workspace_mcp",
+      "file": "tests/auth/test_google_auth_callback_refresh_token.py",
+      "line": 94,
+      "pattern_id": "HC-001",
+      "category": "hardcoded_credentials",
+      "severity": "critical",
+      "matched_text": "token=\"session-refresh-token\"",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "koshikraj/safe-7579-demo",
+      "file": "web/src/utils/userOp.ts",
+      "line": 36,
+      "pattern_id": "PKE-002",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "\"0x0100000000000000000000000000000000000000000000000000000000000000\"",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "circlefin/msca-wallet-recovery",
+      "file": "src/utils/blockchain.ts",
+      "line": 168,
+      "pattern_id": "PKE-003",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "signMessage",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "tommyz7/ethwaterloo-contract-account-metamask-plugin",
+      "file": "metamask/ui/app/components/app/signature-request.js",
+      "line": 235,
+      "pattern_id": "PKE-003",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "eth_sign",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "kmatthewsio/langchain-x402",
+      "file": "tests/test_wallet.py",
+      "line": 11,
+      "pattern_id": "PKE-001",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "PRIVATE_KEY = \"",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "aquacommander/BlockchainAIAgent",
+      "file": "Sui/src/hooks/useTransactionExecution.ts",
+      "line": 16,
+      "pattern_id": "PKE-003",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "signTransaction",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "papilo-cloud/account-abstraction",
+      "file": "test/zkSync/ZkMInimalAccountTest.t.sol",
+      "line": 59,
+      "pattern_id": "PKE-003",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "signTransaction",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "agentic-community/mcp-gateway-registry",
+      "file": "tests/unit/core/test_config.py",
+      "line": 747,
+      "pattern_id": "PKE-001",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "secret_key=\"",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "agentic-community/mcp-gateway-registry",
+      "file": "registry/api/server_routes.py",
+      "line": 2874,
+      "pattern_id": "PI-001",
+      "category": "prompt_injection",
+      "severity": "critical",
+      "matched_text": "description=f\"",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "bcnmy/nexus",
+      "file": "test/hardhat/smart-account/Nexus.Batch.Execution.specs.ts",
+      "line": 186,
+      "pattern_id": "PKE-003",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "signMessage",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "a-shannon/ergo-agent-sdk",
+      "file": "src/ergo_agent/tools/toolkit.py",
+      "line": 538,
+      "pattern_id": "PKE-003",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "sign_transaction",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "0xdevant/naive-modular-smart-account",
+      "file": "src/extensions/OwnershipManagementHookExtension.sol",
+      "line": 21,
+      "pattern_id": "PE-001",
+      "category": "privilege_escalation",
+      "severity": "critical",
+      "matched_text": "transferOwnership(",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "koshikraj/safe-7579-demo",
+      "file": "module/contracts/test/TestSafeSignerLaunchpad.sol",
+      "line": 101,
+      "pattern_id": "DC-001",
+      "category": "delegatecall_abuse",
+      "severity": "critical",
+      "matched_text": ".delegatecall(",
+      "verdict": "FP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "Kalsito1017/smartframe-wallet",
+      "file": "test/zksync/zkMinimalAccountTest.t.sol",
+      "line": 78,
+      "pattern_id": "PKE-003",
+      "category": "private_key_exposure",
+      "severity": "critical",
+      "matched_text": "signTransaction",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "agentic-community/mcp-gateway-registry",
+      "file": "credentials-provider/oauth/egress_oauth.py",
+      "line": 149,
+      "pattern_id": "EP-001",
+      "category": "excessive_permissions",
+      "severity": "high",
+      "matched_text": "subprocess.run",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "sooperset/mcp-atlassian",
+      "file": "tests/unit/servers/test_jira_server.py",
+      "line": 2367,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "call_tool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "getsentry/XcodeBuildMCP",
+      "file": "src/smoke-tests/__tests__/e2e-mcp-device-macos.test.ts",
+      "line": 334,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "callTool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "apify/apify-mcp-server",
+      "file": "tests/integration/suite.ts",
+      "line": 751,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "callTool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "juliusespinosa991/Solana-Ai-Trading",
+      "file": "src/tools/sendarcade/rock_paper_scissor.ts",
+      "line": 97,
+      "pattern_id": "TV-001",
+      "category": "tx_validation_missing",
+      "severity": "high",
+      "matched_text": "sendRawTransaction(",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "bcnmy/nexus",
+      "file": "test/foundry/fork/base/TestNexusSwapWETH_Integration.t.sol",
+      "line": 228,
+      "pattern_id": "AI-001",
+      "category": "approval_injection",
+      "severity": "high",
+      "matched_text": "approve(",
+      "verdict": "FP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "koshikraj/safe-7579-demo",
+      "file": "module/contracts/test/SafeMock.sol",
+      "line": 190,
+      "pattern_id": "UC-001",
+      "category": "unchecked_external_call",
+      "severity": "high",
+      "matched_text": ".call{value: missingAccountFunds}(",
+      "verdict": "FP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "FuzzingLabs/mcp-security-hub",
+      "file": "exploitation/searchsploit-mcp/server.py",
+      "line": 246,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "call_tool(",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "EqualFiLabs/agent-wallet-core",
+      "file": "src/core/NFTBoundMSCA.sol",
+      "line": 590,
+      "pattern_id": "UC-001",
+      "category": "unchecked_external_call",
+      "severity": "high",
+      "matched_text": ".call{value: value}(",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "getsentry/XcodeBuildMCP",
+      "file": "src/smoke-tests/__tests__/e2e-mcp-simulator.test.ts",
+      "line": 292,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "callTool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "sooperset/mcp-atlassian",
+      "file": "tests/unit/servers/test_confluence_server.py",
+      "line": 750,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "call_tool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "aquacommander/BlockchainAIAgent",
+      "file": "Solana/src/utils/send_tx.ts",
+      "line": 159,
+      "pattern_id": "TV-001",
+      "category": "tx_validation_missing",
+      "severity": "high",
+      "matched_text": "sendTransaction(",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "CodeGraphContext/CodeGraphContext",
+      "file": "src/codegraphcontext/cli/config_manager.py",
+      "line": 69,
+      "pattern_id": "UA-001",
+      "category": "unlimited_approval",
+      "severity": "high",
+      "matched_text": "unlimited",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "waybarrios/vllm-mlx",
+      "file": "vllm_mlx/plugin.py",
+      "line": 121,
+      "pattern_id": "EP-001",
+      "category": "excessive_permissions",
+      "severity": "high",
+      "matched_text": "subprocess.run",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "getsentry/XcodeBuildMCP",
+      "file": "src/smoke-tests/__tests__/e2e-mcp-invocation.test.ts",
+      "line": 198,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "callTool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "FuzzingLabs/mcp-security-hub",
+      "file": "exploitation/searchsploit-mcp/server.py",
+      "line": 161,
+      "pattern_id": "EP-001",
+      "category": "excessive_permissions",
+      "severity": "high",
+      "matched_text": "exec(",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "rekog-labs/MCP-Nest",
+      "file": "tests/mcp-logging.e2e.spec.ts",
+      "line": 128,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "callTool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "CryptoRonaldo/blockchain-ai-agent-llm-solana-bitcoin",
+      "file": "src/pages/playground/index.tsx",
+      "line": 198,
+      "pattern_id": "TV-001",
+      "category": "tx_validation_missing",
+      "severity": "high",
+      "matched_text": "sendTransaction(",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "sooperset/mcp-atlassian",
+      "file": "tests/unit/servers/test_jira_server.py",
+      "line": 2125,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "call_tool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "getsentry/XcodeBuildMCP",
+      "file": "src/smoke-tests/__tests__/e2e-mcp-invocation.test.ts",
+      "line": 166,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "callTool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "sooperset/mcp-atlassian",
+      "file": "tests/e2e/cloud/test_images_cloud.py",
+      "line": 167,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "call_tool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "UMainLove/msca_manager",
+      "file": "contracts/flattened/MessagingPlugin.flattened.sol",
+      "line": 4903,
+      "pattern_id": "UC-001",
+      "category": "unchecked_external_call",
+      "severity": "high",
+      "matched_text": ".call{value: missingAccountFunds, gas: type(uint256).max}(",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "rekog-labs/MCP-Nest",
+      "file": "tests/mcp-per-tool-auth.e2e.spec.ts",
+      "line": 532,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "callTool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "brian-knows/langchain-toolkit",
+      "file": "src/toolkits/brian/tools/networks-tool.ts",
+      "line": 13,
+      "pattern_id": "TP-001",
+      "category": "tool_poisoning",
+      "severity": "high",
+      "matched_text": "description:\n      \"you should use this tool whenever you need to get the chainId of a network from its name.\"",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "sooperset/mcp-atlassian",
+      "file": "tests/unit/servers/test_confluence_server.py",
+      "line": 690,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "call_tool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "CodeGraphContext/CodeGraphContext",
+      "file": "src/codegraphcontext/cli/config_manager.py",
+      "line": 347,
+      "pattern_id": "UA-001",
+      "category": "unlimited_approval",
+      "severity": "high",
+      "matched_text": "unlimited",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "sooperset/mcp-atlassian",
+      "file": "tests/unit/servers/test_jira_server.py",
+      "line": 1710,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "call_tool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "Accenture/mcp-bench",
+      "file": "mcp_servers/wikipedia-mcp/tests/test_cli.py",
+      "line": 14,
+      "pattern_id": "EP-001",
+      "category": "excessive_permissions",
+      "severity": "high",
+      "matched_text": "subprocess.run",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "zero-point-module/ethereum-powerup",
+      "file": "contracts/test/7702.test.ts",
+      "line": 73,
+      "pattern_id": "TV-001",
+      "category": "tx_validation_missing",
+      "severity": "high",
+      "matched_text": "sendTransaction(",
+      "verdict": "FP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "getsentry/XcodeBuildMCP",
+      "file": "src/smoke-tests/__tests__/e2e-mcp-logging.test.ts",
+      "line": 64,
+      "pattern_id": "CE-001",
+      "category": "cross_tool_escalation",
+      "severity": "high",
+      "matched_text": "callTool(",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "juliusespinosa991/Solana-Ai-Trading",
+      "file": "src/langchain/orca/orca_position.ts",
+      "line": 11,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "Address: string",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "agentic-community/mcp-gateway-registry",
+      "file": "registry/repositories/file/server_repository.py",
+      "line": 94,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value = loaded_state.get(path.rstr",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "opensumi/core",
+      "file": "packages/ai-native/src/browser/components/mention-input/mention-input.tsx",
+      "line": 985,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "assagman/dsgo",
+      "file": "internal/core/configure_test.go",
+      "line": 157,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "global state",
+      "verdict": "FP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "aimaster-dev/ai-agent-solana",
+      "file": "src/providers/trustScoreProvider.ts",
+      "line": 110,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "amount: number",
+      "verdict": "TP",
+      "catalog_protocol": "openai"
+    },
+    {
+      "repo": "Accenture/mcp-bench",
+      "file": "mcp_servers/biomcp/src/biomcp/utils/cancer_types_api.py",
+      "line": 130,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "Global instance",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "waybarrios/vllm-mlx",
+      "file": "vllm_mlx/mcp/security.py",
+      "line": 682,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "Global sandbox",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "koshikraj/safe-7579-demo",
+      "file": "module/src/utils/execution.ts",
+      "line": 58,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "Address: string, chainId: BigNumberish): string",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "jahanzaibahmad112-dotcom/UAIP-Protocol",
+      "file": "uaip/settlement.py",
+      "line": 562,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "amount: Any) -> Dict[str, Any",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "double-k-3033/Blockchain-AI-Agent",
+      "file": "Solana/src/agent/index.ts",
+      "line": 944,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "amount: number, symbol: string",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "koshikraj/safe-7579-demo",
+      "file": "web/src/utils/userOp.ts",
+      "line": 72,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "Address: string, safeOp: SafeUserOperation, chainId: BigNumberish): string",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "adag1oeth/trading",
+      "file": "app/page.tsx",
+      "line": 30,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "Amount: string",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "double-k-3033/Blockchain-AI-Agent",
+      "file": "Solana/src/agent/index.ts",
+      "line": 960,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "Amount: number",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "base/base-mcp",
+      "file": "src/tools/morpho/types.ts",
+      "line": 3,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "address: string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "koshikraj/safe-7579-demo",
+      "file": "module/src/utils/safe.ts",
+      "line": 229,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "address: string",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "aimaster-dev/ai-agent-solana",
+      "file": "src/community/growth/incentives.ts",
+      "line": 34,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "amount: number",
+      "verdict": "TP",
+      "catalog_protocol": "openai"
+    },
+    {
+      "repo": "aquacommander/BlockchainAIAgent",
+      "file": "Sui/server/app/typing.ts",
+      "line": 147,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "address: string",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "koshikraj/safe-7579-demo",
+      "file": "web/src/utils/execution.ts",
+      "line": 33,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: BigNumber",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "Accenture/mcp-bench",
+      "file": "mcp_servers/bibliomantic-mcp-server/enhanced_iching_core.py",
+      "line": 429,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "Global instance",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "agentic-community/mcp-gateway-registry",
+      "file": "registry/api/virtual_server_routes.py",
+      "line": 523,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "global tool",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "juliusespinosa991/Solana-Ai-Trading",
+      "file": "docs/assets/main.js",
+      "line": 5,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value=l.classes??\"\";let p=document.createElement(\"a\");p.href=r.base+l.url,p.innerHTML=c+d,m.append(p),p.addEventListener",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "executeautomation/mcp-playwright",
+      "file": "src/tools.ts",
+      "line": 330,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: { type: \"string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "CodeGraphContext/CodeGraphContext",
+      "file": "tests/fixtures/sample_projects/sample_project_typescript/src/modules-namespaces.ts",
+      "line": 244,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: any",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "zero-point-module/ethereum-powerup",
+      "file": "frontend/hooks/eoa/use-eoa-status.ts",
+      "line": 58,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "global state",
+      "verdict": "FP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "brian-knows/langchain-toolkit",
+      "file": "src/utils/index.ts",
+      "line": 22,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: number",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "getsentry/XcodeBuildMCP",
+      "file": "src/cli/commands/init.ts",
+      "line": 392,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: string; label: string; description?: string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "double-k-3033/Blockchain-AI-Agent",
+      "file": "Solana/src/langchain/raydium/raydium_amm.ts",
+      "line": 12,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "Amount: number",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "waybarrios/vllm-mlx",
+      "file": "vllm_mlx/mcp/executor.py",
+      "line": 91,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "global if",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "koshikraj/safe-7579-demo",
+      "file": "web/src/utils/safe.ts",
+      "line": 319,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "global configuration",
+      "verdict": "FP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "aimaster-dev/ai-agent-solana",
+      "file": "frontend/src/utils/transactions.ts",
+      "line": 49,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "Address: string",
+      "verdict": "TP",
+      "catalog_protocol": "openai"
+    },
+    {
+      "repo": "PV-Bhat/vibe-check-mcp-server",
+      "file": "src/cli/env.ts",
+      "line": 108,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: string): string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "UMainLove/msca_manager",
+      "file": "app/dashboard/page.tsx",
+      "line": 42,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "Address: string",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "MicrosoftDocs/mcp",
+      "file": "cli/src/mcp/cache.ts",
+      "line": 74,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: { endpoint: string; sessionId?: string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "double-k-3033/Blockchain-AI-Agent",
+      "file": "Solana/src/agent/index.ts",
+      "line": 853,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "amount: number",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "a-shannon/ergo-agent-sdk",
+      "file": "src/ergo_agent/defi/spectrum.py",
+      "line": 400,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: int) -> str",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "iannuttall/mcp-boilerplate",
+      "file": "worker-configuration.d.ts",
+      "line": 1124,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "opensumi/core",
+      "file": "packages/preferences/src/browser/abstract-resource-preference-provider.ts",
+      "line": 192,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: any, resourceUri?: string, language?: string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "mmdGhanbari/x402-rag",
+      "file": "src/x402_rag/server/auth.py",
+      "line": 49,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "address: str",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "double-k-3033/Blockchain-AI-Agent",
+      "file": "Solana/src/langchain/raydium/types.ts",
+      "line": 20,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "Amount: number | string",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    },
+    {
+      "repo": "renalta-app/modular-smart-account",
+      "file": "test/fork/SmartSessionIntegration.t.sol",
+      "line": 188,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "Session[",
+      "verdict": "FP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "opensumi/core",
+      "file": "packages/comments/src/browser/comments-thread.ts",
+      "line": 44,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "nanbingxyz/5ire",
+      "file": "src/renderer/pages/tool/InstallDialog.tsx",
+      "line": 63,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "modelcontextprotocol/inspector",
+      "file": "client/src/components/JsonEditor.tsx",
+      "line": 9,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "tommyz7/ethwaterloo-contract-account-metamask-plugin",
+      "file": "metamask/ui/app/components/ui/sender-to-recipient/sender-to-recipient.component.js",
+      "line": 19,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "Address: PropTypes.string",
+      "verdict": "TP",
+      "catalog_protocol": "web3_native"
+    },
+    {
+      "repo": "CodeGraphContext/CodeGraphContext",
+      "file": "tests/fixtures/sample_projects/sample_project_typescript/src/decorators-metadata.ts",
+      "line": 136,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value = async function (...args: any",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "mcpdotdirect/evm-mcp-server",
+      "file": "src/core/tools.ts",
+      "line": 761,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "value: z.string",
+      "verdict": "TP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "Pimzino/spec-workflow-mcp",
+      "file": "src/dashboard/multi-server.ts",
+      "line": 1216,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "Global changelog",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "agentic-community/mcp-gateway-registry",
+      "file": "registry/api/system_routes.py",
+      "line": 20,
+      "pattern_id": "SC-001",
+      "category": "state_confusion",
+      "severity": "medium",
+      "matched_text": "Global variables",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "getsentry/XcodeBuildMCP",
+      "file": "src/mcp/tools/swift-package/__tests__/swift_package_list.test.ts",
+      "line": 207,
+      "pattern_id": "IV-001",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "From = (mapEntries: any",
+      "verdict": "FP",
+      "catalog_protocol": "mcp"
+    },
+    {
+      "repo": "double-k-3033/Blockchain-AI-Agent",
+      "file": "Solana/src/tools/drift/drift_vault.ts",
+      "line": 410,
+      "pattern_id": "IV-002",
+      "category": "missing_input_validation",
+      "severity": "medium",
+      "matched_text": "amount: number",
+      "verdict": "TP",
+      "catalog_protocol": "langchain"
+    }
+  ]
+}
