@@ -504,7 +504,39 @@ Table 7 reports four classifiers on three feature sets: Paper 1 only (23 behavio
 3. **On the full leaky set, combined features look stronger** (GBM 0.9834 vs 0.9787 for P1 only), but this gap is within noise of the leakage artifact and should not be cited.
 4. **Implication.** There is no free lunch from naively stacking feature sets on a small honest corpus. Ensemble gains require either more data or smarter late fusion.
 
-### 4.6 4-Dimensional Security Audit
+### 4.6 SHAP Feature Explanations
+
+We compute SHAP TreeExplainer values on the RF model trained on n=1,147 to understand feature directionality — not just importance rank but whether higher values push toward agent or human.
+
+**Table 8a. Top 10 SHAP mean |value| (RF, n=1,147).**
+
+| Feature | Mean |SHAP| | Direction |
+|---------|------------|-----------|
+| top\_contract\_concentration | 0.057 | higher → agent |
+| gas\_price\_cv | 0.044 | higher → agent |
+| unique\_contracts\_ratio | 0.032 | higher → agent |
+| gas\_price\_round\_number\_ratio | 0.024 | higher → agent |
+| gas\_price\_trailing\_zeros\_mean | 0.023 | higher → agent |
+| method\_id\_diversity | 0.017 | higher → agent |
+| contract\_to\_eoa\_ratio | 0.014 | higher → agent |
+| tx\_interval\_mean | 0.013 | higher → agent |
+| unlimited\_approve\_ratio | 0.013 | higher → agent |
+| sequential\_pattern\_score | 0.013 | higher → agent |
+
+**Key finding.** `active_hour_entropy` — the feature that dominated the leaky set (univariate AUC 0.93) — ranks near the bottom of SHAP importance (0.002) on the honest set. This is the clearest single-feature confirmation that the C1-C4 leakage inflated temporal features. The honest model relies on gas pricing and interaction diversity, not timing patterns.
+
+### 4.7 Temporal Holdout
+
+We split n=1,147 by `n_transactions` median (610) as a proxy for account age (more transactions ≈ older account), training on the high-transaction half and testing on the low-transaction half.
+
+| Split | AUC | F1 |
+|-------|-----|-----|
+| Older → newer | 0.724 | 0.685 |
+| Newer → older | 0.705 | — |
+
+The AUC drops from 0.803 (10-fold CV) to 0.724 (temporal holdout), a 10% degradation indicating moderate temporal shift. The model transfers reasonably but not perfectly across account-age cohorts. This is expected: gas pricing conventions evolve over time (e.g., EIP-1559 changed gas semantics in August 2021), and newer accounts may use different wallet software.
+
+### 4.8 4-Dimensional Security Audit
 
 We run the 4-dimensional audit twice: on the full 3,302-address audited set (14 were dropped for empty histories), and on the trusted 50-address subset (22 agents, 28 humans; some trusted addresses were dropped by the audit script for incomplete approval history). Table 8 reports the headline metrics side by side.
 
