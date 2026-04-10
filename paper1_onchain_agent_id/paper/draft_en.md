@@ -537,7 +537,18 @@ We compute SHAP TreeExplainer values on the RF model trained on n=1,147 to under
 
 **Key finding.** `active_hour_entropy` — the feature that dominated the leaky set (univariate AUC 0.93) — ranks near the bottom of SHAP importance (0.002) on the honest set. This is the clearest single-feature confirmation that the C1-C4 leakage inflated temporal features. The honest model relies on gas pricing and interaction diversity, not timing patterns.
 
-### 4.7 Temporal Holdout
+### 4.7 Hyperparameter Sensitivity
+
+We run nested cross-validation (5-fold outer, 3-fold inner grid search) on n=1,147 to test whether our results depend on the specific hyperparameter choices.
+
+| Model | Default AUC | Tuned AUC (nested CV) | Delta | Best params |
+|-------|-------------|----------------------|-------|-------------|
+| RF | 0.796 | 0.803 ± 0.032 | +0.008 | depth=None, leaf=1, trees=500 |
+| GBM | 0.787 | 0.774 ± 0.028 | -0.013 | lr=0.05, depth=4-5, leaf=5 |
+
+**Finding.** Tuning barely matters: RF gains +0.8 points while GBM actually loses 1.3 points (likely because the default already avoids overfitting). This is a positive robustness finding — our results are not artifacts of hyperparameter cherry-picking.
+
+### 4.8 Temporal Holdout
 
 We split n=1,147 by `n_transactions` median (610) as a proxy for account age (more transactions ≈ older account), training on the high-transaction half and testing on the low-transaction half.
 
@@ -548,7 +559,7 @@ We split n=1,147 by `n_transactions` median (610) as a proxy for account age (mo
 
 The AUC drops from 0.803 (10-fold CV) to 0.724 (temporal holdout), a 10% degradation indicating moderate temporal shift. The model transfers reasonably but not perfectly across account-age cohorts. This is expected: gas pricing conventions evolve over time (e.g., EIP-1559 changed gas semantics in August 2021), and newer accounts may use different wallet software.
 
-### 4.8 4-Dimensional Security Audit
+### 4.9 4-Dimensional Security Audit
 
 We run the 4-dimensional audit at three scales: the full 3,302-address leaky set, the n=549 provenance v3 subset (from the 563 set with 14 dropped for empty histories), and the trusted 50-address strict subset. Table 8b reports the n=549 provenance audit alongside the extremes.
 
