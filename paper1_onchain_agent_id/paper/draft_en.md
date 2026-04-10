@@ -364,6 +364,18 @@ Note that gas features now dominate the importance ranking on n=1,147, whereas t
 
 The classifier has moderate agent recall (332/533 = 62.3%) and high human precision (500/614 = 81.4%), reflecting the approximately balanced class distribution (0.87:1 agent-to-human ratio).
 
+**Feature-group ablation (RF 10-fold on n=1,147):**
+
+| Feature group | n\_feat | AUC (alone) | AUC (without) | Delta |
+|---------------|---------|-------------|---------------|-------|
+| interaction | 5 | **0.751** | 0.748 | +0.047 |
+| gas | 6 | 0.713 | 0.767 | +0.028 |
+| approval\_security | 5 | 0.656 | 0.789 | +0.005 |
+| temporal | 7 | 0.623 | 0.799 | -0.005 |
+| **all 23** | 23 | **0.794** | — | — |
+
+Interaction features (unique\_contracts\_ratio, top\_contract\_concentration) are the most important group on the honest set, while temporal features contribute least — removing them actually helps by +0.005. This reverses the leaky-set finding where temporal features dominated via `active_hour_entropy`. The reversal is further evidence that the C1-C4 leakage was concentrated in temporal features.
+
 **C1-C4 diagnostic agreement.** We applied the C1-C4 heuristic to all 1,147 provenance-labeled addresses. The agreement rate is **48.8%**, below chance. This is a further drop from 55.8% on the v3 set (n=563) and 92.9% on the original 14-address v2 pilot, demonstrating that the C1-C4 heuristic's reliability degrades as the dataset grows and diversifies. As the dataset expands to include Compound V3 liquidators, Chainlink keepers, Gitcoin donors, and PoolTogether depositors, the heuristic's behavioral thresholds increasingly mislabel addresses.
 
 #### 4.1.2 Sensitivity Check: Strict Provenance Subset (n=64, 33 agents, 31 humans)
@@ -538,7 +550,20 @@ The AUC drops from 0.803 (10-fold CV) to 0.724 (temporal holdout), a 10% degrada
 
 ### 4.8 4-Dimensional Security Audit
 
-We run the 4-dimensional audit twice: on the full 3,302-address audited set (14 were dropped for empty histories), and on the trusted 50-address subset (22 agents, 28 humans; some trusted addresses were dropped by the audit script for incomplete approval history). Table 8 reports the headline metrics side by side.
+We run the 4-dimensional audit at three scales: the full 3,302-address leaky set, the n=549 provenance v3 subset (from the 563 set with 14 dropped for empty histories), and the trusted 50-address strict subset. Table 8b reports the n=549 provenance audit alongside the extremes.
+
+**Table 8b. Security audit on n=549 provenance set (intermediate tier).**
+
+| Metric | Agent mean | Human mean | Ratio | p-value |
+|--------|-----------|-----------|-------|---------|
+| unlimited\_approval\_rate | 0.534 | 0.439 | **1.21x** | **0.0003** |
+| dex\_interaction\_rate | 0.292 | 0.149 | **1.96x** | **<0.0001** |
+| n\_unlimited\_approvals | 97.2 | 99.8 | 0.97x | 0.232 (NS) |
+| revert\_rate | 0.041 | 0.042 | 0.97x | 0.701 (NS) |
+
+On the intermediate n=549 set, agents have a significantly higher approval *rate* (53.4% vs 43.9%) and DEX interaction rate (29.2% vs 14.9%), but similar raw approval *counts* (97 vs 100). The extreme 10x ratio from the leaky set is gone; the honest finding is nuanced: agents approve more frequently but don't accumulate more approvals in absolute terms because humans hold approvals longer.
+
+Table 8 below shows the leaky-vs-strict extremes.
 
 **Table 8. 4-dimensional security audit: leaky vs honest.**
 
