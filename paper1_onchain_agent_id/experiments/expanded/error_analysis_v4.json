@@ -1,0 +1,229 @@
+{
+  "description": "Error analysis of 10 most confidently misclassified addresses from RF (200 trees, depth 4) 5-fold CV on provenance v4 (n=1147)",
+  "model": "RandomForestClassifier(n_estimators=200, max_depth=4)",
+  "dataset": "features_provenance_v4.parquet (n=1147, 533 agents, 614 humans)",
+  "total_errors": 312,
+  "error_rate": 0.272,
+  "top_10_errors": [
+    {
+      "rank": 1,
+      "address": "0x1ab0d64cf30775abeb4328b57808fb7f53001dcf",
+      "true_label": "HUMAN",
+      "predicted_label": "AGENT",
+      "prob_agent": 0.8657,
+      "category": "human_ens_interaction",
+      "raw_stats": {
+        "n_transactions": 455,
+        "unique_contracts": 97,
+        "most_called_contract": "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+        "most_called_count": 160,
+        "approval_count": 99,
+        "time_span_days": 43.6,
+        "first_tx_date": "2023-05-28",
+        "last_tx_date": "2023-07-11",
+        "burst_rate": 0.0022,
+        "most_called_contract_name": "Uniswap V2 Router"
+      },
+      "explanation": "This address is a verified ENS human but exhibits a highly bot-like behavioral profile. With 455 transactions compressed into just 43.6 days (10.4 tx/day), a gas_price_round_number_ratio of 0.0 (no round gas prices at all, more typical of programmatic gas estimation), and a sequential_pattern_score of 0.84 (high repetition), the address looks indistinguishable from an automated DeFi trader. Its most-called contract is Uniswap V2 Router (160 of 455 calls = 35%), and it issued 99 token approvals in under 6 weeks. The classifier sees a short-lived, high-frequency Uniswap trader with zero gas rounding and near-perfect sequential patterning -- exactly the signature of a trading bot. The likely explanation is that this human used a sophisticated trading interface (e.g., a Telegram bot or copy-trading tool) that programmatically set gas prices and batched transactions, making the human's on-chain footprint indistinguishable from an agent's."
+    },
+    {
+      "rank": 2,
+      "address": "0xd50c46607b8c6aaa03c4cd2506e79a5df2b699bf",
+      "true_label": "AGENT",
+      "predicted_label": "HUMAN",
+      "prob_agent": 0.1521,
+      "category": "compound_v3_liquidator",
+      "raw_stats": {
+        "n_transactions": 271,
+        "unique_contracts": 121,
+        "most_called_contract": "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+        "most_called_count": 30,
+        "approval_count": 47,
+        "time_span_days": 2832.2,
+        "first_tx_date": "2018-05-25",
+        "last_tx_date": "2026-02-24",
+        "burst_rate": 0.0333,
+        "most_called_contract_name": "Uniswap V2 Router"
+      },
+      "explanation": "This Compound V3 liquidation agent spans 2,832 days (7.7 years) with only 271 transactions, yielding a very low transaction frequency (0.096 tx/day) that looks human-paced. Its gas_price_round_number_ratio of 0.69 and gas_price_trailing_zeros_mean of 6.04 are squarely in the human range -- liquidation bots operating on Compound V3 often use wallet software with default gas settings rather than custom gas optimization. The address interacts with 121 unique contracts (unique_contracts_ratio=0.47, well above the agent mean of 0.24), reflecting the diverse nature of liquidation targets across multiple Compound markets. The low top_contract_concentration (0.03) and high method_id_diversity (0.35) make this look like a broadly-interacting human wallet, not a single-purpose bot. The core issue is that liquidation agents are event-driven and dormant between liquidation opportunities, producing sparse, diverse transaction patterns that the temporal and gas-precision features associate with humans."
+    },
+    {
+      "rank": 3,
+      "address": "0xfd495eeed737b002ea62cf0534e7707a9656ba19",
+      "true_label": "AGENT",
+      "predicted_label": "HUMAN",
+      "prob_agent": 0.1561,
+      "category": "expanded_mev_bot",
+      "raw_stats": {
+        "n_transactions": 231,
+        "unique_contracts": 73,
+        "most_called_contract": "0xfd495eeed737b002ea62cf0534e7707a9656ba19",
+        "most_called_count": 35,
+        "approval_count": 13,
+        "time_span_days": 3139.1,
+        "first_tx_date": "2017-05-17",
+        "last_tx_date": "2025-12-20",
+        "burst_rate": 0.0522
+      },
+      "explanation": "This MEV bot spans 3,139 days (8.6 years) with only 231 transactions -- an extremely low frequency of 0.07 tx/day. Its gas rounding metrics (gas_price_round_number_ratio=0.76, gas_price_trailing_zeros_mean=6.96) are deep in the human range. Notably, its most-called contract is itself (0xfd49...ba19, 35 calls), indicating a self-deployed proxy contract pattern common among early MEV operators. With only 13 approvals over 8 years and a diverse interaction pattern (73 unique contracts, method_id_diversity=0.38), this address resembles a long-term human DeFi explorer rather than a focused bot. The classification failure reveals a temporal selection bias: the 23-feature set was calibrated on agents that transact frequently and recently, while early-era MEV bots that operated sporadically over many years have behavioral profiles closer to long-lived human wallets. This is a genuine limitation of temporal features for identifying dormant or retired agents."
+    },
+    {
+      "rank": 4,
+      "address": "0x460eb5ca9d4955c535d5267ac581c7ea40b41f2a",
+      "true_label": "HUMAN",
+      "predicted_label": "AGENT",
+      "prob_agent": 0.8387,
+      "category": "human_ens_interaction",
+      "raw_stats": {
+        "n_transactions": 1043,
+        "unique_contracts": 211,
+        "most_called_contract": "0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad",
+        "most_called_count": 620,
+        "approval_count": 165,
+        "time_span_days": 310.0,
+        "first_tx_date": "2023-02-17",
+        "last_tx_date": "2023-12-24",
+        "burst_rate": 0.001,
+        "most_called_contract_name": "Uniswap Universal Router"
+      },
+      "explanation": "This ENS human made 1,043 transactions over 310 days, with 620 calls (59.4%) to the Uniswap Universal Router. The extreme concentration on a single contract (top_contract_concentration=0.36) combined with an unlimited_approve_ratio of 0.98 and sequential_pattern_score of 0.79 creates a profile that screams 'automated DeFi trader.' The gas_price_round_number_ratio of 0.001 and night_activity_ratio of 0.50 (half the transactions at night) further push the classifier toward AGENT. This address is almost certainly a human using a trading bot frontend (Banana Gun, Maestro, or similar) that routes all trades through Uniswap Universal Router with programmatic gas pricing. The boundary between 'human using a bot tool' and 'autonomous agent' is precisely the ambiguity that the C1-C4 definition attempts to resolve, and this address sits squarely on the boundary."
+    },
+    {
+      "rank": 5,
+      "address": "0x3c1ee8b2e80d86a46c5ed8d239f005f992ec17f1",
+      "true_label": "HUMAN",
+      "predicted_label": "AGENT",
+      "prob_agent": 0.8366,
+      "category": "human_ens_interaction",
+      "raw_stats": {
+        "n_transactions": 8580,
+        "unique_contracts": 1914,
+        "most_called_contract": "0x3328f7f4a1d1c57c35df56bbf0c9dcafca309c49",
+        "most_called_count": 4328,
+        "approval_count": 2019,
+        "time_span_days": 1101.4,
+        "first_tx_date": "2022-09-30",
+        "last_tx_date": "2025-10-05",
+        "burst_rate": 0.0007,
+        "most_called_contract_name": "Banana Gun Router"
+      },
+      "explanation": "The most extreme 'human acting like a bot' in our dataset: 8,580 transactions over 1,101 days, with 4,328 calls (50.4%) to the Banana Gun Router (0x3328...9c49) -- a Telegram-based automated trading bot. This human has 2,019 token approvals and a sequential_pattern_score of 0.95, meaning almost every transaction follows an identical pattern. The gas precision metrics (gas_price_round_number_ratio=0.002, gas_price_trailing_zeros_mean=0.12) are at the extreme agent end because Banana Gun sets gas programmatically. With 1,914 unique contracts touched despite the massive concentration on a single router, the method_id_diversity of 0.009 reveals that the same function call is repeated thousands of times. This address provides the strongest evidence that the boundary between 'human-initiated' and 'agent-executed' is porous: the human chose to trade, but every execution detail -- gas, timing, routing -- was automated by Banana Gun."
+    },
+    {
+      "rank": 6,
+      "address": "0x374e87811313f94e13406d2dc56a52e87658f8df",
+      "true_label": "HUMAN",
+      "predicted_label": "AGENT",
+      "prob_agent": 0.8358,
+      "category": "human_ens_interaction",
+      "raw_stats": {
+        "n_transactions": 923,
+        "unique_contracts": 211,
+        "most_called_contract": "0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad",
+        "most_called_count": 620,
+        "approval_count": 192,
+        "time_span_days": 894.5,
+        "first_tx_date": "2023-07-06",
+        "last_tx_date": "2025-12-16",
+        "burst_rate": 0.0011,
+        "most_called_contract_name": "Uniswap Universal Router"
+      },
+      "explanation": "Another Uniswap Universal Router heavy user: 923 transactions over 894 days, with 620 calls (67.2%) to the Universal Router. The top_contract_concentration of 0.48 is the highest among the false-positive humans and drives the sequential_pattern_score to 0.92. With an unlimited_approve_ratio of 0.97 and gas_price_round_number_ratio of 0.002, every classifier feature points to AGENT. The 192 approvals over 2.5 years suggest steady DeFi activity through an automated frontend. Like addresses #4 and #5, this human's behavioral footprint is indistinguishable from an agent because the human delegates execution to automated trading infrastructure. The classifier is technically correct about the behavior but wrong about the provenance."
+    },
+    {
+      "rank": 7,
+      "address": "0x12dbbcd4efc77633a83cb1d67251e3daa9268fe5",
+      "true_label": "HUMAN",
+      "predicted_label": "AGENT",
+      "prob_agent": 0.8322,
+      "category": "human_ens_interaction",
+      "raw_stats": {
+        "n_transactions": 3784,
+        "unique_contracts": 316,
+        "most_called_contract": "0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad",
+        "most_called_count": 871,
+        "approval_count": 424,
+        "time_span_days": 635.1,
+        "first_tx_date": "2023-04-09",
+        "last_tx_date": "2025-01-03",
+        "burst_rate": 0.0143,
+        "most_called_contract_name": "Uniswap Universal Router"
+      },
+      "explanation": "This address has 3,784 transactions over 635 days, with 871 calls to Uniswap Universal Router (23.0%). The unique_contracts_ratio of 0.085 is the lowest among the top-10 errors, meaning the address calls very few distinct contracts relative to its total activity -- a hallmark of automated batch operations. The contract_to_eoa_ratio of 0.99 (virtually all transactions go to contracts) and night_activity_ratio of 0.37 reinforce the agent profile. The burst_rate of 0.014 indicates occasional sub-10-second transaction pairs, consistent with programmatic submission. This human wallet operates almost exclusively through smart contracts with minimal EOA-to-EOA transfers, a pattern that our feature set treats as strongly agent-indicative."
+    },
+    {
+      "rank": 8,
+      "address": "0x0d8a07b52be59c8df6877a886d4c804de9154b2c",
+      "true_label": "HUMAN",
+      "predicted_label": "AGENT",
+      "prob_agent": 0.8249,
+      "category": "human_ens_interaction",
+      "raw_stats": {
+        "n_transactions": 1949,
+        "unique_contracts": 510,
+        "most_called_contract": "0x58df81babdf15276e761808e872a3838cbecbcf9",
+        "most_called_count": 695,
+        "approval_count": 507,
+        "time_span_days": 131.5,
+        "first_tx_date": "2023-07-18",
+        "last_tx_date": "2023-11-27",
+        "burst_rate": 0.0021,
+        "most_called_contract_name": "Unknown DEX/Bot Contract"
+      },
+      "explanation": "A highly active human: 1,949 transactions in just 131.5 days (14.8 tx/day), with 695 calls to a single contract (0x58df...cf9, an unidentified DEX/bot contract). The 507 token approvals in 4 months and an unlimited_approve_ratio of 0.97 indicate intensive automated DeFi farming. The gas_price_round_number_ratio of 0.0 and active_hour_entropy of 2.99 (near-uniform activity across all hours) make this human look like a 24/7 running bot. The sequential_pattern_score of 0.92 confirms repetitive behavior. This is another case where the human's use of automated DeFi tools produces a near-perfect agent fingerprint."
+    },
+    {
+      "rank": 9,
+      "address": "0x1e9fc55079f5690ceb6450702995398362263165",
+      "true_label": "HUMAN",
+      "predicted_label": "AGENT",
+      "prob_agent": 0.8247,
+      "category": "human_ens_interaction",
+      "raw_stats": {
+        "n_transactions": 264,
+        "unique_contracts": 54,
+        "most_called_contract": "0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad",
+        "most_called_count": 171,
+        "approval_count": 44,
+        "time_span_days": 881.5,
+        "first_tx_date": "2023-05-12",
+        "last_tx_date": "2025-10-09",
+        "burst_rate": 0.019,
+        "most_called_contract_name": "Uniswap Universal Router"
+      },
+      "explanation": "With only 264 transactions over 881 days, this address has a moderate pace (0.3 tx/day), but 171 calls (64.8%) go to Uniswap Universal Router. The gas_price_round_number_ratio of 0.0 and gas_price_trailing_zeros_mean of 0.07 are at the extreme agent end of the distribution. The night_activity_ratio of 0.50 suggests half of all transactions occur during night hours, and the unlimited_approve_ratio of 0.93 shows nearly every approval is unlimited. Despite lower transaction volume, the gas precision and Uniswap concentration are enough to push the classifier to 82% confidence in AGENT. This is a lower-activity variant of the 'human using bot tools' pattern seen in addresses #4-#8, showing that even moderate trading through automated frontends can fool the classifier."
+    },
+    {
+      "rank": 10,
+      "address": "0xf0d4c12a5768d806021f80a262b4d39d26c58b8d",
+      "true_label": "HUMAN",
+      "predicted_label": "AGENT",
+      "prob_agent": 0.814,
+      "category": "pilot_human",
+      "raw_stats": {
+        "n_transactions": 5000,
+        "unique_contracts": 2,
+        "most_called_contract": "0xf0d4c12a5768d806021f80a262b4d39d26c58b8d",
+        "most_called_count": 4999,
+        "approval_count": 0,
+        "time_span_days": 31.8,
+        "first_tx_date": "2023-09-14",
+        "last_tx_date": "2023-10-16",
+        "burst_rate": 0.0166
+      },
+      "explanation": "The most striking false positive: a pilot-study human with 5,000 transactions in 31.8 days (157 tx/day), calling only 2 unique contracts -- 4,999 of 5,000 calls go to a single address (0xf0d4...8d, which is the address itself). This creates a top_contract_concentration of 1.00, sequential_pattern_score of 1.00, unique_contracts_ratio of 0.0004, and method_id_diversity of 0.0008 -- all extreme agent values. The zero approval count and near-zero contract diversity suggest this is a self-referencing contract or a human running a script that repeatedly calls their own contract. With an active_hour_entropy of 3.16 (near-maximum, activity at all hours) and a tx_interval_mean of 549 seconds (one transaction every 9 minutes, 24/7), the behavioral profile is indistinguishable from an automated script. The 'pilot_human' label may itself be a borderline case: this address behaves as if it is running a self-calling smart contract in a loop, which arguably satisfies C3 (autonomous execution) even if a human initiated the process."
+    }
+  ],
+  "summary_patterns": {
+    "false_positives_humans_as_agents": {
+      "count": 8,
+      "dominant_pattern": "ENS-verified humans using automated trading tools (Uniswap Universal Router, Banana Gun) produce agent-like behavioral signatures: zero gas rounding, high sequential patterns, extreme Uniswap concentration, near-universal unlimited approvals.",
+      "root_cause": "The 23-feature set captures execution-level behavior, not provenance. When humans delegate execution to automated DeFi frontends, their on-chain footprint becomes indistinguishable from autonomous agents. The classifier is correct about the behavior but wrong about the label."
+    },
+    "false_negatives_agents_as_humans": {
+      "count": 2,
+      "dominant_pattern": "Event-driven agents (liquidation bots, early MEV bots) with low transaction frequency, long time spans, diverse contract interactions, and default gas settings produce human-like behavioral profiles.",
+      "root_cause": "Temporal features assume agents transact frequently and regularly. Dormant or event-driven agents that activate only during specific market conditions produce sparse, irregular patterns that the model associates with human wallets."
+    }
+  }
+}
