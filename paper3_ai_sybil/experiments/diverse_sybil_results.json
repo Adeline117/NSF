@@ -1,0 +1,174 @@
+{
+  "n_diverse": 50,
+  "n_original": 467,
+  "diverse_classifier": {
+    "mean_auc": 1.0,
+    "std_auc": 0.0,
+    "n_real": 250,
+    "n_sybil": 50,
+    "feature_importances": {
+      "response_latency_variance": 0.8041,
+      "hour_entropy": 0.1749,
+      "error_recovery_pattern": 0.0093,
+      "gas_nonce_gap_regularity": 0.0082,
+      "action_sequence_perplexity": 0.0023,
+      "eip1559_tip_precision": 0.001,
+      "gas_price_precision": 0.0001,
+      "behavioral_consistency": 0.0001
+    }
+  },
+  "original_classifier": {
+    "mean_auc": 1.0,
+    "std_auc": 0.0,
+    "n_real": 2335,
+    "n_sybil": 467,
+    "feature_importances": {
+      "hour_entropy": 0.6628,
+      "response_latency_variance": 0.1665,
+      "behavioral_consistency": 0.107,
+      "error_recovery_pattern": 0.0428,
+      "gas_price_precision": 0.0134,
+      "eip1559_tip_precision": 0.0039,
+      "gas_nonce_gap_regularity": 0.0025,
+      "action_sequence_perplexity": 0.0011
+    }
+  },
+  "diverse_feature_stats": {
+    "gas_price_precision": {
+      "mean": 0.654,
+      "std": 0.0915,
+      "min": 0.58,
+      "max": 0.85,
+      "range": 0.27,
+      "iqr": 0.0225
+    },
+    "hour_entropy": {
+      "mean": 2.169,
+      "std": 0.0149,
+      "min": 2.14,
+      "max": 2.18,
+      "range": 0.04,
+      "iqr": 0.03
+    },
+    "behavioral_consistency": {
+      "mean": 0.2448,
+      "std": 0.0897,
+      "min": 0.12,
+      "max": 0.35,
+      "range": 0.23,
+      "iqr": 0.17
+    },
+    "action_sequence_perplexity": {
+      "mean": 1.5824,
+      "std": 0.2006,
+      "min": 1.38,
+      "max": 2.87,
+      "range": 1.49,
+      "iqr": 0.0875
+    },
+    "error_recovery_pattern": {
+      "mean": 0.0691,
+      "std": 0.0082,
+      "min": 0.018,
+      "max": 0.078,
+      "range": 0.06,
+      "iqr": 0.004
+    },
+    "response_latency_variance": {
+      "mean": 7.2188,
+      "std": 0.2766,
+      "min": 6.42,
+      "max": 7.9,
+      "range": 1.48,
+      "iqr": 0.21
+    },
+    "gas_nonce_gap_regularity": {
+      "mean": 0.7522,
+      "std": 0.0249,
+      "min": 0.68,
+      "max": 0.78,
+      "range": 0.1,
+      "iqr": 0.01
+    },
+    "eip1559_tip_precision": {
+      "mean": 0.3804,
+      "std": 0.064,
+      "min": 0.28,
+      "max": 0.79,
+      "range": 0.51,
+      "iqr": 0.0
+    }
+  },
+  "original_feature_stats": {
+    "gas_price_precision": {
+      "mean": 0.7104,
+      "std": 0.0152,
+      "min": 0.67,
+      "max": 0.73,
+      "range": 0.06,
+      "iqr": 0.01
+    },
+    "hour_entropy": {
+      "mean": 2.3602,
+      "std": 0.0505,
+      "min": 2.18,
+      "max": 2.48,
+      "range": 0.3,
+      "iqr": 0.1
+    },
+    "behavioral_consistency": {
+      "mean": 0.1765,
+      "std": 0.0121,
+      "min": 0.14,
+      "max": 0.26,
+      "range": 0.12,
+      "iqr": 0.01
+    },
+    "action_sequence_perplexity": {
+      "mean": 1.8733,
+      "std": 0.0298,
+      "min": 1.82,
+      "max": 2.09,
+      "range": 0.27,
+      "iqr": 0.0
+    },
+    "error_recovery_pattern": {
+      "mean": 0.0399,
+      "std": 0.0015,
+      "min": 0.035,
+      "max": 0.05,
+      "range": 0.015,
+      "iqr": 0.0
+    },
+    "response_latency_variance": {
+      "mean": 5.1663,
+      "std": 0.1887,
+      "min": 4.72,
+      "max": 5.73,
+      "range": 1.01,
+      "iqr": 0.11
+    },
+    "gas_nonce_gap_regularity": {
+      "mean": 0.8287,
+      "std": 0.0065,
+      "min": 0.81,
+      "max": 0.86,
+      "range": 0.05,
+      "iqr": 0.01
+    },
+    "eip1559_tip_precision": {
+      "mean": 0.4786,
+      "std": 0.0086,
+      "min": 0.44,
+      "max": 0.52,
+      "range": 0.08,
+      "iqr": 0.0
+    }
+  },
+  "elapsed_seconds": 1195.8,
+  "prompt_changes": {
+    "removed": "explicit schema bounds (e.g., 'hour_entropy: <float 1.5-2.8>')",
+    "added": "human population distribution stats (mean, std, range from Paper 1 n=726)",
+    "rationale": "the original bounds caused the LLM to cluster values in a narrow sub-range"
+  }
+}

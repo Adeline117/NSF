@@ -1,0 +1,85 @@
+{
+  "round_0": {
+    "mean_auc": 0.9847,
+    "std": 0.0022,
+    "n_sybils": 3000,
+    "n_real": 15000,
+    "top3_features": {
+      "behavioral_consistency": 0.3642,
+      "hour_entropy": 0.2907,
+      "error_recovery_pattern": 0.1437
+    },
+    "all_feature_importances": {
+      "behavioral_consistency": 0.3642,
+      "hour_entropy": 0.2907,
+      "error_recovery_pattern": 0.1437,
+      "response_latency_variance": 0.0807,
+      "eip1559_tip_precision": 0.0694,
+      "gas_price_precision": 0.0337,
+      "gas_nonce_gap_regularity": 0.0104,
+      "action_sequence_perplexity": 0.0071
+    },
+    "human_blend": "N/A (default advanced, ai_signal=0.55)"
+  },
+  "round_0_detector_on_round_1_sybils": {
+    "detection_rate": 0.0347,
+    "evasion_rate": 0.9653
+  },
+  "round_1_retrained": {
+    "mean_auc": 0.8279,
+    "std": 0.0067,
+    "n_sybils_cumulative": 6000,
+    "top3_features": {
+      "behavioral_consistency": 0.2886,
+      "response_latency_variance": 0.2074,
+      "hour_entropy": 0.1717
+    },
+    "all_feature_importances": {
+      "behavioral_consistency": 0.2886,
+      "response_latency_variance": 0.2074,
+      "hour_entropy": 0.1717,
+      "error_recovery_pattern": 0.1348,
+      "eip1559_tip_precision": 0.0743,
+      "gas_price_precision": 0.0516,
+      "action_sequence_perplexity": 0.0432,
+      "gas_nonce_gap_regularity": 0.0284
+    },
+    "human_blend": 0.7
+  },
+  "round_1_detector_on_round_2_sybils": {
+    "detection_rate": 0.157,
+    "evasion_rate": 0.843
+  },
+  "round_0_detector_on_round_2_sybils": {
+    "detection_rate": 0.037
+  },
+  "round_2_retrained": {
+    "mean_auc": 0.7931,
+    "std": 0.0016,
+    "n_sybils_cumulative": 9000,
+    "top3_features": {
+      "behavioral_consistency": 0.2302,
+      "response_latency_variance": 0.207,
+      "error_recovery_pattern": 0.2012
+    },
+    "all_feature_importances": {
+      "behavioral_consistency": 0.2302,
+      "response_latency_variance": 0.207,
+      "error_recovery_pattern": 0.2012,
+      "hour_entropy": 0.1082,
+      "eip1559_tip_precision": 0.084,
+      "action_sequence_perplexity": 0.0712,
+      "gas_price_precision": 0.0539,
+      "gas_nonce_gap_regularity": 0.0442
+    },
+    "human_blend": 0.6
+  },
+  "progression": {
+    "auc_drop_r0_to_r1": 0.1568,
+    "auc_drop_r1_to_r2": 0.0348,
+    "auc_drop_r0_to_r2": 0.1916,
+    "evasion_rate_r1": 0.9653,
+    "evasion_rate_r2": 0.843
+  },
+  "elapsed_seconds": 77.0
+}

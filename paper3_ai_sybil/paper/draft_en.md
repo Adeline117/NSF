@@ -579,6 +579,34 @@ Elapsed time (seconds) & \multicolumn{2}{c}{47.1} \\
 
 4. **The arms race is computationally tractable.** The entire adversarial training round completes in 47.1 seconds, meaning that a defender could run multiple rounds of adversarial training as part of a continuous integration pipeline.
 
+**Round 2: Extended arms race (3-round progression).** We extend the pilot with a second adversarial iteration (`adversarial_training_3rounds.json`). In round 2, the generator shifts its feature distributions even further toward the human population (60\% human + 40\% agent blend, vs.\ round-1's 70/30), and specifically targets the round-1 detector's top-3 features (behavioral\_consistency 0.289, response\_latency\_variance 0.207, hour\_entropy 0.172) for suppression. Table~\ref{tab:armsrace3} summarizes the 3-round progression.
+
+\begin{table}[h]
+\caption{\label{tab:armsrace3} Three-round adversarial training progression. Each round generates 3{,}000 sybils; the detector retrains on all accumulated sybils. From \texttt{adversarial\_training\_3rounds.json}.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Metric & Round 0 & Round 1 & Round 2 \\
+\midrule
+Detector AUC (5-fold CV mean)   & 0.9847 & 0.8279 & 0.7931 \\
+Detector AUC std                & 0.0022 & 0.0067 & 0.0016 \\
+\midrule
+Prev-round detector on new sybils & ---  & 3.5\% detected & 15.7\% detected \\
+Evasion rate of new sybils        & ---  & 96.5\% & 84.3\% \\
+\midrule
+Top-3 feature importances:        &       &        & \\
+\quad 1st & beh.\_cons.\ (0.364) & beh.\_cons.\ (0.289) & beh.\_cons.\ (0.230) \\
+\quad 2nd & hour\_ent.\ (0.291)  & resp.\_lat.\ (0.207) & resp.\_lat.\ (0.207) \\
+\quad 3rd & err.\_rec.\ (0.144)  & hour\_ent.\ (0.172)  & err.\_rec.\ (0.201) \\
+\midrule
+Cumulative AUC drop ($\to$ round-$k$) & --- & 0.1568 & 0.1916 \\
+Human blend ratio & --- & 70/30 & 60/40 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 3-round trajectory reveals three dynamics. First, the defender's AUC degrades monotonically (0.9847 $\to$ 0.8279 $\to$ 0.7931), but the marginal degradation shrinks: the round-1 drop is 0.157 while the round-2 drop is only 0.035, suggesting diminishing attacker returns. Second, the feature importance landscape flattens: behavioral\_consistency drops from 0.364 to 0.230 across three rounds, while previously minor features (response\_latency\_variance, error\_recovery\_pattern) rise, indicating that the detector redistributes signal across the full 8-feature space as the attacker neutralizes individual features. Third, the evasion rate of round-2 sybils against the round-1 detector (84.3\%) is lower than the round-1 evasion rate against round-0 (96.5\%), which means the retrained detector becomes harder to evade with each round---a positive sign for the defender. The entire 3-round experiment completes in 77 seconds, confirming that multi-round adversarial training is computationally feasible.
+
 ### 4.10 Serial Sybil Analysis
 
 To further validate the HasciDB labels and understand the persistence of Sybil operators, we analyze serial Sybils---addresses flagged across multiple projects. From `serial_sybil_results.json`:
