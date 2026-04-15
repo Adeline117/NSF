@@ -3,45 +3,66 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1}Understanding the On-Chain AI Agent: A Four-Condition Definition and Eight-Category Taxonomy Validated on 2,590 Ethereum Addresses}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Understanding the On-Chain AI Agent: A Four-Condition Definition and Eight-Category Taxonomy Validated on 2,744 Ethereum Addresses}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Abstract}{1}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}1. Introduction}{1}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}2. Background and Related Work}{2}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}2.1 Classical AI-agent definitions}{2}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Cross-paper pipeline. Paper\nonbreakingspace 0 defines on-chain AI agents via four conditions (C1--C4) and validates an eight-category taxonomy on 2,590 addresses. Paper\nonbreakingspace 1 uses the same 23 features for binary agent/human identification on 1,147 provenance-verified addresses (honest GAT AUC 0.832). Paper\nonbreakingspace 3 tests whether LLM-driven Sybils can evade airdrop detectors; 8 AI-specific features from Paper\nonbreakingspace 1 recover AUC 0.987 even after all HasciDB rules are defeated. The feedback arrow represents Paper\nonbreakingspace 3's finding that the LLM-Powered Agent category (F1 = 0.528 in Paper\nonbreakingspace 0) needs the 8 AI features to become distinguishable. Dashed arrows show shared data dependencies.}}{3}{figure.caption.4}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:pipeline}{{1}{3}{Cross-paper pipeline. Paper~0 defines on-chain AI agents via four conditions (C1--C4) and validates an eight-category taxonomy on 2,590 addresses. Paper~1 uses the same 23 features for binary agent/human identification on 1,147 provenance-verified addresses (honest GAT AUC 0.832). Paper~3 tests whether LLM-driven Sybils can evade airdrop detectors; 8 AI-specific features from Paper~1 recover AUC 0.987 even after all HasciDB rules are defeated. The feedback arrow represents Paper~3's finding that the LLM-Powered Agent category (F1 = 0.528 in Paper~0) needs the 8 AI features to become distinguishable. Dashed arrows show shared data dependencies}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}2.1 Classical AI-agent definitions}{3}{subsection.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}2.2 HCI automation-level work}{3}{subsection.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}2.3 Blockchain bot and MEV empirics}{3}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}2.4 On-chain AI-agent platforms}{3}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}2.5 Gaps}{3}{subsection.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}3. The C1-C4 Definition}{3}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}3.1 Formal statement}{3}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}3.2 Non-redundancy: each condition excludes a distinct counterexample}{3}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}2.5 Gaps}{4}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}3. The C1-C4 Definition}{4}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}3.1 Formal statement}{4}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}3.2 Non-redundancy: each condition excludes a distinct counterexample}{4}{subsection.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}3.3 Operationalization on transaction-level features}{4}{subsection.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}3.4 Boundary cases}{4}{subsection.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}4. Taxonomy and On-Chain Empirical Validation}{4}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}4.1 Validation strategy and dataset}{4}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}3.4 Boundary cases}{5}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}4. Progressive Validation}{5}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}4.1 Validation strategy and dataset}{5}{subsection.6.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}4.2 The eight-category taxonomy}{5}{subsection.6.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.3}4.3 Rule-based taxonomy projection}{5}{subsection.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}4.4 Unsupervised cluster validation}{5}{subsection.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}4.5 Multi-class supervised classifier}{6}{subsection.6.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}4.6 Threats to validity}{6}{subsection.6.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}4.7 Cross-reference to Paper 1}{7}{subsection.6.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.8}4.8 Summary of validation findings}{7}{subsection.6.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}5. Discussion}{7}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}5.1 The LLM-Powered Agent weak spot}{7}{subsection.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}5.2 k = 3 versus k = 8: behavioral versus semantic taxonomies}{7}{subsection.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}5.3 Is C4 (Adaptiveness) necessary? A deliberate design choice}{7}{subsection.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}5.4 Implications for HCI and governance}{8}{subsection.7.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8}6. Limitations and Future Work}{8}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}4.4 Unsupervised cluster validation}{6}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}4.5 Multi-class supervised classifier}{7}{subsection.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}4.6 Eight-class classifier with 23 features}{7}{subsection.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}4.7 Eight-class classifier with 31 features: cross-study improvement}{7}{subsection.6.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.8}4.8 Threats to validity}{8}{subsection.6.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.9}4.9 Cross-reference to Paper 1}{8}{subsection.6.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.10}4.10 Summary of validation findings}{8}{subsection.6.10}\protected@file@percent }
+\citation{Dalkey1963,Hallowell2010}
+\citation{Skulmoski2007}
+\citation{Joshi2015}
+\citation{Krippendorff2011}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.11}4.11 Expert Validation via Modified Delphi Method}{9}{subsection.6.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.11.1}4.11.1 Method}{9}{subsubsection.6.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.11.2}4.11.2 Analysis plan}{9}{subsubsection.6.11.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.11.3}4.11.3 Expected outcomes}{9}{subsubsection.6.11.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.11.4}4.11.4 Timeline}{9}{subsubsection.6.11.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.11.5}4.11.5 Ethical review}{9}{subsubsection.6.11.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}5. Discussion}{9}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}5.1 The LLM-Powered Agent weak spot: a harder problem than predicted}{9}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}5.2 k = 3 versus k = 8: behavioral versus semantic taxonomies}{10}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}5.3 Is C4 (Adaptiveness) necessary? A deliberate design choice}{10}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}5.4 Implications for HCI and governance}{10}{subsection.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}6. Limitations and Future Work}{11}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}7. Conclusion}{11}{section.9}\protected@file@percent }
 \bibstyle{ACM-Reference-Format}
 \bibdata{main}
+\bibcite{Dalkey1963}{{1}{1963}{{Dalkey and Helmer}}{{}}}
+\bibcite{Hallowell2010}{{2}{2010}{{Hallowell and Gambatese}}{{}}}
+\bibcite{Joshi2015}{{3}{2015}{{Joshi et~al\mbox  {.}}}{{}}}
+\bibcite{Krippendorff2011}{{4}{2011}{{Krippendorff}}{{}}}
+\bibcite{Skulmoski2007}{{5}{2007}{{Skulmoski et~al\mbox  {.}}}{{}}}
 \newlabel{tocindent-1}{0pt}
 \newlabel{tocindent0}{0pt}
 \newlabel{tocindent1}{8.37pt}
-\newlabel{tocindent2}{10.34999pt}
-\newlabel{tocindent3}{0pt}
+\newlabel{tocindent2}{14.53499pt}
+\newlabel{tocindent3}{22.194pt}
 \newlabel{tocindent4}{0pt}
 \newlabel{tocindent5}{0pt}
-\@writefile{toc}{\contentsline {section}{\numberline {9}7. Conclusion}{9}{section.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10}References}{9}{section.10}\protected@file@percent }
-\newlabel{TotPages}{{9}{9}{}{page.9}{}}
-\gdef \@abspage@last{9}
+\@writefile{toc}{\contentsline {section}{\numberline {10}References}{12}{section.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{12}{section*.15}\protected@file@percent }
+\newlabel{TotPages}{{12}{12}{}{page.12}{}}
+\gdef \@abspage@last{12}

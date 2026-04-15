@@ -1,0 +1,97 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{5}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Dalkey and Helmer(1963)]%
+        {Dalkey1963}
+\bibfield{author}{\bibinfo{person}{Norman Dalkey} {and} \bibinfo{person}{Olaf
+  Helmer}.} \bibinfo{year}{1963}\natexlab{}.
+\newblock \showarticletitle{An Experimental Application of the {Delphi} Method
+  to the Use of Experts}.
+\newblock \bibinfo{journal}{\emph{Management Science}} \bibinfo{volume}{9},
+  \bibinfo{number}{3} (\bibinfo{year}{1963}), \bibinfo{pages}{458--467}.
+\newblock
+
+
+\bibitem[Hallowell and Gambatese(2010)]%
+        {Hallowell2010}
+\bibfield{author}{\bibinfo{person}{Matthew~R Hallowell} {and}
+  \bibinfo{person}{John~A Gambatese}.} \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{Qualitative Research: Application of the {Delphi}
+  Method to {CEM} Research}.
+\newblock \bibinfo{journal}{\emph{Journal of Construction Engineering and
+  Management}} \bibinfo{volume}{136}, \bibinfo{number}{1}
+  (\bibinfo{year}{2010}), \bibinfo{pages}{99--107}.
+\newblock
+
+
+\bibitem[Joshi et~al\mbox{.}(2015)]%
+        {Joshi2015}
+\bibfield{author}{\bibinfo{person}{Ankur Joshi}, \bibinfo{person}{Saket Kale},
+  \bibinfo{person}{Satish Chandel}, {and} \bibinfo{person}{Dinesh~Kumar Pal}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Likert Scale: Explored and Explained}.
+\newblock \bibinfo{journal}{\emph{British Journal of Applied Science \&
+  Technology}} \bibinfo{volume}{7}, \bibinfo{number}{4} (\bibinfo{year}{2015}),
+  \bibinfo{pages}{396--403}.
+\newblock
+
+
+\bibitem[Krippendorff(2011)]%
+        {Krippendorff2011}
+\bibfield{author}{\bibinfo{person}{Klaus Krippendorff}.}
+  \bibinfo{year}{2011}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Computing {Krippendorff's}
+  Alpha-Reliability}}.
+\newblock \bibinfo{publisher}{University of Pennsylvania, Annenberg School for
+  Communication}.
+\newblock
+
+
+\bibitem[Skulmoski et~al\mbox{.}(2007)]%
+        {Skulmoski2007}
+\bibfield{author}{\bibinfo{person}{Gregory~J Skulmoski},
+  \bibinfo{person}{Francis~T Hartman}, {and} \bibinfo{person}{Jennifer Krahn}.}
+  \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{The {Delphi} Method for Graduate Research}.
+\newblock \bibinfo{journal}{\emph{Journal of Information Technology Education:
+  Research}}  \bibinfo{volume}{6} (\bibinfo{year}{2007}),
+  \bibinfo{pages}{1--21}.
+\newblock
+
+
+\end{thebibliography}
