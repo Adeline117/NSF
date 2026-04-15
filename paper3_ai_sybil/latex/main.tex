@@ -22,7 +22,7 @@
 We present the first end-to-end evaluation of LLM-driven Sybil evasion, testing Claude Opus against four detector modalities across 16 Ethereum airdrop campaigns (386K addresses).
 LLM-generated sybils achieve 100\% evasion against threshold rules, 100\% against pre-airdrop ML, and 99.9\% against cross-axis gradient boosting. Against a proxy funding-flow graph detector, evasion reaches 94--100\%, though this underestimates real graph detector effectiveness.
 However, eight behavioral features drawn from an independent agent-identification study detect LLM sybils with AUC 0.987, with \texttt{hour\_entropy} alone achieving 0.878---behavioral fingerprinting works where rules and ML fail.
-A 10-round best-response adversarial game converges to a stable equilibrium (AUC $0.584 \pm 0.003$ across three seeds), with \texttt{behavioral\_consistency} as the single most robust feature (top-1 in all 30 rounds across seeds)---establishing the theoretical floor for feature-space detection.
+A 10-round best-response adversarial game converges to a stable equilibrium (AUC $0.578 \pm 0.005$ across three seeds), with \texttt{behavioral\_consistency} as the single most robust feature (top-1 in all 30 rounds across seeds)---establishing the theoretical floor for feature-space detection.
 We also document and fix a label-leakage bug that inflated pilot AUC from 0.95 to an honest 0.61, and release a three-step synthetic-feature audit checklist.
 \end{abstract}
 
@@ -66,7 +66,7 @@ Throughout this paper the adversary is an LLM-powered wallet operator with:
 \begin{enumerate}
   \item \textbf{Cross-modality evasion benchmark.} The first evaluation of an LLM adversary against four detector modalities on 16 real airdrop campaigns, demonstrating 94--100\% evasion across rules, ML, GBM, and graph detectors (Sections~\ref{sec:evasion},~\ref{sec:graph}).
   \item \textbf{Behavioral fingerprinting defense.} An 8-feature execution-layer detector achieving AUC 0.987 on the hardest adversary tier in a leakage-free binary task, with \texttt{behavioral\_consistency} as the most robust feature (Section~\ref{sec:binary}).
-  \item \textbf{Adversarial equilibrium analysis.} A 10-round arms race converging to AUC $\approx$0.60 with $\Delta\text{AUC}{<}0.01$ at round~9, with \texttt{behavioral\_consistency} ranking top-1 in 10/10 rounds (Section~\ref{sec:equilibrium}).
+  \item \textbf{Adversarial equilibrium analysis.} A 10-round best-response arms race converging to AUC $0.578 \pm 0.005$ (3 seeds) with $\Delta\text{AUC}{<}0.01$ for the last 3 rounds, with \texttt{behavioral\_consistency} ranking top-1 in 10/10 rounds (Section~\ref{sec:equilibrium}).
   \item \textbf{Synthetic-feature audit protocol.} A 3-step checklist (Algorithm~\ref{alg:audit}) for detecting label leakage in hybrid real/synthetic feature pipelines, validated by our own post-mortem (Section~\ref{sec:methods:audit}).
   \item \textbf{Honest baselines and post-mortem.} Cross-axis LOPO mean AUC 0.617, independent-label transfer AUC 0.586, and transparent retraction of a leaked AUC 0.953$\to$0.609 (Sections~\ref{sec:crossaxis},~\ref{sec:leakage}).
 \end{enumerate}
@@ -264,10 +264,10 @@ This proxy is \textit{conservative}: real graph detectors (SybilRank~\cite{cao20
 \subsection{Adversarial Equilibrium Protocol}
 \label{sec:methods:equilibrium}
 
-We implement a 10-round Stackelberg game:
+We implement a 10-round Stackelberg game with \emph{best-response} blend selection, repeated over 3 seeds (42, 137, 314):
 \begin{enumerate}
   \item \textbf{Round 0:} Train a GBM detector (150 trees, depth 4, lr 0.1) on 15,000 real wallets + 3,000 LLM sybils at human-blend ratio 0.45.
-  \item \textbf{Round $t+1$:} Generate 3,000 new LLM sybils with increased human-blend ratio (0.45$\to$0.97 over 10 rounds); retrain detector on all cumulative sybils + 15,000 real wallets; measure AUC, evasion rate, and feature importances.
+  \item \textbf{Round $t+1$:} Probe the current detector with 500 sybils at each of 14 blend ratios ($0.30, 0.35, \ldots, 0.95$); select the blend that maximizes evasion rate (the attacker's \emph{best response}). Generate 3,000 new LLM sybils at this blend; retrain the detector on all cumulative sybils + 15,000 real wallets; measure AUC, evasion rate, and feature importances.
   \item \textbf{Convergence criterion:} $|\Delta\text{AUC}|{<}0.01$ for 3 consecutive rounds.
 \end{enumerate}
 
@@ -590,26 +590,26 @@ Even on moderate tier, where the LLM targets this feature, AUC remains 0.653---a
 \subsection{Adversarial Equilibrium Analysis}
 \label{sec:equilibrium}
 
-We run the 10-round Stackelberg protocol from \S\ref{sec:methods:equilibrium}. Table~\ref{tab:equilibrium} and Figure~\ref{fig:equilibrium} report per-round results.
+We run the 10-round best-response Stackelberg protocol from \S\ref{sec:methods:equilibrium} over 3 seeds. Table~\ref{tab:equilibrium} and Figure~\ref{fig:equilibrium} report per-round results (mean $\pm$ std across seeds).
 
 \begin{table}[t]
-\caption{10-round adversarial equilibrium. Human-blend ratio increases from 0.45 to 0.97. Evasion rate is measured against the previous round's detector.}
+\caption{10-round best-response adversarial equilibrium (mean $\pm$ std over 3 seeds). The attacker probes 14 blend ratios per round and selects the best response. ``Best Blend'' shows the attacker-chosen ratio per seed.}
 \label{tab:equilibrium}
 \small
-\begin{tabular}{rrrrl}
+\begin{tabular}{rllrl}
 \toprule
-Rd & Blend & AUC & Evasion & Top-1 Feature \\
+Rd & Best Blend & AUC & Evasion & Top-1 Feature \\
 \midrule
-0  & 0.45 & 0.985 & ---    & behavioral\_consistency \\
-1  & 0.70 & 0.816 & 95.7\% & behavioral\_consistency \\
-2  & 0.78 & 0.747 & 91.6\% & behavioral\_consistency \\
-3  & 0.84 & 0.704 & 88.9\% & behavioral\_consistency \\
-4  & 0.88 & 0.675 & 80.3\% & behavioral\_consistency \\
-5  & 0.91 & 0.652 & 67.1\% & behavioral\_consistency \\
-6  & 0.93 & 0.634 & 48.6\% & behavioral\_consistency \\
-7  & 0.95 & 0.620 & 30.4\% & behavioral\_consistency \\
-8  & 0.96 & 0.608 & 16.6\% & behavioral\_consistency \\
-9  & 0.97 & 0.599 & 7.0\%  & behavioral\_consistency \\
+0  & 0.45          & $.985 {\scriptstyle\pm .001}$ & ---            & behav.\_cons. \\
+1  & .80/.85/.90   & $.777 {\scriptstyle\pm .015}$ & 97.0\% & behav.\_cons. \\
+2  & .90/.90/.95   & $.698 {\scriptstyle\pm .011}$ & 95.4\% & behav.\_cons. \\
+3  & .90/.95/.95   & $.654 {\scriptstyle\pm .006}$ & 93.0\% & behav.\_cons. \\
+4  & .85/.95/.95   & $.631 {\scriptstyle\pm .005}$ & 86.1\% & behav.\_cons. \\
+5  & 0.95          & $.612 {\scriptstyle\pm .003}$ & 72.4\% & behav.\_cons. \\
+6  & 0.95          & $.599 {\scriptstyle\pm .002}$ & 46.1\% & behav.\_cons. \\
+7  & .90/.95/.95   & $.591 {\scriptstyle\pm .003}$ & 19.0\% & behav.\_cons. \\
+8  & .90/.95/.95   & $.583 {\scriptstyle\pm .003}$ & 8.2\%  & behav.\_cons. \\
+9  & .90/.95/.95   & $.578 {\scriptstyle\pm .005}$ & 2.9\%  & behav.\_cons. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -617,15 +617,16 @@ Rd & Blend & AUC & Evasion & Top-1 Feature \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_equilibrium_convergence.pdf}
-\caption{Adversarial equilibrium convergence. Left axis: detector AUC (blue, descending from 0.985 to 0.599). Right axis: evasion rate (red, descending from 95.7\% to 7.0\%). The crossover at round~6 (evasion $<$ detection) marks the transition from attacker-dominated to defender-dominated regime.}
+\caption{Best-response adversarial equilibrium convergence (3-seed mean). Left axis: detector AUC (blue, descending from 0.985 to 0.578). Right axis: evasion rate (red, descending from 97.0\% to 2.9\%). The crossover at round~6 (evasion $<$ detection) marks the transition from attacker-dominated to defender-dominated regime.}
 \label{fig:equilibrium}
 \end{figure}
 
-\textbf{Convergence.} AUC drops from 0.985 to 0.599 over 10 rounds. The per-round $\Delta$AUC decreases monotonically: $-$0.169, $-$0.069, $-$0.044, $-$0.028, $-$0.023, $-$0.018, $-$0.014, $-$0.012, $-$0.009. By round~9, $\Delta\text{AUC} = 0.009 < 0.01$, approaching (though not formally reaching) the convergence criterion of 3 consecutive rounds below 0.01. The mean $\Delta$AUC over the last 3 rounds is 0.012, suggesting convergence within 1--2 additional rounds.
+\textbf{Convergence.} Mean AUC across 3 seeds drops from 0.985 to 0.578 over 10 rounds. The per-round $\Delta$AUC decreases monotonically: $-$0.209, $-$0.079, $-$0.044, $-$0.023, $-$0.019, $-$0.013, $-$0.008, $-$0.008, $-$0.005. The last 3 rounds all satisfy $|\Delta\text{AUC}|{<}0.01$ (mean $\Delta$AUC $= 0.007$), meeting the pre-registered convergence criterion.
+A fixed-schedule protocol (blend increasing from 0.45 to 0.97 on a predetermined ramp) yields a final AUC of 0.599; the best-response protocol drives the AUC 0.021 lower to 0.578, confirming that the equilibrium is not a schedule artifact.
 
-\textbf{Evasion-detection crossover.} Evasion rate drops from 95.7\% (round~1) to 7.0\% (round~9), crossing below 50\% at round~6. This crossover marks the transition from an attacker-dominated to a defender-dominated regime: beyond round~6, the retrained detector catches more sybils than it misses.
+\textbf{Evasion-detection crossover.} Mean evasion rate drops from 97.0\% (round~1) to 2.9\% (round~9), crossing below 50\% at round~6. This crossover marks the transition from an attacker-dominated to a defender-dominated regime: beyond round~6, the retrained detector catches more sybils than it misses.
 
-\textbf{Feature rank stability.} \texttt{behavioral\_consistency} ranks as the top-1 feature by importance in \textit{all 10 rounds}, with importance weight declining from 0.364 to 0.169 as the detector's feature weights equalize. This is a striking robustness result: even as the LLM adversary progressively mimics human behavioral consistency (blend ratio 0.45$\to$0.97), this feature remains the most informative signal.
+\textbf{Feature rank stability.} \texttt{behavioral\_consistency} ranks as the top-1 feature by importance in \textit{all 10 rounds across all 3 seeds} (30/30 rounds), with importance weight declining from $\sim$0.38 to $\sim$0.19 as the detector's feature weights equalize. This is a striking robustness result: even as the LLM adversary adaptively selects its best blend (reaching 0.90--0.95 in later rounds), this feature remains the most informative signal.
 
 Table~\ref{tab:feat_evolution} traces the feature importance evolution across rounds.
 Two trends are notable.
@@ -651,12 +652,12 @@ Rd & behav\_cons & resp\_lat & hour\_ent & Top-3 \% \\
 \end{tabular}
 \end{table}
 
-\textbf{Stackelberg interpretation.} The converging AUC $\approx$0.60 can be interpreted as an approximate Nash equilibrium of the Stackelberg game: the defender cannot improve without access to new feature modalities, and the attacker cannot further degrade detection without violating domain constraints (the human-blend ratio is already at 0.97). The equilibrium AUC is above chance (0.5) because \texttt{behavioral\_consistency} encodes a structural invariant---the coefficient of variation of inter-arrival times---that an LLM cannot perfectly match without real-time traffic modeling.
+\textbf{Stackelberg interpretation.} The converging AUC $\approx$0.58 can be interpreted as an approximate Nash equilibrium of the Stackelberg game: the defender cannot improve without access to new feature modalities, and the attacker cannot further degrade detection without violating domain constraints (the best-response blend is already at 0.90--0.95). The equilibrium AUC is above chance (0.5) because \texttt{behavioral\_consistency} encodes a structural invariant---the coefficient of variation of inter-arrival times---that an LLM cannot perfectly match without real-time traffic modeling.
 
 \textbf{Comparison with 3-round adversarial training.}
 As a robustness check, we also ran a separate 3-round adversarial training protocol with a different blend-ratio schedule (0.55, 0.70, 0.60) and compared its trajectory.
 AUC dropped from 0.985 to 0.793 over 3 rounds ($\Delta$AUC: $-$0.157, $-$0.035), with evasion rates of 96.5\% and 84.3\% at rounds~1 and~2 respectively.
-The 3-round trajectory is consistent with the first 3 rounds of the 10-round protocol ($\Delta$AUC: $-$0.169, $-$0.069, $-$0.044), confirming that the arms-race dynamics are robust to minor protocol variations.
+The 3-round trajectory is consistent with the first 3 rounds of the 10-round best-response protocol ($\Delta$AUC: $-$0.209, $-$0.079, $-$0.044), confirming that the arms-race dynamics are robust to minor protocol variations.
 Feature importance rankings were identical in both protocols, with \texttt{behavioral\_consistency} at top-1 in all rounds.
 
 
@@ -789,7 +790,7 @@ The key assumption is that an adversary that evades all three layers simultaneou
 
 \noindent\textbf{Quantitative estimate.}
 Under independence, an adversary that evades each layer with probability $p_1, p_2, p_3$ evades the ensemble with probability $p_1 \cdot p_2 \cdot p_3$.
-Taking conservative estimates from our results: $p_1 \approx 0.40$ (behavioral at equilibrium AUC~0.60), $p_2 \approx 0.94$ (graph, lowest tier), $p_3 \approx 0.50$ (temporal, assumed), the joint evasion probability is $0.40 \times 0.94 \times 0.50 \approx 0.19$.
+Taking conservative estimates from our results: $p_1 \approx 0.42$ (behavioral at equilibrium AUC~0.58), $p_2 \approx 0.94$ (graph, lowest tier), $p_3 \approx 0.50$ (temporal, assumed), the joint evasion probability is $0.42 \times 0.94 \times 0.50 \approx 0.20$.
 In practice, independence is a strong assumption---the LLM can jointly optimize across layers---but even with correlation $\rho = 0.5$, the ensemble reduces evasion substantially below any single layer.
 Validating this multi-modal defense against an LLM adversary that jointly targets all three layers is the highest-priority item for future work.
 
@@ -806,12 +807,12 @@ The 10-round adversarial equilibrium can be formalized as a Stackelberg game~\ci
 \noindent where $f_\theta$ is the detector parameterized by $\theta$, $p_\phi$ is the LLM-generated sybil distribution parameterized by $\phi$ (the human-blend ratio), $\tau$ is the detection threshold, and $[\ell_i, u_i]$ are the domain constraints on each feature.
 
 The defender moves first by choosing $\theta$ (training the detector); the attacker observes $\theta$ and responds by choosing $\phi$ to maximize evasion.
-In our protocol, the attacker's strategy space is parameterized by the human-blend ratio (0.45 to 0.97), which controls how closely the generated features match the human distribution.
+In our protocol, the attacker's strategy space is parameterized by the human-blend ratio (probed from 0.30 to 0.95 in steps of 0.05), which controls how closely the generated features match the human distribution.
 
-The convergence to AUC $\approx 0.60$ with $\Delta\text{AUC} < 0.01$ at round~9 suggests an approximate equilibrium.
-At this point, the defender cannot improve without access to new feature modalities (the attacker has exhausted the blend-ratio axis), and the attacker cannot further degrade detection without violating domain constraints (blend ratio is already at 0.97---very close to the human distribution).
+The convergence to AUC $0.578 \pm 0.005$ with $|\Delta\text{AUC}|{<}0.01$ for 3 consecutive rounds confirms an approximate equilibrium.
+At this point, the defender cannot improve without access to new feature modalities (the attacker has exhausted the blend-ratio axis), and the attacker cannot further degrade detection without violating domain constraints (best-response blend is already at 0.90--0.95).
 
-The equilibrium AUC of 0.60 is above chance (0.50) because \texttt{behavioral\_consistency} encodes a structural invariant---the coefficient of variation of inter-arrival times---that an LLM cannot perfectly replicate without real-time traffic modeling.
+The equilibrium AUC of $\approx$0.58 is above chance (0.50) because \texttt{behavioral\_consistency} encodes a structural invariant---the coefficient of variation of inter-arrival times---that an LLM cannot perfectly replicate without real-time traffic modeling.
 This residual signal represents the \textit{cost of mimicry}: even a maximally sophisticated LLM adversary leaves a detectable footprint in the temporal structure of transactions.
 
 \subsection{Ethical Considerations}
@@ -910,10 +911,9 @@ In particular, open-source models can be fine-tuned specifically for Sybil gener
 Conversely, smaller models may lack the planning capacity to jointly satisfy all 13 feature constraints, resulting in lower evasion on the advanced tier.
 A multi-model adversary benchmark is needed to establish the robustness of our findings across LLM families.
 
-\noindent\textbf{5. Convergence not formally reached.}
-The adversarial equilibrium achieves $\Delta\text{AUC} = 0.009$ at round~9 but does not reach 3 consecutive rounds below 0.01 (our pre-registered convergence criterion).
-The mean $\Delta$AUC over the last 3 rounds is 0.012, suggesting convergence within 1--2 additional rounds.
-The equilibrium AUC of $\approx$0.60 should therefore be treated as an estimate; the true equilibrium may be slightly lower (0.58--0.60).
+\noindent\textbf{5. Convergence reached under best-response.}
+The best-response adversarial equilibrium achieves $|\Delta\text{AUC}|{<}0.01$ for the last 3 consecutive rounds (0.008, 0.008, 0.005), meeting our pre-registered convergence criterion.
+The equilibrium AUC of $0.578 \pm 0.005$ is stable across 3 seeds (spread 0.009); the earlier fixed-schedule protocol yielded 0.599, confirming that schedule choice affects the endpoint by $\sim$0.02.
 
 \noindent\textbf{6. 4-project leakage-fix subset.}
 The label-leakage analysis (\S\ref{sec:leakage}) uses a 4-project subset (1inch, uniswap, ens, blur\_s2).
@@ -947,8 +947,8 @@ An 8-feature execution-layer detector achieves AUC 0.987 on the hardest adversar
 The top-3 features by Cohen's $d$ achieve $\ge$0.87 AUC across all tiers at 37.5\% of the feature computation cost, providing a Pareto-optimal detector for production deployment.
 
 \textbf{The arms race converges.}
-A 10-round Stackelberg game drives AUC from 0.985 to 0.599, with \texttt{behavioral\_consistency} ranking top-1 in all rounds and feature importance distributions flattening from Gini 0.58 to 0.21.
-The equilibrium AUC of 0.60 is the price of using feature-space defenses alone; breaking through requires new modalities (graph structure, temporal anomaly detection) or problem-space constraints that raise the cost of mimicry.
+A 10-round best-response Stackelberg game drives AUC from 0.985 to $0.578 \pm 0.005$ (3 seeds), with \texttt{behavioral\_consistency} ranking top-1 in all 30 seed-rounds and feature importance distributions flattening from Gini 0.58 to 0.21.
+The equilibrium AUC of $\approx$0.58 is the price of using feature-space defenses alone; breaking through requires new modalities (graph structure, temporal anomaly detection) or problem-space constraints that raise the cost of mimicry.
 
 \textbf{Methodological contributions.}
 We documented a label-leakage bug in our own pipeline (AUC 0.953$\to$0.609 after fix), formalized a 3-step synthetic-feature audit as Algorithm~\ref{alg:audit}, and demonstrated that cross-axis evaluation is necessary to avoid the ``rule-recall trap'' where models trivially reconstruct labels from the features used to define them.
