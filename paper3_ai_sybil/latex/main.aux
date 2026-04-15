@@ -61,6 +61,7 @@
 \newlabel{sec:methods:features}{{3.1}{3}{AI-Feature Extraction from Real Data}{subsection.3.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}LLM-Based Sybil Generator}{3}{subsection.3.2}\protected@file@percent }
 \newlabel{sec:methods:generator}{{3.2}{3}{LLM-Based Sybil Generator}{subsection.3.2}{}}
+\citation{ke2017lightgbm}
 \citation{blondel2008louvain}
 \citation{cao2012sybilrank}
 \citation{gong2014sybilbelief}
@@ -70,56 +71,54 @@
 \newlabel{sec:methods:crossaxis}{{3.3}{4}{Cross-Axis Evaluation Framework}{subsection.3.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Graph-Based Detection via Louvain Community Detection}{4}{subsection.3.4}\protected@file@percent }
 \newlabel{sec:methods:graph}{{3.4}{4}{Graph-Based Detection via Louvain Community Detection}{subsection.3.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Adversarial Equilibrium Protocol}{4}{subsection.3.5}\protected@file@percent }
-\newlabel{sec:methods:equilibrium}{{3.5}{4}{Adversarial Equilibrium Protocol}{subsection.3.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Synthetic-Feature Audit Protocol}{4}{subsection.3.6}\protected@file@percent }
-\newlabel{sec:methods:audit}{{3.6}{4}{Synthetic-Feature Audit Protocol}{subsection.3.6}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Synthetic-Feature Audit Checklist}}{5}{algorithm.1}\protected@file@percent }
 \newlabel{alg:audit}{{1}{5}{Synthetic-Feature Audit Checklist}{algorithm.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Per-project HasciDB statistics (25k/project stratified sample). Totals: 386,067 eligible, 125,157 Sybils, 32.4\% overall.}}{5}{table.caption.6}\protected@file@percent }
-\newlabel{tab:baseline}{{3}{5}{Per-project HasciDB statistics (25k/project stratified sample). Totals: 386,067 eligible, 125,157 Sybils, 32.4\% overall}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Adversarial Equilibrium Protocol}{5}{subsection.3.5}\protected@file@percent }
+\newlabel{sec:methods:equilibrium}{{3.5}{5}{Adversarial Equilibrium Protocol}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Synthetic-Feature Audit Protocol}{5}{subsection.3.6}\protected@file@percent }
+\newlabel{sec:methods:audit}{{3.6}{5}{Synthetic-Feature Audit Protocol}{subsection.3.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{5}{section.4}\protected@file@percent }
 \newlabel{sec:experiments}{{4}{5}{Experiments}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Baseline Statistics Across 16 Projects}{5}{subsection.4.1}\protected@file@percent }
 \newlabel{sec:baseline}{{4.1}{5}{Baseline Statistics Across 16 Projects}{subsection.4.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Cross-Axis LOPO: Honest Baseline Performance}{5}{subsection.4.2}\protected@file@percent }
 \newlabel{sec:crossaxis}{{4.2}{5}{Cross-Axis LOPO: Honest Baseline Performance}{subsection.4.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Per-project HasciDB statistics (25k/project stratified sample). Totals: 386,067 eligible, 125,157 Sybils, 32.4\% overall.}}{5}{table.caption.6}\protected@file@percent }
+\newlabel{tab:baseline}{{3}{5}{Per-project HasciDB statistics (25k/project stratified sample). Totals: 386,067 eligible, 125,157 Sybils, 32.4\% overall}{table.caption.6}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Cross-axis LOPO AUC (mean over 16 folds). Features are disjoint from the target.}}{5}{table.caption.7}\protected@file@percent }
 \newlabel{tab:crossaxis}{{4}{5}{Cross-axis LOPO AUC (mean over 16 folds). Features are disjoint from the target}{table.caption.7}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Per-project OPS$\to $fund cross-axis AUC. Projects with co-occurring operational and fund-flow Sybils (top group) show strong transfer; single-axis projects (bottom) do not.}}{5}{table.caption.8}\protected@file@percent }
 \newlabel{tab:crossaxis_perproject}{{5}{5}{Per-project OPS$\to $fund cross-axis AUC. Projects with co-occurring operational and fund-flow Sybils (top group) show strong transfer; single-axis projects (bottom) do not}{table.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Independent-Label Transfer (HasciDB $\to $ Gitcoin FDD)}{5}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:fdd}{{4.3}{5}{Independent-Label Transfer (HasciDB $\to $ Gitcoin FDD)}{subsection.4.3}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Feature-space evasion rates. 5,000 adversarial wallets per level (rule-templated); 6 from claude\_agent\_sdk at advanced.}}{6}{table.caption.9}\protected@file@percent }
 \newlabel{tab:evasion}{{6}{6}{Feature-space evasion rates. 5,000 adversarial wallets per level (rule-templated); 6 from claude\_agent\_sdk at advanced}{table.caption.9}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Cross-modality evasion rates: LLM sybils vs.\ four detector types $\times $ three sophistication tiers. Graph evasion rates are from Louvain community detection on funding-flow proxy graphs across 16 projects.}}{6}{table.caption.10}\protected@file@percent }
-\newlabel{tab:graph_evasion}{{7}{6}{Cross-modality evasion rates: LLM sybils vs.\ four detector types $\times $ three sophistication tiers. Graph evasion rates are from Louvain community detection on funding-flow proxy graphs across 16 projects}{table.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Independent-Label Transfer (HasciDB $\to $ Gitcoin FDD)}{6}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:fdd}{{4.3}{6}{Independent-Label Transfer (HasciDB $\to $ Gitcoin FDD)}{subsection.4.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}LLM Sybil Evasion vs.\ Feature-Space Detectors}{6}{subsection.4.4}\protected@file@percent }
 \newlabel{sec:evasion}{{4.4}{6}{LLM Sybil Evasion vs.\ Feature-Space Detectors}{subsection.4.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Graph-Based Detector Evaluation}{6}{subsection.4.5}\protected@file@percent }
-\newlabel{sec:graph}{{4.5}{6}{Graph-Based Detector Evaluation}{subsection.4.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Cross-modality evasion rates: LLM sybils vs.\ four detector types $\times $ three sophistication tiers. Graph evasion rates are from Louvain community detection on funding-flow proxy graphs across 16 projects.}}{6}{table.caption.10}\protected@file@percent }
+\newlabel{tab:graph_evasion}{{7}{6}{Cross-modality evasion rates: LLM sybils vs.\ four detector types $\times $ three sophistication tiers. Graph evasion rates are from Louvain community detection on funding-flow proxy graphs across 16 projects}{table.caption.10}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Per-project graph detector performance on real Sybils. Precision and recall are for Louvain at $\gamma {=}1.0$ on the funding-flow proxy graph. Projects sorted by recall.}}{6}{table.caption.11}\protected@file@percent }
 \newlabel{tab:graph_stats}{{8}{6}{Per-project graph detector performance on real Sybils. Precision and recall are for Louvain at $\gamma {=}1.0$ on the funding-flow proxy graph. Projects sorted by recall}{table.caption.11}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Louvain resolution sensitivity. Higher $\gamma $ produces finer communities but does not reduce LLM evasion.}}{6}{table.caption.12}\protected@file@percent }
-\newlabel{tab:sensitivity}{{9}{6}{Louvain resolution sensitivity. Higher $\gamma $ produces finer communities but does not reduce LLM evasion}{table.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Graph-Based Detector Evaluation}{6}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:graph}{{4.5}{6}{Graph-Based Detector Evaluation}{subsection.4.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Louvain resolution sensitivity. Higher $\gamma $ produces finer communities but does not reduce LLM evasion.}}{7}{table.caption.12}\protected@file@percent }
+\newlabel{tab:sensitivity}{{9}{7}{Louvain resolution sensitivity. Higher $\gamma $ produces finer communities but does not reduce LLM evasion}{table.caption.12}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Cross-modality evasion: LLM sybils evade all four detector classes at 94--100\%. Error bars show variation across 16 projects for the graph detector.}}{7}{figure.caption.13}\protected@file@percent }
 \newlabel{fig:graph_evasion}{{2}{7}{Cross-modality evasion: LLM sybils evade all four detector classes at 94--100\%. Error bars show variation across 16 projects for the graph detector}{figure.caption.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Behavioral Defense: The Honest Binary Task}{7}{subsection.4.6}\protected@file@percent }
 \newlabel{sec:binary}{{4.6}{7}{Behavioral Defense: The Honest Binary Task}{subsection.4.6}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces AI-feature ablation on the honest binary task (LLM sybil vs.\ real wallet, blur\_s2).}}{7}{table.caption.14}\protected@file@percent }
 \newlabel{tab:ablation}{{10}{7}{AI-feature ablation on the honest binary task (LLM sybil vs.\ real wallet, blur\_s2)}{table.caption.14}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Per-tier Cohen's $d$ effect sizes for top-4 features on the binary task. \texttt  {behavioral\_consistency} shows the most stable discrimination across adversary tiers.}}{7}{table.caption.15}\protected@file@percent }
-\newlabel{tab:tier_effects}{{11}{7}{Per-tier Cohen's $d$ effect sizes for top-4 features on the binary task. \texttt {behavioral\_consistency} shows the most stable discrimination across adversary tiers}{table.caption.15}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Per-tier Cohen's $d$ effect sizes for top-4 features on the binary task. \texttt  {behavioral\_consistency} shows the most stable discrimination across adversary tiers.}}{8}{table.caption.15}\protected@file@percent }
+\newlabel{tab:tier_effects}{{11}{8}{Per-tier Cohen's $d$ effect sizes for top-4 features on the binary task. \texttt {behavioral\_consistency} shows the most stable discrimination across adversary tiers}{table.caption.15}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces 10-round adversarial equilibrium. Human-blend ratio increases from 0.45 to 0.97. Evasion rate is measured against the previous round's detector.}}{8}{table.caption.16}\protected@file@percent }
 \newlabel{tab:equilibrium}{{12}{8}{10-round adversarial equilibrium. Human-blend ratio increases from 0.45 to 0.97. Evasion rate is measured against the previous round's detector}{table.caption.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Adversarial equilibrium convergence. Left axis: detector AUC (blue, descending from 0.985 to 0.599). Right axis: evasion rate (red, descending from 95.7\% to 7.0\%). The crossover at round\nonbreakingspace 6 (evasion $<$ detection) marks the transition from attacker-dominated to defender-dominated regime.}}{8}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:equilibrium}{{3}{8}{Adversarial equilibrium convergence. Left axis: detector AUC (blue, descending from 0.985 to 0.599). Right axis: evasion rate (red, descending from 95.7\% to 7.0\%). The crossover at round~6 (evasion $<$ detection) marks the transition from attacker-dominated to defender-dominated regime}{figure.caption.17}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Adversarial Equilibrium Analysis}{8}{subsection.4.7}\protected@file@percent }
 \newlabel{sec:equilibrium}{{4.7}{8}{Adversarial Equilibrium Analysis}{subsection.4.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Feature importance evolution across adversarial rounds. Top-3 features shown; remaining 5 features share the balance.}}{8}{table.caption.18}\protected@file@percent }
-\newlabel{tab:feat_evolution}{{13}{8}{Feature importance evolution across adversarial rounds. Top-3 features shown; remaining 5 features share the balance}{table.caption.18}{}}
-\citation{carlini2017}
-\citation{wen2026preairdrop}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Adversarial equilibrium convergence. Left axis: detector AUC (blue, descending from 0.985 to 0.599). Right axis: evasion rate (red, descending from 95.7\% to 7.0\%). The crossover at round\nonbreakingspace 6 (evasion $<$ detection) marks the transition from attacker-dominated to defender-dominated regime.}}{8}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:equilibrium}{{3}{8}{Adversarial equilibrium convergence. Left axis: detector AUC (blue, descending from 0.985 to 0.599). Right axis: evasion rate (red, descending from 95.7\% to 7.0\%). The crossover at round~6 (evasion $<$ detection) marks the transition from attacker-dominated to defender-dominated regime}{figure.caption.17}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Feature importance evolution across adversarial rounds. Top-3 features shown; remaining 5 features share the balance.}}{9}{table.caption.18}\protected@file@percent }
+\newlabel{tab:feat_evolution}{{13}{9}{Feature importance evolution across adversarial rounds. Top-3 features shown; remaining 5 features share the balance}{table.caption.18}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Enhanced detector with and without label leakage in \texttt  {augment\_with\_ai\_features}. 4-project LOPO validation.}}{9}{table.caption.19}\protected@file@percent }
 \newlabel{tab:leakfix}{{14}{9}{Enhanced detector with and without label leakage in \texttt {augment\_with\_ai\_features}. 4-project LOPO validation}{table.caption.19}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Enhanced Detector After Leakage Fix}{9}{subsection.4.8}\protected@file@percent }
@@ -128,4 +127,71 @@
 \newlabel{sec:problemspace}{{4.9}{9}{Problem-Space Pilot}{subsection.4.9}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}{section.5}\protected@file@percent }
 \newlabel{sec:discussion}{{5}{9}{Discussion}{section.5}{}}
-\@writefile{toc}{\contents
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Cross-Modality Threat Assessment}{9}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}What Signal Survives}{9}{subsection.5.2}\protected@file@percent }
+\citation{carlini2017}
+\citation{wen2026preairdrop}
+\citation{bruckner2011stackelberg,osborne1994game}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}The Cross-Axis Floor}{10}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Implications for Airdrop Design}{10}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Toward Robust Multi-Modal Detection}{10}{subsection.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Stackelberg Equilibrium and Formal Game-Theoretic Framing}{10}{subsection.5.6}\protected@file@percent }
+\citation{goodfellow2014,madry2018}
+\citation{pierazzi2020}
+\citation{madry2018}
+\newlabel{eq:stackelberg}{{2}{11}{Stackelberg Equilibrium and Formal Game-Theoretic Framing}{equation.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Ethical Considerations}{11}{subsection.5.7}\protected@file@percent }
+\newlabel{sec:ethics}{{5.7}{11}{Ethical Considerations}{subsection.5.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8}Comparison with Traditional Adversarial ML}{11}{subsection.5.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Limitations and Future Work}{11}{section.6}\protected@file@percent }
+\newlabel{sec:limitations}{{6}{11}{Limitations and Future Work}{section.6}{}}
+\citation{cao2012sybilrank}
+\citation{gong2014sybilbelief}
+\citation{artemis}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Comparison of adversarial settings: airdrop Sybil detection vs.\ classical adversarial ML domains.}}{12}{table.caption.20}\protected@file@percent }
+\newlabel{tab:comparison_adv}{{15}{12}{Comparison of adversarial settings: airdrop Sybil detection vs.\ classical adversarial ML domains}{table.caption.20}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{12}{section.7}\protected@file@percent }
+\newlabel{sec:conclusion}{{7}{12}{Conclusion}{section.7}{}}
+\bibstyle{ACM-Reference-Format}
+\bibdata{main}
+\bibcite{apruzzese2023}{{1}{2023}{{Apruzzese et~al\mbox  {.}}}{{}}}
+\bibcite{arbitrum}{{2}{2023}{{Arbitrum Foundation}}{{}}}
+\bibcite{biggio2018wild}{{3}{2018}{{Biggio and Roli}}{{}}}
+\bibcite{blondel2008louvain}{{4}{2008}{{Blondel et~al\mbox  {.}}}{{}}}
+\bibcite{cao2012sybilrank}{{5}{2012}{{Cao et~al\mbox  {.}}}{{}}}
+\bibcite{carlini2017}{{6}{2017}{{Carlini and Wagner}}{{}}}
+\bibcite{chao2023jailbreaking}{{7}{2023}{{Chao et~al\mbox  {.}}}{{}}}
+\bibcite{cohen1988}{{8}{1988}{{Cohen}}{{}}}
+\bibcite{deng2024llm_pentesting}{{9}{2024}{{Deng et~al\mbox  {.}}}{{}}}
+\bibcite{douceur2002sybil}{{10}{2002}{{Douceur}}{{}}}
+\bibcite{fang2024llm_agents_attack}{{11}{2024}{{Fang et~al\mbox  {.}}}{{}}}
+\bibcite{gong2014sybilbelief}{{12}{2014}{{Gong et~al\mbox  {.}}}{{}}}
+\bibcite{goodfellow2014}{{13}{2014}{{Goodfellow et~al\mbox  {.}}}{{}}}
+\bibcite{hamilton2017graphsage}{{14}{2017}{{Hamilton et~al\mbox  {.}}}{{}}}
+\bibcite{heiding2024}{{15}{2024}{{Heiding et~al\mbox  {.}}}{{}}}
+\bibcite{ke2017lightgbm}{{16}{2017}{{Ke et~al\mbox  {.}}}{{}}}
+\bibcite{kurakin2017adversarial}{{17}{2017}{{Kurakin et~al\mbox  {.}}}{{}}}
+\bibcite{hascidb2026}{{18}{2026}{{Li et~al\mbox  {.}}}{{}}}
+\bibcite{madry2018}{{19}{2018}{{Madry et~al\mbox  {.}}}{{}}}
+\bibcite{osborne1994game}{{20}{1994}{{Osborne and Rubinstein}}{{}}}
+\bibcite{perez2022redteam}{{21}{2022}{{Perez et~al\mbox  {.}}}{{}}}
+\bibcite{pierazzi2020}{{22}{2020}{{Pierazzi et~al\mbox  {.}}}{{}}}
+\bibcite{bruckner2011stackelberg}{{23}{2011}{{Tambe}}{{}}}
+\bibcite{tramer2020}{{24}{2020}{{Tramer et~al\mbox  {.}}}{{}}}
+\bibcite{trustalabs}{{25}{2023}{{TrustaLabs}}{{}}}
+\bibcite{artemis}{{26}{2024a}{{UW Decentralized Computing Lab}}{{}}}
+\bibcite{llmhunter}{{27}{2024b}{{UW Decentralized Computing Lab}}{{}}}
+\bibcite{viswanath2010}{{28}{2010}{{Viswanath et~al\mbox  {.}}}{{}}}
+\bibcite{wen2026agent}{{29}{2026a}{{Wen and collaborators}}{{}}}
+\bibcite{wen2026preairdrop}{{30}{2026b}{{Wen and collaborators}}{{}}}
+\bibcite{yu2006sybilguard}{{31}{2008}{{Yu et~al\mbox  {.}}}{{}}}
+\newlabel{tocindent-1}{0pt}
+\newlabel{tocindent0}{0pt}
+\newlabel{tocindent1}{4.185pt}
+\newlabel{tocindent2}{10.34999pt}
+\newlabel{tocindent3}{0pt}
+\newlabel{tocindent4}{0pt}
+\newlabel{tocindent5}{0pt}
+\@writefile{toc}{\contentsline {section}{References}{13}{section*.22}\protected@file@percent }
+\newlabel{TotPages}{{13}{13}{}{page.13}{}}
+\gdef \@abspage@last{13}

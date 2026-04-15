@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{30}
+\begin{thebibliography}{31}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -204,6 +204,19 @@
   Language Models}.
 \newblock \bibinfo{journal}{\emph{IEEE Access}}  \bibinfo{volume}{12}
   (\bibinfo{year}{2024}).
+\newblock
+
+
+\bibitem[Ke et~al\mbox{.}(2017)]%
+        {ke2017lightgbm}
+\bibfield{author}{\bibinfo{person}{Guolin Ke}, \bibinfo{person}{Qi Meng},
+  \bibinfo{person}{Thomas Finley}, \bibinfo{person}{Taifeng Wang},
+  \bibinfo{person}{Wei Chen}, \bibinfo{person}{Weidong Ma},
+  \bibinfo{person}{Qiwei Ye}, {and} \bibinfo{person}{Tie-Yan Liu}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{LightGBM: A Highly Efficient Gradient Boosting
+  Decision Tree}. In \bibinfo{booktitle}{\emph{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{30}.
 \newblock
 
 

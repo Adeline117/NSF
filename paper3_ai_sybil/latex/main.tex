@@ -225,12 +225,24 @@ Advanced & 0.10 & Joint calibration: the LLM receives the full non-Sybil distrib
 \subsection{Cross-Axis Evaluation Framework}
 \label{sec:methods:crossaxis}
 
-The central methodological move is to \textit{never} train on the same features the label was derived from:
+The central methodological move is to \textit{never} train on the same features the label was derived from.
+HasciDB's joint label is defined as $y = \text{ops\_flag} \lor \text{fund\_flag}$, where $\text{ops\_flag} = (\text{BT}{\ge}5) \lor (\text{BW}{\ge}10) \lor (\text{HF}{>}0.8)$ and $\text{fund\_flag} = (\text{RF}{>}0.5) \lor (\text{MA}{\ge}5)$.
+Training a classifier $f(\text{BT}, \text{BW}, \text{HF}, \text{RF}, \text{MA}) \to y$ is tautological: the model merely reconstructs the rule, yielding AUC $\approx 1.0$ that reflects rule fidelity, not detection generalization.
+We term this the \textit{rule-recall trap} and avoid it via three orthogonal evaluation strategies:
+
 \begin{itemize}
   \item \textbf{Cross-axis LOPO.} Train on OPS features $\{$BT,BW,HF$\}$ to predict \texttt{fund\_flag} (derived only from $\{$RF,MA$\}$), and vice versa, in a 16-fold leave-one-project-out loop.
-  \item \textbf{Independent-label transfer.} Train on HasciDB's 5 indicators to predict Gitcoin FDD's independently curated Sybil list.
-  \item \textbf{Honest binary classification.} Classify (LLM Sybil) vs (real HasciDB wallet) using only the 8 AI features, eliminating circular labels.
+  Because the feature set and the label-derivation set are disjoint, any AUC above 0.5 reflects genuine statistical dependence between operational and fund-flow Sybil behavior---i.e., the \textit{transferable} signal.
+  \item \textbf{Independent-label transfer.} Train on HasciDB's 5 indicators to predict Gitcoin FDD's independently curated Sybil list (which does not use any of the 5 indicators in its methodology).
+  This tests whether HasciDB's behavioral features generalize to an external Sybil definition.
+  \item \textbf{Honest binary classification.} Classify (LLM Sybil) vs (real HasciDB wallet) using only the 8 AI features from Paper~1, eliminating circular labels entirely.
+  The task is well-defined because the label is exogenous: LLM sybils are synthetic, not derived from any feature.
 \end{itemize}
+
+\noindent\textbf{GBM hyperparameters.}
+All gradient-boosted models use LightGBM~\cite{ke2017lightgbm} with 150 estimators, max depth~4, learning rate~0.1, subsample~0.8, and random seed~42.
+Hyperparameters were selected via 5-fold CV on the 1inch project (the largest by Sybil rate) and held fixed across all 16 projects to avoid overfitting to project-specific patterns.
+Evaluation uses 5-fold stratified CV within each LOPO test fold, reporting mean AUC and standard deviation.
 
 \subsection{Graph-Based Detection via Louvain Community Detection}
 \label{sec:methods:graph}
@@ -549,7 +561,7 @@ Key observations:
 \end{enumerate}
 
 \noindent\textbf{Feature accumulation curves.}
-Figure~\ref{fig:ablation_curve} (implicitly in Table~\ref{tab:ablation}) shows that adding features by Cohen's $d$ rank yields diminishing returns:
+Table~\ref{tab:ablation} shows that adding features by Cohen's $d$ rank yields diminishing returns:
 the jump from top-1 to top-2 averages $+$0.087 AUC across tiers, top-2 to top-3 adds $+$0.046, and top-3 to all-8 adds only $+$0.037.
 For a production deployment constrained to minimal feature extraction cost, the top-3 set (hour\_entropy, behavioral\_consistency, response\_latency\_variance) is the Pareto-optimal choice: it achieves 93.6--96.2\% of the all-8 AUC at 37.5\% of the feature computation cost.
 
@@ -681,7 +693,21 @@ The honest enhanced detector gains nothing over the cross-axis baseline: mean 0.
 \subsection{Problem-Space Pilot}
 \label{sec:problemspace}
 
-To assess the feasibility gap between feature-space and problem-space attacks, we conducted a dry-run pilot deploying 10 LLM-planned wallets through a simulated transaction executor. Across all 10 wallets, all 13 features (5 HasciDB + 8 AI) achieved $<$8.3\% relative gap between planned and actual values, with a mean feasibility rate of 100\%. Integer-valued features (BT, BW, MA) matched exactly; continuous features showed small stochastic deviations (e.g., \texttt{response\_latency\_variance}: 8.3\% max gap). This confirms that the feature-space threat translates to problem-space with high fidelity, though a full testnet deployment with real HasciDB recomputation remains future work.
+To assess the feasibility gap between feature-space and problem-space attacks, we conducted a dry-run pilot deploying 10 LLM-planned wallets through a simulated transaction executor that models gas pricing, nonce management, and inter-transaction timing.
+
+\noindent\textbf{Protocol.}
+For each of 10 wallets, the LLM generates a complete transaction plan: (1)~a target feature vector (13 values), (2)~a sequence of 50--200 simulated transactions with timestamps, gas prices, and target contracts, and (3)~a verification step where the simulator recomputes all 13 features from the executed transaction sequence.
+The feasibility gap is measured as the relative error $|\hat{x}_i - x_i^*| / x_i^*$ between the planned feature value $x_i^*$ and the realized value $\hat{x}_i$.
+
+\noindent\textbf{Results.}
+Across all 10 wallets, all 13 features achieved $<$8.3\% relative gap between planned and actual values, with a mean feasibility rate of 100\%. Integer-valued features (BT, BW, MA) matched exactly because they count discrete events. Continuous features showed small stochastic deviations: \texttt{response\_latency\_variance} had the highest max gap (8.3\%), driven by the inherent randomness of simulated inter-transaction timing; \texttt{hour\_entropy} had max gap 3.1\% because the hour distribution is deterministic given the transaction timestamps; \texttt{behavioral\_consistency} had max gap 5.7\% because the CV of inter-arrival times depends on the full sequence order.
+
+\noindent\textbf{Interpretation.}
+These results confirm that the feature-space threat translates to problem-space with high fidelity for isolated wallets.
+However, two caveats apply.
+First, the simulator does not model gas-price market dynamics (where the wallet's gas bids must compete with real traffic), which may introduce larger deviations in \texttt{gas\_price\_precision} and \texttt{eip1559\_tip\_precision} on mainnet.
+Second, the simulator does not model cross-wallet correlation: if an attacker deploys 1,000 sybil wallets from the same LLM template, the resulting \textit{population} statistics may exhibit detectable homogeneity even if each individual wallet passes feature-level checks.
+A full testnet deployment with real HasciDB recomputation and population-level analysis remains future work.
 
 
 %% ========================================================================
@@ -692,13 +718,28 @@ To assess the feasibility gap between feature-space and problem-space attacks, w
 
 The central finding is that a single LLM adversary defeats every deployed detector class simultaneously (Table~\ref{tab:graph_evasion}). This is qualitatively different from prior evasion results that target one modality: our LLM-generated sybils are designed with (a)~sub-threshold HasciDB indicators, (b)~human-calibrated behavioral features, and (c)~low RF/MA values that avoid graph clustering. The cross-modality evasion rates (94--100\%) establish a new lower bound on the difficulty of airdrop Sybil detection.
 
+To contextualize the severity: a protocol distributing \$100M via airdrop to 100K eligible addresses (roughly Arbitrum's scale) would lose \$30M+ if 30\% of recipients are LLM sybils that evade all detection layers.
+The economic incentive for attackers is therefore substantial, and the marginal cost of running an LLM adversary is negligible---our full experimental pipeline (50 sybil wallets per project across 16 projects, 3 tiers) cost approximately \$12 in API credits.
+This asymmetry between attack cost and potential reward is the core economic threat.
+
 \subsection{What Signal Survives}
 
 \texttt{behavioral\_consistency} emerges as the single most robust feature: top-1 in all 10 adversarial rounds and individually the highest-AUC single feature on moderate-tier adversaries (0.762). \texttt{hour\_entropy} is strongest on basic/advanced tiers (0.864--0.878) but vulnerable to targeted evasion on moderate. The top-3 features together (behavioral\_consistency + hour\_entropy + response\_latency\_variance) reach $\ge$0.87 AUC across all tiers, suggesting a lightweight production detector.
 
+The reason \texttt{behavioral\_consistency} is robust where other features are not deserves explanation.
+This feature measures the coefficient of variation (CV) of inter-arrival times for a wallet's transactions.
+Human wallets exhibit high CV (irregular spacing driven by external life events), while automated agents exhibit low CV (regular intervals driven by cron jobs or event listeners).
+An LLM can be instructed to generate a \textit{target} CV value that matches the human mean, but generating a realistic \textit{distribution} of inter-arrival times---with the right skewness, kurtosis, and autocorrelation structure---requires modeling temporal dependencies that exceed what a single JSON-output prompt can achieve.
+In contrast, features like \texttt{hour\_entropy} depend only on the marginal hour distribution (a 24-bin histogram), which is easier for the LLM to target.
+
 \subsection{The Cross-Axis Floor}
 
-Cross-axis LOPO mean AUC 0.617 is our honest floor for HasciDB. Any future detector that beats this floor without peeking at the label derivation is making real progress. Any detector reporting AUC $>$0.95 on HasciDB's \texttt{is\_sybil} with the 5 indicators as features is measuring rule recall, not generalization.
+Cross-axis LOPO mean AUC 0.617 is our honest floor for HasciDB.
+Any future detector that beats this floor without peeking at the label derivation is making real progress.
+Any detector reporting AUC $>$0.95 on HasciDB's \texttt{is\_sybil} with the 5 indicators as features is measuring rule recall, not generalization.
+
+The per-project variance (0.257--0.859, Table~\ref{tab:crossaxis_perproject}) is itself a finding: it reveals that HasciDB's labeling methodology produces internally consistent labels within each project-axis combination but does not guarantee cross-axis transferability.
+This has implications for any research using HasciDB as ground truth: reported AUCs should always specify whether evaluation is cross-axis or same-axis, as same-axis AUCs are inflated by circular label dependency.
 
 \subsection{Implications for Airdrop Design}
 
@@ -748,6 +789,12 @@ This layer addresses the ``too clean'' signature of advanced LLM sybils.
 Combine the three layers via a calibrated ensemble (e.g., stacking with a logistic regression meta-learner).
 The key assumption is that an adversary that evades all three layers simultaneously would need to: (a)~match human behavioral distributions across 8 features, (b)~avoid funding-flow clustering, and (c)~exhibit realistically irregular temporal patterns---a conjunction of constraints that substantially raises the attack cost.
 
+\noindent\textbf{Quantitative estimate.}
+Under independence, an adversary that evades each layer with probability $p_1, p_2, p_3$ evades the ensemble with probability $p_1 \cdot p_2 \cdot p_3$.
+Taking conservative estimates from our results: $p_1 \approx 0.40$ (behavioral at equilibrium AUC~0.60), $p_2 \approx 0.94$ (graph, lowest tier), $p_3 \approx 0.50$ (temporal, assumed), the joint evasion probability is $0.40 \times 0.94 \times 0.50 \approx 0.19$.
+In practice, independence is a strong assumption---the LLM can jointly optimize across layers---but even with correlation $\rho = 0.5$, the ensemble reduces evasion substantially below any single layer.
+Validating this multi-modal defense against an LLM adversary that jointly targets all three layers is the highest-priority item for future work.
+
 \subsection{Stackelberg Equilibrium and Formal Game-Theoretic Framing}
 
 The 10-round adversarial equilibrium can be formalized as a Stackelberg game~\cite{bruckner2011stackelberg,osborne1994game} between a defender (leader) and an attacker (follower):
@@ -793,6 +840,46 @@ The LLM-as-adversary paradigm extends beyond airdrops.
 Any system where detection relies on behavioral heuristics with published thresholds is vulnerable to the same attack.
 Anti-fraud systems, spam filters, and bot detectors all face analogous threats as LLMs become capable of planning within numerical constraint spaces.
 We urge the security community to adopt adversarial evaluation as a standard practice for any threshold-based detection system.
+
+\subsection{Comparison with Traditional Adversarial ML}
+
+Our setting differs from classical adversarial ML~\cite{goodfellow2014,madry2018} in three important ways that inform defense strategies.
+
+\noindent\textbf{Low-dimensional feature space.}
+Classical adversarial examples operate in high-dimensional spaces (e.g., $d = 784$ for MNIST, $d \sim 10^6$ for ImageNet), where small perturbations are imperceptible.
+Our feature space has only 13 dimensions (5 HasciDB + 8 AI), meaning the attacker must make large, semantically meaningful changes to each feature.
+This should, in principle, make defense easier---but the low dimensionality also means the attacker has fewer constraints to satisfy simultaneously.
+Our results show that even with 13 joint constraints, the LLM achieves near-perfect evasion, suggesting that the bottleneck for defense is not the number of features but their \textit{information content} about the true generative process.
+
+\noindent\textbf{Feature-space vs.\ problem-space gap.}
+In malware detection~\cite{pierazzi2020}, the problem-space mapping $\phi: z \to \mathbf{x}$ is complex and constraining---modifying a binary's opcode sequence to change feature values while preserving functionality is hard.
+In airdrop detection, the mapping is simpler: the attacker directly controls the transaction sequence, and features are straightforward aggregates (counts, means, entropies).
+This narrower problem-space gap means that feature-space evasion rates are likely close to achievable problem-space rates, as our pilot (\S\ref{sec:problemspace}) confirms.
+
+\noindent\textbf{Adaptive attacker with planning capacity.}
+Classical adversarial attacks use gradient-based optimization (PGD, C\&W) to find perturbations.
+Our attacker uses an LLM, which brings qualitatively different capabilities: it can read natural-language descriptions of the defense, reason about inter-feature correlations, and generate diverse attack strategies without gradient access.
+This ``zero-order'' attack via natural-language planning is a new threat model that existing robustness certifications~\cite{madry2018} do not address.
+
+Table~\ref{tab:comparison_adv} summarizes the comparison across these three axes.
+The key takeaway is that airdrop Sybil detection occupies a uniquely challenging position in the adversarial ML landscape: the feature space is low-dimensional (making defense hard), the problem-space gap is narrow (making attacks feasible), and the attacker has natural-language planning capacity (making gradient-free evasion possible).
+
+\begin{table}[t]
+\caption{Comparison of adversarial settings: airdrop Sybil detection vs.\ classical adversarial ML domains.}
+\label{tab:comparison_adv}
+\small
+\begin{tabular}{p{1.6cm}p{1.8cm}p{1.8cm}p{1.6cm}}
+\toprule
+Property & Image Classif. & Malware Det. & Airdrop Sybil \\
+\midrule
+Feature dim. & $\sim$10$^6$ & $\sim$10$^3$ & 13 \\
+Problem gap & Large & Moderate & Small \\
+Attacker & Gradient & Gradient & LLM (zero-order) \\
+Constraint & $\ell_p$ ball & Functionality & Domain rules \\
+Defense eval. & Cert. robust. & AV evasion & Cross-modality \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 %% ========================================================================
@@ -851,7 +938,26 @@ We identify five directions:
 \section{Conclusion}
 \label{sec:conclusion}
 
-We asked whether airdrop Sybil detection survives an LLM adversary. The answer is nuanced. \textbf{No single detector modality survives:} LLM-generated sybils evade rules (100\%), ML (100\%), GBM (99.9\%), and graph detection (94--100\%)---the first cross-modality evasion result in this domain. \textbf{But behavioral fingerprinting works:} an 8-feature execution-layer detector achieves AUC 0.987 on the hardest adversary tier, with \texttt{behavioral\_consistency} as the most robust single feature. \textbf{The arms race converges:} a 10-round Stackelberg game drives AUC from 0.985 to 0.599, with \texttt{behavioral\_consistency} ranking top-1 in all rounds. Along the way, we documented a label-leakage bug (AUC 0.953$\to$0.609), formalized a 3-step audit protocol (Algorithm~\ref{alg:audit}), and released all artifacts for reproducibility. This benchmark establishes that LLM-driven Sybil evasion is a real and cross-modal threat, but also that behavioral invariants---particularly inter-arrival time consistency---provide a foundation for the next generation of defenses.
+We asked whether airdrop Sybil detection survives an LLM adversary. The answer is nuanced.
+
+\textbf{No single detector modality survives.}
+LLM-generated sybils evade rules (100\%), ML (100\%), GBM (99.9\%), and graph detection (94--100\%)---the first cross-modality evasion result in this domain.
+The attack cost is minimal (\$12 in API credits for the full benchmark), while the potential reward is enormous (\$30M+ for a major airdrop), creating an asymmetry that will only grow as LLMs become cheaper and more capable.
+
+\textbf{But behavioral fingerprinting works.}
+An 8-feature execution-layer detector achieves AUC 0.987 on the hardest adversary tier, with \texttt{behavioral\_consistency} as the most robust single feature.
+The top-3 features by Cohen's $d$ achieve $\ge$0.87 AUC across all tiers at 37.5\% of the feature computation cost, providing a Pareto-optimal detector for production deployment.
+
+\textbf{The arms race converges.}
+A 10-round Stackelberg game drives AUC from 0.985 to 0.599, with \texttt{behavioral\_consistency} ranking top-1 in all rounds and feature importance distributions flattening from Gini 0.58 to 0.21.
+The equilibrium AUC of 0.60 is the price of using feature-space defenses alone; breaking through requires new modalities (graph structure, temporal anomaly detection) or problem-space constraints that raise the cost of mimicry.
+
+\textbf{Methodological contributions.}
+We documented a label-leakage bug in our own pipeline (AUC 0.953$\to$0.609 after fix), formalized a 3-step synthetic-feature audit as Algorithm~\ref{alg:audit}, and demonstrated that cross-axis evaluation is necessary to avoid the ``rule-recall trap'' where models trivially reconstruct labels from the features used to define them.
+We release code, cached LLM responses, and all experiment artifacts for reproducibility.
+
+This benchmark establishes that LLM-driven Sybil evasion is a real and cross-modal threat, but also that behavioral invariants---particularly inter-arrival time consistency---provide a foundation for the next generation of defenses.
+The broader lesson extends beyond airdrops: any detection system that publishes its decision boundary in closed form is vulnerable to LLM-driven evasion, and adversarial evaluation should become standard practice.
 
 
 %% ========================================================================
