@@ -1,0 +1,658 @@
+{
+  "run_timestamp": "20260415_010351",
+  "experiment": "leave_one_platform_out_cross_validation",
+  "description": "For each platform/category with >= 10 addresses, hold out all addresses from that platform as the test set, train on all other platforms, and evaluate. Tests cross-platform generalisation \u2014 whether the classifier transfers to operational contexts it has never seen.",
+  "dataset": {
+    "n_samples": 1147,
+    "n_agents": 533,
+    "n_humans": 614,
+    "n_features": 23,
+    "feature_names": [
+      "tx_interval_mean",
+      "tx_interval_std",
+      "tx_interval_skewness",
+      "active_hour_entropy",
+      "night_activity_ratio",
+      "weekend_ratio",
+      "burst_frequency",
+      "gas_price_round_number_ratio",
+      "gas_price_trailing_zeros_mean",
+      "gas_limit_precision",
+      "gas_price_cv",
+      "eip1559_priority_fee_precision",
+      "gas_price_nonce_correlation",
+      "unique_contracts_ratio",
+      "top_contract_concentration",
+      "method_id_diversity",
+      "contract_to_eoa_ratio",
+      "sequential_pattern_score",
+      "unlimited_approve_ratio",
+      "approve_revoke_ratio",
+      "unverified_contract_approve_ratio",
+      "multi_protocol_interaction_count",
+      "flash_loan_usage"
+    ],
+    "n_categories": 18,
+    "categories": {
+      "defi_hf_trader": {
+        "n": 199,
+        "n_agents": 199,
+        "n_humans": 0
+      },
+      "human_ens_interaction": {
+        "n": 167,
+        "n_agents": 0,
+        "n_humans": 167
+      },
+      "gitcoin_donor": {
+        "n": 146,
+        "n_agents": 0,
+        "n_humans": 146
+      },
+      "ens_reverse_setter": {
+        "n": 144,
+        "n_agents": 0,
+        "n_humans": 144
+      },
+      "chainlink_keeper": {
+        "n": 108,
+        "n_agents": 108,
+        "n_humans": 0
+      },
+      "compound_v3_liquidator": {
+        "n": 97,
+        "n_agents": 97,
+        "n_humans": 0
+      },
+      "pooltogether_depositor": {
+        "n": 89,
+        "n_agents": 0,
+        "n_humans": 89
+      },
+      "gelato_executor": {
+        "n": 47,
+        "n_agents": 47,
+        "n_humans": 0
+      },
+      "keep3r_executor": {
+        "n": 46,
+        "n_agents": 46,
+        "n_humans": 0
+      },
+      "human_exchange_depositor": {
+        "n": 28,
+        "n_agents": 0,
+        "n_humans": 28
+      },
+      "expanded_human": {
+        "n": 25,
+        "n_agents": 0,
+        "n_humans": 25
+      },
+      "pilot_agent": {
+        "n": 15,
+        "n_agents": 15,
+        "n_humans": 0
+      },
+      "curated_mev_bot": {
+        "n": 10,
+        "n_agents": 10,
+        "n_humans": 0
+      },
+      "expanded_mev_bot": {
+        "n": 10,
+        "n_agents": 10,
+        "n_humans": 0
+      },
+      "curated_human": {
+        "n": 7,
+        "n_agents": 0,
+        "n_humans": 7
+      },
+      "human_ens_interaction_governance_voter": {
+        "n": 5,
+        "n_agents": 0,
+        "n_humans": 5
+      },
+      "pilot_human": {
+        "n": 3,
+        "n_agents": 0,
+        "n_humans": 3
+      },
+      "flash_loan_user": {
+        "n": 1,
+        "n_agents": 1,
+        "n_humans": 0
+      }
+    }
+  },
+  "min_platform_size": 10,
+  "models": {
+    "RandomForest": {
+      "model": "RandomForest",
+      "n_platforms_evaluated": 14,
+      "n_platforms_with_auc": 0,
+      "mean_per_platform_auc": null,
+      "std_per_platform_auc": null,
+      "min_per_platform_auc": null,
+      "max_per_platform_auc": null,
+      "mean_per_platform_accuracy": 0.5247,
+      "pooled_auc": 0.3966,
+      "pooled_accuracy": 0.4704,
+      "pooled_f1": 0.3552,
+      "pooled_precision": 0.4156,
+      "pooled_recall": 0.3102,
+      "total_predictions": 1131,
+      "per_platform": {
+        "chainlink_keeper": {
+          "n_test": 108,
+          "n_test_agents": 108,
+          "n_test_humans": 0,
+          "n_train": 1039,
+          "n_train_agents": 425,
+          "n_train_humans": 614,
+          "accuracy": 0.537,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.537,
+          "f1": 0.6988,
+          "platform_dominant_class": "agent"
+        },
+        "compound_v3_liquidator": {
+          "n_test": 97,
+          "n_test_agents": 97,
+          "n_test_humans": 0,
+          "n_train": 1050,
+          "n_train_agents": 436,
+          "n_train_humans": 614,
+          "accuracy": 0.1031,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.1031,
+          "f1": 0.1869,
+          "platform_dominant_class": "agent"
+        },
+        "curated_mev_bot": {
+          "n_test": 10,
+          "n_test_agents": 10,
+          "n_test_humans": 0,
+          "n_train": 1137,
+          "n_train_agents": 523,
+          "n_train_humans": 614,
+          "accuracy": 0.7,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.7,
+          "f1": 0.8235,
+          "platform_dominant_class": "agent"
+        },
+        "defi_hf_trader": {
+          "n_test": 199,
+          "n_test_agents": 199,
+          "n_test_humans": 0,
+          "n_train": 948,
+          "n_train_agents": 334,
+          "n_train_humans": 614,
+          "accuracy": 0.201,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.201,
+          "f1": 0.3347,
+          "platform_dominant_class": "agent"
+        },
+        "ens_reverse_setter": {
+          "n_test": 144,
+          "n_test_agents": 0,
+          "n_test_humans": 144,
+          "n_train": 1003,
+          "n_train_agents": 533,
+          "n_train_humans": 470,
+          "accuracy": 0.7569,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        },
+        "expanded_human": {
+          "n_test": 25,
+          "n_test_agents": 0,
+          "n_test_humans": 25,
+          "n_train": 1122,
+          "n_train_agents": 533,
+          "n_train_humans": 589,
+          "accuracy": 0.72,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        },
+        "expanded_mev_bot": {
+          "n_test": 10,
+          "n_test_agents": 10,
+          "n_test_humans": 0,
+          "n_train": 1137,
+          "n_train_agents": 523,
+          "n_train_humans": 614,
+          "accuracy": 0.2,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.3333,
+          "platform_dominant_class": "agent"
+        },
+        "gelato_executor": {
+          "n_test": 47,
+          "n_test_agents": 47,
+          "n_test_humans": 0,
+          "n_train": 1100,
+          "n_train_agents": 486,
+          "n_train_humans": 614,
+          "accuracy": 0.5319,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.5319,
+          "f1": 0.6944,
+          "platform_dominant_class": "agent"
+        },
+        "gitcoin_donor": {
+          "n_test": 146,
+          "n_test_agents": 0,
+          "n_test_humans": 146,
+          "n_train": 1001,
+          "n_train_agents": 533,
+          "n_train_humans": 468,
+          "accuracy": 0.5068,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        },
+        "human_ens_interaction": {
+          "n_test": 167,
+          "n_test_agents": 0,
+          "n_test_humans": 167,
+          "n_train": 980,
+          "n_train_agents": 533,
+          "n_train_humans": 447,
+          "accuracy": 0.4551,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        },
+        "human_exchange_depositor": {
+          "n_test": 28,
+          "n_test_agents": 0,
+          "n_test_humans": 28,
+          "n_train": 1119,
+          "n_train_agents": 533,
+          "n_train_humans": 586,
+          "accuracy": 0.7857,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        },
+        "keep3r_executor": {
+          "n_test": 46,
+          "n_test_agents": 46,
+          "n_test_humans": 0,
+          "n_train": 1101,
+          "n_train_agents": 487,
+          "n_train_humans": 614,
+          "accuracy": 0.2174,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.2174,
+          "f1": 0.3571,
+          "platform_dominant_class": "agent"
+        },
+        "pilot_agent": {
+          "n_test": 15,
+          "n_test_agents": 15,
+          "n_test_humans": 0,
+          "n_train": 1132,
+          "n_train_agents": 518,
+          "n_train_humans": 614,
+          "accuracy": 0.8667,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.8667,
+          "f1": 0.9286,
+          "platform_dominant_class": "agent"
+        },
+        "pooltogether_depositor": {
+          "n_test": 89,
+          "n_test_agents": 0,
+          "n_test_humans": 89,
+          "n_train": 1058,
+          "n_train_agents": 533,
+          "n_train_humans": 525,
+          "accuracy": 0.764,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        }
+      }
+    },
+    "GradientBoosting": {
+      "model": "GradientBoosting",
+      "n_platforms_evaluated": 14,
+      "n_platforms_with_auc": 0,
+      "mean_per_platform_auc": null,
+      "std_per_platform_auc": null,
+      "min_per_platform_auc": null,
+      "max_per_platform_auc": null,
+      "mean_per_platform_accuracy": 0.5106,
+      "pooled_auc": 0.4221,
+      "pooled_accuracy": 0.4642,
+      "pooled_f1": 0.3688,
+      "pooled_precision": 0.4136,
+      "pooled_recall": 0.3327,
+      "total_predictions": 1131,
+      "per_platform": {
+        "chainlink_keeper": {
+          "n_test": 108,
+          "n_test_agents": 108,
+          "n_test_humans": 0,
+          "n_train": 1039,
+          "n_train_agents": 425,
+          "n_train_humans": 614,
+          "accuracy": 0.6759,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.6759,
+          "f1": 0.8066,
+          "platform_dominant_class": "agent"
+        },
+        "compound_v3_liquidator": {
+          "n_test": 97,
+          "n_test_agents": 97,
+          "n_test_humans": 0,
+          "n_train": 1050,
+          "n_train_agents": 436,
+          "n_train_humans": 614,
+          "accuracy": 0.1546,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.1546,
+          "f1": 0.2679,
+          "platform_dominant_class": "agent"
+        },
+        "curated_mev_bot": {
+          "n_test": 10,
+          "n_test_agents": 10,
+          "n_test_humans": 0,
+          "n_train": 1137,
+          "n_train_agents": 523,
+          "n_train_humans": 614,
+          "accuracy": 0.6,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.75,
+          "platform_dominant_class": "agent"
+        },
+        "defi_hf_trader": {
+          "n_test": 199,
+          "n_test_agents": 199,
+          "n_test_humans": 0,
+          "n_train": 948,
+          "n_train_agents": 334,
+          "n_train_humans": 614,
+          "accuracy": 0.1407,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.1407,
+          "f1": 0.2467,
+          "platform_dominant_class": "agent"
+        },
+        "ens_reverse_setter": {
+          "n_test": 144,
+          "n_test_agents": 0,
+          "n_test_humans": 144,
+          "n_train": 1003,
+          "n_train_agents": 533,
+          "n_train_humans": 470,
+          "accuracy": 0.7639,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        },
+        "expanded_human": {
+          "n_test": 25,
+          "n_test_agents": 0,
+          "n_test_humans": 25,
+          "n_train": 1122,
+          "n_train_agents": 533,
+          "n_train_humans": 589,
+          "accuracy": 0.56,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        },
+        "expanded_mev_bot": {
+          "n_test": 10,
+          "n_test_agents": 10,
+          "n_test_humans": 0,
+          "n_train": 1137,
+          "n_train_agents": 523,
+          "n_train_humans": 614,
+          "accuracy": 0.2,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.3333,
+          "platform_dominant_class": "agent"
+        },
+        "gelato_executor": {
+          "n_test": 47,
+          "n_test_agents": 47,
+          "n_test_humans": 0,
+          "n_train": 1100,
+          "n_train_agents": 486,
+          "n_train_humans": 614,
+          "accuracy": 0.617,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.617,
+          "f1": 0.7632,
+          "platform_dominant_class": "agent"
+        },
+        "gitcoin_donor": {
+          "n_test": 146,
+          "n_test_agents": 0,
+          "n_test_humans": 146,
+          "n_train": 1001,
+          "n_train_agents": 533,
+          "n_train_humans": 468,
+          "accuracy": 0.5479,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        },
+        "human_ens_interaction": {
+          "n_test": 167,
+          "n_test_agents": 0,
+          "n_test_humans": 167,
+          "n_train": 980,
+          "n_train_agents": 533,
+          "n_train_humans": 447,
+          "accuracy": 0.4311,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        },
+        "human_exchange_depositor": {
+          "n_test": 28,
+          "n_test_agents": 0,
+          "n_test_humans": 28,
+          "n_train": 1119,
+          "n_train_agents": 533,
+          "n_train_humans": 586,
+          "accuracy": 0.8571,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        },
+        "keep3r_executor": {
+          "n_test": 46,
+          "n_test_agents": 46,
+          "n_test_humans": 0,
+          "n_train": 1101,
+          "n_train_agents": 487,
+          "n_train_humans": 614,
+          "accuracy": 0.2609,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.2609,
+          "f1": 0.4138,
+          "platform_dominant_class": "agent"
+        },
+        "pilot_agent": {
+          "n_test": 15,
+          "n_test_agents": 15,
+          "n_test_humans": 0,
+          "n_train": 1132,
+          "n_train_agents": 518,
+          "n_train_humans": 614,
+          "accuracy": 0.8,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8889,
+          "platform_dominant_class": "agent"
+        },
+        "pooltogether_depositor": {
+          "n_test": 89,
+          "n_test_agents": 0,
+          "n_test_humans": 89,
+          "n_train": 1058,
+          "n_train_agents": 533,
+          "n_train_humans": 525,
+          "accuracy": 0.5393,
+          "auc": null,
+          "auc_note": "Test set is single-class (all agent or all human)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "platform_dominant_class": "human"
+        }
+      }
+    }
+  },
+  "cross_class_analysis_gbm": {
+    "agent_platform_recall": 0.3252,
+    "agent_platforms_n": 532,
+    "agent_platforms_count": 8,
+    "human_platform_specificity": 0.5743,
+    "human_platforms_n": 599,
+    "human_platforms_count": 6,
+    "interpretation": "Agent-platform recall = fraction of held-out agent-platform addresses correctly classified as agents. Human-platform specificity = fraction of held-out human-platform addresses correctly classified as humans. Each platform is entirely unseen during training, so this measures true cross-platform transfer. Because each category is single-class, accuracy equals recall for agent platforms and specificity for human platforms.",
+    "per_agent_platform": {
+      "chainlink_keeper": {
+        "n": 108,
+        "recall": 0.6759
+      },
+      "compound_v3_liquidator": {
+        "n": 97,
+        "recall": 0.1546
+      },
+      "curated_mev_bot": {
+        "n": 10,
+        "recall": 0.6
+      },
+      "defi_hf_trader": {
+        "n": 199,
+        "recall": 0.1407
+      },
+      "expanded_mev_bot": {
+        "n": 10,
+        "recall": 0.2
+      },
+      "gelato_executor": {
+        "n": 47,
+        "recall": 0.617
+      },
+      "keep3r_executor": {
+        "n": 46,
+        "recall": 0.2609
+      },
+      "pilot_agent": {
+        "n": 15,
+        "recall": 0.8
+      }
+    },
+    "per_human_platform": {
+      "ens_reverse_setter": {
+        "n": 144,
+        "specificity": 0.7639
+      },
+      "expanded_human": {
+        "n": 25,
+        "specificity": 0.56
+      },
+      "gitcoin_donor": {
+        "n": 146,
+        "specificity": 0.5479
+      },
+      "human_ens_interaction": {
+        "n": 167,
+        "specificity": 0.4311
+      },
+      "human_exchange_depositor": {
+        "n": 28,
+        "specificity": 0.8571
+      },
+      "pooltogether_depositor": {
+        "n": 89,
+        "specificity": 0.5393
+      }
+    }
+  },
+  "elapsed_seconds": 6.46
+}
