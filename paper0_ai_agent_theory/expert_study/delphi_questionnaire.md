@@ -18,6 +18,12 @@
 **Anonymity**: Individual responses will not be shared with other panelists. Only aggregated statistics (medians, IQR) will be presented in Round 2.
 **匿名性**: 个人回答不会向其他专家公开。第2轮仅展示汇总统计量（中位数、四分位距）。
 
+**Consensus criterion**: An item reaches consensus when the interquartile range (IQR) of expert ratings is <= 1.0 on the 7-point scale.
+**共识标准**: 当专家评分的四分位距（IQR）在7分量表上 <= 1.0 时，该条目达成共识。
+
+**Sample size**: N = 12-15 experts (minimum N >= 12 for the full study; N >= 5 acceptable for a pilot round). Justification: Delphi panels of 10-18 experts produce stable consensus estimates (Hallowell & Gambatese, 2010; Skulmoski, Hartman & Krahn, 2007).
+**样本量**: N = 12-15 位专家（完整研究至少 N >= 12；试点轮 N >= 5 可接受）。依据：10-18 人的德尔菲面板可产生稳定的共识估计（Hallowell & Gambatese, 2010; Skulmoski, Hartman & Krahn, 2007）。
+
 ---
 
 ## Round 1: Open Exploration / 第1轮：开放性探索
@@ -60,11 +66,13 @@ We propose the following formal definition of an on-chain AI Agent:
 |-------|------------|-------------|
 | 1 | Strongly Disagree | 非常不同意 |
 | 2 | Disagree | 不同意 |
-| 3 | Neutral | 中立 |
-| 4 | Agree | 同意 |
-| 5 | Strongly Agree | 非常同意 |
+| 3 | Somewhat Disagree | 有些不同意 |
+| 4 | Neutral | 中立 |
+| 5 | Somewhat Agree | 有些同意 |
+| 6 | Agree | 同意 |
+| 7 | Strongly Agree | 非常同意 |
 
-| Condition | Your Rating (1-5) |
+| Condition | Your Rating (1-7) |
 |-----------|-------------------|
 | C1: On-chain Actuation / 链上执行 | _____ |
 | C2: Environmental Perception / 环境感知 | _____ |
@@ -80,12 +88,37 @@ We propose the following formal definition of an on-chain AI Agent:
 | Scale | Label (EN) | 标签（中文） |
 |-------|------------|-------------|
 | 1 | Very Unclear | 非常不清晰 |
-| 2 | Somewhat Unclear | 较不清晰 |
-| 3 | Neutral | 中立 |
-| 4 | Somewhat Clear | 较清晰 |
-| 5 | Very Clear | 非常清晰 |
+| 2 | Unclear | 不清晰 |
+| 3 | Somewhat Unclear | 有些不清晰 |
+| 4 | Neutral | 中立 |
+| 5 | Somewhat Clear | 有些清晰 |
+| 6 | Clear | 清晰 |
+| 7 | Very Clear | 非常清晰 |
 
-| Condition | Your Rating (1-5) |
+| Condition | Your Rating (1-7) |
+|-----------|-------------------|
+| C1: On-chain Actuation / 链上执行 | _____ |
+| C2: Environmental Perception / 环境感知 | _____ |
+| C3: Autonomous Decision-Making / 自主决策 | _____ |
+| C4: Adaptiveness / 适应性 | _____ |
+
+#### Q2b: Operationalizability / 可操作性
+
+"Can this condition be reliably measured or verified from on-chain transaction data alone?"
+
+"仅从链上交易数据是否能可靠地测量或验证该条件？"
+
+| Scale | Label (EN) | 标签（中文） |
+|-------|------------|-------------|
+| 1 | Not at all measurable | 完全不可测量 |
+| 2 | Mostly not measurable | 大部分不可测量 |
+| 3 | Somewhat not measurable | 有些不可测量 |
+| 4 | Neutral | 中立 |
+| 5 | Somewhat measurable | 有些可测量 |
+| 6 | Mostly measurable | 大部分可测量 |
+| 7 | Fully measurable | 完全可测量 |
+
+| Condition | Your Rating (1-7) |
 |-----------|-------------------|
 | C1: On-chain Actuation / 链上执行 | _____ |
 | C2: Environmental Perception / 环境感知 | _____ |
@@ -103,11 +136,20 @@ For each condition, please suggest any improvements to the wording, scope, or op
 - C3: __________________________________________________________
 - C4: __________________________________________________________
 
-#### Q4: Joint Sufficiency / 联合充分性 (Open-ended / 开放式)
+#### Q4: Joint Sufficiency / 联合充分性
 
 "Are these four conditions jointly sufficient to define an AI agent in Web3? Are any conditions missing?"
 
 "这四个条件联合起来是否足以定义 Web3 AI Agent？是否有缺失的条件？"
+
+Rate on a 1-7 scale: 请在1-7量表上评分：
+
+| Scale | 1 = Definitely insufficient (明显不充分) | 7 = Fully sufficient (完全充分) |
+|-------|-------------------------------------------|---------------------------------|
+
+Rating / 评分: _____
+
+If you rated <= 4, what additional condition(s) would you add? / 如果您评分 <= 4，您会增加什么条件？
 
 Response / 回答: __________________________________________________________
 
@@ -118,6 +160,21 @@ Response / 回答: __________________________________________________________
 "是否有任何条件应当被删除或与其他条件合并？请说明理由。"
 
 Response / 回答: __________________________________________________________
+
+#### Q5b: Boundary Cases / 边界案例
+
+"For each boundary case below, indicate whether it should be classified as an AI agent under C1-C4. If the definition produces a counter-intuitive result, explain why."
+
+"对于以下每个边界案例，请判断其在 C1-C4 定义下是否应被归类为 AI Agent。如果定义产生了违反直觉的结果，请说明原因。"
+
+| # | Boundary Case | Agent under C1-C4? (Y/N/Borderline) | Which condition(s) are ambiguous? | Your reasoning |
+|---|---------------|--------------------------------------|-----------------------------------|----------------|
+| 1 | **Account Abstraction (ERC-4337) wallet** with automated bundler: user delegates transaction signing to a bundler that optimizes gas and batches operations. | _____ | _____ | _____ |
+| 2 | **Cross-chain bridge relayer** that monitors events on Chain A and submits proofs on Chain B, using adaptive gas pricing but deterministic relay logic. | _____ | _____ | _____ |
+| 3 | **MEV bot with frozen strategy**: deployed once, never updated, but uses statistical models for real-time arbitrage decisions. Satisfies C1-C3 but arguably not C4. | _____ | _____ | _____ |
+| 4 | **Multi-sig wallet with Gnosis Safe module**: automated execution triggered by governance vote outcomes. The module itself is deterministic. | _____ | _____ | _____ |
+| 5 | **Chainlink oracle node**: submits price updates when deviation thresholds are crossed. Deterministic submission logic, but adaptive heartbeat intervals. | _____ | _____ | _____ |
+| 6 | **Intent-based protocol solver** (e.g., CoW Protocol solver): fills user intents by finding optimal routes. Uses optimization algorithms but operates within a permissioned solver set. | _____ | _____ | _____ |
 
 ---
 
@@ -177,10 +234,10 @@ We propose an 8-category taxonomy along 3 dimensions: **Autonomy** x **Environme
 
 #### Q6: How well-defined is this category? / 该分类的定义有多清晰？
 
-| Scale | 1 = Very Poorly Defined (非常不清晰) | 5 = Very Well-Defined (非常清晰) |
-|-------|--------------------------------------|----------------------------------|
+| Scale | 1 = Very Poorly Defined (非常不清晰) | 4 = Neutral (中立) | 7 = Very Well-Defined (非常清晰) |
+|-------|--------------------------------------|--------------------|---------------------------------|
 
-| Category | Rating (1-5) |
+| Category | Rating (1-7) |
 |----------|-------------|
 | 1. Deterministic Script | _____ |
 | 2. Simple Trading Bot | _____ |
@@ -193,10 +250,10 @@ We propose an 8-category taxonomy along 3 dimensions: **Autonomy** x **Environme
 
 #### Q7: How distinguishable is this category from the other 7? / 该分类与其他7类的可区分度如何？
 
-| Scale | 1 = Highly Overlapping (高度重叠) | 5 = Clearly Distinct (明显可区分) |
-|-------|----------------------------------|----------------------------------|
+| Scale | 1 = Highly Overlapping (高度重叠) | 4 = Neutral (中立) | 7 = Clearly Distinct (明显可区分) |
+|-------|----------------------------------|--------------------|---------------------------------|
 
-| Category | Rating (1-5) |
+| Category | Rating (1-7) |
 |----------|-------------|
 | 1. Deterministic Script | _____ |
 | 2. Simple Trading Bot | _____ |
@@ -206,6 +263,34 @@ We propose an 8-category taxonomy along 3 dimensions: **Autonomy** x **Environme
 | 6. DeFi Management Agent | _____ |
 | 7. LLM-Powered Agent | _____ |
 | 8. Autonomous DAO Agent | _____ |
+
+#### Q7b: Taxonomy-Level Assessment / 分类体系整体评估
+
+**Exhaustiveness**: "Does this 8-category taxonomy cover all meaningful types of on-chain AI agents you are aware of?"
+
+**穷尽性**: "该8类分类体系是否覆盖了您所知的所有有意义的链上 AI Agent 类型？"
+
+| Scale | 1 = Major types missing (有重要类型缺失) | 4 = Neutral (中立) | 7 = Fully exhaustive (完全穷尽) |
+|-------|-------------------------------------------|--------------------|--------------------------------|
+
+Rating / 评分: _____
+
+If you rated <= 4, what categories are missing? / 如果您评分 <= 4，缺失了哪些类别？
+
+Response / 回答: __________________________________________________________
+
+**Mutual Exclusivity**: "Can a real-world agent be unambiguously assigned to exactly one of the 8 categories?"
+
+**互斥性**: "一个真实世界的 Agent 是否可以被无歧义地归入恰好一个分类？"
+
+| Scale | 1 = Frequent overlap (经常重叠) | 4 = Neutral (中立) | 7 = Always unambiguous (总是无歧义) |
+|-------|--------------------------------|--------------------|------------------------------------|
+
+Rating / 评分: _____
+
+If you rated <= 4, which category pairs overlap most? / 如果您评分 <= 4，哪些类别对最容易重叠？
+
+Response / 回答: __________________________________________________________
 
 #### Q8: Can you provide real-world examples we missed? / 是否有我们遗漏的真实案例？ (Open-ended / 开放式)
 
@@ -258,7 +343,10 @@ Please classify each of the following 10 real-world entities into one of the 8 c
 
 **For each entity, provide: / 对于每个实体，请提供：**
 
-| # | Entity | Category (from 8 above, or "Not an Agent") | Satisfies C1? | Satisfies C2? | Satisfies C3? | Satisfies C4? | Confidence (1-5) | Rationale |
+*Confidence scale: 1 = Pure guess, 4 = Moderate confidence, 7 = Completely certain*
+*信心量表：1 = 纯粹猜测，4 = 中等信心，7 = 完全确定*
+
+| # | Entity | Category (from 8 above, or "Not an Agent") | Satisfies C1? | Satisfies C2? | Satisfies C3? | Satisfies C4? | Confidence (1-7) | Rationale |
 |---|--------|---------------------------------------------|---------------|---------------|---------------|---------------|-------------------|-----------|
 | 1 | jaredfromsubway.eth | _____ | Y/N | Y/N | Y/N | Y/N | _____ | _____ |
 | 2 | Wintermute | _____ | Y/N | Y/N | Y/N | Y/N | _____ | _____ |
@@ -279,10 +367,10 @@ Rate the usefulness of each framework for classifying AI agents in the Web3/bloc
 
 请评价以下每个框架对 Web3/区块链场景中 AI Agent 分类的有用性：
 
-| Scale | 1 = Not at all useful (完全无用) | 5 = Extremely useful (非常有用) |
-|-------|----------------------------------|-------------------------------|
+| Scale | 1 = Not at all useful (完全无用) | 4 = Neutral (中立) | 7 = Extremely useful (非常有用) |
+|-------|----------------------------------|--------------------|---------------------------------|
 
-| # | Framework | Key Idea | Rating (1-5) |
+| # | Framework | Key Idea | Rating (1-7) |
 |---|-----------|----------|-------------|
 | 1 | Russell & Norvig (2020) | 5-type hierarchy: Simple reflex -> Model-based -> Goal-based -> Utility-based -> Learning | _____ |
 | 2 | Wooldridge & Jennings (1995) | 4 properties: Autonomy + Social ability + Reactivity + Pro-activeness | _____ |
@@ -313,27 +401,41 @@ Response / 回答: __________________________________________________________
 
 *(This section will be populated after Round 1 analysis / 本部分将在第1轮分析后填充)*
 
+### Convergence Protocol / 收敛协议
+
+**Step 1**: After Round 1 closes, the research team computes descriptive statistics for every Likert item: median, IQR, mean, SD, and frequency distribution.
+
+**第1步**: 第1轮结束后，研究团队计算每个李克特条目的描述性统计量：中位数、IQR、均值、标准差和频率分布。
+
+**Step 2**: Items are classified into three categories:
+- **Consensus reached (IQR <= 1.0)**: Retained as-is. Experts may optionally provide dissenting comments but do not re-rate.
+- **Near-consensus (1.0 < IQR <= 1.5)**: Presented with group median and a blinded summary of the two most divergent rationales. Experts re-rate on the same 1-7 scale.
+- **No consensus (IQR > 1.5)**: Presented with full distribution histogram, group median, and all anonymized open-ended comments. Experts re-rate and provide a revised rationale.
+
+**第2步**: 条目分为三类：
+- **已达成共识（IQR <= 1.0）**：保留原状。专家可选择性提供异议意见，但无需重新评分。
+- **接近共识（1.0 < IQR <= 1.5）**：展示小组中位数和两个最分歧理由的匿名摘要。专家在同一1-7量表上重新评分。
+- **未达成共识（IQR > 1.5）**：展示完整分布直方图、小组中位数和所有匿名开放式评论。专家重新评分并提供修订后的理由。
+
+**Step 3**: After Round 2, final consensus is assessed. Items still with IQR > 1.5 after Round 2 are reported as "unresolved disagreements" in the paper, with the distribution of expert opinion described transparently.
+
+**第3步**: 第2轮后，进行最终共识评估。第2轮后IQR仍 > 1.5的条目在论文中报告为"未解决分歧"，并透明描述专家意见分布。
+
+**Stopping rule**: The study uses a maximum of 2 rounds. A third round is triggered only if fewer than 70% of items reach consensus AND at least 80% of panelists agree to continue.
+
+**终止规则**: 本研究最多进行2轮。仅当少于70%的条目达成共识且至少80%的专家同意继续时，才启动第3轮。
+
 ### Instructions / 说明
 
-In Round 1, you and your fellow experts independently rated the definition conditions, taxonomy categories, and comparison frameworks. Below we present the group's aggregated results.
+In Round 1, you and your fellow experts independently rated the definition conditions, taxonomy categories, and comparison frameworks. Below we present the group's aggregated results. You provided your original rating of [YOUR_SCORE]; the group results are shown below.
 
-在第1轮中，您和其他专家独立评价了定义条件、分类类别和对比框架。以下展示小组汇总结果。
+在第1轮中，您和其他专家独立评价了定义条件、分类类别和对比框架。以下展示小组汇总结果。您的原始评分为 [YOUR_SCORE]；小组结果如下所示。
 
-**Consensus criterion / 共识标准**: IQR (Interquartile Range) <= 1.0
+### Template for Round 2 Items (Near-consensus and No-consensus only) / 第2轮条目模板（仅限接近共识和未达共识条目）
 
-### For each item below / 对于以下每个条目:
-
-- If **consensus reached** (IQR <= 1): No re-rating needed unless you have strong objections.
-  如果**已达成共识**（IQR <= 1）：无需重新评分，除非您有强烈异议。
-
-- If **consensus NOT reached** (IQR > 1): Please re-rate considering the group median and summarized feedback.
-  如果**未达成共识**（IQR > 1）：请在参考小组中位数和汇总反馈后重新评分。
-
-### Template for Round 2 Items / 第2轮条目模板
-
-| Question ID | Original Median | IQR | Consensus? | Summarized Feedback | Your New Rating (1-5) |
-|-------------|-----------------|-----|------------|---------------------|----------------------|
-| [To be filled after Round 1] | | | | | |
+| Question ID | Your R1 Score | Group Median | IQR | Status | Summarized Feedback | Your New Rating (1-7) | Revised Rationale (if changed) |
+|-------------|---------------|--------------|-----|--------|---------------------|----------------------|-------------------------------|
+| [To be filled after Round 1] | | | | | | | |
 
 ### Additional Round 2 Questions / 第2轮附加问题
 
@@ -349,11 +451,22 @@ Q-R2-2: "Are there any new suggestions for categories or modifications that emer
 
 Response / 回答: __________________________________________________________
 
-Q-R2-3: "Final overall assessment: Is the C1-C4 definition + 8-category taxonomy ready for publication?" (1-5)
+Q-R2-3: "The group identified the following boundary cases as ambiguous: [LIST]. For each, please provide your revised classification and reasoning."
 
-"最终总体评价：C1-C4定义 + 8类分类体系是否已准备好发表？"（1-5）
+"小组认为以下边界案例存在歧义：[列表]。请对每个案例提供您修订后的分类和理由。"
+
+Response / 回答: __________________________________________________________
+
+Q-R2-4: "Final overall assessment: Is the C1-C4 definition + 8-category taxonomy ready for publication?"
+
+"最终总体评价：C1-C4定义 + 8类分类体系是否已准备好发表？"
+
+| Scale | 1 = Needs major revision (需要大幅修订) | 4 = Needs minor revision (需要小幅修订) | 7 = Ready as-is (可直接发表) |
+|-------|----------------------------------------|----------------------------------------|------------------------------|
 
 Rating / 评分: _____
+
+Explanation / 说明: __________________________________________________________
 
 ---
 
@@ -368,8 +481,10 @@ Rating / 评分: _____
 | Primary expertise area / 主要专业领域 | [ ] AI/ML [ ] Blockchain/DeFi [ ] Security [ ] HCI [ ] Other: _____ |
 | Years in field / 从业年数 | _____ |
 | # of publications in this area / 该领域发表论文数 | _____ |
-| Familiarity with on-chain agents / 对链上Agent的熟悉程度 (1-5) | _____ |
-| Familiarity with AI agent theory / 对AI Agent理论的熟悉程度 (1-5) | _____ |
+| Familiarity with on-chain agents / 对链上Agent的熟悉程度 (1-7) | _____ |
+| Familiarity with AI agent theory / 对AI Agent理论的熟悉程度 (1-7) | _____ |
+| Familiarity with agent taxonomies / 对Agent分类体系的熟悉程度 (1-7) | _____ |
+| Have you personally built, deployed, or audited an on-chain agent? / 您是否亲自构建、部署或审计过链上Agent？ | [ ] Yes / [ ] No |
 
 ---
 

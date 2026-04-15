@@ -36,17 +36,17 @@ This is a 2-round modified Delphi survey, conducted asynchronously via a structu
 
 - **Round 2 (Convergence)**: Review the group's aggregated Round 1 results (medians, IQR) and re-rate items where consensus was not reached. (~20 minutes)
 
-### Timeline
+### Timeline (4 weeks)
 
-| Phase | Duration | Dates |
-|-------|----------|-------|
-| Round 1 distribution | Day 1 | [TBD] |
-| Round 1 deadline | 2 weeks | [TBD] |
-| Analysis & Round 2 prep | 1 week | [TBD] |
-| Round 2 distribution | Day 22 | [TBD] |
-| Round 2 deadline | 1 week | [TBD] |
-| Final analysis | 1 week | [TBD] |
-| **Total duration** | **~5 weeks** | |
+| Phase | Duration | Target Dates |
+|-------|----------|-------------|
+| **Week 1**: Recruitment + consent collection | Days 1-7 | [TBD] |
+| **Week 2**: Round 1 distribution + collection (7-day window) | Days 8-14 | [TBD] |
+| **Week 3**: R1 analysis + Round 2 design + distribution | Days 15-21 | [TBD] |
+| **Week 4**: Round 2 collection (5-day window) + final analysis | Days 22-28 | [TBD] |
+| **Total duration** | **4 weeks** | |
+
+*Note: We send automated reminders on Day 12 and Day 26 to maximize response rates.*
 
 ### Compensation & Recognition
 
@@ -116,17 +116,17 @@ NSF Award #[XXXXXX]
 
 - **第2轮（共识收敛）**：审阅第1轮小组汇总结果（中位数、四分位距），并对未达成共识的条目重新评分。（约20分钟）
 
-### 时间安排
+### 时间安排（4周）
 
-| 阶段 | 时长 | 日期 |
-|------|------|------|
-| 第1轮发放 | 第1天 | [待定] |
-| 第1轮截止 | 2周 | [待定] |
-| 分析与第2轮准备 | 1周 | [待定] |
-| 第2轮发放 | 第22天 | [待定] |
-| 第2轮截止 | 1周 | [待定] |
-| 最终分析 | 1周 | [待定] |
-| **总时长** | **约5周** | |
+| 阶段 | 时长 | 目标日期 |
+|------|------|---------|
+| **第1周**：招募 + 收集知情同意 | 第1-7天 | [待定] |
+| **第2周**：第1轮发放 + 收集（7天窗口） | 第8-14天 | [待定] |
+| **第3周**：第1轮分析 + 第2轮设计 + 发放 | 第15-21天 | [待定] |
+| **第4周**：第2轮收集（5天窗口）+ 最终分析 | 第22-28天 | [待定] |
+| **总时长** | **4周** | |
+
+*注：我们将在第12天和第26天发送自动提醒以最大化响应率。*
 
 ### 报酬与认可
 

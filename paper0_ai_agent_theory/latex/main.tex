@@ -406,6 +406,37 @@ For LLM-Powered Agent, the joint pipeline currently fails: Paper 1 identifies it
 5. The taxonomy is internally consistent with Paper 1's binary identification: the joint Paper 1 + Paper 0 pipeline correctly handles 4 of 5 populated categories.
 
 
+\subsection{4.9 Expert Validation via Modified Delphi Method}
+
+The empirical validation in Sections 4.3--4.8 tests whether the taxonomy survives contact with on-chain data. A complementary question is whether it survives contact with \textit{expert judgment}. We designed and will execute a two-round modified Delphi study to assess whether domain experts endorse the C1--C4 definition and the eight-category taxonomy.
+
+\subsubsection{4.9.1 Method}
+
+\textbf{Design.} A two-round modified Delphi protocol with controlled feedback~\cite{Dalkey1963, Hallowell2010}. Round~1 collects independent expert ratings; Round~2 feeds back group medians and IQR and asks panelists to re-rate items where consensus was not reached.
+
+\textbf{Panel.} We recruit $N = 12$--15 experts (minimum $N \geq 12$ for stable IQR estimation; $N \geq 5$ for a pilot~\cite{Skulmoski2007}) across five expertise areas: (1)~AI/ML and multi-agent systems ($n = 3$--4), (2)~blockchain/DeFi practitioners ($n = 3$--4), (3)~smart contract security and MEV researchers ($n = 2$--3), (4)~HCI and automation taxonomy researchers ($n = 2$), and (5)~AI agent framework developers ($n = 2$). The diversity requirement ensures that no single discipline dominates the consensus.
+
+\textbf{Instrument.} The questionnaire uses 7-point Likert scales throughout for finer discrimination~\cite{Joshi2015}. Part~A assesses each of C1--C4 on three dimensions: \textit{necessity} (``Is this condition necessary for defining an on-chain AI agent?''), \textit{clarity} (``Is the definition clear and unambiguous?''), and \textit{operationalizability} (``Can this condition be measured from on-chain data?''). Part~A also includes a quantitative joint-sufficiency rating and six boundary-case vignettes (account abstraction wallets, cross-chain bridge relayers, frozen-strategy MEV bots, multi-sig governance modules, oracle nodes, and intent-based solvers) designed to stress-test definitional edges. Part~B assesses each of the eight taxonomy categories on \textit{well-definedness} and \textit{distinguishability}, plus two taxonomy-level items: \textit{exhaustiveness} (``Does this taxonomy cover all meaningful types?'') and \textit{mutual exclusivity} (``Can an agent be unambiguously assigned to one category?''). Part~C is a classification exercise: experts assign 10 real-world entities (including negative controls such as Uniswap~V2 Router and a personal wallet) to one of the eight categories or ``Not an Agent,'' along with C1--C4 satisfaction judgments, enabling computation of Krippendorff's $\alpha$. Part~D compares our framework against five prior taxonomies (Russell \& Norvig, Wooldridge \& Jennings, Franklin \& Graesser, Parasuraman et al., He et al.) on Web3 applicability.
+
+\textbf{Consensus criteria.} An item reaches consensus when its IQR $\leq 1.0$ on the 7-point scale. Items with $1.0 < \text{IQR} \leq 1.5$ (``near-consensus'') are presented in Round~2 with the group median and the two most divergent anonymized rationales. Items with IQR~$> 1.5$ (``no consensus'') are presented with the full response distribution and all anonymized open-ended comments. Items still with IQR~$> 1.5$ after Round~2 are reported as unresolved disagreements.
+
+\subsubsection{4.9.2 Analysis plan}
+
+For Likert items, we report the median, IQR, and percentage of panelists rating $\geq 5$ (indicating agreement on the positive side of the scale). Inter-rater reliability for the classification exercise is assessed via Krippendorff's $\alpha$ for nominal data, with $\alpha \geq 0.667$ as the acceptability threshold and $\alpha \geq 0.80$ as good reliability~\cite{Krippendorff2011}. Round-over-round convergence is measured by the number of items that transition from non-consensus to consensus and by the mean IQR reduction.
+
+\subsubsection{4.9.3 Expected outcomes}
+
+Based on the empirical results in Sections 4.3--4.8, we predict: (a)~C1 and C2 will reach strong consensus on necessity (median $\geq 6$, IQR~$\leq 1$) because on-chain actuation and perception are uncontroversially required. (b)~C4 (adaptiveness) will be the most debated condition, as discussed in Section~5.3, and may require Round~2 convergence. (c)~The ``LLM-Powered Agent vs.\ DeFi Management Agent'' boundary will appear in the classification exercise as the lowest-agreement entity pair, mirroring the classifier's F1~= 0.528 confusion. (d)~Mutual exclusivity will score lower than exhaustiveness, reflecting the behavioral overlap documented in Section~4.4.
+
+\subsubsection{4.9.4 Timeline}
+
+The Delphi study follows a 4-week protocol: Week~1 for recruitment and consent; Week~2 for Round~1 (7-day response window); Week~3 for Round~1 analysis and Round~2 design; Week~4 for Round~2 (5-day response window) and final analysis. Results will be integrated into the camera-ready version of this paper.
+
+\subsubsection{4.9.5 Ethical review}
+
+The study has been designed as a minimal-risk expert elicitation study and will be submitted for IRB review. Individual responses are kept confidential; only aggregated statistics appear in the paper. Participants choose between named acknowledgment or a \$50 gift card.
+
+
 \section{5. Discussion}
 
 \subsection{5.1 The LLM-Powered Agent weak spot}
@@ -463,7 +494,7 @@ The C1-C4 definition and the taxonomy let HCI researchers, regulators, and pract
 
 \textbf{The LLM-Powered Agent weak spot is a known feature-set limitation.} We have argued in Section 5.1 that adding Paper 3's eight AI-specific features should close this gap. This is a falsifiable prediction: Phase 3 will test whether the 23+8 = 31-feature space lifts LLM-Powered Agent F1 above 0.80 without harming the other four classes.
 
-\textbf{No expert Delphi yet.} Validation here is empirical (registry provenance, cluster recovery, classifier). A complementary Delphi study with 12-15 domain experts is designed but not yet executed. Both forms of evidence --- objective registry data and subjective expert judgment --- should eventually support the definition.
+\textbf{Expert Delphi not yet executed.} The Delphi expert validation study described in Section~4.9 is designed and IRB-ready but has not yet been executed. The empirical validation (registry provenance, cluster recovery, classifier) stands on its own, but subjective expert judgment will strengthen the definition. We will integrate Delphi results into the camera-ready version.
 
 \textbf{Observability limits.} Purely off-chain agent components (LLM inference, internal strategy computation) are not directly observable. Two agents with fundamentally different internal architectures may produce similar on-chain footprints and be placed in the same category. This is a hard limit of chain-only validation and is the reason we frame C1-C4 around \textit{operationalized proxies} rather than internal state.
 
@@ -475,7 +506,7 @@ The C1-C4 definition and the taxonomy let HCI researchers, regulators, and pract
 2. Mine 200+ addresses for each under-represented category (DAO, Bridge, RL) via targeted contract search.
 3. Add Paper 3's 8 AI features to the 23-feature base and re-run the multi-class classifier.
 4. Replicate the validation on Solana and Polygon.
-5. Execute the Delphi expert validation protocol.
+5. Execute the Delphi expert validation protocol (Section~4.9; materials finalized, pending IRB approval and recruitment).
 
 
 \section{7. Conclusion}

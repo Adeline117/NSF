@@ -1,74 +1,42 @@
 {
-  "method": "GBM (HistGradientBoosting) 5-fold CV with 200 bootstrap iterations",
-  "n_bootstrap": 200,
-  "n_samples": 2744,
-  "n_classes": 8,
-  "model": "HistGradientBoostingClassifier(max_iter=100, max_depth=3, lr=0.1)",
-  "runtime_seconds": 979.2,
-  "per_class_f1_95ci": {
-    "AutonomousDAOAgent": {
-      "n": 34,
-      "mean_f1": 0.7397,
-      "median_f1": 0.7483,
-      "ci_lower": 0.5455,
-      "ci_upper": 0.8652,
-      "n_valid_bootstraps": 200
-    },
-    "CrossChainBridgeAgent": {
-      "n": 95,
-      "mean_f1": 0.7445,
-      "median_f1": 0.7529,
-      "ci_lower": 0.6356,
-      "ci_upper": 0.83,
-      "n_valid_bootstraps": 200
-    },
-    "DeFi Management Agent": {
-      "n": 1669,
-      "mean_f1": 0.9778,
-      "median_f1": 0.9777,
-      "ci_lower": 0.9735,
-      "ci_upper": 0.9822,
-      "n_valid_bootstraps": 200
-    },
-    "Deterministic Script": {
-      "n": 666,
-      "mean_f1": 0.9908,
-      "median_f1": 0.9912,
-      "ci_lower": 0.9864,
-      "ci_upper": 0.9946,
-      "n_valid_bootstraps": 200
-    },
-    "LLM-Powered Agent": {
-      "n": 71,
-      "mean_f1": 0.7632,
-      "median_f1": 0.7708,
-      "ci_lower": 0.6529,
-      "ci_upper": 0.8553,
-      "n_valid_bootstraps": 200
-    },
-    "MEV Searcher": {
-      "n": 54,
-      "mean_f1": 0.917,
-      "median_f1": 0.9186,
-      "ci_lower": 0.8499,
-      "ci_upper": 0.9655,
-      "n_valid_bootstraps": 200
-    },
-    "RLTradingAgent": {
-      "n": 25,
-      "mean_f1": 0.6863,
-      "median_f1": 0.7014,
-      "ci_lower": 0.3629,
-      "ci_upper": 0.8849,
-      "n_valid_bootstraps": 200
-    },
-    "Simple Trading Bot": {
-      "n": 130,
-      "mean_f1": 0.973,
-      "median_f1": 0.9745,
-      "ci_lower": 0.9449,
-      "ci_upper": 0.9906,
-      "n_valid_bootstraps": 200
-    }
+  "SimpleTradingBot": {
+    "f1_mean": 0.9746,
+    "ci_lo": 0.9523,
+    "ci_hi": 0.9944
+  },
+  "MEVSearcher": {
+    "f1_mean": 0.9123,
+    "ci_lo": 0.8404,
+    "ci_hi": 0.9587
+  },
+  "DeFiManagementAgent": {
+    "f1_mean": 0.9755,
+    "ci_lo": 0.9701,
+    "ci_hi": 0.9801
+  },
+  "LLMPoweredAgent": {
+    "f1_mean": 0.7457,
+    "ci_lo": 0.6158,
+    "ci_hi": 0.8466
+  },
+  "AutonomousDAOAgent": {
+    "f1_mean": 0.6763,
+    "ci_lo": 0.4809,
+    "ci_hi": 0.8287
+  },
+  "CrossChainBridgeAgent": {
+    "f1_mean": 0.7218,
+    "ci_lo": 0.6142,
+    "ci_hi": 0.816
+  },
+  "DeterministicScript": {
+    "f1_mean": 0.9909,
+    "ci_lo": 0.9864,
+    "ci_hi": 0.995
+  },
+  "RLTradingAgent": {
+    "f1_mean": 0.6183,
+    "ci_lo": 0.3022,
+    "ci_hi": 0.8277
   }
 }

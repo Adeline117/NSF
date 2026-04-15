@@ -2,11 +2,22 @@
 Delphi Study Analysis Plan
 ===========================
 Process Round 1 and Round 2 Delphi responses:
-- Compute median and IQR for each Likert question
-- Identify consensus (IQR <= 1) vs non-consensus items
+- Compute median and IQR for each Likert question (7-point scale)
+- Identify consensus (IQR <= 1) vs near-consensus (1 < IQR <= 1.5)
+  vs non-consensus (IQR > 1.5) items
 - Compute Krippendorff's alpha for classification exercise
 - Generate summary tables and visualizations
 - Flag items needing Round 2 discussion
+- Three-tier convergence protocol:
+    Consensus (IQR <= 1.0): retain
+    Near-consensus (1.0 < IQR <= 1.5): re-rate with summary
+    No consensus (IQR > 1.5): re-rate with full distribution
+
+Sample size justification:
+  - Minimum N >= 5 for pilot (face validity check)
+  - Target N >= 12 for full study (stable IQR estimation per
+    Hallowell & Gambatese 2010; Skulmoski et al. 2007)
+  - Maximum N = 18 (diminishing returns beyond 15-18 for Delphi)
 """
 
 import json
@@ -69,7 +80,9 @@ class ClassificationResult:
 # CONSENSUS ANALYSIS
 # ============================================================
 
-CONSENSUS_THRESHOLD = 1.0  # IQR <= 1.0 means consensus
+CONSENSUS_THRESHOLD = 1.0       # IQR <= 1.0 means consensus
+NEAR_CONSENSUS_THRESHOLD = 1.5  # 1.0 < IQR <= 1.5 means near-consensus
+# IQR > 1.5 means no consensus
 
 
 def compute_likert_stats(
@@ -124,6 +137,16 @@ def analyze_all_likert(responses: dict[str, list[int]], question_texts: dict[str
 def identify_non_consensus_items(results: list[LikertResult]) -> list[LikertResult]:
     """Identify items that need Round 2 re-rating (IQR > 1)."""
     return [r for r in results if not r.consensus_reached]
+
+
+def identify_near_consensus_items(results: list[LikertResult]) -> list[LikertResult]:
+    """Identify items with near-consensus (1.0 < IQR <= 1.5)."""
+    return [r for r in results if not r.consensus_reached and r.iqr <= NEAR_CONSENSUS_THRESHOLD]
+
+
+def identify_no_consensus_items(results: list[LikertResult]) -> list[LikertResult]:
+    """Identify items with no consensus (IQR > 1.5) -- need full distribution in Round 2."""
+    return [r for r in results if r.iqr > NEAR_CONSENSUS_THRESHOLD]
 
 
 def identify_consensus_items(results: list[LikertResult]) -> list[LikertResult]:
@@ -516,7 +539,8 @@ def flag_round2_items(
     - Krippendorff's alpha < 0.667 (overall classification reliability)
     """
     flags = {
-        "likert_non_consensus": [],
+        "likert_near_consensus": [],
+        "likert_no_consensus": [],
         "classification_low_agreement": [],
         "overall_classification_reliability": {
             "krippendorff_alpha": alpha,
@@ -531,12 +555,19 @@ def flag_round2_items(
     }
 
     for r in likert_results:
-        if not r.consensus_reached:
-            flags["likert_non_consensus"].append({
+        if not r.consensus_reached and r.iqr <= NEAR_CONSENSUS_THRESHOLD:
+            flags["likert_near_consensus"].append({
                 "question_id": r.question_id,
                 "median": r.median,
                 "iqr": r.iqr,
-                "action": "Include in Round 2 for re-rating",
+                "action": "Round 2: re-rate with group median + two divergent rationales",
+            })
+        elif r.iqr > NEAR_CONSENSUS_THRESHOLD:
+            flags["likert_no_consensus"].append({
+                "question_id": r.question_id,
+                "median": r.median,
+                "iqr": r.iqr,
+                "action": "Round 2: re-rate with full distribution + all anonymized comments",
             })
 
     for r in classification_results:
@@ -552,7 +583,9 @@ def flag_round2_items(
     flags["summary"] = {
         "total_likert_items": len(likert_results),
         "consensus_reached": len([r for r in likert_results if r.consensus_reached]),
-        "needs_re_rating": len(flags["likert_non_consensus"]),
+        "near_consensus": len(flags["likert_near_consensus"]),
+        "no_consensus": len(flags["likert_no_consensus"]),
+        "needs_re_rating": len(flags["likert_near_consensus"]) + len(flags["likert_no_consensus"]),
         "classification_items": len(classification_results),
         "high_agreement_items": len([r for r in classification_results if r.agreement_rate >= 0.75]),
         "low_agreement_items": len(flags["classification_low_agreement"]),
@@ -597,12 +630,17 @@ def run_full_analysis(
     consensus = identify_consensus_items(likert_results)
     non_consensus = identify_non_consensus_items(likert_results)
 
+    near_consensus = identify_near_consensus_items(likert_results)
+    no_consensus = identify_no_consensus_items(likert_results)
+
     print(f"  Total Likert items: {len(likert_results)}")
-    print(f"  Consensus reached (IQR <= 1): {len(consensus)}")
-    print(f"  No consensus (IQR > 1): {len(non_consensus)}")
+    print(f"  Consensus reached (IQR <= 1.0): {len(consensus)}")
+    print(f"  Near-consensus (1.0 < IQR <= 1.5): {len(near_consensus)}")
+    print(f"  No consensus (IQR > 1.5): {len(no_consensus)}")
 
     for r in non_consensus:
-        print(f"    - {r.question_id}: median={r.median}, IQR={r.iqr}")
+        tier = "NEAR" if r.iqr <= NEAR_CONSENSUS_THRESHOLD else "NONE"
+        print(f"    - [{tier}] {r.question_id}: median={r.median}, IQR={r.iqr}")
 
     # Print summary table
     print("\n  Summary Table:")
@@ -684,17 +722,22 @@ def generate_simulated_data() -> tuple:
     np.random.seed(42)
     n_experts = 12
 
-    # Question texts
+    # Question texts (updated for 7-point Likert scale)
     question_texts = {
-        # Part A: Definition validation (C1-C4 x {necessity, clarity})
+        # Part A: Definition validation (C1-C4 x {necessity, clarity, operationalizability})
         "A_C1_necessity": "Is C1 (On-chain Actuation) necessary?",
         "A_C1_clarity": "Is C1 clearly defined?",
+        "A_C1_operationalizability": "Is C1 measurable from on-chain data?",
         "A_C2_necessity": "Is C2 (Environmental Perception) necessary?",
         "A_C2_clarity": "Is C2 clearly defined?",
+        "A_C2_operationalizability": "Is C2 measurable from on-chain data?",
         "A_C3_necessity": "Is C3 (Autonomous Decision-Making) necessary?",
         "A_C3_clarity": "Is C3 clearly defined?",
+        "A_C3_operationalizability": "Is C3 measurable from on-chain data?",
         "A_C4_necessity": "Is C4 (Adaptiveness) necessary?",
         "A_C4_clarity": "Is C4 clearly defined?",
+        "A_C4_operationalizability": "Is C4 measurable from on-chain data?",
+        "A_joint_sufficiency": "Are C1-C4 jointly sufficient?",
         # Part B: Category validation (8 categories x {well-defined, distinguishable})
         "B1_well_defined": "Deterministic Script: well-defined?",
         "B1_distinguishable": "Deterministic Script: distinguishable?",
@@ -712,42 +755,59 @@ def generate_simulated_data() -> tuple:
         "B7_distinguishable": "LLM-Powered Agent: distinguishable?",
         "B8_well_defined": "Autonomous DAO Agent: well-defined?",
         "B8_distinguishable": "Autonomous DAO Agent: distinguishable?",
+        "B_exhaustiveness": "Does the taxonomy cover all meaningful agent types?",
+        "B_mutual_exclusivity": "Can agents be unambiguously assigned to one category?",
         # Part D: Framework comparison
         "D_web3_applicability": "Our taxonomy's Web3 applicability?",
         "D_generalizability": "Our taxonomy's generalizability?",
+        # Round 2 final assessment
+        "R2_publication_readiness": "Is C1-C4 + 8-category taxonomy ready for publication?",
     }
 
-    # Simulate Likert responses (generally positive with some variance)
+    # Simulate Likert responses on 7-point scale
     # C1 and C2 should have strong consensus; C3 and C4 may be more debated
     likert_responses = {}
 
-    # High consensus items (strong agreement)
+    # High consensus items (strong agreement on 7-point scale)
     for qid in ["A_C1_necessity", "A_C2_necessity", "A_C3_necessity"]:
-        likert_responses[qid] = list(np.random.choice([4, 5], size=n_experts, p=[0.3, 0.7]))
+        likert_responses[qid] = list(np.random.choice([6, 7], size=n_experts, p=[0.3, 0.7]))
 
     # Lower consensus on C4 (adaptiveness -- debatable)
-    likert_responses["A_C4_necessity"] = list(np.random.choice([3, 4, 5], size=n_experts, p=[0.2, 0.4, 0.4]))
+    likert_responses["A_C4_necessity"] = list(np.random.choice([4, 5, 6, 7], size=n_experts, p=[0.1, 0.2, 0.4, 0.3]))
 
-    # Clarity ratings
+    # Clarity ratings (7-point)
     for qid in ["A_C1_clarity", "A_C2_clarity", "A_C3_clarity"]:
-        likert_responses[qid] = list(np.random.choice([3, 4, 5], size=n_experts, p=[0.1, 0.4, 0.5]))
-    likert_responses["A_C4_clarity"] = list(np.random.choice([2, 3, 4, 5], size=n_experts, p=[0.1, 0.3, 0.3, 0.3]))
+        likert_responses[qid] = list(np.random.choice([5, 6, 7], size=n_experts, p=[0.1, 0.4, 0.5]))
+    likert_responses["A_C4_clarity"] = list(np.random.choice([3, 4, 5, 6, 7], size=n_experts, p=[0.05, 0.1, 0.25, 0.3, 0.3]))
 
-    # Category well-definedness (some categories more controversial)
+    # Operationalizability (7-point) -- C3 and C4 harder to measure from chain data
+    for qid in ["A_C1_operationalizability", "A_C2_operationalizability"]:
+        likert_responses[qid] = list(np.random.choice([5, 6, 7], size=n_experts, p=[0.2, 0.4, 0.4]))
+    likert_responses["A_C3_operationalizability"] = list(np.random.choice([3, 4, 5, 6], size=n_experts, p=[0.15, 0.25, 0.35, 0.25]))
+    likert_responses["A_C4_operationalizability"] = list(np.random.choice([3, 4, 5, 6], size=n_experts, p=[0.2, 0.3, 0.3, 0.2]))
+
+    # Joint sufficiency (7-point)
+    likert_responses["A_joint_sufficiency"] = list(np.random.choice([4, 5, 6, 7], size=n_experts, p=[0.1, 0.2, 0.4, 0.3]))
+
+    # Category well-definedness (some categories more controversial, 7-point)
     easy_cats = ["B1", "B3", "B7", "B8"]  # Clear categories
     hard_cats = ["B2", "B4", "B5", "B6"]  # Boundary-ambiguous
 
     for cat_id in easy_cats:
-        likert_responses[f"{cat_id}_well_defined"] = list(np.random.choice([4, 5], size=n_experts, p=[0.4, 0.6]))
-        likert_responses[f"{cat_id}_distinguishable"] = list(np.random.choice([3, 4, 5], size=n_experts, p=[0.1, 0.4, 0.5]))
+        likert_responses[f"{cat_id}_well_defined"] = list(np.random.choice([5, 6, 7], size=n_experts, p=[0.2, 0.4, 0.4]))
+        likert_responses[f"{cat_id}_distinguishable"] = list(np.random.choice([5, 6, 7], size=n_experts, p=[0.1, 0.4, 0.5]))
 
     for cat_id in hard_cats:
-        likert_responses[f"{cat_id}_well_defined"] = list(np.random.choice([3, 4, 5], size=n_experts, p=[0.3, 0.4, 0.3]))
-        likert_responses[f"{cat_id}_distinguishable"] = list(np.random.choice([2, 3, 4], size=n_experts, p=[0.2, 0.5, 0.3]))
+        likert_responses[f"{cat_id}_well_defined"] = list(np.random.choice([4, 5, 6, 7], size=n_experts, p=[0.15, 0.3, 0.35, 0.2]))
+        likert_responses[f"{cat_id}_distinguishable"] = list(np.random.choice([3, 4, 5, 6], size=n_experts, p=[0.15, 0.3, 0.35, 0.2]))
 
-    # Framework comparison
-    likert_responses["D_web3_applicability"] = list(np.random.choice([4, 5], size=n_experts, p=[0.3, 0.7]))
-    likert_responses["D_generalizability"] = list(np.random.choice([3, 4, 5], size=n_experts, p=[0.3, 0.4, 0.3]))
+    # Taxonomy-level assessment (7-point)
+    likert_responses["B_exhaustiveness"] = list(np.random.choice([4, 5, 6, 7], size=n_experts, p=[0.1, 0.25, 0.4, 0.25]))
+    likert_responses["B_mutual_exclusivity"] = list(np.random.choice([3, 4, 5, 6], size=n_experts, p=[0.15, 0.25, 0.35, 0.25]))
+
+    # Framework comparison (7-point)
+    likert_responses["D_web3_applicability"] = list(np.random.choice([5, 6, 7], size=n_experts, p=[0.2, 0.3, 0.5]))
+    likert_responses["D_generalizability"] = list(np.random.choice([4, 5, 6, 7], size=n_experts, p=[0.15, 0.3, 0.35, 0.2]))
 
     # Convert numpy int64 to native int
     for k in likert_responses:
@@ -810,7 +870,7 @@ def generate_simulated_data() -> tuple:
                 "c2": "Y" if is_agent and np.random.random() < 0.85 else "N",
                 "c3": "Y" if is_agent and np.random.random() < 0.8 else "N",
                 "c4": "Y" if is_agent and expected != "Deterministic Script" and np.random.random() < 0.75 else "N",
-                "confidence": int(np.random.choice([3, 4, 5], p=[0.2, 0.5, 0.3])),
+                "confidence": int(np.random.choice([4, 5, 6, 7], p=[0.1, 0.3, 0.4, 0.2])),
             }
 
         classification_responses.append(expert)
