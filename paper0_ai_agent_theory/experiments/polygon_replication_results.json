@@ -1,0 +1,1031 @@
+{
+  "timestamp": "2026-04-14T20:26:02.118300",
+  "mode": "dry-run",
+  "seed": 42,
+  "noise_level": 0.15,
+  "ethereum_baseline": {
+    "n_agents": 2744,
+    "classes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "class_counts": {
+      "0": 130,
+      "1": 54,
+      "2": 1669,
+      "3": 71,
+      "4": 34,
+      "5": 95,
+      "6": 666,
+      "7": 25
+    }
+  },
+  "polygon_data": {
+    "n_agents": 930,
+    "classes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "class_counts": {
+      "0": 85,
+      "1": 30,
+      "2": 480,
+      "3": 35,
+      "4": 18,
+      "5": 70,
+      "6": 200,
+      "7": 12
+    },
+    "data_source": "dry-run"
+  },
+  "experiment_a_cross_chain_transfer": {
+    "common_classes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "common_class_names": [
+      "SimpleTradingBot",
+      "MEVSearcher",
+      "DeFiManagementAgent",
+      "LLMPoweredAgent",
+      "AutonomousDAOAgent",
+      "CrossChainBridgeAgent",
+      "DeterministicScript",
+      "RLTradingAgent"
+    ],
+    "n_train_ethereum": 2744,
+    "n_test_polygon": 930,
+    "accuracy": 0.6957,
+    "f1_macro": 0.4326,
+    "f1_weighted": 0.7139,
+    "confusion_matrix": [
+      [
+        67,
+        15,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        26,
+        2,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        37,
+        60,
+        381,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        15,
+        4,
+        15,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        7,
+        3,
+        1,
+        0,
+        4,
+        0,
+        3,
+        0
+      ],
+      [
+        12,
+        13,
+        23,
+        0,
+        1,
+        20,
+        0,
+        1
+      ],
+      [
+        18,
+        35,
+        0,
+        0,
+        0,
+        0,
+        147,
+        0
+      ],
+      [
+        3,
+        2,
+        3,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "confusion_labels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "per_class_report": {
+      "SimpleTradingBot": {
+        "precision": 0.42138364779874216,
+        "recall": 0.788235294117647,
+        "f1-score": 0.5491803278688525,
+        "support": 85.0
+      },
+      "MEVSearcher": {
+        "precision": 0.16455696202531644,
+        "recall": 0.8666666666666667,
+        "f1-score": 0.2765957446808511,
+        "support": 30.0
+      },
+      "DeFiManagementAgent": {
+        "precision": 0.892271662763466,
+        "recall": 0.79375,
+        "f1-score": 0.8401323042998897,
+        "support": 480.0
+      },
+      "LLMPoweredAgent": {
+        "precision": 1.0,
+        "recall": 0.02857142857142857,
+        "f1-score": 0.05555555555555555,
+        "support": 35.0
+      },
+      "AutonomousDAOAgent": {
+        "precision": 0.6666666666666666,
+        "recall": 0.2222222222222222,
+        "f1-score": 0.3333333333333333,
+        "support": 18.0
+      },
+      "CrossChainBridgeAgent": {
+        "precision": 0.9090909090909091,
+        "recall": 0.2857142857142857,
+        "f1-score": 0.43478260869565216,
+        "support": 70.0
+      },
+      "DeterministicScript": {
+        "precision": 0.9483870967741935,
+        "recall": 0.735,
+        "f1-score": 0.828169014084507,
+        "support": 200.0
+      },
+      "RLTradingAgent": {
+        "precision": 0.5,
+        "recall": 0.08333333333333333,
+        "f1-score": 0.14285714285714285,
+        "support": 12.0
+      },
+      "accuracy": 0.6956989247311828,
+      "macro avg": {
+        "precision": 0.6877946181399117,
+        "recall": 0.47543665382819794,
+        "f1-score": 0.43257575392197306,
+        "support": 930.0
+      },
+      "weighted avg": {
+        "precision": 0.8337188172487296,
+        "recall": 0.6956989247311828,
+        "f1-score": 0.713945184793067,
+        "support": 930.0
+      }
+    }
+  },
+  "experiment_b_polygon_only_cv": {
+    "GradientBoosting": {
+      "accuracy_mean": 0.8559,
+      "accuracy_std": 0.0221,
+      "f1_macro_mean": 0.5755,
+      "f1_macro_std": 0.0746,
+      "f1_weighted_mean": 0.8306,
+      "f1_weighted_std": 0.0247,
+      "confusion_matrix": [
+        [
+          77,
+          0,
+          3,
+          0,
+          1,
+          3,
+          1,
+          0
+        ],
+        [
+          0,
+          28,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          3,
+          0,
+          464,
+          2,
+          0,
+          4,
+          6,
+          1
+        ],
+        [
+          3,
+          0,
+          21,
+          9,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          2,
+          2,
+          1,
+          3,
+          8,
+          0
+        ],
+        [
+          5,
+          3,
+          32,
+          1,
+          0,
+          24,
+          3,
+          2
+        ],
+        [
+          2,
+          0,
+          4,
+          0,
+          1,
+          1,
+          192,
+          0
+        ],
+        [
+          1,
+          0,
+          6,
+          1,
+          0,
+          2,
+          1,
+          1
+        ]
+      ],
+      "confusion_labels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.8279569892473119,
+          "recall": 0.9058823529411765,
+          "f1-score": 0.8651685393258427,
+          "support": 85.0
+        },
+        "MEVSearcher": {
+          "precision": 0.9032258064516129,
+          "recall": 0.9333333333333333,
+          "f1-score": 0.9180327868852459,
+          "support": 30.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.8721804511278195,
+          "recall": 0.9666666666666667,
+          "f1-score": 0.9169960474308301,
+          "support": 480.0
+        },
+        "LLMPoweredAgent": {
+          "precision": 0.6,
+          "recall": 0.2571428571428571,
+          "f1-score": 0.36,
+          "support": 35.0
+        },
+        "AutonomousDAOAgent": {
+          "precision": 0.3333333333333333,
+          "recall": 0.05555555555555555,
+          "f1-score": 0.09523809523809523,
+          "support": 18.0
+        },
+        "CrossChainBridgeAgent": {
+          "precision": 0.6,
+          "recall": 0.34285714285714286,
+          "f1-score": 0.43636363636363634,
+          "support": 70.0
+        },
+        "DeterministicScript": {
+          "precision": 0.9056603773584906,
+          "recall": 0.96,
+          "f1-score": 0.9320388349514563,
+          "support": 200.0
+        },
+        "RLTradingAgent": {
+          "precision": 0.25,
+          "recall": 0.08333333333333333,
+          "f1-score": 0.125,
+          "support": 12.0
+        },
+        "accuracy": 0.8559139784946237,
+        "macro avg": {
+          "precision": 0.661544619689821,
+          "recall": 0.5630964052287581,
+          "f1-score": 0.5811047425243884,
+          "support": 930.0
+        },
+        "weighted avg": {
+          "precision": 0.8271524841856144,
+          "recall": 0.8559139784946237,
+          "f1-score": 0.8322644295334236,
+          "support": 930.0
+        }
+      }
+    },
+    "RandomForest": {
+      "accuracy_mean": 0.8075,
+      "accuracy_std": 0.0161,
+      "f1_macro_mean": 0.395,
+      "f1_macro_std": 0.0498,
+      "f1_weighted_mean": 0.7509,
+      "f1_weighted_std": 0.0219,
+      "confusion_matrix": [
+        [
+          70,
+          0,
+          9,
+          0,
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          1,
+          7,
+          11,
+          0,
+          0,
+          0,
+          11,
+          0
+        ],
+        [
+          5,
+          0,
+          465,
+          0,
+          0,
+          0,
+          10,
+          0
+        ],
+        [
+          6,
+          0,
+          28,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          3,
+          0,
+          0,
+          3,
+          10,
+          0
+        ],
+        [
+          5,
+          2,
+          46,
+          0,
+          0,
+          10,
+          7,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          198,
+          0
+        ],
+        [
+          2,
+          0,
+          7,
+          0,
+          0,
+          2,
+          1,
+          0
+        ]
+      ],
+      "confusion_labels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.7608695652173914,
+          "recall": 0.8235294117647058,
+          "f1-score": 0.7909604519774012,
+          "support": 85.0
+        },
+        "MEVSearcher": {
+          "precision": 0.7777777777777778,
+          "recall": 0.23333333333333334,
+          "f1-score": 0.358974358974359,
+          "support": 30.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.8157894736842105,
+          "recall": 0.96875,
+          "f1-score": 0.8857142857142857,
+          "support": 480.0
+        },
+        "LLMPoweredAgent": {
+          "precision": 1.0,
+          "recall": 0.02857142857142857,
+          "f1-score": 0.05555555555555555,
+          "support": 35.0
+        },
+        "AutonomousDAOAgent": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 18.0
+        },
+        "CrossChainBridgeAgent": {
+          "precision": 0.6666666666666666,
+          "recall": 0.14285714285714285,
+          "f1-score": 0.23529411764705882,
+          "support": 70.0
+        },
+        "DeterministicScript": {
+          "precision": 0.8148148148148148,
+          "recall": 0.99,
+          "f1-score": 0.8939051918735892,
+          "support": 200.0
+        },
+        "RLTradingAgent": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 12.0
+        },
+        "accuracy": 0.8075268817204301,
+        "macro avg": {
+          "precision": 0.6044897872701076,
+          "recall": 0.39838016456582637,
+          "f1-score": 0.4025504952177812,
+          "support": 930.0
+        },
+        "weighted avg": {
+          "precision": 0.7787266918009272,
+          "recall": 0.8075268817204301,
+          "f1-score": 0.7530535455748638,
+          "support": 930.0
+        }
+      }
+    },
+    "LogisticRegression": {
+      "accuracy_mean": 0.8194,
+      "accuracy_std": 0.0125,
+      "f1_macro_mean": 0.5967,
+      "f1_macro_std": 0.0595,
+      "f1_weighted_mean": 0.8054,
+      "f1_weighted_std": 0.0098,
+      "confusion_matrix": [
+        [
+          52,
+          0,
+          21,
+          1,
+          1,
+          2,
+          8,
+          0
+        ],
+        [
+          1,
+          26,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          9,
+          0,
+          448,
+          4,
+          0,
+          8,
+          10,
+          1
+        ],
+        [
+          1,
+          0,
+          15,
+          11,
+          1,
+          5,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          1,
+          4,
+          3,
+          7,
+          0
+        ],
+        [
+          9,
+          2,
+          24,
+          0,
+          1,
+          33,
+          0,
+          1
+        ],
+        [
+          5,
+          0,
+          4,
+          2,
+          3,
+          0,
+          186,
+          0
+        ],
+        [
+          3,
+          0,
+          5,
+          0,
+          0,
+          2,
+          0,
+          2
+        ]
+      ],
+      "confusion_labels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.6341463414634146,
+          "recall": 0.611764705882353,
+          "f1-score": 0.6227544910179641,
+          "support": 85.0
+        },
+        "MEVSearcher": {
+          "precision": 0.9285714285714286,
+          "recall": 0.8666666666666667,
+          "f1-score": 0.896551724137931,
+          "support": 30.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.8631984585741811,
+          "recall": 0.9333333333333333,
+          "f1-score": 0.8968968968968969,
+          "support": 480.0
+        },
+        "LLMPoweredAgent": {
+          "precision": 0.5789473684210527,
+          "recall": 0.3142857142857143,
+          "f1-score": 0.4074074074074074,
+          "support": 35.0
+        },
+        "AutonomousDAOAgent": {
+          "precision": 0.4,
+          "recall": 0.2222222222222222,
+          "f1-score": 0.2857142857142857,
+          "support": 18.0
+        },
+        "CrossChainBridgeAgent": {
+          "precision": 0.6111111111111112,
+          "recall": 0.4714285714285714,
+          "f1-score": 0.532258064516129,
+          "support": 70.0
+        },
+        "DeterministicScript": {
+          "precision": 0.8691588785046729,
+          "recall": 0.93,
+          "f1-score": 0.8985507246376812,
+          "support": 200.0
+        },
+        "RLTradingAgent": {
+          "precision": 0.5,
+          "recall": 0.16666666666666666,
+          "f1-score": 0.25,
+          "support": 12.0
+        },
+        "accuracy": 0.8193548387096774,
+        "macro avg": {
+          "precision": 0.6731416983307326,
+          "recall": 0.564545985060691,
+          "f1-score": 0.598766699291037,
+          "support": 930.0
+        },
+        "weighted avg": {
+          "precision": 0.8023307025490206,
+          "recall": 0.8193548387096774,
+          "f1-score": 0.8061414191580183,
+          "support": 930.0
+        }
+      }
+    }
+  },
+  "address_registry": {
+    "0": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "note": "USDC.e frequent swap bot"
+      },
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "note": "WBTC Polygon swap bot"
+      },
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "note": "WMATIC swap bot"
+      },
+      {
+        "address": "0x4A35582a710E1F4b2030A3F826DA20BfB6703C09",
+        "note": "QuickSwap swap bot A"
+      },
+      {
+        "address": "0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32",
+        "note": "QuickSwap LP bot A"
+      },
+      {
+        "address": "0x9B08288C3Be4F62bbf8d1C20Ac9C5e6f9467D8B7",
+        "note": "SushiSwap Polygon bot"
+      }
+    ],
+    "1": [
+      {
+        "address": "0x57C1E0C2aDF6eECdb135BCF9ec5f23b319be2C94",
+        "note": "Polygon MEV searcher A"
+      },
+      {
+        "address": "0x4bf681894abEc828B212C906082B444Ceb2f6cf6",
+        "note": "Polygon sandwich bot A"
+      },
+      {
+        "address": "0xdef171Fe48CF0115B1d80b88dc8eAB59176FEe57",
+        "note": "Paraswap MEV relay"
+      },
+      {
+        "address": "0x1a1ec25DC08e98e5E93F1104B5e5cdD298707d31",
+        "note": "Polygon backrunner"
+      }
+    ],
+    "2": [
+      {
+        "address": "0x794a61358D6845594F94dc1DB02A252b5b4814aD",
+        "note": "Aave V3 Pool Polygon"
+      },
+      {
+        "address": "0x8dFf5E27EA6b7AC08EbFdf9eB090F32ee9a30fcf",
+        "note": "Aave V2 Lending Pool Polygon"
+      },
+      {
+        "address": "0xBA12222222228d8Ba445958a75a0704d566BF2C8",
+        "note": "Balancer Vault Polygon"
+      },
+      {
+        "address": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+        "note": "QuickSwap Router V2"
+      },
+      {
+        "address": "0xf5b509bB0909a69B1c207E495f687a596C168E12",
+        "note": "QuickSwap Router V3"
+      },
+      {
+        "address": "0xE592427A0AEce92De3Edee1F18E0157C05861564",
+        "note": "Uniswap V3 Router Polygon"
+      },
+      {
+        "address": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+        "note": "SushiSwap Router Polygon"
+      },
+      {
+        "address": "0x1111111254EEB25477B68fb85Ed929f73A960582",
+        "note": "1inch V5 Polygon"
+      },
+      {
+        "address": "0xfb6AE7f1E3940b15E7E3070D9ACD339F54bdf9Ac",
+        "note": "Beefy AAVE manager A"
+      },
+      {
+        "address": "0x2F4BBA9fC4F77F16829F84181eB7C8b50F639F95",
+        "note": "Beefy Quickswap manager"
+      },
+      {
+        "address": "0x5a0e4A0c1F24C586ED7cDa7B4c477E4B0Fbe37F5",
+        "note": "Aave Polygon liquidator A"
+      },
+      {
+        "address": "0x6dfc34609a05bC22319fA4Cce1d1E2929548c0d7",
+        "note": "Aave Polygon liquidator B"
+      },
+      {
+        "address": "0xAE7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "note": "DeFi rebalancer A"
+      },
+      {
+        "address": "0x09F82Ccd6baE2AeBe46bA7dd2cf08d87355ac430",
+        "note": "Polygon yield optimizer"
+      }
+    ],
+    "3": [
+      {
+        "address": "0x9338b5153AE39BB89f50468E608eD9d764B755fD",
+        "note": "Autonolas Registry Polygon"
+      },
+      {
+        "address": "0x16A1DCFb3e3A5A970F03A53C tried0B4F10a36fBc",
+        "note": "Olas Polygon agent A"
+      },
+      {
+        "address": "0x2dBcE60ebeAafb77e5f6B94334f0E4a5D93C1F18",
+        "note": "Olas Polygon agent B"
+      },
+      {
+        "address": "0xc4bF5CbDaBE595361438F8c6a187bDc330539c60",
+        "note": "Olas Polygon agent C"
+      },
+      {
+        "address": "0x34C895f302D0E5999c2a65f5A50996F7d5E7F85C",
+        "note": "Olas Polygon trader agent"
+      }
+    ],
+    "4": [
+      {
+        "address": "0x580645868E4539b0e1BE8788e3e3b0E02E12e27c",
+        "note": "Polygon DAO executor A"
+      },
+      {
+        "address": "0xA0b73E1Ff0B80914AB6fe0444E65848C4C34450b",
+        "note": "QiDAO governor agent"
+      }
+    ],
+    "5": [
+      {
+        "address": "0xA0c68C638235ee32657e8f720a23ceC1bFc77C77",
+        "note": "Polygon PoS Bridge"
+      },
+      {
+        "address": "0x40ec5B33f54e0E8A33A975908C5BA1c14e5BbbDf",
+        "note": "Polygon ERC20 Bridge"
+      },
+      {
+        "address": "0x2A93C52E7B6E7054870758e15A1446E769EdfB93",
+        "note": "Polygon Plasma Bridge"
+      },
+      {
+        "address": "0xc0d3C0d3C0d3c0D3c0d3C0D3C0D3c0d3c0D30007",
+        "note": "Hyperlane Polygon relayer"
+      },
+      {
+        "address": "0x5427FEFA711Eff984124bFBB1AB6fbf5E3DA1820",
+        "note": "Celer Polygon bridge bot"
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "note": "Multichain bridge agent"
+      }
+    ],
+    "6": [
+      {
+        "address": "0x7598e84B2E114AB62CAB288CE5f7d5f6bad35BbA",
+        "note": "Gelato Polygon"
+      },
+      {
+        "address": "0x527a819db1eb0e34426297b03bae11F2f8B3A19E",
+        "note": "Gelato Polygon executor A"
+      },
+      {
+        "address": "0x340759c8346A1E6Ed92035FB8B6ec57cE1D82c2c",
+        "note": "Chainlink Polygon keeper A"
+      },
+      {
+        "address": "0x5787BefDc0ECd210Dfa948264631CD53E68F7802",
+        "note": "Chainlink Polygon keeper B"
+      },
+      {
+        "address": "0x02777053d6764996e594c3E88AF1D58D5363a2e6",
+        "note": "Chainlink automation Polygon"
+      },
+      {
+        "address": "0xDEF1ABe32c034e558Cdd535791643C58a13aCC10",
+        "note": "Polygon cron job bot A"
+      },
+      {
+        "address": "0xb5505a6d998549090530911180f38aC5130101c6",
+        "note": "Polygon cron job bot B"
+      },
+      {
+        "address": "0x831753DD7087CaC61aB5644b308642cc1c33Dc13",
+        "note": "QuickSwap Polygon auto-LP"
+      }
+    ],
+    "7": [
+      {
+        "address": "0x3B86917369B83a6892f553609F3c2F439C184e31",
+        "note": "RL Polygon trader A"
+      },
+      {
+        "address": "0x19aB60E4FF2b45AaC53F2D02082F396DB0eD30C5",
+        "note": "RL Polygon trader B"
+      }
+    ]
+  },
+  "chain_deltas_applied": {
+    "tx_interval_mean": {
+      "scale": 0.3,
+      "shift": 0
+    },
+    "tx_interval_std": {
+      "scale": 0.35,
+      "shift": 0
+    },
+    "tx_interval_skewness": {
+      "scale": 1.1,
+      "shift": 0
+    },
+    "active_hour_entropy": {
+      "scale": 1.0,
+      "shift": 0
+    },
+    "night_activity_ratio": {
+      "scale": 1.0,
+      "shift": 0
+    },
+    "weekend_ratio": {
+      "scale": 1.0,
+      "shift": 0
+    },
+    "burst_frequency": {
+      "scale": 1.0,
+      "shift": 0.15
+    },
+    "gas_price_round_number_ratio": {
+      "scale": 0.85,
+      "shift": 0.05
+    },
+    "gas_price_trailing_zeros_mean": {
+      "scale": 0.7,
+      "shift": 0
+    },
+    "gas_limit_precision": {
+      "scale": 1.0,
+      "shift": 0.03
+    },
+    "gas_price_cv": {
+      "scale": 0.6,
+      "shift": 0
+    },
+    "eip1559_priority_fee_precision": {
+      "scale": 1.0,
+      "shift": 0
+    },
+    "gas_price_nonce_correlation": {
+      "scale": 0.8,
+      "shift": 0
+    },
+    "unique_contracts_ratio": {
+      "scale": 1.05,
+      "shift": 0
+    },
+    "top_contract_concentration": {
+      "scale": 0.95,
+      "shift": 0
+    },
+    "method_id_diversity": {
+      "scale": 1.0,
+      "shift": 0
+    },
+    "contract_to_eoa_ratio": {
+      "scale": 1.0,
+      "shift": 0
+    },
+    "sequential_pattern_score": {
+      "scale": 1.0,
+      "shift": 0
+    },
+    "unlimited_approve_ratio": {
+      "scale": 1.0,
+      "shift": 0
+    },
+    "approve_revoke_ratio": {
+      "scale": 1.0,
+      "shift": 0
+    },
+    "unverified_contract_approve_ratio": {
+      "scale": 1.05,
+      "shift": 0
+    },
+    "multi_protocol_interaction_count": {
+      "scale": 0.9,
+      "shift": 0
+    },
+    "flash_loan_usage": {
+      "scale": 0.5,
+      "shift": 0
+    }
+  },
+  "interpretation": {
+    "cross_chain_transfer_conclusion": "The Ethereum-trained model achieves 69.6% accuracy on Polygon, suggesting moderate cross-chain generalization of the taxonomy.",
+    "domain_shift_analysis": "The 22.7 percentage-point accuracy drop from Ethereum CV to Polygon transfer reflects the domain shift from chain-specific gas economics (Polygon 2s blocks, lower fees) and ecosystem differences (different protocol mix).",
+    "note_if_dry_run": "DRY-RUN: These results use synthetic Polygon features generated by perturbing Ethereum distributions with a chain-specific noise model. Real results require a POLYGONSCAN_API_KEY. The synthetic data models known Polygon/Ethereum differences: 2s block times, lower gas prices, different protocol routers. Results should be interpreted as an upper bound on cross-chain transfer performance."
+  }
+}
