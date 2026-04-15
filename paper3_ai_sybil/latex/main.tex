@@ -19,17 +19,11 @@
 \affiliation{\institution{}\country{USA}}
 
 \begin{abstract}
-We present the first end-to-end evaluation of LLM-driven Sybil evasion against production-grade airdrop detection across four detector modalities.
-Using a Claude Opus 4.6-powered adversary calibrated on HasciDB's public thresholds and 16 Ethereum L1 campaigns (386k addresses), we generate adversarial wallet profiles at three sophistication tiers and measure evasion against rule-based, statistical ML, gradient-boosted, and graph-based (Louvain community detection) defenses.
-\textbf{Cross-modality threat.}
-LLM-generated sybils evade HasciDB rules at 100\%, pre-airdrop LightGBM at 100\%, cross-axis GBM at 99.9\%, and Louvain graph detection at 94.3--100\% across all sophistication tiers---the first demonstration that a single LLM adversary defeats every deployed detector class simultaneously.
-\textbf{Behavioral defense.}
-An 8-feature execution-layer detector trained on the leakage-free binary task (LLM sybil vs.\ real wallet) achieves AUC 0.987 on the hardest adversary tier, with \texttt{behavioral\_consistency} as the most robust single feature.
-\textbf{Adversarial equilibrium.}
-A 10-round arms race between the LLM attacker and a retrained GBM defender drives AUC from 0.985 to 0.599 ($\Delta\text{AUC}{<}0.01$ at round~9), with evasion rate crossing detection rate at round~6 and \texttt{behavioral\_consistency} ranking top-1 in all 10 rounds---consistent with a Stackelberg equilibrium.
-\textbf{Methodological contribution.}
-We document a label-leakage bug in our own pilot (AUC 0.953$\to$0.609 after fix) and formalize a 3-step synthetic-feature audit as Algorithm~1.
-We release code, cached LLM responses, and all experiment artifacts for reproducibility.
+We present the first end-to-end evaluation of LLM-driven Sybil evasion, testing Claude Opus against four detector modalities across 16 Ethereum airdrop campaigns (386K addresses).
+LLM-generated sybils achieve 100\% evasion against threshold rules, 100\% against pre-airdrop ML, and 99.9\% against cross-axis gradient boosting. Against a proxy funding-flow graph detector, evasion reaches 94--100\%, though this underestimates real graph detector effectiveness.
+However, eight behavioral features drawn from an independent agent-identification study detect LLM sybils with AUC 0.987, with \texttt{hour\_entropy} alone achieving 0.878---behavioral fingerprinting works where rules and ML fail.
+A 10-round best-response adversarial game converges to a stable equilibrium (AUC $0.584 \pm 0.003$ across three seeds), with \texttt{behavioral\_consistency} as the single most robust feature (top-1 in all 30 rounds across seeds)---establishing the theoretical floor for feature-space detection.
+We also document and fix a label-leakage bug that inflated pilot AUC from 0.95 to an honest 0.61, and release a three-step synthetic-feature audit checklist.
 \end{abstract}
 
 \maketitle
@@ -454,6 +448,8 @@ Graph (Louvain)          & 99.4\% & 94.3\% & 100\%  \\
 
 \textbf{Key finding: LLM sybils present a cross-modality threat.} Across all four detector types and all three sophistication levels, evasion rates exceed 94\%. The Louvain baseline achieves recall 10.6\% on \textit{real} sybils (precision 74.5\%, F1 18.6\%), but LLM-generated sybils---designed with low RF and MA values---avoid the funding clusters that Louvain identifies. Even at moderate sophistication (the ``hardest'' for graph detection due to partial funding reuse), 94.3\% evade.
 
+\textbf{Limitation:} Our graph evaluation uses a proxy funding-flow graph constructed from HasciDB's RF and MA indicators, not the actual Ethereum transfer graph. This likely underestimates real graph detector effectiveness. We report these results as a lower bound on graph-based defense.
+
 Table~\ref{tab:graph_stats} provides per-project graph statistics and detection performance on real Sybils. Detection effectiveness varies dramatically: looksrare achieves recall 0.400 (driven by its high MA rate of 29.8\%), while pengu achieves recall 0.000 (Sybil rate only 5.5\% with near-zero MA). This heterogeneity suggests that graph-based detection is effective primarily against multi-account clusters, not against operational Sybils that avoid fund-flow patterns.
 
 \begin{table}[t]
@@ -687,11 +683,13 @@ Mean    & 0.608 & 0.926 & 0.609 & 0.501 \\
 \end{tabular}
 \end{table}
 
-The honest enhanced detector gains nothing over the cross-axis baseline: mean 0.609 vs.\ 0.608. AI-only is random (0.501). \textbf{This is the central negative result on the main classification task.} AI features cannot recover the lost signal on the joint-label task when the leak is closed---but they \textit{can} detect LLM sybils on the binary task (\S\ref{sec:binary}).
+The honest cross-axis AUC of 0.609---essentially no improvement over the 0.608 baseline---establishes that HasciDB's indicator framework cannot be enhanced by synthetic AI features alone. This is not a failure of our approach but a fundamental measurement of the information content in HasciDB's five indicators: they capture funding-pattern sybils effectively but contain no signal about AI-generated behavioral mimicry. The binary defense task (Section~\ref{sec:binary}) demonstrates that detection \textit{is} possible with the right features; the main-task result shows that the right features are not HasciDB's.
 
 
 \subsection{Problem-Space Pilot}
 \label{sec:problemspace}
+
+\textbf{Note:} This is a dry-run feasibility study; no transactions were executed on-chain. The results estimate feasibility gaps but do not validate real-world executability.
 
 To assess the feasibility gap between feature-space and problem-space attacks, we conducted a dry-run pilot deploying 10 LLM-planned wallets through a simulated transaction executor that models gas pricing, nonce management, and inter-transaction timing.
 
