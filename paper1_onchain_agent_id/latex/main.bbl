@@ -1,0 +1,371 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{32}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[{AI Arena}(2024)]%
+        {aiarena2024}
+\bibfield{author}{\bibinfo{person}{{AI Arena}}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{AI Arena: AI Fighting Game on Ethereum}.
+\newblock \bibinfo{howpublished}{Whitepaper, https://aiarena.io/}.
+\newblock
+
+
+\bibitem[{ai16z}(2024)]%
+        {eliza2024}
+\bibfield{author}{\bibinfo{person}{{ai16z}}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{ELIZA: AI Agent Framework}.
+\newblock \bibinfo{howpublished}{GitHub repository,
+  https://github.com/ai16z/eliza}.
+\newblock
+
+
+\bibitem[{Autonolas}(2023)]%
+        {autonolas2023}
+\bibfield{author}{\bibinfo{person}{{Autonolas}}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{Autonolas: Autonomous Agent Services}.
+\newblock \bibinfo{howpublished}{Whitepaper, https://www.autonolas.network/}.
+\newblock
+
+
+\bibitem[Chen et~al\mbox{.}(2018)]%
+        {chen2018ponzi}
+\bibfield{author}{\bibinfo{person}{Weili Chen}, \bibinfo{person}{Zibin Zheng},
+  \bibinfo{person}{Jiahui Cui}, \bibinfo{person}{Edith Ngai},
+  \bibinfo{person}{Peilin Zheng}, {and} \bibinfo{person}{Yuren Zhou}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Detecting Ponzi Schemes on Ethereum: Towards
+  Healthier Blockchain Technology}. In \bibinfo{booktitle}{\emph{Proc. of the
+  Web Conference (WWW)}}.
+\newblock
+
+
+\bibitem[Daian et~al\mbox{.}(2020)]%
+        {daian2020flash}
+\bibfield{author}{\bibinfo{person}{Philip Daian}, \bibinfo{person}{Steven
+  Goldfeder}, \bibinfo{person}{Tyler Kell}, \bibinfo{person}{Yunqi Li},
+  \bibinfo{person}{Xueyuan Zhao}, \bibinfo{person}{Iddo Bentov},
+  \bibinfo{person}{Lorenz Breidenbach}, {and} \bibinfo{person}{Ari Juels}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Flash Boys 2.0: Frontrunning in Decentralized
+  Exchanges, Miner Extractable Value, and Consensus Instability}. In
+  \bibinfo{booktitle}{\emph{Proc. IEEE Symposium on Security and Privacy
+  (S\&P)}}.
+\newblock
+
+
+\bibitem[{Fetch.ai}(2023)]%
+        {fetchai2023}
+\bibfield{author}{\bibinfo{person}{{Fetch.ai}}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{Fetch.ai: Autonomous Economic Agents}.
+\newblock \bibinfo{howpublished}{Whitepaper, https://fetch.ai/}.
+\newblock
+
+
+\bibitem[Geirhos et~al\mbox{.}(2020)]%
+        {geirhos2020shortcut}
+\bibfield{author}{\bibinfo{person}{Robert Geirhos},
+  \bibinfo{person}{J{\"o}rn-Henrik Jacobsen}, \bibinfo{person}{Claudio
+  Michaelis}, \bibinfo{person}{Richard Zemel}, \bibinfo{person}{Wieland
+  Brendel}, \bibinfo{person}{Matthias Bethge}, {and} \bibinfo{person}{Felix~A.
+  Wichmann}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Shortcut Learning in Deep Neural Networks}.
+\newblock \bibinfo{journal}{\emph{Nature Machine Intelligence}}
+  (\bibinfo{year}{2020}).
+\newblock
+
+
+\bibitem[Grech et~al\mbox{.}(2022)]%
+        {grech2022madmax}
+\bibfield{author}{\bibinfo{person}{Neville Grech}, \bibinfo{person}{Michael
+  Kong}, \bibinfo{person}{Bernhard Scholz}, {and} \bibinfo{person}{Yannis
+  Smaragdakis}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{{MadMax}: Analyzing the Out-of-Gas World of Smart
+  Contracts}.
+\newblock \bibinfo{journal}{\emph{Commun. ACM}} (\bibinfo{year}{2022}).
+\newblock
+
+
+\bibitem[Gupta et~al\mbox{.}(2023)]%
+        {gupta2023crossdomain}
+\bibfield{author}{\bibinfo{person}{A. Gupta} {et~al\mbox{.}}}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Cross-Domain MEV: Measurement and Mitigation}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint}} (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[Hamilton et~al\mbox{.}(2017)]%
+        {hamilton2017graphsage}
+\bibfield{author}{\bibinfo{person}{William~L. Hamilton}, \bibinfo{person}{Rex
+  Ying}, {and} \bibinfo{person}{Jure Leskovec}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Inductive Representation Learning on Large Graphs}.
+  In \bibinfo{booktitle}{\emph{Proc. NeurIPS}}.
+\newblock
+
+
+\bibitem[He et~al\mbox{.}(2026)]%
+        {he2026agentsurvey}
+\bibfield{author}{\bibinfo{person}{Yu He} {et~al\mbox{.}}}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{A Survey on {AI} Agents on Blockchain}.
+\newblock \bibinfo{journal}{\emph{arXiv:2601.04583}} (\bibinfo{year}{2026}).
+\newblock
+
+
+\bibitem[Kaufman et~al\mbox{.}(2012)]%
+        {kaufman2012leakage}
+\bibfield{author}{\bibinfo{person}{Shachar Kaufman}, \bibinfo{person}{Saharon
+  Rosset}, \bibinfo{person}{Claudia Perlich}, {and} \bibinfo{person}{Ori
+  Stitelman}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Leakage in Data Mining: Formulation, Detection, and
+  Avoidance}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Knowledge Discovery from
+  Data}} (\bibinfo{year}{2012}).
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2024)]%
+        {li2024telegram}
+\bibfield{author}{\bibinfo{person}{Yichen Li}, \bibinfo{person}{Stefanos
+  Chaliasos}, {and} \bibinfo{person}{Benjamin Livshits}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Telegram Trading Bots: An Empirical Study}. In
+  \bibinfo{booktitle}{\emph{Proc. Financial Cryptography (FC)}}.
+\newblock
+
+
+\bibitem[Park et~al\mbox{.}(2024)]%
+        {park2024mev}
+\bibfield{author}{\bibinfo{person}{Sunyoung Park}, \bibinfo{person}{Alireza
+  Bahrani}, {and} \bibinfo{person}{Tim Roughgarden}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{An Empirical Study of MEV Post-Merge}. In
+  \bibinfo{booktitle}{\emph{Proc. Financial Cryptography (FC)}}.
+\newblock
+
+
+\bibitem[Patel et~al\mbox{.}(2021)]%
+        {patel2021phishing}
+\bibfield{author}{\bibinfo{person}{V. Patel} {et~al\mbox{.}}}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{GNN}-Based Ethereum Phishing Detection}. In
+  \bibinfo{booktitle}{\emph{Proc. BigData}}.
+\newblock
+
+
+\bibitem[Qin et~al\mbox{.}(2022)]%
+        {qin2022quantifying}
+\bibfield{author}{\bibinfo{person}{Kaihua Qin}, \bibinfo{person}{Liyi Zhou},
+  {and} \bibinfo{person}{Arthur Gervais}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Quantifying Blockchain Extractable Value: How Dark
+  is the Forest?}. In \bibinfo{booktitle}{\emph{Proc. IEEE Symposium on
+  Security and Privacy (S\&P)}}.
+\newblock
+
+
+\bibitem[Roelofs et~al\mbox{.}(2019)]%
+        {roelofs2019metadata}
+\bibfield{author}{\bibinfo{person}{Rebecca Roelofs}, \bibinfo{person}{Vaishaal
+  Shankar}, \bibinfo{person}{Benjamin Recht}, \bibinfo{person}{Sara
+  Fridovich-Keil}, \bibinfo{person}{Moritz Hardt}, \bibinfo{person}{John
+  Miller}, {and} \bibinfo{person}{Ludwig Schmidt}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{A Meta-Analysis of Overfitting in Machine
+  Learning}. In \bibinfo{booktitle}{\emph{Proc. NeurIPS}}.
+\newblock
+
+
+\bibitem[Shamsi et~al\mbox{.}(2023)]%
+        {shamsi2023gnnsurvey}
+\bibfield{author}{\bibinfo{person}{Kiarash Shamsi} {et~al\mbox{.}}}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{A Survey of {GNN}s for Blockchain Analytics}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint}} (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[{SingularityNET}(2023)]%
+        {singularitynet2023}
+\bibfield{author}{\bibinfo{person}{{SingularityNET}}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{SingularityNET: Decentralized AI Platform}.
+\newblock \bibinfo{howpublished}{Whitepaper, https://singularitynet.io/}.
+\newblock
+
+
+\bibitem[Tikhomirov and Ivanitskiy(2021)]%
+        {tikhomirov2021phishing}
+\bibfield{author}{\bibinfo{person}{Sergei Tikhomirov} {and}
+  \bibinfo{person}{Valery Ivanitskiy}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Detecting Phishing Addresses on {E}thereum via
+  Transaction Graph}. In \bibinfo{booktitle}{\emph{Proc. of the Web Conference
+  (WWW) Companion}}.
+\newblock
+
+
+\bibitem[Torres et~al\mbox{.}(2021)]%
+        {torres2021frontrunner}
+\bibfield{author}{\bibinfo{person}{Christof~Ferreira Torres},
+  \bibinfo{person}{Ramiro Camino}, {and} \bibinfo{person}{Radu State}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Frontrunner Jones and the Raiders of the Dark
+  Forest: An Empirical Study of Frontrunning on the Ethereum Blockchain}. In
+  \bibinfo{booktitle}{\emph{Proc. USENIX Security}}.
+\newblock
+
+
+\bibitem[Tsankov et~al\mbox{.}(2018)]%
+        {tsankov2018securify}
+\bibfield{author}{\bibinfo{person}{Petar Tsankov}, \bibinfo{person}{Andrei
+  Dan}, \bibinfo{person}{Dana Drachsler-Cohen}, \bibinfo{person}{Arthur
+  Gervais}, \bibinfo{person}{Florian Buenzli}, {and} \bibinfo{person}{Martin
+  Vechev}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Securify: Practical Security Analysis of Smart
+  Contracts}. In \bibinfo{booktitle}{\emph{Proc. CCS}}.
+\newblock
+
+
+\bibitem[Veli{\v{c}}kovi{\'c} et~al\mbox{.}(2018)]%
+        {velickovic2018gat}
+\bibfield{author}{\bibinfo{person}{Petar Veli{\v{c}}kovi{\'c}},
+  \bibinfo{person}{Guillem Cucurull}, \bibinfo{person}{Arantxa Casanova},
+  \bibinfo{person}{Adriana Romero}, \bibinfo{person}{Pietro Li{\`o}}, {and}
+  \bibinfo{person}{Yoshua Bengio}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Graph Attention Networks}. In
+  \bibinfo{booktitle}{\emph{Proc. ICLR}}.
+\newblock
+
+
+\bibitem[Victor et~al\mbox{.}(2023)]%
+        {victor2023fingerprinting}
+\bibfield{author}{\bibinfo{person}{Friedhelm Victor}, \bibinfo{person}{Andrea
+  Weintraud}, {and} \bibinfo{person}{Merve Haliloglu}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Behavioral Fingerprinting of Blockchain Bots}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint}} (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[Victor and Weintraud(2021)]%
+        {victor2021wash}
+\bibfield{author}{\bibinfo{person}{Friedhelm Victor} {and}
+  \bibinfo{person}{Andrea~Marie Weintraud}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Detecting and Quantifying Wash Trading on
+  Decentralized Cryptocurrency Exchanges}. In \bibinfo{booktitle}{\emph{Proc.
+  of the Web Conference (WWW)}}.
+\newblock
+
+
+\bibitem[{Virtuals Protocol}(2024)]%
+        {virtuals2024}
+\bibfield{author}{\bibinfo{person}{{Virtuals Protocol}}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{Virtuals: Agent Tokenization Platform}.
+\newblock \bibinfo{howpublished}{Whitepaper, https://www.virtuals.io/}.
+\newblock
+
+
+\bibitem[Wang et~al\mbox{.}(2024)]%
+        {wang2024airisks}
+\bibfield{author}{\bibinfo{person}{X. Wang} {et~al\mbox{.}}}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Risks of {AI} Agents with Cryptocurrency Access}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint}} (\bibinfo{year}{2024}).
+\newblock
+
+
+\bibitem[Weber et~al\mbox{.}(2019)]%
+        {weber2019antimoney}
+\bibfield{author}{\bibinfo{person}{Mark Weber}, \bibinfo{person}{Giacomo
+  Domeniconi}, \bibinfo{person}{Jie Chen}, \bibinfo{person}{Daniel Karl~I.
+  Weidele}, \bibinfo{person}{Claudio Bellei}, \bibinfo{person}{Tom Robinson},
+  {and} \bibinfo{person}{Charles~E. Leiserson}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Anti-Money Laundering in Bitcoin: Experimenting
+  with Graph Convolutional Networks for Financial Forensics}. In
+  \bibinfo{booktitle}{\emph{KDD Anti-Money Laundering Workshop}}.
+\newblock
+
+
+\bibitem[Weintraub et~al\mbox{.}(2022)]%
+        {weintraub2022flashbot}
+\bibfield{author}{\bibinfo{person}{Ben Weintraub}, \bibinfo{person}{Christof
+  Ferreira~Torres}, \bibinfo{person}{Cristina Nita-Rotaru}, {and}
+  \bibinfo{person}{Radu State}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{A Flash(bot) in the Pan: Measuring Maximal
+  Extractable Value in Private Transaction Ordering Mechanisms}. In
+  \bibinfo{booktitle}{\emph{Proc. IMC}}.
+\newblock
+
+
+\bibitem[Wen et~al\mbox{.}(2023)]%
+        {wen2023composability}
+\bibfield{author}{\bibinfo{person}{Yimeng Wen}, \bibinfo{person}{Yue Liu},
+  {and} \bibinfo{person}{David Lie}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{DeFi} Composability as a Means for Protocol-Level
+  Security Analysis}. In \bibinfo{booktitle}{\emph{Proc. CCS}}.
+\newblock
+
+
+\bibitem[Zhang et~al\mbox{.}(2024)]%
+        {zhang2024approval}
+\bibfield{author}{\bibinfo{person}{Y. Zhang} {et~al\mbox{.}}}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Approval-Based Attacks in {DeFi}: Measurement and
+  Defense}. In \bibinfo{booktitle}{\emph{Proc. NDSS}}.
+\newblock
+
+
+\bibitem[Zhou et~al\mbox{.}(2023)]%
+        {zhou2023sok}
+\bibfield{author}{\bibinfo{person}{Liyi Zhou}, \bibinfo{person}{Xihan Xiong},
+  \bibinfo{person}{Jens Ernstberger}, \bibinfo{person}{Stefanos Chaliasos},
+  \bibinfo{person}{Zhipeng Wang}, \bibinfo{person}{Ye Wang},
+  \bibinfo{person}{Kaihua Qin}, \bibinfo{person}{Roger Wattenhofer},
+  \bibinfo{person}{Dawn Song}, {and} \bibinfo{person}{Arthur Gervais}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{SoK}: Decentralized Finance (DeFi) Attacks}. In
+  \bibinfo{booktitle}{\emph{Proc. IEEE Symposium on Security and Privacy
+  (S\&P)}}.
+\newblock
+
+
+\end{thebibliography}

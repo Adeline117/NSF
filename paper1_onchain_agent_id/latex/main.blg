@@ -1,0 +1,126 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: ACM-Reference-Format.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: main.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--empty publisher in chen2018ponzi
+Warning--empty address in chen2018ponzi
+Warning--page numbers missing in both pages and numpages fields in chen2018ponzi
+Warning--empty publisher in daian2020flash
+Warning--empty address in daian2020flash
+Warning--page numbers missing in both pages and numpages fields in daian2020flash
+Warning--no number and no volume in geirhos2020shortcut
+Warning--page numbers missing in both pages and numpages fields in geirhos2020shortcut
+Warning--no number and no volume in grech2022madmax
+Warning--page numbers missing in both pages and numpages fields in grech2022madmax
+Warning--no number and no volume in gupta2023crossdomain
+Warning--page numbers missing in both pages and numpages fields in gupta2023crossdomain
+Warning--empty publisher in hamilton2017graphsage
+Warning--empty address in hamilton2017graphsage
+Warning--page numbers missing in both pages and numpages fields in hamilton2017graphsage
+Warning--no number and no volume in he2026agentsurvey
+Warning--page numbers missing in both pages and numpages fields in he2026agentsurvey
+Warning--no number and no volume in kaufman2012leakage
+Warning--page numbers missing in both pages and numpages fields in kaufman2012leakage
+Warning--empty publisher in li2024telegram
+Warning--empty address in li2024telegram
+Warning--page numbers missing in both pages and numpages fields in li2024telegram
+Warning--empty publisher in park2024mev
+Warning--empty address in park2024mev
+Warning--page numbers missing in both pages and numpages fields in park2024mev
+Warning--empty publisher in patel2021phishing
+Warning--empty address in patel2021phishing
+Warning--page numbers missing in both pages and numpages fields in patel2021phishing
+Warning--empty publisher in qin2022quantifying
+Warning--empty address in qin2022quantifying
+Warning--page numbers missing in both pages and numpages fields in qin2022quantifying
+Warning--empty publisher in roelofs2019metadata
+Warning--empty address in roelofs2019metadata
+Warning--page numbers missing in both pages and numpages fields in roelofs2019metadata
+Warning--no number and no volume in shamsi2023gnnsurvey
+Warning--page numbers missing in both pages and numpages fields in shamsi2023gnnsurvey
+Warning--empty publisher in tikhomirov2021phishing
+Warning--empty address in tikhomirov2021phishing
+Warning--page numbers missing in both pages and numpages fields in tikhomirov2021phishing
+Warning--empty publisher in torres2021frontrunner
+Warning--empty address in torres2021frontrunner
+Warning--page numbers missing in both pages and numpages fields in torres2021frontrunner
+Warning--empty publisher in tsankov2018securify
+Warning--empty address in tsankov2018securify
+Warning--page numbers missing in both pages and numpages fields in tsankov2018securify
+Warning--empty publisher in velickovic2018gat
+Warning--empty address in velickovic2018gat
+Warning--page numbers missing in both pages and numpages fields in velickovic2018gat
+Warning--no number and no volume in victor2023fingerprinting
+Warning--page numbers missing in both pages and numpages fields in victor2023fingerprinting
+Warning--empty publisher in victor2021wash
+Warning--empty address in victor2021wash
+Warning--page numbers missing in both pages and numpages fields in victor2021wash
+Warning--no number and no volume in wang2024airisks
+Warning--page numbers missing in both pages and numpages fields in wang2024airisks
+Warning--empty publisher in weber2019antimoney
+Warning--empty address in weber2019antimoney
+Warning--page numbers missing in both pages and numpages fields in weber2019antimoney
+Warning--empty publisher in weintraub2022flashbot
+Warning--empty address in weintraub2022flashbot
+Warning--page numbers missing in both pages and numpages fields in weintraub2022flashbot
+Warning--empty publisher in wen2023composability
+Warning--empty address in wen2023composability
+Warning--page numbers missing in both pages and numpages fields in wen2023composability
+Warning--empty publisher in zhang2024approval
+Warning--empty address in zhang2024approval
+Warning--page numbers missing in both pages and numpages fields in zhang2024approval
+Warning--empty publisher in zhou2023sok
+Warning--empty address in zhou2023sok
+Warning--page numbers missing in both pages and numpages fields in zhou2023sok
+You've used 32 entries,
+            6273 wiz_defined-function locations,
+            1642 strings with 22993 characters,
+and the built_in function-call counts, 31767 in all, are:
+= -- 3487
+> -- 1196
+< -- 0
++ -- 410
+- -- 424
+* -- 2224
+:= -- 3194
+add.period$ -- 142
+call.type$ -- 32
+change.case$ -- 234
+chr.to.int$ -- 32
+cite$ -- 102
+duplicate$ -- 2961
+empty$ -- 2107
+format.name$ -- 504
+if$ -- 7567
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 122
+newline$ -- 277
+num.names$ -- 224
+pop$ -- 1479
+preamble$ -- 1
+purify$ -- 490
+quote$ -- 0
+skip$ -- 1029
+stack$ -- 0
+substring$ -- 1714
+swap$ -- 146
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 848
+warning$ -- 70
+while$ -- 152
+width$ -- 0
+write$ -- 596
+(There were 70 warnings)
