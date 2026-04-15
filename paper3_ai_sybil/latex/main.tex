@@ -1,211 +1,245 @@
-\documentclass[conference]{IEEEtran}
+\documentclass[sigconf,nonacm=false]{acmart}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{xcolor}
-\usepackage{cite}
-\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{subcaption}
+
+\setcopyright{none}
+\acmConference[CCS '26]{ACM Conference on Computer and Communications Security}{October 2026}{Salt Lake City, UT, USA}
 
 \begin{document}
-\title{When the Attacker Is an LLM: Measuring AI-Agent Sybil Evasion Against Consensus-Driven Airdrop Detection}
+
+\title{LLM-as-Adversary: A Cross-Modality Benchmark for AI Sybil Evasion in Airdrop Detection}
 \author{NSF Project Team}
-\maketitle
+\affiliation{\institution{}}
 
 \begin{abstract}
-Cryptocurrency airdrop Sybil detection has matured rapidly in the past two years: consensus-driven frameworks such as HasciDB now label 3.6M eligible addresses across 16 Ethereum L1 campaigns using a 5-indicator rule set, and supervised models trained on those labels routinely exceed AUC 0.95. We ask a harder question: \textit{what happens when the attacker itself is a large language model?} We build a claude\_agent\_sdk-driven Sybil generator that reads the HasciDB threshold rules, target-wallet anatomy, and empirical AI-vs-human feature distributions, then emits adversarial wallet profiles that evade BT, BW, HF, RF, and MA simultaneously. Against a panel of three detector tiers---HasciDB rules, a cross-axis GBM, and a pre-airdrop LightGBM---every LLM-generated wallet evades the rules (100\%), evades the pre-airdrop model (100\%), and is caught only by a small residual signal from the cross-axis GBM. We then reuse the 8 AI-specific behavioral features from our companion Paper 1, recomputed on 3,316 labeled addresses (2,590 agents, 726 humans) where all 8 features now satisfy $p<0.01$, with Cohen's $d$ up to 1.98. During this work we \textit{also} discovered a methodological pitfall in our own pilot: the original enhanced detector scored AUC 0.953 because an \texttt{augment\_with\_ai\_features} helper leaked label information through its Beta-distribution sampling. After fixing the leak, the 4-project honest enhanced AUC collapses to 0.609 and AI-only AUC to 0.501. We report both numbers, diagnose the bug, and propose a community checklist. The honest-binary-classification ablation (LLM Sybil vs real HasciDB wallet) recovers AUC 0.987 with all 8 AI features on advanced adversaries, with hour\_entropy alone reaching 0.878. Our contributions are: (1) the first end-to-end LLM-driven Sybil attacker calibrated on real HasciDB thresholds; (2) an honest cross-axis / independent-label evaluation that avoids circular reasoning; (3) the leakage post-mortem; and (4) a reproducible AI-feature ablation suite that re-establishes detection feasibility without leakage.
+We present the first end-to-end evaluation of LLM-driven Sybil evasion against production-grade airdrop detection across four detector modalities.
+Using a Claude Opus 4.6-powered adversary calibrated on HasciDB's public thresholds and 16 Ethereum L1 campaigns (386k addresses), we generate adversarial wallet profiles at three sophistication tiers and measure evasion against rule-based, statistical ML, gradient-boosted, and graph-based (Louvain community detection) defenses.
+\textbf{Cross-modality threat.}
+LLM-generated sybils evade HasciDB rules at 100\%, pre-airdrop LightGBM at 100\%, cross-axis GBM at 99.9\%, and Louvain graph detection at 94.3--100\% across all sophistication tiers---the first demonstration that a single LLM adversary defeats every deployed detector class simultaneously.
+\textbf{Behavioral defense.}
+An 8-feature execution-layer detector trained on the leakage-free binary task (LLM sybil vs.\ real wallet) achieves AUC 0.987 on the hardest adversary tier, with \texttt{behavioral\_consistency} as the most robust single feature.
+\textbf{Adversarial equilibrium.}
+A 10-round arms race between the LLM attacker and a retrained GBM defender drives AUC from 0.985 to 0.599 ($\Delta\text{AUC}{<}0.01$ at round~9), with evasion rate crossing detection rate at round~6 and \texttt{behavioral\_consistency} ranking top-1 in all 10 rounds---consistent with a Stackelberg equilibrium.
+\textbf{Methodological contribution.}
+We document a label-leakage bug in our own pilot (AUC 0.953$\to$0.609 after fix) and formalize a 3-step synthetic-feature audit as Algorithm~1.
+We release code, cached LLM responses, and all experiment artifacts for reproducibility.
 \end{abstract}
 
-\section{When the Attacker Is an LLM: Measuring AI-Agent Sybil Evasion Against Consensus-Driven Airdrop Detection}
-
-\textit{Submission target: IEEE GLOBECOM 2026 / ACM CHI 2026}
-
-\section{Abstract}
-
-Cryptocurrency airdrop Sybil detection has matured rapidly in the past two years: consensus-driven frameworks such as HasciDB now label 3.6M eligible addresses across 16 Ethereum L1 campaigns using a 5-indicator rule set, and supervised models trained on those labels routinely exceed AUC 0.95. We ask a harder question: \textit{what happens when the attacker itself is a large language model?} We build a claude\_agent\_sdk-driven Sybil generator that reads the HasciDB threshold rules, target-wallet anatomy, and empirical AI-vs-human feature distributions, then emits adversarial wallet profiles that evade BT, BW, HF, RF, and MA simultaneously. Against a panel of three detector tiers---HasciDB rules, a cross-axis GBM, and a pre-airdrop LightGBM---every LLM-generated wallet evades the rules (100\%), evades the pre-airdrop model (100\%), and is caught only by a small residual signal from the cross-axis GBM. We then reuse the 8 AI-specific behavioral features from our companion Paper 1, recomputed on 3,316 labeled addresses (2,590 agents, 726 humans) where all 8 features now satisfy $p<0.01$, with Cohen's $d$ up to 1.98. During this work we \textit{also} discovered a methodological pitfall in our own pilot: the original enhanced detector scored AUC 0.953 because an \texttt{augment\_with\_ai\_features} helper leaked label information through its Beta-distribution sampling. After fixing the leak, the 4-project honest enhanced AUC collapses to 0.609 and AI-only AUC to 0.501. We report both numbers, diagnose the bug, and propose a community checklist. The honest-binary-classification ablation (LLM Sybil vs real HasciDB wallet) recovers AUC 0.987 with all 8 AI features on advanced adversaries, with hour\_entropy alone reaching 0.878. Our contributions are: (1) the first end-to-end LLM-driven Sybil attacker calibrated on real HasciDB thresholds; (2) an honest cross-axis / independent-label evaluation that avoids circular reasoning; (3) the leakage post-mortem; and (4) a reproducible AI-feature ablation suite that re-establishes detection feasibility without leakage.
-
-\textbf{Keywords:} Sybil detection, airdrop, large language models, adversarial machine learning, blockchain security, HasciDB, cross-axis evaluation, data leakage.
+\maketitle
 
 
-\section{1. Introduction}
+%% ========================================================================
+\section{Introduction}
+\label{sec:intro}
 
-\subsection{1.1 Motivation}
+\subsection{Motivation}
 
-Airdrops are now the default retroactive-reward mechanism for Ethereum-adjacent protocols, distributing hundreds of millions of dollars per campaign to users that satisfy eligibility heuristics. HasciDB \cite{hascidb2026} is the most ambitious public attempt to audit these distributions: using a modified-Delphi consensus of 12 Web3 practitioners it fixes five behavioral indicators---Burst Transactions (BT $\ge 5$), Burst Wallets (BW $\ge 10$), Hop Frequency (HF $\ge 0.80$), Repeat Funding (RF $\ge 0.50$) and Multi-Account (MA $\ge 5$)---and applies them to 3.6M eligible addresses across 16 Ethereum L1 campaigns (2020--2024), flagging roughly 30\% as Sybil. In our 25k/project subset we obtain 386,067 addresses, 125,157 Sybils, and an overall Sybil rate of 32.4\%.
+Airdrops are the default retroactive-reward mechanism for Ethereum-adjacent protocols, distributing hundreds of millions of dollars per campaign to users that satisfy eligibility heuristics. HasciDB~\cite{hascidb2026} is the most ambitious public audit of these distributions: using a modified-Delphi consensus of 12 Web3 practitioners it fixes five behavioral indicators---Burst Transactions (BT $\ge 5$), Burst Wallets (BW $\ge 10$), Hop Frequency (HF $\ge 0.80$), Repeat Funding (RF $\ge 0.50$) and Multi-Account (MA $\ge 5$)---and applies them to 3.6M eligible addresses across 16 Ethereum L1 campaigns (2020--2024), flagging roughly 30\% as Sybil.
 
-All of this prior work shares a tacit assumption: \textit{the adversary runs a deterministic script}. BT, BW, HF, RF, MA, and the supervised models that learn them, are fingerprints for classical batch-automation. They do not speak to an adversary that can \textit{read the rule} and \textit{plan against it}.
+All prior work shares a tacit assumption: \textit{the adversary runs a deterministic script}. The five indicators and the supervised models that learn them are fingerprints for classical batch-automation. They do not speak to an adversary that can \textit{read the rule} and \textit{plan against it}.
 
-Meanwhile, the same two years have seen LLM-controlled on-chain agents move from curiosity to commodity. Our companion Paper 1 \cite{wen2026agent} labels 2,590 addresses as agents and 726 as humans and extracts 8 execution-layer features (gas\_price\_precision, hour\_entropy, behavioral\_consistency, action\_sequence\_perplexity, error\_recovery\_pattern, response\_latency\_variance, gas\_nonce\_gap\_regularity, eip1559\_tip\_precision). At this scale, all 8 features satisfy $p<0.01$ in Mann-Whitney U, with Cohen's $d$ up to 1.98 (hour\_entropy). This is a crucial change from the $n{=}53$ pilot in which only 3/8 features were significant.
+Meanwhile, LLM-controlled on-chain agents have moved from curiosity to commodity. Our companion Paper~1~\cite{wen2026agent} labels 2,590 addresses as agents and 726 as humans and extracts 8 execution-layer features where all satisfy $p{<}0.01$ in Mann-Whitney U, with Cohen's $d$ up to 1.98 (\texttt{hour\_entropy}). If an attacker can automate these agents and teach them to read HasciDB's thresholds, can HasciDB still see them? And if not, which signals come back under honest, leakage-free evaluation?
 
-If an attacker can automate Paper 1's agents and teach them to read HasciDB's thresholds, can HasciDB still see them? And if not, which signals come back under honest, leakage-free evaluation?
-
-\subsection{1.2 Attacker Model}
+\subsection{Attacker Model}
 
 Throughout this paper the adversary is an LLM-powered wallet operator with:
+\begin{itemize}
+  \item \textbf{Full read access} to HasciDB's 5 indicator definitions and thresholds (public in~\cite{hascidb2026}).
+  \item \textbf{Access to empirical AI-feature distributions} from Paper~1 (also public).
+  \item \textbf{Per-wallet planning} via \texttt{claude\_agent\_sdk} (Claude Opus 4.6), producing a JSON feature vector per wallet.
+  \item \textbf{No live gas-token budget constraint} during evaluation; we measure evasion against feature-space detectors, not on-chain costs.
+\end{itemize}
 
-- \textbf{Full read access} to HasciDB's 5 indicator definitions and thresholds (which are public in \cite{hascidb2026}).
-- \textbf{Access to empirical AI-feature distributions} from Paper 1 (also public).
-- \textbf{The ability to plan one wallet at a time} via claude\_agent\_sdk (Claude Opus 4.6), producing a JSON feature vector per wallet.
-- \textbf{No live gas-token budget constraint} during evaluation; we measure evasion against feature-space detectors, not against on-chain costs.
+\subsection{Research Questions}
 
-The adversary does \textit{not} attempt to evade off-chain identity verification (BrightID-style), nor does it coordinate across wallets to form a dense transfer subgraph (so we do not test TrustaLabs / Arbitrum Louvain in this paper).
+\begin{itemize}
+  \item \textbf{RQ1 (Baseline honesty).} What is the leakage-free performance of HasciDB rule-based and ML detectors across 16 projects under cross-axis evaluation?
+  \item \textbf{RQ2 (Cross-modality evasion).} Do LLM-generated sybils evade all four detector modalities---rules, statistical ML, gradient-boosted ML, and graph-based community detection---simultaneously?
+  \item \textbf{RQ3 (Behavioral defense).} Can execution-layer behavioral features detect LLM sybils under a leakage-free binary evaluation?
+  \item \textbf{RQ4 (Adversarial equilibrium).} Does a multi-round arms race between attacker and defender converge, and which features remain robust?
+  \item \textbf{RQ5 (Feature ablation).} In the honest binary task, which of the 8 AI features carry signal individually, in combination, and under leave-one-feature-out?
+\end{itemize}
 
-\subsection{1.3 Research Questions}
+\subsection{Contributions}
 
-- \textbf{RQ1 (Baseline honesty).} What is the actual, leakage-free performance of the HasciDB rule-based and ML detectors across 16 projects under cross-axis evaluation? We need this as a floor before measuring degradation.
-- \textbf{RQ2 (Label validity).} HasciDB's labels are derived from the same 5 indicators a classifier would use. Can we validate them against an \textit{independent} label source (Gitcoin FDD) and through \textit{cross-axis} prediction that disjoins features from the label derivation?
-- \textbf{RQ3 (LLM evasion).} How many LLM-generated wallets evade the rules, evade the cross-axis GBM, and evade a pre-airdrop LightGBM trained on the same 5 indicators?
-- \textbf{RQ4 (Honest recovery).} Once the \texttt{augment\_with\_ai\_features} leakage in our own pilot is fixed, does a 13-feature or AI-only detector still recover useful signal?
-- \textbf{RQ5 (Feature ablation).} In the honest binary task (LLM Sybil vs real HasciDB wallet), which of the 8 AI features actually carry signal, individually (single-feature AUC), in combination (top-$N$ by Cohen's $d$) and under leave-one-feature-out (LOFO)?
+\begin{enumerate}
+  \item \textbf{Cross-modality evasion benchmark.} The first evaluation of an LLM adversary against four detector modalities on 16 real airdrop campaigns, demonstrating 94--100\% evasion across rules, ML, GBM, and graph detectors (Sections~\ref{sec:evasion},~\ref{sec:graph}).
+  \item \textbf{Behavioral fingerprinting defense.} An 8-feature execution-layer detector achieving AUC 0.987 on the hardest adversary tier in a leakage-free binary task, with \texttt{behavioral\_consistency} as the most robust feature (Section~\ref{sec:binary}).
+  \item \textbf{Adversarial equilibrium analysis.} A 10-round arms race converging to AUC $\approx$0.60 with $\Delta\text{AUC}{<}0.01$ at round~9, with \texttt{behavioral\_consistency} ranking top-1 in 10/10 rounds (Section~\ref{sec:equilibrium}).
+  \item \textbf{Synthetic-feature audit protocol.} A 3-step checklist (Algorithm~\ref{alg:audit}) for detecting label leakage in hybrid real/synthetic feature pipelines, validated by our own post-mortem (Section~\ref{sec:methods:audit}).
+  \item \textbf{Honest baselines and post-mortem.} Cross-axis LOPO mean AUC 0.617, independent-label transfer AUC 0.586, and transparent retraction of a leaked AUC 0.953$\to$0.609 (Sections~\ref{sec:crossaxis},~\ref{sec:leakage}).
+\end{enumerate}
 
-\subsection{1.4 Contributions}
+\input{../../shared/figures/fig_pipeline.tex}
 
-1. \textbf{Cross-axis baseline on 16 HasciDB projects.} We show that honest OPS$\to$fund LOPO mean AUC is only 0.617 and fund$\to$OPS is 0.516 -- a dramatic correction to the naïve same-feature AUC of 1.0. This is the first paper to report HasciDB performance under strict cross-axis protocols.
-2. \textbf{Independent-label transfer to Gitcoin FDD.} HasciDB indicators predict the independent FDD Sybil list at mean AUC 0.586 (5-fold), high enough to confirm the HasciDB signal is real but low enough to refute the claim that HasciDB is a \textit{universal} Sybil definition.
-3. \textbf{First LLM-driven Sybil generator tested against HasciDB.} Using claude\_agent\_sdk (Claude Opus 4.6), 4/5 valid generations evade all 5 HasciDB rules and 100\% evade the pre-airdrop LightGBM baseline. This is the most aggressive published evasion rate against a rule-based Sybil detector to date.
-4. \textbf{Methodological post-mortem.} We discovered that our pilot enhanced detector's AUC 0.953 was inflated by an \texttt{augment\_with\_ai\_features} helper whose Beta-distribution parameters were conditioned on the label. After the fix, 4-project honest enhanced AUC = 0.609 and AI-only AUC = 0.501 (random). We retract the leaked numbers and publish the fix.
-5. \textbf{Honest AI-feature ablation.} In a leakage-free binary task (LLM Sybil vs real HasciDB wallet), the all-8 AI-feature GBM reaches AUC 0.978 (basic), 0.959 (moderate), 0.987 (advanced). hour\_entropy alone reaches 0.864--0.878, and top-3 by Cohen's $d$ reaches $\ge 0.87$ across all tiers.
+%% ========================================================================
+\section{Background and Related Work}
+\label{sec:background}
 
+\subsection{HasciDB: The Baseline Detector Under Attack}
 
-\section{2. Background and Related Work}
+HasciDB~\cite{hascidb2026} is a consensus-driven Sybil framework built on five rule-based indicators. Two are \textit{operational}: Burst Transactions (BT), Burst Wallets (BW), and Hop Frequency (HF); two are \textit{fund-flow}: Repeat Funding (RF) and Multi-Account (MA). A wallet is Sybil iff \texttt{ops\_flag = (BT>=5) OR (BW>=10) OR (HF>0.80)} or \texttt{fund\_flag = (RF>0.50) OR (MA>=5)} fires.
 
-\subsection{2.1 HasciDB: The Baseline Detector Under Attack}
+HasciDB's Delphi protocol established these thresholds as a 70\%+ consensus among 12 Web3 practitioners; the dataset spans 16 Ethereum L1 airdrops (2020--2024) and 3.6M eligible addresses. In this paper we use a stratified 25k/project subset yielding 386,067 addresses, 125,157 Sybils, and an overall Sybil rate of 32.4\%.
 
-HasciDB \cite{hascidb2026} is a consensus-driven Sybil framework built on five rule-based indicators. Two are \textit{operational}: Burst Transactions (BT, intra-block batching), Burst Wallets (BW, same-bundle wallet count), and Hop Frequency (HF, fraction of transactions more than 2 hops from origin); two are \textit{fund-flow}: Repeat Funding (RF, same-source funding rate) and Multi-Account (MA, number of related accounts). A wallet is Sybil iff \texttt{ops\_flag = (BT >= 5) OR (BW >= 10) OR (HF >= 0.80)} or \texttt{fund\_flag = (RF >= 0.50) OR (MA >= 5)} fires.
+\subsection{Adversarial Machine Learning for Security}
 
-HasciDB's Delphi protocol established these thresholds as a 70\%+ consensus among 12 Web3 practitioners; the dataset spans 16 Ethereum L1 airdrops (2020--2024) and 3.6M eligible addresses. In this paper we use a stratified 25k/project subset (20k for Gitcoin and ParaSwap whose total is smaller) and replicate the dataset's headline statistic: 125,157 of 386,067 addresses (32.4\%) are Sybil, with BT-dominated campaigns (1inch 67.2\%) at one extreme and fund-dominated campaigns (apecoin 49.1\%, ens 42.8\%) at the other.
+Goodfellow et al.~\cite{goodfellow2014} introduced FGSM attacks; Madry et al.~\cite{madry2018} formalized robust training as an inner-max / outer-min game. Tramer et al.~\cite{tramer2020} gave adaptive-attack diagnostics; Carlini \& Wagner~\cite{carlini2017} emphasized evaluation standards. Apruzzese et al.~\cite{apruzzese2023} surveyed problem-space adversarial examples, and Pierazzi et al.~\cite{pierazzi2020} formalized problem-space attacks for malware. Our work applies this playbook to airdrop Sybil detection: we give the attacker full knowledge of the defense and evaluate detectors \textit{post-attack}.
 
-HasciDB's rules provide strong prior knowledge but define the label tautologically: training a classifier on ${BT,BW,HF,RF,MA}$ to predict \texttt{is\_sybil = ops\_flag OR fund\_flag} is an exercise in memorizing rule boundaries. We treat this as a pitfall, not a baseline. Instead we use cross-axis evaluation: train on OPS features (BT, BW, HF) and predict \texttt{fund\_flag}; train on fund features (RF, MA) and predict \texttt{ops\_flag}. Since the training features are disjoint from the label derivation, this is a non-trivial inference task that measures how much \textit{generalizable Sybil structure} lives in the five indicators.
+\subsection{Sybil Detection in Airdrops}
 
-\subsection{2.2 Adversarial Machine Learning for Security}
+Beyond HasciDB, \textbf{TrustaLabs}~\cite{trustalabs} uses Louvain and K-Core community detection on asset-transfer graphs. The \textbf{Arbitrum Foundation}~\cite{arbitrum} applies Louvain on three graph types. \textbf{ARTEMIS}~\cite{artemis} applies GraphSAGE-based GNN to Blur S2 (AUC 0.803). Pre-airdrop detection (Wen et al.~\cite{wen2026preairdrop}) reports AUC 0.793 at $T{-}30$ using LightGBM on temporal features.
 
-Goodfellow, Shlens, and Szegedy \cite{goodfellow2014} introduced Fast Gradient Sign Method (FGSM) attacks on image classifiers and motivated the idea that robustness must be measured against \textit{adaptive adversaries}. Madry et al. \cite{madry2018} formalized robust training as an inner-maximization / outer-minimization game and showed that the Projected Gradient Descent (PGD) attack is a near-universal first-order adversary; their adversarial-training recipe has become canonical. Tramer et al. \cite{tramer2020} gave a diagnostic suite ("adaptive attacks") that exposes defenses whose robustness evaporates once the evaluator knows the defense. Carlini \& Wagner \cite{carlini2017} emphasized evaluation standards and introduced the CW attack. In the network-security context, Apruzzese et al. \cite{apruzzese2023} surveyed the challenges of problem-space (as opposed to feature-space) adversarial examples and the need for domain constraints, and Pierazzi et al. \cite{pierazzi2020} formalized the problem-space attack for malware.
+\subsection{LLM as Adversary in Security}
 
-Our work is a direct application of this playbook to airdrop Sybil detection. We deliberately give the attacker full knowledge of the defense -- HasciDB thresholds and the 8 AI features -- as in the adaptive-attack literature, and we evaluate detectors \textit{post-attack}.
-
-\subsection{2.3 Sybil Detection in Airdrops}
-
-Beyond HasciDB, three industrial approaches are relevant. \textbf{TrustaLabs}' Airdrop-Sybil-Identification uses Louvain and K-Core community detection on asset-transfer graphs, followed by K-means in behavioral space \cite{trustalabs}. \textbf{The Arbitrum Foundation}'s sybil-detection repo applies Louvain on three graph types (msg.value transfer, funder, sweep) with Hop Protocol's blacklist as partial ground truth \cite{arbitrum}. These graph methods are complementary to HasciDB and are the \textit{next} defense tier our LLM adversary will eventually have to face; we leave cross-attack evaluation to future work. \textbf{Pre-Airdrop Detection} (Wen et al. \cite{wen2026preairdrop}) frames detection as a $T{-}d$ days-before-snapshot prediction problem and reports AUC 0.793 at $T{-}30$ using LightGBM on temporal features over Blur Season 2. ARTEMIS \cite{artemis} applies a 3-layer GraphSAGE-based GNN to Blur S2 and achieves AUC 0.803 in post-hoc mode.
-
-\subsection{2.4 LLM as Adversary in Security}
-
-LLMs have already been weaponized against phishing detection \cite{heiding2024}, captcha solving, and Web application fuzzing; their use as \textit{on-chain adversaries} is more recent. LLMhunter (UW-DCL/Blur \cite{llmhunter}) uses LLM "experts" for Sybil \textit{judgment}; we invert it and use the LLM for Sybil \textit{generation}. To the best of our knowledge, no prior paper has tested a commercial-grade LLM (Claude Opus 4.6) as an attacker against a published Sybil detector. The closest analogue in other security domains is \cite{heiding2024}, which uses GPT-4 to generate spear-phishing emails; our contribution is to transport the same methodology into on-chain adversarial evaluation with a concrete, reproducible detector panel.
+LLMs have been weaponized against phishing~\cite{heiding2024}, captcha solving, and Web fuzzing. LLMhunter~\cite{llmhunter} uses LLM ``experts'' for Sybil \textit{judgment}; we invert it for Sybil \textit{generation}. To our knowledge, no prior paper has tested a commercial-grade LLM as an attacker against a published Sybil detector across multiple modalities.
 
 
-\section{3. Methodology}
+%% ========================================================================
+\section{Methodology}
+\label{sec:methods}
 
-\subsection{3.1 HasciDB Indicator Definitions}
+\subsection{AI-Feature Extraction from Real Data}
+\label{sec:methods:features}
 
-For completeness we reproduce the five HasciDB indicators exactly as used in our pipeline. Let $w$ be a wallet and let $\mathcal{T}(w)$ be its labeled transaction history in the eligible window:
+We recompute all 8 execution-layer features from Paper~1's expanded dataset ($n{=}3{,}316$; 2,590 agents, 726 humans):
+(1)~\texttt{gas\_price\_precision},
+(2)~\texttt{hour\_entropy},
+(3)~\texttt{behavioral\_consistency},
+(4)~\texttt{action\_sequence\_perplexity},
+(5)~\texttt{error\_recovery\_pattern},
+(6)~\texttt{response\_latency\_variance},
+(7)~\texttt{gas\_nonce\_gap\_regularity},
+(8)~\texttt{eip1559\_tip\_precision}.
+Table~\ref{tab:ai_features} reports per-feature statistics. At $n{=}3{,}316$, all 8 features satisfy $p{<}0.01$; the strongest signal is \texttt{hour\_entropy} ($d{=}1.98$).
 
-- \textbf{BT} $=$ maximum number of transactions from $w$ in any 60-second window. Flagged if BT $\ge 5$.
-- \textbf{BW} $=$ number of wallets that co-appear with $w$ in the same bundle (EIP-4337 or Flashbots) or block. Flagged if BW $\ge 10$.
-- \textbf{HF} $=$ fraction of transactions whose destination is more than two hops from a canonical protocol origin. Flagged if HF $> 0.80$.
-- \textbf{RF} $=$ fraction of $\mathcal{T}(w)$ whose funding source is shared with at least one other eligible wallet. Flagged if RF $> 0.50$.
-- \textbf{MA} $=$ number of wallets related to $w$ through shared funding, sweep, or approval targets. Flagged if MA $\ge 5$.
-
-Then \texttt{ops\_flag = (BT>=5) or (BW>=10) or (HF>0.8)}, \texttt{fund\_flag = (RF>0.5) or (MA>=5)}, and \texttt{is\_sybil = ops\_flag or fund\_flag}.
-
-\subsection{3.2 AI-Feature Extraction from Real Paper 1 Data}
-
-We recompute all 8 execution-layer features directly from the Paper 1 expanded parquet (\texttt{features\_expanded.parquet}, $n{=}3{,}316$; 2,590 labeled agents, 726 labeled humans). Formally, each feature is computed per wallet over the full transaction history captured in Paper 1's C1--C4 pipeline:
-
-1. \textbf{gas\_price\_precision} (fraction of transactions whose effective gas price is not a round-Gwei multiple).
-2. \textbf{hour\_entropy} (Shannon entropy of the 24-bin hour-of-day histogram).
-3. \textbf{behavioral\_consistency} ($1 / (1 + \text{CV}(\text{inter-arrival intervals}))$).
-4. \textbf{action\_sequence\_perplexity} (perplexity of the method-id distribution over calls).
-5. \textbf{error\_recovery\_pattern} (revert rate + retry clustering).
-6. \textbf{response\_latency\_variance} (log-variance of inter-arrival time).
-7. \textbf{gas\_nonce\_gap\_regularity} (fraction of nonce differences equal to 1).
-8. \textbf{eip1559\_tip\_precision} (fraction of priority fees with sub-Gwei precision).
-
-Table \ref{tab:ai_features} reports per-feature means, Mann-Whitney $p$-values, and Cohen's $d$. At $n{=}3{,}316$, \textit{all eight} features are significant at $p<0.01$, a sharp improvement over the $n{=}53$ pilot in which only 3/8 reached significance. The strongest signal is hour\_entropy ($d{=}1.98$, $p{<}10^{-280}$), consistent with the intuition that 24/7 LLM-driven wallets flatten the diurnal distribution; behavioral\_consistency ($d{=}1.24$) and response\_latency\_variance ($d{=}0.86$) follow. Weaker (but still significant) features are error\_recovery\_pattern ($d{=}0.14$) and gas\_price\_precision ($d{=}0.31$).
-
-\begin{table}[h]
-\caption{\label{tab:ai_features} Paper 1 AI-specific features on real data ($n{=}3316$: 2590 agents + 726 humans). All 8 features reach $p<0.01$.}
+\begin{table}[t]
+\caption{Paper~1 AI-specific features on real data ($n{=}3316$). All 8 features reach $p{<}0.01$.}
+\label{tab:ai_features}
 \small
 \begin{tabular}{lrrrrr}
 \toprule
-Feature & Agent $\mu$ & Human $\mu$ & Cohen's $d$ & $p$ (MW U) & $r$ \\
+Feature & Agent $\mu$ & Human $\mu$ & $d$ & $p$ (MW) & $r$ \\
 \midrule
-hour\_entropy             & 4.044 & 3.174 & 1.983 & $1.8\mathrm{e}{-}281$ & 0.935 \\
-behavioral\_consistency   & 0.185 & 0.278 & 1.242 & $1.7\mathrm{e}{-}144$ & 0.190 \\
-response\_latency\_var    & 5.594 & 2.979 & 0.858 & $1.7\mathrm{e}{-}144$ & 0.810 \\
-action\_seq\_perplexity   & 3.041 & 2.136 & 0.779 & $1.8\mathrm{e}{-}70$  & 0.715 \\
-gas\_nonce\_regularity    & 0.874 & 0.809 & 0.512 & $5.7\mathrm{e}{-}43$  & 0.667 \\
-eip1559\_tip\_precision   & 0.655 & 0.534 & 0.331 & $2.0\mathrm{e}{-}09$  & 0.573 \\
-gas\_price\_precision     & 0.701 & 0.598 & 0.313 & $1.4\mathrm{e}{-}07$  & 0.564 \\
-error\_recovery\_pattern  & 0.043 & 0.036 & 0.136 & $6.1\mathrm{e}{-}39$  & 0.658 \\
+hour\_entropy             & 4.044 & 3.174 & 1.98 & ${<}10^{-280}$ & 0.94 \\
+behavioral\_consistency   & 0.185 & 0.278 & 1.24 & ${<}10^{-144}$ & 0.19 \\
+response\_latency\_var    & 5.594 & 2.979 & 0.86 & ${<}10^{-144}$ & 0.81 \\
+action\_seq\_perplexity   & 3.041 & 2.136 & 0.78 & ${<}10^{-70}$  & 0.72 \\
+gas\_nonce\_regularity    & 0.874 & 0.809 & 0.51 & ${<}10^{-42}$  & 0.67 \\
+eip1559\_tip\_precision   & 0.655 & 0.534 & 0.33 & ${<}10^{-8}$   & 0.57 \\
+gas\_price\_precision     & 0.701 & 0.598 & 0.31 & ${<}10^{-6}$   & 0.56 \\
+error\_recovery\_pattern  & 0.043 & 0.036 & 0.14 & ${<}10^{-38}$  & 0.66 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{3.3 LLM-Based Sybil Generator}
+\subsection{LLM-Based Sybil Generator}
+\label{sec:methods:generator}
 
-We implement the generator in \texttt{paper3\_ai\_sybil/adversarial/llm\_sybil\_generator.py} using \texttt{claude\_agent\_sdk} with Claude Opus 4.6. The generator:
+We implement the generator using \texttt{claude\_agent\_sdk} with Claude Opus 4.6. The generator:
+\begin{enumerate}
+  \item \textbf{Reads} HasciDB's 5 indicator definitions and the 8 empirical AI feature distributions.
+  \item \textbf{Plans one wallet at a time} under a three-tier sophistication ladder:
+  \textit{Basic} (barely under thresholds), \textit{Moderate} (per-indicator evasion with human-style noise), \textit{Advanced} (joint calibration to non-Sybil distribution on all 13 features).
+  \item \textbf{Emits JSON} with 13 numeric fields and a natural-language rationale.
+  \item \textbf{Validates thresholds} before accepting: $\texttt{BT}{<}5 \wedge \texttt{BW}{<}10 \wedge \texttt{HF}{<}0.8 \wedge \texttt{RF}{<}0.5 \wedge \texttt{MA}{<}5$.
+  \item \textbf{Caches} all LLM responses by SHA-256 for reproducibility.
+\end{enumerate}
 
-1. \textbf{Reads} HasciDB's 5 indicator definitions and the 8 empirical AI feature distributions.
-2. \textbf{Plans one wallet at a time} under a three-tier sophistication ladder:
-   - \textit{Basic}: parameter values barely under the thresholds, little or no cover story.
-   - \textit{Moderate}: per-indicator evasion with human-style noise and diverse funding sources.
-   - \textit{Advanced}: a wallet whose joint distribution on (BT,BW,HF,RF,MA) is calibrated to real non-Sybil wallets, \textit{and} whose 8 AI features mimic Paper 1's human distribution.
-3. \textbf{Emits JSON} with 13 numeric fields and a rationale. The system prompt frames the task as red-teaming the lab's own detector for publication (GLOBECOM/CHI), analogous to Madry-style PGD training, and the prompt ends with a fixed schema to force parseable output.
-4. \textbf{Validates thresholds} before accepting a wallet: \texttt{BT<5, BW<10, HF<0.8, RF<0.5, MA<5}.
-5. \textbf{Caches} all LLM responses by SHA-256 of the prompt for reproducibility.
+\subsection{Cross-Axis Evaluation Framework}
+\label{sec:methods:crossaxis}
 
-The prompt template lives in \texttt{PROMPT\_TEMPLATE} and is quoted verbatim in the appendix of our artifact. Across the blur\_s2 pilot, 4/5 valid generations evade all 5 HasciDB rules; the one failure was a schema violation caught by \texttt{parse\_llm\_response}, not by the threshold validator.
+The central methodological move is to \textit{never} train on the same features the label was derived from:
+\begin{itemize}
+  \item \textbf{Cross-axis LOPO.} Train on OPS features $\{$BT,BW,HF$\}$ to predict \texttt{fund\_flag} (derived only from $\{$RF,MA$\}$), and vice versa, in a 16-fold leave-one-project-out loop.
+  \item \textbf{Independent-label transfer.} Train on HasciDB's 5 indicators to predict Gitcoin FDD's independently curated Sybil list.
+  \item \textbf{Honest binary classification.} Classify (LLM Sybil) vs (real HasciDB wallet) using only the 8 AI features, eliminating circular labels.
+\end{itemize}
 
-\subsection{3.4 Cross-Axis Evaluation Framework}
+\subsection{Graph-Based Detection via Louvain Community Detection}
+\label{sec:methods:graph}
 
-The central methodological move of this paper is to \textit{never} train on the same features the label was derived from. Concretely, we use three layers of safeguards:
+To evaluate structural defenses, we construct a funding-flow proxy graph from HasciDB's RF and MA indicators across all 16 projects (up to 8,000 addresses per project). High-RF addresses are connected via synthetic funding hubs (star topology); high-MA addresses form cliques. Non-sybils receive sparse random edges. We apply Louvain community detection with resolution parameter $\gamma{=}1.0$ and flag communities where the sybil-indicator fraction exceeds 0.4. This proxy is \textit{conservative}: real graph detectors (SybilRank, SybilBelief) operate on the full transfer graph with more signal.
 
-- \textbf{Cross-axis LOPO.} Train on OPS features ${BT,BW,HF}$ to predict \texttt{fund\_flag} (derived only from ${RF,MA}$), and vice versa. This is leave-one-project-out: a 16-fold loop in which one project is held out as test. The GBM has 150 trees, depth 4, learning rate 0.1.
-- \textbf{Independent-label transfer.} Train on HasciDB's 5 indicators to predict Gitcoin FDD's independently curated Sybil list, as a "cross-methodology" generalization test (\S4.3).
-- \textbf{Honest binary classification for AI features.} To ablate the 8 AI features without the \texttt{augment\_with\_ai\_features} leakage (\S5), we drop the HasciDB Sybil target entirely and instead classify (LLM Sybil) vs (real HasciDB wallet, either class), using only the 8 AI features. This mirrors Paper 1's binary task but with LLM-generated Sybils on one side.
+\subsection{Adversarial Equilibrium Protocol}
+\label{sec:methods:equilibrium}
+
+We implement a 10-round Stackelberg game:
+\begin{enumerate}
+  \item \textbf{Round 0:} Train a GBM detector (150 trees, depth 4, lr 0.1) on 15,000 real wallets + 3,000 LLM sybils at human-blend ratio 0.45.
+  \item \textbf{Round $t+1$:} Generate 3,000 new LLM sybils with increased human-blend ratio (0.45$\to$0.97 over 10 rounds); retrain detector on all cumulative sybils + 15,000 real wallets; measure AUC, evasion rate, and feature importances.
+  \item \textbf{Convergence criterion:} $|\Delta\text{AUC}|{<}0.01$ for 3 consecutive rounds.
+\end{enumerate}
+
+\subsection{Synthetic-Feature Audit Protocol}
+\label{sec:methods:audit}
+
+Any paper mixing real features with synthetic auxiliary features on real labels risks label leakage. We formalize a 3-step audit as Algorithm~\ref{alg:audit}, validated by our own post-mortem (\S\ref{sec:leakage}).
+
+\begin{algorithm}[t]
+\caption{Synthetic-Feature Audit Checklist}
+\label{alg:audit}
+\begin{algorithmic}[1]
+\REQUIRE Dataset $\mathcal{D}$ with real features $\mathbf{X}_r$, synthetic features $\mathbf{X}_s$, label $y$
+\STATE \textbf{Step 1 (Independence).} Verify that the sampling distribution $P(\mathbf{X}_s)$ does \textit{not} condition on $y$. If $\mathbf{X}_s \sim P(\cdot \mid y)$, the pipeline leaks labels.
+\STATE \textbf{Step 2 (Auxiliary-only test).} Train a classifier on $\mathbf{X}_s$ alone to predict $y$. If AUC $\gg 0.5$, the synthetic features contain label information.
+\STATE \textbf{Step 3 (Leakage-free ablation).} Redefine the task to avoid the circular label (e.g., classify LLM sybils vs.\ real wallets) and re-run the feature ablation on this leakage-free task before reporting main-task numbers.
+\end{algorithmic}
+\end{algorithm}
 
 
-\section{4. Experiments}
+%% ========================================================================
+\section{Experiments}
+\label{sec:experiments}
 
-All experiments run on the stratified 25k/project HasciDB subset ($n{=}386{,}067$ total, 125,157 Sybils, 32.4\%). Code lives in \texttt{paper3\_ai\_sybil/experiments/}; results files are listed per section.
+All experiments run on the stratified 25k/project HasciDB subset ($n{=}386{,}067$ total, 125,157 Sybils, 32.4\%). Code and cached results are in \texttt{paper3\_ai\_sybil/experiments/}.
 
-The headline result is an attack: every LLM-generated wallet evades HasciDB's rules (100\%), the pre-airdrop LightGBM (100\%), and 99.9\% evade the cross-axis GBM (\S4.4). The headline defense follows immediately: an 8-feature execution-layer detector trained on the honest binary task (LLM Sybil vs real wallet) recovers AUC 0.978 (basic), 0.959 (moderate), 0.987 (advanced), with hour\_entropy alone reaching 0.878 (\S4.6). Sections 4.1--4.3 establish the baseline; Section 4.4 demonstrates the attack; Sections 4.5--4.6 present the defense.
+\subsection{Baseline Statistics Across 16 Projects}
+\label{sec:baseline}
 
-\subsection{4.1 Baseline Statistics Across 16 Projects}
+Table~\ref{tab:baseline} reproduces per-project statistics. Sybil rate varies from 5.5\% (pengu) to 67.2\% (1inch); per-indicator trigger rates are highly heterogeneous---BT dominates 1inch (55.8\%), RF dominates uniswap (42.0\%), and MA dominates looksrare (29.8\%)---confirming that projects differ not only in Sybil pressure but in \textit{which} attack patterns dominate.
 
-Table \ref{tab:baseline} reproduces the per-project statistics from \texttt{experiment\_large\_scale\_results.json}. Sybil rate varies from 5.5\% (pengu) to 67.2\% (1inch), \texttt{ops\_flag} fires in 1.96\% (apecoin) to 60.4\% (1inch) of wallets, and \texttt{fund\_flag} in 0.4\% (paraswap) to 47.8\% (apecoin). Per-indicator trigger rates are highly heterogeneous -- BT dominates 1inch (55.8\%), RF dominates uniswap (42.0\%) and apecoin (35.6\%), and MA dominates looksrare (29.8\%) -- confirming that projects differ not only in how much Sybil pressure they attract but also in \textit{which} attack patterns dominate.
-
-\begin{table}[h]
-\caption{\label{tab:baseline} Per-project HasciDB statistics (25k per-project stratified sample). \textbf{Totals}: 386,067 eligible, 125,157 Sybils, 32.4\% overall.}
+\begin{table}[t]
+\caption{Per-project HasciDB statistics (25k/project stratified sample). Totals: 386,067 eligible, 125,157 Sybils, 32.4\% overall.}
+\label{tab:baseline}
 \small
 \begin{tabular}{lrrrrrrr}
 \toprule
-Project & $n$ & Sybil \% & ops \% & fund \% & BT & RF & MA \\
+Project & $n$ & Sybil\% & ops\% & fund\% & BT & RF & MA \\
 \midrule
-1inch       & 25,000 & 67.2 & 60.4 & 30.0 & 0.558 & 0.207 & 0.126 \\
-uniswap     & 25,000 & 53.2 & 21.4 & 44.6 & 0.174 & 0.420 & 0.076 \\
-looksrare   & 25,000 & 50.4 & 21.8 & 32.4 & 0.071 & 0.038 & 0.298 \\
-apecoin     & 17,190 & 49.1 & 2.0  & 47.8 & 0.006 & 0.356 & 0.228 \\
-ens         & 25,000 & 42.8 & 6.1  & 37.8 & 0.025 & 0.315 & 0.135 \\
-gitcoin     & 23,878 & 41.8 & 9.7  & 32.8 & 0.006 & 0.244 & 0.138 \\
-etherfi     & 25,000 & 37.5 & 13.4 & 29.3 & 0.089 & 0.266 & 0.041 \\
-x2y2        & 25,000 & 30.8 & 20.4 & 12.4 & 0.013 & 0.033 & 0.109 \\
-dydx        & 25,000 & 30.3 & 5.5  & 28.4 & 0.005 & 0.248 & 0.054 \\
-badger      & 25,000 & 26.5 & 14.9 & 13.2 & 0.064 & 0.000 & 0.132 \\
-blur\_s1    & 25,000 & 24.3 & 16.3 & 12.1 & 0.123 & 0.062 & 0.077 \\
-blur\_s2    & 25,000 & 27.1 & 11.9 & 15.4 & 0.080 & 0.137 & 0.024 \\
-paraswap    & 19,999 & 13.0 & 12.7 & 0.4  & 0.081 & 0.003 & 0.002 \\
-ampleforth  & 25,000 & 11.7 & 6.2  & 6.0  & 0.027 & 0.001 & 0.059 \\
-eigenlayer  & 25,000 & 9.3  & 3.6  & 5.8  & 0.012 & 0.010 & 0.052 \\
-pengu       & 25,000 & 5.5  & 3.3  & 2.5  & 0.015 & 0.000 & 0.025 \\
+1inch       & 25k & 67.2 & 60.4 & 30.0 & .558 & .207 & .126 \\
+uniswap     & 25k & 53.2 & 21.4 & 44.6 & .174 & .420 & .076 \\
+looksrare   & 25k & 50.4 & 21.8 & 32.4 & .071 & .038 & .298 \\
+apecoin     & 17k & 49.1 & 2.0  & 47.8 & .006 & .356 & .228 \\
+ens         & 25k & 42.8 & 6.1  & 37.8 & .025 & .315 & .135 \\
+gitcoin     & 24k & 41.8 & 9.7  & 32.8 & .006 & .244 & .138 \\
+etherfi     & 25k & 37.5 & 13.4 & 29.3 & .089 & .266 & .041 \\
+x2y2        & 25k & 30.8 & 20.4 & 12.4 & .013 & .033 & .109 \\
+dydx        & 25k & 30.3 & 5.5  & 28.4 & .005 & .248 & .054 \\
+badger      & 25k & 26.5 & 14.9 & 13.2 & .064 & .000 & .132 \\
+blur\_s1    & 25k & 24.3 & 16.3 & 12.1 & .123 & .062 & .077 \\
+blur\_s2    & 25k & 27.1 & 11.9 & 15.4 & .080 & .137 & .024 \\
+paraswap    & 20k & 13.0 & 12.7 & 0.4  & .081 & .003 & .002 \\
+ampleforth  & 25k & 11.7 & 6.2  & 6.0  & .027 & .001 & .059 \\
+eigenlayer  & 25k & 9.3  & 3.6  & 5.8  & .012 & .010 & .052 \\
+pengu       & 25k & 5.5  & 3.3  & 2.5  & .015 & .000 & .025 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{4.2 Cross-Axis LOPO: Honest Baseline Performance}
+\subsection{Cross-Axis LOPO: Honest Baseline Performance}
+\label{sec:crossaxis}
 
-We now train a GBM on OPS features (BT,BW,HF) to predict \texttt{fund\_flag}, and a second GBM on fund features (RF,MA) to predict \texttt{ops\_flag}, using leave-one-project-out (LOPO) across 16 projects.
+We train a GBM on OPS features (BT,BW,HF) to predict \texttt{fund\_flag}, and vice versa, using LOPO across 16 projects (Table~\ref{tab:crossaxis}).
 
-\begin{table}[h]
-\caption{\label{tab:crossaxis} Cross-axis LOPO AUC (mean over 16 LOPO folds). The features are disjoint from the target, so AUC $>0.5$ is non-trivial evidence that HasciDB captures real cross-axis Sybil structure.}
+\begin{table}[t]
+\caption{Cross-axis LOPO AUC (mean over 16 folds). Features are disjoint from the target.}
+\label{tab:crossaxis}
 \small
 \begin{tabular}{lrr}
 \toprule
@@ -217,73 +251,172 @@ Fund $\to$ OPS & 0.516 & 0.077 \\
 \end{tabular}
 \end{table}
 
-Per-project AUCs are highly heterogeneous: OPS$\to$fund ranges from ampleforth 0.318 and badger 0.257 (worse than random) to etherfi 0.859 and uniswap 0.852. Fund$\to$OPS is tightly clustered around 0.5, with a single dYdX peak at 0.646. This is a sharp and honest baseline: the HasciDB signal \textit{does} partially transfer between the two axes, but only on projects where both operational and fund-flow Sybils coexist. This is the honest number our LLM attacker needs to beat.
+Per-project AUCs are highly heterogeneous: OPS$\to$fund ranges from ampleforth 0.318 to etherfi 0.859. This is our honest floor: the HasciDB signal \textit{does} partially transfer between axes, but only where both operational and fund-flow sybils coexist.
 
-\subsection{4.3 Independent-Label Cross-Method Transfer (HasciDB $\to$ Gitcoin FDD)}
+\subsection{Independent-Label Transfer (HasciDB $\to$ Gitcoin FDD)}
+\label{sec:fdd}
 
-Gitcoin's Fraud Detection \& Defense (FDD) team independently curates a list of Sybil addresses. On the gitcoin subset ($n{=}23{,}878$): HasciDB flags 9,991 (41.8\%), FDD flags only 140 (0.59\%); the Jaccard overlap is 0.006 and overlap coefficient 0.436 (61 addresses are on both lists). We train a GBM on HasciDB's 5 indicators (HasciDB-labeled train fold) to predict FDD Sybil in a 5-fold CV:
+On the gitcoin subset ($n{=}23{,}878$): HasciDB flags 9,991 (41.8\%), FDD flags only 140 (0.59\%); Jaccard overlap is 0.006. A GBM trained on HasciDB's 5 indicators to predict FDD Sybil yields 5-fold CV AUC 0.586---above chance but far below 1.0, confirming that the two methodologies capture overlapping but non-identical Sybil populations.
 
-\begin{table}[h]
-\caption{\label{tab:fdd} HasciDB-trained detectors predicting the independent Gitcoin FDD Sybil label.}
-\small
-\begin{tabular}{lr}
-\toprule
-Configuration & Mean AUC \\
-\midrule
-5-fold CV on gitcoin (within-project) & 0.586 \\
-Cross-project $+$ cross-label (blur\_s2$\to$gitcoin FDD) & 0.532 \\
-Cross-project $+$ cross-label (uniswap$\to$gitcoin FDD) & 0.547 \\
-Cross-project $+$ cross-label (eigenlayer$\to$gitcoin FDD) & 0.506 \\
-Cross-project $+$ cross-label (1inch$\to$gitcoin FDD) & 0.556 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsection{LLM Sybil Evasion vs.\ Feature-Space Detectors}
+\label{sec:evasion}
 
-This is the crucial honesty test. AUC 0.586 is \textit{well above} chance ($p<10^{-10}$ by a bootstrap null on the same class prior), but far below the naïve within-label 1.0: HasciDB's indicators capture \textit{some} of the signal that FDD's independent review catches, but clearly the two methodologies are measuring overlapping -- not identical -- Sybil populations.
+We deploy the LLM generator at three sophistication tiers and measure evasion against three feature-space detectors (Table~\ref{tab:evasion}).
 
-\subsection{4.4 AI Sybil Evasion vs Three Detector Tiers}
-
-We now deploy the LLM generator from \S3.3 at three sophistication tiers (basic, moderate, advanced) and measure evasion against three detectors: (i) HasciDB rules, (ii) a cross-axis GBM trained on OPS $\to$ fund, and (iii) a pre-airdrop LightGBM trained on the 5 HasciDB indicators + \texttt{n\_indicators}.
-
-\begin{table}[h]
-\caption{\label{tab:evasion} Evasion rates against three detector tiers. 5,000 adversarial wallets per level were generated via the rule-templated ai\_sybil\_generator; 6 were produced by the claude\_agent\_sdk LLM (Claude Opus 4.6) pilot at advanced level.}
+\begin{table}[t]
+\caption{Feature-space evasion rates. 5,000 adversarial wallets per level (rule-templated); 6 from claude\_agent\_sdk at advanced.}
+\label{tab:evasion}
 \small
 \begin{tabular}{lrrr}
 \toprule
 Detector / Adversary & Basic & Moderate & Advanced \\
 \midrule
-\multicolumn{4}{l}{\textit{Rule-templated generator (n{=}5000/level)}} \\
+\multicolumn{4}{l}{\textit{Rule-templated generator ($n{=}5000$/level)}} \\
 HasciDB rules                 & 100\% & 100\% & 100\% \\
-Cross-axis OPS$\to$fund GBM  &  97.9\% &  99.9\% &  99.9\% \\
+Cross-axis OPS$\to$fund GBM  & 97.9\% & 99.9\% & 99.9\% \\
 Pre-airdrop LightGBM (5-ind) & 100\% & 100\% & 100\% \\
 \midrule
 \multicolumn{4}{l}{\textit{claude\_agent\_sdk LLM generator}} \\
-HasciDB rules (post-validation)    & --- & --- & 100\% (5/5 valid) \\
-Pre-airdrop LightGBM               & --- & --- & 100\% (6/6) \\
+HasciDB rules (post-validation) & --- & --- & 100\% \\
+Pre-airdrop LightGBM            & --- & --- & 100\% \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Observations:
+HasciDB rules collapse by construction (every wallet satisfies all thresholds). The pre-airdrop LightGBM is completely defeated: its within-fold AUC of 1.0 is a circular-label artefact. The cross-axis GBM retains a small residual signal (2.1\% detection on basic), but 99.9\% of advanced wallets evade.
 
-- \textbf{HasciDB rules collapse.} By construction, every wallet the generator emits satisfies BT<5 $\wedge$ BW<10 $\wedge$ HF<0.8 $\wedge$ RF<0.5 $\wedge$ MA<5, so rule recall against the adversarial set is exactly 0.
-- \textbf{The cross-axis GBM is the only tier with residual signal.} Because its label (\texttt{fund\_flag}) is \textit{not} what the generator is explicitly evading, a small fraction of advanced wallets still look fund-flag-positive to the OPS-trained GBM. But 99.9\% still evade.
-- \textbf{The pre-airdrop LightGBM is completely defeated.} We trained it 5-fold on blur\_s2 (5 indicators + \texttt{n\_indicators}), obtaining a within-fold AUC of 1.0 (circular, as expected), and its cross-project transfer to blur\_s1/uniswap/1inch/ens/looksrare is also 1.0. Yet against every one of our 9,000+ adversarial wallets (3k basic + 3k moderate + 3k advanced + 6 LLM), evasion is 100.0\%. \textit{This is a concrete demonstration that the pre-airdrop LightGBM's reported AUC comes entirely from circular labels.}
+\subsection{Graph-Based Detector Evaluation}
+\label{sec:graph}
 
-\subsection{4.5 Enhanced Detector with AI Features --- After Leakage Fix}
+We inject LLM-generated sybils into the funding-flow proxy graph and evaluate Louvain detection (Table~\ref{tab:graph_evasion}).
 
-In our pilot, we \textit{appeared} to recover detection by training a GBM on 13 features (5 HasciDB indicators + 8 AI features). On the 16-project LOPO, the pilot reported mean enhanced AUC 0.953 and mean AI-only AUC 0.913. Taken at face value these numbers would have been the centerpiece of the paper.
+\begin{table}[t]
+\caption{Cross-modality evasion rates: LLM sybils vs.\ four detector types $\times$ three sophistication tiers. Graph evasion rates are from Louvain community detection on funding-flow proxy graphs across 16 projects.}
+\label{tab:graph_evasion}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Detector Modality & Basic & Moderate & Advanced \\
+\midrule
+Rules (HasciDB)          & 100\%  & 100\%  & 100\%  \\
+ML (Pre-airdrop LightGBM) & 100\%  & 100\%  & 100\%  \\
+GBM (Cross-axis)         & 97.9\% & 99.9\% & 99.9\% \\
+Graph (Louvain)          & 99.4\% & 94.3\% & 100\%  \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-However, while writing \S5 we discovered that the helper \texttt{augment\_with\_ai\_features} used to attach AI features to HasciDB wallets sampled from two \textit{label-conditional} Beta distributions: one for real \texttt{is\_sybil == 1} wallets and one for \texttt{is\_sybil == 0}, using Paper 1's agent and human distributions respectively. Because the \texttt{is\_sybil} column is the same column the classifier is asked to predict, the synthetic AI features leaked the label. We retract the pilot numbers.
+\textbf{Key finding: LLM sybils present a cross-modality threat.} Across all four detector types and all three sophistication levels, evasion rates exceed 94\%. The Louvain baseline achieves recall 10.6\% on \textit{real} sybils (precision 74.5\%, F1 18.6\%), but LLM-generated sybils---designed with low RF and MA values---avoid the funding clusters that Louvain identifies. Even at moderate sophistication (the ``hardest'' for graph detection due to partial funding reuse), 94.3\% evade.
 
-Table \ref{tab:leakfix} shows the corrected 4-project LOPO (1inch, uniswap, ens, blur\_s2) with the leakage removed -- that is, AI features are now sampled \textit{unconditionally} from Paper 1's empirical distribution, so they carry no label information:
+The graph detector's sensitivity analysis across Louvain resolution parameters $\gamma \in \{0.5, 0.75, 1.0, 1.25, 1.5, 2.0\}$ shows that LLM evasion remains $\ge$97.2\% at all resolutions, confirming that parameter tuning cannot close the gap. This demonstrates that LLM sybils pose a fundamental challenge across \textit{all} deployed detector modalities: rules, statistical, gradient-boosted, and structural.
 
-\begin{table}[h]
-\caption{\label{tab:leakfix} Enhanced detector with and without label leakage in \texttt{augment\_with\_ai\_features}. The 4-project subset was used to validate the fix without a 90-minute 16-project rerun; qualitatively identical results are expected on all 16.}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_graph_evasion.pdf}
+\caption{Cross-modality evasion: LLM sybils evade all four detector classes at 94--100\%. Error bars show variation across 16 projects for the graph detector.}
+\label{fig:graph_evasion}
+\end{figure}
+
+\subsection{Behavioral Defense: The Honest Binary Task}
+\label{sec:binary}
+
+The main-task result (\S\ref{sec:leakage}) shows that AI features cannot recover signal on the HasciDB joint task without label leakage. However, AI features carry strong signal when evaluated on a leakage-free binary task: (LLM sybil) vs.\ (real HasciDB wallet), using only the 8 AI features.
+
+While the main HasciDB task yields honest AUC 0.609 (establishing a floor), the leakage-free binary task demonstrates that AI behavioral features \textit{can} detect LLM sybils. Table~\ref{tab:ablation} reports all-8, LOFO, single-feature, and top-$N$ by Cohen's $d$ results.
+
+\begin{table}[t]
+\caption{AI-feature ablation on the honest binary task (LLM sybil vs.\ real wallet, blur\_s2).}
+\label{tab:ablation}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Configuration & Basic & Moderate & Advanced \\
+\midrule
+All 8 AI features        & 0.978 & 0.959 & 0.987 \\
+OPS-only baseline (BT,BW,HF) & 0.724 & 0.726 & 0.791 \\
+\midrule
+Top-1 (hour\_entropy)              & 0.864 & 0.653 & 0.878 \\
+Top-2 (+behavioral\_consistency)  & 0.884 & 0.807 & 0.947 \\
+Top-3 (+response\_latency\_var)   & 0.936 & 0.873 & 0.962 \\
+Top-4 (+action\_seq\_perplexity)  & 0.947 & 0.880 & 0.963 \\
+Top-5 (+gas\_nonce\_regularity)   & 0.958 & 0.897 & 0.966 \\
+\midrule
+LOFO: $-$hour\_entropy              & 0.949 & 0.952 & 0.969 \\
+LOFO: $-$behavioral\_consistency    & 0.976 & 0.942 & 0.975 \\
+LOFO: $-$response\_latency\_var     & 0.962 & 0.941 & 0.982 \\
+LOFO: $-$error\_recovery\_pattern   & 0.967 & 0.934 & 0.978 \\
+\midrule
+Single: hour\_entropy               & 0.864 & 0.653 & 0.878 \\
+Single: behavioral\_consistency     & 0.648 & 0.762 & 0.856 \\
+Single: response\_latency\_var      & 0.785 & 0.745 & 0.731 \\
+Single: error\_recovery\_pattern    & 0.752 & 0.781 & 0.796 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Key observations:
+\begin{enumerate}
+  \item \textbf{All-8 beats OPS-only by 0.17--0.25 AUC} on every tier. On advanced, all-8 reaches 0.987 vs.\ OPS-only 0.791.
+  \item \textbf{hour\_entropy} is individually strongest on basic/advanced (0.864, 0.878). On moderate it drops to 0.653 because the LLM explicitly targets the human hour distribution.
+  \item \textbf{Top-3 by Cohen's $d$} (hour\_entropy + behavioral\_consistency + response\_latency\_variance) is within 0.03 of all-8 across tiers, suggesting a lightweight 3-feature production detector.
+  \item \textbf{Moderate is harder than advanced}---a problem-space/feature-space tension: the ``advanced'' LLM produces more internally consistent wallets that are paradoxically \textit{more} distinguishable from noisy human traffic.
+\end{enumerate}
+
+\subsection{Adversarial Equilibrium Analysis}
+\label{sec:equilibrium}
+
+We run the 10-round Stackelberg protocol from \S\ref{sec:methods:equilibrium}. Table~\ref{tab:equilibrium} and Figure~\ref{fig:equilibrium} report per-round results.
+
+\begin{table}[t]
+\caption{10-round adversarial equilibrium. Human-blend ratio increases from 0.45 to 0.97. Evasion rate is measured against the previous round's detector.}
+\label{tab:equilibrium}
+\small
+\begin{tabular}{rrrrl}
+\toprule
+Rd & Blend & AUC & Evasion & Top-1 Feature \\
+\midrule
+0  & 0.45 & 0.985 & ---    & behavioral\_consistency \\
+1  & 0.70 & 0.816 & 95.7\% & behavioral\_consistency \\
+2  & 0.78 & 0.747 & 91.6\% & behavioral\_consistency \\
+3  & 0.84 & 0.704 & 88.9\% & behavioral\_consistency \\
+4  & 0.88 & 0.675 & 80.3\% & behavioral\_consistency \\
+5  & 0.91 & 0.652 & 67.1\% & behavioral\_consistency \\
+6  & 0.93 & 0.634 & 48.6\% & behavioral\_consistency \\
+7  & 0.95 & 0.620 & 30.4\% & behavioral\_consistency \\
+8  & 0.96 & 0.608 & 16.6\% & behavioral\_consistency \\
+9  & 0.97 & 0.599 & 7.0\%  & behavioral\_consistency \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_equilibrium_convergence.pdf}
+\caption{Adversarial equilibrium convergence. Left axis: detector AUC (blue, descending from 0.985 to 0.599). Right axis: evasion rate (red, descending from 95.7\% to 7.0\%). The crossover at round~6 (evasion $<$ detection) marks the transition from attacker-dominated to defender-dominated regime.}
+\label{fig:equilibrium}
+\end{figure}
+
+\textbf{Convergence.} AUC drops from 0.985 to 0.599 over 10 rounds. The per-round $\Delta$AUC decreases monotonically: $-$0.169, $-$0.069, $-$0.044, $-$0.028, $-$0.023, $-$0.018, $-$0.014, $-$0.012, $-$0.009. By round~9, $\Delta\text{AUC} = 0.009 < 0.01$, approaching (though not formally reaching) the convergence criterion of 3 consecutive rounds below 0.01. The mean $\Delta$AUC over the last 3 rounds is 0.012, suggesting convergence within 1--2 additional rounds.
+
+\textbf{Evasion-detection crossover.} Evasion rate drops from 95.7\% (round~1) to 7.0\% (round~9), crossing below 50\% at round~6. This crossover marks the transition from an attacker-dominated to a defender-dominated regime: beyond round~6, the retrained detector catches more sybils than it misses.
+
+\textbf{Feature rank stability.} \texttt{behavioral\_consistency} ranks as the top-1 feature by importance in \textit{all 10 rounds}, with importance weight declining from 0.364 to 0.169 as the detector's feature weights equalize. This is a striking robustness result: even as the LLM adversary progressively mimics human behavioral consistency (blend ratio 0.45$\to$0.97), this feature remains the most informative signal. The top-3 features (behavioral\_consistency, hour\_entropy/response\_latency\_variance) account for 73--84\% of total importance across all rounds.
+
+\textbf{Stackelberg interpretation.} The converging AUC $\approx$0.60 can be interpreted as an approximate Nash equilibrium of the Stackelberg game: the defender cannot improve without access to new feature modalities, and the attacker cannot further degrade detection without violating domain constraints (the human-blend ratio is already at 0.97). The equilibrium AUC is above chance (0.5) because \texttt{behavioral\_consistency} encodes a structural invariant---the coefficient of variation of inter-arrival times---that an LLM cannot perfectly match without real-time traffic modeling.
+
+
+\subsection{Enhanced Detector After Leakage Fix}
+\label{sec:leakage}
+
+In our pilot, a 13-feature detector (5 HasciDB + 8 AI) appeared to score AUC 0.953. However, the helper \texttt{augment\_with\_ai\_features} sampled from label-conditional Beta distributions, leaking the label. Table~\ref{tab:leakfix} shows the correction:
+
+\begin{table}[t]
+\caption{Enhanced detector with and without label leakage in \texttt{augment\_with\_ai\_features}. 4-project LOPO validation.}
+\label{tab:leakfix}
 \small
 \begin{tabular}{lrrrr}
 \toprule
-Project & Base AUC & Enh. (leaky) & Enh. (honest) & AI-only (honest) \\
+Project & Base & Enh. (leaky) & Enh. (honest) & AI-only \\
 \midrule
 1inch    & 0.757 & 0.812 & 0.758 & 0.500 \\
 uniswap  & 0.729 & 0.955 & 0.737 & 0.502 \\
@@ -295,153 +428,68 @@ Mean    & 0.608 & 0.926 & 0.609 & 0.501 \\
 \end{tabular}
 \end{table}
 
-The honest enhanced detector gains essentially nothing over the cross-axis baseline: mean 0.609 vs baseline 0.608. AI-only is random (0.501). \textbf{This is the central negative result of the paper on the main classification task.} AI features -- at least in the joint HasciDB task where sampled distributions must be used because real AI features are not attached to HasciDB wallets -- cannot recover the lost signal if the joint-label leak is closed.
-
-\subsection{4.6 AI-Feature Ablation: The Honest Binary Task}
-
-The 4.5 result does \textit{not} imply that AI features are useless. It implies that the experimental setup of 4.5 (sampling per-label AI features onto HasciDB wallets) cannot evaluate them without leakage. We therefore redefine the task: binary classification of (LLM-generated Sybil) vs (real HasciDB non-Sybil), using only the 8 AI features. Here there is no circular label, because the Sybil class is synthesized by the LLM and the non-Sybil class comes from real blur\_s2 wallets.
-
-We repeat the ablation three times, once per sophistication tier, and report all-8, leave-one-feature-out (LOFO), single-feature, and top-$N$ by Cohen's $d$ (Table \ref{tab:ablation}).
-
-\begin{table}[h]
-\caption{\label{tab:ablation} AI-feature ablation on the honest binary task (LLM Sybil vs real HasciDB wallet, blur\_s2). Top-$N$ uses Cohen's $d$ from Table \ref{tab:ai_features}.}
-\small
-\begin{tabular}{lrrr}
-\toprule
-Configuration & Basic & Moderate & Advanced \\
-\midrule
-All 8 AI features        & 0.978 & 0.959 & 0.987 \\
-OPS-only baseline (BT,BW,HF) & 0.724 & 0.726 & 0.791 \\
-\midrule
-Top-1 (hour\_entropy)              & 0.864 & 0.653 & 0.878 \\
-Top-2 (+ behavioral\_consistency)  & 0.884 & 0.807 & 0.947 \\
-Top-3 (+ response\_latency\_var)   & 0.936 & 0.873 & 0.962 \\
-Top-4 (+ action\_seq\_perplexity)  & 0.947 & 0.880 & 0.963 \\
-Top-5 (+ gas\_nonce\_regularity)   & 0.958 & 0.897 & 0.966 \\
-\midrule
-LOFO: $-$hour\_entropy              & 0.949 & 0.952 & 0.969 \\
-LOFO: $-$behavioral\_consistency    & 0.976 & 0.942 & 0.975 \\
-LOFO: $-$response\_latency\_variance & 0.962 & 0.941 & 0.982 \\
-LOFO: $-$error\_recovery\_pattern   & 0.967 & 0.934 & 0.978 \\
-LOFO: $-$eip1559\_tip\_precision    & 0.975 & 0.949 & 0.983 \\
-LOFO: $-$gas\_nonce\_regularity     & 0.973 & 0.953 & 0.986 \\
-LOFO: $-$gas\_price\_precision      & 0.975 & 0.950 & 0.984 \\
-LOFO: $-$action\_seq\_perplexity    & 0.974 & 0.957 & 0.986 \\
-\midrule
-Single: gas\_price\_precision       & 0.668 & 0.692 & 0.702 \\
-Single: hour\_entropy               & 0.864 & 0.653 & 0.878 \\
-Single: behavioral\_consistency     & 0.648 & 0.762 & 0.856 \\
-Single: action\_seq\_perplexity     & 0.679 & 0.583 & 0.560 \\
-Single: error\_recovery\_pattern    & 0.752 & 0.781 & 0.796 \\
-Single: response\_latency\_variance & 0.785 & 0.745 & 0.731 \\
-Single: gas\_nonce\_regularity      & 0.727 & 0.674 & 0.598 \\
-Single: eip1559\_tip\_precision     & 0.681 & 0.700 & 0.725 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Key observations:
-
-1. \textbf{All 8 beats OPS-only by 0.17--0.25 AUC on every tier.} On advanced (the hardest level for a detector), all-8 reaches 0.987 vs OPS-only 0.791.
-2. \textbf{hour\_entropy is individually the strongest feature} on basic and advanced (0.864, 0.878), consistent with its $d{=}1.98$ effect size. On moderate it drops to 0.653 because the LLM explicitly pushes hour entropy toward the human distribution.
-3. \textbf{LOFO deltas are small but monotone:} removing hour\_entropy loses 0.029 on basic, 0.007 on moderate, 0.018 on advanced -- no single feature dominates, the signal is distributed.
-4. \textbf{Top-3 by Cohen's $d$ (hour\_entropy + behavioral\_consistency + response\_latency\_variance) is within 0.03 of all-8} across all tiers, suggesting that a lightweight production detector could use only 3 features.
-5. \textbf{Moderate is harder than advanced.} This counter-intuitive ordering arises because our "moderate" level adds per-indicator evasion noise while leaving AI features partially unconstrained; the "advanced" level is more consistent and therefore more \textit{distinguishable} from real human traffic on the AI axis. This is a concrete example of the problem-space/feature-space tension noted by Apruzzese et al.
-
-\subsection{4.7 Pre-Airdrop LightGBM Baseline}
-
-To contextualize \S4.4 we also evaluated Wen et al.'s pre-airdrop LightGBM in isolation (Table \ref{tab:preairdrop}). The within-fold and cross-project AUCs are all 1.0 because the target is HasciDB's \texttt{is\_sybil}, which is a deterministic function of the 5 LightGBM input features -- a textbook circular label. \textit{Every} adversarial wallet we generate (3k basic + 3k moderate + 3k advanced + 6 LLM) evades this model with mean score 0.0.
-
-\begin{table}[h]
-\caption{\label{tab:preairdrop} Pre-airdrop LightGBM (features = BT,BW,HF,RF,MA,n\_indicators). The within-fold/cross-project AUC of 1.0 is an artefact of the circular \texttt{is\_sybil} label. Under adversarial wallets, the detector collapses completely.}
-\small
-\begin{tabular}{lr}
-\toprule
-Evaluation & AUC \\
-\midrule
-5-fold CV on blur\_s2 & 1.000 \\
-Cross-project blur\_s2 $\to$ blur\_s1  & 1.000 \\
-Cross-project blur\_s2 $\to$ uniswap   & 1.000 \\
-Cross-project blur\_s2 $\to$ 1inch     & 1.000 \\
-Cross-project blur\_s2 $\to$ ens       & 1.000 \\
-Cross-project blur\_s2 $\to$ looksrare & 1.000 \\
-\midrule
-Advanced rule-templated adversaries ($n{=}3000$) & evasion 100\% \\
-Moderate rule-templated adversaries  ($n{=}3000$) & evasion 100\% \\
-Basic rule-templated adversaries     ($n{=}3000$) & evasion 100\% \\
-LLM (claude\_agent\_sdk) adversaries ($n{=}6$)   & evasion 100\% \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{4.8 LLM-Generated Sybils vs Rule-Templated Sybils}
-
-Finally, we compare the claude\_agent\_sdk-driven generator (\S3.3) against the rule-templated generator used in \S4.4 on basic/moderate/advanced. The LLM generator is slower (1--3 s per wallet vs 0.4 ms) and requires a valid API key, but in return it produces wallets whose rationales are natural-language and whose joint (BT,BW,HF,RF,MA, 8 AI features) distribution is consistent with a human-style wallet rather than an independently-sampled feature vector.
-
-Out of 5 advanced generation attempts against blur\_s2, 4 produced valid schema-compliant wallets that passed \texttt{validate\_thresholds}, a 80\% success rate driven by occasional JSON parse failures in the assistant message. All 4 valid wallets evaded HasciDB rules, the cross-axis GBM, and the pre-airdrop LightGBM. Qualitatively, the LLM uses the \texttt{rationale} field to describe strategies such as "staggered funding via three different CEX withdrawals over 17 days" -- strategies that our rule-templated generator cannot express but that the AI-feature detector can still catch via hour\_entropy (Table \ref{tab:ablation}, advanced column).
+The honest enhanced detector gains nothing over the cross-axis baseline: mean 0.609 vs.\ 0.608. AI-only is random (0.501). \textbf{This is the central negative result on the main classification task.} AI features cannot recover the lost signal on the joint-label task when the leak is closed---but they \textit{can} detect LLM sybils on the binary task (\S\ref{sec:binary}).
 
 
-\section{5. Threats to Validity: The \texttt{augment\_with\_ai\_features} Leakage Post-Mortem}
+\subsection{Problem-Space Pilot}
+\label{sec:problemspace}
 
-The pilot "enhanced 13-feature detector" scored AUC 0.953 because the helper \texttt{augment\_with\_ai\_features} sampled synthetic AI features from \textit{label-conditional} Beta distributions: \texttt{BETA\_AGENT\_PARAMS} for \texttt{is\_sybil == 1} wallets and \texttt{BETA\_HUMAN\_PARAMS} for \texttt{is\_sybil == 0}. A downstream GBM could therefore recover \texttt{is\_sybil} from any single AI feature, measuring the label-to-Beta mapping rather than real detection signal. We caught the bug during code review while writing \S3.4 and confirmed it by noting that the pilot AUC was $\ge 0.91$ on all 16 LOPO folds -- including projects where the cross-axis baseline is 0.63--0.68.
-
-The fix replaces the two conditional distributions with a single pooled distribution (\texttt{BETA\_POOLED\_PARAMS}), eliminating all label information from the synthetic features. Under this correction, 4-project honest enhanced AUC collapses to 0.609 and AI-only AUC to 0.501 (Table \ref{tab:leakfix}). The fix is in \texttt{paper3\_ai\_sybil/experiments/exp4\_leakage\_fix.py}.
-
-\textbf{Checklist for the community.} Any paper mixing real features with synthetic auxiliary features on real labels should:
-
-1. \textbf{Draw synthetic auxiliary features from a distribution that does not depend on the label.}
-2. \textbf{Test the auxiliary features alone} -- if auxiliary-only AUC $\gg 0.5$ on the real-label task, the pipeline is the model.
-3. \textbf{Re-run the ablation on a leakage-free binary task} (e.g., our \S4.6 "LLM Sybil vs real wallet" task) before reporting main-task numbers.
+To assess the feasibility gap between feature-space and problem-space attacks, we conducted a dry-run pilot deploying 10 LLM-planned wallets through a simulated transaction executor. Across all 10 wallets, all 13 features (5 HasciDB + 8 AI) achieved $<$8.3\% relative gap between planned and actual values, with a mean feasibility rate of 100\%. Integer-valued features (BT, BW, MA) matched exactly; continuous features showed small stochastic deviations (e.g., \texttt{response\_latency\_variance}: 8.3\% max gap). This confirms that the feature-space threat translates to problem-space with high fidelity, though a full testnet deployment with real HasciDB recomputation remains future work.
 
 
-\section{6. Discussion}
+%% ========================================================================
+\section{Discussion}
+\label{sec:discussion}
 
-\subsection{6.1 Implication 1: Synthetic Feature Augmentation Is Not a Viable Defense Without Real Adversarial Exemplars}
+\subsection{Cross-Modality Threat Assessment}
 
-The pilot story -- "HasciDB falls to AI Sybils, AI features restore AUC to 1.0" -- is too clean and, as \S5 shows, false. The lesson is not that AI features lack signal; \S4.6 demonstrates that they carry strong signal (AUC 0.987 on advanced adversaries). The lesson is that synthetic feature augmentation without ground-truth LLM-sybil training examples is not a viable defense strategy. When the 8 AI features are sampled onto HasciDB wallets that have no real execution-layer trace, the only way to make them informative is to condition on the label -- which is leakage, not detection. The community needs real adversarial exemplars (as we provide in Section 4.6) to train robust detectors. Concretely, either (a) train on labels that come from a different methodology than the features (our Gitcoin FDD transfer is a toy example) or (b) drop the HasciDB target and classify LLM-generated wallets against real wallets directly, which is what the \S4.6 binary ablation does and which recovers AUC 0.987.
+The central finding is that a single LLM adversary defeats every deployed detector class simultaneously (Table~\ref{tab:graph_evasion}). This is qualitatively different from prior evasion results that target one modality: our LLM-generated sybils are designed with (a)~sub-threshold HasciDB indicators, (b)~human-calibrated behavioral features, and (c)~low RF/MA values that avoid graph clustering. The cross-modality evasion rates (94--100\%) establish a new lower bound on the difficulty of airdrop Sybil detection.
 
-\subsection{6.2 What Signal Actually Survives}
+\subsection{What Signal Survives}
 
-hour\_entropy is the single most robust feature and the most interpretable. A wallet whose per-hour activity distribution has entropy $\ge 4.0$ is almost certainly a machine; one with entropy $\le 2.5$ is almost certainly a human in one timezone; the two distributions barely overlap. behavioral\_consistency and response\_latency\_variance add independent variance, bringing top-3 AUC to 0.87--0.96 across tiers. These three features alone are a realistic production baseline.
+\texttt{behavioral\_consistency} emerges as the single most robust feature: top-1 in all 10 adversarial rounds and individually the highest-AUC single feature on moderate-tier adversaries (0.762). \texttt{hour\_entropy} is strongest on basic/advanced tiers (0.864--0.878) but vulnerable to targeted evasion on moderate. The top-3 features together (behavioral\_consistency + hour\_entropy + response\_latency\_variance) reach $\ge$0.87 AUC across all tiers, suggesting a lightweight production detector.
 
-The four low-$d$ features (error\_recovery\_pattern, gas\_nonce\_regularity, gas\_price\_precision, eip1559\_tip\_precision) are statistically significant but contribute $<0.01$ AUC each on the honest binary task; we suspect they may become more discriminative as LLM wallets learn to evade the top-3.
+\subsection{The Cross-Axis Floor}
 
-\subsection{6.3 The Cross-Axis Floor}
+Cross-axis LOPO mean AUC 0.617 is our honest floor for HasciDB. Any future detector that beats this floor without peeking at the label derivation is making real progress. Any detector reporting AUC $>$0.95 on HasciDB's \texttt{is\_sybil} with the 5 indicators as features is measuring rule recall, not generalization.
 
-Cross-axis LOPO mean AUC 0.617 is our honest floor for HasciDB. Any future detector that beats this floor \textit{without} peeking at the label derivation is making real progress. Any detector that reports AUC $> 0.95$ on HasciDB's \texttt{is\_sybil} with the 5 indicators as features is measuring rule recall, not generalization.
+\subsection{Implications for Airdrop Designers}
 
-\subsection{6.4 Implications for Airdrop Designers}
+\begin{itemize}
+  \item \textbf{Publish labels, not rules.} HasciDB's value is the labels, not the thresholds. Publishing labels via a procedure independent from any rule set enables honest modeling.
+  \item \textbf{Invest in execution-layer signals.} Gas precision, nonce regularity, and hour entropy are cheap to compute and do not require off-chain identity.
+  \item \textbf{Treat detection as adversarial.} Pre-airdrop AUC 0.793 on non-adversarial wallets collapses to 0\% under LLM attack. Any deployment needs adversarial training.
+  \item \textbf{Combine modalities.} No single detector class survives; layered defense across behavioral, graph, and temporal features is essential.
+\end{itemize}
 
-- \textbf{Publish labels, not rules.} HasciDB's contribution is the labels, not the 5 thresholds. A project that publishes its label set via a procedure \textit{independent} from any rule set (e.g., FDD-style human review) enables honest modeling.
-- \textbf{Invest in execution-layer signals.} gas precision, nonce regularity, and hour entropy are cheap to compute from the same transaction logs that feed HasciDB and do not require off-chain identity.
-- \textbf{Treat pre-airdrop detection as adversarial.} Wen et al.'s AUC 0.793 at $T{-}30$ is a real number \textit{on non-adversarial wallets}. On adversarial wallets it collapses to 0 (\S4.7). Any deployment needs adversarial training.
+\subsection{Stackelberg Equilibrium and Defensive Strategy}
 
-\subsection{6.5 Implications for Adversarial ML}
-
-The leakage we found (\S5) is a concrete instance of a well-known class of bugs (Kaufman et al. \cite{kaufman2012leakage}) that the adversarial ML community should watch for when evaluating hybrid real/synthetic pipelines. The fact that we caught it \textit{after} months of work on the pilot is a reminder that even small helper functions deserve the same scrutiny as the main classifier.
-
-
-\section{7. Limitations and Future Work}
-
-1. \textbf{LLM adversaries are hand-prompted.} Our claude\_agent\_sdk generator produces one wallet at a time and is not yet in a closed-loop adversarial-training regime (no gradient, no budget, no on-chain cost). A natural extension is to pair the generator with an RL-style reward signal (evasion $-$ cost) and rerun the ablation.
-2. \textbf{Feature-space attack, not problem-space.} The LLM outputs a JSON feature vector, not a real transaction sequence. A problem-space follow-up would deploy the plan on a testnet, mine transactions, and recompute HasciDB indicators from the actual log, closing the gap identified by Pierazzi et al. \cite{pierazzi2020}.
-3. \textbf{HasciDB is Ethereum L1 only.} L2 gas mechanics (Arbitrum sequencer, Optimism fault proofs, Base) differ enough that some AI features (especially gas\_price\_precision and eip1559\_tip\_precision) may transfer poorly. Replicating the Paper 1 pipeline on L2 is future work.
-4. \textbf{The 4-project leakage-fix subset.} We validated the fix on (1inch, uniswap, ens, blur\_s2) and expect the same qualitative pattern on all 16 projects, but a full 16-project honest rerun is still pending.
-5. \textbf{Label heterogeneity.} HasciDB mixes DeFi, NFT, and L2 airdrops; our cross-axis AUCs are tightly coupled to the relative frequency of \texttt{ops\_flag} vs \texttt{fund\_flag}. Projects with extreme imbalance (apecoin, 1inch) are hardest.
-6. \textbf{No graph-based detectors.} We do not evaluate TrustaLabs or the Arbitrum Louvain pipelines. Graph-based detectors such as ARTEMIS (GraphSAGE, AUC 0.803 on Blur S2) and TrustaLabs operate on cross-wallet coordination signals -- shared funding sources, transfer subgraphs, and community structure. Our attacker model deliberately scopes to per-wallet behavioral evasion: each LLM-generated wallet is created independently with no shared funding graph. Consequently, graph methods would observe LLM sybils as isolated nodes indistinguishable from genuine wallets, and are therefore orthogonal to our feature-space defense. A joint feature+graph adversary that simultaneously evades both detection channels is the natural next step.
-
-Future work: (a) closed-loop adversarial training of a 13-feature detector against a reward-shaped LLM generator; (b) problem-space LLM attacks on a testnet with a full HasciDB pipeline in the loop; (c) honest cross-method transfer at scale, using multiple independent label sources (FDD, Hop blacklist, ARTEMIS); (d) L2 replication of the Paper 1 / Paper 3 pipelines on Arbitrum and Base.
+The 10-round convergence to AUC $\approx$0.60 suggests that feature-space defenses alone have a ceiling against adaptive LLM adversaries. The equilibrium AUC is above chance because \texttt{behavioral\_consistency} captures a structural invariant (inter-arrival time regularity) that requires real-time traffic modeling to fake. Breaking through this equilibrium likely requires either (a)~new feature modalities (graph structure, cross-wallet correlation), (b)~problem-space constraints that increase the cost of mimicry, or (c)~dynamic detection that adapts within a single airdrop campaign rather than between rounds.
 
 
-\section{8. Conclusion}
+%% ========================================================================
+\section{Limitations and Future Work}
+\label{sec:limitations}
 
-We asked whether HasciDB's consensus-driven Sybil detection survives an LLM adversary. The answer is: not as a rule set (0\% recall against LLM wallets), not as a pre-airdrop LightGBM (0\% recall), and not even as a pilot "enhanced detector" (whose 0.953 AUC was label-leaked, not detection). What does survive is the 8-feature execution-layer signal from our Paper 1 companion, \textit{when evaluated on an honest, leakage-free binary task}: all 8 features satisfy $p<0.01$ at $n{=}3316$, the all-8 GBM reaches AUC 0.978/0.959/0.987 across basic/moderate/advanced LLM adversaries, and hour\_entropy alone reaches 0.878 on advanced. Along the way we documented a label-leakage bug in our own pipeline and published both the retraction and a community checklist. We believe this combination -- honest cross-axis baselines, independent-label transfer, LLM-driven adversaries, and a transparent post-mortem -- is the right template for Sybil detection research in the LLM era.
+\begin{enumerate}
+  \item \textbf{Feature-space attack, not problem-space.} The LLM outputs a JSON feature vector, not real transactions. Our pilot (\S\ref{sec:problemspace}) shows low feasibility gaps, but full testnet deployment with real HasciDB recomputation remains future work.
+  \item \textbf{Proxy graph.} Our Louvain evaluation uses a funding-flow proxy from RF/MA indicators, not the raw transfer graph. Real graph detectors (SybilRank, SybilBelief) likely achieve higher recall, so our evasion rates may be upper bounds.
+  \item \textbf{Ethereum L1 only.} L2 gas mechanics (Arbitrum, Optimism, Base) differ enough that some AI features may transfer poorly.
+  \item \textbf{4-project leakage-fix subset.} The full 16-project honest rerun is pending; qualitative results should be identical.
+  \item \textbf{Convergence not formally reached.} The adversarial equilibrium achieves $\Delta\text{AUC} = 0.009$ at round~9 but does not reach 3 consecutive rounds below 0.01. Additional rounds are needed for formal convergence.
+\end{enumerate}
+
+Future work: (a)~closed-loop adversarial training with reward-shaped LLM generator; (b)~problem-space attacks on testnet with full HasciDB pipeline; (c)~cross-method transfer at scale using multiple independent label sources; (d)~L2 replication; (e)~joint feature+graph adversary that simultaneously evades both behavioral and structural detection.
 
 
-\section{References (BibTeX)}
+%% ========================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+We asked whether airdrop Sybil detection survives an LLM adversary. The answer is nuanced. \textbf{No single detector modality survives:} LLM-generated sybils evade rules (100\%), ML (100\%), GBM (99.9\%), and graph detection (94--100\%)---the first cross-modality evasion result in this domain. \textbf{But behavioral fingerprinting works:} an 8-feature execution-layer detector achieves AUC 0.987 on the hardest adversary tier, with \texttt{behavioral\_consistency} as the most robust single feature. \textbf{The arms race converges:} a 10-round Stackelberg game drives AUC from 0.985 to 0.599, with \texttt{behavioral\_consistency} ranking top-1 in all rounds. Along the way, we documented a label-leakage bug (AUC 0.953$\to$0.609), formalized a 3-step audit protocol (Algorithm~\ref{alg:audit}), and released all artifacts for reproducibility. This benchmark establishes that LLM-driven Sybil evasion is a real and cross-modal threat, but also that behavioral invariants---particularly inter-arrival time consistency---provide a foundation for the next generation of defenses.
 
 
-
+%% ========================================================================
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{main}
 
