@@ -1,0 +1,106 @@
+{
+  "run_timestamp": "20260414_193923",
+  "description": "Temporal holdout validation: train on addresses first seen before the median block, test on addresses first seen after. Compares with standard random 5x10-fold stratified CV.",
+  "split_metadata": {
+    "n_total": 1147,
+    "n_train": 573,
+    "n_test": 574,
+    "split_block": 12321026,
+    "train_block_range": [
+      207947,
+      12320263
+    ],
+    "test_block_range": [
+      12321026,
+      20318097
+    ],
+    "train_date_range": [
+      "2015-09-09",
+      "2021-04-27"
+    ],
+    "test_date_range": [
+      "2021-04-27",
+      "2024-07-16"
+    ],
+    "train_agents": 170,
+    "train_humans": 403,
+    "test_agents": 363,
+    "test_humans": 211
+  },
+  "temporal_holdout": {
+    "RandomForest": {
+      "auc": 0.6693,
+      "f1": 0.4471,
+      "precision": 0.8116,
+      "recall": 0.3085,
+      "accuracy": 0.5174,
+      "n_train": 573,
+      "n_test": 574
+    },
+    "GradientBoosting": {
+      "auc": 0.6645,
+      "f1": 0.6043,
+      "precision": 0.7669,
+      "recall": 0.4986,
+      "accuracy": 0.5871,
+      "n_train": 573,
+      "n_test": 574
+    },
+    "LogisticRegression": {
+      "auc": 0.616,
+      "f1": 0.5368,
+      "precision": 0.7391,
+      "recall": 0.4215,
+      "accuracy": 0.5401,
+      "n_train": 573,
+      "n_test": 574
+    }
+  },
+  "random_cv": {
+    "RandomForest": {
+      "auc": 0.8029,
+      "auc_std": 0.027,
+      "f1": 0.681,
+      "precision": 0.7548,
+      "recall": 0.6229,
+      "accuracy": 0.7299,
+      "n_splits": 5,
+      "n_repeats": 10
+    },
+    "GradientBoosting": {
+      "auc": 0.8018,
+      "auc_std": 0.0271,
+      "f1": 0.6982,
+      "precision": 0.7253,
+      "recall": 0.6752,
+      "accuracy": 0.7295,
+      "n_splits": 5,
+      "n_repeats": 10
+    },
+    "LogisticRegression": {
+      "auc": 0.7793,
+      "auc_std": 0.0279,
+      "f1": 0.6823,
+      "precision": 0.7114,
+      "recall": 0.6576,
+      "accuracy": 0.7159,
+      "n_splits": 5,
+      "n_repeats": 10
+    }
+  },
+  "deltas": {
+    "RandomForest": {
+      "auc_delta": -0.1336,
+      "f1_delta": -0.2339
+    },
+    "GradientBoosting": {
+      "auc_delta": -0.1373,
+      "f1_delta": -0.0939
+    },
+    "LogisticRegression": {
+      "auc_delta": -0.1633,
+      "f1_delta": -0.1455
+    }
+  },
+  "elapsed_seconds": 24.12
+}
