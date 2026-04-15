@@ -1,0 +1,1361 @@
+{
+  "config": {
+    "n_rounds": 10,
+    "n_sybils_per_round": 3000,
+    "n_real_sample": 15000,
+    "n_cv_folds": 5,
+    "n_probe_sybils": 500,
+    "blend_grid": [
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95
+    ],
+    "initial_seeds": [
+      42,
+      137,
+      314
+    ],
+    "gbm_params": {
+      "n_estimators": 150,
+      "max_depth": 4,
+      "learning_rate": 0.1,
+      "subsample": 0.8,
+      "random_state": 42
+    }
+  },
+  "best_response_runs": {
+    "42": [
+      {
+        "round": 0,
+        "human_blend": 0.45,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 3000,
+        "n_real": 15000,
+        "detector_auc": 0.9869,
+        "detector_auc_std": 0.002,
+        "evasion_rate": null,
+        "detection_rate_prev": null,
+        "top3_features": {
+          "behavioral_consistency": 0.392,
+          "hour_entropy": 0.278,
+          "error_recovery_pattern": 0.1399
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.392,
+          "hour_entropy": 0.278,
+          "error_recovery_pattern": 0.1399,
+          "response_latency_variance": 0.0721,
+          "eip1559_tip_precision": 0.0634,
+          "gas_price_precision": 0.0342,
+          "gas_nonce_gap_regularity": 0.0122,
+          "action_sequence_perplexity": 0.0081
+        },
+        "evasion_by_blend": null
+      },
+      {
+        "round": 1,
+        "human_blend": 0.9,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 6000,
+        "n_real": 15000,
+        "detector_auc": 0.7614,
+        "detector_auc_std": 0.0046,
+        "evasion_rate": 0.974,
+        "detection_rate_prev": 0.026,
+        "top3_features": {
+          "behavioral_consistency": 0.3399,
+          "hour_entropy": 0.2198,
+          "error_recovery_pattern": 0.1265
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.3399,
+          "hour_entropy": 0.2198,
+          "error_recovery_pattern": 0.1265,
+          "response_latency_variance": 0.1155,
+          "eip1559_tip_precision": 0.0739,
+          "gas_price_precision": 0.0567,
+          "gas_nonce_gap_regularity": 0.0372,
+          "action_sequence_perplexity": 0.0305
+        },
+        "evasion_by_blend": {
+          "0.3": 0.886,
+          "0.35": 0.902,
+          "0.4": 0.902,
+          "0.45": 0.908,
+          "0.5": 0.934,
+          "0.55": 0.928,
+          "0.6": 0.936,
+          "0.65": 0.95,
+          "0.7": 0.944,
+          "0.75": 0.96,
+          "0.8": 0.958,
+          "0.85": 0.972,
+          "0.9": 0.976,
+          "0.95": 0.968
+        }
+      },
+      {
+        "round": 2,
+        "human_blend": 0.9,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 9000,
+        "n_real": 15000,
+        "detector_auc": 0.688,
+        "detector_auc_std": 0.0045,
+        "evasion_rate": 0.96,
+        "detection_rate_prev": 0.04,
+        "top3_features": {
+          "behavioral_consistency": 0.2983,
+          "hour_entropy": 0.1928,
+          "response_latency_variance": 0.1395
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2983,
+          "hour_entropy": 0.1928,
+          "response_latency_variance": 0.1395,
+          "error_recovery_pattern": 0.1223,
+          "eip1559_tip_precision": 0.0852,
+          "gas_price_precision": 0.0697,
+          "gas_nonce_gap_regularity": 0.0495,
+          "action_sequence_perplexity": 0.0427
+        },
+        "evasion_by_blend": {
+          "0.3": 0.77,
+          "0.35": 0.796,
+          "0.4": 0.808,
+          "0.45": 0.828,
+          "0.5": 0.854,
+          "0.55": 0.876,
+          "0.6": 0.89,
+          "0.65": 0.91,
+          "0.7": 0.912,
+          "0.75": 0.93,
+          "0.8": 0.95,
+          "0.85": 0.964,
+          "0.9": 0.966,
+          "0.95": 0.956
+        }
+      },
+      {
+        "round": 3,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 12000,
+        "n_real": 15000,
+        "detector_auc": 0.6472,
+        "detector_auc_std": 0.0026,
+        "evasion_rate": 0.9417,
+        "detection_rate_prev": 0.0583,
+        "top3_features": {
+          "behavioral_consistency": 0.2655,
+          "hour_entropy": 0.1834,
+          "response_latency_variance": 0.1343
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2655,
+          "hour_entropy": 0.1834,
+          "response_latency_variance": 0.1343,
+          "error_recovery_pattern": 0.1294,
+          "eip1559_tip_precision": 0.0971,
+          "gas_price_precision": 0.082,
+          "gas_nonce_gap_regularity": 0.0557,
+          "action_sequence_perplexity": 0.0527
+        },
+        "evasion_by_blend": {
+          "0.3": 0.794,
+          "0.35": 0.818,
+          "0.4": 0.83,
+          "0.45": 0.816,
+          "0.5": 0.862,
+          "0.55": 0.874,
+          "0.6": 0.852,
+          "0.65": 0.884,
+          "0.7": 0.884,
+          "0.75": 0.894,
+          "0.8": 0.918,
+          "0.85": 0.914,
+          "0.9": 0.928,
+          "0.95": 0.936
+        }
+      },
+      {
+        "round": 4,
+        "human_blend": 0.85,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 15000,
+        "n_real": 15000,
+        "detector_auc": 0.6313,
+        "detector_auc_std": 0.0047,
+        "evasion_rate": 0.8503,
+        "detection_rate_prev": 0.1497,
+        "top3_features": {
+          "behavioral_consistency": 0.2425,
+          "hour_entropy": 0.1676,
+          "error_recovery_pattern": 0.1413
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2425,
+          "hour_entropy": 0.1676,
+          "error_recovery_pattern": 0.1413,
+          "response_latency_variance": 0.1297,
+          "eip1559_tip_precision": 0.1017,
+          "gas_price_precision": 0.0849,
+          "action_sequence_perplexity": 0.0673,
+          "gas_nonce_gap_regularity": 0.0651
+        },
+        "evasion_by_blend": {
+          "0.3": 0.706,
+          "0.35": 0.71,
+          "0.4": 0.732,
+          "0.45": 0.766,
+          "0.5": 0.778,
+          "0.55": 0.802,
+          "0.6": 0.808,
+          "0.65": 0.81,
+          "0.7": 0.83,
+          "0.75": 0.846,
+          "0.8": 0.864,
+          "0.85": 0.88,
+          "0.9": 0.862,
+          "0.95": 0.876
+        }
+      },
+      {
+        "round": 5,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 18000,
+        "n_real": 15000,
+        "detector_auc": 0.6121,
+        "detector_auc_std": 0.0039,
+        "evasion_rate": 0.7063,
+        "detection_rate_prev": 0.2937,
+        "top3_features": {
+          "behavioral_consistency": 0.23,
+          "hour_entropy": 0.162,
+          "error_recovery_pattern": 0.1381
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.23,
+          "hour_entropy": 0.162,
+          "error_recovery_pattern": 0.1381,
+          "response_latency_variance": 0.1323,
+          "eip1559_tip_precision": 0.1004,
+          "gas_price_precision": 0.0958,
+          "action_sequence_perplexity": 0.0722,
+          "gas_nonce_gap_regularity": 0.0693
+        },
+        "evasion_by_blend": {
+          "0.3": 0.328,
+          "0.35": 0.334,
+          "0.4": 0.338,
+          "0.45": 0.354,
+          "0.5": 0.408,
+          "0.55": 0.422,
+          "0.6": 0.456,
+          "0.65": 0.5,
+          "0.7": 0.518,
+          "0.75": 0.536,
+          "0.8": 0.616,
+          "0.85": 0.62,
+          "0.9": 0.666,
+          "0.95": 0.68
+        }
+      },
+      {
+        "round": 6,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 21000,
+        "n_real": 15000,
+        "detector_auc": 0.5979,
+        "detector_auc_std": 0.0045,
+        "evasion_rate": 0.457,
+        "detection_rate_prev": 0.543,
+        "top3_features": {
+          "behavioral_consistency": 0.216,
+          "hour_entropy": 0.1583,
+          "response_latency_variance": 0.1363
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.216,
+          "hour_entropy": 0.1583,
+          "response_latency_variance": 0.1363,
+          "error_recovery_pattern": 0.1337,
+          "eip1559_tip_precision": 0.1056,
+          "gas_price_precision": 0.0966,
+          "action_sequence_perplexity": 0.0791,
+          "gas_nonce_gap_regularity": 0.0745
+        },
+        "evasion_by_blend": {
+          "0.3": 0.136,
+          "0.35": 0.154,
+          "0.4": 0.164,
+          "0.45": 0.17,
+          "0.5": 0.214,
+          "0.55": 0.236,
+          "0.6": 0.234,
+          "0.65": 0.258,
+          "0.7": 0.29,
+          "0.75": 0.332,
+          "0.8": 0.356,
+          "0.85": 0.356,
+          "0.9": 0.432,
+          "0.95": 0.492
+        }
+      },
+      {
+        "round": 7,
+        "human_blend": 0.9,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 24000,
+        "n_real": 15000,
+        "detector_auc": 0.5938,
+        "detector_auc_std": 0.0021,
+        "evasion_rate": 0.1753,
+        "detection_rate_prev": 0.8247,
+        "top3_features": {
+          "behavioral_consistency": 0.2052,
+          "error_recovery_pattern": 0.1485,
+          "hour_entropy": 0.1436
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2052,
+          "error_recovery_pattern": 0.1485,
+          "hour_entropy": 0.1436,
+          "response_latency_variance": 0.1292,
+          "eip1559_tip_precision": 0.1093,
+          "gas_price_precision": 0.0977,
+          "action_sequence_perplexity": 0.0843,
+          "gas_nonce_gap_regularity": 0.0822
+        },
+        "evasion_by_blend": {
+          "0.3": 0.062,
+          "0.35": 0.054,
+          "0.4": 0.058,
+          "0.45": 0.072,
+          "0.5": 0.074,
+          "0.55": 0.1,
+          "0.6": 0.096,
+          "0.65": 0.112,
+          "0.7": 0.11,
+          "0.75": 0.116,
+          "0.8": 0.138,
+          "0.85": 0.152,
+          "0.9": 0.186,
+          "0.95": 0.176
+        }
+      },
+      {
+        "round": 8,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 27000,
+        "n_real": 15000,
+        "detector_auc": 0.5851,
+        "detector_auc_std": 0.0075,
+        "evasion_rate": 0.1003,
+        "detection_rate_prev": 0.8997,
+        "top3_features": {
+          "behavioral_consistency": 0.197,
+          "hour_entropy": 0.1445,
+          "error_recovery_pattern": 0.1422
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.197,
+          "hour_entropy": 0.1445,
+          "error_recovery_pattern": 0.1422,
+          "response_latency_variance": 0.1314,
+          "eip1559_tip_precision": 0.1097,
+          "gas_price_precision": 0.1046,
+          "action_sequence_perplexity": 0.0895,
+          "gas_nonce_gap_regularity": 0.0812
+        },
+        "evasion_by_blend": {
+          "0.3": 0.014,
+          "0.35": 0.014,
+          "0.4": 0.022,
+          "0.45": 0.02,
+          "0.5": 0.028,
+          "0.55": 0.032,
+          "0.6": 0.04,
+          "0.65": 0.032,
+          "0.7": 0.046,
+          "0.75": 0.04,
+          "0.8": 0.054,
+          "0.85": 0.066,
+          "0.9": 0.084,
+          "0.95": 0.096
+        }
+      },
+      {
+        "round": 9,
+        "human_blend": 0.9,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 30000,
+        "n_real": 15000,
+        "detector_auc": 0.5829,
+        "detector_auc_std": 0.0054,
+        "evasion_rate": 0.0293,
+        "detection_rate_prev": 0.9707,
+        "top3_features": {
+          "behavioral_consistency": 0.1908,
+          "response_latency_variance": 0.1406,
+          "hour_entropy": 0.1398
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.1908,
+          "response_latency_variance": 0.1406,
+          "hour_entropy": 0.1398,
+          "error_recovery_pattern": 0.1385,
+          "eip1559_tip_precision": 0.1095,
+          "gas_price_precision": 0.1057,
+          "gas_nonce_gap_regularity": 0.0884,
+          "action_sequence_perplexity": 0.0868
+        },
+        "evasion_by_blend": {
+          "0.3": 0.004,
+          "0.35": 0.0,
+          "0.4": 0.004,
+          "0.45": 0.004,
+          "0.5": 0.006,
+          "0.55": 0.01,
+          "0.6": 0.014,
+          "0.65": 0.004,
+          "0.7": 0.026,
+          "0.75": 0.024,
+          "0.8": 0.022,
+          "0.85": 0.016,
+          "0.9": 0.03,
+          "0.95": 0.03
+        }
+      }
+    ],
+    "137": [
+      {
+        "round": 0,
+        "human_blend": 0.45,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 3000,
+        "n_real": 15000,
+        "detector_auc": 0.9849,
+        "detector_auc_std": 0.0022,
+        "evasion_rate": null,
+        "detection_rate_prev": null,
+        "top3_features": {
+          "behavioral_consistency": 0.3753,
+          "hour_entropy": 0.2809,
+          "error_recovery_pattern": 0.1508
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.3753,
+          "hour_entropy": 0.2809,
+          "error_recovery_pattern": 0.1508,
+          "response_latency_variance": 0.0836,
+          "eip1559_tip_precision": 0.0545,
+          "gas_price_precision": 0.0328,
+          "gas_nonce_gap_regularity": 0.0134,
+          "action_sequence_perplexity": 0.0088
+        },
+        "evasion_by_blend": null
+      },
+      {
+        "round": 1,
+        "human_blend": 0.85,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 6000,
+        "n_real": 15000,
+        "detector_auc": 0.7783,
+        "detector_auc_std": 0.0072,
+        "evasion_rate": 0.9717,
+        "detection_rate_prev": 0.0283,
+        "top3_features": {
+          "behavioral_consistency": 0.3178,
+          "hour_entropy": 0.2088,
+          "response_latency_variance": 0.1513
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.3178,
+          "hour_entropy": 0.2088,
+          "response_latency_variance": 0.1513,
+          "error_recovery_pattern": 0.1395,
+          "eip1559_tip_precision": 0.0683,
+          "gas_price_precision": 0.0494,
+          "gas_nonce_gap_regularity": 0.033,
+          "action_sequence_perplexity": 0.0319
+        },
+        "evasion_by_blend": {
+          "0.3": 0.894,
+          "0.35": 0.898,
+          "0.4": 0.914,
+          "0.45": 0.918,
+          "0.5": 0.914,
+          "0.55": 0.92,
+          "0.6": 0.948,
+          "0.65": 0.954,
+          "0.7": 0.944,
+          "0.75": 0.972,
+          "0.8": 0.974,
+          "0.85": 0.978,
+          "0.9": 0.962,
+          "0.95": 0.976
+        }
+      },
+      {
+        "round": 2,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 9000,
+        "n_real": 15000,
+        "detector_auc": 0.6957,
+        "detector_auc_std": 0.0063,
+        "evasion_rate": 0.9563,
+        "detection_rate_prev": 0.0437,
+        "top3_features": {
+          "behavioral_consistency": 0.2845,
+          "hour_entropy": 0.1959,
+          "response_latency_variance": 0.1457
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2845,
+          "hour_entropy": 0.1959,
+          "response_latency_variance": 0.1457,
+          "error_recovery_pattern": 0.1427,
+          "eip1559_tip_precision": 0.078,
+          "gas_price_precision": 0.0651,
+          "action_sequence_perplexity": 0.0445,
+          "gas_nonce_gap_regularity": 0.0437
+        },
+        "evasion_by_blend": {
+          "0.3": 0.844,
+          "0.35": 0.884,
+          "0.4": 0.87,
+          "0.45": 0.874,
+          "0.5": 0.888,
+          "0.55": 0.914,
+          "0.6": 0.924,
+          "0.65": 0.918,
+          "0.7": 0.916,
+          "0.75": 0.924,
+          "0.8": 0.93,
+          "0.85": 0.93,
+          "0.9": 0.948,
+          "0.95": 0.952
+        }
+      },
+      {
+        "round": 3,
+        "human_blend": 0.9,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 12000,
+        "n_real": 15000,
+        "detector_auc": 0.6542,
+        "detector_auc_std": 0.0063,
+        "evasion_rate": 0.9257,
+        "detection_rate_prev": 0.0743,
+        "top3_features": {
+          "behavioral_consistency": 0.265,
+          "hour_entropy": 0.1869,
+          "error_recovery_pattern": 0.1464
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.265,
+          "hour_entropy": 0.1869,
+          "error_recovery_pattern": 0.1464,
+          "response_latency_variance": 0.1356,
+          "eip1559_tip_precision": 0.0831,
+          "gas_price_precision": 0.0713,
+          "action_sequence_perplexity": 0.0575,
+          "gas_nonce_gap_regularity": 0.0542
+        },
+        "evasion_by_blend": {
+          "0.3": 0.81,
+          "0.35": 0.804,
+          "0.4": 0.818,
+          "0.45": 0.844,
+          "0.5": 0.86,
+          "0.55": 0.882,
+          "0.6": 0.896,
+          "0.65": 0.89,
+          "0.7": 0.912,
+          "0.75": 0.88,
+          "0.8": 0.904,
+          "0.85": 0.93,
+          "0.9": 0.934,
+          "0.95": 0.934
+        }
+      },
+      {
+        "round": 4,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 15000,
+        "n_real": 15000,
+        "detector_auc": 0.6257,
+        "detector_auc_std": 0.0027,
+        "evasion_rate": 0.87,
+        "detection_rate_prev": 0.13,
+        "top3_features": {
+          "behavioral_consistency": 0.2499,
+          "hour_entropy": 0.1792,
+          "error_recovery_pattern": 0.1401
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2499,
+          "hour_entropy": 0.1792,
+          "error_recovery_pattern": 0.1401,
+          "response_latency_variance": 0.1386,
+          "eip1559_tip_precision": 0.0882,
+          "gas_price_precision": 0.0775,
+          "gas_nonce_gap_regularity": 0.0657,
+          "action_sequence_perplexity": 0.0607
+        },
+        "evasion_by_blend": {
+          "0.3": 0.54,
+          "0.35": 0.558,
+          "0.4": 0.59,
+          "0.45": 0.596,
+          "0.5": 0.642,
+          "0.55": 0.674,
+          "0.6": 0.712,
+          "0.65": 0.712,
+          "0.7": 0.744,
+          "0.75": 0.778,
+          "0.8": 0.796,
+          "0.85": 0.818,
+          "0.9": 0.836,
+          "0.95": 0.896
+        }
+      },
+      {
+        "round": 5,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 18000,
+        "n_real": 15000,
+        "detector_auc": 0.6089,
+        "detector_auc_std": 0.005,
+        "evasion_rate": 0.7333,
+        "detection_rate_prev": 0.2667,
+        "top3_features": {
+          "behavioral_consistency": 0.2337,
+          "hour_entropy": 0.1707,
+          "response_latency_variance": 0.1399
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2337,
+          "hour_entropy": 0.1707,
+          "response_latency_variance": 0.1399,
+          "error_recovery_pattern": 0.1353,
+          "eip1559_tip_precision": 0.0868,
+          "gas_price_precision": 0.086,
+          "action_sequence_perplexity": 0.0746,
+          "gas_nonce_gap_regularity": 0.0729
+        },
+        "evasion_by_blend": {
+          "0.3": 0.324,
+          "0.35": 0.358,
+          "0.4": 0.378,
+          "0.45": 0.398,
+          "0.5": 0.414,
+          "0.55": 0.464,
+          "0.6": 0.478,
+          "0.65": 0.534,
+          "0.7": 0.564,
+          "0.75": 0.622,
+          "0.8": 0.62,
+          "0.85": 0.652,
+          "0.9": 0.656,
+          "0.95": 0.72
+        }
+      },
+      {
+        "round": 6,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 21000,
+        "n_real": 15000,
+        "detector_auc": 0.597,
+        "detector_auc_std": 0.0065,
+        "evasion_rate": 0.458,
+        "detection_rate_prev": 0.542,
+        "top3_features": {
+          "behavioral_consistency": 0.217,
+          "hour_entropy": 0.1673,
+          "response_latency_variance": 0.1375
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.217,
+          "hour_entropy": 0.1673,
+          "response_latency_variance": 0.1375,
+          "error_recovery_pattern": 0.1357,
+          "eip1559_tip_precision": 0.0919,
+          "gas_price_precision": 0.0902,
+          "action_sequence_perplexity": 0.0826,
+          "gas_nonce_gap_regularity": 0.0778
+        },
+        "evasion_by_blend": {
+          "0.3": 0.152,
+          "0.35": 0.18,
+          "0.4": 0.162,
+          "0.45": 0.198,
+          "0.5": 0.202,
+          "0.55": 0.254,
+          "0.6": 0.272,
+          "0.65": 0.244,
+          "0.7": 0.304,
+          "0.75": 0.316,
+          "0.8": 0.336,
+          "0.85": 0.348,
+          "0.9": 0.392,
+          "0.95": 0.442
+        }
+      },
+      {
+        "round": 7,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 24000,
+        "n_real": 15000,
+        "detector_auc": 0.5881,
+        "detector_auc_std": 0.0036,
+        "evasion_rate": 0.1847,
+        "detection_rate_prev": 0.8153,
+        "top3_features": {
+          "behavioral_consistency": 0.2101,
+          "hour_entropy": 0.1636,
+          "error_recovery_pattern": 0.148
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2101,
+          "hour_entropy": 0.1636,
+          "error_recovery_pattern": 0.148,
+          "response_latency_variance": 0.1271,
+          "eip1559_tip_precision": 0.0956,
+          "gas_price_precision": 0.0898,
+          "action_sequence_perplexity": 0.0843,
+          "gas_nonce_gap_regularity": 0.0816
+        },
+        "evasion_by_blend": {
+          "0.3": 0.042,
+          "0.35": 0.048,
+          "0.4": 0.054,
+          "0.45": 0.066,
+          "0.5": 0.066,
+          "0.55": 0.05,
+          "0.6": 0.074,
+          "0.65": 0.086,
+          "0.7": 0.094,
+          "0.75": 0.108,
+          "0.8": 0.114,
+          "0.85": 0.152,
+          "0.9": 0.166,
+          "0.95": 0.194
+        }
+      },
+      {
+        "round": 8,
+        "human_blend": 0.9,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 27000,
+        "n_real": 15000,
+        "detector_auc": 0.5848,
+        "detector_auc_std": 0.0045,
+        "evasion_rate": 0.0703,
+        "detection_rate_prev": 0.9297,
+        "top3_features": {
+          "behavioral_consistency": 0.1951,
+          "hour_entropy": 0.1633,
+          "error_recovery_pattern": 0.1383
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.1951,
+          "hour_entropy": 0.1633,
+          "error_recovery_pattern": 0.1383,
+          "response_latency_variance": 0.1371,
+          "gas_price_precision": 0.0979,
+          "eip1559_tip_precision": 0.0969,
+          "action_sequence_perplexity": 0.0878,
+          "gas_nonce_gap_regularity": 0.0836
+        },
+        "evasion_by_blend": {
+          "0.3": 0.01,
+          "0.35": 0.01,
+          "0.4": 0.03,
+          "0.45": 0.01,
+          "0.5": 0.014,
+          "0.55": 0.026,
+          "0.6": 0.018,
+          "0.65": 0.024,
+          "0.7": 0.026,
+          "0.75": 0.042,
+          "0.8": 0.054,
+          "0.85": 0.066,
+          "0.9": 0.082,
+          "0.95": 0.068
+        }
+      },
+      {
+        "round": 9,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 30000,
+        "n_real": 15000,
+        "detector_auc": 0.5777,
+        "detector_auc_std": 0.006,
+        "evasion_rate": 0.0343,
+        "detection_rate_prev": 0.9657,
+        "top3_features": {
+          "behavioral_consistency": 0.187,
+          "hour_entropy": 0.1531,
+          "error_recovery_pattern": 0.1456
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.187,
+          "hour_entropy": 0.1531,
+          "error_recovery_pattern": 0.1456,
+          "response_latency_variance": 0.1421,
+          "eip1559_tip_precision": 0.1046,
+          "gas_price_precision": 0.0924,
+          "gas_nonce_gap_regularity": 0.0878,
+          "action_sequence_perplexity": 0.0874
+        },
+        "evasion_by_blend": {
+          "0.3": 0.006,
+          "0.35": 0.002,
+          "0.4": 0.002,
+          "0.45": 0.004,
+          "0.5": 0.01,
+          "0.55": 0.002,
+          "0.6": 0.004,
+          "0.65": 0.012,
+          "0.7": 0.008,
+          "0.75": 0.012,
+          "0.8": 0.016,
+          "0.85": 0.026,
+          "0.9": 0.022,
+          "0.95": 0.028
+        }
+      }
+    ],
+    "314": [
+      {
+        "round": 0,
+        "human_blend": 0.45,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 3000,
+        "n_real": 15000,
+        "detector_auc": 0.9846,
+        "detector_auc_std": 0.0023,
+        "evasion_rate": null,
+        "detection_rate_prev": null,
+        "top3_features": {
+          "behavioral_consistency": 0.3634,
+          "hour_entropy": 0.2831,
+          "error_recovery_pattern": 0.1542
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.3634,
+          "hour_entropy": 0.2831,
+          "error_recovery_pattern": 0.1542,
+          "response_latency_variance": 0.0847,
+          "eip1559_tip_precision": 0.0551,
+          "gas_price_precision": 0.0367,
+          "gas_nonce_gap_regularity": 0.0118,
+          "action_sequence_perplexity": 0.011
+        },
+        "evasion_by_blend": null
+      },
+      {
+        "round": 1,
+        "human_blend": 0.8,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 6000,
+        "n_real": 15000,
+        "detector_auc": 0.7908,
+        "detector_auc_std": 0.0062,
+        "evasion_rate": 0.9657,
+        "detection_rate_prev": 0.0343,
+        "top3_features": {
+          "behavioral_consistency": 0.2907,
+          "hour_entropy": 0.1952,
+          "response_latency_variance": 0.1866
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2907,
+          "hour_entropy": 0.1952,
+          "response_latency_variance": 0.1866,
+          "error_recovery_pattern": 0.1423,
+          "eip1559_tip_precision": 0.0591,
+          "gas_price_precision": 0.0531,
+          "action_sequence_perplexity": 0.0413,
+          "gas_nonce_gap_regularity": 0.0318
+        },
+        "evasion_by_blend": {
+          "0.3": 0.914,
+          "0.35": 0.906,
+          "0.4": 0.908,
+          "0.45": 0.92,
+          "0.5": 0.936,
+          "0.55": 0.936,
+          "0.6": 0.96,
+          "0.65": 0.964,
+          "0.7": 0.962,
+          "0.75": 0.976,
+          "0.8": 0.984,
+          "0.85": 0.982,
+          "0.9": 0.982,
+          "0.95": 0.982
+        }
+      },
+      {
+        "round": 2,
+        "human_blend": 0.9,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 9000,
+        "n_real": 15000,
+        "detector_auc": 0.7091,
+        "detector_auc_std": 0.0051,
+        "evasion_rate": 0.946,
+        "detection_rate_prev": 0.054,
+        "top3_features": {
+          "behavioral_consistency": 0.2516,
+          "hour_entropy": 0.1789,
+          "response_latency_variance": 0.1762
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2516,
+          "hour_entropy": 0.1789,
+          "response_latency_variance": 0.1762,
+          "error_recovery_pattern": 0.1596,
+          "eip1559_tip_precision": 0.0711,
+          "gas_price_precision": 0.0644,
+          "action_sequence_perplexity": 0.0509,
+          "gas_nonce_gap_regularity": 0.0473
+        },
+        "evasion_by_blend": {
+          "0.3": 0.856,
+          "0.35": 0.862,
+          "0.4": 0.88,
+          "0.45": 0.894,
+          "0.5": 0.902,
+          "0.55": 0.902,
+          "0.6": 0.91,
+          "0.65": 0.924,
+          "0.7": 0.924,
+          "0.75": 0.93,
+          "0.8": 0.918,
+          "0.85": 0.93,
+          "0.9": 0.962,
+          "0.95": 0.95
+        }
+      },
+      {
+        "round": 3,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 12000,
+        "n_real": 15000,
+        "detector_auc": 0.66,
+        "detector_auc_std": 0.0039,
+        "evasion_rate": 0.9217,
+        "detection_rate_prev": 0.0783,
+        "top3_features": {
+          "behavioral_consistency": 0.2344,
+          "response_latency_variance": 0.1716,
+          "hour_entropy": 0.1688
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2344,
+          "response_latency_variance": 0.1716,
+          "hour_entropy": 0.1688,
+          "error_recovery_pattern": 0.1635,
+          "eip1559_tip_precision": 0.0761,
+          "gas_price_precision": 0.0726,
+          "action_sequence_perplexity": 0.0573,
+          "gas_nonce_gap_regularity": 0.0556
+        },
+        "evasion_by_blend": {
+          "0.3": 0.784,
+          "0.35": 0.798,
+          "0.4": 0.796,
+          "0.45": 0.816,
+          "0.5": 0.826,
+          "0.55": 0.844,
+          "0.6": 0.856,
+          "0.65": 0.864,
+          "0.7": 0.864,
+          "0.75": 0.87,
+          "0.8": 0.896,
+          "0.85": 0.884,
+          "0.9": 0.906,
+          "0.95": 0.91
+        }
+      },
+      {
+        "round": 4,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 15000,
+        "n_real": 15000,
+        "detector_auc": 0.6351,
+        "detector_auc_std": 0.0063,
+        "evasion_rate": 0.864,
+        "detection_rate_prev": 0.136,
+        "top3_features": {
+          "behavioral_consistency": 0.2236,
+          "error_recovery_pattern": 0.1714,
+          "response_latency_variance": 0.1571
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2236,
+          "error_recovery_pattern": 0.1714,
+          "response_latency_variance": 0.1571,
+          "hour_entropy": 0.1555,
+          "eip1559_tip_precision": 0.0817,
+          "gas_price_precision": 0.0806,
+          "action_sequence_perplexity": 0.0689,
+          "gas_nonce_gap_regularity": 0.0612
+        },
+        "evasion_by_blend": {
+          "0.3": 0.682,
+          "0.35": 0.702,
+          "0.4": 0.71,
+          "0.45": 0.712,
+          "0.5": 0.75,
+          "0.55": 0.766,
+          "0.6": 0.762,
+          "0.65": 0.766,
+          "0.7": 0.786,
+          "0.75": 0.8,
+          "0.8": 0.806,
+          "0.85": 0.848,
+          "0.9": 0.858,
+          "0.95": 0.876
+        }
+      },
+      {
+        "round": 5,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 18000,
+        "n_real": 15000,
+        "detector_auc": 0.6141,
+        "detector_auc_std": 0.0033,
+        "evasion_rate": 0.7337,
+        "detection_rate_prev": 0.2663,
+        "top3_features": {
+          "behavioral_consistency": 0.2094,
+          "error_recovery_pattern": 0.1624,
+          "response_latency_variance": 0.1596
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2094,
+          "error_recovery_pattern": 0.1624,
+          "response_latency_variance": 0.1596,
+          "hour_entropy": 0.1473,
+          "eip1559_tip_precision": 0.0923,
+          "gas_price_precision": 0.0881,
+          "gas_nonce_gap_regularity": 0.0705,
+          "action_sequence_perplexity": 0.0703
+        },
+        "evasion_by_blend": {
+          "0.3": 0.492,
+          "0.35": 0.544,
+          "0.4": 0.562,
+          "0.45": 0.582,
+          "0.5": 0.596,
+          "0.55": 0.616,
+          "0.6": 0.668,
+          "0.65": 0.672,
+          "0.7": 0.688,
+          "0.75": 0.682,
+          "0.8": 0.68,
+          "0.85": 0.702,
+          "0.9": 0.726,
+          "0.95": 0.734
+        }
+      },
+      {
+        "round": 6,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 21000,
+        "n_real": 15000,
+        "detector_auc": 0.6007,
+        "detector_auc_std": 0.0084,
+        "evasion_rate": 0.4693,
+        "detection_rate_prev": 0.5307,
+        "top3_features": {
+          "behavioral_consistency": 0.1998,
+          "error_recovery_pattern": 0.1671,
+          "response_latency_variance": 0.1502
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.1998,
+          "error_recovery_pattern": 0.1671,
+          "response_latency_variance": 0.1502,
+          "hour_entropy": 0.1467,
+          "eip1559_tip_precision": 0.095,
+          "gas_price_precision": 0.0926,
+          "action_sequence_perplexity": 0.0772,
+          "gas_nonce_gap_regularity": 0.0716
+        },
+        "evasion_by_blend": {
+          "0.3": 0.266,
+          "0.35": 0.294,
+          "0.4": 0.288,
+          "0.45": 0.298,
+          "0.5": 0.354,
+          "0.55": 0.336,
+          "0.6": 0.35,
+          "0.65": 0.396,
+          "0.7": 0.376,
+          "0.75": 0.456,
+          "0.8": 0.406,
+          "0.85": 0.434,
+          "0.9": 0.476,
+          "0.95": 0.51
+        }
+      },
+      {
+        "round": 7,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 24000,
+        "n_real": 15000,
+        "detector_auc": 0.5896,
+        "detector_auc_std": 0.0063,
+        "evasion_rate": 0.2113,
+        "detection_rate_prev": 0.7887,
+        "top3_features": {
+          "behavioral_consistency": 0.1977,
+          "error_recovery_pattern": 0.1549,
+          "response_latency_variance": 0.1489
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.1977,
+          "error_recovery_pattern": 0.1549,
+          "response_latency_variance": 0.1489,
+          "hour_entropy": 0.1459,
+          "gas_price_precision": 0.0993,
+          "eip1559_tip_precision": 0.0974,
+          "action_sequence_perplexity": 0.0798,
+          "gas_nonce_gap_regularity": 0.0761
+        },
+        "evasion_by_blend": {
+          "0.3": 0.074,
+          "0.35": 0.074,
+          "0.4": 0.078,
+          "0.45": 0.096,
+          "0.5": 0.108,
+          "0.55": 0.112,
+          "0.6": 0.11,
+          "0.65": 0.14,
+          "0.7": 0.152,
+          "0.75": 0.144,
+          "0.8": 0.172,
+          "0.85": 0.184,
+          "0.9": 0.188,
+          "0.95": 0.234
+        }
+      },
+      {
+        "round": 8,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 27000,
+        "n_real": 15000,
+        "detector_auc": 0.5792,
+        "detector_auc_std": 0.0064,
+        "evasion_rate": 0.0763,
+        "detection_rate_prev": 0.9237,
+        "top3_features": {
+          "behavioral_consistency": 0.1838,
+          "response_latency_variance": 0.1527,
+          "error_recovery_pattern": 0.1513
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.1838,
+          "response_latency_variance": 0.1527,
+          "error_recovery_pattern": 0.1513,
+          "hour_entropy": 0.1391,
+          "eip1559_tip_precision": 0.1046,
+          "gas_price_precision": 0.1035,
+          "action_sequence_perplexity": 0.0834,
+          "gas_nonce_gap_regularity": 0.0816
+        },
+        "evasion_by_blend": {
+          "0.3": 0.01,
+          "0.35": 0.014,
+          "0.4": 0.016,
+          "0.45": 0.024,
+          "0.5": 0.018,
+          "0.55": 0.022,
+          "0.6": 0.038,
+          "0.65": 0.03,
+          "0.7": 0.036,
+          "0.75": 0.048,
+          "0.8": 0.052,
+          "0.85": 0.072,
+          "0.9": 0.09,
+          "0.95": 0.108
+        }
+      },
+      {
+        "round": 9,
+        "human_blend": 0.95,
+        "n_sybils_this_round": 3000,
+        "n_sybils_cumulative": 30000,
+        "n_real": 15000,
+        "detector_auc": 0.5738,
+        "detector_auc_std": 0.005,
+        "evasion_rate": 0.0237,
+        "detection_rate_prev": 0.9763,
+        "top3_features": {
+          "behavioral_consistency": 0.1779,
+          "error_recovery_pattern": 0.1564,
+          "response_latency_variance": 0.1424
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.1779,
+          "error_recovery_pattern": 0.1564,
+          "response_latency_variance": 0.1424,
+          "hour_entropy": 0.1398,
+          "gas_price_precision": 0.1091,
+          "eip1559_tip_precision": 0.1017,
+          "action_sequence_perplexity": 0.0898,
+          "gas_nonce_gap_regularity": 0.0828
+        },
+        "evasion_by_blend": {
+          "0.3": 0.01,
+          "0.35": 0.012,
+          "0.4": 0.008,
+          "0.45": 0.012,
+          "0.5": 0.016,
+          "0.55": 0.014,
+          "0.6": 0.012,
+          "0.65": 0.018,
+          "0.7": 0.016,
+          "0.75": 0.018,
+          "0.8": 0.024,
+          "0.85": 0.026,
+          "0.9": 0.032,
+          "0.95": 0.034
+        }
+      }
+    ]
+  },
+  "seed_summaries": {
+    "42": {
+      "initial_auc": 0.9869,
+      "final_auc": 0.5829,
+      "total_auc_drop": 0.404,
+      "mean_delta_last3": 0.005,
+      "converged": true,
+      "equilibrium_auc": 0.5873,
+      "equilibrium_blend": 0.92,
+      "max_evasion_rate": 0.974,
+      "final_evasion_rate": 0.0293,
+      "blend_trajectory": [
+        0.45,
+        0.9,
+        0.9,
+        0.95,
+        0.85,
+        0.95,
+        0.95,
+        0.9,
+        0.95,
+        0.9
+      ]
+    },
+    "137": {
+      "initial_auc": 0.9849,
+      "final_auc": 0.5777,
+      "total_auc_drop": 0.4072,
+      "mean_delta_last3": 0.0064,
+      "converged": true,
+      "equilibrium_auc": 0.5835,
+      "equilibrium_blend": 0.93,
+      "max_evasion_rate": 0.9717,
+      "final_evasion_rate": 0.0343,
+      "blend_trajectory": [
+        0.45,
+        0.85,
+        0.95,
+        0.9,
+        0.95,
+        0.95,
+        0.95,
+        0.95,
+        0.9,
+        0.95
+      ]
+    },
+    "314": {
+      "initial_auc": 0.9846,
+      "final_auc": 0.5738,
+      "total_auc_drop": 0.4108,
+      "mean_delta_last3": 0.009,
+      "converged": true,
+      "equilibrium_auc": 0.5809,
+      "equilibrium_blend": 0.95,
+      "max_evasion_rate": 0.9657,
+      "final_evasion_rate": 0.0237,
+      "blend_trajectory": [
+        0.45,
+        0.8,
+        0.9,
+        0.95,
+        0.95,
+        0.95,
+        0.95,
+        0.95,
+        0.95,
+        0.95
+      ]
+    }
+  },
+  "stability_analysis": {
+    "n_seeds": 3,
+    "equilibrium_aucs": [
+      0.5873,
+      0.5835,
+      0.5809
+    ],
+    "equilibrium_blends": [
+      0.92,
+      0.93,
+      0.95
+    ],
+    "auc_mean": 0.5839,
+    "auc_std": 0.0026,
+    "blend_mean": 0.93,
+    "blend_std": 0.01,
+    "auc_spread": 0.0064,
+    "stable": "True",
+    "converged_seeds": [
+      42,
+      137,
+      314
+    ]
+  },
+  "comparison_with_fixed": {
+    "fixed_final_auc": 0.599,
+    "br_mean_final_auc": 0.5781,
+    "delta": -0.0209
+  },
+  "elapsed_seconds": 1249.5
+}
