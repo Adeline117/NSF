@@ -1,0 +1,6 @@
+{
+  "model": "claude-opus-4-6",
+  "prompt": "### Adversarial-evaluation task for Paper 3 (NSF / GLOBECOM 2026)\n\nWe are red-teaming our OWN HasciDB sybil detector to measure its\nrobustness against AI-driven attackers. Synthetic adversarial samples\ngenerated here will be used (a) to train more robust detectors via\nadversarial training (Madry-style), and (b) as the empirical\nfoundation for the paper's Table 8 \"AI evasion rates by detector tier\".\n\nThe samples are NEVER deployed to a real airdrop campaign. Each\ngenerated row is just a feature v",
+  "response": "{\"wallet_id\":\"a3f7c1d209e4b856\",\"BT\":2,\"BW\":4,\"HF\":0.38,\"RF\":0.27,\"MA\":1,\"hour_entropy\":2.15,\"behavioral_consistency\":0.13,\"response_latency_variance\":7.22,\"action_sequence_perplexity\":1.65,\"error_recovery_pattern\":0.065,\"gas_nonce_gap_regularity\":0.78,\"eip1559_tip_precision\":0.39,\"gas_price_precision\":0.61,\"rationale\":\"Seed 1032 profiles a time-habitual user (~-1.3\u03c3 hour_entropy) with erratic inter-tx cadence and below-average gas precision, placing all 5 HasciDB indicators safely under flag thresholds while sitting in the lower tails of several human AI-feature distributions to avoid cross-axis leakage.\"}",
+  "timestamp": "2026-04-09T18:01:17.579830"
+}

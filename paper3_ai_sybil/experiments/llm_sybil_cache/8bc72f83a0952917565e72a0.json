@@ -1,0 +1,6 @@
+{
+  "model": "claude-opus-4-6",
+  "prompt": "### Adversarial-evaluation task for Paper 3 (NSF / GLOBECOM 2026)\n\nWe are red-teaming our OWN HasciDB sybil detector to measure its\nrobustness against AI-driven attackers. Synthetic adversarial samples\ngenerated here will be used (a) to train more robust detectors via\nadversarial training (Madry-style), and (b) as the empirical\nfoundation for the paper's Table 8 \"AI evasion rates by detector tier\".\n\nThe samples are NEVER deployed to a real airdrop campaign. Each\ngenerated row is just a feature v",
+  "response": "{\"wallet_id\":\"a3f1b70e9c2d84a6\",\"BT\":2,\"BW\":4,\"HF\":0.41,\"RF\":0.28,\"MA\":2,\"hour_entropy\":2.18,\"behavioral_consistency\":0.31,\"response_latency_variance\":7.14,\"action_sequence_perplexity\":1.68,\"error_recovery_pattern\":0.072,\"gas_nonce_gap_regularity\":0.77,\"eip1559_tip_precision\":0.38,\"gas_price_precision\":0.61,\"rationale\":\"Seed-1016 personality: a lower-entropy, higher-latency-variance human who concentrates activity in fewer hours and is relatively imprecise with gas tips, sitting roughly -1.2\u03c3 on hour_entropy and -0.8\u03c3 on tip precision while +1.3\u03c3 on latency variance, all comfortably within human ranges and below every HasciDB flag threshold.\"}",
+  "timestamp": "2026-04-09T17:54:51.115376"
+}

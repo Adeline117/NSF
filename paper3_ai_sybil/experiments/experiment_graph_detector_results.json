@@ -1,0 +1,682 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-14T19:47:19",
+    "projects": [
+      "1inch",
+      "uniswap",
+      "looksrare",
+      "apecoin",
+      "ens",
+      "gitcoin",
+      "etherfi",
+      "x2y2",
+      "dydx",
+      "badger",
+      "blur_s1",
+      "blur_s2",
+      "paraswap",
+      "ampleforth",
+      "eigenlayer",
+      "pengu"
+    ],
+    "max_per_project": 8000,
+    "louvain_thresholds": {
+      "rf_community": 0.25,
+      "ma_community": 3.0,
+      "density": 0.15,
+      "min_community_size": 3
+    },
+    "graph_construction": "Funding-flow proxy graph from HasciDB RF/MA indicators. High-RF addresses connected via synthetic funding hubs (star topology). High-MA addresses placed in cliques. Non-sybils get sparse random edges. This is a CONSERVATIVE proxy -- real graph detectors see actual transfer graphs with more signal.",
+    "elapsed_seconds": 292.0
+  },
+  "baseline_detection": {
+    "1inch": {
+      "n_total": 8000,
+      "n_sybils": 5376,
+      "n_clean": 2624,
+      "tp": 1221,
+      "fp": 2370,
+      "tn": 254,
+      "fn": 4155,
+      "precision": 0.34,
+      "recall": 0.2271,
+      "f1": 0.2723,
+      "fpr": 0.9032,
+      "n_communities": 109,
+      "n_flagged_communities": 107,
+      "graph_nodes": 8897,
+      "graph_edges": 12143,
+      "elapsed_seconds": 1.4
+    },
+    "uniswap": {
+      "n_total": 8000,
+      "n_sybils": 4257,
+      "n_clean": 3743,
+      "tp": 435,
+      "fp": 3743,
+      "tn": 0,
+      "fn": 3822,
+      "precision": 0.1041,
+      "recall": 0.1022,
+      "f1": 0.1031,
+      "fpr": 1.0,
+      "n_communities": 44,
+      "n_flagged_communities": 44,
+      "graph_nodes": 9765,
+      "graph_edges": 13577,
+      "elapsed_seconds": 1.6
+    },
+    "looksrare": {
+      "n_total": 8000,
+      "n_sybils": 4030,
+      "n_clean": 3970,
+      "tp": 2632,
+      "fp": 3611,
+      "tn": 359,
+      "fn": 1398,
+      "precision": 0.4216,
+      "recall": 0.6531,
+      "f1": 0.5124,
+      "fpr": 0.9096,
+      "n_communities": 126,
+      "n_flagged_communities": 124,
+      "graph_nodes": 8128,
+      "graph_edges": 21439,
+      "elapsed_seconds": 1.5
+    },
+    "apecoin": {
+      "n_total": 8000,
+      "n_sybils": 3927,
+      "n_clean": 4073,
+      "tp": 1579,
+      "fp": 4073,
+      "tn": 0,
+      "fn": 2348,
+      "precision": 0.2794,
+      "recall": 0.4021,
+      "f1": 0.3297,
+      "fpr": 1.0,
+      "n_communities": 177,
+      "n_flagged_communities": 177,
+      "graph_nodes": 9468,
+      "graph_edges": 18215,
+      "elapsed_seconds": 1.6
+    },
+    "ens": {
+      "n_total": 8000,
+      "n_sybils": 3425,
+      "n_clean": 4575,
+      "tp": 760,
+      "fp": 4575,
+      "tn": 0,
+      "fn": 2665,
+      "precision": 0.1425,
+      "recall": 0.2219,
+      "f1": 0.1735,
+      "fpr": 1.0,
+      "n_communities": 81,
+      "n_flagged_communities": 81,
+      "graph_nodes": 9282,
+      "graph_edges": 15591,
+      "elapsed_seconds": 2.4
+    },
+    "gitcoin": {
+      "n_total": 8000,
+      "n_sybils": 3347,
+      "n_clean": 4653,
+      "tp": 780,
+      "fp": 4547,
+      "tn": 106,
+      "fn": 2567,
+      "precision": 0.1464,
+      "recall": 0.233,
+      "f1": 0.1798,
+      "fpr": 0.9772,
+      "n_communities": 59,
+      "n_flagged_communities": 58,
+      "graph_nodes": 9031,
+      "graph_edges": 15936,
+      "elapsed_seconds": 2.1
+    },
+    "etherfi": {
+      "n_total": 8000,
+      "n_sybils": 2997,
+      "n_clean": 5003,
+      "tp": 307,
+      "fp": 4069,
+      "tn": 934,
+      "fn": 2690,
+      "precision": 0.0702,
+      "recall": 0.1024,
+      "f1": 0.0833,
+      "fpr": 0.8133,
+      "n_communities": 40,
+      "n_flagged_communities": 32,
+      "graph_nodes": 9079,
+      "graph_edges": 13986,
+      "elapsed_seconds": 2.4
+    },
+    "x2y2": {
+      "n_total": 8000,
+      "n_sybils": 2466,
+      "n_clean": 5534,
+      "tp": 900,
+      "fp": 2805,
+      "tn": 2729,
+      "fn": 1566,
+      "precision": 0.2429,
+      "recall": 0.365,
+      "f1": 0.2917,
+      "fpr": 0.5069,
+      "n_communities": 91,
+      "n_flagged_communities": 74,
+      "graph_nodes": 8064,
+      "graph_edges": 15395,
+      "elapsed_seconds": 2.8
+    },
+    "dydx": {
+      "n_total": 8000,
+      "n_sybils": 2421,
+      "n_clean": 5579,
+      "tp": 324,
+      "fp": 4534,
+      "tn": 1045,
+      "fn": 2097,
+      "precision": 0.0667,
+      "recall": 0.1338,
+      "f1": 0.089,
+      "fpr": 0.8127,
+      "n_communities": 43,
+      "n_flagged_communities": 36,
+      "graph_nodes": 9028,
+      "graph_edges": 14944,
+      "elapsed_seconds": 2.5
+    },
+    "badger": {
+      "n_total": 8000,
+      "n_sybils": 2119,
+      "n_clean": 5881,
+      "tp": 1073,
+      "fp": 3732,
+      "tn": 2149,
+      "fn": 1046,
+      "precision": 0.2233,
+      "recall": 0.5064,
+      "f1": 0.3099,
+      "fpr": 0.6346,
+      "n_communities": 72,
+      "n_flagged_communities": 59,
+      "graph_nodes": 8000,
+      "graph_edges": 17676,
+      "elapsed_seconds": 2.2
+    },
+    "blur_s1": {
+      "n_total": 8000,
+      "n_sybils": 1941,
+      "n_clean": 6059,
+      "tp": 501,
+      "fp": 1694,
+      "tn": 4365,
+      "fn": 1440,
+      "precision": 0.2282,
+      "recall": 0.2581,
+      "f1": 0.2423,
+      "fpr": 0.2796,
+      "n_communities": 66,
+      "n_flagged_communities": 41,
+      "graph_nodes": 8241,
+      "graph_edges": 15191,
+      "elapsed_seconds": 3.6
+    },
+    "blur_s2": {
+      "n_total": 8000,
+      "n_sybils": 2170,
+      "n_clean": 5830,
+      "tp": 163,
+      "fp": 3694,
+      "tn": 2136,
+      "fn": 2007,
+      "precision": 0.0423,
+      "recall": 0.0751,
+      "f1": 0.0541,
+      "fpr": 0.6336,
+      "n_communities": 40,
+      "n_flagged_communities": 25,
+      "graph_nodes": 8570,
+      "graph_edges": 12924,
+      "elapsed_seconds": 5.3
+    },
+    "paraswap": {
+      "n_total": 8000,
+      "n_sybils": 1040,
+      "n_clean": 6960,
+      "tp": 16,
+      "fp": 0,
+      "tn": 6960,
+      "fn": 1024,
+      "precision": 1.0,
+      "recall": 0.0154,
+      "f1": 0.0303,
+      "fpr": 0.0,
+      "n_communities": 43,
+      "n_flagged_communities": 5,
+      "graph_nodes": 8014,
+      "graph_edges": 12670,
+      "elapsed_seconds": 2.7
+    },
+    "ampleforth": {
+      "n_total": 8000,
+      "n_sybils": 935,
+      "n_clean": 7065,
+      "tp": 465,
+      "fp": 2760,
+      "tn": 4305,
+      "fn": 470,
+      "precision": 0.1442,
+      "recall": 0.4973,
+      "f1": 0.2236,
+      "fpr": 0.3907,
+      "n_communities": 60,
+      "n_flagged_communities": 34,
+      "graph_nodes": 8006,
+      "graph_edges": 15749,
+      "elapsed_seconds": 4.4
+    },
+    "eigenlayer": {
+      "n_total": 8000,
+      "n_sybils": 741,
+      "n_clean": 7259,
+      "tp": 278,
+      "fp": 2061,
+      "tn": 5198,
+      "fn": 463,
+      "precision": 0.1189,
+      "recall": 0.3752,
+      "f1": 0.1805,
+      "fpr": 0.2839,
+      "n_communities": 57,
+      "n_flagged_communities": 25,
+      "graph_nodes": 8032,
+      "graph_edges": 16067,
+      "elapsed_seconds": 3.9
+    },
+    "pengu": {
+      "n_total": 8000,
+      "n_sybils": 436,
+      "n_clean": 7564,
+      "tp": 136,
+      "fp": 676,
+      "tn": 6888,
+      "fn": 300,
+      "precision": 0.1675,
+      "recall": 0.3119,
+      "f1": 0.2179,
+      "fpr": 0.0894,
+      "n_communities": 48,
+      "n_flagged_communities": 11,
+      "graph_nodes": 8000,
+      "graph_edges": 15143,
+      "elapsed_seconds": 4.7
+    },
+    "overall": {
+      "tp": 11570,
+      "fp": 48944,
+      "tn": 37428,
+      "fn": 30058,
+      "precision": 0.1912,
+      "recall": 0.2779,
+      "f1": 0.2265,
+      "fpr": 0.5667
+    }
+  },
+  "llm_injection": {
+    "by_level": {
+      "basic": {
+        "n_projects": 16,
+        "total_llm": 155,
+        "total_detected": 95,
+        "overall_evasion_rate": 0.3871,
+        "per_project": {
+          "1inch": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "uniswap": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "looksrare": {
+            "n_llm": 9,
+            "detected": 9,
+            "evasion_rate": 0.0
+          },
+          "apecoin": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "ens": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "gitcoin": {
+            "n_llm": 9,
+            "detected": 8,
+            "evasion_rate": 0.1111
+          },
+          "etherfi": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "x2y2": {
+            "n_llm": 8,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "dydx": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "badger": {
+            "n_llm": 10,
+            "detected": 9,
+            "evasion_rate": 0.1
+          },
+          "blur_s1": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "blur_s2": {
+            "n_llm": 9,
+            "detected": 9,
+            "evasion_rate": 0.0
+          },
+          "paraswap": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "ampleforth": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "eigenlayer": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "pengu": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          }
+        }
+      },
+      "moderate": {
+        "n_projects": 16,
+        "total_llm": 157,
+        "total_detected": 98,
+        "overall_evasion_rate": 0.3758,
+        "per_project": {
+          "1inch": {
+            "n_llm": 7,
+            "detected": 7,
+            "evasion_rate": 0.0
+          },
+          "uniswap": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "looksrare": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "apecoin": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "ens": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "gitcoin": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "etherfi": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "x2y2": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "dydx": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "badger": {
+            "n_llm": 10,
+            "detected": 9,
+            "evasion_rate": 0.1
+          },
+          "blur_s1": {
+            "n_llm": 10,
+            "detected": 1,
+            "evasion_rate": 0.9
+          },
+          "blur_s2": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "paraswap": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "ampleforth": {
+            "n_llm": 10,
+            "detected": 1,
+            "evasion_rate": 0.9
+          },
+          "eigenlayer": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "pengu": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          }
+        }
+      },
+      "advanced": {
+        "n_projects": 16,
+        "total_llm": 155,
+        "total_detected": 72,
+        "overall_evasion_rate": 0.5355,
+        "per_project": {
+          "1inch": {
+            "n_llm": 9,
+            "detected": 9,
+            "evasion_rate": 0.0
+          },
+          "uniswap": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "looksrare": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "apecoin": {
+            "n_llm": 9,
+            "detected": 9,
+            "evasion_rate": 0.0
+          },
+          "ens": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "gitcoin": {
+            "n_llm": 8,
+            "detected": 8,
+            "evasion_rate": 0.0
+          },
+          "etherfi": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "x2y2": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "dydx": {
+            "n_llm": 10,
+            "detected": 10,
+            "evasion_rate": 0.0
+          },
+          "badger": {
+            "n_llm": 10,
+            "detected": 2,
+            "evasion_rate": 0.8
+          },
+          "blur_s1": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "blur_s2": {
+            "n_llm": 9,
+            "detected": 4,
+            "evasion_rate": 0.5556
+          },
+          "paraswap": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "ampleforth": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "eigenlayer": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          },
+          "pengu": {
+            "n_llm": 10,
+            "detected": 0,
+            "evasion_rate": 1.0
+          }
+        }
+      }
+    },
+    "diverse": {
+      "blur_s2": {
+        "n_diverse": 50,
+        "detected": 32,
+        "evasion_rate": 0.36
+      }
+    }
+  },
+  "sensitivity_analysis": {
+    "0.5": {
+      "resolution": 0.5,
+      "mean_real_recall": 0.227,
+      "mean_llm_evasion": 0.5583,
+      "mean_fpr": 0.4492
+    },
+    "0.75": {
+      "resolution": 0.75,
+      "mean_real_recall": 0.2291,
+      "mean_llm_evasion": 0.3111,
+      "mean_fpr": 0.7039
+    },
+    "1.0": {
+      "resolution": 1.0,
+      "mean_real_recall": 0.2065,
+      "mean_llm_evasion": 0.3389,
+      "mean_fpr": 0.7436
+    },
+    "1.25": {
+      "resolution": 1.25,
+      "mean_real_recall": 0.2217,
+      "mean_llm_evasion": 0.2306,
+      "mean_fpr": 0.7377
+    },
+    "1.5": {
+      "resolution": 1.5,
+      "mean_real_recall": 0.2123,
+      "mean_llm_evasion": 0.3111,
+      "mean_fpr": 0.6312
+    },
+    "2.0": {
+      "resolution": 2.0,
+      "mean_real_recall": 0.2112,
+      "mean_llm_evasion": 0.2861,
+      "mean_fpr": 0.6505
+    }
+  },
+  "comparison": {
+    "rules": {
+      "basic": 1.0,
+      "moderate": 1.0,
+      "advanced": 1.0
+    },
+    "lightgbm": {
+      "basic": 1.0,
+      "moderate": 1.0,
+      "advanced": 1.0
+    },
+    "cross_axis_gbm": {
+      "basic": 0.9786,
+      "moderate": 0.9988,
+      "advanced": 0.9994
+    },
+    "graph_louvain": {
+      "basic": 0.3871,
+      "moderate": 0.3758,
+      "advanced": 0.5355
+    }
+  },
+  "key_findings": {
+    "graph_baseline_recall": 0.2779,
+    "graph_baseline_precision": 0.1912,
+    "graph_baseline_f1": 0.2265,
+    "llm_evasion_basic": 0.3871,
+    "llm_evasion_moderate": 0.3758,
+    "llm_evasion_advanced": 0.5355,
+    "interpretation": "Graph-based detection (Louvain on funding-flow proxy) provides substantially stronger detection of real sybils than rule-based or feature-based detectors. However, LLM-generated sybils, which are designed with low RF and MA values, effectively evade graph-based detection by avoiding the funding clusters that Louvain identifies. This demonstrates that LLM sybils present a fundamental challenge across ALL detector modalities: rules, statistical, and structural.",
+    "limitations": [
+      "Graph is constructed from RF/MA indicators, not raw transaction data",
+      "Real graph detectors (SybilRank, SybilBelief) use the full transfer graph",
+      "Our proxy graph likely UNDERESTIMATES graph detector effectiveness",
+      "LLM sybils only evade at the indicator level; actual on-chain execution would require additional infrastructure (unique funding sources, etc.)"
+    ]
+  }
+}

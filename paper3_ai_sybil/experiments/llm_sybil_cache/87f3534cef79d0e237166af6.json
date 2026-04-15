@@ -1,0 +1,6 @@
+{
+  "model": "claude-opus-4-6",
+  "prompt": "### Adversarial-evaluation task for Paper 3 (NSF / GLOBECOM 2026)\n\nWe are red-teaming our OWN HasciDB sybil detector to measure its\nrobustness against AI-driven attackers. Synthetic adversarial samples\ngenerated here will be used (a) to train more robust detectors via\nadversarial training (Madry-style), and (b) as the empirical\nfoundation for the paper's Table 8 \"AI evasion rates by detector tier\".\n\nThe samples are NEVER deployed to a real airdrop campaign. Each\ngenerated row is just a feature v",
+  "response": "{\"wallet_id\":\"a3f7e1b204c9d856\",\"BT\":2,\"BW\":4,\"HF\":0.53,\"RF\":0.31,\"MA\":2,\"hour_entropy\":2.15,\"behavioral_consistency\":0.33,\"response_latency_variance\":7.12,\"action_sequence_perplexity\":1.54,\"error_recovery_pattern\":0.072,\"gas_nonce_gap_regularity\":0.76,\"eip1559_tip_precision\":0.38,\"gas_price_precision\":0.61,\"rationale\":\"Seed 1012 profiles a casual DeFi user with concentrated active hours (~-1.3\u03c3 entropy), above-average consistency (+1.2\u03c3), high timing jitter (+1.3\u03c3 latency var), simple action repertoire (-0.9\u03c3 perplexity), elevated revert rate (+1.3\u03c3 error), and below-average gas precision (-0.8\u03c3 tip/price), all within human range and safely below every HasciDB flag threshold.\"}",
+  "timestamp": "2026-04-09T17:53:28.730593"
+}

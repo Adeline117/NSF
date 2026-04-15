@@ -1,0 +1,6 @@
+{
+  "model": "claude-opus-4-6",
+  "prompt": "### Adversarial-evaluation task for Paper 3 (NSF / GLOBECOM 2026)\n\nWe are red-teaming our OWN HasciDB sybil detector to measure its\nrobustness against AI-driven attackers. Synthetic adversarial samples\ngenerated here will be used (a) to train more robust detectors via\nadversarial training (Madry-style), and (b) as the empirical\nfoundation for the paper's Table 8 \"AI evasion rates by detector tier\".\n\nThe samples are NEVER deployed to a real airdrop campaign. Each\ngenerated row is just a feature v",
+  "response": "{\"wallet_id\":\"a3f7e1d904b62c8e\",\"BT\":2,\"BW\":3,\"HF\":0.42,\"RF\":0.31,\"MA\":1,\"hour_entropy\":2.15,\"behavioral_consistency\":0.35,\"response_latency_variance\":7.90,\"action_sequence_perplexity\":1.45,\"error_recovery_pattern\":0.078,\"gas_nonce_gap_regularity\":0.68,\"eip1559_tip_precision\":0.28,\"gas_price_precision\":0.58,\"rationale\":\"Mimics a focused casual DeFi user with narrow activity windows (low hour entropy), high timing irregularity, and imprecise gas settings \u2014 a ~-1.3\u03c3 hour_entropy / +1.7\u03c3 latency_var personality that stays well below all five HasciDB thresholds.\"}",
+  "timestamp": "2026-04-09T18:06:42.125441"
+}

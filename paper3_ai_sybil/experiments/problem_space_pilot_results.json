@@ -1,0 +1,1348 @@
+{
+  "config": {
+    "n_wallets": 10,
+    "rpc_url": "dry_run",
+    "dry_run": true
+  },
+  "wallets": [
+    {
+      "wallet_id": "pilot_wallet_000",
+      "n_planned_txs": 20,
+      "n_executed_txs": 20,
+      "planned_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.72,
+        "hour_entropy": 2.48,
+        "behavioral_consistency": 0.19,
+        "action_sequence_perplexity": 1.95,
+        "error_recovery_pattern": 0.04,
+        "response_latency_variance": 5.12,
+        "gas_nonce_gap_regularity": 0.84,
+        "eip1559_tip_precision": 0.51
+      },
+      "actual_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.7452,
+        "hour_entropy": 2.4464,
+        "behavioral_consistency": 0.1882,
+        "action_sequence_perplexity": 2.0809,
+        "error_recovery_pattern": 0.0392,
+        "response_latency_variance": 4.695,
+        "gas_nonce_gap_regularity": 0.8024,
+        "eip1559_tip_precision": 0.541
+      },
+      "feasibility_gap": {
+        "hour_entropy": {
+          "planned": 2.48,
+          "actual": 2.4464,
+          "absolute_gap": 0.0336,
+          "relative_gap": 0.0136,
+          "feasible": true
+        },
+        "RF": {
+          "planned": 0.49,
+          "actual": 0.49,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "gas_nonce_gap_regularity": {
+          "planned": 0.84,
+          "actual": 0.8024,
+          "absolute_gap": 0.0376,
+          "relative_gap": 0.0447,
+          "feasible": true
+        },
+        "action_sequence_perplexity": {
+          "planned": 1.95,
+          "actual": 2.0809,
+          "absolute_gap": 0.1309,
+          "relative_gap": 0.0671,
+          "feasible": true
+        },
+        "error_recovery_pattern": {
+          "planned": 0.04,
+          "actual": 0.0392,
+          "absolute_gap": 0.0008,
+          "relative_gap": 0.0198,
+          "feasible": true
+        },
+        "gas_price_precision": {
+          "planned": 0.72,
+          "actual": 0.7452,
+          "absolute_gap": 0.0252,
+          "relative_gap": 0.0349,
+          "feasible": true
+        },
+        "HF": {
+          "planned": 0.79,
+          "actual": 0.79,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "behavioral_consistency": {
+          "planned": 0.19,
+          "actual": 0.1882,
+          "absolute_gap": 0.0018,
+          "relative_gap": 0.0094,
+          "feasible": true
+        },
+        "response_latency_variance": {
+          "planned": 5.12,
+          "actual": 4.695,
+          "absolute_gap": 0.425,
+          "relative_gap": 0.083,
+          "feasible": true
+        },
+        "eip1559_tip_precision": {
+          "planned": 0.51,
+          "actual": 0.541,
+          "absolute_gap": 0.031,
+          "relative_gap": 0.0607,
+          "feasible": true
+        },
+        "BW": {
+          "planned": 9,
+          "actual": 9,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "MA": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "BT": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        }
+      },
+      "n_feasible": 13,
+      "n_total_features": 13,
+      "feasibility_rate": 1.0,
+      "dry_run": true
+    },
+    {
+      "wallet_id": "pilot_wallet_001",
+      "n_planned_txs": 20,
+      "n_executed_txs": 20,
+      "planned_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.72,
+        "hour_entropy": 2.42,
+        "behavioral_consistency": 0.19,
+        "action_sequence_perplexity": 1.87,
+        "error_recovery_pattern": 0.04,
+        "response_latency_variance": 5.13,
+        "gas_nonce_gap_regularity": 0.84,
+        "eip1559_tip_precision": 0.48
+      },
+      "actual_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.7285,
+        "hour_entropy": 2.4179,
+        "behavioral_consistency": 0.1879,
+        "action_sequence_perplexity": 1.9029,
+        "error_recovery_pattern": 0.034,
+        "response_latency_variance": 5.2506,
+        "gas_nonce_gap_regularity": 0.8072,
+        "eip1559_tip_precision": 0.4944
+      },
+      "feasibility_gap": {
+        "hour_entropy": {
+          "planned": 2.42,
+          "actual": 2.4179,
+          "absolute_gap": 0.0021,
+          "relative_gap": 0.0009,
+          "feasible": true
+        },
+        "RF": {
+          "planned": 0.49,
+          "actual": 0.49,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "gas_nonce_gap_regularity": {
+          "planned": 0.84,
+          "actual": 0.8072,
+          "absolute_gap": 0.0328,
+          "relative_gap": 0.0391,
+          "feasible": true
+        },
+        "action_sequence_perplexity": {
+          "planned": 1.87,
+          "actual": 1.9029,
+          "absolute_gap": 0.0329,
+          "relative_gap": 0.0176,
+          "feasible": true
+        },
+        "error_recovery_pattern": {
+          "planned": 0.04,
+          "actual": 0.034,
+          "absolute_gap": 0.006,
+          "relative_gap": 0.15,
+          "feasible": true
+        },
+        "gas_price_precision": {
+          "planned": 0.72,
+          "actual": 0.7285,
+          "absolute_gap": 0.0085,
+          "relative_gap": 0.0117,
+          "feasible": true
+        },
+        "HF": {
+          "planned": 0.79,
+          "actual": 0.79,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "behavioral_consistency": {
+          "planned": 0.19,
+          "actual": 0.1879,
+          "absolute_gap": 0.0021,
+          "relative_gap": 0.0111,
+          "feasible": true
+        },
+        "response_latency_variance": {
+          "planned": 5.13,
+          "actual": 5.2506,
+          "absolute_gap": 0.1206,
+          "relative_gap": 0.0235,
+          "feasible": true
+        },
+        "eip1559_tip_precision": {
+          "planned": 0.48,
+          "actual": 0.4944,
+          "absolute_gap": 0.0144,
+          "relative_gap": 0.03,
+          "feasible": true
+        },
+        "BW": {
+          "planned": 9,
+          "actual": 9,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "MA": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "BT": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        }
+      },
+      "n_feasible": 13,
+      "n_total_features": 13,
+      "feasibility_rate": 1.0,
+      "dry_run": true
+    },
+    {
+      "wallet_id": "pilot_wallet_002",
+      "n_planned_txs": 20,
+      "n_executed_txs": 20,
+      "planned_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.72,
+        "hour_entropy": 2.41,
+        "behavioral_consistency": 0.18,
+        "action_sequence_perplexity": 1.87,
+        "error_recovery_pattern": 0.04,
+        "response_latency_variance": 5.2,
+        "gas_nonce_gap_regularity": 0.83,
+        "eip1559_tip_precision": 0.48
+      },
+      "actual_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.6856,
+        "hour_entropy": 2.5264,
+        "behavioral_consistency": 0.1902,
+        "action_sequence_perplexity": 1.8849,
+        "error_recovery_pattern": 0.0379,
+        "response_latency_variance": 5.064,
+        "gas_nonce_gap_regularity": 0.8749,
+        "eip1559_tip_precision": 0.5006
+      },
+      "feasibility_gap": {
+        "hour_entropy": {
+          "planned": 2.41,
+          "actual": 2.5264,
+          "absolute_gap": 0.1164,
+          "relative_gap": 0.0483,
+          "feasible": true
+        },
+        "RF": {
+          "planned": 0.49,
+          "actual": 0.49,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "gas_nonce_gap_regularity": {
+          "planned": 0.83,
+          "actual": 0.8749,
+          "absolute_gap": 0.0449,
+          "relative_gap": 0.0541,
+          "feasible": true
+        },
+        "action_sequence_perplexity": {
+          "planned": 1.87,
+          "actual": 1.8849,
+          "absolute_gap": 0.0149,
+          "relative_gap": 0.008,
+          "feasible": true
+        },
+        "error_recovery_pattern": {
+          "planned": 0.04,
+          "actual": 0.0379,
+          "absolute_gap": 0.0021,
+          "relative_gap": 0.0532,
+          "feasible": true
+        },
+        "gas_price_precision": {
+          "planned": 0.72,
+          "actual": 0.6856,
+          "absolute_gap": 0.0344,
+          "relative_gap": 0.0478,
+          "feasible": true
+        },
+        "HF": {
+          "planned": 0.79,
+          "actual": 0.79,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "behavioral_consistency": {
+          "planned": 0.18,
+          "actual": 0.1902,
+          "absolute_gap": 0.0102,
+          "relative_gap": 0.0565,
+          "feasible": true
+        },
+        "response_latency_variance": {
+          "planned": 5.2,
+          "actual": 5.064,
+          "absolute_gap": 0.136,
+          "relative_gap": 0.0262,
+          "feasible": true
+        },
+        "eip1559_tip_precision": {
+          "planned": 0.48,
+          "actual": 0.5006,
+          "absolute_gap": 0.0206,
+          "relative_gap": 0.0429,
+          "feasible": true
+        },
+        "BW": {
+          "planned": 9,
+          "actual": 9,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "MA": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "BT": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        }
+      },
+      "n_feasible": 13,
+      "n_total_features": 13,
+      "feasibility_rate": 1.0,
+      "dry_run": true
+    },
+    {
+      "wallet_id": "pilot_wallet_003",
+      "n_planned_txs": 20,
+      "n_executed_txs": 20,
+      "planned_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.72,
+        "hour_entropy": 2.41,
+        "behavioral_consistency": 0.18,
+        "action_sequence_perplexity": 1.87,
+        "error_recovery_pattern": 0.04,
+        "response_latency_variance": 5.23,
+        "gas_nonce_gap_regularity": 0.83,
+        "eip1559_tip_precision": 0.48
+      },
+      "actual_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.7351,
+        "hour_entropy": 2.0577,
+        "behavioral_consistency": 0.1843,
+        "action_sequence_perplexity": 1.7784,
+        "error_recovery_pattern": 0.0455,
+        "response_latency_variance": 5.2895,
+        "gas_nonce_gap_regularity": 0.8699,
+        "eip1559_tip_precision": 0.5179
+      },
+      "feasibility_gap": {
+        "hour_entropy": {
+          "planned": 2.41,
+          "actual": 2.0577,
+          "absolute_gap": 0.3523,
+          "relative_gap": 0.1462,
+          "feasible": true
+        },
+        "RF": {
+          "planned": 0.49,
+          "actual": 0.49,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "gas_nonce_gap_regularity": {
+          "planned": 0.83,
+          "actual": 0.8699,
+          "absolute_gap": 0.0399,
+          "relative_gap": 0.0481,
+          "feasible": true
+        },
+        "action_sequence_perplexity": {
+          "planned": 1.87,
+          "actual": 1.7784,
+          "absolute_gap": 0.0916,
+          "relative_gap": 0.049,
+          "feasible": true
+        },
+        "error_recovery_pattern": {
+          "planned": 0.04,
+          "actual": 0.0455,
+          "absolute_gap": 0.0055,
+          "relative_gap": 0.1374,
+          "feasible": true
+        },
+        "gas_price_precision": {
+          "planned": 0.72,
+          "actual": 0.7351,
+          "absolute_gap": 0.0151,
+          "relative_gap": 0.0209,
+          "feasible": true
+        },
+        "HF": {
+          "planned": 0.79,
+          "actual": 0.79,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "behavioral_consistency": {
+          "planned": 0.18,
+          "actual": 0.1843,
+          "absolute_gap": 0.0043,
+          "relative_gap": 0.024,
+          "feasible": true
+        },
+        "response_latency_variance": {
+          "planned": 5.23,
+          "actual": 5.2895,
+          "absolute_gap": 0.0595,
+          "relative_gap": 0.0114,
+          "feasible": true
+        },
+        "eip1559_tip_precision": {
+          "planned": 0.48,
+          "actual": 0.5179,
+          "absolute_gap": 0.0379,
+          "relative_gap": 0.079,
+          "feasible": true
+        },
+        "BW": {
+          "planned": 9,
+          "actual": 9,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "MA": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "BT": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        }
+      },
+      "n_feasible": 13,
+      "n_total_features": 13,
+      "feasibility_rate": 1.0,
+      "dry_run": true
+    },
+    {
+      "wallet_id": "pilot_wallet_004",
+      "n_planned_txs": 20,
+      "n_executed_txs": 20,
+      "planned_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.71,
+        "hour_entropy": 2.31,
+        "behavioral_consistency": 0.18,
+        "action_sequence_perplexity": 1.87,
+        "error_recovery_pattern": 0.04,
+        "response_latency_variance": 5.2,
+        "gas_nonce_gap_regularity": 0.82,
+        "eip1559_tip_precision": 0.48
+      },
+      "actual_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.7228,
+        "hour_entropy": 2.2559,
+        "behavioral_consistency": 0.1844,
+        "action_sequence_perplexity": 1.9841,
+        "error_recovery_pattern": 0.0417,
+        "response_latency_variance": 5.219,
+        "gas_nonce_gap_regularity": 0.757,
+        "eip1559_tip_precision": 0.4987
+      },
+      "feasibility_gap": {
+        "hour_entropy": {
+          "planned": 2.31,
+          "actual": 2.2559,
+          "absolute_gap": 0.0541,
+          "relative_gap": 0.0234,
+          "feasible": true
+        },
+        "RF": {
+          "planned": 0.49,
+          "actual": 0.49,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "gas_nonce_gap_regularity": {
+          "planned": 0.82,
+          "actual": 0.757,
+          "absolute_gap": 0.063,
+          "relative_gap": 0.0768,
+          "feasible": true
+        },
+        "action_sequence_perplexity": {
+          "planned": 1.87,
+          "actual": 1.9841,
+          "absolute_gap": 0.1141,
+          "relative_gap": 0.061,
+          "feasible": true
+        },
+        "error_recovery_pattern": {
+          "planned": 0.04,
+          "actual": 0.0417,
+          "absolute_gap": 0.0017,
+          "relative_gap": 0.0415,
+          "feasible": true
+        },
+        "gas_price_precision": {
+          "planned": 0.71,
+          "actual": 0.7228,
+          "absolute_gap": 0.0128,
+          "relative_gap": 0.0181,
+          "feasible": true
+        },
+        "HF": {
+          "planned": 0.79,
+          "actual": 0.79,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "behavioral_consistency": {
+          "planned": 0.18,
+          "actual": 0.1844,
+          "absolute_gap": 0.0044,
+          "relative_gap": 0.0245,
+          "feasible": true
+        },
+        "response_latency_variance": {
+          "planned": 5.2,
+          "actual": 5.219,
+          "absolute_gap": 0.019,
+          "relative_gap": 0.0036,
+          "feasible": true
+        },
+        "eip1559_tip_precision": {
+          "planned": 0.48,
+          "actual": 0.4987,
+          "absolute_gap": 0.0187,
+          "relative_gap": 0.0389,
+          "feasible": true
+        },
+        "BW": {
+          "planned": 9,
+          "actual": 9,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "MA": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "BT": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        }
+      },
+      "n_feasible": 13,
+      "n_total_features": 13,
+      "feasibility_rate": 1.0,
+      "dry_run": true
+    },
+    {
+      "wallet_id": "pilot_wallet_005",
+      "n_planned_txs": 20,
+      "n_executed_txs": 20,
+      "planned_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.72,
+        "hour_entropy": 2.31,
+        "behavioral_consistency": 0.18,
+        "action_sequence_perplexity": 1.87,
+        "error_recovery_pattern": 0.04,
+        "response_latency_variance": 5.2,
+        "gas_nonce_gap_regularity": 0.83,
+        "eip1559_tip_precision": 0.48
+      },
+      "actual_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.7691,
+        "hour_entropy": 2.1842,
+        "behavioral_consistency": 0.182,
+        "action_sequence_perplexity": 1.7785,
+        "error_recovery_pattern": 0.047,
+        "response_latency_variance": 5.0057,
+        "gas_nonce_gap_regularity": 0.8705,
+        "eip1559_tip_precision": 0.4706
+      },
+      "feasibility_gap": {
+        "hour_entropy": {
+          "planned": 2.31,
+          "actual": 2.1842,
+          "absolute_gap": 0.1258,
+          "relative_gap": 0.0544,
+          "feasible": true
+        },
+        "RF": {
+          "planned": 0.49,
+          "actual": 0.49,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "gas_nonce_gap_regularity": {
+          "planned": 0.83,
+          "actual": 0.8705,
+          "absolute_gap": 0.0405,
+          "relative_gap": 0.0488,
+          "feasible": true
+        },
+        "action_sequence_perplexity": {
+          "planned": 1.87,
+          "actual": 1.7785,
+          "absolute_gap": 0.0915,
+          "relative_gap": 0.0489,
+          "feasible": true
+        },
+        "error_recovery_pattern": {
+          "planned": 0.04,
+          "actual": 0.047,
+          "absolute_gap": 0.007,
+          "relative_gap": 0.1738,
+          "feasible": true
+        },
+        "gas_price_precision": {
+          "planned": 0.72,
+          "actual": 0.7691,
+          "absolute_gap": 0.0491,
+          "relative_gap": 0.0681,
+          "feasible": true
+        },
+        "HF": {
+          "planned": 0.79,
+          "actual": 0.79,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "behavioral_consistency": {
+          "planned": 0.18,
+          "actual": 0.182,
+          "absolute_gap": 0.002,
+          "relative_gap": 0.011,
+          "feasible": true
+        },
+        "response_latency_variance": {
+          "planned": 5.2,
+          "actual": 5.0057,
+          "absolute_gap": 0.1943,
+          "relative_gap": 0.0374,
+          "feasible": true
+        },
+        "eip1559_tip_precision": {
+          "planned": 0.48,
+          "actual": 0.4706,
+          "absolute_gap": 0.0094,
+          "relative_gap": 0.0196,
+          "feasible": true
+        },
+        "BW": {
+          "planned": 9,
+          "actual": 9,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "MA": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "BT": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        }
+      },
+      "n_feasible": 13,
+      "n_total_features": 13,
+      "feasibility_rate": 1.0,
+      "dry_run": true
+    },
+    {
+      "wallet_id": "pilot_wallet_006",
+      "n_planned_txs": 20,
+      "n_executed_txs": 20,
+      "planned_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.71,
+        "hour_entropy": 2.31,
+        "behavioral_consistency": 0.18,
+        "action_sequence_perplexity": 1.87,
+        "error_recovery_pattern": 0.04,
+        "response_latency_variance": 5.2,
+        "gas_nonce_gap_regularity": 0.82,
+        "eip1559_tip_precision": 0.48
+      },
+      "actual_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.7307,
+        "hour_entropy": 2.4308,
+        "behavioral_consistency": 0.1786,
+        "action_sequence_perplexity": 1.8228,
+        "error_recovery_pattern": 0.0426,
+        "response_latency_variance": 5.2961,
+        "gas_nonce_gap_regularity": 0.8529,
+        "eip1559_tip_precision": 0.5331
+      },
+      "feasibility_gap": {
+        "hour_entropy": {
+          "planned": 2.31,
+          "actual": 2.4308,
+          "absolute_gap": 0.1208,
+          "relative_gap": 0.0523,
+          "feasible": true
+        },
+        "RF": {
+          "planned": 0.49,
+          "actual": 0.49,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "gas_nonce_gap_regularity": {
+          "planned": 0.82,
+          "actual": 0.8529,
+          "absolute_gap": 0.0329,
+          "relative_gap": 0.0401,
+          "feasible": true
+        },
+        "action_sequence_perplexity": {
+          "planned": 1.87,
+          "actual": 1.8228,
+          "absolute_gap": 0.0472,
+          "relative_gap": 0.0253,
+          "feasible": true
+        },
+        "error_recovery_pattern": {
+          "planned": 0.04,
+          "actual": 0.0426,
+          "absolute_gap": 0.0026,
+          "relative_gap": 0.064,
+          "feasible": true
+        },
+        "gas_price_precision": {
+          "planned": 0.71,
+          "actual": 0.7307,
+          "absolute_gap": 0.0207,
+          "relative_gap": 0.0291,
+          "feasible": true
+        },
+        "HF": {
+          "planned": 0.79,
+          "actual": 0.79,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "behavioral_consistency": {
+          "planned": 0.18,
+          "actual": 0.1786,
+          "absolute_gap": 0.0014,
+          "relative_gap": 0.0077,
+          "feasible": true
+        },
+        "response_latency_variance": {
+          "planned": 5.2,
+          "actual": 5.2961,
+          "absolute_gap": 0.0961,
+          "relative_gap": 0.0185,
+          "feasible": true
+        },
+        "eip1559_tip_precision": {
+          "planned": 0.48,
+          "actual": 0.5331,
+          "absolute_gap": 0.0531,
+          "relative_gap": 0.1105,
+          "feasible": true
+        },
+        "BW": {
+          "planned": 9,
+          "actual": 9,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "MA": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "BT": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        }
+      },
+      "n_feasible": 13,
+      "n_total_features": 13,
+      "feasibility_rate": 1.0,
+      "dry_run": true
+    },
+    {
+      "wallet_id": "pilot_wallet_007",
+      "n_planned_txs": 20,
+      "n_executed_txs": 20,
+      "planned_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.72,
+        "hour_entropy": 2.31,
+        "behavioral_consistency": 0.18,
+        "action_sequence_perplexity": 1.87,
+        "error_recovery_pattern": 0.04,
+        "response_latency_variance": 5.2,
+        "gas_nonce_gap_regularity": 0.83,
+        "eip1559_tip_precision": 0.48
+      },
+      "actual_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.7164,
+        "hour_entropy": 2.2823,
+        "behavioral_consistency": 0.1756,
+        "action_sequence_perplexity": 1.8254,
+        "error_recovery_pattern": 0.0373,
+        "response_latency_variance": 5.2642,
+        "gas_nonce_gap_regularity": 0.8299,
+        "eip1559_tip_precision": 0.514
+      },
+      "feasibility_gap": {
+        "hour_entropy": {
+          "planned": 2.31,
+          "actual": 2.2823,
+          "absolute_gap": 0.0277,
+          "relative_gap": 0.012,
+          "feasible": true
+        },
+        "RF": {
+          "planned": 0.49,
+          "actual": 0.49,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "gas_nonce_gap_regularity": {
+          "planned": 0.83,
+          "actual": 0.8299,
+          "absolute_gap": 0.0001,
+          "relative_gap": 0.0002,
+          "feasible": true
+        },
+        "action_sequence_perplexity": {
+          "planned": 1.87,
+          "actual": 1.8254,
+          "absolute_gap": 0.0446,
+          "relative_gap": 0.0239,
+          "feasible": true
+        },
+        "error_recovery_pattern": {
+          "planned": 0.04,
+          "actual": 0.0373,
+          "absolute_gap": 0.0027,
+          "relative_gap": 0.0665,
+          "feasible": true
+        },
+        "gas_price_precision": {
+          "planned": 0.72,
+          "actual": 0.7164,
+          "absolute_gap": 0.0036,
+          "relative_gap": 0.005,
+          "feasible": true
+        },
+        "HF": {
+          "planned": 0.79,
+          "actual": 0.79,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "behavioral_consistency": {
+          "planned": 0.18,
+          "actual": 0.1756,
+          "absolute_gap": 0.0044,
+          "relative_gap": 0.0246,
+          "feasible": true
+        },
+        "response_latency_variance": {
+          "planned": 5.2,
+          "actual": 5.2642,
+          "absolute_gap": 0.0642,
+          "relative_gap": 0.0123,
+          "feasible": true
+        },
+        "eip1559_tip_precision": {
+          "planned": 0.48,
+          "actual": 0.514,
+          "absolute_gap": 0.034,
+          "relative_gap": 0.0708,
+          "feasible": true
+        },
+        "BW": {
+          "planned": 9,
+          "actual": 9,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "MA": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "BT": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        }
+      },
+      "n_feasible": 13,
+      "n_total_features": 13,
+      "feasibility_rate": 1.0,
+      "dry_run": true
+    },
+    {
+      "wallet_id": "pilot_wallet_008",
+      "n_planned_txs": 20,
+      "n_executed_txs": 20,
+      "planned_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.78,
+        "RF": 0.48,
+        "MA": 4,
+        "gas_price_precision": 0.72,
+        "hour_entropy": 2.31,
+        "behavioral_consistency": 0.18,
+        "action_sequence_perplexity": 1.87,
+        "error_recovery_pattern": 0.04,
+        "response_latency_variance": 5.2,
+        "gas_nonce_gap_regularity": 0.83,
+        "eip1559_tip_precision": 0.49
+      },
+      "actual_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.78,
+        "RF": 0.48,
+        "MA": 4,
+        "gas_price_precision": 0.6438,
+        "hour_entropy": 2.4508,
+        "behavioral_consistency": 0.1782,
+        "action_sequence_perplexity": 1.8192,
+        "error_recovery_pattern": 0.0447,
+        "response_latency_variance": 4.7672,
+        "gas_nonce_gap_regularity": 0.8257,
+        "eip1559_tip_precision": 0.4996
+      },
+      "feasibility_gap": {
+        "hour_entropy": {
+          "planned": 2.31,
+          "actual": 2.4508,
+          "absolute_gap": 0.1408,
+          "relative_gap": 0.0609,
+          "feasible": true
+        },
+        "RF": {
+          "planned": 0.48,
+          "actual": 0.48,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "gas_nonce_gap_regularity": {
+          "planned": 0.83,
+          "actual": 0.8257,
+          "absolute_gap": 0.0043,
+          "relative_gap": 0.0051,
+          "feasible": true
+        },
+        "action_sequence_perplexity": {
+          "planned": 1.87,
+          "actual": 1.8192,
+          "absolute_gap": 0.0508,
+          "relative_gap": 0.0271,
+          "feasible": true
+        },
+        "error_recovery_pattern": {
+          "planned": 0.04,
+          "actual": 0.0447,
+          "absolute_gap": 0.0047,
+          "relative_gap": 0.1168,
+          "feasible": true
+        },
+        "gas_price_precision": {
+          "planned": 0.72,
+          "actual": 0.6438,
+          "absolute_gap": 0.0762,
+          "relative_gap": 0.1059,
+          "feasible": true
+        },
+        "HF": {
+          "planned": 0.78,
+          "actual": 0.78,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "behavioral_consistency": {
+          "planned": 0.18,
+          "actual": 0.1782,
+          "absolute_gap": 0.0018,
+          "relative_gap": 0.01,
+          "feasible": true
+        },
+        "response_latency_variance": {
+          "planned": 5.2,
+          "actual": 4.7672,
+          "absolute_gap": 0.4328,
+          "relative_gap": 0.0832,
+          "feasible": true
+        },
+        "eip1559_tip_precision": {
+          "planned": 0.49,
+          "actual": 0.4996,
+          "absolute_gap": 0.0096,
+          "relative_gap": 0.0196,
+          "feasible": true
+        },
+        "BW": {
+          "planned": 9,
+          "actual": 9,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "MA": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "BT": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        }
+      },
+      "n_feasible": 13,
+      "n_total_features": 13,
+      "feasibility_rate": 1.0,
+      "dry_run": true
+    },
+    {
+      "wallet_id": "pilot_wallet_009",
+      "n_planned_txs": 20,
+      "n_executed_txs": 20,
+      "planned_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.72,
+        "hour_entropy": 2.41,
+        "behavioral_consistency": 0.18,
+        "action_sequence_perplexity": 1.87,
+        "error_recovery_pattern": 0.04,
+        "response_latency_variance": 5.3,
+        "gas_nonce_gap_regularity": 0.83,
+        "eip1559_tip_precision": 0.48
+      },
+      "actual_features": {
+        "BT": 4,
+        "BW": 9,
+        "HF": 0.79,
+        "RF": 0.49,
+        "MA": 4,
+        "gas_price_precision": 0.7261,
+        "hour_entropy": 2.1637,
+        "behavioral_consistency": 0.1736,
+        "action_sequence_perplexity": 1.893,
+        "error_recovery_pattern": 0.0401,
+        "response_latency_variance": 5.088,
+        "gas_nonce_gap_regularity": 0.7714,
+        "eip1559_tip_precision": 0.4891
+      },
+      "feasibility_gap": {
+        "hour_entropy": {
+          "planned": 2.41,
+          "actual": 2.1637,
+          "absolute_gap": 0.2463,
+          "relative_gap": 0.1022,
+          "feasible": true
+        },
+        "RF": {
+          "planned": 0.49,
+          "actual": 0.49,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "gas_nonce_gap_regularity": {
+          "planned": 0.83,
+          "actual": 0.7714,
+          "absolute_gap": 0.0586,
+          "relative_gap": 0.0706,
+          "feasible": true
+        },
+        "action_sequence_perplexity": {
+          "planned": 1.87,
+          "actual": 1.893,
+          "absolute_gap": 0.023,
+          "relative_gap": 0.0123,
+          "feasible": true
+        },
+        "error_recovery_pattern": {
+          "planned": 0.04,
+          "actual": 0.0401,
+          "absolute_gap": 0.0001,
+          "relative_gap": 0.0027,
+          "feasible": true
+        },
+        "gas_price_precision": {
+          "planned": 0.72,
+          "actual": 0.7261,
+          "absolute_gap": 0.0061,
+          "relative_gap": 0.0085,
+          "feasible": true
+        },
+        "HF": {
+          "planned": 0.79,
+          "actual": 0.79,
+          "absolute_gap": 0.0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "behavioral_consistency": {
+          "planned": 0.18,
+          "actual": 0.1736,
+          "absolute_gap": 0.0064,
+          "relative_gap": 0.0353,
+          "feasible": true
+        },
+        "response_latency_variance": {
+          "planned": 5.3,
+          "actual": 5.088,
+          "absolute_gap": 0.212,
+          "relative_gap": 0.04,
+          "feasible": true
+        },
+        "eip1559_tip_precision": {
+          "planned": 0.48,
+          "actual": 0.4891,
+          "absolute_gap": 0.0091,
+          "relative_gap": 0.0189,
+          "feasible": true
+        },
+        "BW": {
+          "planned": 9,
+          "actual": 9,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "MA": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        },
+        "BT": {
+          "planned": 4,
+          "actual": 4,
+          "absolute_gap": 0,
+          "relative_gap": 0.0,
+          "feasible": true
+        }
+      },
+      "n_feasible": 13,
+      "n_total_features": 13,
+      "feasibility_rate": 1.0,
+      "dry_run": true
+    }
+  ],
+  "summary": {
+    "avg_feasibility_rate": 1.0,
+    "per_feature_feasibility": {
+      "hour_entropy": 1.0,
+      "RF": 1.0,
+      "gas_nonce_gap_regularity": 1.0,
+      "action_sequence_perplexity": 1.0,
+      "error_recovery_pattern": 1.0,
+      "gas_price_precision": 1.0,
+      "HF": 1.0,
+      "behavioral_consistency": 1.0,
+      "response_latency_variance": 1.0,
+      "eip1559_tip_precision": 1.0,
+      "BW": 1.0,
+      "MA": 1.0,
+      "BT": 1.0
+    }
+  },
+  "elapsed_seconds": 0.4
+}
