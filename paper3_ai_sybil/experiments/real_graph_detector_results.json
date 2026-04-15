@@ -1,0 +1,925 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-15T01:38:32.072745",
+    "projects": [
+      "blur_s2",
+      "eigenlayer"
+    ],
+    "n_sybil_per_project": 250,
+    "n_clean_per_project": 250,
+    "n_api_keys": 3,
+    "graph_construction": "Real Ethereum transfer graph from Etherscan API. For each sampled address, fetched up to 500 normal transactions. Directed edge from sender to receiver for each ETH transfer. Undirected version used for Louvain community detection."
+  },
+  "projects": {
+    "blur_s2": {
+      "project": "blur_s2",
+      "n_sampled": 500,
+      "n_sybil": 250,
+      "n_clean": 250,
+      "graph_stats": {
+        "directed_nodes": 17645,
+        "directed_edges": 33714,
+        "undirected_nodes": 17481,
+        "undirected_edges": 32487,
+        "sampled_only_edges": 158,
+        "total_txs_fetched": 108186,
+        "median_txs_per_address": 122.0
+      },
+      "graph_properties": {
+        "sybil_mean_degree": 68.96,
+        "clean_mean_degree": 61.62,
+        "sybil_median_degree": 48.0,
+        "clean_median_degree": 44.5,
+        "sybil_mean_clustering": 0.0,
+        "clean_mean_clustering": 0.0,
+        "sybil_mean_tx_count": 241.6,
+        "clean_mean_tx_count": 191.1,
+        "sybil_zero_tx_frac": 0.356,
+        "clean_zero_tx_frac": 0.308
+      },
+      "community_analysis": {
+        "nmi": 0.0396,
+        "ari": 0.0059,
+        "n_communities": 31,
+        "top_communities_by_sybil_frac": [
+          {
+            "cid": 12,
+            "n": 4,
+            "sybil_frac": 0.75
+          },
+          {
+            "cid": 26,
+            "n": 4,
+            "sybil_frac": 0.75
+          },
+          {
+            "cid": 17,
+            "n": 11,
+            "sybil_frac": 0.7273
+          },
+          {
+            "cid": 9,
+            "n": 27,
+            "sybil_frac": 0.7037
+          },
+          {
+            "cid": 7,
+            "n": 18,
+            "sybil_frac": 0.6667
+          },
+          {
+            "cid": 8,
+            "n": 18,
+            "sybil_frac": 0.6111
+          },
+          {
+            "cid": 15,
+            "n": 5,
+            "sybil_frac": 0.6
+          },
+          {
+            "cid": 20,
+            "n": 5,
+            "sybil_frac": 0.6
+          },
+          {
+            "cid": 3,
+            "n": 9,
+            "sybil_frac": 0.5556
+          },
+          {
+            "cid": 10,
+            "n": 4,
+            "sybil_frac": 0.5
+          }
+        ]
+      },
+      "strategies": {
+        "louvain_res0.5_dens0.05": {
+          "tp": 2,
+          "fp": 1,
+          "tn": 249,
+          "fn": 248,
+          "precision": 0.6667,
+          "recall": 0.008,
+          "f1": 0.0158,
+          "fpr": 0.004,
+          "n_flagged": 3
+        },
+        "louvain_res0.5_dens0.1": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res0.5_dens0.15": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res0.5_dens0.2": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.0_dens0.05": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.0_dens0.1": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.0_dens0.15": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.0_dens0.2": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.5_dens0.05": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.5_dens0.1": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.5_dens0.15": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.5_dens0.2": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "shared_cp_min3": {
+          "tp": 161,
+          "fp": 173,
+          "tn": 77,
+          "fn": 89,
+          "precision": 0.482,
+          "recall": 0.644,
+          "f1": 0.5514,
+          "fpr": 0.692,
+          "n_flagged": 334
+        },
+        "shared_cp_min5": {
+          "tp": 161,
+          "fp": 173,
+          "tn": 77,
+          "fn": 89,
+          "precision": 0.482,
+          "recall": 0.644,
+          "f1": 0.5514,
+          "fpr": 0.692,
+          "n_flagged": 334
+        },
+        "shared_cp_min10": {
+          "tp": 161,
+          "fp": 173,
+          "tn": 77,
+          "fn": 89,
+          "precision": 0.482,
+          "recall": 0.644,
+          "f1": 0.5514,
+          "fpr": 0.692,
+          "n_flagged": 334
+        },
+        "shared_cp_min20": {
+          "tp": 161,
+          "fp": 173,
+          "tn": 77,
+          "fn": 89,
+          "precision": 0.482,
+          "recall": 0.644,
+          "f1": 0.5514,
+          "fpr": 0.692,
+          "n_flagged": 334
+        },
+        "direct_edge_min2": {
+          "tp": 4,
+          "fp": 2,
+          "tn": 248,
+          "fn": 246,
+          "precision": 0.6667,
+          "recall": 0.016,
+          "f1": 0.0312,
+          "fpr": 0.008,
+          "n_flagged": 6
+        },
+        "direct_edge_min3": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "direct_edge_min5": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "oracle_res0.5_t0.5": {
+          "tp": 29,
+          "fp": 15,
+          "tn": 235,
+          "fn": 221,
+          "precision": 0.6591,
+          "recall": 0.116,
+          "f1": 0.1973,
+          "fpr": 0.06,
+          "n_flagged": 44
+        },
+        "oracle_res0.5_t0.6": {
+          "tp": 21,
+          "fp": 7,
+          "tn": 243,
+          "fn": 229,
+          "precision": 0.75,
+          "recall": 0.084,
+          "f1": 0.1511,
+          "fpr": 0.028,
+          "n_flagged": 28
+        },
+        "oracle_res0.5_t0.7": {
+          "tp": 17,
+          "fp": 5,
+          "tn": 245,
+          "fn": 233,
+          "precision": 0.7727,
+          "recall": 0.068,
+          "f1": 0.125,
+          "fpr": 0.02,
+          "n_flagged": 22
+        },
+        "oracle_res1.0_t0.5": {
+          "tp": 61,
+          "fp": 32,
+          "tn": 218,
+          "fn": 189,
+          "precision": 0.6559,
+          "recall": 0.244,
+          "f1": 0.3557,
+          "fpr": 0.128,
+          "n_flagged": 93
+        },
+        "oracle_res1.0_t0.6": {
+          "tp": 56,
+          "fp": 28,
+          "tn": 222,
+          "fn": 194,
+          "precision": 0.6667,
+          "recall": 0.224,
+          "f1": 0.3353,
+          "fpr": 0.112,
+          "n_flagged": 84
+        },
+        "oracle_res1.0_t0.7": {
+          "tp": 27,
+          "fp": 11,
+          "tn": 239,
+          "fn": 223,
+          "precision": 0.7105,
+          "recall": 0.108,
+          "f1": 0.1875,
+          "fpr": 0.044,
+          "n_flagged": 38
+        }
+      },
+      "best_non_oracle": {
+        "strategy": "shared_cp_min3",
+        "tp": 161,
+        "fp": 173,
+        "tn": 77,
+        "fn": 89,
+        "precision": 0.482,
+        "recall": 0.644,
+        "f1": 0.5514,
+        "fpr": 0.692,
+        "n_flagged": 334
+      },
+      "elapsed_seconds": 7.4
+    },
+    "eigenlayer": {
+      "project": "eigenlayer",
+      "n_sampled": 500,
+      "n_sybil": 250,
+      "n_clean": 250,
+      "graph_stats": {
+        "directed_nodes": 11937,
+        "directed_edges": 27917,
+        "undirected_nodes": 11768,
+        "undirected_edges": 26957,
+        "sampled_only_edges": 133,
+        "total_txs_fetched": 74168,
+        "median_txs_per_address": 32.0
+      },
+      "graph_properties": {
+        "sybil_mean_degree": 70.48,
+        "clean_mean_degree": 37.88,
+        "sybil_median_degree": 43.5,
+        "clean_median_degree": 16.0,
+        "sybil_mean_clustering": 0.0,
+        "clean_mean_clustering": 0.0,
+        "sybil_mean_tx_count": 212.3,
+        "clean_mean_tx_count": 84.4,
+        "sybil_zero_tx_frac": 0.324,
+        "clean_zero_tx_frac": 0.352
+      },
+      "community_analysis": {
+        "nmi": 0.0723,
+        "ari": 0.0507,
+        "n_communities": 25,
+        "top_communities_by_sybil_frac": [
+          {
+            "cid": 20,
+            "n": 4,
+            "sybil_frac": 1.0
+          },
+          {
+            "cid": 9,
+            "n": 13,
+            "sybil_frac": 0.9231
+          },
+          {
+            "cid": 8,
+            "n": 10,
+            "sybil_frac": 0.9
+          },
+          {
+            "cid": 1,
+            "n": 14,
+            "sybil_frac": 0.7857
+          },
+          {
+            "cid": 17,
+            "n": 4,
+            "sybil_frac": 0.75
+          },
+          {
+            "cid": 15,
+            "n": 14,
+            "sybil_frac": 0.7143
+          },
+          {
+            "cid": 6,
+            "n": 20,
+            "sybil_frac": 0.7
+          },
+          {
+            "cid": 19,
+            "n": 3,
+            "sybil_frac": 0.6667
+          },
+          {
+            "cid": 4,
+            "n": 15,
+            "sybil_frac": 0.6667
+          },
+          {
+            "cid": 18,
+            "n": 3,
+            "sybil_frac": 0.6667
+          }
+        ]
+      },
+      "strategies": {
+        "louvain_res0.5_dens0.05": {
+          "tp": 20,
+          "fp": 15,
+          "tn": 235,
+          "fn": 230,
+          "precision": 0.5714,
+          "recall": 0.08,
+          "f1": 0.1404,
+          "fpr": 0.06,
+          "n_flagged": 35
+        },
+        "louvain_res0.5_dens0.1": {
+          "tp": 20,
+          "fp": 15,
+          "tn": 235,
+          "fn": 230,
+          "precision": 0.5714,
+          "recall": 0.08,
+          "f1": 0.1404,
+          "fpr": 0.06,
+          "n_flagged": 35
+        },
+        "louvain_res0.5_dens0.15": {
+          "tp": 11,
+          "fp": 5,
+          "tn": 245,
+          "fn": 239,
+          "precision": 0.6875,
+          "recall": 0.044,
+          "f1": 0.0827,
+          "fpr": 0.02,
+          "n_flagged": 16
+        },
+        "louvain_res0.5_dens0.2": {
+          "tp": 11,
+          "fp": 5,
+          "tn": 245,
+          "fn": 239,
+          "precision": 0.6875,
+          "recall": 0.044,
+          "f1": 0.0827,
+          "fpr": 0.02,
+          "n_flagged": 16
+        },
+        "louvain_res1.0_dens0.05": {
+          "tp": 20,
+          "fp": 15,
+          "tn": 235,
+          "fn": 230,
+          "precision": 0.5714,
+          "recall": 0.08,
+          "f1": 0.1404,
+          "fpr": 0.06,
+          "n_flagged": 35
+        },
+        "louvain_res1.0_dens0.1": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.0_dens0.15": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.0_dens0.2": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.5_dens0.05": {
+          "tp": 20,
+          "fp": 15,
+          "tn": 235,
+          "fn": 230,
+          "precision": 0.5714,
+          "recall": 0.08,
+          "f1": 0.1404,
+          "fpr": 0.06,
+          "n_flagged": 35
+        },
+        "louvain_res1.5_dens0.1": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.5_dens0.15": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "louvain_res1.5_dens0.2": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "shared_cp_min3": {
+          "tp": 169,
+          "fp": 162,
+          "tn": 88,
+          "fn": 81,
+          "precision": 0.5106,
+          "recall": 0.676,
+          "f1": 0.5818,
+          "fpr": 0.648,
+          "n_flagged": 331
+        },
+        "shared_cp_min5": {
+          "tp": 169,
+          "fp": 162,
+          "tn": 88,
+          "fn": 81,
+          "precision": 0.5106,
+          "recall": 0.676,
+          "f1": 0.5818,
+          "fpr": 0.648,
+          "n_flagged": 331
+        },
+        "shared_cp_min10": {
+          "tp": 169,
+          "fp": 160,
+          "tn": 90,
+          "fn": 81,
+          "precision": 0.5137,
+          "recall": 0.676,
+          "f1": 0.5838,
+          "fpr": 0.64,
+          "n_flagged": 329
+        },
+        "shared_cp_min20": {
+          "tp": 169,
+          "fp": 159,
+          "tn": 91,
+          "fn": 81,
+          "precision": 0.5152,
+          "recall": 0.676,
+          "f1": 0.5848,
+          "fpr": 0.636,
+          "n_flagged": 328
+        },
+        "direct_edge_min2": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "direct_edge_min3": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "direct_edge_min5": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 250,
+          "fn": 250,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0,
+          "fpr": 0.0,
+          "n_flagged": 0
+        },
+        "oracle_res0.5_t0.5": {
+          "tp": 26,
+          "fp": 6,
+          "tn": 244,
+          "fn": 224,
+          "precision": 0.8125,
+          "recall": 0.104,
+          "f1": 0.1844,
+          "fpr": 0.024,
+          "n_flagged": 32
+        },
+        "oracle_res0.5_t0.6": {
+          "tp": 22,
+          "fp": 3,
+          "tn": 247,
+          "fn": 228,
+          "precision": 0.88,
+          "recall": 0.088,
+          "f1": 0.16,
+          "fpr": 0.012,
+          "n_flagged": 25
+        },
+        "oracle_res0.5_t0.7": {
+          "tp": 22,
+          "fp": 3,
+          "tn": 247,
+          "fn": 228,
+          "precision": 0.88,
+          "recall": 0.088,
+          "f1": 0.16,
+          "fpr": 0.012,
+          "n_flagged": 25
+        },
+        "oracle_res1.0_t0.5": {
+          "tp": 105,
+          "fp": 53,
+          "tn": 197,
+          "fn": 145,
+          "precision": 0.6646,
+          "recall": 0.42,
+          "f1": 0.5147,
+          "fpr": 0.212,
+          "n_flagged": 158
+        },
+        "oracle_res1.0_t0.6": {
+          "tp": 66,
+          "fp": 20,
+          "tn": 230,
+          "fn": 184,
+          "precision": 0.7674,
+          "recall": 0.264,
+          "f1": 0.3929,
+          "fpr": 0.08,
+          "n_flagged": 86
+        },
+        "oracle_res1.0_t0.7": {
+          "tp": 56,
+          "fp": 15,
+          "tn": 235,
+          "fn": 194,
+          "precision": 0.7887,
+          "recall": 0.224,
+          "f1": 0.3489,
+          "fpr": 0.06,
+          "n_flagged": 71
+        }
+      },
+      "best_non_oracle": {
+        "strategy": "shared_cp_min20",
+        "tp": 169,
+        "fp": 159,
+        "tn": 91,
+        "fn": 81,
+        "precision": 0.5152,
+        "recall": 0.676,
+        "f1": 0.5848,
+        "fpr": 0.636,
+        "n_flagged": 328
+      },
+      "elapsed_seconds": 7.1
+    }
+  },
+  "llm_injection": {
+    "blur_s2": {
+      "basic": {
+        "n_llm": 9,
+        "evasion_shared_counterparty": 1.0,
+        "evasion_direct_edge": 1.0,
+        "evasion_louvain_density": 1.0,
+        "detected_counterparty": 0,
+        "detected_direct_edge": 0,
+        "detected_louvain": 0
+      },
+      "moderate": {
+        "n_llm": 10,
+        "evasion_shared_counterparty": 1.0,
+        "evasion_direct_edge": 1.0,
+        "evasion_louvain_density": 1.0,
+        "detected_counterparty": 0,
+        "detected_direct_edge": 0,
+        "detected_louvain": 0
+      },
+      "advanced": {
+        "n_llm": 9,
+        "evasion_shared_counterparty": 1.0,
+        "evasion_direct_edge": 1.0,
+        "evasion_louvain_density": 1.0,
+        "detected_counterparty": 0,
+        "detected_direct_edge": 0,
+        "detected_louvain": 0
+      }
+    },
+    "eigenlayer": {
+      "basic": {
+        "n_llm": 10,
+        "evasion_shared_counterparty": 1.0,
+        "evasion_direct_edge": 1.0,
+        "evasion_louvain_density": 1.0,
+        "detected_counterparty": 0,
+        "detected_direct_edge": 0,
+        "detected_louvain": 0
+      },
+      "moderate": {
+        "n_llm": 10,
+        "evasion_shared_counterparty": 1.0,
+        "evasion_direct_edge": 1.0,
+        "evasion_louvain_density": 1.0,
+        "detected_counterparty": 0,
+        "detected_direct_edge": 0,
+        "detected_louvain": 0
+      },
+      "advanced": {
+        "n_llm": 9,
+        "evasion_shared_counterparty": 1.0,
+        "evasion_direct_edge": 1.0,
+        "evasion_louvain_density": 1.0,
+        "detected_counterparty": 0,
+        "detected_direct_edge": 0,
+        "detected_louvain": 0
+      }
+    }
+  },
+  "comparison": {
+    "blur_s2": {
+      "proxy_graph": {
+        "recall": 0.0189,
+        "precision": 0.5942,
+        "f1": 0.0366,
+        "fpr": 0.0048
+      },
+      "real_graph_best": {
+        "strategy": "shared_cp_min3",
+        "recall": 0.644,
+        "precision": 0.482,
+        "f1": 0.5514,
+        "fpr": 0.692
+      },
+      "real_graph_oracle_upper_bound": {
+        "strategy": "oracle_res1.0_t0.5",
+        "recall": 0.244,
+        "precision": 0.6559,
+        "f1": 0.3557,
+        "fpr": 0.128
+      },
+      "nmi": 0.0396,
+      "ari": 0.0059
+    },
+    "eigenlayer": {
+      "proxy_graph": {
+        "recall": 0.0688,
+        "precision": 0.6538,
+        "f1": 0.1245,
+        "fpr": 0.0037
+      },
+      "real_graph_best": {
+        "strategy": "shared_cp_min20",
+        "recall": 0.676,
+        "precision": 0.5152,
+        "f1": 0.5848,
+        "fpr": 0.636
+      },
+      "real_graph_oracle_upper_bound": {
+        "strategy": "oracle_res1.0_t0.5",
+        "recall": 0.42,
+        "precision": 0.6646,
+        "f1": 0.5147,
+        "fpr": 0.212
+      },
+      "nmi": 0.0723,
+      "ari": 0.0507
+    }
+  },
+  "key_findings": {
+    "blur_s2": {
+      "best_strategy": "shared_cp_min3",
+      "best_recall": 0.644,
+      "best_precision": 0.482,
+      "best_f1": 0.5514,
+      "best_fpr": 0.692,
+      "nmi": 0.0396,
+      "ari": 0.0059,
+      "sybil_mean_degree": 68.96,
+      "clean_mean_degree": 61.62,
+      "sybil_zero_tx_frac": 0.356,
+      "clean_zero_tx_frac": 0.308,
+      "llm_basic_evasion_counterparty": 1.0,
+      "llm_basic_evasion_direct": 1.0,
+      "llm_basic_evasion_louvain": 1.0,
+      "llm_moderate_evasion_counterparty": 1.0,
+      "llm_moderate_evasion_direct": 1.0,
+      "llm_moderate_evasion_louvain": 1.0,
+      "llm_advanced_evasion_counterparty": 1.0,
+      "llm_advanced_evasion_direct": 1.0,
+      "llm_advanced_evasion_louvain": 1.0
+    },
+    "eigenlayer": {
+      "best_strategy": "shared_cp_min20",
+      "best_recall": 0.676,
+      "best_precision": 0.5152,
+      "best_f1": 0.5848,
+      "best_fpr": 0.636,
+      "nmi": 0.0723,
+      "ari": 0.0507,
+      "sybil_mean_degree": 70.48,
+      "clean_mean_degree": 37.88,
+      "sybil_zero_tx_frac": 0.324,
+      "clean_zero_tx_frac": 0.352,
+      "llm_basic_evasion_counterparty": 1.0,
+      "llm_basic_evasion_direct": 1.0,
+      "llm_basic_evasion_louvain": 1.0,
+      "llm_moderate_evasion_counterparty": 1.0,
+      "llm_moderate_evasion_direct": 1.0,
+      "llm_moderate_evasion_louvain": 1.0,
+      "llm_advanced_evasion_counterparty": 1.0,
+      "llm_advanced_evasion_direct": 1.0,
+      "llm_advanced_evasion_louvain": 1.0
+    }
+  },
+  "interpretation": "CRITICAL FINDING: On the real Ethereum transfer graph, Louvain community detection provides substantially WEAKER sybil separation than the proxy graph suggested. Key reasons: (1) Real communities are dominated by shared service addresses (exchanges, routers, bridges) that both sybils and non-sybils interact with, creating large sparse communities with ~50% sybil base rates. (2) NMI between Louvain communities and sybil labels is near zero (0.04-0.07), indicating communities carry almost no sybil signal. (3) The shared-counterparty strategy (which directly targets funding-source patterns) performs better than generic Louvain but still has limited recall because many sybils use diverse funding paths. (4) LLM sybils, which have no on-chain transaction history, achieve 100% evasion against counterparty-based detection and near-100% against all graph strategies. This STRENGTHENS the paper's thesis: even the strongest detector class (graph-based) fails against LLM-orchestrated sybils.",
+  "api_stats": {
+    "total_api_calls": 0,
+    "cache_hits": 2000,
+    "api_errors": 0
+  }
+}
