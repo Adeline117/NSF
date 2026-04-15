@@ -1,0 +1,118 @@
+{
+  "config": {
+    "n_per": 500,
+    "n_boot": 2000,
+    "projects": [
+      "blur_s2",
+      "1inch",
+      "uniswap",
+      "eigenlayer"
+    ]
+  },
+  "results": {
+    "blur_s2": {
+      "basic": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "moderate": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "advanced": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "1inch": {
+      "basic": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "moderate": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "advanced": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "uniswap": {
+      "basic": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "moderate": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "advanced": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "eigenlayer": {
+      "basic": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "moderate": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "advanced": {
+        "n": 500,
+        "rules_evasion": 1.0,
+        "rules_ci": [
+          1.0,
+          1.0
+        ]
+      }
+    }
+  }
+}
