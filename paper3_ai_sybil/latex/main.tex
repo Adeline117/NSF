@@ -453,6 +453,10 @@ Graph (Louvain)          & 99.4\% & 94.3\% & 100\%  \\
 
 \textbf{Limitation:} Our graph evaluation uses a proxy funding-flow graph constructed from HasciDB's RF and MA indicators, not the actual Ethereum transfer graph. This likely underestimates real graph detector effectiveness. We report these results as a lower bound on graph-based defense.
 
+\label{sec:real-graph}
+\textbf{Update with real graph data.}
+We subsequently evaluated Louvain on actual Ethereum transfer graphs constructed from 999 Etherscan API-fetched transaction histories. The real graph confirms and strengthens the proxy result: NMI drops from the proxy's 0.10 to 0.04--0.07 on the real graph, and LLM sybil evasion remains at 100\%.
+
 Table~\ref{tab:graph_stats} provides per-project graph statistics and detection performance on real Sybils. Detection effectiveness varies dramatically: looksrare achieves recall 0.400 (driven by its high MA rate of 29.8\%), while pengu achieves recall 0.000 (Sybil rate only 5.5\% with near-zero MA). This heterogeneity suggests that graph-based detection is effective primarily against multi-account clusters, not against operational Sybils that avoid fund-flow patterns.
 
 \begin{table}[t]
@@ -757,7 +761,7 @@ Feature-space attacks are cheap (\$12 in API credits for our full benchmark). Pr
 BrightID, Gitcoin Passport, and World ID establish human uniqueness through social graphs, credential aggregation, and biometric proof respectively. These mechanisms are orthogonal to behavioral features: an LLM can mimic a wallet's transaction pattern but cannot produce a retinal scan or a social graph rooted in physical-world relationships. The ceiling result makes the case for identity attestation quantitative: feature-space detection tops out at AUC 0.58, while identity-layer defenses operate on a fundamentally different axis.
 
 \noindent\textbf{3. Full-graph structural analysis (exploit what the attacker cannot plan).}
-Our proxy graph evaluation (Louvain on funding-flow indicators) is evaded at 94--100\%. But real graph detectors---SybilRank~\cite{cao2012sybilrank}, SybilBelief~\cite{gong2014sybilbelief}, GNN-based approaches~\cite{artemis}---operate on the full Ethereum transfer graph with $10\times$--$100\times$ more edges. An LLM can plan a wallet's \emph{features} but cannot retroactively insert edges into a global transfer graph. Graph-level defenses on actual (not proxy) transfer graphs are structurally outside the feature-space ceiling.
+Our real Ethereum transfer graph evaluation (Section~\ref{sec:real-graph}, 182K transactions across blur\_s2 and eigenlayer) reveals that even actual graph structure provides near-zero signal: Louvain community assignments achieve NMI of 0.04--0.07 against sybil labels, and the best non-oracle strategy (shared counterparty) achieves F1 of 0.55--0.58 but only at a false-positive rate of 64--69\%, making it operationally useless. This result is more pessimistic than our proxy-graph analysis suggested, and it means the detection ceiling extends beyond feature-space to graph-space as well. The three-layer defense architecture we proposed must therefore weight the identity layer (BrightID, Gitcoin Passport, World~ID) and execution-cost layer more heavily than graph analysis, at least for the community-detection approaches tested here.
 
 \noindent\textbf{4. Ensemble defense across paradigms.}
 Under independence, an adversary evading behavioral features ($p_1 \approx 0.42$ at equilibrium), graph clustering ($p_2 \approx 0.94$ on proxy; likely lower on full graph), and temporal anomaly detection ($p_3 \approx 0.50$, estimated) faces joint evasion probability $p_1 \cdot p_2 \cdot p_3 \approx 0.20$. Even with attacker-side correlation ($\rho = 0.5$), the ensemble substantially outperforms any single modality. The ceiling motivates this combination: if no single layer can exceed 0.58, layered defenses are not optional---they are necessary.
