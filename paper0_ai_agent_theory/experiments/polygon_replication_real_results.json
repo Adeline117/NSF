@@ -1,0 +1,552 @@
+{
+  "timestamp": "2026-04-15T01:29:37.848652",
+  "mode": "LIVE",
+  "seed": 42,
+  "api_calls_total": 44,
+  "ethereum_baseline": {
+    "n_agents": 2744,
+    "classes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "class_counts": {
+      "0": 130,
+      "1": 54,
+      "2": 1669,
+      "3": 71,
+      "4": 34,
+      "5": 95,
+      "6": 666,
+      "7": 25
+    }
+  },
+  "polygon_data": {
+    "n_addresses_attempted": 44,
+    "n_successfully_extracted": 29,
+    "n_skipped_few_txs": 15,
+    "n_failed_api_error": 0,
+    "skipped_addresses": [
+      {
+        "address": "0x57C1E0C2aDF6eECdb135BCF9ec5f23b319be2C94",
+        "note": "Polygon MEV searcher A",
+        "class": 1,
+        "n_txs": 0
+      },
+      {
+        "address": "0x4bf681894abEc828B212C906082B444Ceb2f6cf6",
+        "note": "Polygon sandwich bot A",
+        "class": 1,
+        "n_txs": 0
+      },
+      {
+        "address": "0xfb6AE7f1E3940b15E7E3070D9ACD339F54bdf9Ac",
+        "note": "Beefy AAVE manager A",
+        "class": 2,
+        "n_txs": 0
+      },
+      {
+        "address": "0x5a0e4A0c1F24C586ED7cDa7B4c477E4B0Fbe37F5",
+        "note": "Aave Polygon liquidator A",
+        "class": 2,
+        "n_txs": 0
+      },
+      {
+        "address": "0x6dfc34609a05bC22319fA4Cce1d1E2929548c0d7",
+        "note": "Aave Polygon liquidator B",
+        "class": 2,
+        "n_txs": 3
+      },
+      {
+        "address": "0x09F82Ccd6baE2AeBe46bA7dd2cf08d87355ac430",
+        "note": "Polygon yield optimizer",
+        "class": 2,
+        "n_txs": 2
+      },
+      {
+        "address": "0x9338b5153AE39BB89f50468E608eD9d764B755fD",
+        "note": "Autonolas Registry Polygon",
+        "class": 3,
+        "n_txs": 1
+      },
+      {
+        "address": "0x2dBcE60ebeAafb77e5f6B94334f0E4a5D93C1F18",
+        "note": "Olas Polygon agent B",
+        "class": 3,
+        "n_txs": 0
+      },
+      {
+        "address": "0xc4bF5CbDaBE595361438F8c6a187bDc330539c60",
+        "note": "Olas Polygon agent C",
+        "class": 3,
+        "n_txs": 0
+      },
+      {
+        "address": "0x34C895f302D0E5999c2a65f5A50996F7d5E7F85C",
+        "note": "Olas Polygon trader agent",
+        "class": 3,
+        "n_txs": 0
+      },
+      {
+        "address": "0x580645868E4539b0e1BE8788e3e3b0E02E12e27c",
+        "note": "Polygon DAO executor A",
+        "class": 4,
+        "n_txs": 0
+      },
+      {
+        "address": "0x40ec5B33f54e0E8A33A975908C5BA1c14e5BbbDf",
+        "note": "Polygon ERC20 Bridge",
+        "class": 5,
+        "n_txs": 4
+      },
+      {
+        "address": "0x340759c8346A1E6Ed92035FB8B6ec57cE1D82c2c",
+        "note": "Chainlink Polygon keeper A",
+        "class": 6,
+        "n_txs": 2
+      },
+      {
+        "address": "0x5787BefDc0ECd210Dfa948264631CD53E68F7802",
+        "note": "Chainlink Polygon keeper B",
+        "class": 6,
+        "n_txs": 4
+      },
+      {
+        "address": "0x19aB60E4FF2b45AaC53F2D02082F396DB0eD30C5",
+        "note": "RL Polygon trader B",
+        "class": 7,
+        "n_txs": 0
+      }
+    ],
+    "failed_addresses": [],
+    "n_agents_after_filter": 27,
+    "classes": [
+      0,
+      1,
+      2,
+      5,
+      6
+    ],
+    "class_counts": {
+      "0": 6,
+      "1": 2,
+      "2": 9,
+      "5": 4,
+      "6": 6
+    }
+  },
+  "experiment_a_cross_chain_transfer": {
+    "common_classes": [
+      0,
+      1,
+      2,
+      5,
+      6
+    ],
+    "common_class_names": [
+      "SimpleTradingBot",
+      "MEVSearcher",
+      "DeFiManagementAgent",
+      "CrossChainBridgeAgent",
+      "DeterministicScript"
+    ],
+    "n_train_ethereum": 2614,
+    "n_test_polygon": 27,
+    "accuracy": 0.2222,
+    "f1_macro": 0.2002,
+    "f1_weighted": 0.193,
+    "confusion_matrix": [
+      [
+        0,
+        2,
+        0,
+        0,
+        4
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        3,
+        1,
+        0,
+        5
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        0,
+        1,
+        3
+      ]
+    ],
+    "confusion_labels": [
+      0,
+      1,
+      2,
+      5,
+      6
+    ],
+    "per_class_report": {
+      "SimpleTradingBot": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "MEVSearcher": {
+        "precision": 0.1111111111111111,
+        "recall": 0.5,
+        "f1-score": 0.18181818181818182,
+        "support": 2.0
+      },
+      "DeFiManagementAgent": {
+        "precision": 1.0,
+        "recall": 0.1111111111111111,
+        "f1-score": 0.2,
+        "support": 9.0
+      },
+      "CrossChainBridgeAgent": {
+        "precision": 0.5,
+        "recall": 0.25,
+        "f1-score": 0.3333333333333333,
+        "support": 4.0
+      },
+      "DeterministicScript": {
+        "precision": 0.2,
+        "recall": 0.5,
+        "f1-score": 0.2857142857142857,
+        "support": 6.0
+      },
+      "accuracy": 0.2222222222222222,
+      "macro avg": {
+        "precision": 0.3622222222222222,
+        "recall": 0.27222222222222225,
+        "f1-score": 0.20017316017316017,
+        "support": 27.0
+      },
+      "weighted avg": {
+        "precision": 0.4600823045267489,
+        "recall": 0.2222222222222222,
+        "f1-score": 0.19300945967612634,
+        "support": 27.0
+      }
+    }
+  },
+  "experiment_b_polygon_only_cv": {
+    "GradientBoosting": {
+      "n_splits": 2,
+      "accuracy_mean": 0.3764,
+      "accuracy_std": 0.1621,
+      "f1_macro_mean": 0.2614,
+      "f1_macro_std": 0.1386,
+      "f1_weighted_mean": 0.3298,
+      "f1_weighted_std": 0.1625,
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          2,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          2,
+          0,
+          5,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          2,
+          1,
+          1
+        ]
+      ],
+      "confusion_labels": [
+        0,
+        1,
+        2,
+        5,
+        6
+      ],
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.3,
+          "recall": 0.5,
+          "f1-score": 0.375,
+          "support": 6.0
+        },
+        "MEVSearcher": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 2.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.5555555555555556,
+          "recall": 0.5555555555555556,
+          "f1-score": 0.5555555555555556,
+          "support": 9.0
+        },
+        "CrossChainBridgeAgent": {
+          "precision": 0.3333333333333333,
+          "recall": 0.25,
+          "f1-score": 0.2857142857142857,
+          "support": 4.0
+        },
+        "DeterministicScript": {
+          "precision": 0.2,
+          "recall": 0.16666666666666666,
+          "f1-score": 0.18181818181818182,
+          "support": 6.0
+        },
+        "accuracy": 0.37037037037037035,
+        "macro avg": {
+          "precision": 0.2777777777777778,
+          "recall": 0.29444444444444445,
+          "f1-score": 0.27961760461760465,
+          "support": 27.0
+        },
+        "weighted avg": {
+          "precision": 0.345679012345679,
+          "recall": 0.37037037037037035,
+          "f1-score": 0.3512506012506012,
+          "support": 27.0
+        }
+      }
+    },
+    "RandomForest": {
+      "n_splits": 2,
+      "accuracy_mean": 0.4835,
+      "accuracy_std": 0.0549,
+      "f1_macro_mean": 0.3572,
+      "f1_macro_std": 0.0792,
+      "f1_weighted_mean": 0.4377,
+      "f1_weighted_std": 0.0619,
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          7,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          3,
+          0,
+          2
+        ]
+      ],
+      "confusion_labels": [
+        0,
+        1,
+        2,
+        5,
+        6
+      ],
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.375,
+          "recall": 0.5,
+          "f1-score": 0.42857142857142855,
+          "support": 6.0
+        },
+        "MEVSearcher": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 2.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.4666666666666667,
+          "recall": 0.7777777777777778,
+          "f1-score": 0.5833333333333334,
+          "support": 9.0
+        },
+        "CrossChainBridgeAgent": {
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1-score": 0.4,
+          "support": 4.0
+        },
+        "DeterministicScript": {
+          "precision": 0.6666666666666666,
+          "recall": 0.3333333333333333,
+          "f1-score": 0.4444444444444444,
+          "support": 6.0
+        },
+        "accuracy": 0.48148148148148145,
+        "macro avg": {
+          "precision": 0.5016666666666667,
+          "recall": 0.3722222222222222,
+          "f1-score": 0.37126984126984125,
+          "support": 27.0
+        },
+        "weighted avg": {
+          "precision": 0.5351851851851852,
+          "recall": 0.48148148148148145,
+          "f1-score": 0.4477072310405643,
+          "support": 27.0
+        }
+      }
+    },
+    "LogisticRegression": {
+      "n_splits": 2,
+      "accuracy_mean": 0.5165,
+      "accuracy_std": 0.0549,
+      "f1_macro_mean": 0.3932,
+      "f1_macro_std": 0.0677,
+      "f1_weighted_mean": 0.4865,
+      "f1_weighted_std": 0.055,
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          1,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          8,
+          0,
+          1
+        ],
+        [
+          2,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          2
+        ]
+      ],
+      "confusion_labels": [
+        0,
+        1,
+        2,
+        5,
+        6
+      ],
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1-score": 0.5,
+          "support": 6.0
+        },
+        "MEVSearcher": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 2.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.5714285714285714,
+          "recall": 0.8888888888888888,
+          "f1-score": 0.6956521739130435,
+          "support": 9.0
+        },
+        "CrossChainBridgeAgent": {
+          "precision": 0.3333333333333333,
+          "recall": 0.25,
+          "f1-score": 0.2857142857142857,
+          "support": 4.0
+        },
+        "DeterministicScript": {
+          "precision": 0.6666666666666666,
+          "recall": 0.3333333333333333,
+          "f1-score": 0.4444444444444444,
+          "support": 6.0
+        },
+        "accuracy": 0.5185185185185185,
+        "macro avg": {
+          "precision": 0.41428571428571426,
+          "recall": 0.39444444444444443,
+          "f1-score": 0.3851621808143547,
+          "support": 27.0
+        },
+        "weighted avg": {
+          "precision": 0.4991181657848325,
+          "recall": 0.5185185185185185,
+          "f1-score": 0.4840886435089333,
+          "support": 27.0
+        }
+      }
+    }
+  },
+  "interpretation": {
+    "cross_chain_transfer_conclusion": "The Ethereum-trained model achieves 22.2% accuracy on real Polygon data, suggesting weak cross-chain generalization of the taxonomy."
+  }
+}
