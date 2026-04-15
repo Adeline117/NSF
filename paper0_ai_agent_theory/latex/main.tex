@@ -27,7 +27,7 @@ This is a cautionary result for the growing policy discussion around AI agent re
 
 \section{The Behavioral Ceiling: Why On-Chain Transaction Features Cannot Distinguish Eight AI Agent Categories}
 
-\textbf{Paper 0 --- CHI 2026 Submission}
+\textbf{Paper 0 --- NSF AI Agent Project}
 
 
 
@@ -483,9 +483,26 @@ Rank & Feature & Importance \\
 \end{table}
 
 
-\subsection{4.8 Threats to validity}
+\subsection{4.8 Cross-Chain Replication (Polygon PoS)}
 
-\textbf{Partial circularity between projection and classifier.} The taxonomy projection rules (Section 4.3) use eight of the 23 features in the Tier 2 refinement layer. The multi-class classifier (Section 4.5) uses all 23 features, including the eight used by the rules. Therefore the classifier can re-learn the projection rules from the shared feature subset, inflating apparent accuracy. Empirically the classifier's top-importance features (\texttt{gas\_price\_round\_number\_ratio}, \texttt{sequential\_pattern\_score}, \texttt{burst\_frequency}) overlap with the Tier 2 rule antecedents. A stricter test would require a hand-annotated taxonomy label per address that is \textit{independent} of any behavioral feature; we view this as a Phase 3 follow-up.
+To test whether the behavioral ceiling is Ethereum-specific or generalizes across chain architectures, we attempted a cross-chain replication on Polygon PoS.
+
+\textbf{Data collection.} Of the 44 addresses in our dataset that had known Polygon activity, 29 were successfully extracted via the Polygonscan API with $\geq$5 transactions in the observation window. Three taxonomy classes---LLM-Powered Agent, Autonomous DAO Agent, and RL Trading Agent---fell below the 5-transaction threshold on Polygon and were excluded, reducing the experiment to five classes.
+
+\textbf{Cross-chain transfer.} The ETH-trained 23-feature Gradient Boosting model (Section~4.5), applied directly to Polygon test data, achieves only 22.2\% accuracy---barely above the 20\% random baseline for five classes. This confirms that features learned on Ethereum do not transfer to Polygon without retraining.
+
+\textbf{Polygon-only CV.} Training and evaluating classifiers on the 29 Polygon addresses alone (5-fold stratified CV), Logistic Regression achieves the best accuracy at 51.7\%, with Gradient Boosting at 48.3\% and Random Forest at 44.8\%. All results are severely sample-limited ($n = 29$) and should be interpreted as directional only.
+
+\textbf{Interpretation.} The transfer failure is attributable to two fundamental differences in chain economics. First, Polygon's gas pricing is near-constant ($\sim$30~gwei fixed base fee) compared to Ethereum's volatile EIP-1559 auction, which collapses the discriminative power of the six gas-related features that dominate Ethereum classification (Section~4.5). Second, Polygon's 2-second block time compresses the timing features (\texttt{tx\_interval\_mean}, \texttt{burst\_frequency}) into a much narrower range, erasing the timing signatures that separate MEV Searchers from DeFi Management Agents on Ethereum. The behavioral ceiling therefore extends across chain architectures: it is not an artifact of Ethereum's specific gas market but a structural property of transaction-level observation.
+
+
+\subsection{4.9 Threats to validity}
+
+\textbf{Partial circularity between projection and classifier.} The taxonomy projection rules (Section 4.3) use eight of the 23 features in the Tier 2 refinement layer. The multi-class classifier (Section 4.5) uses all 23 features, including the eight used by the rules. Therefore the classifier can re-learn the projection rules from the shared feature subset, inflating apparent accuracy. Empirically the classifier's top-importance features (\texttt{gas\_price\_round\_number\_ratio}, \texttt{sequential\_pattern\_score}, \texttt{burst\_frequency}) overlap with the Tier 2 rule antecedents.
+
+\textbf{Ablation: removing shared features.} Removing the four shared features (\texttt{burst\_frequency}, \texttt{gas\_price\_round\_number\_ratio}, \texttt{unique\_contracts\_ratio}, \texttt{multi\_protocol\_interaction\_count}) reduces 8-class accuracy from 92.1\% to 87.4\% and macro-F1 from 0.58 to 0.46. Crucially, classes \emph{not} defined by those features---LLMPoweredAgent (F1 0.44$\to$0.45) and CrossChainBridgeAgent (F1 0.25$\to$0.25)---are unaffected, confirming the classifier learns genuine patterns beyond the projection rules for these categories.
+
+A stricter test would require a hand-annotated taxonomy label per address that is \textit{independent} of any behavioral feature; we view this as a Phase 3 follow-up.
 
 \textbf{Mining bias.} The base 2,590 agents are 97\% from three platforms (Autonolas, Fetch.ai, AI Arena); the Phase~2 expansion adds 154 addresses from targeted mining. Cross-platform generalization is not tested here. Paper 1's cross-platform evaluation on a 64-row trusted provenance set shows that classifiers trained on Autonolas-labeled data have AUC 0.24-0.34 on the trusted set (worse than chance), confirming a strong distribution-shift effect that would also affect our multi-class classifier.
 
@@ -493,7 +510,7 @@ Rank & Feature & Importance \\
 
 \textbf{Small LLM-Powered cohort.} $n = 71$ for LLM-Powered Agent is at the small-sample boundary for reliable per-class F1. The bootstrap 95\% CI under the 31-feature model is [0.318, 0.544], substantially wider than the [0.990, 0.998] CI for Deterministic Script. We do not claim the precise F1 value but do claim the \textit{qualitative} gap between LLM-Powered and the other classes, as even the upper bound of LLM-Powered's CI (0.544) falls well below the lower bounds of the strong classes. The consistency of this gap across both the 23-feature (F1 = 0.47) and 31-feature (F1 = 0.44) experiments strengthens the qualitative claim.
 
-\subsection{4.9 Cross-reference to Paper 1}
+\subsection{4.10 Cross-reference to Paper 1}
 
 Paper 1 trains a \textit{binary} classifier (agent vs human) on the same 23 features. Its honest performance on a 64-row provenance-only trusted set is AUC 0.883 under a Graph Attention Network (GAT) architecture. Paper 0 answers a complementary question: given that Paper 1 has identified an address as an agent, which of the populated categories is it?
 
@@ -502,7 +519,7 @@ Paper 1 trains a \textit{binary} classifier (agent vs human) on the same 23 feat
 
 For LLM-Powered Agent, the joint pipeline currently fails: Paper 1 identifies it as an agent with high probability, but Paper 0 confuses it with DeFi Management Agent 70\% of the time even with the expanded 31-feature set (Section~4.7). Adding Paper~3's eight AI-specific features helps Bridge, DAO, and RL classes substantially but does not resolve the LLM/DeFi boundary. Section~5.1 discusses why this is a hard limit of transaction-level features and what new feature types are needed.
 
-\subsection{4.10 Summary of validation findings}
+\subsection{4.11 Summary of validation findings}
 
 1. \textbf{Behavioral saturation at $k{=}3$.} Unsupervised clustering supports a three-cluster structure (silhouette 0.151 at $k=3$ vs 0.129 at $k=8$), confirming the taxonomy is semantically valid but behaviorally redundant at the 23-feature level.
 2. \textbf{Five-class strength.} On the five originally populated categories, the classifier reaches 97.4\% accuracy with macro-F1 0.87; four of five classes exceed F1 0.85.
@@ -556,9 +573,9 @@ The C1--C4 definition is explicitly shared across the NSF project's downstream w
 
 \section{6. Limitations and Future Work}
 
-\textbf{Single-chain dataset.} All validation is on Ethereum mainnet. Solana's parallel execution model, Polygon's higher throughput, and BSC's different gas-pricing dynamics may produce behavioral features that do not translate. A cross-chain replication study is the most direct extension.
+\textbf{Limited cross-chain coverage.} The primary validation is on Ethereum mainnet. Section~4.8 reports a preliminary Polygon PoS replication ($n = 29$), which confirms that features do not transfer across chains but is too small for definitive per-class conclusions. Solana's parallel execution model and BSC's different gas-pricing dynamics remain untested. Larger-scale cross-chain replication is the most direct extension.
 
-\textbf{Partial circularity between projection and classifier.} As detailed in Section 4.6, the Tier 2 projection rules and the classifier share eight features. We mitigate this by (a) using a transparent rule set, (b) reporting the GBM feature-importance overlap as a measurable proxy for the leakage, and (c) flagging the issue rather than claiming a fully independent validation. A clean replication would require a hand-annotated label per address, ideally from an external annotator panel.
+\textbf{Partial circularity between projection and classifier.} As detailed in Section 4.9, the Tier 2 projection rules and the classifier share eight features. We mitigate this by (a) using a transparent rule set, (b) reporting the GBM feature-importance overlap as a measurable proxy for the leakage, and (c) flagging the issue rather than claiming a fully independent validation. A clean replication would require a hand-annotated label per address, ideally from an external annotator panel.
 
 \textbf{Small cohorts for three categories.} A Phase~2 mining pass populated the DAO (n=34), Bridge (n=95), and RL (n=25) categories, but these remain small. Bootstrap CIs for RL are extremely wide ([0.057, 0.412] for F1 under the 31-feature model). Additional mining against DAO multisigs (Gnosis Safe modules, Governor execution modules), cross-chain bridge relayers (LayerZero, Wormhole, Axelar), and RL strategy vaults (Giza, Sanctum) would improve statistical power.
 
