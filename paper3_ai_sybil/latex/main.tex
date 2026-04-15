@@ -14,16 +14,16 @@
 
 \begin{document}
 
-\title{The Detection Ceiling: LLM Sybil Adversaries Establish a Nash Equilibrium at AUC 0.58 for Feature-Space Airdrop Defense}
+\title{The Detection Ceiling: LLM Sybil Adversaries Reveal the Practical Floor of Feature-Space Airdrop Defense at AUC 0.58}
 \author{NSF Project Team}
 \affiliation{\institution{}\country{USA}}
 
 \begin{abstract}
-How good can feature-space sybil detection get against an optimal adversary? We prove the answer is AUC $\approx 0.58$---barely better than a coin flip.
+How good can feature-space sybil detection get against an adaptive adversary?
 We evaluate LLM-driven sybil evasion across four detector modalities, 16 Ethereum airdrop campaigns, and 386K addresses. Cross-modality evasion is near-total: 100\% against threshold rules, 99.9\% against gradient-boosted ML, and 94--100\% against proxy graph detectors.
-A 10-round best-response adversarial game between an LLM attacker (Claude Opus 4.6) and a retrained GBM defender converges to AUC $0.578 \pm 0.005$ across three seeds---this is the \emph{detection ceiling} for feature-space approaches.
-The feature \texttt{behavioral\_consistency} is the last signal standing (top-1 in 30/30 seed-rounds), yet even its importance converges toward irrelevance as the attacker reaches blend ratios of 0.93, making sybils 93\% identical to real wallets.
-The convergence across seeds with different initial conditions proves stability; the ceiling exists because at high blend ratios any classifier must approach chance.
+A 10-round best-response adversarial protocol between an LLM attacker (Claude Opus 4.6) and a retrained GBM defender converges to AUC $0.578 \pm 0.005$ across three seeds, establishing a \emph{practical detection floor} for feature-space approaches.
+At convergence, the attacker's optimal blend ratio reaches 0.93, meaning sybil profiles are 93\% identical to legitimate wallets---the residual 7\% of detectable signal concentrates in \texttt{behavioral\_consistency}, the single feature the attacker cannot fully suppress without abandoning coherent behavior (top-1 in 30/30 seed-rounds).
+At blend 0.93, sybil profiles share 93\% of their distributional mass with legitimate wallets; that the classifier approaches chance under near-identical distributions is expected. The non-trivial finding is that \texttt{behavioral\_consistency} retains discriminative power even at this extreme blend, and that the convergence point is stable across seeds.
 We contribute a reusable leakage-audit checklist (validated by our own post-mortem: AUC 0.953$\to$0.609 after fix) and argue that this ceiling result should redirect the sybil detection community from building better classifiers to building costlier execution environments, identity-layer defenses, and full-graph structural analysis.
 \end{abstract}
 
@@ -36,13 +36,13 @@ We contribute a reusable leakage-audit checklist (validated by our own post-mort
 
 \subsection{The Ceiling Question}
 
-How good can feature-space sybil detection get against an optimal adversary? We prove the answer is AUC $\approx 0.58$---barely better than a coin flip. This number is not a performance metric to be improved; it is a \emph{detection ceiling} established by best-response convergence in a Stackelberg game, and it bounds what any classifier operating on behavioral feature vectors can achieve when the adversary has read access to the defense.
+How good can feature-space sybil detection get against an adaptive adversary? Our empirical answer is AUC $\approx 0.58$---barely better than a coin flip. This number is not a performance metric to be improved; it is a \emph{practical detection floor} established by best-response convergence over 10 rounds of adversarial training, and it represents the point at which three independent runs with different initial conditions converge to within 0.005 AUC of each other.
 
 Airdrops are the default retroactive-reward mechanism for Ethereum-adjacent protocols, distributing hundreds of millions of dollars per campaign to users that satisfy eligibility heuristics. HasciDB~\cite{hascidb2026} is the most ambitious public audit of these distributions: using a modified-Delphi consensus of 12 Web3 practitioners it fixes five behavioral indicators---Burst Transactions (BT $\ge 5$), Burst Wallets (BW $\ge 10$), Hop Frequency (HF $\ge 0.80$), Repeat Funding (RF $\ge 0.50$) and Multi-Account (MA $\ge 5$)---and applies them to 3.6M eligible addresses across 16 Ethereum L1 campaigns (2020--2024), flagging roughly 30\% as Sybil.
 
 All prior work shares a tacit assumption: \textit{the adversary runs a deterministic script}. The five indicators and the supervised models that learn them are fingerprints for classical batch-automation. They do not speak to an adversary that can \textit{read the rule} and \textit{plan against it}. Meanwhile, LLM-controlled on-chain agents have moved from curiosity to commodity. Our companion Paper~1~\cite{wen2026agent} labels 2,590 addresses as agents and 726 as humans and extracts 8 execution-layer features where all satisfy $p{<}0.01$ in Mann-Whitney U, with Cohen's $d$ up to 1.98 (\texttt{hour\_entropy}).
 
-Rather than asking ``can LLMs evade?'' (they can---trivially), we ask the \emph{theoretical} question: what is the hard limit of feature-space detection under adaptive attack? We answer this by running a 10-round best-response game that converges across three seeds to AUC $0.578 \pm 0.005$. The stability of this convergence---and the irreducibility of the last-standing feature \texttt{behavioral\_consistency}---constitutes a ceiling proof analogous to cryptographic hardness results that motivate defense-in-depth.
+Rather than asking ``can LLMs evade?'' (they can---trivially), we ask the \emph{empirical} question: where does feature-space detection plateau under adaptive attack? We answer this by running a 10-round best-response protocol that converges across three seeds to AUC $0.578 \pm 0.005$. The stability of this convergence---and the persistence of \texttt{behavioral\_consistency} as the last informative feature---establishes a practical detection floor that motivates defense-in-depth.
 
 \subsection{Attacker Model}
 
@@ -57,7 +57,7 @@ Throughout this paper the adversary is an LLM-powered wallet operator with:
 \subsection{Research Questions}
 
 \begin{itemize}
-  \item \textbf{RQ1 (Detection ceiling).} Does a multi-round best-response arms race between an LLM attacker and a retrained defender converge, and what is the equilibrium AUC---i.e., the hard ceiling of feature-space detection?
+  \item \textbf{RQ1 (Detection floor).} Does a multi-round best-response arms race between an LLM attacker and a retrained defender converge, and what is the convergence-point AUC---i.e., the empirical floor of feature-space detection?
   \item \textbf{RQ2 (Cross-modality evasion).} Do LLM-generated sybils evade all four detector modalities---rules, statistical ML, gradient-boosted ML, and graph-based community detection---simultaneously?
   \item \textbf{RQ3 (Last feature standing).} Which behavioral features survive adaptive attack, and why?
   \item \textbf{RQ4 (Baseline honesty).} What is the leakage-free performance of HasciDB detectors under cross-axis evaluation?
@@ -67,10 +67,10 @@ Throughout this paper the adversary is an LLM-powered wallet operator with:
 \subsection{Contributions}
 
 \begin{enumerate}
-  \item \textbf{Detection ceiling proof.} A 10-round best-response Stackelberg game converging to AUC $0.578 \pm 0.005$ (3 seeds, $\Delta\text{AUC}{<}0.01$ for the last 3 rounds), establishing the hard limit of feature-space sybil detection under adaptive LLM attack (Section~\ref{sec:equilibrium}).
+  \item \textbf{Empirical detection floor.} A 10-round best-response adversarial protocol converging to AUC $0.578 \pm 0.005$ (3 seeds, $\Delta\text{AUC}{<}0.01$ for the last 3 rounds), establishing a practical floor for feature-space sybil detection under adaptive LLM attack (Section~\ref{sec:equilibrium}).
   \item \textbf{Cross-modality evasion benchmark.} The first evaluation of an LLM adversary against four detector modalities on 16 real airdrop campaigns, demonstrating 94--100\% evasion across rules, ML, GBM, and graph detectors (Sections~\ref{sec:evasion},~\ref{sec:graph}).
   \item \textbf{Last-feature-standing analysis.} \texttt{behavioral\_consistency} ranks top-1 in all 30 seed-rounds, but its importance converges from 0.36 to 0.17 as the attacker pushes blend ratios to 0.93---quantifying the irreducible residual and explaining why even it approaches irrelevance (Section~\ref{sec:equilibrium}).
-  \item \textbf{Paradigm-shift argument.} We argue that the 0.58 ceiling is not a call for better classifiers but for a migration to problem-space defenses (execution cost), identity-layer mechanisms (BrightID, Gitcoin Passport, World ID), and full-graph structural analysis (Section~\ref{sec:discussion}).
+  \item \textbf{Paradigm-shift argument.} We argue that the 0.58 detection floor is not a call for better classifiers but for a migration to problem-space defenses (execution cost), identity-layer mechanisms (BrightID, Gitcoin Passport, World ID), and full-graph structural analysis (Section~\ref{sec:discussion}).
   \item \textbf{Synthetic-feature audit protocol.} A 3-step checklist (Algorithm~\ref{alg:audit}) for detecting label leakage, validated by our own post-mortem (AUC 0.953$\to$0.609). Cross-axis LOPO mean AUC 0.617 and independent-label transfer AUC 0.586 establish honest baselines (Sections~\ref{sec:crossaxis},~\ref{sec:leakage}).
 \end{enumerate}
 
@@ -139,7 +139,7 @@ Detection is a classification problem bounded by the features available; generat
 
 \subsection{Positioning This Work}
 
-To our knowledge, this paper is the first to combine: (1)~an LLM adversary that generates adversarial feature vectors, (2)~a multi-detector benchmark spanning four modalities (rules, ML, GBM, graph), (3)~a multi-round adversarial equilibrium analysis with formal convergence criteria, and (4)~a systematic audit for synthetic-feature label leakage.
+To our knowledge, this paper is the first to combine: (1)~an LLM adversary that generates adversarial feature vectors, (2)~a multi-detector benchmark spanning four modalities (rules, ML, GBM, graph), (3)~a multi-round adversarial convergence analysis with pre-registered stopping criteria, and (4)~a systematic audit for synthetic-feature label leakage.
 Prior work attacks one detector at a time; we evaluate cross-modality evasion.
 Prior LLM security work operates in natural-language or code domains; we operate on structured numerical features with domain constraints.
 The closest analogue is adversarial malware generation~\cite{pierazzi2020}, but malware detectors operate on binaries with rich semantic structure, whereas airdrop detectors operate on low-dimensional indicator vectors---making evasion fundamentally easier and defense fundamentally harder.
@@ -264,10 +264,10 @@ A community $C$ is flagged as Sybil if $\frac{|\{v \in C : \text{fund\_flag}(v)=
 
 This proxy is \textit{conservative}: real graph detectors (SybilRank~\cite{cao2012sybilrank}, SybilBelief~\cite{gong2014sybilbelief}) operate on the full transfer graph with substantially more signal, so our evasion rates may represent upper bounds on what an LLM adversary achieves against production graph detectors.
 
-\subsection{Adversarial Equilibrium Protocol}
+\subsection{Adversarial Convergence Protocol}
 \label{sec:methods:equilibrium}
 
-We implement a 10-round Stackelberg game with \emph{best-response} blend selection, repeated over 3 seeds (42, 137, 314):
+We implement a 10-round best-response protocol with blend selection, repeated over 3 seeds (42, 137, 314):
 \begin{enumerate}
   \item \textbf{Round 0:} Train a GBM detector (150 trees, depth 4, lr 0.1) on 15,000 real wallets + 3,000 LLM sybils at human-blend ratio 0.45.
   \item \textbf{Round $t+1$:} Probe the current detector with 500 sybils at each of 14 blend ratios ($0.30, 0.35, \ldots, 0.95$); select the blend that maximizes evasion rate (the attacker's \emph{best response}). Generate 3,000 new LLM sybils at this blend; retrain the detector on all cumulative sybils + 15,000 real wallets; measure AUC, evasion rate, and feature importances.
@@ -594,13 +594,13 @@ A single-feature GBM using only \texttt{hour\_entropy} achieves AUC 0.864 (basic
 This is because \texttt{hour\_entropy} captures the Shannon entropy of the transaction-hour distribution over 24 bins; real LLM agents (and LLM-generated sybils) exhibit systematically higher entropy than human wallets (human $\mu = 3.17$, agent $\mu = 4.04$, $d = 1.98$).
 Even on moderate tier, where the LLM targets this feature, AUC remains 0.653---above the OPS-only baseline of 0.726---suggesting that the LLM cannot fully replicate the skewed hour distributions of human users who transact predominantly during their local business hours.
 
-\subsection{Adversarial Equilibrium Analysis}
+\subsection{Adversarial Convergence Analysis}
 \label{sec:equilibrium}
 
-We run the 10-round best-response Stackelberg protocol from \S\ref{sec:methods:equilibrium} over 3 seeds. Table~\ref{tab:equilibrium} and Figure~\ref{fig:equilibrium} report per-round results (mean $\pm$ std across seeds).
+We run the 10-round best-response protocol from \S\ref{sec:methods:equilibrium} over 3 seeds. Table~\ref{tab:equilibrium} and Figure~\ref{fig:equilibrium} report per-round results (mean $\pm$ std across seeds).
 
 \begin{table}[t]
-\caption{10-round best-response adversarial equilibrium (mean $\pm$ std over 3 seeds). The attacker probes 14 blend ratios per round and selects the best response. ``Best Blend'' shows the attacker-chosen ratio per seed.}
+\caption{10-round best-response adversarial convergence (mean $\pm$ std over 3 seeds). The attacker probes 14 blend ratios per round and selects the best response. ``Best Blend'' shows the attacker-chosen ratio per seed.}
 \label{tab:equilibrium}
 \small
 \begin{tabular}{rllrl}
@@ -624,12 +624,12 @@ Rd & Best Blend & AUC & Evasion & Top-1 Feature \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_equilibrium_convergence.pdf}
-\caption{Best-response adversarial equilibrium convergence (3-seed mean). Left axis: detector AUC (blue, descending from 0.985 to 0.578). Right axis: evasion rate (red, descending from 97.0\% to 2.9\%). The crossover at round~6 (evasion $<$ detection) marks the transition from attacker-dominated to defender-dominated regime.}
+\caption{Best-response adversarial convergence (3-seed mean). Left axis: detector AUC (blue, descending from 0.985 to 0.578). Right axis: evasion rate (red, descending from 97.0\% to 2.9\%). The crossover at round~6 (evasion $<$ detection) marks the transition from attacker-dominated to defender-dominated regime.}
 \label{fig:equilibrium}
 \end{figure}
 
 \textbf{Convergence.} Mean AUC across 3 seeds drops from 0.985 to 0.578 over 10 rounds. The per-round $\Delta$AUC decreases monotonically: $-$0.209, $-$0.079, $-$0.044, $-$0.023, $-$0.019, $-$0.013, $-$0.008, $-$0.008, $-$0.005. The last 3 rounds all satisfy $|\Delta\text{AUC}|{<}0.01$ (mean $\Delta$AUC $= 0.007$), meeting the pre-registered convergence criterion.
-A fixed-schedule protocol (blend increasing from 0.45 to 0.97 on a predetermined ramp) yields a final AUC of 0.599; the best-response protocol drives the AUC 0.021 lower to 0.578, confirming that the equilibrium is not a schedule artifact.
+A fixed-schedule protocol (blend increasing from 0.45 to 0.97 on a predetermined ramp) yields a final AUC of 0.599; the best-response protocol drives the AUC 0.021 lower to 0.578, confirming that the convergence point is not a schedule artifact.
 
 \textbf{Evasion-detection crossover.} Mean evasion rate drops from 97.0\% (round~1) to 2.9\% (round~9), crossing below 50\% at round~6. This crossover marks the transition from an attacker-dominated to a defender-dominated regime: beyond round~6, the retrained detector catches more sybils than it misses.
 
@@ -659,7 +659,7 @@ Rd & behav\_cons & resp\_lat & hour\_ent & Top-3 \% \\
 \end{tabular}
 \end{table}
 
-\textbf{Ceiling interpretation.} The converging AUC $\approx$0.58 is not a performance metric to be optimized---it is the \emph{detection ceiling} for the feature-space paradigm. At this equilibrium, the defender cannot improve without access to new feature modalities (the 8 behavioral features are exhausted), and the attacker cannot further degrade detection without violating domain constraints (best-response blend is already at 0.90--0.95, making sybils 93\% identical to real wallets). The residual 0.078 above chance (AUC 0.50) is attributable to \texttt{behavioral\_consistency}, which encodes a structural invariant---the coefficient of variation of inter-arrival times---that an LLM cannot perfectly match without real-time traffic modeling. This residual is the \textit{cost of mimicry}: irreducible within the feature-space paradigm, but insufficient for reliable detection.
+\textbf{Convergence interpretation.} The converging AUC $\approx$0.58 is not a performance metric to be optimized---it is a \emph{practical detection floor} for the feature-space paradigm under this adversary and these features. At convergence, the defender cannot improve without access to new feature modalities (the 8 behavioral features are exhausted), and the attacker cannot further degrade detection without violating domain constraints (best-response blend is already at 0.90--0.95, making sybils 93\% identical to real wallets). We cannot rule out that a detector with fundamentally different features (e.g., execution-layer timing, cross-transaction dependency graphs) could exceed this floor. What we establish is that within the 8-feature behavioral space, best-response adversarial training converges to this point from multiple starting conditions. The residual 0.078 above chance (AUC 0.50) is attributable to \texttt{behavioral\_consistency}, which encodes a structural invariant---the coefficient of variation of inter-arrival times---that an LLM cannot perfectly match without real-time traffic modeling. This residual is the \textit{cost of mimicry}: persistent within the feature-space paradigm under adaptive attack, but insufficient for reliable detection.
 
 \textbf{Comparison with 3-round adversarial training.}
 As a robustness check, we also ran a separate 3-round adversarial training protocol with a different blend-ratio schedule (0.55, 0.70, 0.60) and compared its trajectory.
@@ -720,27 +720,27 @@ A full testnet deployment with real HasciDB recomputation and population-level a
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{0.578 Is a Ceiling, Not a Score}
+\subsection{0.578 Is a Floor, Not a Score}
 
-The central result of this paper is not 100\% (the evasion rate), not 0.987 (the binary defense AUC), but \textbf{0.578}---the Nash equilibrium AUC that bounds what any feature-space detector can achieve against a best-response LLM adversary. We argue this number has the status of a \emph{ceiling proof}, not a performance metric.
+The central result of this paper is not 100\% (the evasion rate), not 0.987 (the binary defense AUC), but \textbf{0.578}---the empirical convergence point of best-response adversarial training within the 8-feature behavioral space. We argue this number has the status of a \emph{practical detection floor}, not a performance metric.
 
 Three lines of evidence support this interpretation:
 
 \noindent\textbf{1. Convergence across seeds.}
-The equilibrium AUC is $0.578 \pm 0.005$ across 3 seeds (42, 137, 314) with different initial conditions. The per-round $\Delta$AUC decreases monotonically ($-$0.209, $-$0.079, $\ldots$, $-$0.005), meeting the pre-registered convergence criterion of $|\Delta\text{AUC}|{<}0.01$ for 3 consecutive rounds. A fixed-schedule protocol yields 0.599; the best-response protocol drives it 0.021 lower, confirming that the equilibrium is not a schedule artifact.
+The convergence-point AUC is $0.578 \pm 0.005$ across 3 seeds (42, 137, 314) with different initial conditions. The per-round $\Delta$AUC decreases monotonically ($-$0.209, $-$0.079, $\ldots$, $-$0.005), meeting the pre-registered convergence criterion of $|\Delta\text{AUC}|{<}0.01$ for 3 consecutive rounds. A fixed-schedule protocol yields 0.599; the best-response protocol drives it 0.021 lower, confirming that the convergence point is not a schedule artifact.
 
-\noindent\textbf{2. The ceiling exists because sybils become indistinguishable.}
-At the equilibrium blend ratio of $\sim$0.93, LLM sybils are 93\% identical to real wallets in feature space. Any classifier operating on these features must approach chance: the distributions overlap so thoroughly that no decision boundary can separate them with high confidence. The residual 0.078 above chance (AUC 0.50) is attributable entirely to \texttt{behavioral\_consistency}, which encodes the coefficient of variation of inter-arrival times---a structural invariant the LLM cannot perfectly replicate without real-time traffic modeling.
+\noindent\textbf{2. The floor exists because sybils become near-indistinguishable.}
+At the convergence blend ratio of $\sim$0.93, LLM sybils share 93\% of their distributional mass with real wallets in feature space. That the classifier approaches chance under near-identical distributions is expected; the non-trivial finding is that \texttt{behavioral\_consistency} retains discriminative power even at this extreme blend, and that the convergence point is stable across seeds. The residual 0.078 above chance (AUC 0.50) concentrates in \texttt{behavioral\_consistency}, which encodes the coefficient of variation of inter-arrival times---a structural invariant the LLM cannot perfectly replicate without real-time traffic modeling.
 
 \noindent\textbf{3. Feature importance converges toward uniformity.}
-The Gini coefficient of feature importances drops from 0.58 (round~0, dominated by \texttt{behavioral\_consistency} at 0.36) to 0.21 (round~9, with the top feature at only 0.17). This flattening means the detector has exhausted the information in every feature dimension: there is no feature left to ``discover'' that would break the ceiling.
+The Gini coefficient of feature importances drops from 0.58 (round~0, dominated by \texttt{behavioral\_consistency} at 0.36) to 0.21 (round~9, with the top feature at only 0.17). This flattening means the detector has exhausted the information in every feature dimension within the current 8-feature space: there is no feature left to ``discover'' that would break the floor \textit{without introducing fundamentally new signal sources}.
 
-\noindent\textbf{Analogy to cryptographic hardness.}
-This ceiling is analogous to the information-theoretic bounds that motivate defense-in-depth in cryptography. Just as Shannon's perfect secrecy theorem proves that no cipher can be both efficient and information-theoretically secure without a key as long as the message, our convergence result proves that no feature-space classifier can be both accurate and robust when the adversary can read and replicate the feature distributions. The implication is the same: \emph{change the problem}, do not keep optimizing within the bounded paradigm.
+\noindent\textbf{Scope of the claim.}
+The convergence at 0.578 is a practical observation, not a theoretical proof of optimality. We cannot rule out that a detector with fundamentally different features (e.g., execution-layer timing, cross-transaction dependency graphs) could exceed this floor. What we establish is that within the 8-feature behavioral space, best-response adversarial training converges to this point from multiple starting conditions. Formal characterization of this convergence as a Nash equilibrium remains open; our contribution is the empirical observation that three independent initial conditions converge to the same AUC within 0.005. The practical implication is the same as a formal bound would be: \emph{change the problem}, do not keep optimizing within the bounded paradigm.
 
-\subsection{The Formal Game-Theoretic Framing}
+\subsection{Game-Theoretic Framing}
 
-The 10-round adversarial equilibrium can be formalized as a Stackelberg game~\cite{bruckner2011stackelberg,osborne1994game} between a defender (leader) and an attacker (follower):
+The 10-round adversarial protocol can be framed as a Stackelberg game~\cite{bruckner2011stackelberg,osborne1994game} between a defender (leader) and an attacker (follower):
 
 \begin{align}
 \min_{\theta} \max_{\phi} \; & \mathbb{E}_{x \sim p_\phi} \left[ \mathbf{1}[f_\theta(x) < \tau] \right] \label{eq:stackelberg} \\
@@ -748,23 +748,23 @@ The 10-round adversarial equilibrium can be formalized as a Stackelberg game~\ci
 & \text{BT}(x) < 5, \; \text{BW}(x) < 10, \; \text{HF}(x) < 0.8 \nonumber
 \end{align}
 
-\noindent where $f_\theta$ is the detector parameterized by $\theta$, $p_\phi$ is the LLM-generated sybil distribution parameterized by $\phi$ (the human-blend ratio), $\tau$ is the detection threshold, and $[\ell_i, u_i]$ are the domain constraints on each feature. The defender moves first by choosing $\theta$; the attacker observes $\theta$ and responds by choosing $\phi$ to maximize evasion. The convergence to AUC $0.578 \pm 0.005$ with $|\Delta\text{AUC}|{<}0.01$ confirms an approximate Nash equilibrium: neither player can unilaterally improve.
+\noindent where $f_\theta$ is the detector parameterized by $\theta$, $p_\phi$ is the LLM-generated sybil distribution parameterized by $\phi$ (the human-blend ratio), $\tau$ is the detection threshold, and $[\ell_i, u_i]$ are the domain constraints on each feature. The defender moves first by choosing $\theta$; the attacker observes $\theta$ and responds by choosing $\phi$ to maximize evasion. The convergence to AUC $0.578 \pm 0.005$ with $|\Delta\text{AUC}|{<}0.01$ is consistent with an approximate equilibrium, but we caution that this is a heuristic best-response over a discrete blend-ratio grid, not a continuous optimization with provable convergence guarantees. Whether this convergence point constitutes a formal Nash equilibrium of the underlying continuous game remains an open question.
 
 \subsection{What Must Replace Feature-Space Detection}
 
-The 0.58 ceiling means the entire feature-space paradigm for sybil detection is bounded. The field must migrate to mechanisms that are structurally outside the attacker's optimization surface:
+The 0.58 convergence point suggests that the feature-space paradigm for sybil detection faces diminishing returns under adaptive attack. The field should invest in mechanisms that are structurally outside the attacker's optimization surface:
 
 \noindent\textbf{1. Problem-space defenses (raise the cost of mimicry).}
 Feature-space attacks are cheap (\$12 in API credits for our full benchmark). Problem-space execution is not: at current Ethereum L1 gas prices ($\sim$30 Gwei, April 2026), generating a realistic 200-transaction history costs 0.1--0.5 ETH per wallet (\$200--\$1,000). Protocols should design eligibility criteria that require expensive on-chain execution---gas timing, MEV protection, multi-protocol interaction---that cannot be planned in a single JSON prompt. The key insight from Pierazzi et al.~\cite{pierazzi2020} applies: when the problem-space mapping $\phi: z \to \mathbf{x}$ is costly, feature-space evasion does not translate to real-world evasion.
 
 \noindent\textbf{2. Identity-layer defenses (shift to non-feature trust).}
-BrightID, Gitcoin Passport, and World ID establish human uniqueness through social graphs, credential aggregation, and biometric proof respectively. These mechanisms are orthogonal to behavioral features: an LLM can mimic a wallet's transaction pattern but cannot produce a retinal scan or a social graph rooted in physical-world relationships. The ceiling result makes the case for identity attestation quantitative: feature-space detection tops out at AUC 0.58, while identity-layer defenses operate on a fundamentally different axis.
+BrightID, Gitcoin Passport, and World ID establish human uniqueness through social graphs, credential aggregation, and biometric proof respectively. These mechanisms are orthogonal to behavioral features: an LLM can mimic a wallet's transaction pattern but cannot produce a retinal scan or a social graph rooted in physical-world relationships. The convergence result makes the case for identity attestation quantitative: feature-space detection plateaus at AUC 0.58 under adaptive attack, while identity-layer defenses operate on a fundamentally different axis.
 
 \noindent\textbf{3. Full-graph structural analysis (exploit what the attacker cannot plan).}
-Our real Ethereum transfer graph evaluation (Section~\ref{sec:real-graph}, 182K transactions across blur\_s2 and eigenlayer) reveals that even actual graph structure provides near-zero signal: Louvain community assignments achieve NMI of 0.04--0.07 against sybil labels, and the best non-oracle strategy (shared counterparty) achieves F1 of 0.55--0.58 but only at a false-positive rate of 64--69\%, making it operationally useless. This result is more pessimistic than our proxy-graph analysis suggested, and it means the detection ceiling extends beyond feature-space to graph-space as well. The three-layer defense architecture we proposed must therefore weight the identity layer (BrightID, Gitcoin Passport, World~ID) and execution-cost layer more heavily than graph analysis, at least for the community-detection approaches tested here.
+Our real Ethereum transfer graph evaluation (Section~\ref{sec:real-graph}, 182K transactions across blur\_s2 and eigenlayer) reveals that even actual graph structure provides near-zero signal: Louvain community assignments achieve NMI of 0.04--0.07 against sybil labels, and the best non-oracle strategy (shared counterparty) achieves F1 of 0.55--0.58 but only at a false-positive rate of 64--69\%, making it operationally useless. This result is more pessimistic than our proxy-graph analysis suggested, and it means the detection floor extends beyond feature-space to graph-space as well. The three-layer defense architecture we proposed must therefore weight the identity layer (BrightID, Gitcoin Passport, World~ID) and execution-cost layer more heavily than graph analysis, at least for the community-detection approaches tested here.
 
 \noindent\textbf{4. Ensemble defense across paradigms.}
-Under independence, an adversary evading behavioral features ($p_1 \approx 0.42$ at equilibrium), graph clustering ($p_2 \approx 0.94$ on proxy; likely lower on full graph), and temporal anomaly detection ($p_3 \approx 0.50$, estimated) faces joint evasion probability $p_1 \cdot p_2 \cdot p_3 \approx 0.20$. Even with attacker-side correlation ($\rho = 0.5$), the ensemble substantially outperforms any single modality. The ceiling motivates this combination: if no single layer can exceed 0.58, layered defenses are not optional---they are necessary.
+Under independence, an adversary evading behavioral features ($p_1 \approx 0.42$ at equilibrium), graph clustering ($p_2 \approx 0.94$ on proxy; likely lower on full graph), and temporal anomaly detection ($p_3 \approx 0.50$, estimated) faces joint evasion probability $p_1 \cdot p_2 \cdot p_3 \approx 0.20$. Even with attacker-side correlation ($\rho = 0.5$), the ensemble substantially outperforms any single modality. The convergence result motivates this combination: if no single layer exceeds 0.58 under adaptive attack, layered defenses are not optional---they are necessary.
 
 \subsection{The Cross-Axis Floor}
 
@@ -790,11 +790,11 @@ Our contribution is not to enable the attack but to \textit{measure the ceiling}
 Without rigorous evaluation, protocol teams would continue deploying detectors with a false sense of security.
 
 \noindent\textbf{Defensive value exceeds offensive risk.}
-The ceiling proof is itself the most important defensive contribution: it tells the community to stop investing in feature-space classifiers and start investing in execution-cost and identity-layer mechanisms.
+The convergence result is itself the most important defensive contribution: it tells the community to redirect investment from feature-space classifiers toward execution-cost and identity-layer mechanisms.
 A protocol team that reads this paper shifts resources from diminishing-returns classifier tuning to structurally stronger defenses.
 
 \noindent\textbf{Broader implications.}
-The detection ceiling generalizes beyond airdrops. Any system where detection relies on behavioral heuristics in a low-dimensional feature space with a narrow problem-space gap faces the same bound under LLM attack. Anti-fraud systems, spam filters, and bot detectors should all conduct adversarial equilibrium analysis to determine their own ceilings before investing further in classifier optimization.
+The detection floor likely generalizes beyond airdrops. Any system where detection relies on behavioral heuristics in a low-dimensional feature space with a narrow problem-space gap may face a similar convergence point under LLM attack. Anti-fraud systems, spam filters, and bot detectors should conduct adversarial convergence analysis to determine their own practical floors before investing further in classifier optimization.
 
 \subsection{Comparison with Traditional Adversarial ML}
 
@@ -848,40 +848,40 @@ In particular, open-source models can be fine-tuned specifically for Sybil gener
 Conversely, smaller models may lack the planning capacity to jointly satisfy all 13 feature constraints, resulting in lower evasion on the advanced tier.
 A multi-model adversary benchmark is needed to establish the robustness of our findings across LLM families.
 
-\noindent\textbf{5. Convergence reached under best-response.}
-The best-response adversarial equilibrium achieves $|\Delta\text{AUC}|{<}0.01$ for the last 3 consecutive rounds (0.008, 0.008, 0.005), meeting our pre-registered convergence criterion.
-The equilibrium AUC of $0.578 \pm 0.005$ is stable across 3 seeds (spread 0.009); the earlier fixed-schedule protocol yielded 0.599, confirming that schedule choice affects the endpoint by $\sim$0.02.
+\noindent\textbf{5. Convergence reached under heuristic best-response.}
+The best-response adversarial protocol achieves $|\Delta\text{AUC}|{<}0.01$ for the last 3 consecutive rounds (0.008, 0.008, 0.005), meeting our pre-registered convergence criterion.
+The convergence-point AUC of $0.578 \pm 0.005$ is stable across 3 seeds (spread 0.009); the earlier fixed-schedule protocol yielded 0.599, confirming that schedule choice affects the endpoint by $\sim$0.02. This is a heuristic best-response over a discrete grid of 14 blend ratios, not a continuous optimization with provable convergence guarantees.
 
 \noindent\textbf{6. 4-project leakage-fix subset.}
 The label-leakage analysis (\S\ref{sec:leakage}) uses a 4-project subset (1inch, uniswap, ens, blur\_s2).
 The full 16-project honest rerun is pending; we expect qualitatively identical results because the leakage mechanism (label-conditional sampling in \texttt{augment\_with\_ai\_features}) is project-independent.
 
 \noindent\textbf{7. What would change our conclusions.}
-Our central claim---that feature-space sybil detection has a hard ceiling at AUC $\approx$0.58---would be weakened if: (a)~a full-graph detector achieves $\ge$50\% recall on LLM sybils (indicating that graph structure provides signal outside the feature-space ceiling); (b)~problem-space deployment reveals that maintaining \texttt{behavioral\_consistency} $< 0.2$ is infeasible at scale (widening the problem-space gap and making the ceiling less achievable in practice); or (c)~new behavioral features beyond our 8 break the convergence and push the equilibrium AUC above 0.70.
-Any of these would raise the ceiling (though not eliminate it), but none would change the fundamental argument: feature-space detection is bounded, and the field must invest in mechanisms outside the attacker's optimization surface.
+Our central claim---that feature-space sybil detection converges to a practical floor at AUC $\approx$0.58 under adaptive attack---would be weakened if: (a)~a full-graph detector achieves $\ge$50\% recall on LLM sybils (indicating that graph structure provides signal outside the feature-space ceiling); (b)~problem-space deployment reveals that maintaining \texttt{behavioral\_consistency} $< 0.2$ is infeasible at scale (widening the problem-space gap and making the ceiling less achievable in practice); or (c)~new behavioral features beyond our 8 break the convergence and push the equilibrium AUC above 0.70.
+Any of these would raise the convergence point (though not eliminate the fundamental tension), but none would change the core argument: feature-space detection faces diminishing returns under adaptive attack, and the field should invest in mechanisms outside the attacker's optimization surface.
 
 \noindent\textbf{Future work.}
-We identify five directions, prioritized by their potential to break or validate the ceiling:
-(a)~Full-graph adversarial evaluation using SybilRank, SybilBelief, and GNN detectors on the actual Ethereum transfer graph, testing whether structural signals lie outside the 0.58 ceiling.
-(b)~Problem-space attacks on an Ethereum testnet with full HasciDB recomputation, measuring the actual gas cost of achieving blend ratio $\ge$0.90 and thereby quantifying the economic width of the ceiling.
+We identify five directions, prioritized by their potential to break or validate the convergence point:
+(a)~Full-graph adversarial evaluation using SybilRank, SybilBelief, and GNN detectors on the actual Ethereum transfer graph, testing whether structural signals exceed the 0.58 convergence point.
+(b)~Problem-space attacks on an Ethereum testnet with full HasciDB recomputation, measuring the actual gas cost of achieving blend ratio $\ge$0.90 and thereby quantifying the economic width of the detection floor.
 (c)~Identity-layer integration: measuring the incremental AUC gain from combining feature-space detection with Gitcoin Passport scores or World ID attestations, which operate on a fundamentally different axis.
-(d)~Closed-loop adversarial training where the LLM generator receives reward signals from the defender, testing whether RL-style optimization pushes the ceiling even lower.
-(e)~L2 replication across Arbitrum, Optimism, and Base, testing whether cheaper gas narrows the problem-space gap and thereby lowers the ceiling further.
+(d)~Closed-loop adversarial training where the LLM generator receives reward signals from the defender, testing whether RL-style optimization pushes the convergence point even lower.
+(e)~L2 replication across Arbitrum, Optimism, and Base, testing whether cheaper gas narrows the problem-space gap and thereby lowers the convergence point further.
 
 
 %% ========================================================================
 \section{Conclusion}
 \label{sec:conclusion}
 
-Our most important number is not 100\% (the evasion rate) or 0.987 (the binary defense AUC), but \textbf{0.578}---the Nash equilibrium that bounds what any feature-space detector can achieve against a best-response LLM adversary.
+Our most important number is not 100\% (the evasion rate) or 0.987 (the binary defense AUC), but \textbf{0.578}---the empirical convergence point of best-response adversarial training, establishing a practical detection floor for feature-space approaches against an adaptive LLM adversary.
 
-This ceiling result rests on three pillars. First, cross-modality evasion is near-total: LLM sybils evade rules (100\%), ML (100\%), GBM (99.9\%), and graph detection (94--100\%) at a cost of \$12 in API credits---the first cross-modality evasion result in this domain. Second, a 10-round best-response Stackelberg game converges to AUC $0.578 \pm 0.005$ across 3 seeds, with feature importances flattening from Gini 0.58 to 0.21 and \texttt{behavioral\_consistency} as the last feature standing (top-1 in 30/30 seed-rounds) yet converging toward irrelevance. Third, the ceiling exists because at blend ratio $\sim$0.93, sybils are 93\% identical to real wallets---any classifier must approach chance.
+This convergence result rests on three pillars. First, cross-modality evasion is near-total: LLM sybils evade rules (100\%), ML (100\%), GBM (99.9\%), and graph detection (94--100\%) at a cost of \$12 in API credits---the first cross-modality evasion result in this domain. Second, a 10-round best-response adversarial protocol converges to AUC $0.578 \pm 0.005$ across 3 seeds, with feature importances flattening from Gini 0.58 to 0.21 and \texttt{behavioral\_consistency} as the last feature standing (top-1 in 30/30 seed-rounds) yet converging toward irrelevance. Third, at blend ratio $\sim$0.93, sybils share 93\% of their distributional mass with real wallets; that the classifier approaches chance under near-identical distributions is expected, but the stability of the convergence point across seeds and the persistence of \texttt{behavioral\_consistency} as a residual signal are the non-trivial findings.
 
-The ceiling should redirect the sybil detection community from building better classifiers to building costlier execution environments. Feature-space detection has a provable hard limit; defense must migrate to problem-space mechanisms (real execution costs that make sybils expensive), identity-layer attestation (BrightID, Gitcoin Passport, World ID), and full-graph structural analysis on actual transfer graphs. This is analogous to how cryptographic hardness results redirect practitioners from searching for perfect ciphers to adopting defense-in-depth.
+The detection floor should redirect the sybil detection community from building better classifiers to building costlier execution environments. Feature-space detection faces diminishing returns under adaptive attack; defense should migrate to problem-space mechanisms (real execution costs that make sybils expensive), identity-layer attestation (BrightID, Gitcoin Passport, World ID), and full-graph structural analysis on actual transfer graphs.
 
 We also contributed a 3-step synthetic-feature audit checklist (validated by our own post-mortem: AUC 0.953$\to$0.609 after fixing label leakage) and cross-axis evaluation baselines (LOPO mean AUC 0.617) that establish honest floors for the HasciDB framework. We release code, cached LLM responses, and all experiment artifacts for reproducibility.
 
-The broader lesson extends beyond airdrops: any detection system operating on behavioral features in a low-dimensional space with a narrow problem-space gap faces the same ceiling under adaptive LLM attack. Adversarial equilibrium analysis---not single-round accuracy---should become the standard evaluation for security-critical classifiers.
+The broader lesson extends beyond airdrops: any detection system operating on behavioral features in a low-dimensional space with a narrow problem-space gap likely faces a similar convergence point under adaptive LLM attack. Adversarial convergence analysis---not single-round accuracy---should become the standard evaluation for security-critical classifiers.
 
 
 %% ========================================================================
