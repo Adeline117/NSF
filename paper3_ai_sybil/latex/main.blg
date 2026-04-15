@@ -1,0 +1,109 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: ACM-Reference-Format.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: main.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--empty publisher in cao2012sybilrank
+Warning--empty address in cao2012sybilrank
+Warning--page numbers missing in both pages and numpages fields in cao2012sybilrank
+Warning--empty address in carlini2017
+Warning--no number and no volume in chao2023jailbreaking
+Warning--page numbers missing in both pages and numpages fields in chao2023jailbreaking
+Warning--no number and no volume in cohen1988
+Warning--page numbers missing in both pages and numpages fields in cohen1988
+Warning--empty publisher in deng2024llm_pentesting
+Warning--empty address in deng2024llm_pentesting
+Warning--page numbers missing in both pages and numpages fields in deng2024llm_pentesting
+Warning--empty publisher in douceur2002sybil
+Warning--empty address in douceur2002sybil
+Warning--empty publisher in fang2024llm_agents_attack
+Warning--empty address in fang2024llm_agents_attack
+Warning--page numbers missing in both pages and numpages fields in fang2024llm_agents_attack
+Warning--can't use both volume and number fields in gong2014sybilbelief
+Warning--empty publisher in gong2014sybilbelief
+Warning--empty address in gong2014sybilbelief
+Warning--no number and no volume in goodfellow2014
+Warning--page numbers missing in both pages and numpages fields in goodfellow2014
+Warning--empty publisher in hamilton2017graphsage
+Warning--empty address in hamilton2017graphsage
+Warning--page numbers missing in both pages and numpages fields in hamilton2017graphsage
+Warning--page numbers missing in both pages and numpages fields in heiding2024
+Warning--empty publisher in kurakin2017adversarial
+Warning--empty address in kurakin2017adversarial
+Warning--page numbers missing in both pages and numpages fields in kurakin2017adversarial
+Warning--empty address in hascidb2026
+Warning--page numbers missing in both pages and numpages fields in hascidb2026
+Warning--empty publisher in madry2018
+Warning--empty address in madry2018
+Warning--page numbers missing in both pages and numpages fields in madry2018
+Warning--empty publisher in osborne1994game
+Warning--empty address in osborne1994game
+Warning--page numbers missing in both pages and numpages fields in osborne1994game
+Warning--empty publisher in perez2022redteam
+Warning--empty address in perez2022redteam
+Warning--page numbers missing in both pages and numpages fields in perez2022redteam
+Warning--empty address in pierazzi2020
+Warning--page numbers missing in both pages and numpages fields in pierazzi2020
+Warning--no number and no volume in bruckner2011stackelberg
+Warning--page numbers missing in both pages and numpages fields in bruckner2011stackelberg
+Warning--empty publisher in tramer2020
+Warning--empty address in tramer2020
+Warning--page numbers missing in both pages and numpages fields in tramer2020
+Warning--empty publisher in viswanath2010
+Warning--empty address in viswanath2010
+Warning--page numbers missing in both pages and numpages fields in viswanath2010
+Warning--no number and no volume in wen2026agent
+Warning--page numbers missing in both pages and numpages fields in wen2026agent
+Warning--no number and no volume in wen2026preairdrop
+Warning--page numbers missing in both pages and numpages fields in wen2026preairdrop
+You've used 30 entries,
+            6273 wiz_defined-function locations,
+            1661 strings with 23364 characters,
+and the built_in function-call counts, 31451 in all, are:
+= -- 3805
+> -- 1083
+< -- 0
++ -- 368
+- -- 374
+* -- 2193
+:= -- 3044
+add.period$ -- 140
+call.type$ -- 30
+change.case$ -- 223
+chr.to.int$ -- 28
+cite$ -- 83
+duplicate$ -- 2874
+empty$ -- 2039
+format.name$ -- 465
+if$ -- 7709
+int.to.chr$ -- 4
+int.to.str$ -- 1
+missing$ -- 119
+newline$ -- 264
+num.names$ -- 208
+pop$ -- 1353
+preamble$ -- 1
+purify$ -- 459
+quote$ -- 0
+skip$ -- 990
+stack$ -- 0
+substring$ -- 1880
+swap$ -- 193
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 737
+warning$ -- 53
+while$ -- 155
+width$ -- 0
+write$ -- 576
+(There were 53 warnings)

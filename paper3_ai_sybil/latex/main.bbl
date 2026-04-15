@@ -1,0 +1,375 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{30}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Apruzzese et~al\mbox{.}(2023)]%
+        {apruzzese2023}
+\bibfield{author}{\bibinfo{person}{Giovanni Apruzzese}, \bibinfo{person}{Pavel
+  Laskov}, \bibinfo{person}{Edgardo Montes~de Oca}, \bibinfo{person}{Wissam
+  Mallouli}, \bibinfo{person}{Luis Brdalo~Rapa},
+  \bibinfo{person}{Athanasios~Vasileios Grammatopoulos}, {and}
+  \bibinfo{person}{Fabio Di~Franco}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{The Role of Machine Learning in Cybersecurity}.
+\newblock \bibinfo{journal}{\emph{Digital Threats: Research and Practice}}
+  \bibinfo{volume}{4}, \bibinfo{number}{1} (\bibinfo{year}{2023}),
+  \bibinfo{pages}{1--38}.
+\newblock
+
+
+\bibitem[{Arbitrum Foundation}(2023)]%
+        {arbitrum}
+\bibfield{author}{\bibinfo{person}{{Arbitrum Foundation}}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{Sybil Detection using Louvain Community Detection on
+  Transfer Graphs}.
+\newblock
+  \bibinfo{howpublished}{\url{https://github.com/ArbitrumFoundation/sybil-detection}}.
+\newblock
+
+
+\bibitem[Biggio and Roli(2018)]%
+        {biggio2018wild}
+\bibfield{author}{\bibinfo{person}{Battista Biggio} {and}
+  \bibinfo{person}{Fabio Roli}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Wild Patterns: Ten Years After the Rise of
+  Adversarial Machine Learning}.
+\newblock \bibinfo{journal}{\emph{Pattern Recognition}}  \bibinfo{volume}{84}
+  (\bibinfo{year}{2018}), \bibinfo{pages}{317--331}.
+\newblock
+
+
+\bibitem[Blondel et~al\mbox{.}(2008)]%
+        {blondel2008louvain}
+\bibfield{author}{\bibinfo{person}{Vincent~D. Blondel},
+  \bibinfo{person}{Jean-Loup Guillaume}, \bibinfo{person}{Renaud Lambiotte},
+  {and} \bibinfo{person}{Etienne Lefebvre}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Fast Unfolding of Communities in Large Networks}.
+\newblock \bibinfo{journal}{\emph{Journal of Statistical Mechanics: Theory and
+  Experiment}} \bibinfo{volume}{2008}, \bibinfo{number}{10}
+  (\bibinfo{year}{2008}), \bibinfo{pages}{P10008}.
+\newblock
+
+
+\bibitem[Cao et~al\mbox{.}(2012)]%
+        {cao2012sybilrank}
+\bibfield{author}{\bibinfo{person}{Qiang Cao}, \bibinfo{person}{Michael
+  Sirivianos}, \bibinfo{person}{Xiaowei Yang}, {and} \bibinfo{person}{Tiago
+  Pregueiro}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Aiding the Detection of Fake Accounts in Large
+  Scale Social Online Services}. In \bibinfo{booktitle}{\emph{Proc. NSDI}}.
+\newblock
+
+
+\bibitem[Carlini and Wagner(2017)]%
+        {carlini2017}
+\bibfield{author}{\bibinfo{person}{Nicholas Carlini} {and}
+  \bibinfo{person}{David Wagner}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Towards Evaluating the Robustness of Neural
+  Networks}. In \bibinfo{booktitle}{\emph{2017 IEEE Symposium on Security and
+  Privacy (SP)}}. \bibinfo{publisher}{IEEE}, \bibinfo{pages}{39--57}.
+\newblock
+
+
+\bibitem[Chao et~al\mbox{.}(2023)]%
+        {chao2023jailbreaking}
+\bibfield{author}{\bibinfo{person}{Patrick Chao}, \bibinfo{person}{Alexander
+  Robey}, \bibinfo{person}{Edgar Dobriban}, \bibinfo{person}{Hamed Hassani},
+  \bibinfo{person}{George~J. Pappas}, {and} \bibinfo{person}{Eric Wong}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Jailbreaking Black Box Large Language Models in
+  Twenty Queries}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2310.08419}}
+  (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[Cohen(1988)]%
+        {cohen1988}
+\bibfield{author}{\bibinfo{person}{Jacob Cohen}.}
+  \bibinfo{year}{1988}\natexlab{}.
+\newblock \showarticletitle{Statistical Power Analysis for the Behavioral
+  Sciences}.
+\newblock \bibinfo{journal}{\emph{Lawrence Erlbaum Associates}}
+  (\bibinfo{year}{1988}).
+\newblock
+
+
+\bibitem[Deng et~al\mbox{.}(2024)]%
+        {deng2024llm_pentesting}
+\bibfield{author}{\bibinfo{person}{Gelei Deng}, \bibinfo{person}{Yi Liu},
+  \bibinfo{person}{V{\'\i}ctor Mayoral-Vilches}, \bibinfo{person}{Peng Liu},
+  \bibinfo{person}{Yuekang Li}, \bibinfo{person}{Yuan Xu},
+  \bibinfo{person}{Tianwei Zhang}, \bibinfo{person}{Yang Liu},
+  \bibinfo{person}{Martin Pinzger}, {and} \bibinfo{person}{Stefan Rass}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{PENTESTGPT: An LLM-empowered Automatic Penetration
+  Testing Tool}. In \bibinfo{booktitle}{\emph{33rd USENIX Security Symposium}}.
+\newblock
+
+
+\bibitem[Douceur(2002)]%
+        {douceur2002sybil}
+\bibfield{author}{\bibinfo{person}{John~R. Douceur}.}
+  \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{The Sybil Attack}. In
+  \bibinfo{booktitle}{\emph{International workshop on Peer-to-Peer Systems
+  (IPTPS)}}. \bibinfo{pages}{251--260}.
+\newblock
+
+
+\bibitem[Fang et~al\mbox{.}(2024)]%
+        {fang2024llm_agents_attack}
+\bibfield{author}{\bibinfo{person}{Richard Fang}, \bibinfo{person}{Rohan
+  Bindu}, \bibinfo{person}{Akul Gupta}, \bibinfo{person}{Qiusi Zhan}, {and}
+  \bibinfo{person}{Daniel Kang}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{LLM Agents can Autonomously Hack Websites}. In
+  \bibinfo{booktitle}{\emph{arXiv preprint arXiv:2402.06664}}.
+\newblock
+
+
+\bibitem[Gong et~al\mbox{.}(2014)]%
+        {gong2014sybilbelief}
+\bibfield{author}{\bibinfo{person}{Neil~Zhenqiang Gong}, \bibinfo{person}{Mario
+  Frank}, {and} \bibinfo{person}{Prateek Mittal}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{SybilBelief: A Semi-Supervised Learning Approach
+  for Structure-Based Sybil Detection}. In \bibinfo{booktitle}{\emph{IEEE
+  Transactions on Information Forensics and Security}},
+  Vol.~\bibinfo{volume}{9}. \bibinfo{pages}{976--987}.
+\newblock
+
+
+\bibitem[Goodfellow et~al\mbox{.}(2014)]%
+        {goodfellow2014}
+\bibfield{author}{\bibinfo{person}{Ian~J. Goodfellow},
+  \bibinfo{person}{Jonathon Shlens}, {and} \bibinfo{person}{Christian
+  Szegedy}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Explaining and Harnessing Adversarial Examples}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1412.6572}}
+  (\bibinfo{year}{2014}).
+\newblock
+
+
+\bibitem[Hamilton et~al\mbox{.}(2017)]%
+        {hamilton2017graphsage}
+\bibfield{author}{\bibinfo{person}{Will Hamilton}, \bibinfo{person}{Rex Ying},
+  {and} \bibinfo{person}{Jure Leskovec}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Inductive Representation Learning on Large Graphs}.
+  In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing
+  Systems}}, Vol.~\bibinfo{volume}{30}.
+\newblock
+
+
+\bibitem[Heiding et~al\mbox{.}(2024)]%
+        {heiding2024}
+\bibfield{author}{\bibinfo{person}{Fredrik Heiding}, \bibinfo{person}{Bruce
+  Schneier}, \bibinfo{person}{Arun Vishwanath}, \bibinfo{person}{Jeremy
+  Bernstein}, {and} \bibinfo{person}{Peter~S Park}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Devising and Detecting Phishing Emails Using Large
+  Language Models}.
+\newblock \bibinfo{journal}{\emph{IEEE Access}}  \bibinfo{volume}{12}
+  (\bibinfo{year}{2024}).
+\newblock
+
+
+\bibitem[Kurakin et~al\mbox{.}(2017)]%
+        {kurakin2017adversarial}
+\bibfield{author}{\bibinfo{person}{Alexey Kurakin}, \bibinfo{person}{Ian
+  Goodfellow}, {and} \bibinfo{person}{Samy Bengio}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Adversarial Examples in the Physical World}. In
+  \bibinfo{booktitle}{\emph{International Conference on Learning
+  Representations (Workshop)}}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2026)]%
+        {hascidb2026}
+\bibfield{author}{\bibinfo{person}{Yang Li}, \bibinfo{person}{Xiaoyu Chen},
+  {and} \bibinfo{person}{Wei Cai}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{HasciDB: A Consensus-Driven Sybil Detection
+  Framework for Cryptocurrency Airdrops}. In \bibinfo{booktitle}{\emph{Proc.
+  2026 CHI Conference on Human Factors in Computing Systems}}.
+  \bibinfo{publisher}{ACM}.
+\newblock
+
+
+\bibitem[Madry et~al\mbox{.}(2018)]%
+        {madry2018}
+\bibfield{author}{\bibinfo{person}{Aleksander Madry},
+  \bibinfo{person}{Aleksandar Makelov}, \bibinfo{person}{Ludwig Schmidt},
+  \bibinfo{person}{Dimitris Tsipras}, {and} \bibinfo{person}{Adrian Vladu}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Towards Deep Learning Models Resistant to
+  Adversarial Attacks}. In \bibinfo{booktitle}{\emph{International Conference
+  on Learning Representations}}.
+\newblock
+
+
+\bibitem[Osborne and Rubinstein(1994)]%
+        {osborne1994game}
+\bibfield{author}{\bibinfo{person}{Martin~J. Osborne} {and}
+  \bibinfo{person}{Ariel Rubinstein}.} \bibinfo{year}{1994}\natexlab{}.
+\newblock \showarticletitle{A Course in Game Theory}. In
+  \bibinfo{booktitle}{\emph{MIT Press}}.
+\newblock
+
+
+\bibitem[Perez et~al\mbox{.}(2022)]%
+        {perez2022redteam}
+\bibfield{author}{\bibinfo{person}{Ethan Perez}, \bibinfo{person}{Saffron
+  Huang}, \bibinfo{person}{Francis Song}, \bibinfo{person}{Trevor Cai},
+  \bibinfo{person}{Roman Ring}, \bibinfo{person}{John Aslanides},
+  \bibinfo{person}{Amelia Glaese}, \bibinfo{person}{Nat McAleese}, {and}
+  \bibinfo{person}{Geoffrey Irving}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Red Teaming Language Models with Language Models}.
+  In \bibinfo{booktitle}{\emph{Proceedings of the 2022 Conference on Empirical
+  Methods in Natural Language Processing}}.
+\newblock
+
+
+\bibitem[Pierazzi et~al\mbox{.}(2020)]%
+        {pierazzi2020}
+\bibfield{author}{\bibinfo{person}{Fabio Pierazzi}, \bibinfo{person}{Feargus
+  Pendlebury}, \bibinfo{person}{Jacopo Cortellazzi}, {and}
+  \bibinfo{person}{Lorenzo Cavallaro}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Intriguing Properties of Adversarial ML Attacks in
+  the Problem Space}. In \bibinfo{booktitle}{\emph{2020 IEEE Symposium on
+  Security and Privacy (SP)}}. \bibinfo{publisher}{IEEE}.
+\newblock
+
+
+\bibitem[Tambe(2011)]%
+        {bruckner2011stackelberg}
+\bibfield{author}{\bibinfo{person}{Milind Tambe}.}
+  \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Stackelberg Security Games: Looking Beyond a Decade
+  of Success}.
+\newblock \bibinfo{journal}{\emph{Security and Game Theory: Algorithms,
+  Deployed Systems, Lessons Learned}} (\bibinfo{year}{2011}).
+\newblock
+
+
+\bibitem[Tramer et~al\mbox{.}(2020)]%
+        {tramer2020}
+\bibfield{author}{\bibinfo{person}{Florian Tramer}, \bibinfo{person}{Nicholas
+  Carlini}, \bibinfo{person}{Wieland Brendel}, {and}
+  \bibinfo{person}{Aleksander Madry}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{On Adaptive Attacks to Adversarial Example
+  Defenses}. In \bibinfo{booktitle}{\emph{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{33}.
+\newblock
+
+
+\bibitem[{TrustaLabs}(2023)]%
+        {trustalabs}
+\bibfield{author}{\bibinfo{person}{{TrustaLabs}}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{Airdrop Sybil Identification via Graph Community
+  Detection}.
+\newblock
+  \bibinfo{howpublished}{\url{https://github.com/TrustaLabs/Airdrop-Sybil-Identification}}.
+\newblock
+
+
+\bibitem[{UW Decentralized Computing Lab}(2024a)]%
+        {artemis}
+\bibfield{author}{\bibinfo{person}{{UW Decentralized Computing Lab}}.}
+  \bibinfo{year}{2024}\natexlab{a}.
+\newblock \bibinfo{title}{ARTEMIS: Graph Neural Network-Based Sybil Detection
+  for Blur Season 2}.
+\newblock
+  \bibinfo{howpublished}{\url{https://github.com/UW-Decentralized-Computing-Lab/Blur}}.
+\newblock
+
+
+\bibitem[{UW Decentralized Computing Lab}(2024b)]%
+        {llmhunter}
+\bibfield{author}{\bibinfo{person}{{UW Decentralized Computing Lab}}.}
+  \bibinfo{year}{2024}\natexlab{b}.
+\newblock \bibinfo{title}{LLMhunter: Multi-Expert LLM Pipeline for Sybil
+  Classification}.
+\newblock
+  \bibinfo{howpublished}{\url{https://github.com/UW-Decentralized-Computing-Lab/Blur}}.
+\newblock
+
+
+\bibitem[Viswanath et~al\mbox{.}(2010)]%
+        {viswanath2010}
+\bibfield{author}{\bibinfo{person}{Bimal Viswanath}, \bibinfo{person}{Ansley
+  Post}, \bibinfo{person}{Krishna~P. Gummadi}, {and} \bibinfo{person}{Alan
+  Mislove}.} \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{An Analysis of Social Network-Based Sybil
+  Defenses}. In \bibinfo{booktitle}{\emph{Proc. ACM SIGCOMM}}.
+\newblock
+
+
+\bibitem[Wen and collaborators(2026a)]%
+        {wen2026agent}
+\bibfield{author}{\bibinfo{person}{Adeline Wen} {and}
+  \bibinfo{person}{collaborators}.} \bibinfo{year}{2026}\natexlab{a}.
+\newblock \showarticletitle{On-Chain AI Agent Identification via
+  Execution-Layer Features}.
+\newblock \bibinfo{journal}{\emph{Working Paper}} (\bibinfo{year}{2026}).
+\newblock
+
+
+\bibitem[Wen and collaborators(2026b)]%
+        {wen2026preairdrop}
+\bibfield{author}{\bibinfo{person}{Adeline Wen} {and}
+  \bibinfo{person}{collaborators}.} \bibinfo{year}{2026}\natexlab{b}.
+\newblock \showarticletitle{Pre-Airdrop Sybil Detection via Temporal Behavioral
+  Features}.
+\newblock \bibinfo{journal}{\emph{Working Paper}} (\bibinfo{year}{2026}).
+\newblock
+
+
+\bibitem[Yu et~al\mbox{.}(2008)]%
+        {yu2006sybilguard}
+\bibfield{author}{\bibinfo{person}{Haifeng Yu}, \bibinfo{person}{Michael
+  Kaminsky}, \bibinfo{person}{Phillip~B. Gibbons}, {and}
+  \bibinfo{person}{Abraham Flaxman}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{SybilGuard: Defending Against Sybil Attacks via
+  Social Networks}.
+\newblock \bibinfo{journal}{\emph{IEEE/ACM Transactions on Networking}}
+  \bibinfo{volume}{16}, \bibinfo{number}{3} (\bibinfo{year}{2008}),
+  \bibinfo{pages}{576--589}.
+\newblock
+
+
+\end{thebibliography}
