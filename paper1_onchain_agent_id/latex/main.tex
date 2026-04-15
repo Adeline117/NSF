@@ -12,10 +12,10 @@
 \affiliation{\institution{University}\country{USA}}
 
 \begin{abstract}
-We build a 23-feature behavioral classifier on 1,147 provenance-verified Ethereum addresses and subject it to five progressively honest evaluation levels---an \emph{honesty cascade}. At Level~1 (leaky cross-validation), AUC is 0.98. Fixing label leakage drops it to 0.80 (Level~2). A temporal holdout simulating forward deployment yields 0.67 (Level~3). A hand-curated 64-address sensitivity check gives 0.77 with wide confidence intervals (Level~4). Most critically, leave-one-platform-out evaluation---the only test of true cross-platform generalization---produces a pooled AUC of 0.42, \emph{below random chance} (Level~5). The classifier learns platform-specific fingerprints, not generalizable agent behavior. Along the way, we discover that the widely assumed ``agents are riskier'' narrative is a labeling artifact: human DeFi users hold more unlimited token approvals (66.1 mean) than curated MEV bots (49.1 mean). We formalize a reusable three-step leakage-audit toolkit and release all code, features, labels, and diagnostic scripts. Our central contribution is the cascade itself: the progressive collapse from 0.98 to 0.42 demonstrates that on-chain AI agent detection, as currently formulated with transaction-level features, is an open problem. Published high-AUC results in this domain measure artifacts, not agent behavior.
+We build a 23-feature behavioral classifier on 1,147 provenance-verified Ethereum addresses and subject it to five progressively honest evaluation levels---an \emph{honesty cascade}. At Level~1 (leaky cross-validation), AUC is 0.98. Fixing label leakage drops it to 0.80 (Level~2). A temporal holdout simulating forward deployment yields 0.67 (Level~3). A hand-curated 64-address sensitivity check gives 0.77 with wide confidence intervals (Level~4). Level~5 (leave-one-platform-out) yields a pooled AUC of 0.42---below chance---revealing that the classifier learns platform-specific behavioral signatures rather than a transferable agent concept. Because each platform contributes only one class, this conflates domain shift with concept generalization; the true cross-concept generalization gap likely lies between Level~2 (0.80) and Level~5 (0.42). Along the way, we discover that the widely assumed ``agents are riskier'' narrative is a labeling artifact: human DeFi users hold more unlimited token approvals (66.1 mean) than curated MEV bots (49.1 mean). We formalize a reusable three-step leakage-audit toolkit and release all code, features, labels, and diagnostic scripts. Our central contribution is the cascade itself: the progressive collapse from 0.98 to 0.42 reveals a gradient of evaluation realism, not a binary pass/fail. Within-platform detection works (Level~2, AUC~0.80); what does not yet exist is a platform-invariant feature set that transfers across operational contexts.
 \end{abstract}
 
-\keywords{on-chain AI agents, evaluation realism, honesty cascade, label leakage, cross-platform generalization, Ethereum, behavioral fingerprinting, open problem}
+\keywords{on-chain AI agents, evaluation realism, honesty cascade, label leakage, cross-platform generalization, Ethereum, behavioral fingerprinting, domain shift}
 \maketitle
 
 \section{Introduction}
@@ -39,14 +39,17 @@ Level & Evaluation & AUC & What it measures \\
 2 & Provenance CV (n=1{,}147) & 0.80 & Within-platform pattern \\
 3 & Temporal holdout & 0.67 & Same-era generalization \\
 4 & Strict subset (n=64) & 0.77 & Hand-curated sensitivity \\
-5 & Leave-one-platform-out & \textbf{0.42} & True cross-platform generalization \\
+5 & Leave-one-platform-out & \textbf{0.42} & Cross-context deployment readiness$^\dagger$ \\
 \bottomrule
 \end{tabular}
+
+\smallskip
+{\footnotesize $^\dagger$Single-class-per-platform confound: conflates domain shift with concept generalization (see Section~4.9).}
 \end{table}
 
 At Level~1, our classifier appeared near-perfect (AUC~0.98). We discovered that our labeling heuristic had leaked three classifier features into the labels (Section~5.1). Fixing the leakage and evaluating on 1{,}147 provenance-verified addresses dropped AUC to 0.80 (Level~2). A temporal holdout simulating forward deployment reduced it further to 0.67 (Level~3). A hand-curated 64-address sensitivity check yielded 0.77 with wide confidence intervals (Level~4). And the decisive test---leave-one-platform-out cross-validation, where the classifier must recognize agents from a platform category it has never seen---produced a pooled AUC of \textbf{0.42}, below random chance (Level~5).
 
-The Level~5 result is not noise. It means the classifier learns how Chainlink keepers differ from Gelato executors, not how agents differ from humans. Every AUC point between 0.98 and 0.42 was borrowed from an evaluation shortcut: label leakage, temporal overlap, or platform memorization. Strip them all away, and the task does not work.
+The Level~5 result is not noise. It means the classifier learns how Chainlink keepers differ from Gelato executors, not how agents differ from humans. Every AUC point between 0.98 and 0.42 was borrowed from an evaluation shortcut: label leakage, temporal overlap, or platform memorization. Strip them all away, and the task does not transfer---though it does work within the training distribution (Level~2, AUC~0.80). The research question is therefore not ``can we detect agents?'' (yes, within context) but ``can we build features that generalize across platforms?'' (not yet).
 
 \subsection{Why This Matters}
 
@@ -56,7 +59,7 @@ Three counter-intuitive findings emerge from the cascade:
 
 \begin{enumerate}
     \item \textbf{The ``agents are riskier'' narrative is a labeling artifact.} Under provenance-verified labels, human DeFi users hold more unlimited token approvals (66.1 mean) than curated MEV bots (49.1 mean), because heuristic labels systematically misclassified heavy DeFi users as agents (Section~4.8).
-    \item \textbf{Cross-platform generalization fails completely.} Leave-one-platform-out pooled AUC is 0.42. The best-recognized category (Chainlink keepers, 68\% recall) and worst (DeFi high-frequency traders, 14\% recall) differ by 54 percentage points, confirming that the classifier memorizes platform fingerprints (Section~4.9).
+    \item \textbf{Within-platform detection works; cross-platform deployment does not transfer.} Within-platform detection achieves honest AUC~0.80 (Level~2); cross-platform leave-one-platform-out evaluation collapses to 0.42 (Level~5), establishing that current features capture platform-specific patterns, not platform-invariant agent signatures. The best-recognized category (Chainlink keepers, 68\% recall) and worst (DeFi high-frequency traders, 14\% recall) differ by 54 percentage points (Section~4.9).
     \item \textbf{Even ``honest'' random CV overstates by 13 points.} Temporal holdout (Level~3) reveals that the provenance-CV number (Level~2) already contains 13 AUC points of temporal optimism bias (Section~4.7).
 \end{enumerate}
 
@@ -83,7 +86,7 @@ We assembled 1{,}147 provenance-verified addresses (533 agents from 11 sources, 
 
 \begin{enumerate}
     \item \textbf{The honesty cascade.} A five-level evaluation hierarchy (Table~\ref{tab:cascade}) that strips away evaluation shortcuts one by one, revealing a progressive AUC collapse from 0.98 to 0.42. The cascade is itself a reusable evaluation template for any behavioral classifier.
-    \item \textbf{Leave-one-platform-out evaluation (Level~5).} The first cross-platform generalization test for on-chain agent detection, showing pooled AUC~0.42 (below chance) across 14 held-out platform categories. This result proves the classifier learns platform fingerprints, not agent behavior.
+    \item \textbf{Leave-one-platform-out evaluation (Level~5).} The first cross-platform generalization test for on-chain agent detection, showing pooled AUC~0.42 (below chance) across 14 held-out platform categories. Because each platform is single-class, this conflates domain shift with concept generalization; the result establishes that current features do not transfer across platforms, bounding true cross-platform generalization between Level~2 (0.80) and Level~5 (0.42).
     \item \textbf{A leakage case study and three-step audit toolkit (Algorithm~\ref{alg:leakage_audit}).} We document how a 4-gate labeling oracle injected three top classifier features into the labels, causing an 18-point AUC inflation, and formalize a reusable audit: (1)~label--feature overlap, (2)~AUC across label-purity tiers, (3)~cross-label-scheme transfer.
     \item \textbf{Honest baselines on 1{,}147 provenance-verified addresses.} RF 10-fold AUC~0.803, GBM~0.810, GAT~0.832 (the best honest model). A 64-address strict subset serves as sensitivity check: RF LOO-CV AUC~0.7713, GAT~0.883.
     \item \textbf{Temporal holdout evaluation.} Random CV overestimates AUC by 13--16 points; precision stays high (0.81) but recall collapses to 0.31 on post-2021 agents.
@@ -753,7 +756,11 @@ gas used efficiency (D4) & 0.712 / 0.695 & 1.02x & 0.644 / 0.751 & 0.86x & \text
 
 \subsection{Level 5: Leave-One-Platform-Out (The Cascade Floor)}
 
-Levels~1--4 evaluate within-distribution generalization: the training and test sets are drawn from the same pool of platform categories. But a deployment-ready agent detector must recognize agents from platforms it has never seen. We therefore run \textbf{leave-one-platform-out cross-validation (LOPO)}: for each of the 14 platform categories with $\geq$10 addresses, we hold out \emph{all} addresses from that category as the test set and train on the remaining 13 categories. Because each category is single-class (all-agent or all-human), per-platform AUC is undefined; we report per-platform accuracy (which equals recall for agent categories and specificity for human categories) and compute a \textbf{pooled AUC} over all 1{,}131 held-out predictions.
+Levels~1--4 evaluate within-distribution generalization: the training and test sets are drawn from the same pool of platform categories. But a deployment-ready agent detector must recognize agents from platforms it has never seen. We therefore run \textbf{leave-one-platform-out cross-validation (LOPO)}: for each of the 14 platform categories with $\geq$10 addresses, we hold out \emph{all} addresses from that category as the test set and train on the remaining 13 categories.
+
+\textbf{Structural caveat (read before interpreting).} Every held-out platform category is single-class (all-agent or all-human), which means the LOPO evaluation conflates two distinct failure modes: (1)~genuine inability to learn transferable agent-vs-human signatures, and (2)~domain shift from encountering an entirely new behavioral profile. A mixed-class LOPO---where some platforms contribute both agents and humans---would isolate concept generalization from domain shift, but the dataset's provenance structure does not support this design. We therefore interpret the Level~5 results as measuring \emph{cross-context deployment readiness}: they establish a lower bound on generalization, not a precise estimate of concept failure. The true cross-concept generalization gap likely lies somewhere between Level~2 (0.80, within-platform) and Level~5 (reported below).
+
+Because each category is single-class, per-platform AUC is undefined; we report per-platform accuracy (which equals recall for agent categories and specificity for human categories) and compute a \textbf{pooled AUC} over all 1{,}131 held-out predictions.
 
 \textbf{Table 10. Leave-one-platform-out results (GBM, n=1{,}131 pooled predictions).}
 
@@ -793,17 +800,17 @@ Pooled F1 & 1{,}131 & -- & 36.9\% \\
 \textbf{Key findings.}
 
 \begin{enumerate}
-    \item \textbf{The pooled AUC is 0.42---below random chance.} A coin flip (AUC~0.50) would outperform the classifier. This is not a marginal failure; it is a categorical one. The classifier has learned to distinguish Chainlink keepers from Gelato executors, not agents from humans.
+    \item \textbf{The pooled AUC is 0.42---below random chance.} A coin flip (AUC~0.50) would outperform the classifier under this protocol. Given the single-class-per-platform confound noted above, this measures the joint effect of concept failure and domain shift. What is clear: the classifier distinguishes Chainlink keepers from Gelato executors, not agents from humans in general.
     \item \textbf{The best-recognized agent category is pilot agents (80\% recall)}, which contains famous, well-studied MEV bots (jaredfromsubway, Wintermute). The classifier recognizes these because their behavioral patterns appear in curated MEV bots and other categories in the training set---a form of overlap, not generalization.
-    \item \textbf{The worst-recognized agent category is defi\_hf\_trader (14\% recall).} These 199 high-frequency Uniswap traders are the largest agent category and the most behaviorally distinctive. When held out, the classifier trained on Chainlink keepers, Gelato executors, and MEV bots does not recognize them. This proves that ``high-frequency DeFi trading'' is a platform-specific behavioral mode, not a universal agent signature.
+    \item \textbf{The worst-recognized agent category is defi\_hf\_trader (14\% recall).} These 199 high-frequency Uniswap traders are the largest agent category and the most behaviorally distinctive. When held out, the classifier trained on Chainlink keepers, Gelato executors, and MEV bots does not recognize them. This indicates that ``high-frequency DeFi trading'' is a platform-specific behavioral mode that does not share enough signal with other agent categories for the current feature set to generalize.
     \item \textbf{Compound V3 liquidators are nearly invisible (15.5\% recall).} Liquidation bots have a narrow behavioral profile (wait, then execute a single high-gas transaction) that does not resemble the keeper or MEV patterns in the training set.
     \item \textbf{Human categories show moderate specificity} (43--86\%), with exchange depositors best recognized (86\%) and ENS-interaction humans worst (43\%). The classifier misclassifies many ENS-active humans as agents, mirroring the heuristic bias that motivated this study.
     \item \textbf{Interpretation: the classifier learns platform fingerprints.} Each agent category has a distinctive gas, timing, and interaction profile that separates it from human categories \emph{within} the training distribution. But these profiles are platform-specific, not agent-generic. When the platform is held out, the learned features become noise.
 \end{enumerate}
 
-\textbf{The cascade is now complete.} Level~1 (0.98) measured label recovery. Level~2 (0.80) measured within-platform pattern matching. Level~3 (0.67) measured same-era generalization. Level~4 (0.77) confirmed wide uncertainty. Level~5 (0.42) measured true cross-platform generalization---and found none. On-chain agent detection with transaction-level features, as currently formulated, is an open problem.
+\textbf{The cascade is now complete.} Level~1 (0.98) measured label recovery. Level~2 (0.80) measured within-platform pattern matching. Level~3 (0.67) measured same-era generalization. Level~4 (0.77) confirmed wide uncertainty. Level~5 (0.42) measured cross-context deployment readiness---and found that current features do not transfer. On-chain agent detection is a context-dependent capability: it works within the training distribution (Level~2) but does not generalize across platforms with current features.
 
-\textbf{Important caveat.} Every held-out platform category is single-class (all-agent or all-human), which means the LOPO evaluation conflates platform behavioral novelty with label generalization. The 0.42 AUC reflects both genuine inability to learn transferable agent signatures AND the domain shift of encountering an entirely new behavioral profile. A mixed-class LOPO (where some platforms contribute both agents and humans) would isolate generalization more cleanly, but the dataset's provenance structure does not support this design. We therefore interpret Level~5 as measuring \emph{cross-context deployment readiness} rather than pure concept generalization.
+\textbf{Recall the structural caveat above.} Because each platform is single-class, the 0.42 AUC conflates domain shift with concept failure. The classifier may partially understand the agent-vs-human distinction but fail to apply it when the behavioral distribution shifts. The honest summary is: on-chain agent detection is a \emph{context-dependent} capability---effective within the training distribution (Level~2, AUC~0.80), brittle outside it (Level~5, AUC~0.42). The research agenda is not ``can we detect agents?'' but ``can we build platform-invariant features?''
 
 \subsubsection{Comparison with Published Baselines}
 
@@ -825,7 +832,7 @@ This work & Ethereum & 0.98 / 0.80 / 0.67 / 0.42 & Cascade L1--L5 & All five \\
 \end{tabular}
 \end{table}
 
-No prior blockchain bot-detection paper reports a Level~5 evaluation. Until they do, their high-AUC numbers cannot be distinguished from platform fingerprinting.
+No prior blockchain bot-detection paper we are aware of reports a Level~5 evaluation. Without such a test, high-AUC numbers on pooled multi-source data cannot be distinguished from platform fingerprinting---though, as noted above, a mixed-class LOPO design would provide a cleaner test than the single-class-per-platform design we were constrained to use.
 
 
 \section{Threats to Validity: The C1-C4 Label Leakage Discovery}
@@ -966,7 +973,7 @@ Beyond the C1-C4 issue, several additional threats apply.
 
 \subsection{For Researchers}
 
-The cascade from 0.98 to 0.42 has a clear methodological implication: \textbf{every published blockchain bot-detection result needs a Level~5 evaluation.} Without holding out entire platform categories, a reported AUC cannot be distinguished from platform fingerprinting. The field's standard practice---random cross-validation on pooled multi-source data---corresponds to Level~2 at best, which we have shown overstates deployment-realistic performance by at least 38 AUC points relative to the cross-platform test.
+The cascade from 0.98 to 0.42 has a clear methodological implication: \textbf{every published blockchain bot-detection result should include a cross-platform evaluation.} Without holding out entire platform categories, a reported AUC cannot be distinguished from platform fingerprinting. The field's standard practice---random cross-validation on pooled multi-source data---corresponds to Level~2 at best. Our Level~2-to-Level~5 gap (0.80 to 0.42) is an upper bound on the cross-platform penalty, because the single-class-per-platform confound inflates the apparent drop; the true generalization gap lies within this range but remains substantial.
 
 We recommend that future work report all five cascade levels (or justify why a level is inapplicable) and treat Level~5 as the primary generalization metric. The three-step leakage-audit toolkit (Algorithm~\ref{alg:leakage_audit}) provides a lightweight sanity check that can be applied before any cross-validation.
 
@@ -976,20 +983,20 @@ The cascade reveals a sharp boundary between what works and what does not:
 
 \begin{itemize}
     \item \textbf{Within-platform triage works (Level~2).} At AUC~0.80 and precision~0.81, the classifier is useful for flagging high-confidence agent candidates within a known platform distribution. Security auditors can deploy it as a triage layer with a false-positive rate under 20\%.
-    \item \textbf{Cross-platform deployment does not work (Level~5).} At pooled AUC~0.42, the classifier produces anti-predictions on unseen platform categories. It should not be used to estimate the fraction of automated activity across the Ethereum ecosystem, because the false-negative rate on novel agent categories exceeds 85\%.
+    \item \textbf{Cross-platform deployment does not transfer (Level~5).} At pooled AUC~0.42, the classifier produces anti-predictions on unseen platform categories under LOPO---though the single-class-per-platform design amplifies this failure. Regardless, the classifier should not be used to estimate the fraction of automated activity across the Ethereum ecosystem without retraining on each target platform's behavioral distribution.
     \item \textbf{Temporal drift is real (Level~3).} Even within known platforms, the 13-point AUC gap between random CV and temporal holdout means the classifier degrades within months. Periodic retraining with provenance-verified addresses from newly launched platforms is essential.
 \end{itemize}
 
 \subsection{For Regulators}
 
-The Level~5 result has a direct policy implication: \textbf{behavioral monitoring alone cannot reliably distinguish AI agents from humans across operational contexts.} Any regulatory framework that depends on transaction-level behavioral classification to identify automated activity will systematically miss novel agent categories while over-flagging certain human behavioral profiles (e.g., ENS-active DeFi users). Until agent detection generalizes cross-platform, complementary approaches---platform registries, voluntary disclosures, EIP-7702 delegation signals---are necessary.
+The Level~5 result has a direct policy implication: \textbf{behavioral monitoring can distinguish AI agents from humans within known operational contexts (AUC~0.80) but does not yet transfer across platforms.} Any regulatory framework that depends on transaction-level behavioral classification to identify automated activity will work as a triage tool within its training distribution but will systematically miss novel agent categories while over-flagging certain human behavioral profiles (e.g., ENS-active DeFi users). Until agent detection generalizes cross-platform, complementary approaches---platform registries, voluntary disclosures, EIP-7702 delegation signals---are necessary supplements.
 
 \subsection{Limitations}
 
 \begin{enumerate}
     \item \textbf{Source composition bias.} Agents are dominated by high-frequency DeFi traders (37\% of agent addresses); humans are dominated by ENS-interaction-verified accounts (27\% of human addresses). The classifier partly learns ``high-frequency Uniswap trader vs.\ casual ENS holder'' rather than a general agent-vs-human distinction---and the Level~5 result confirms this is exactly what it learns.
     \item \textbf{The \texttt{defi\_hf\_trader} label quality.} The largest agent category (199 addresses) uses a behavioral threshold ($>$50 daily Uniswap calls) that is not strictly provenance-pure. Some addresses may be humans using aggressive trading interfaces. However, this category's 14\% recall under LOPO suggests the classifier does not rely on it for generalization.
-    \item \textbf{Single-class platforms preclude per-platform AUC.} Because each platform category is either all-agent or all-human, we cannot compute per-platform AUC, only per-platform accuracy. The pooled AUC aggregates across all held-out predictions.
+    \item \textbf{Single-class platforms confound the Level~5 result.} Because each platform category is either all-agent or all-human, LOPO simultaneously tests concept generalization (agent vs.\ human) and domain adaptation (familiar vs.\ novel behavioral profile). The pooled AUC of 0.42 is therefore an upper bound on the cross-platform penalty; a mixed-class LOPO would provide a tighter estimate. This is the most important structural limitation of the cascade's headline number.
     \item \textbf{Chain coverage.} We study Ethereum mainnet only. Agents on Base, Arbitrum, Solana, and other chains are out of scope.
     \item \textbf{The security audit is small-sample.} The honest direction reversal is based on 22 agents and 28 humans. We claim the 10x leaky-set ratio was an artifact, not that the reversal necessarily holds at scale.
 \end{enumerate}
@@ -1007,21 +1014,21 @@ The Level~5 result has a direct policy implication: \textbf{behavioral monitorin
 
 \section{Conclusion}
 
-The cascade from 0.98 to 0.42 is itself our main contribution. It demonstrates that on-chain AI agent detection, as currently formulated with 23 transaction-level behavioral features, does not generalize beyond the platforms used for training.
+The cascade from 0.98 to 0.42 is itself our main contribution. It reveals a gradient of evaluation realism, not a binary pass/fail for on-chain agent detection.
 
-At each level of the cascade, we stripped away an evaluation shortcut and lost performance:
+At each level, we stripped away an evaluation shortcut and lost performance:
 
 \begin{itemize}
     \item \textbf{Level 1 $\to$ 2} (0.98 $\to$ 0.80): Fixing label leakage removed 18 AUC points.
     \item \textbf{Level 2 $\to$ 3} (0.80 $\to$ 0.67): A temporal holdout removed 13 more points.
-    \item \textbf{Level 3 $\to$ 5} (0.67 $\to$ 0.42): Holding out entire platforms removed the remaining signal and pushed AUC below chance.
+    \item \textbf{Level 3 $\to$ 5} (0.67 $\to$ 0.42): Holding out entire platforms removed the remaining signal and pushed pooled AUC below chance.
 \end{itemize}
 
-The Level~5 result is the decisive finding. A pooled AUC of 0.42 across 14 held-out platform categories means the classifier has learned to distinguish Chainlink keepers from Gelato executors---not agents from humans. The best-recognized category (pilot agents, 80\% recall) succeeds because similar addresses exist in other training categories; the worst (DeFi high-frequency traders, 14\% recall) fails because its behavioral profile is unique. This is platform fingerprinting, not agent detection.
+At Level~2, detection works: AUC~0.80 with precision~0.81 is a useful triage capability within the training distribution. At Level~5, it does not transfer: pooled AUC~0.42 across 14 held-out platform categories---though amplified by the single-class-per-platform confound---shows that the classifier has learned platform fingerprints rather than a universal agent signature. The best-recognized category (pilot agents, 80\% recall) succeeds because similar addresses exist in other training categories; the worst (DeFi high-frequency traders, 14\% recall) fails because its behavioral profile is unique. The research agenda is therefore not ``can we detect agents?'' (yes, within context) but ``can we build platform-invariant features?'' (not yet).
 
 Along the way, we discovered that the widely assumed ``agents are riskier'' narrative is a labeling artifact (humans hold more unlimited approvals under honest labels), and we formalized a reusable three-step leakage-audit toolkit (Algorithm~\ref{alg:leakage_audit}) that other blockchain-ML researchers can apply.
 
-For the field to make progress on this problem, three things must change: (1)~cross-platform evaluation (Level~5) must become a non-negotiable reporting standard; (2)~feature engineering must move toward platform-invariant representations; and (3)~the community must accept that honest AUCs will be lower than leaky ones---and that lower, honest numbers are the only ones worth building on. All code, features, labels, and diagnostic artifacts are released.
+For the field to make progress, three things must change: (1)~cross-platform evaluation must become a reporting standard, with explicit acknowledgment of single-class-per-platform confounds when they exist; (2)~feature engineering must move toward platform-invariant representations; and (3)~the community must accept that honest AUCs will be lower than leaky ones---and that lower, honest numbers are the only ones worth building on. All code, features, labels, and diagnostic artifacts are released.
 
 
 \bibliographystyle{ACM-Reference-Format}
