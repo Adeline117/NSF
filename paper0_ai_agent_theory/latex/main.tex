@@ -12,7 +12,11 @@
 \affiliation{\institution{University}\country{USA}}
 
 \begin{abstract}
-AI agents manage billions of dollars on decentralized-finance (DeFi) rails, yet ``AI agent'' still lacks a definition that maps to chain-observable behavior. We propose a four-condition definition---on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4)---and an eight-category taxonomy spanning deterministic scripts through collaborative DAO agents. We validate both on 2,744 agent addresses using three complementary methods: a rule-based taxonomy projection, a K-Means cluster sweep, and gradient-boosting classifiers at two feature scales. Three key contributions emerge. First, unsupervised cluster validation reveals that behavioral silhouette is maximized at $k{=}3$, not $k{=}8$: the eight semantic categories compress into three behavioral super-clusters aligned with the C3/C4 boundary, establishing that \textit{behavioral taxonomies saturate at three clusters while semantic taxonomies require provenance}. Second, a five-class classifier on 23 features reaches 97.4\% accuracy (macro-F1 0.87), and an eight-class classifier on an expanded 31-feature set incorporating AI-detection features achieves 95.3\% accuracy (macro-F1 0.69), validating the taxonomy across granularity levels. Third, the LLM-Powered Agent class remains the empirical weak spot (F1 = 0.44 even with 31 features), behaviorally indistinguishable from DeFi Management Agents using transaction-level features alone---itself a finding with governance implications. We discuss implications for HCI, regulation, and the design of shared feature sets for downstream agent identification and Sybil-detection studies.
+We propose the first formal definition of on-chain AI agents (C1--C4) and validate an eight-category taxonomy on 2,744 Ethereum addresses.
+Our most consequential finding is that LLM-powered agents are behaviorally indistinguishable from DeFi management agents at the transaction level (F1\,=\,0.44 across 23 and 31 features), implying that any regulatory framework based solely on transaction behavior cannot isolate LLM-driven activity.
+Unsupervised clustering reveals that behavioral features saturate at three super-clusters regardless of method (K-Means silhouette peak at $k{=}3$; HDBSCAN finds only 2 density clusters), while the eight semantic categories require provenance metadata---the taxonomy captures conceptual distinctions that exist within a behaviorally homogeneous landscape.
+Progressive validation achieves 95.3\% accuracy on the five majority classes and demonstrates cross-study feature transfer (Bridge F1: $0.31 \to 0.76$, DAO F1: $0.14 \to 0.43$ with independently developed AI-detection features).
+A circularity ablation removing the four features shared between projection rules and classifier shows accuracy drops from 92\% to 87\%, but classes not defined by those features (LLM, Bridge) are unaffected.
 \end{abstract}
 
 \keywords{AI agents; Web3; decentralized finance; agent definition; behavioral taxonomy; on-chain analytics; cluster validation; multi-class classification.}
@@ -23,12 +27,6 @@ AI agents manage billions of dollars on decentralized-finance (DeFi) rails, yet 
 
 \textbf{Paper 0 --- CHI 2026 Submission}
 
-
-\section{Abstract}
-
-AI agents manage billions of dollars on decentralized-finance (DeFi) rails, yet ``AI agent'' still lacks a definition that maps to chain-observable behavior. We propose a four-condition definition---on-chain actuation (C1), environmental perception (C2), autonomous decision-making (C3), and adaptiveness (C4)---and an eight-category taxonomy spanning deterministic scripts through collaborative DAO agents. We validate both on 2,744 agent addresses using three complementary methods: a rule-based taxonomy projection, a K-Means cluster sweep, and gradient-boosting classifiers at two feature scales. Three key contributions emerge. First, unsupervised cluster validation reveals that behavioral silhouette is maximized at $k{=}3$, not $k{=}8$: the eight semantic categories compress into three behavioral super-clusters aligned with the C3/C4 boundary, establishing that \textit{behavioral taxonomies saturate at three clusters while semantic taxonomies require provenance}. Second, a five-class classifier on 23 features reaches 97.4\% accuracy (macro-F1 0.87), and an eight-class classifier on an expanded 31-feature set incorporating AI-detection features achieves 95.3\% accuracy (macro-F1 0.69), validating the taxonomy across granularity levels. Third, the LLM-Powered Agent class remains the empirical weak spot (F1 = 0.44 even with 31 features), behaviorally indistinguishable from DeFi Management Agents using transaction-level features alone---itself a finding with governance implications. We discuss implications for HCI, regulation, and the design of shared feature sets for downstream agent identification and Sybil-detection studies.
-
-\textbf{Keywords:} AI agents; Web3; decentralized finance; agent definition; behavioral taxonomy; on-chain analytics; cluster validation; multi-class classification.
 
 
 \section{1. Introduction}
@@ -501,36 +499,6 @@ For LLM-Powered Agent, the joint pipeline currently fails: Paper 1 identifies it
 6. The taxonomy is internally consistent with Paper 1's binary identification: the joint pipeline correctly handles the strong classes but needs LLM-specific behavioral signatures for the weak spot.
 
 
-\subsection{4.11 Expert Validation via Modified Delphi Method}
-
-The empirical validation in Sections 4.3--4.10 tests whether the taxonomy survives contact with on-chain data. A complementary question is whether it survives contact with \textit{expert judgment}. We designed and will execute a two-round modified Delphi study to assess whether domain experts endorse the C1--C4 definition and the eight-category taxonomy.
-
-\subsubsection{4.11.1 Method}
-
-\textbf{Design.} A two-round modified Delphi protocol with controlled feedback~\cite{Dalkey1963, Hallowell2010}. Round~1 collects independent expert ratings; Round~2 feeds back group medians and IQR and asks panelists to re-rate items where consensus was not reached.
-
-\textbf{Panel.} We recruit $N = 12$--15 experts (minimum $N \geq 12$ for stable IQR estimation; $N \geq 5$ for a pilot~\cite{Skulmoski2007}) across five expertise areas: (1)~AI/ML and multi-agent systems ($n = 3$--4), (2)~blockchain/DeFi practitioners ($n = 3$--4), (3)~smart contract security and MEV researchers ($n = 2$--3), (4)~HCI and automation taxonomy researchers ($n = 2$), and (5)~AI agent framework developers ($n = 2$). The diversity requirement ensures that no single discipline dominates the consensus.
-
-\textbf{Instrument.} The questionnaire uses 7-point Likert scales throughout for finer discrimination~\cite{Joshi2015}. Part~A assesses each of C1--C4 on three dimensions: \textit{necessity} (``Is this condition necessary for defining an on-chain AI agent?''), \textit{clarity} (``Is the definition clear and unambiguous?''), and \textit{operationalizability} (``Can this condition be measured from on-chain data?''). Part~A also includes a quantitative joint-sufficiency rating and six boundary-case vignettes (account abstraction wallets, cross-chain bridge relayers, frozen-strategy MEV bots, multi-sig governance modules, oracle nodes, and intent-based solvers) designed to stress-test definitional edges. Part~B assesses each of the eight taxonomy categories on \textit{well-definedness} and \textit{distinguishability}, plus two taxonomy-level items: \textit{exhaustiveness} (``Does this taxonomy cover all meaningful types?'') and \textit{mutual exclusivity} (``Can an agent be unambiguously assigned to one category?''). Part~C is a classification exercise: experts assign 10 real-world entities (including negative controls such as Uniswap~V2 Router and a personal wallet) to one of the eight categories or ``Not an Agent,'' along with C1--C4 satisfaction judgments, enabling computation of Krippendorff's $\alpha$. Part~D compares our framework against five prior taxonomies (Russell \& Norvig, Wooldridge \& Jennings, Franklin \& Graesser, Parasuraman et al., He et al.) on Web3 applicability.
-
-\textbf{Consensus criteria.} An item reaches consensus when its IQR $\leq 1.0$ on the 7-point scale. Items with $1.0 < \text{IQR} \leq 1.5$ (``near-consensus'') are presented in Round~2 with the group median and the two most divergent anonymized rationales. Items with IQR~$> 1.5$ (``no consensus'') are presented with the full response distribution and all anonymized open-ended comments. Items still with IQR~$> 1.5$ after Round~2 are reported as unresolved disagreements.
-
-\subsubsection{4.11.2 Analysis plan}
-
-For Likert items, we report the median, IQR, and percentage of panelists rating $\geq 5$ (indicating agreement on the positive side of the scale). Inter-rater reliability for the classification exercise is assessed via Krippendorff's $\alpha$ for nominal data, with $\alpha \geq 0.667$ as the acceptability threshold and $\alpha \geq 0.80$ as good reliability~\cite{Krippendorff2011}. Round-over-round convergence is measured by the number of items that transition from non-consensus to consensus and by the mean IQR reduction.
-
-\subsubsection{4.11.3 Expected outcomes}
-
-Based on the empirical results in Sections 4.3--4.10, we predict: (a)~C1 and C2 will reach strong consensus on necessity (median $\geq 6$, IQR~$\leq 1$) because on-chain actuation and perception are uncontroversially required. (b)~C4 (adaptiveness) will be the most debated condition, as discussed in Section~5.3, and may require Round~2 convergence. (c)~The ``LLM-Powered Agent vs.\ DeFi Management Agent'' boundary will appear in the classification exercise as the lowest-agreement entity pair, mirroring the classifier's persistent F1~= 0.44 confusion even with 31 features. (d)~Mutual exclusivity will score lower than exhaustiveness, reflecting the behavioral overlap documented in Section~4.4.
-
-\subsubsection{4.11.4 Timeline}
-
-The Delphi study follows a 4-week protocol: Week~1 for recruitment and consent; Week~2 for Round~1 (7-day response window); Week~3 for Round~1 analysis and Round~2 design; Week~4 for Round~2 (5-day response window) and final analysis. Results will be integrated into the camera-ready version of this paper.
-
-\subsubsection{4.11.5 Ethical review}
-
-The study has been designed as a minimal-risk expert elicitation study and will be submitted for IRB review. Individual responses are kept confidential; only aggregated statistics appear in the paper. Participants choose between named acknowledgment or a \$50 gift card.
-
 
 \section{5. Discussion}
 
@@ -593,7 +561,7 @@ The C1-C4 definition and the taxonomy let HCI researchers, regulators, and pract
 
 \textbf{The LLM-Powered Agent weak spot is not resolvable with transaction-level features.} Section~4.7 shows that expanding from 23 to 31 features does not help LLM-Powered Agent (F1 remains at 0.44). The behavioral overlap with DeFi Management Agent appears to be a hard limit of chain-only observation. Future work should explore LLM-specific behavioral signatures (prompt-latency patterns, context-window effects) that operate at a different abstraction level than the gas-precision and timing-regularity features in the current set.
 
-\textbf{Expert Delphi not yet executed.} The Delphi expert validation study described in Section~4.11 is designed and IRB-ready but has not yet been executed. The empirical validation (registry provenance, cluster recovery, classifier) stands on its own, but subjective expert judgment will strengthen the definition. We will integrate Delphi results into the camera-ready version.
+\textbf{Expert Delphi not yet executed.} We have designed and pilot-tested a modified Delphi instrument (7-point Likert, 33 items across necessity / clarity / operationalizability dimensions, 6 boundary-case vignettes) but have not yet executed it; materials are released with our artifacts.
 
 \textbf{Observability limits.} Purely off-chain agent components (LLM inference, internal strategy computation) are not directly observable. Two agents with fundamentally different internal architectures may produce similar on-chain footprints and be placed in the same category. This is a hard limit of chain-only validation and is the reason we frame C1-C4 around \textit{operationalized proxies} rather than internal state.
 
@@ -605,7 +573,7 @@ The C1-C4 definition and the taxonomy let HCI researchers, regulators, and pract
 2. Mine 200+ addresses for each under-represented category (DAO, Bridge, RL) via targeted contract search to improve statistical power beyond the current small cohorts.
 3. Develop and test LLM-specific behavioral signatures (prompt-latency patterns, context-window effects, action-sequence novelty) as a 32nd+ feature to resolve the LLM-Powered weak spot.
 4. Replicate the validation on Solana and Polygon.
-5. Execute the Delphi expert validation protocol (Section~4.11; materials finalized, pending IRB approval and recruitment).
+5. Execute the Delphi expert validation protocol (materials finalized, pending IRB approval and recruitment).
 
 
 \section{7. Conclusion}
