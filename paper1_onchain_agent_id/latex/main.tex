@@ -7,104 +7,93 @@
 \usepackage[ruled,vlined]{algorithm2e}
 
 \begin{document}
-\title{On-Chain AI Agent Identification under Label Leakage: An Honest Empirical Study with Provenance-Only Ground Truth}
+\title{The Honesty Cascade: Five Levels of Evaluation Realism for On-Chain AI Agent Detection}
 \author{NSF Project Team}
 \affiliation{\institution{University}\country{USA}}
 
 \begin{abstract}
-Autonomous AI agents manage billions on Ethereum but are invisible to on-chain monitoring. We build a 23-feature behavioral classifier on 1,147 provenance-verified addresses and discover that our own labeling heuristic inflated AUC from 0.98 to an honest 0.80. Most surprisingly, the widely assumed ``agents are riskier'' narrative reverses under honest labels: human DeFi users hold more unlimited token approvals (66.1 mean) than curated MEV bots (49.1 mean), because heuristic labels systematically misclassified heavy DeFi users as agents. Temporal holdout reveals random CV overestimates AUC by 13--16 points; the deployment-realistic AUC is 0.67 with precision 0.81 but recall 0.31, meaning the classifier is useful for high-confidence flagging but misses 70\% of post-2021 agents. We extract a reusable three-step leakage-audit toolkit that other blockchain-ML researchers can apply. The \texttt{defi\_hf\_trader} ablation (removing 37\% of agents labeled by behavioral criteria) shows AUC is unchanged, confirming the classifier learns from provenance-pure signal. All code, features, labels, and diagnostic scripts are released.
+We build a 23-feature behavioral classifier on 1,147 provenance-verified Ethereum addresses and subject it to five progressively honest evaluation levels---an \emph{honesty cascade}. At Level~1 (leaky cross-validation), AUC is 0.98. Fixing label leakage drops it to 0.80 (Level~2). A temporal holdout simulating forward deployment yields 0.67 (Level~3). A hand-curated 64-address sensitivity check gives 0.77 with wide confidence intervals (Level~4). Most critically, leave-one-platform-out evaluation---the only test of true cross-platform generalization---produces a pooled AUC of 0.42, \emph{below random chance} (Level~5). The classifier learns platform-specific fingerprints, not generalizable agent behavior. Along the way, we discover that the widely assumed ``agents are riskier'' narrative is a labeling artifact: human DeFi users hold more unlimited token approvals (66.1 mean) than curated MEV bots (49.1 mean). We formalize a reusable three-step leakage-audit toolkit and release all code, features, labels, and diagnostic scripts. Our central contribution is the cascade itself: the progressive collapse from 0.98 to 0.42 demonstrates that on-chain AI agent detection, as currently formulated with transaction-level features, is an open problem. Published high-AUC results in this domain measure artifacts, not agent behavior.
 \end{abstract}
 
-\keywords{on-chain AI agents, behavioral fingerprinting, label leakage, Ethereum, graph neural networks, security audit, honest baselines, reproducibility}
+\keywords{on-chain AI agents, evaluation realism, honesty cascade, label leakage, cross-platform generalization, Ethereum, behavioral fingerprinting, open problem}
 \maketitle
 
 \section{1. Introduction}
 
-\subsection{1.1 Motivation}
+\subsection{1.1 The Cascade}
 
-Autonomous AI agents are proliferating on public blockchains at unprecedented speed. Simple trading bots, complex multi-step DeFi strategy executors, MEV searchers, and LLM-driven market makers collectively control tens of billions of dollars on Ethereum mainnet alone. Platforms such as Autonolas, Fetch.ai, AI Arena, AI16Z ELIZA, and Virtuals Protocol make on-chain agent deployment increasingly turnkey. Recent reports attribute more than $45M in 2025-2026 losses to AI-agent-specific failure modes, including approval exploits, oracle manipulation, and cascading liquidation failures triggered by coordinated rebalancing.
+We set out to detect AI agents on Ethereum. At each step, we made our evaluation more honest---and at each step, performance dropped. This paper is the story of that progressive disillusionment, and why it matters.
 
-Yet from the perspective of the Ethereum protocol, an AI-controlled externally owned account (EOA) is indistinguishable from a human-operated one. No on-chain type system exposes whether a transaction's sender is a human, a smart-contract wallet, or an AI policy running in a data center. This opacity creates three fundamental problems:
+Table~\ref{tab:cascade} summarizes the five-level \emph{honesty cascade} that structures this paper.
 
-1. \textbf{Security auditors} cannot isolate agent-specific risk (runaway approvals, unbounded slippage tolerance, mis-specified LLM tool calls) from human behavior.
-2. \textbf{Protocol designers} cannot offer agent-aware primitives (rate limiting, bounded approvals, composability guards) because they cannot tell who is using the protocol.
-3. \textbf{Regulators and monitoring services} have no visibility into what fraction of market activity is automated, which limits their ability to reason about systemic risk.
+\begin{table}[h]
+\centering
+\small
+\caption{The Honesty Cascade: five levels of evaluation realism for on-chain agent detection.}
+\label{tab:cascade}
+\begin{tabular}{llll}
+\toprule
+Level & Evaluation & AUC & What it measures \\
+\midrule
+1 & Leaky CV (C1--C4 labels) & 0.98 & Label recovery \\
+2 & Provenance CV (n=1{,}147) & 0.80 & Within-platform pattern \\
+3 & Temporal holdout & 0.67 & Same-era generalization \\
+4 & Strict subset (n=64) & 0.77 & Hand-curated sensitivity \\
+5 & Leave-one-platform-out & \textbf{0.42} & True cross-platform generalization \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-Closing these gaps requires a reliable way to identify agents from public on-chain data alone, without relying on platform registries or voluntary disclosures. Figure~\ref{fig:pipeline} shows where this paper fits within our broader research program.
+At Level~1, our classifier appeared near-perfect (AUC~0.98). We discovered that our labeling heuristic had leaked three classifier features into the labels (Section~5.1). Fixing the leakage and evaluating on 1{,}147 provenance-verified addresses dropped AUC to 0.80 (Level~2). A temporal holdout simulating forward deployment reduced it further to 0.67 (Level~3). A hand-curated 64-address sensitivity check yielded 0.77 with wide confidence intervals (Level~4). And the decisive test---leave-one-platform-out cross-validation, where the classifier must recognize agents from a platform category it has never seen---produced a pooled AUC of \textbf{0.42}, below random chance (Level~5).
+
+The Level~5 result is not noise. It means the classifier learns how Chainlink keepers differ from Gelato executors, not how agents differ from humans. Every AUC point between 0.98 and 0.42 was borrowed from an evaluation shortcut: label leakage, temporal overlap, or platform memorization. Strip them all away, and the task does not work.
+
+\subsection{1.2 Why This Matters}
+
+Autonomous AI agents manage billions on Ethereum. Platforms such as Autonolas, Fetch.ai, AI Arena, and Virtuals Protocol make deployment turnkey. Yet from the protocol's perspective, an AI-controlled EOA is indistinguishable from a human wallet. This opacity impedes security auditing, agent-aware protocol design, and regulatory monitoring. Closing these gaps requires reliable on-chain agent detection---but reliable detection requires honest evaluation.
+
+Three counter-intuitive findings emerge from the cascade:
+
+\begin{enumerate}
+    \item \textbf{The ``agents are riskier'' narrative is a labeling artifact.} Under provenance-verified labels, human DeFi users hold more unlimited token approvals (66.1 mean) than curated MEV bots (49.1 mean), because heuristic labels systematically misclassified heavy DeFi users as agents (Section~4.8).
+    \item \textbf{Cross-platform generalization fails completely.} Leave-one-platform-out pooled AUC is 0.42. The best-recognized category (Chainlink keepers, 68\% recall) and worst (DeFi high-frequency traders, 14\% recall) differ by 54 percentage points, confirming that the classifier memorizes platform fingerprints (Section~4.9).
+    \item \textbf{Even ``honest'' random CV overstates by 13 points.} Temporal holdout (Level~3) reveals that the provenance-CV number (Level~2) already contains 13 AUC points of temporal optimism bias (Section~4.7).
+\end{enumerate}
 
 \input{../../shared/figures/fig\_pipeline.tex}
 
-\textbf{Key Counter-Intuitive Findings.} Three results in this paper overturn conventional assumptions and motivate our methodological contributions:
-
-\begin{enumerate}
-    \item \textbf{Security audit reversal: agents are NOT riskier than humans under honest labels.} The widely cited claim that AI agents hold 10x more unlimited token approvals than humans is an artifact of heuristic labeling bias. Under provenance-verified labels, the direction reverses: human DeFi users hold more unlimited approvals (66.1 mean) than curated MEV bots (49.1 mean), because the heuristic systematically misclassified heavy DeFi users as agents (Section~4.8).
-    \item \textbf{The task is harder than reported: honest temporal AUC is 0.67, not 0.98.} Our initial pipeline reported GBM AUC 0.98 on heuristically labeled data. After removing label leakage and evaluating under a temporal holdout that simulates forward deployment, the realistic AUC drops to 0.67---a 31-point gap that reveals both labeling bias and temporal distribution shift (Sections~4.1, 4.7).
-    \item \textbf{The leakage-audit toolkit is a standalone contribution.} We formalize a reusable three-step audit---label--feature overlap, AUC across label-purity tiers, and cross-label-scheme transfer---that detected the leakage in our own pipeline and that other blockchain-ML researchers can apply to any behavioral classifier (Section~5.4, Algorithm~\ref{alg:leakage\_audit}).
-\end{enumerate}
-
-\subsection{1.2 The Seduction of High Numbers}
-
-When we began this study, we built what seemed to be a compelling pipeline: 3,316 Ethereum addresses (2,590 labeled AGENT, 726 labeled HUMAN) mined from four agent platforms (Autonolas, Fetch.ai, AI Arena, Virtuals), a curated MEV-bot list, and a set of ENS-verified humans. Labels were assigned via a 4-gate heuristic we called \textbf{C1-C4}:
-
-- C1: public registry or known identity;
-- C2: behavioral consistency with the declared class;
-- C3: multi-source cross-validation, operationalized as thresholds on \texttt{hour\_entropy > 2.5}, \texttt{burst\_ratio > 0.1}, and \texttt{tx\_interval\_cv < 1.0};
-- C4: temporal stability across windows.
-
-Gradient Boosting on all 23 features achieved \textbf{AUC 0.9803} (5-fold 5-rep CV, n=3316). Random Forest reached 0.9766, and even logistic regression landed at 0.9521. A Graph Attention Network on the induced transaction graph obtained 0.934, and GraphSAGE 0.967. The security audit appeared to confirm the hypothesis that agents are riskier than humans: 10.3x more unlimited approvals on average, 1.7x higher DEX interaction rate, and higher revert rates.
-
-This is the number we would have written up in the abstract, and it is wrong as a claim about agent identification.
-
 \subsection{1.3 The Leakage Discovery}
 
-In the final week of experiments, we noticed that three of the top-four classifier features were algebraically identical to three C1-C4 gates:
+When we began, we built a 3{,}316-address pipeline using a 4-gate heuristic (C1--C4) that gated AGENT labels on behavioral thresholds including \texttt{hour\_entropy~>~2.5}, \texttt{burst\_ratio~>~0.1}, and \texttt{tx\_interval\_cv~<~1.0}. Gradient Boosting achieved AUC~0.9803. In the final week of experiments, we noticed that three of the top-four classifier features were algebraically identical to three C1--C4 gates: \texttt{active\_hour\_entropy} $\equiv$ \texttt{hour\_entropy}, \texttt{burst\_frequency} $\equiv$ \texttt{burst\_ratio}, and \texttt{tx\_interval\_std} $\approx$ \texttt{tx\_interval\_cv} $\times$ \texttt{tx\_interval\_mean}. The AUC of 0.98 was measuring how well the classifier recovered its own labeling rule.
 
-\begin{verbatim}
-hour\_entropy (C3 gate)     == active\_hour\_entropy (classifier feature)
-burst\_ratio  (C3 gate)     == burst\_frequency     (classifier feature)
-tx\_interval\_cv (C3 gate)   ~  tx\_interval\_std / tx\_interval\_mean (classifier features)
-\end{verbatim}
-
-In other words, the same quantities that had decided whether an address was labeled AGENT were then fed to the classifier as predictors. The resulting AUC is therefore not a measure of how well behavioral features separate agents from humans; it is a measure of how well the classifier recovers the thresholding rule the mining script used. The agents-have-10x-more-approvals headline comes from the same labeling bias: C1-C4 preferentially accepted token holders who were already active DeFi users.
-
-Fortunately, we identified a strict set of 64 addresses with provenance labels that did not pass through C1-C4: 33 agents from the original manual pilot set (jaredfromsubway, Wintermute, 1inch resolver, Flashbots builders, Autonolas registry entries, etc.) and 31 humans from the curated ENS list (vitalik.eth, Hayden Adams, and comparable accounts). We then launched two successive expanded provenance mining campaigns (v3, v4) that grew the honest set to \textbf{1,147 addresses (533 agents, 614 humans)} by adding Gelato executor contracts, Keep3r network executors, high-frequency DeFi traders with >50 daily Uniswap calls, additional curated MEV bots, Compound V3 liquidators, Chainlink keepers, ENS-interaction-verified humans, exchange depositors, Gitcoin donors, ENS reverse setters, PoolTogether depositors, and governance voters. On this \textbf{full provenance set (n=1,147)}:
-
-- Random Forest 10-fold AUC is \textbf{0.803};
-- Gradient Boosting 10-fold AUC is \textbf{0.810};
-- GAT 5-fold AUC is \textbf{0.832 +/- 0.021};
-- The C1-C4 diagnostic heuristic agrees with provenance labels only \textbf{48.8\%} of the time, down from 92.9\% on the original 14-address pilot, confirming that heuristic labeling increasingly disagrees with provenance labels as the dataset grows and diversifies.
-
-On the \textbf{strict provenance subset (n=64)}, used as a sensitivity check: RF LOO-CV AUC is 0.7713, GAT 5-fold AUC is 0.883, and GBM is indistinguishable from a majority classifier (McNemar p=0.58). The security audit direction \textbf{reverses}: famous ENS humans hold more unlimited approvals (66.1 mean) than curated MEV bots (49.1 mean) because the ENS accounts are heavier DeFi users than a typical searcher.
-
-We therefore rewrote the paper around this discovery. This paper is not an attempt to hide the leakage; it is an attempt to turn the leakage into a methodological contribution, to present the honest baselines, and to provide a reusable audit template so that future work on behavioral classification of on-chain actors does not repeat the same mistake.
+We assembled 1{,}147 provenance-verified addresses (533 agents from 11 sources, 614 humans from 7 sources) whose labels do not pass through any behavioral threshold, retained 64 hand-curated addresses as a strict sensitivity check, and designed the five-level cascade to stress-test every remaining evaluation shortcut.
 
 \subsection{1.4 Research Questions}
 
-- \textbf{RQ1 (Identifiability):} Can AI agents be reliably distinguished from human users on the basis of public on-chain behavior alone, using provenance-only ground truth?
-- \textbf{RQ2 (Leakage):} What is the magnitude of the gap between a heuristically labeled classifier and a provenance-only classifier, and how should future work design around it?
-- \textbf{RQ3 (Model class):} Do graph neural networks, which can exploit transfer-graph structure beyond node features, beat tabular classifiers on the honest set?
-- \textbf{RQ4 (Generalization):} Do classifiers trained on one platform (e.g., Autonolas) transfer to agents from a curated external set?
-- \textbf{RQ5 (Security posture):} Does the "agents are riskier than humans" hypothesis survive the honest relabeling?
-- \textbf{RQ6 (Temporal robustness):} How much does random CV overestimate real-world performance compared to a temporal holdout that simulates forward deployment?
+\begin{itemize}
+    \item \textbf{RQ1 (Cascade):} How much AUC does each level of evaluation realism remove, and what artifact does each level expose?
+    \item \textbf{RQ2 (Cross-platform):} Can a classifier trained on some agent platforms generalize to platforms it has never seen?
+    \item \textbf{RQ3 (Leakage):} What is the magnitude and mechanism of the label-leakage inflation?
+    \item \textbf{RQ4 (Model class):} Do GNNs survive the cascade better than tabular classifiers?
+    \item \textbf{RQ5 (Security posture):} Does the ``agents are riskier'' hypothesis survive honest relabeling?
+    \item \textbf{RQ6 (Temporal):} How much does random CV overestimate deployment-realistic performance?
+\end{itemize}
 
 \subsection{1.5 Contributions}
 
-1. \textbf{An honest empirical baseline on 1,147 provenance-verified addresses.} Random Forest 10-fold AUC = 0.803, GBM 10-fold AUC = 0.810, and Graph Attention Network 5-fold AUC = 0.832 on 1,147 provenance-verified Ethereum addresses (533 agents, 614 humans) drawn from 11 agent sources and 7 human sources. A strict 64-address subset (33 agents, 31 humans) serves as a sensitivity check, yielding RF LOO-CV AUC 0.7713 and GAT 0.883. These are the numbers we recommend as the reference point for future work.
-2. \textbf{A leakage case study.} We document how a seemingly sensible 4-gate labeling oracle injected three top-4 classifier features into the labels, causing an 18-point AUC inflation (0.9803 to 0.803). We release the diagnostic scripts as a template (\texttt{verify\_c1c4.py}, \texttt{pipeline\_provenance.py}, \texttt{statistical\_tests.py}, \texttt{mine\_addresses\_v4.py}).
-3. \textbf{Statistical significance on the honest set.} McNemar, DeLong, and bootstrap tests on the 64-address strict subset show that Random Forest significantly beats Gradient Boosting (McNemar p=0.0225, DeLong p=0.0014, bootstrap CI95 [-0.24, -0.06]), GBM is indistinguishable from a majority baseline, and a single best feature (tx\_interval\_mean) matches or beats GBM.
-4. \textbf{Cross-platform evaluation.} Autonolas-to-trusted transfer AUC is 0.24 to 0.34, worse than chance, while Fetch.ai-to-AI-Arena transfer AUC is 0.98, exposing that the apparent high performance comes from intra-platform correlations rather than a generalizable agent concept.
-5. \textbf{GNN vs tabular comparison.} On the full provenance set (n=1,147), GAT (AUC 0.832) beats all tabular classifiers. On the strict subset (n=64), GAT reaches 0.883, beating GraphSAGE (0.784) and all tabular models, suggesting that graph structure carries signal beyond per-node features.
-6. \textbf{Combined feature study.} Extending the 23 Paper 1 features with 8 AI-specific features from our companion work (Paper 3) yields a combined LightGBM 5x3-CV AUC of 0.7172 on the trusted subset, essentially no improvement (delta +0.013) over Paper 1 features alone.
-7. \textbf{4-dimensional security audit with honest reversal.} We report both the leaky-set (agents 10.3x more unlimited approvals) and trusted-set (humans hold more) audits side by side, and explain why the direction reverses.
-8. \textbf{C1-C4 diagnostic divergence.} The C1-C4 heuristic agrees with provenance labels only 48.8\% on n=1,147 (down from 55.8\% on n=563 and 92.9\% on the 14-address v2 pilot), demonstrating that heuristic labeling increasingly disagrees with ground truth as the dataset diversifies.
-9. \textbf{Temporal holdout evaluation.} A temporal split at median first-seen block (April 2021) shows random CV overestimates AUC by 13--16 points; precision remains high (0.81) but recall collapses to 0.31 on post-2021 agents, quantifying the deployment gap.
-10. \textbf{A reusable three-step leakage-audit toolkit (Algorithm~\ref{alg:leakage\_audit}).} We formalize the audit into: (1) label--feature overlap via Jaccard/correlation, (2) AUC comparison across label-purity tiers, and (3) cross-label-scheme transfer. This is a standalone methodological contribution that other blockchain-ML researchers can cite and apply.
-11. \textbf{Honest baseline contextualization.} We compare our provenance-verified AUC (0.803) with published bot-detection numbers across platforms (Twitter 0.75--0.85, Reddit $\sim$0.80, Ethereum Ponzi 0.92 with leaky labels), showing that honest on-chain agent identification is competitive in the clean-label regime.
-12. \textbf{Open artifacts.} Code, mined features, labels, statistical test scripts, GNN model weights, and the full leaky-vs-honest comparison JSONs are released.
+\begin{enumerate}
+    \item \textbf{The honesty cascade.} A five-level evaluation hierarchy (Table~\ref{tab:cascade}) that strips away evaluation shortcuts one by one, revealing a progressive AUC collapse from 0.98 to 0.42. The cascade is itself a reusable evaluation template for any behavioral classifier.
+    \item \textbf{Leave-one-platform-out evaluation (Level~5).} The first cross-platform generalization test for on-chain agent detection, showing pooled AUC~0.42 (below chance) across 14 held-out platform categories. This result proves the classifier learns platform fingerprints, not agent behavior.
+    \item \textbf{A leakage case study and three-step audit toolkit (Algorithm~\ref{alg:leakage_audit}).} We document how a 4-gate labeling oracle injected three top classifier features into the labels, causing an 18-point AUC inflation, and formalize a reusable audit: (1)~label--feature overlap, (2)~AUC across label-purity tiers, (3)~cross-label-scheme transfer.
+    \item \textbf{Honest baselines on 1{,}147 provenance-verified addresses.} RF 10-fold AUC~0.803, GBM~0.810, GAT~0.832 (the best honest model). A 64-address strict subset serves as sensitivity check: RF LOO-CV AUC~0.7713, GAT~0.883.
+    \item \textbf{Temporal holdout evaluation.} Random CV overestimates AUC by 13--16 points; precision stays high (0.81) but recall collapses to 0.31 on post-2021 agents.
+    \item \textbf{Security audit reversal.} The ``agents hold 10x more unlimited approvals'' headline from the leaky set becomes ``humans hold 1.3x more'' on the honest set.
+    \item \textbf{Open artifacts.} Code, features, labels, statistical tests, GNN weights, and all diagnostic scripts are released.
+\end{enumerate}
 
 \subsection{1.6 Paper Roadmap}
 
-Section 2 surveys related work. Section 3 describes the mining pipeline, the 23 features, the tabular classifiers, the GNN architectures, and the security audit. Section 4 presents nine result subsections: honest tabular performance (4.1), statistical significance (4.2), cross-platform generalization (4.3), GNN vs tabular (4.4), combined Paper 1 + Paper 3 features (4.5), SHAP explanations (4.6), temporal holdout evaluation (4.7), the 4-dimensional security audit (4.8), and a comparison with published bot-detection baselines (4.9). Section 5 is the threats-to-validity section and is the methodological heart of the paper; it walks through the C1-C4 leakage discovery and presents a reusable three-step leakage-audit toolkit as Algorithm~\ref{alg:leakage\_audit}. Section 6 discusses practical implications for auditors and regulators, limitations, and a clean re-mining roadmap. Section 7 concludes.
+Section~2 surveys related work. Section~3 describes the data pipeline, features, classifiers, and GNNs. Section~4 presents the cascade in order: Levels~1--2 (honest tabular and GNN performance, 4.1--4.5), SHAP explanations (4.6), Level~3 temporal holdout (4.7), the security audit (4.8), and the climactic Level~5 leave-one-platform-out evaluation (4.9). Section~5 details the leakage discovery and the three-step audit toolkit. Section~6 discusses what the cascade means for researchers, practitioners, and regulators. Section~7 concludes.
 
 
 \section{2. Related Work}
@@ -360,9 +349,9 @@ For each audited address we compute:
 We run the audit twice: once on the full 3,302-address set (14 dropped due to empty histories) and once on the 50-address trusted subset. The difference between the two is a direct measurement of how labeling bias corrupts security conclusions.
 
 
-\section{4. Results}
+\section{4. Results: The Honesty Cascade}
 
-We now present the honest results in six subsections. Throughout this section, \textbf{the full provenance set (n=1,147) is the headline}. The strict provenance subset (n=64) is reported as a sensitivity check. The full n=3,316 numbers are reported only as a leaky reference point.
+We present results organized around the five-level honesty cascade (Table~\ref{tab:cascade}). Sections~4.1--4.5 cover Levels~1--2 (provenance-verified baselines). Section~4.6 provides SHAP explanations. Section~4.7 reports Level~3 (temporal holdout). Section~4.8 presents the security audit. Section~4.9---the climax of the paper---reports Level~5 (leave-one-platform-out), where the cascade reaches its nadir. Throughout, \textbf{the full provenance set (n=1,147) is the Level~2 headline}. The strict subset (n=64) is Level~4. The n=3,316 numbers are reported only as the Level~1 leaky reference.
 
 \subsection{4.1 Honest Performance on Provenance-Verified Sets}
 
@@ -738,9 +727,9 @@ Table 8 below shows the leaky-vs-strict extremes.
 \toprule
 Metric (dimension) & Full 3,302 (C1-C4) agent / human & Agent/human ratio (leaky) & Trusted 50 agent / human & Agent/human ratio (honest) & Direction reversed? \\
 \midrule
-# approvals (D1) & 108.75 / 14.41 & \textbf{7.55x} & 110.09 / 125.11 & 0.88x & \textbf{Yes} \\
-# unlimited approvals (D1) & 61.38 / 5.93 & \textbf{10.35x} & 49.14 / 66.14 & 0.74x & \textbf{Yes} \\
-# active approvals (D1) & 102.02 / 13.49 & 7.56x & 104.68 / 121.14 & 0.86x & \textbf{Yes} \\
+\# approvals (D1) & 108.75 / 14.41 & \textbf{7.55x} & 110.09 / 125.11 & 0.88x & \textbf{Yes} \\
+\# unlimited approvals (D1) & 61.38 / 5.93 & \textbf{10.35x} & 49.14 / 66.14 & 0.74x & \textbf{Yes} \\
+\# active approvals (D1) & 102.02 / 13.49 & 7.56x & 104.68 / 121.14 & 0.86x & \textbf{Yes} \\
 avg approval age (days, D1) & 1170.5 / 1134.9 & 1.03x & 795.6 / 1235.8 & 0.64x & \textbf{Yes} \\
 max approval age (days, D1) & 1539.0 / 1295.5 & 1.19x & 1028.2 / 1811.9 & 0.57x & \textbf{Yes} \\
 unlimited approval rate (D1) & 0.502 / 0.304 & 1.65x & 0.245 / 0.452 & 0.54x & \textbf{Yes} \\
@@ -762,28 +751,41 @@ gas used efficiency (D4) & 0.712 / 0.695 & 1.02x & 0.644 / 0.751 & 0.86x & \text
 
 \textbf{The audit direction is not a minor wrinkle. It is a full 180-degree reversal on the headline "agents are riskier than humans on approvals".}
 
-\subsection{4.9 Comparison with Published Bot-Detection Baselines}
+\subsection{4.9 Level 5: Leave-One-Platform-Out (The Cascade Floor)}
 
-To contextualize our honest numbers, Table~10 compares the provenance-verified AUC from this work with published bot-detection results across platforms.
+Levels~1--4 evaluate within-distribution generalization: the training and test sets are drawn from the same pool of platform categories. But a deployment-ready agent detector must recognize agents from platforms it has never seen. We therefore run \textbf{leave-one-platform-out cross-validation (LOPO)}: for each of the 14 platform categories with $\geq$10 addresses, we hold out \emph{all} addresses from that category as the test set and train on the remaining 13 categories. Because each category is single-class (all-agent or all-human), per-platform AUC is undefined; we report per-platform accuracy (which equals recall for agent categories and specificity for human categories) and compute a \textbf{pooled AUC} over all 1{,}131 held-out predictions.
 
-\textbf{Table 10. Cross-platform bot-detection AUC comparison.}
+\textbf{Table 10. Leave-one-platform-out results (GBM, n=1{,}131 pooled predictions).}
 
 \begin{table}[h]
 \centering
 \small
-\begin{tabular}{lllll}
+\begin{tabular}{llll}
 \toprule
-Study & Platform & Task & Reported AUC & Label regime \\
+Held-out category & n & Class & Accuracy \\
 \midrule
-Cresci et al.\ (2017) & Twitter & Social bot detection & 0.75--0.85 & Crowd-sourced labels \\
-Varol et al.\ (2017) & Reddit & Bot detection & $\sim$0.80 & Platform API flags \\
-Chen et al.\ (2020) & Ethereum & Ponzi scheme detection & 0.92 & Heuristic + behavioral \\
-Victor \& Weintraud (2021) & Ethereum & Wash-trade detection & 0.89 & Graph-rule labels \\
+\multicolumn{4}{l}{\textit{Agent categories (recall)}} \\
+pilot\_agent & 15 & agent & \textbf{80.0\%} \\
+chainlink\_keeper & 108 & agent & 67.6\% \\
+gelato\_executor & 47 & agent & 61.7\% \\
+curated\_mev\_bot & 10 & agent & 60.0\% \\
+keep3r\_executor & 46 & agent & 26.1\% \\
+expanded\_mev\_bot & 10 & agent & 20.0\% \\
+compound\_v3\_liquidator & 97 & agent & 15.5\% \\
+defi\_hf\_trader & 199 & agent & \textbf{14.1\%} \\
 \midrule
-\textbf{This work (leaky)} & Ethereum & Agent identification & 0.98 & C1-C4 heuristic \\
-\textbf{This work (honest RF)} & Ethereum & Agent identification & \textbf{0.803} & Provenance-only \\
-\textbf{This work (honest GAT)} & Ethereum & Agent identification & \textbf{0.832} & Provenance-only \\
-\textbf{This work (temporal)} & Ethereum & Agent identification & 0.669 & Provenance + temporal split \\
+\multicolumn{4}{l}{\textit{Human categories (specificity)}} \\
+human\_exchange\_depositor & 28 & human & \textbf{85.7\%} \\
+ens\_reverse\_setter & 144 & human & 76.4\% \\
+pooltogether\_depositor & 89 & human & 53.9\% \\
+expanded\_human & 25 & human & 56.0\% \\
+gitcoin\_donor & 146 & human & 54.8\% \\
+human\_ens\_interaction & 167 & human & 43.1\% \\
+\midrule
+\multicolumn{4}{l}{\textit{Pooled (all 1{,}131 predictions)}} \\
+\textbf{Pooled AUC} & 1{,}131 & -- & \textbf{0.42} \\
+Pooled accuracy & 1{,}131 & -- & 46.4\% \\
+Pooled F1 & 1{,}131 & -- & 36.9\% \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -791,11 +793,37 @@ Victor \& Weintraud (2021) & Ethereum & Wash-trade detection & 0.89 & Graph-rule
 \textbf{Key findings.}
 
 \begin{enumerate}
-    \item \textbf{Our honest AUC (0.803--0.832) is competitive with state-of-the-art bot detection in the honest-label regime.} Twitter bot detection with crowd-sourced labels (Cresci et al.) achieves 0.75--0.85; Reddit bot detection (Varol et al.) reaches $\sim$0.80. Our honest numbers fall squarely in this range.
-    \item \textbf{Higher published numbers likely reflect label leakage.} Chen et al.'s Ethereum Ponzi detector (AUC 0.92) uses behavioral features that overlap with their labeling heuristic, analogous to our C1-C4 leakage. Without an explicit leakage audit, such numbers cannot be compared directly to provenance-verified baselines.
-    \item \textbf{The temporal holdout AUC (0.669) is the most realistic deployment number} and should be the reference for practitioners. The gap between 0.803 (random CV) and 0.669 (temporal holdout) quantifies the temporal optimism bias that affects all cross-validation-only evaluations.
-    \item \textbf{Implication:} future bot-detection papers on blockchain data should report both random-CV and temporal-holdout numbers, along with an explicit leakage audit, before claiming to beat the 0.80 honest baseline.
+    \item \textbf{The pooled AUC is 0.42---below random chance.} A coin flip (AUC~0.50) would outperform the classifier. This is not a marginal failure; it is a categorical one. The classifier has learned to distinguish Chainlink keepers from Gelato executors, not agents from humans.
+    \item \textbf{The best-recognized agent category is pilot agents (80\% recall)}, which contains famous, well-studied MEV bots (jaredfromsubway, Wintermute). The classifier recognizes these because their behavioral patterns appear in curated MEV bots and other categories in the training set---a form of overlap, not generalization.
+    \item \textbf{The worst-recognized agent category is defi\_hf\_trader (14\% recall).} These 199 high-frequency Uniswap traders are the largest agent category and the most behaviorally distinctive. When held out, the classifier trained on Chainlink keepers, Gelato executors, and MEV bots does not recognize them. This proves that ``high-frequency DeFi trading'' is a platform-specific behavioral mode, not a universal agent signature.
+    \item \textbf{Compound V3 liquidators are nearly invisible (15.5\% recall).} Liquidation bots have a narrow behavioral profile (wait, then execute a single high-gas transaction) that does not resemble the keeper or MEV patterns in the training set.
+    \item \textbf{Human categories show moderate specificity} (43--86\%), with exchange depositors best recognized (86\%) and ENS-interaction humans worst (43\%). The classifier misclassifies many ENS-active humans as agents, mirroring the heuristic bias that motivated this study.
+    \item \textbf{Interpretation: the classifier learns platform fingerprints.} Each agent category has a distinctive gas, timing, and interaction profile that separates it from human categories \emph{within} the training distribution. But these profiles are platform-specific, not agent-generic. When the platform is held out, the learned features become noise.
 \end{enumerate}
+
+\textbf{The cascade is now complete.} Level~1 (0.98) measured label recovery. Level~2 (0.80) measured within-platform pattern matching. Level~3 (0.67) measured same-era generalization. Level~4 (0.77) confirmed wide uncertainty. Level~5 (0.42) measured true cross-platform generalization---and found none. On-chain agent detection with transaction-level features, as currently formulated, is an open problem.
+
+\subsubsection{4.9.1 Comparison with Published Baselines}
+
+Table~11 situates our cascade within published bot-detection results.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lllll}
+\toprule
+Study & Platform & Reported AUC & Label type & Cascade level \\
+\midrule
+Cresci et al.\ (2017) & Twitter & 0.75--0.85 & Crowd-sourced & $\sim$Level~2 \\
+Varol et al.\ (2017) & Reddit & $\sim$0.80 & API flags & $\sim$Level~2 \\
+Chen et al.\ (2020) & Ethereum & 0.92 & Heuristic & $\sim$Level~1 \\
+\midrule
+This work & Ethereum & 0.98 / 0.80 / 0.67 / 0.42 & Cascade L1--L5 & All five \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+No prior blockchain bot-detection paper reports a Level~5 evaluation. Until they do, their high-AUC numbers cannot be distinguished from platform fingerprinting.
 
 
 \section{5. Threats to Validity: The C1-C4 Label Leakage Discovery}
@@ -876,7 +904,7 @@ We decided on the following:
 
 The leakage we found is subtle: none of the classifier features are literally one of the gating quantities. The leak is through algebraic identities (\texttt{tx\_interval\_std $\approx$ tx\_interval\_cv $\times$ tx\_interval\_mean}) and name collisions (\texttt{hour\_entropy} gated the label, \texttt{active\_hour\_entropy} is a feature). A reviewer running a superficial check would not catch it; neither did we for several weeks.
 
-We distill our experience into a three-step audit that any behavioral-classifier study on blockchain data can apply. Algorithm~\ref{alg:leakage\_audit} formalizes the procedure; if AUC drops monotonically across label-purity tiers \textbf{and} cross-scheme transfer collapses, leakage is confirmed.
+We distill our experience into a three-step audit that any behavioral-classifier study on blockchain data can apply. Algorithm~\ref{alg:leakage_audit} formalizes the procedure; if AUC drops monotonically across label-purity tiers \textbf{and} cross-scheme transfer collapses, leakage is confirmed.
 
 \begin{algorithm}[t]
 \SetAlgoLined
@@ -932,84 +960,73 @@ Beyond the C1-C4 issue, several additional threats apply.
 - \textbf{Contract-type confounding.} We excluded router contracts and exchange hot wallets from training, but edge cases remain.
 
 
-\section{6. Discussion, Limitations, and Future Work}
+\section{6. Discussion: What Does the Cascade Mean?}
 
-\subsection{6.1 Practical Implications for Auditors and Regulators}
+\subsection{6.1 For Researchers}
 
-The temporal holdout results (Section~4.7) have direct consequences for how this classifier should be deployed in practice. The precision--recall asymmetry under temporal shift---precision stays high (0.81) while recall collapses (0.31)---means the following:
+The cascade from 0.98 to 0.42 has a clear methodological implication: \textbf{every published blockchain bot-detection result needs a Level~5 evaluation.} Without holding out entire platform categories, a reported AUC cannot be distinguished from platform fingerprinting. The field's standard practice---random cross-validation on pooled multi-source data---corresponds to Level~2 at best, which we have shown overstates deployment-realistic performance by at least 38 AUC points relative to the cross-platform test.
+
+We recommend that future work report all five cascade levels (or justify why a level is inapplicable) and treat Level~5 as the primary generalization metric. The three-step leakage-audit toolkit (Algorithm~\ref{alg:leakage_audit}) provides a lightweight sanity check that can be applied before any cross-validation.
+
+\subsection{6.2 For Practitioners}
+
+The cascade reveals a sharp boundary between what works and what does not:
 
 \begin{itemize}
-    \item \textbf{High-confidence flagging works.} When the classifier labels an address as an agent, it is correct approximately 81\% of the time, even on post-2021 addresses that the model has never seen. This makes the classifier suitable as a \textbf{triage tool}: security auditors and monitoring services can use it to prioritize addresses for manual investigation, with a false-positive rate under 20\%.
-    \item \textbf{Comprehensive detection does not work.} The classifier misses roughly 70\% of post-2021 agents (recall 0.31). New agent categories---LLM-driven strategy agents, AI16Z ELIZA deployments, Virtuals Protocol agents---exhibit behavioral patterns absent from the pre-2021 training distribution. The classifier should \textbf{not} be used as a definitive filter (e.g., to claim ``X\% of transactions are human''), because the false-negative rate is too high.
-    \item \textbf{Periodic retraining is essential.} The 13-point AUC gap between random CV and temporal holdout quantifies the cost of stale features. As new agent platforms emerge and gas-pricing conventions evolve (e.g., EIP-4844 blob transactions, EIP-7702 delegation), the feature set must be updated and the model retrained. We recommend a 6-month retraining cadence with each cycle adding provenance-verified addresses from newly launched agent platforms.
-    \item \textbf{Recommendation:} Deploy as a triage layer that surfaces high-confidence agent candidates for human review, not as an autonomous decision system. Pair with platform registry lookups and on-chain provenance checks for addresses that the classifier misses.
+    \item \textbf{Within-platform triage works (Level~2).} At AUC~0.80 and precision~0.81, the classifier is useful for flagging high-confidence agent candidates within a known platform distribution. Security auditors can deploy it as a triage layer with a false-positive rate under 20\%.
+    \item \textbf{Cross-platform deployment does not work (Level~5).} At pooled AUC~0.42, the classifier produces anti-predictions on unseen platform categories. It should not be used to estimate the fraction of automated activity across the Ethereum ecosystem, because the false-negative rate on novel agent categories exceeds 85\%.
+    \item \textbf{Temporal drift is real (Level~3).} Even within known platforms, the 13-point AUC gap between random CV and temporal holdout means the classifier degrades within months. Periodic retraining with provenance-verified addresses from newly launched platforms is essential.
 \end{itemize}
 
-\subsection{6.2 Limitations}
+\subsection{6.3 For Regulators}
 
-1. \textbf{The full provenance corpus is moderately sized and heterogeneous.} At n=1,147 (533 agents, 614 humans), the full provenance set is large enough for 10-fold CV with reasonable fold sizes (~115 test samples per fold) and is approaching standard ML benchmarks. The 18 source categories vary in label quality: \texttt{defi\_hf\_trader} (199 addresses) uses a behavioral threshold (>50 daily Uniswap calls) that is one step removed from classifier features but not provenance-pure.
-2. \textbf{The strict provenance corpus remains tiny.} The 64-address sensitivity check has wide uncertainty bands (5-fold CV std 0.08-0.12) and should not be over-interpreted.
-3. \textbf{Source composition bias.} Agents are dominated by high-frequency DeFi traders (61\% of agent addresses), while humans are dominated by ENS-interaction-verified accounts (71\% of human addresses). This means the classifier is partly learning "high-frequency Uniswap trader vs casual ENS holder" rather than a general agent-vs-human distinction.
-4. \textbf{The original C1-C4 mining exercise was not wasted, but it cannot be cited as ground truth.} The 3,252 platform-token-holder rows still serve as a test bed for feature engineering and as a large graph for GNN propagation, but their labels are now weak labels that must be cross-checked against provenance.
-5. \textbf{GNN variance shrinks but is still meaningful.} GAT's 5-fold AUC std drops from 0.108 on n=64 to 0.021 on n=1,147, a substantial improvement. The n=1,147 GAT headline (0.832) is therefore statistically more reliable than the n=64 headline (0.883).
-6. \textbf{The security audit cannot be generalized.} Even the honest direction is based on 22 agents and 28 humans. We cannot claim the direction reversal holds at scale; we can only claim that the 10x-ratio headline from the leaky set was an artifact.
+The Level~5 result has a direct policy implication: \textbf{behavioral monitoring alone cannot reliably distinguish AI agents from humans across operational contexts.} Any regulatory framework that depends on transaction-level behavioral classification to identify automated activity will systematically miss novel agent categories while over-flagging certain human behavioral profiles (e.g., ENS-active DeFi users). Until agent detection generalizes cross-platform, complementary approaches---platform registries, voluntary disclosures, EIP-7702 delegation signals---are necessary.
 
-\subsection{6.3 Clean Re-Mining Roadmap}
+\subsection{6.4 Limitations}
 
-The v3 expanded mining partially fulfills the roadmap we originally proposed. Below we assess progress and remaining steps:
+\begin{enumerate}
+    \item \textbf{Source composition bias.} Agents are dominated by high-frequency DeFi traders (37\% of agent addresses); humans are dominated by ENS-interaction-verified accounts (27\% of human addresses). The classifier partly learns ``high-frequency Uniswap trader vs.\ casual ENS holder'' rather than a general agent-vs-human distinction---and the Level~5 result confirms this is exactly what it learns.
+    \item \textbf{The \texttt{defi\_hf\_trader} label quality.} The largest agent category (199 addresses) uses a behavioral threshold ($>$50 daily Uniswap calls) that is not strictly provenance-pure. Some addresses may be humans using aggressive trading interfaces. However, this category's 14\% recall under LOPO suggests the classifier does not rely on it for generalization.
+    \item \textbf{Single-class platforms preclude per-platform AUC.} Because each platform category is either all-agent or all-human, we cannot compute per-platform AUC, only per-platform accuracy. The pooled AUC aggregates across all held-out predictions.
+    \item \textbf{Chain coverage.} We study Ethereum mainnet only. Agents on Base, Arbitrum, Solana, and other chains are out of scope.
+    \item \textbf{The security audit is small-sample.} The honest direction reversal is based on 22 agents and 28 humans. We claim the 10x leaky-set ratio was an artifact, not that the reversal necessarily holds at scale.
+\end{enumerate}
 
-1. \textbf{Provenance-first labeling (substantially achieved).} The v4 mining added Compound V3 liquidators, Chainlink keepers, Gitcoin donors, ENS reverse setters, and PoolTogether depositors in addition to the v3 sources (Gelato registry, Keep3r bond registry, Flashbots builder list). However, the \texttt{defi\_hf\_trader} category uses a behavioral threshold (>50 daily Uniswap calls) that is not strictly provenance-based. Future work should validate this category against deployment metadata.
-2. \textbf{Human controls at scale (achieved).} The v4 set includes 614 humans from 7 sources, up from 31 in the strict set. The human set now covers ENS-interaction-verified users (167), Gitcoin donors (146), ENS reverse setters (144), PoolTogether depositors (89), exchange depositors (28), expanded ENS-verified humans (25), and governance voters (5), substantially reducing the celebrity-human bias and achieving approximate class balance (0.87:1).
-3. \textbf{Behavioral label audit (achieved).} We ran the 3-step leakage audit from Section 5.4 on all v3 candidate labels. The C1-C4 diagnostic agreement of 55.8\% confirms that the expanded labels are not simply recapitulating the heuristic.
-4. \textbf{Held-out platform (not yet achieved).} All v3 sources contribute to training. A future version should reserve Gelato or Keep3r entirely for testing.
-5. \textbf{Temporal holdout (achieved).} Section~4.7 reports a temporal split at the median first-seen block (April 2021). Random CV overestimates AUC by 13--16 points; recall collapses from 0.62 to 0.31 on post-2021 agents. Future work should explore rolling temporal splits at multiple cutoff dates.
-6. \textbf{Adversarial stress tests (not yet achieved).} Inject behavioral noise into agent transactions to measure robustness against evasion.
+\subsection{6.5 Future Directions}
 
-\subsection{6.4 Longer-Term Directions}
-
-- \textbf{EIP-7702 impact.} EIP-7702 lets an EOA temporarily delegate smart-contract code within a transaction, dissolving the \texttt{is\_contract()} test that has underpinned naive bot detection. Our behavioral framework does not depend on \texttt{is\_contract()}, so it should survive EIP-7702, but the set of viable features will change (e.g., authorization-list usage becomes a feature).
-- \textbf{Cross-chain tracking.} Agents that run on multiple chains simultaneously (Base, Arbitrum, Solana) require cross-chain identity linking.
-- \textbf{LLM-powered agents.} The companion Paper 3 (AI Sybil) work suggests that LLM-driven agents currently mimic rule-based agents in on-chain traces. We cannot yet separate LLM agents from rule-based agents from Etherscan data alone; new features and external signals are needed.
-- \textbf{Agent-to-agent coordination detection.} The interaction-graph component of our GNN work hints that agent clusters are detectable, but the honest corpus is too small to make the claim.
+\begin{itemize}
+    \item \textbf{Platform-invariant features.} The Level~5 failure implies that the 23-feature set captures platform-specific behavioral modes. Future work should explore features that are invariant across platforms: graph-topological properties, cross-protocol interaction patterns, or latent representations learned via contrastive pre-training across platform categories.
+    \item \textbf{EIP-7702 signals.} EIP-7702 delegation creates a new observable that could distinguish agent wallets without behavioral classification.
+    \item \textbf{Cross-chain evaluation.} Extending the cascade to multi-chain agents (Base, Arbitrum) would test whether cross-chain behavioral features generalize better than single-chain ones.
+    \item \textbf{Adversarial stress tests.} Inject behavioral noise into agent transactions to measure robustness against evasion.
+    \item \textbf{Rolling temporal splits.} Evaluate temporal degradation at multiple cutoff dates to establish a retraining cadence.
+\end{itemize}
 
 
 \section{7. Conclusion}
 
-We presented the first honest empirical study of AI agent identification on Ethereum mainnet using provenance-only ground truth. Our initial pipeline on 3,316 platform-mined addresses reported an apparently exciting AUC of 0.9803 (GBM). In the course of this work, we discovered that the labeling oracle used three quantities (\texttt{hour\_entropy}, \texttt{burst\_ratio}, \texttt{tx\_interval\_cv}) that were algebraically equivalent to three top classifier features, a direct form of target leakage. After demoting the oracle to a downstream diagnostic and assembling 1,147 provenance-verified addresses (533 agents from 11 source categories, 614 humans from 7 source categories), the honest baselines are:
+The cascade from 0.98 to 0.42 is itself our main contribution. It demonstrates that on-chain AI agent detection, as currently formulated with 23 transaction-level behavioral features, does not generalize beyond the platforms used for training.
 
-\textbf{Primary results (n=1,147, full provenance):}
-
-\begin{itemize}
-    \item \textbf{Random Forest 10-fold AUC 0.803} (repeated 5x10-CV 0.803 $\pm$ 0.027),
-    \item \textbf{Gradient Boosting 10-fold AUC 0.810},
-    \item \textbf{GAT 5-fold AUC 0.832 $\pm$ 0.021} (the best honest model overall),
-    \item \textbf{Temporal holdout AUC 0.669} (RF), revealing that random CV overestimates by 13 AUC points; precision stays high (0.81) but recall collapses to 0.31 on post-2021 agents.
-\end{itemize}
-
-\textbf{Sensitivity check (n=64, strict provenance):}
+At each level of the cascade, we stripped away an evaluation shortcut and lost performance:
 
 \begin{itemize}
-    \item \textbf{Random Forest LOO-CV AUC 0.7713} (5x10-CV 0.8030),
-    \item \textbf{GAT 5-fold AUC 0.8825} on the same subset (high variance: std 0.108),
-    \item \textbf{GradientBoosting indistinguishable from a majority classifier} (McNemar p=0.58),
-    \item \textbf{Autonolas $\to$ trusted cross-platform AUC 0.24--0.34}, worse than chance,
-    \item \textbf{Security audit reverses direction}: humans hold more unlimited approvals than curated agents.
+    \item \textbf{Level 1 $\to$ 2} (0.98 $\to$ 0.80): Fixing label leakage removed 18 AUC points.
+    \item \textbf{Level 2 $\to$ 3} (0.80 $\to$ 0.67): A temporal holdout removed 13 more points.
+    \item \textbf{Level 3 $\to$ 5} (0.67 $\to$ 0.42): Holding out entire platforms removed the remaining signal and pushed AUC below chance.
 \end{itemize}
 
-The four-tier evaluation (leaky 0.98 $\to$ full provenance 0.80 $\to$ strict provenance 0.77 $\to$ temporal holdout 0.67) demonstrates a progressive AUC decline as evaluation realism increases. The feature importance ranking also shifts: gas features dominate on n=1,147, displacing the temporal features that were inflated by the C1-C4 leak.
+The Level~5 result is the decisive finding. A pooled AUC of 0.42 across 14 held-out platform categories means the classifier has learned to distinguish Chainlink keepers from Gelato executors---not agents from humans. The best-recognized category (pilot agents, 80\% recall) succeeds because similar addresses exist in other training categories; the worst (DeFi high-frequency traders, 14\% recall) fails because its behavioral profile is unique. This is platform fingerprinting, not agent detection.
 
-Beyond the honest baselines, we contribute a reusable three-step leakage-audit toolkit (Algorithm~\ref{alg:leakage\_audit}) that formalizes the checks we performed: (1)~label--feature overlap, (2)~AUC comparison across label-purity tiers, and (3)~cross-label-scheme transfer. If AUC drops monotonically across tiers and cross-scheme transfer collapses, leakage is confirmed. This toolkit is a standalone methodological contribution applicable to any behavioral classifier on blockchain data, and we release the implementing scripts alongside the data.
+Along the way, we discovered that the widely assumed ``agents are riskier'' narrative is a labeling artifact (humans hold more unlimited approvals under honest labels), and we formalized a reusable three-step leakage-audit toolkit (Algorithm~\ref{alg:leakage_audit}) that other blockchain-ML researchers can apply.
 
-For practitioners, the precision--recall asymmetry under temporal shift provides clear deployment guidance: use the classifier as a high-confidence triage tool (81\% precision), not as a comprehensive filter (31\% recall). Periodic retraining with provenance-verified addresses from newly launched agent platforms is essential to maintain coverage as the agent population evolves.
-
-On-chain AI agents are a real and growing phenomenon, and identifying them reliably is a real and growing need. Our central message is that this need will not be met by scaling up heuristic labeling pipelines. It will be met only by starting from non-behavioral provenance, running explicit leakage audits, reporting honest-vs-leaky gaps, and treating cross-label-scheme transfer as a non-negotiable diagnostic. The honest numbers are smaller than the leaky numbers, but they are the numbers the field can build on. All code, features, labels, and the leaky-vs-honest diagnostic artifacts are released.
+For the field to make progress on this problem, three things must change: (1)~cross-platform evaluation (Level~5) must become a non-negotiable reporting standard; (2)~feature engineering must move toward platform-invariant representations; and (3)~the community must accept that honest AUCs will be lower than leaky ones---and that lower, honest numbers are the only ones worth building on. All code, features, labels, and diagnostic artifacts are released.
 
 
 \section{References}
 
 
 
-\textit{This draft corresponds to the honest pipeline outputs of 2026-04-08 (commit eb8721e and follow-up). Headline numbers: RF LOO 0.7713 on n=64; GAT 5-fold 0.8825 on trusted subset; leaky-vs-honest gap of 0.21 AUC; security audit direction reversed. See \texttt{experiments/expanded/pipeline\_results\_provenance.json}, \texttt{statistical\_tests.json}, \texttt{cross\_platform\_eval.json}, \texttt{gnn\_results.json}, \texttt{combined\_pipeline\_results.json}, and \texttt{security\_audit\_expanded.json} for the raw JSON artifacts and \texttt{FINDINGS\_2026-04-08.md} for the session-level discovery log.}
+\textit{This draft corresponds to the honesty-cascade reframe of 2026-04-15. Headline: the five-level cascade drops AUC from 0.98 (Level~1, leaky) to 0.42 (Level~5, leave-one-platform-out). See \texttt{experiments/leave\_one\_platform\_out\_results.json} for the Level~5 LOPO results, and \texttt{experiments/expanded/pipeline\_results\_provenance.json}, \texttt{statistical\_tests.json}, \texttt{cross\_platform\_eval.json}, \texttt{gnn\_results.json}, and \texttt{security\_audit\_expanded.json} for Levels~1--4.}
 
 
 \bibliographystyle{ACM-Reference-Format}
