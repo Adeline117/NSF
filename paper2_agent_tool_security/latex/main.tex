@@ -9,6 +9,8 @@
 \usepackage{url}
 \usepackage{enumitem}
 
+\graphicspath{{../figures/}}
+
 \newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}
 
@@ -130,7 +132,7 @@ the ``vulnerability'' is not in any single tool's code but in the
    cross-model handoff, multi-turn context, reflexive re-call,
    schema extraction); all are pairwise non-reducible.
 
-\item \textbf{Empirical validation at three levels}: (a) a TCPI
+\item \textbf{Empirical validation at four levels}: (a) a TCPI
    harness measuring ASR 44--75\% across V1--V7 (200 rollouts each);
    (b) a precision-calibrated 138-server static scan yielding
    2,000--2,700 true-positive findings across four protocol families;
@@ -140,7 +142,7 @@ the ``vulnerability'' is not in any single tool's code but in the
 \item \textbf{Responsible disclosure and open-source release}: 25
    vulnerability reports for the highest-risk repositories; full
    analyzer, taxonomy, TCPI harness, Foundry demo, and scan data
-   released under a permissive licence.
+   released under a permissive license.
 \end{enumerate}
 
 \textbf{Key findings preview.}  TCPI attack success rates range from
@@ -164,14 +166,14 @@ between attack and control is one 20-byte constructor argument.
 \subsection{System Model}
 
 An AI agent tool interface comprises five components whose security
-properties we analyse both independently and in composition:
+properties we analyze both independently and in composition:
 \begin{enumerate}[nosep]
 \item \textbf{Agent} --- the LLM that interprets user intent and
    chooses tools.  We treat the model as a probabilistic
    decision-maker with a system prompt and an accumulating context
    window.
 \item \textbf{Protocol} --- the communication layer that describes,
-   serialises, and dispatches tool invocations (MCP, OpenAI Function
+   serializes, and dispatches tool invocations (MCP, OpenAI Function
    Calling, LangChain, or Web3-native module interface).
 \item \textbf{Tool server} --- the process or smart contract that
    executes the requested operation and returns a structured result.
@@ -184,11 +186,8 @@ properties we analyse both independently and in composition:
    when tools are called individually.
 \end{enumerate}
 
-\begin{verbatim}
-User --> Agent (LLM) --[Protocol]--> Harness? --> Tool
-             ^                                     |
-             |______ result (may be poisoned) _____|
-\end{verbatim}
+Figure~\ref{fig:system-architecture} illustrates the full pipeline
+and the return path that enables TCPI.
 
 \subsection{Trust Boundaries}
 
@@ -208,7 +207,7 @@ boundary.
 Boundary & Description & Primary risk \\
 \midrule
 B1: User-Agent & Untrusted user prompt & Direct injection \\
-B2: Agent-Protocol & Tool call serialisation & Param.\ tampering \\
+B2: Agent-Protocol & Tool call serialization & Param.\ tampering \\
 B3: Protocol-Harness & Harness intercept & Policy bypass \\
 B4: Harness-Tool & Tool execution & Privilege misuse \\
 B5: Tool-Agent & Result re-enters LLM & Output injection \\
@@ -245,6 +244,16 @@ smart-contract view function, an email, an issue comment, a database
 cell --- any data source whose \emph{contents} an outside party can
 write to but whose interface signature the agent developer fixed at
 deployment time.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_system_architecture.pdf}
+\caption{System architecture of the agent-tool pipeline.  Data flows
+from the user prompt through the LLM agent, protocol layer, optional
+harness, and tool server.  The return path (tool output re-entering
+the LLM context at boundary B5) is the TCPI attack channel.}
+\label{fig:system-architecture}
+\end{figure}
 
 \subsection{Attack Surfaces (S1--S5)}
 
@@ -386,47 +395,14 @@ existing risk management frameworks.
 
 \subsection{Positioning TCPI Against Prior Art}
 
-Every prior line of work falls into one of five buckets, none of
-which fully captures TCPI.
-
-(1)~\emph{Description-channel} attacks (tool
-poisoning~\cite{invariantlabs2025mcp},
-ToolHijacker~\cite{shi2025toolhijacker}) --- these target tool
-descriptions or the tool registry.  TCPI requires descriptions to be
-unchanged; only $o_A$ moves.
-
-(2)~\emph{Data-channel into user context}
-(Greshake~\cite{greshake2023injection}, single-hop AgentDojo) ---
-single-hop injection where a document becomes part of the LLM's
-context but does not pass through a tool signature with
-parameter-synthesis.
-
-(3)~\emph{User-driven sequential chains}
-(STAC~\cite{lin2025stac}) --- the user or attacker-as-user picks the
-multi-turn sequence, not a tool's output.
-
-(4)~\emph{Multi-agent LLM-to-LLM}
-(Prompt Infection~\cite{lee2024infection}) --- viral propagation
-between LLMs in a multi-agent system (many LLMs, one tool each),
-not one LLM with many tools.
-
-(5)~\emph{Empirical-only multi-hop} (InjecAgent, AgentDojo multi-hop
-subset, AgentArmor~\cite{agentarmor2025}, Toxic Flow
-Analysis~\cite{invariantlabs2025tfa}) --- correct shape, but no
-formal model, no undecidability theorem, no on-chain settlement demo.
-
-TCPI is the first work to simultaneously:
-(A) formally isolate the Output$\to$Parameter class as distinct from
-(1)--(4);
-(B) prove it is undetectable by per-tool static analysis via
-reduction from program equivalence;
-(C) enumerate seven structurally distinct variants; and
-(D) demonstrate end-to-end with real ERC-20 settlement.
-The closest competitor is Invariant Labs' Toxic Flow
-Analysis~\cite{invariantlabs2025tfa}; TCPI supersedes it by
-providing the formal-semantic backbone (definition + theorem) that TFA
-explicitly lacks, and by exhibiting a live on-chain demo that makes
-the impact physical rather than hypothetical.
+Prior work falls into five buckets, none of which fully captures TCPI:
+(1)~\emph{description-channel} attacks~\cite{invariantlabs2025mcp,shi2025toolhijacker} target tool metadata, not outputs;
+(2)~\emph{data-channel into user context}~\cite{greshake2023injection} is single-hop without parameter-synthesis;
+(3)~\emph{user-driven sequential chains}~\cite{lin2025stac} rely on attacker-as-user, not tool output;
+(4)~\emph{multi-agent LLM-to-LLM} propagation~\cite{lee2024infection} operates across agents, not within one agent's tool set;
+(5)~\emph{empirical-only multi-hop} work~\cite{agentarmor2025,invariantlabs2025tfa} has the right shape but lacks a formal model, undecidability proof, or on-chain demo.
+TCPI is the first to simultaneously isolate the Output$\to$Parameter class, prove undecidability of per-tool detection, enumerate seven variants, and demonstrate end-to-end ERC-20 settlement.
+The closest competitor is Toxic Flow Analysis~\cite{invariantlabs2025tfa}; TCPI contributes the formal backbone and live on-chain demo that TFA explicitly lacks.
 
 
 %% ====================================================================
@@ -780,10 +756,10 @@ Severity: critical / high / medium & 6 / 11 / 10 \\
 to multiple protocols unless the primitive differs (e.g.,
 \texttt{delegatecall} is Web3-only).
 (2)~\emph{CWE-traceable}: every pattern maps to a published CWE.
-(3)~\emph{Severity-normalised}: aligned with OWASP-LLM severity and
+(3)~\emph{Severity-normalized}: aligned with OWASP-LLM severity and
 CVSS bands, using ``tool can sign transactions'' as the critical
 reference.
-(4)~\emph{Evidence-anchored}: every pattern is realisable as a regex
+(4)~\emph{Evidence-anchored}: every pattern is realizable as a regex
 or AST predicate over source code.
 
 \textbf{Surface distribution.}  S3 (execution) is the densest surface
@@ -803,7 +779,7 @@ entries most directly related to TCPI.  Our empirical harness
 (\S\ref{sec:tcpi-harness}) exercises the TCPI attack class itself; the
 static scan (\S\ref{sec:static-scan}) detects the \emph{enabling
 conditions} for TCPI --- i.e., tool pairs where a source tool's output
-is not sanitised before influencing a sink tool's parameters.
+is not sanitized before influencing a sink tool's parameters.
 
 \subsection{Static Analyzer}
 
@@ -849,7 +825,7 @@ score is $\texttt{base} = \sum_i (\texttt{severity\_weight}_i \times
 $\texttt{severity\_weight} = \{\text{critical: 10, high: 5, medium: 1}\}$
 and category multipliers in $[1.0, 2.0]$ (private key exposure receives
 the highest).  A harness discount of up to 20 points is subtracted when
-harness features are detected.  The base score is normalised to
+harness features are detected.  The base score is normalized to
 $[0, 100]$ using $\texttt{expected\_max} = 1{,}460.7$
 (linear\_p90 calibration).
 
@@ -922,18 +898,6 @@ $o_A^*$.
 \subsection{138-Server Static Scan (Precision-Adjusted)}
 \label{sec:static-scan}
 
-\textbf{Analyzer.}  Our static analyzer (\texttt{static\_analysis/
-analyzer.py}, ${\sim}$1,200 lines of Python) applies 27 regex-based
-detection patterns covering 21 categories, 16 CWEs, and 5 attack
-surfaces to each repository.  The five-stage pipeline consists of:
-(1)~repository acquisition and protocol classification;
-(2)~file enumeration (filtering to \texttt{.py}, \texttt{.ts},
-\texttt{.js}, \texttt{.sol}, \texttt{.rs});
-(3)~pattern matching;
-(4)~false-positive filtering (comment filter, test filter, context
-heuristic); and
-(5)~aggregation and risk scoring.
-
 \textbf{Corpus.}  We built a stratified catalog of 138 tool servers:
 50~MCP, 50~Web3-native, 28~LangChain, 10~OpenAI
 (Table~\ref{tab:catalog}).
@@ -990,6 +954,16 @@ hardcoded\_creds & 85 & 1.5\% & S3 \\
 \end{tabular}
 \end{table}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_category_protocol_heatmap.pdf}
+\caption{Category--protocol heatmap of raw finding counts across the
+138-server corpus.  Missing input validation dominates every protocol;
+cross-tool escalation concentrates in MCP; private key exposure
+concentrates in Web3-native modules.}
+\label{fig:category-protocol-heatmap}
+\end{figure}
+
 \textbf{Missing input validation is the modal failure.}  More than
 half of all findings stem from unchecked input.  Because our S2
 patterns specifically target tool-invocation paths, this means tool
@@ -1009,7 +983,18 @@ Web3-native repositories; MCP contributes only 26.
 \textbf{Criticality inverts the density ranking.}  Although MCP has
 the highest mean finding count (58.7), Web3-native has the highest
 critical fraction: 30.3\% vs.\ 7.7\% for MCP.  Developers evaluating
-Web3-native modules should expect fewer but more severe problems.
+Web3-native modules should expect fewer but more severe problems
+(Figure~\ref{fig:severity-distribution}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_severity_distribution.pdf}
+\caption{Severity distribution by protocol family.  Web3-native
+modules exhibit the highest critical fraction (30.3\%) despite a
+lower total finding count, while MCP servers concentrate findings
+at the medium tier.}
+\label{fig:severity-distribution}
+\end{figure}
 
 \begin{table}[t]
 \centering\small
@@ -1095,7 +1080,8 @@ private\_key\_exp & 9 & 63 & 27 & 6 \\
 Cross-tool escalation is MCP-dominated (136/146 = 93\%) because MCP
 servers frequently expose a \texttt{callTool} primitive; private key
 exposure concentrates in Web3-native (63/105 = 60\%) because Safe
-modules and ERC-4337 plugins hold signing authority by design.
+modules and ERC-4337 plugins hold signing authority by design
+(Figure~\ref{fig:category-protocol-heatmap}).
 Missing input validation is the most protocol-agnostic category.
 
 \textbf{Risk score calibration.}
@@ -1126,7 +1112,16 @@ log\_asymp. & $k{=}144$ & 12/62 & 57.8 & 0.948 \\
 
 Under \texttt{linear\_p90} applied to the 138-server corpus, the
 rating distribution is: 34~critical, 32~high, 31~medium, 18~low,
-23~safe.  Mean risk is 53.4.
+23~safe.  Mean risk is 53.4 (Figure~\ref{fig:risk-score-distribution}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_risk_score_distribution.pdf}
+\caption{Risk score distribution across 138 servers under the
+\texttt{linear\_p90} calibration.  Twelve repositories saturate at
+score~$\geq 99$; the distribution is right-skewed with mean~53.4.}
+\label{fig:risk-score-distribution}
+\end{figure}
 
 
 \subsection{LLM Dynamic Testing --- 16 Scenarios}
@@ -1176,6 +1171,15 @@ SC-001 & Conflicting outputs state confusion & S5-SC-001 & S5 & refused/warned \
 \bottomrule
 \end{tabular}
 \end{table*}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_dynamic_harness_matrix.pdf}
+\caption{Dynamic harness outcome matrix.  Each cell shows the outcome
+(attack success, refused/warned, safe-proceed) for one of the 16
+scenarios against Claude Opus 4.6, grouped by attack surface.}
+\label{fig:dynamic-harness-matrix}
+\end{figure}
 
 \textbf{Finding 7: the LLM mitigates the most obvious attacks.}
 Of the 16 scenarios, Claude Opus 4.6 refused or warned on seven:
@@ -1340,7 +1344,7 @@ harness runs against Anthropic's production API under standard Terms
 of Service.  No human subjects; IRB-exempt.  The TCPI Foundry demo
 runs on a local \texttt{anvil} node; no public testnet or mainnet
 funds were at risk.  The exploit code is proof-of-concept and not
-weaponised (we do not release working private-key extraction payloads
+weaponized (we do not release working private-key extraction payloads
 for real wallets).
 
 
@@ -1462,76 +1466,40 @@ explicitly identifies as open problems.
 
 \textbf{TCPI harness uses mock rollouts.}  The 200-rollout harness
 uses a mock backend that simulates LLM parameter synthesis.
-Live-model confirmation at scale (multiple frontier models, thousands
-of rollouts) is future work; the on-chain demo confirms V1
-end-to-end with real contract execution.
+Live-model confirmation at scale is future work; the on-chain demo
+confirms V1 end-to-end with real contract execution.
 
 \textbf{Static analyzer precision.}  Our regex-based analyzer trades
-precision for coverage.  Category-stratified precision validation
-(250~samples, 5~categories) reveals an overall precision of
-${\sim}$33\% (excluding uncertain), with precision ranging from 12.2\%
-(state confusion) to 57.1\% (missing input validation).  The dominant
-false-positive sources are test/example files and code comments.  An
-AST-based analyzer using tree-sitter for all five target languages
-would improve both precision and recall.
+precision for coverage: overall precision is ${\sim}$33\%, ranging
+from 12.2\% (state confusion) to 57.1\% (missing input validation).
+The dominant false-positive sources are test files and code comments.
+An AST-based analyzer using tree-sitter would improve both precision
+and recall, and would enable inter-procedural dataflow patterns
+(e.g., tracing user input through $N$ transformations into a signing
+call) that our regex predicates cannot express.
 
-\textbf{Corpus representativeness.}  Our 138 servers are a stratified
-sample of open-source GitHub projects.  Private registry packages
-(npm, PyPI) with closed source, enterprise internal deployments, and
-SaaS tool providers are out of scope.  LangChain (28) and OpenAI (10)
-are under-represented relative to the 50/50 MCP/Web3-native stratum.
-
-\textbf{Dynamic harness scale.}  The LLM harness currently runs 16
-scenarios against 1 model (Claude Opus 4.6).  Expanding to 50+
-scenarios and 5+ models (including open-weights and older checkpoints)
-is a clear next step.
+\textbf{Corpus and harness scale.}  Our 138 servers are a stratified
+sample of open-source GitHub projects; closed-source and enterprise
+deployments are out of scope.  The LLM harness runs 16 scenarios
+against one model (Claude Opus 4.6); expanding to 50+ scenarios and
+5+ models (GPT-4, Gemini, Llama~3) is a clear next step.
 
 \textbf{On-chain demo scope.}  The Foundry demo runs on a local
 \texttt{anvil} node, not a public testnet or mainnet.  This is a
 deliberate ethics choice; the attack chain is fully functional.
 
-\textbf{Causal vs.\ observational claims.}  Our analysis is
-observational: we show that vulnerabilities are present in code, not
-that they have been exploited in the wild.  An attacker-cost analysis
---- estimating dollar-value exposure for each high-severity Web3
-finding --- is future work.
+\textbf{Causal vs.\ observational claims.}  We show that
+vulnerabilities are present in code, not that they have been
+exploited in the wild.  An attacker-cost analysis estimating
+dollar-value exposure is future work.
 
-\textbf{Theorem conditionality.}
-Theorem~\ref{thm:undecidable} is conditional on $M$ having non-zero
-TCPI susceptibility, which we verify empirically (ASR 44--75\%).
-A fully classical version of the theorem replaces $M$ with a
-deterministic surrogate $f_M$ that implements ``follows imperative
-text in JSON''; under this surrogate the reduction is purely
-computable and undecidability is unconditional.  We leave the
-fully-classical proof to the appendix of the extended version.
-
-\textbf{Missing dataflow.}  The taxonomy is deliberately realisable
-as regex/AST predicates.  Patterns that depend on inter-procedural
-dataflow (e.g., ``user input flows through $N$ transformations into a
-signing call'') are not yet expressible.  This causes us to
-under-count W1 (transaction construction injection) in particular.
-A future AST-based analyzer using tree-sitter for all five target
-languages would improve precision and recall simultaneously.
-
-\textbf{Single-model dynamic testing.}  The LLM harness currently
-uses only Claude Opus 4.6.  Different models may exhibit different
-TCPI susceptibility profiles; GPT-4, Gemini, and open-weights models
-(Llama~3, Mistral) are immediate next targets.  The harness already
-supports additional models via a plugin interface.
-
-\textbf{Future directions.}  (i) Registry-level scanning of npm and
-PyPI for TCPI-enabling tool pairs --- identifying source-sink
-combinations before deployment.  (ii) An automated TCPI harness
-generator that, given a tool pair, synthesizes concrete attack
-rollouts with minimal human guidance.  (iii) A longitudinal study
-tracking TCPI prevalence as MCP and ERC-7579 specifications mature.
-(iv) Protocol-level primitives: we are collaborating with MCP and
-ERC-7579 working groups on proposals for cross-tool information-flow
-policies that would address TCPI at the specification layer.
-(v) Formal verification of TCPI defenses: can we prove that a
-specific taint-tracking policy is sufficient to prevent all V1--V7
-variants?  The pairwise non-reducibility of the variants suggests
-that defense coverage proofs must be variant-specific.
+\textbf{Future directions.}  (i) Registry-level scanning for
+TCPI-enabling source-sink tool pairs before deployment.
+(ii) An automated harness generator that synthesizes attack rollouts
+given a tool pair.  (iii) Longitudinal tracking of TCPI prevalence
+as MCP and ERC-7579 specifications mature.
+(iv) Formal verification: can a specific taint-tracking policy
+provably prevent all V1--V7 variants?
 
 
 %% ====================================================================
@@ -1540,30 +1508,19 @@ that defense coverage proofs must be variant-specific.
 %% ====================================================================
 
 We discovered, formalized, and empirically validated Tool-Chain Prompt
-Injection (TCPI) --- a new attack primitive in which an adversary
-controls only one tool's output and thereby hijacks the parameters the
-LLM synthesizes for a different tool.  Our formal definition
-(Definition~\ref{def:tcpi}) isolates TCPI from all prior injection
-classes via four conditions; the parameter-synthesis condition
-(condition~4) is the necessary witness absent from every prior class.
-Theorem~\ref{thm:undecidable} proves that detecting TCPI sources via
-per-tool static analysis is undecidable, fundamentally shifting the
-defense burden from tool auditors to system integrators.
-
-Seven structurally distinct variants (V1--V7) span the TCPI design
-space; empirical ASR ranges from 44\% to 75\% while single-hop
-baselines are near 0\%, confirming that safety training against
-direct injection has not transferred to tool-output injection.
-
-The 138-server cross-protocol scan yields 2,000--2,700
-precision-adjusted true positives distributed non-uniformly across
-MCP, Web3-native, LangChain, and OpenAI ($\chi^2$ $p \approx 0$
-after correction; Cram\'{e}r's $V = 0.29$).  An LLM-in-the-loop
-dynamic harness (16 scenarios) shows that Claude Opus 4.6 catches
-obvious attacks but fails on realistic DeFi workflows.  An
-end-to-end V1 demonstration on a local Ethereum node moves real
-ERC-20 tokens from user to attacker; the only difference between
-attack and control is 20~bytes of constructor calldata.
+Injection (TCPI) --- a new attack in which an adversary controls only
+one tool's output and thereby hijacks the parameters the LLM
+synthesizes for a different tool.  Definition~\ref{def:tcpi} isolates
+TCPI from all prior injection classes; Theorem~\ref{thm:undecidable}
+proves that per-tool static detection is undecidable.  Seven variants
+(V1--V7) achieve 44--75\% ASR while single-hop baselines are near 0\%.
+A 138-server cross-protocol scan yields 2,000--2,700
+precision-adjusted true positives ($\chi^2$ $p \approx 0$;
+Cram\'{e}r's $V = 0.29$).  An LLM-in-the-loop dynamic harness
+(16 scenarios, Figure~\ref{fig:dynamic-harness-matrix}) shows Claude
+Opus 4.6 catches obvious attacks but fails on realistic DeFi
+workflows, and an end-to-end V1 demo moves real ERC-20 tokens from
+user to attacker with only 20~bytes of constructor calldata changed.
 
 \textbf{Call to action.}  Agent tool protocols must adopt cross-tool
 information-flow policies.  TCPI cannot be prevented by auditing tools
@@ -1646,31 +1603,19 @@ CWE-284).
 
 \section{Risk Score Calibration Details}
 
-The pilot analyzer used $\texttt{expected\_max} = 200.0$ for the final
-normalisation step.  On the 62-server pilot this saturates 29/62
-repositories (47\%).  The raw base-score distribution has
-mean~$= 610.5$, median~$= 144.0$, $p_{90} = 1{,}460.7$, and
-$p_{99} = 8{,}193.7$ --- more than $7\times$ the pilot constant.
-
-We computed three candidates.
-\texttt{linear\_p90}: $\texttt{score} = \mathrm{clip}(100 \times
-\texttt{base} / 1460.7,\; 0,\; 100)$.  Saturated~$= 7/62$ on pilot,
-$12/138$ on full corpus.  Spearman~$= 0.948$.
-\texttt{linear\_p95}: $\texttt{expected\_max} = 1{,}861.0$.
-Saturated~$= 4/62$.  Spearman~$= 0.948$.  Rejected: pushes critical
-repos into the 40--60 range.
-\texttt{log\_asymptotic}: $\texttt{score} = 100 \times
-(1 - e^{-\texttt{base}/k})$ with $k = 144.0$.  Saturated~$= 12/62$.
-Rejected: logarithmic shape penalises minor findings less
-predictably.
-
-Under \texttt{linear\_p90} on the 138-server corpus: 12 repositories
-at score~$\geq 99$ (8.7\%), rating distribution 34~critical /
-32~high / 31~medium / 18~low / 23~safe.  Pearson correlation with
-the pilot is 0.76 (lower because linear compression reduces absolute
-values); Spearman (rank-preserving) is 0.948.  We consider rank
-preservation the relevant property because the score is used for
-prioritisation, not absolute attack-cost estimation.
+The pilot analyzer used $\texttt{expected\_max} = 200.0$, saturating
+29/62 repositories (47\%).  The raw base-score distribution has
+$p_{90} = 1{,}460.7$ and $p_{99} = 8{,}193.7$.  We adopted
+\texttt{linear\_p90} ($\texttt{score} = \mathrm{clip}(100 \times
+\texttt{base} / 1460.7,\; 0,\; 100)$), reducing saturation to
+12/138 (8.7\%) while preserving Spearman rank correlation of 0.948
+with the pilot scheme.  Two alternatives were rejected:
+\texttt{linear\_p95} ($\texttt{expected\_max} = 1{,}861.0$) pushes
+critical repositories into the 40--60 range;
+\texttt{log\_asymptotic} ($k = 144.0$) penalizes minor findings
+unpredictably.  The full-corpus rating distribution under
+\texttt{linear\_p90} is 34~critical / 32~high / 31~medium / 18~low /
+23~safe (Figure~\ref{fig:risk-score-distribution}).
 
 
 %% ====================================================================
