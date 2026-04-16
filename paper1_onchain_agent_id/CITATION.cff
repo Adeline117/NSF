@@ -1,0 +1,46 @@
+# YAML 1.2
+# Citation File Format 1.2.0 — https://citation-file-format.github.io/
+cff-version: 1.2.0
+title: >-
+  OnChainAgentID: a provenance-verified benchmark for auditing
+  on-chain agent-vs-human classifiers
+message: >-
+  If you use this benchmark or the onchain_audit toolkit, please cite
+  the following work.
+type: dataset
+authors:
+  - family-names: Wen
+    given-names: Adeline
+    affiliation: University of Washington
+version: "0.1.0"
+date-released: "2026-04-15"
+license: CC-BY-4.0
+url: "https://github.com/adelinewen/NSF/tree/main/paper1_onchain_agent_id"
+repository-code: "https://github.com/adelinewen/NSF"
+keywords:
+  - blockchain
+  - ethereum
+  - agent detection
+  - benchmark
+  - label leakage
+  - auditing
+  - machine learning
+abstract: >-
+  OnChainAgentID is a benchmark for agent-vs-human classification on
+  Ethereum, shipping 1,147 addresses across 18 provenance-tagged
+  categories, four canonical evaluation splits (random CV, temporal
+  holdout, strict curated core, leave-one-platform-out), and a
+  three-step Python audit toolkit (onchain_audit) for diagnosing label
+  leakage in any binary classifier that consumes blockchain features.
+preferred-citation:
+  type: conference-paper
+  title: >-
+    OnChainAgentID: a provenance-verified benchmark for auditing
+    on-chain agent-vs-human classifiers
+  authors:
+    - family-names: Wen
+      given-names: Adeline
+  year: 2026
+  conference:
+    name: "The ACM Web Conference (WWW '26)"
+  collection-title: "Proceedings of the ACM Web Conference 2026"

@@ -1,0 +1,33 @@
+{
+  "title": "OnChainAgentID: a provenance-verified benchmark for auditing on-chain agent-vs-human classifiers",
+  "description": "A benchmark for agent-vs-human classification on Ethereum: 1,147 addresses across 18 provenance-tagged categories, four canonical evaluation splits (random CV, temporal holdout, strict curated core, leave-one-platform-out), and a three-step audit toolkit (onchain_audit) for diagnosing label leakage. Released alongside the WWW '26 submission.",
+  "upload_type": "dataset",
+  "creators": [
+    {
+      "name": "Wen, Adeline",
+      "affiliation": "University of Washington"
+    }
+  ],
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "agent detection",
+    "benchmark",
+    "label leakage",
+    "auditing",
+    "machine learning"
+  ],
+  "license": "CC-BY-4.0",
+  "access_right": "open",
+  "language": "eng",
+  "version": "0.1.0",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/adelinewen/NSF/tree/main/paper1_onchain_agent_id",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ],
+  "communities": [],
+  "notes": "Data license: CC-BY-4.0. Code license (onchain_audit package): MIT. See /FINDINGS_2026-04-08.md for the label-leakage erratum that motivated this release."
+}
