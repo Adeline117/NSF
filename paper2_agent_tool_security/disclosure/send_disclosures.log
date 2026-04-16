@@ -1,0 +1,31 @@
+=== Disclosure Batch Send Log ===
+Date: 2026-04-16
+Mode: LIVE
+=================================
+
+[OK] Accenture/mcp-bench — https://github.com/Accenture/mcp-bench/issues/32 (label 'security' not available)
+[OK] CodeGraphContext/CodeGraphContext — https://github.com/CodeGraphContext/CodeGraphContext/issues/828 (label 'security' not available)
+[OK] FuzzingLabs/mcp-security-hub — https://github.com/FuzzingLabs/mcp-security-hub/issues/29 (label 'security' not available)
+[OK] affaan-m/agentshield — https://github.com/affaan-m/agentshield/issues/47 (label 'security' not available)
+[OK] agentic-community/mcp-gateway-registry — https://github.com/agentic-community/mcp-gateway-registry/issues/840
+[OK] aimaster-dev/ai-agent-solana — https://github.com/aimaster-dev/ai-agent-solana/issues/1 (label 'security' not available)
+[OK] aipotheosis-labs/aci — https://github.com/aipotheosis-labs/aci/issues/615 (label 'security' not available)
+[OK] apify/apify-mcp-server — https://github.com/apify/apify-mcp-server/issues/696
+[OK] aquacommander/BlockchainAIAgent — https://github.com/aquacommander/BlockchainAIAgent/issues/3 (label 'security' not available)
+[OK] assagman/dsgo — https://github.com/assagman/dsgo/issues/29 (label 'security' not available)
+[OK] av/harbor — https://github.com/av/harbor/issues/232 (label 'security' not available)
+[OK] bcnmy/nexus — https://github.com/bcnmy/nexus/issues/299 (label 'security' not available)
+[OK] double-k-3033/Blockchain-AI-Agent — https://github.com/double-k-3033/Blockchain-AI-Agent/issues/3 (label 'security' not available)
+[OK] getsentry/XcodeBuildMCP — https://github.com/getsentry/XcodeBuildMCP/issues/345 (label 'security' not available)
+[OK] juliusespinosa991/Solana-Ai-Trading — https://github.com/juliusespinosa991/Solana-Ai-Trading/issues/1 (label 'security' not available)
+[OK] koshikraj/safe-7579-demo — https://github.com/koshikraj/safe-7579-demo/issues/1 (label 'security' not available)
+[OK] modelcontextprotocol/inspector — https://github.com/modelcontextprotocol/inspector/issues/1210 (label 'security' not available)
+[OK] opensumi/core — https://github.com/opensumi/core/issues/4731
+[OK] rekog-labs/MCP-Nest — https://github.com/rekog-labs/MCP-Nest/issues/198 (label 'security' not available)
+[FAIL] renalta-app/modular-smart-account — the 'renalta-app/modular-smart-account' repository has disabled issues
+[OK] ridafkih/keeper.sh — https://github.com/ridafkih/keeper.sh/issues/374 (label 'security' not available)
+[OK] sooperset/mcp-atlassian — https://github.com/sooperset/mcp-atlassian/issues/1277 (label 'security' not available)
+[OK] taylorwilsdon/google_workspace_mcp — https://github.com/taylorwilsdon/google_workspace_mcp/issues/696
+[FAIL] tommyz7/ethwaterloo-contract-account-metamask-plugin — the 'tommyz7/ethwaterloo-contract-account-metamask-plugin' repository has disabled issues
+[OK] waybarrios/vllm-mlx — https://github.com/waybarrios/vllm-mlx/issues/361
+Summary: total=25 success=23 failed=2 skipped=0
