@@ -1,0 +1,1101 @@
+{
+  "timestamp": "2026-04-15T18:26:27.500083",
+  "description": "Full-scale reaction time analysis: 2744 addresses, 7 reaction-time features computed from raw parquet timestamps. No API calls required.",
+  "n_agents_total": 2744,
+  "n_agents_processed": 2744,
+  "n_agents_with_defi_txs": 2512,
+  "total_defi_txs": 936012,
+  "feature_names": [
+    "reaction_time_p10",
+    "reaction_time_median",
+    "reaction_time_cv",
+    "reaction_time_p10_to_median_ratio",
+    "same_block_fraction",
+    "defi_reaction_time_p10",
+    "defi_reaction_time_median"
+  ],
+  "n_rt_features": 7,
+  "class_sizes": {
+    "SimpleTradingBot": 130,
+    "MEVSearcher": 54,
+    "DeFiManagementAgent": 1669,
+    "LLMPoweredAgent": 71,
+    "AutonomousDAOAgent": 34,
+    "CrossChainBridgeAgent": 95,
+    "DeterministicScript": 666,
+    "RLTradingAgent": 25
+  },
+  "per_class_distributions": {
+    "AutonomousDAOAgent": {
+      "reaction_time_p10": {
+        "n": 31,
+        "mean": 90.3387,
+        "std": 108.9603,
+        "median": 60.0,
+        "p10": 24.3,
+        "p25": 42.95,
+        "p75": 110.4,
+        "p90": 156.6
+      },
+      "reaction_time_median": {
+        "n": 31,
+        "mean": 1447.2419,
+        "std": 4713.3895,
+        "median": 296.0,
+        "p10": 108.0,
+        "p25": 235.75,
+        "p75": 795.0,
+        "p90": 1461.5
+      },
+      "reaction_time_cv": {
+        "n": 31,
+        "mean": 2.3959,
+        "std": 2.2126,
+        "median": 1.9995,
+        "p10": 0.9685,
+        "p25": 1.5331,
+        "p75": 2.7228,
+        "p90": 3.0791
+      },
+      "reaction_time_p10_to_median_ratio": {
+        "n": 31,
+        "mean": 0.2132,
+        "std": 0.1782,
+        "median": 0.1632,
+        "p10": 0.0441,
+        "p25": 0.0808,
+        "p75": 0.259,
+        "p90": 0.5083
+      },
+      "same_block_fraction": {
+        "n": 34,
+        "mean": 0.0496,
+        "std": 0.099,
+        "median": 0.0173,
+        "p10": 0.0,
+        "p25": 0.0,
+        "p75": 0.0501,
+        "p90": 0.0855
+      },
+      "defi_reaction_time_p10": {
+        "n": 22,
+        "mean": 110.3545,
+        "std": 178.4896,
+        "median": 59.05,
+        "p10": 30.63,
+        "p25": 41.0,
+        "p75": 72.8,
+        "p90": 140.03
+      },
+      "defi_reaction_time_median": {
+        "n": 22,
+        "mean": 636.7727,
+        "std": 947.1681,
+        "median": 293.75,
+        "p10": 101.0,
+        "p25": 191.75,
+        "p75": 477.25,
+        "p90": 1936.0
+      }
+    },
+    "CrossChainBridgeAgent": {
+      "reaction_time_p10": {
+        "n": 94,
+        "mean": 41.067,
+        "std": 46.5891,
+        "median": 33.2,
+        "p10": 12.0,
+        "p25": 24.0,
+        "p75": 41.65,
+        "p90": 54.2
+      },
+      "reaction_time_median": {
+        "n": 94,
+        "mean": 481.8191,
+        "std": 1477.132,
+        "median": 245.0,
+        "p10": 67.2,
+        "p25": 141.0,
+        "p75": 376.125,
+        "p90": 766.4
+      },
+      "reaction_time_cv": {
+        "n": 94,
+        "mean": 2.4786,
+        "std": 0.81,
+        "median": 2.3408,
+        "p10": 1.8625,
+        "p25": 2.0946,
+        "p75": 2.6265,
+        "p90": 3.3879
+      },
+      "reaction_time_p10_to_median_ratio": {
+        "n": 94,
+        "mean": 0.1849,
+        "std": 0.1391,
+        "median": 0.1464,
+        "p10": 0.0663,
+        "p25": 0.1027,
+        "p75": 0.2265,
+        "p90": 0.3333
+      },
+      "same_block_fraction": {
+        "n": 95,
+        "mean": 0.0391,
+        "std": 0.0732,
+        "median": 0.0167,
+        "p10": 0.0,
+        "p25": 0.0,
+        "p75": 0.0403,
+        "p90": 0.091
+      },
+      "defi_reaction_time_p10": {
+        "n": 86,
+        "mean": 52.6953,
+        "std": 67.4398,
+        "median": 36.0,
+        "p10": 24.0,
+        "p25": 30.0,
+        "p75": 47.55,
+        "p90": 82.55
+      },
+      "defi_reaction_time_median": {
+        "n": 86,
+        "mean": 272.9593,
+        "std": 246.2571,
+        "median": 217.25,
+        "p10": 99.0,
+        "p25": 144.625,
+        "p75": 306.375,
+        "p90": 456.0
+      }
+    },
+    "DeFiManagementAgent": {
+      "reaction_time_p10": {
+        "n": 1668,
+        "mean": 47.6657,
+        "std": 230.938,
+        "median": 36.0,
+        "p10": 12.0,
+        "p25": 24.0,
+        "p75": 46.725,
+        "p90": 60.0
+      },
+      "reaction_time_median": {
+        "n": 1668,
+        "mean": 718.8606,
+        "std": 1820.6609,
+        "median": 320.5,
+        "p10": 120.0,
+        "p25": 189.0,
+        "p75": 636.0,
+        "p90": 1314.05
+      },
+      "reaction_time_cv": {
+        "n": 1668,
+        "mean": 2.1969,
+        "std": 0.5636,
+        "median": 2.0893,
+        "p10": 1.6266,
+        "p25": 1.829,
+        "p75": 2.4348,
+        "p90": 2.9297
+      },
+      "reaction_time_p10_to_median_ratio": {
+        "n": 1668,
+        "mean": 0.1196,
+        "std": 0.0895,
+        "median": 0.1,
+        "p10": 0.025,
+        "p25": 0.0512,
+        "p75": 0.1667,
+        "p90": 0.2353
+      },
+      "same_block_fraction": {
+        "n": 1669,
+        "mean": 0.0263,
+        "std": 0.0345,
+        "median": 0.0143,
+        "p10": 0.0,
+        "p25": 0.0028,
+        "p75": 0.0355,
+        "p90": 0.0698
+      },
+      "defi_reaction_time_p10": {
+        "n": 1642,
+        "mean": 44.6808,
+        "std": 166.1137,
+        "median": 36.0,
+        "p10": 12.0,
+        "p25": 24.0,
+        "p75": 45.6,
+        "p90": 61.2
+      },
+      "defi_reaction_time_median": {
+        "n": 1642,
+        "mean": 736.6096,
+        "std": 1860.8312,
+        "median": 288.5,
+        "p10": 84.0,
+        "p25": 144.25,
+        "p75": 658.0,
+        "p90": 1390.8
+      }
+    },
+    "DeterministicScript": {
+      "reaction_time_p10": {
+        "n": 651,
+        "mean": 756.8894,
+        "std": 5210.0331,
+        "median": 66.2,
+        "p10": 33.0,
+        "p25": 45.95,
+        "p75": 132.0,
+        "p90": 534.0
+      },
+      "reaction_time_median": {
+        "n": 651,
+        "mean": 4203.778,
+        "std": 9835.9721,
+        "median": 624.0,
+        "p10": 211.0,
+        "p25": 317.75,
+        "p75": 2516.25,
+        "p90": 12284.0
+      },
+      "reaction_time_cv": {
+        "n": 651,
+        "mean": 1.9831,
+        "std": 0.7849,
+        "median": 1.9374,
+        "p10": 1.0774,
+        "p25": 1.4451,
+        "p75": 2.4083,
+        "p90": 2.9202
+      },
+      "reaction_time_p10_to_median_ratio": {
+        "n": 651,
+        "mean": 0.1351,
+        "std": 0.1083,
+        "median": 0.1141,
+        "p10": 0.0316,
+        "p25": 0.064,
+        "p75": 0.1763,
+        "p90": 0.2574
+      },
+      "same_block_fraction": {
+        "n": 666,
+        "mean": 0.0349,
+        "std": 0.0517,
+        "median": 0.0207,
+        "p10": 0.0,
+        "p25": 0.0006,
+        "p75": 0.0485,
+        "p90": 0.0855
+      },
+      "defi_reaction_time_p10": {
+        "n": 423,
+        "mean": 127.1232,
+        "std": 318.1115,
+        "median": 66.5,
+        "p10": 36.0,
+        "p25": 47.25,
+        "p75": 96.65,
+        "p90": 179.16
+      },
+      "defi_reaction_time_median": {
+        "n": 423,
+        "mean": 1184.9941,
+        "std": 2784.626,
+        "median": 464.0,
+        "p10": 175.8,
+        "p25": 257.5,
+        "p75": 963.5,
+        "p90": 2209.8
+      }
+    },
+    "LLMPoweredAgent": {
+      "reaction_time_p10": {
+        "n": 71,
+        "mean": 802.6944,
+        "std": 5845.5599,
+        "median": 46.2,
+        "p10": 24.0,
+        "p25": 30.25,
+        "p75": 97.8,
+        "p90": 226.8
+      },
+      "reaction_time_median": {
+        "n": 71,
+        "mean": 3603.838,
+        "std": 10970.3155,
+        "median": 441.0,
+        "p10": 164.0,
+        "p25": 240.0,
+        "p75": 1102.75,
+        "p90": 6155.0
+      },
+      "reaction_time_cv": {
+        "n": 71,
+        "mean": 2.0423,
+        "std": 0.6967,
+        "median": 2.0056,
+        "p10": 1.3025,
+        "p25": 1.5841,
+        "p75": 2.4187,
+        "p90": 3.0444
+      },
+      "reaction_time_p10_to_median_ratio": {
+        "n": 71,
+        "mean": 0.1373,
+        "std": 0.1168,
+        "median": 0.092,
+        "p10": 0.0268,
+        "p25": 0.0552,
+        "p75": 0.1912,
+        "p90": 0.2695
+      },
+      "same_block_fraction": {
+        "n": 71,
+        "mean": 0.032,
+        "std": 0.0355,
+        "median": 0.0208,
+        "p10": 0.0,
+        "p25": 0.0028,
+        "p75": 0.0495,
+        "p90": 0.069
+      },
+      "defi_reaction_time_p10": {
+        "n": 50,
+        "mean": 60.51,
+        "std": 67.5992,
+        "median": 44.8,
+        "p10": 18.96,
+        "p25": 26.75,
+        "p75": 69.575,
+        "p90": 95.93
+      },
+      "defi_reaction_time_median": {
+        "n": 50,
+        "mean": 724.95,
+        "std": 1930.3448,
+        "median": 216.0,
+        "p10": 105.9,
+        "p25": 132.75,
+        "p75": 537.0,
+        "p90": 1001.0
+      }
+    },
+    "MEVSearcher": {
+      "reaction_time_p10": {
+        "n": 53,
+        "mean": 45.8887,
+        "std": 66.7704,
+        "median": 24.0,
+        "p10": 12.0,
+        "p25": 12.0,
+        "p75": 47.0,
+        "p90": 85.12
+      },
+      "reaction_time_median": {
+        "n": 53,
+        "mean": 1395.0849,
+        "std": 3673.3278,
+        "median": 382.0,
+        "p10": 93.6,
+        "p25": 191.5,
+        "p75": 660.0,
+        "p90": 1810.4
+      },
+      "reaction_time_cv": {
+        "n": 53,
+        "mean": 2.4127,
+        "std": 1.1686,
+        "median": 2.1627,
+        "p10": 1.2301,
+        "p25": 1.7132,
+        "p75": 2.8154,
+        "p90": 4.1213
+      },
+      "reaction_time_p10_to_median_ratio": {
+        "n": 53,
+        "mean": 0.1217,
+        "std": 0.1228,
+        "median": 0.0864,
+        "p10": 0.0095,
+        "p25": 0.0294,
+        "p75": 0.1762,
+        "p90": 0.2786
+      },
+      "same_block_fraction": {
+        "n": 54,
+        "mean": 0.2685,
+        "std": 0.1896,
+        "median": 0.2889,
+        "p10": 0.0,
+        "p25": 0.0399,
+        "p75": 0.4252,
+        "p90": 0.5068
+      },
+      "defi_reaction_time_p10": {
+        "n": 33,
+        "mean": 56.4455,
+        "std": 71.3006,
+        "median": 25.8,
+        "p10": 12.0,
+        "p25": 12.0,
+        "p75": 69.6,
+        "p90": 96.8
+      },
+      "defi_reaction_time_median": {
+        "n": 33,
+        "mean": 1218.8939,
+        "std": 3146.9798,
+        "median": 522.0,
+        "p10": 155.2,
+        "p25": 265.5,
+        "p75": 780.0,
+        "p90": 1274.4
+      }
+    },
+    "RLTradingAgent": {
+      "reaction_time_p10": {
+        "n": 25,
+        "mean": 32.764,
+        "std": 13.1241,
+        "median": 27.0,
+        "p10": 20.4,
+        "p25": 24.0,
+        "p75": 40.0,
+        "p90": 48.0
+      },
+      "reaction_time_median": {
+        "n": 25,
+        "mean": 245.42,
+        "std": 193.9795,
+        "median": 156.0,
+        "p10": 83.2,
+        "p25": 120.0,
+        "p75": 306.0,
+        "p90": 588.0
+      },
+      "reaction_time_cv": {
+        "n": 25,
+        "mean": 2.8545,
+        "std": 0.7816,
+        "median": 2.7549,
+        "p10": 1.9744,
+        "p25": 2.1333,
+        "p75": 3.3547,
+        "p90": 3.7714
+      },
+      "reaction_time_p10_to_median_ratio": {
+        "n": 25,
+        "mean": 0.1867,
+        "std": 0.1006,
+        "median": 0.1667,
+        "p10": 0.0728,
+        "p25": 0.12,
+        "p75": 0.2308,
+        "p90": 0.3091
+      },
+      "same_block_fraction": {
+        "n": 25,
+        "mean": 0.0331,
+        "std": 0.0237,
+        "median": 0.0312,
+        "p10": 0.0076,
+        "p25": 0.0132,
+        "p75": 0.0462,
+        "p90": 0.0692
+      },
+      "defi_reaction_time_p10": {
+        "n": 25,
+        "mean": 33.632,
+        "std": 20.7235,
+        "median": 25.8,
+        "p10": 12.0,
+        "p25": 24.0,
+        "p75": 36.0,
+        "p90": 55.6
+      },
+      "defi_reaction_time_median": {
+        "n": 25,
+        "mean": 251.24,
+        "std": 316.528,
+        "median": 132.0,
+        "p10": 69.0,
+        "p25": 96.0,
+        "p75": 247.0,
+        "p90": 539.4
+      }
+    },
+    "SimpleTradingBot": {
+      "reaction_time_p10": {
+        "n": 130,
+        "mean": 48.4315,
+        "std": 26.8763,
+        "median": 43.25,
+        "p10": 24.0,
+        "p25": 32.0,
+        "p75": 57.4,
+        "p90": 77.77
+      },
+      "reaction_time_median": {
+        "n": 130,
+        "mean": 423.2615,
+        "std": 482.6243,
+        "median": 271.5,
+        "p10": 146.25,
+        "p25": 205.375,
+        "p75": 437.0,
+        "p90": 815.1
+      },
+      "reaction_time_cv": {
+        "n": 130,
+        "mean": 2.5298,
+        "std": 0.6571,
+        "median": 2.4721,
+        "p10": 1.7789,
+        "p25": 2.1121,
+        "p75": 2.9656,
+        "p90": 3.3607
+      },
+      "reaction_time_p10_to_median_ratio": {
+        "n": 130,
+        "mean": 0.1615,
+        "std": 0.0928,
+        "median": 0.1538,
+        "p10": 0.0631,
+        "p25": 0.0992,
+        "p75": 0.204,
+        "p90": 0.2686
+      },
+      "same_block_fraction": {
+        "n": 130,
+        "mean": 0.0791,
+        "std": 0.0333,
+        "median": 0.0708,
+        "p10": 0.0474,
+        "p25": 0.0569,
+        "p75": 0.0945,
+        "p90": 0.1216
+      },
+      "defi_reaction_time_p10": {
+        "n": 120,
+        "mean": 87.2558,
+        "std": 137.7598,
+        "median": 56.0,
+        "p10": 24.0,
+        "p25": 35.95,
+        "p75": 85.95,
+        "p90": 157.74
+      },
+      "defi_reaction_time_median": {
+        "n": 120,
+        "mean": 663.9167,
+        "std": 1468.7407,
+        "median": 318.5,
+        "p10": 127.6,
+        "p25": 200.875,
+        "p75": 572.125,
+        "p90": 1113.8
+      }
+    }
+  },
+  "headline_cohens_d_llm_vs_defi": {
+    "reaction_time_p10": {
+      "d": 0.6275,
+      "ci_lo": 0.0984,
+      "ci_hi": 1.0788,
+      "mann_whitney_p": 0.0,
+      "n_llm": 71,
+      "n_defi": 1668,
+      "size_label": "MEDIUM"
+    },
+    "reaction_time_median": {
+      "d": 1.0135,
+      "ci_lo": 0.3218,
+      "ci_hi": 1.624,
+      "mann_whitney_p": 0.003747,
+      "n_llm": 71,
+      "n_defi": 1668,
+      "size_label": "LARGE"
+    },
+    "reaction_time_cv": {
+      "d": -0.2712,
+      "ci_lo": -0.5594,
+      "ci_hi": 0.0272,
+      "mann_whitney_p": 0.044502,
+      "n_llm": 71,
+      "n_defi": 1668,
+      "size_label": "SMALL"
+    },
+    "reaction_time_p10_to_median_ratio": {
+      "d": 0.1946,
+      "ci_lo": -0.1067,
+      "ci_hi": 0.4768,
+      "mann_whitney_p": 0.443772,
+      "n_llm": 71,
+      "n_defi": 1668,
+      "size_label": "negligible"
+    },
+    "same_block_fraction": {
+      "d": 0.1652,
+      "ci_lo": -0.0585,
+      "ci_hi": 0.446,
+      "mann_whitney_p": 0.138616,
+      "n_llm": 71,
+      "n_defi": 1669,
+      "size_label": "negligible"
+    },
+    "defi_reaction_time_p10": {
+      "d": 0.0964,
+      "ci_lo": -0.0149,
+      "ci_hi": 0.707,
+      "mann_whitney_p": 0.000728,
+      "n_llm": 50,
+      "n_defi": 1642,
+      "size_label": "negligible"
+    },
+    "defi_reaction_time_median": {
+      "d": -0.0063,
+      "ci_lo": -0.2309,
+      "ci_hi": 0.3506,
+      "mann_whitney_p": 0.292277,
+      "n_llm": 50,
+      "n_defi": 1642,
+      "size_label": "negligible"
+    }
+  },
+  "pairwise_cohens_d_top_features": {
+    "reaction_time_p10": {
+      "AutonomousDAOAgent_vs_CrossChainBridgeAgent": 0.7225,
+      "AutonomousDAOAgent_vs_DeFiManagementAgent": 0.186,
+      "AutonomousDAOAgent_vs_DeterministicScript": -0.1308,
+      "AutonomousDAOAgent_vs_LLMPoweredAgent": -0.1446,
+      "AutonomousDAOAgent_vs_MEVSearcher": 0.5178,
+      "AutonomousDAOAgent_vs_RLTradingAgent": 0.6934,
+      "AutonomousDAOAgent_vs_SimpleTradingBot": 0.7775,
+      "CrossChainBridgeAgent_vs_DeFiManagementAgent": -0.0293,
+      "CrossChainBridgeAgent_vs_DeterministicScript": -0.1468,
+      "CrossChainBridgeAgent_vs_LLMPoweredAgent": -0.1974,
+      "CrossChainBridgeAgent_vs_MEVSearcher": -0.0875,
+      "CrossChainBridgeAgent_vs_RLTradingAgent": 0.1968,
+      "CrossChainBridgeAgent_vs_SimpleTradingBot": -0.201,
+      "DeFiManagementAgent_vs_DeterministicScript": -0.2562,
+      "DeFiManagementAgent_vs_LLMPoweredAgent": -0.6275,
+      "DeFiManagementAgent_vs_MEVSearcher": 0.0078,
+      "DeFiManagementAgent_vs_RLTradingAgent": 0.065,
+      "DeFiManagementAgent_vs_SimpleTradingBot": -0.0034,
+      "DeterministicScript_vs_LLMPoweredAgent": -0.0087,
+      "DeterministicScript_vs_MEVSearcher": 0.1417,
+      "DeterministicScript_vs_RLTradingAgent": 0.1414,
+      "DeterministicScript_vs_SimpleTradingBot": 0.1487,
+      "LLMPoweredAgent_vs_MEVSearcher": 0.1697,
+      "LLMPoweredAgent_vs_RLTradingAgent": 0.1516,
+      "LLMPoweredAgent_vs_SimpleTradingBot": 0.216,
+      "MEVSearcher_vs_RLTradingAgent": 0.2333,
+      "MEVSearcher_vs_SimpleTradingBot": -0.0595,
+      "RLTradingAgent_vs_SimpleTradingBot": -0.6184
+    },
+    "reaction_time_median": {
+      "AutonomousDAOAgent_vs_CrossChainBridgeAgent": 0.3581,
+      "AutonomousDAOAgent_vs_DeFiManagementAgent": 0.3805,
+      "AutonomousDAOAgent_vs_DeterministicScript": -0.2849,
+      "AutonomousDAOAgent_vs_LLMPoweredAgent": -0.2244,
+      "AutonomousDAOAgent_vs_MEVSearcher": 0.0126,
+      "AutonomousDAOAgent_vs_RLTradingAgent": 0.3363,
+      "AutonomousDAOAgent_vs_SimpleTradingBot": 0.4815,
+      "CrossChainBridgeAgent_vs_DeFiManagementAgent": -0.1313,
+      "CrossChainBridgeAgent_vs_DeterministicScript": -0.4036,
+      "CrossChainBridgeAgent_vs_LLMPoweredAgent": -0.4261,
+      "CrossChainBridgeAgent_vs_MEVSearcher": -0.3625,
+      "CrossChainBridgeAgent_vs_RLTradingAgent": 0.1781,
+      "CrossChainBridgeAgent_vs_SimpleTradingBot": 0.0569,
+      "DeFiManagementAgent_vs_DeterministicScript": -0.6409,
+      "DeFiManagementAgent_vs_LLMPoweredAgent": -1.0135,
+      "DeFiManagementAgent_vs_MEVSearcher": -0.3548,
+      "DeFiManagementAgent_vs_RLTradingAgent": 0.2618,
+      "DeFiManagementAgent_vs_SimpleTradingBot": 0.168,
+      "DeterministicScript_vs_LLMPoweredAgent": 0.0602,
+      "DeterministicScript_vs_MEVSearcher": 0.2949,
+      "DeterministicScript_vs_RLTradingAgent": 0.4095,
+      "DeterministicScript_vs_SimpleTradingBot": 0.4203,
+      "LLMPoweredAgent_vs_MEVSearcher": 0.2535,
+      "LLMPoweredAgent_vs_RLTradingAgent": 0.3522,
+      "LLMPoweredAgent_vs_SimpleTradingBot": 0.4845,
+      "MEVSearcher_vs_RLTradingAgent": 0.3745,
+      "MEVSearcher_vs_SimpleTradingBot": 0.4789,
+      "RLTradingAgent_vs_SimpleTradingBot": -0.3937
+    }
+  },
+  "classification": {
+    "baseline_31feat": {
+      "n_features": 31,
+      "n_folds": 10,
+      "accuracy_mean": 0.9526,
+      "accuracy_std": 0.0073,
+      "f1_macro_mean": 0.6869,
+      "f1_macro_std": 0.0732,
+      "per_class_f1_with_ci": {
+        "AutonomousDAOAgent": {
+          "f1": 0.4255,
+          "ci_lo": 0.2352,
+          "ci_hi": 0.6122,
+          "support": 34.0
+        },
+        "CrossChainBridgeAgent": {
+          "f1": 0.7568,
+          "ci_lo": 0.6847,
+          "ci_hi": 0.8145,
+          "support": 95.0
+        },
+        "DeFiManagementAgent": {
+          "f1": 0.9799,
+          "ci_lo": 0.9747,
+          "ci_hi": 0.9846,
+          "support": 1669.0
+        },
+        "DeterministicScript": {
+          "f1": 0.994,
+          "ci_lo": 0.9896,
+          "ci_hi": 0.9977,
+          "support": 666.0
+        },
+        "LLMPoweredAgent": {
+          "f1": 0.4375,
+          "ci_lo": 0.3182,
+          "ci_hi": 0.5439,
+          "support": 71.0
+        },
+        "MEVSearcher": {
+          "f1": 0.844,
+          "ci_lo": 0.7619,
+          "ci_hi": 0.9123,
+          "support": 54.0
+        },
+        "RLTradingAgent": {
+          "f1": 0.2222,
+          "ci_lo": 0.0571,
+          "ci_hi": 0.4118,
+          "support": 25.0
+        },
+        "SimpleTradingBot": {
+          "f1": 0.9846,
+          "ci_lo": 0.968,
+          "ci_hi": 0.9968,
+          "support": 130.0
+        }
+      },
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.9846153846153847,
+          "recall": 0.9846153846153847,
+          "f1-score": 0.9846153846153847,
+          "support": 130.0
+        },
+        "MEVSearcher": {
+          "precision": 0.8363636363636363,
+          "recall": 0.8518518518518519,
+          "f1-score": 0.8440366972477065,
+          "support": 54.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.9656777196044212,
+          "recall": 0.9946075494307969,
+          "f1-score": 0.9799291617473436,
+          "support": 1669.0
+        },
+        "LLMPoweredAgent": {
+          "precision": 0.84,
+          "recall": 0.29577464788732394,
+          "f1-score": 0.4375,
+          "support": 71.0
+        },
+        "AutonomousDAOAgent": {
+          "precision": 0.7692307692307693,
+          "recall": 0.29411764705882354,
+          "f1-score": 0.425531914893617,
+          "support": 34.0
+        },
+        "CrossChainBridgeAgent": {
+          "precision": 0.6614173228346457,
+          "recall": 0.8842105263157894,
+          "f1-score": 0.7567567567567568,
+          "support": 95.0
+        },
+        "DeterministicScript": {
+          "precision": 0.9954819277108434,
+          "recall": 0.9924924924924925,
+          "f1-score": 0.9939849624060151,
+          "support": 666.0
+        },
+        "RLTradingAgent": {
+          "precision": 0.36363636363636365,
+          "recall": 0.16,
+          "f1-score": 0.2222222222222222,
+          "support": 25.0
+        },
+        "accuracy": 0.9526239067055393,
+        "macro avg": {
+          "precision": 0.802052890499508,
+          "recall": 0.6822087624565578,
+          "f1-score": 0.7055721374861308,
+          "support": 2744.0
+        },
+        "weighted avg": {
+          "precision": 0.9495590798662112,
+          "recall": 0.9526239067055393,
+          "f1-score": 0.9453541436311695,
+          "support": 2744.0
+        }
+      },
+      "feature_importance_top20": {
+        "eip1559_tip_precision": 0.340273,
+        "gas_price_round_number_ratio": 0.280341,
+        "sequential_pattern_score": 0.105172,
+        "gas_price_precision": 0.099273,
+        "burst_frequency": 0.077401,
+        "gas_nonce_gap_regularity": 0.012471,
+        "gas_price_nonce_correlation": 0.01149,
+        "action_sequence_perplexity": 0.009726,
+        "contract_to_eoa_ratio": 0.007738,
+        "tx_interval_mean": 0.00509,
+        "night_activity_ratio": 0.004973,
+        "gas_price_trailing_zeros_mean": 0.004607,
+        "gas_price_cv": 0.004252,
+        "gas_limit_precision": 0.004242,
+        "active_hour_entropy": 0.004178,
+        "weekend_ratio": 0.003049,
+        "unique_contracts_ratio": 0.002851,
+        "top_contract_concentration": 0.002587,
+        "approve_revoke_ratio": 0.002424,
+        "multi_protocol_interaction_count": 0.002282
+      },
+      "feature_importance_all": {
+        "eip1559_tip_precision": 0.340273,
+        "gas_price_round_number_ratio": 0.280341,
+        "sequential_pattern_score": 0.105172,
+        "gas_price_precision": 0.099273,
+        "burst_frequency": 0.077401,
+        "gas_nonce_gap_regularity": 0.012471,
+        "gas_price_nonce_correlation": 0.01149,
+        "action_sequence_perplexity": 0.009726,
+        "contract_to_eoa_ratio": 0.007738,
+        "tx_interval_mean": 0.00509,
+        "night_activity_ratio": 0.004973,
+        "gas_price_trailing_zeros_mean": 0.004607,
+        "gas_price_cv": 0.004252,
+        "gas_limit_precision": 0.004242,
+        "active_hour_entropy": 0.004178,
+        "weekend_ratio": 0.003049,
+        "unique_contracts_ratio": 0.002851,
+        "top_contract_concentration": 0.002587,
+        "approve_revoke_ratio": 0.002424,
+        "multi_protocol_interaction_count": 0.002282,
+        "tx_interval_std": 0.002246,
+        "method_id_diversity": 0.002222,
+        "hour_entropy": 0.001958,
+        "behavioral_consistency": 0.001866,
+        "response_latency_variance": 0.00183,
+        "unverified_contract_approve_ratio": 0.001741,
+        "tx_interval_skewness": 0.001313,
+        "error_recovery_pattern": 0.001228,
+        "unlimited_approve_ratio": 0.001178,
+        "eip1559_priority_fee_precision": 0.0,
+        "flash_loan_usage": 0.0
+      }
+    },
+    "augmented_38feat": {
+      "n_features": 38,
+      "n_folds": 10,
+      "accuracy_mean": 0.9519,
+      "accuracy_std": 0.0058,
+      "f1_macro_mean": 0.6949,
+      "f1_macro_std": 0.0439,
+      "per_class_f1_with_ci": {
+        "AutonomousDAOAgent": {
+          "f1": 0.4444,
+          "ci_lo": 0.2544,
+          "ci_hi": 0.6039,
+          "support": 34.0
+        },
+        "CrossChainBridgeAgent": {
+          "f1": 0.7523,
+          "ci_lo": 0.6804,
+          "ci_hi": 0.8122,
+          "support": 95.0
+        },
+        "DeFiManagementAgent": {
+          "f1": 0.9793,
+          "ci_lo": 0.9743,
+          "ci_hi": 0.9839,
+          "support": 1669.0
+        },
+        "DeterministicScript": {
+          "f1": 0.9947,
+          "ci_lo": 0.9909,
+          "ci_hi": 0.9979,
+          "support": 666.0
+        },
+        "LLMPoweredAgent": {
+          "f1": 0.4536,
+          "ci_lo": 0.3332,
+          "ci_hi": 0.5641,
+          "support": 71.0
+        },
+        "MEVSearcher": {
+          "f1": 0.8257,
+          "ci_lo": 0.7391,
+          "ci_hi": 0.9032,
+          "support": 54.0
+        },
+        "RLTradingAgent": {
+          "f1": 0.1875,
+          "ci_lo": 0.0,
+          "ci_hi": 0.3704,
+          "support": 25.0
+        },
+        "SimpleTradingBot": {
+          "f1": 0.9807,
+          "ci_lo": 0.9627,
+          "ci_hi": 0.9963,
+          "support": 130.0
+        }
+      },
+      "per_class_report": {
+        "SimpleTradingBot": {
+          "precision": 0.9844961240310077,
+          "recall": 0.9769230769230769,
+          "f1-score": 0.9806949806949807,
+          "support": 130.0
+        },
+        "MEVSearcher": {
+          "precision": 0.8181818181818182,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.8256880733944955,
+          "support": 54.0
+        },
+        "DeFiManagementAgent": {
+          "precision": 0.9650959860383944,
+          "recall": 0.994008388256441,
+          "f1-score": 0.9793388429752066,
+          "support": 1669.0
+        },
+        "LLMPoweredAgent": {
+          "precision": 0.8461538461538461,
+          "recall": 0.30985915492957744,
+          "f1-score": 0.4536082474226804,
+          "support": 71.0
+        },
+        "AutonomousDAOAgent": {
+          "precision": 0.6,
+          "recall": 0.35294117647058826,
+          "f1-score": 0.4444444444444444,
+          "support": 34.0
+        },
+        "CrossChainBridgeAgent": {
+          "precision": 0.6666666666666666,
+          "recall": 0.8631578947368421,
+          "f1-score": 0.7522935779816514,
+          "support": 95.0
+        },
+        "DeterministicScript": {
+          "precision": 0.9954887218045113,
+          "recall": 0.993993993993994,
+          "f1-score": 0.994740796393689,
+          "support": 666.0
+        },
+        "RLTradingAgent": {
+          "precision": 0.42857142857142855,
+          "recall": 0.12,
+          "f1-score": 0.1875,
+          "support": 25.0
+        },
+        "accuracy": 0.9518950437317785,
+        "macro avg": {
+          "precision": 0.7880818239309592,
+          "recall": 0.6805271273304816,
+          "f1-score": 0.7022886204133936,
+          "support": 2744.0
+        },
+        "weighted avg": {
+          "precision": 0.947679134785086,
+          "recall": 0.9518950437317785,
+          "f1-score": 0.9448119859197687,
+          "support": 2744.0
+        }
+      },
+      "feature_importance_top20": {
+        "eip1559_tip_precision": 0.33097,
+        "gas_price_round_number_ratio": 0.286929,
+        "sequential_pattern_score": 0.103613,
+        "gas_price_precision": 0.098235,
+        "burst_frequency": 0.073039,
+        "gas_nonce_gap_regularity": 0.011898,
+        "gas_price_nonce_correlation": 0.011551,
+        "action_sequence_perplexity": 0.009509,
+        "contract_to_eoa_ratio": 0.006561,
+        "reaction_time_p10": 0.004985,
+        "night_activity_ratio": 0.004828,
+        "tx_interval_mean": 0.004695,
+        "same_block_fraction": 0.00436,
+        "gas_price_trailing_zeros_mean": 0.004241,
+        "gas_price_cv": 0.003188,
+        "weekend_ratio": 0.00313,
+        "top_contract_concentration": 0.002948,
+        "method_id_diversity": 0.002931,
+        "active_hour_entropy": 0.002807,
+        "unverified_contract_approve_ratio": 0.002696
+      },
+      "feature_importance_all": {
+        "eip1559_tip_precision": 0.33097,
+        "gas_price_round_number_ratio": 0.286929,
+        "sequential_pattern_score": 0.103613,
+        "gas_price_precision": 0.098235,
+        "burst_frequency": 0.073039,
+        "gas_nonce_gap_regularity": 0.011898,
+        "gas_price_nonce_correlation": 0.011551,
+        "action_sequence_perplexity": 0.009509,
+        "contract_to_eoa_ratio": 0.006561,
+        "reaction_time_p10": 0.004985,
+        "night_activity_ratio": 0.004828,
+        "tx_interval_mean": 0.004695,
+        "same_block_fraction": 0.00436,
+        "gas_price_trailing_zeros_mean": 0.004241,
+        "gas_price_cv": 0.003188,
+        "weekend_ratio": 0.00313,
+        "top_contract_concentration": 0.002948,
+        "method_id_diversity": 0.002931,
+        "active_hour_entropy": 0.002807,
+        "unverified_contract_approve_ratio": 0.002696,
+        "gas_limit_precision": 0.002694,
+        "reaction_time_cv": 0.002332,
+        "tx_interval_std": 0.002332,
+        "reaction_time_median": 0.002298,
+        "unique_contracts_ratio": 0.002246,
+        "multi_protocol_interaction_count": 0.002145,
+        "approve_revoke_ratio": 0.001775,
+        "reaction_time_p10_to_median_ratio": 0.001756,
+        "response_latency_variance": 0.001734,
+        "defi_reaction_time_median": 0.001703,
+        "defi_reaction_time_p10": 0.001553,
+        "hour_entropy": 0.001421,
+        "tx_interval_skewness": 0.000895,
+        "unlimited_approve_ratio": 0.000857,
+        "error_recovery_pattern": 0.000652,
+        "behavioral_consistency": 0.000493,
+        "eip1559_priority_fee_precision": 0.0,
+        "flash_loan_usage": 0.0
+      }
+    }
+  },
+  "pilot_comparison": {
+    "pilot_n": 200,
+    "full_n": 2744,
+    "pilot_defi_reaction_time_median_d": 1.248,
+    "full_defi_reaction_time_median_d": -0.0063,
+    "headline_holds": false
+  }
+}
