@@ -21,26 +21,56 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{anthropic2024mcp}
+Anthropic, ``{Model Context Protocol Specification},''
+  \url{https://modelcontextprotocol.io/specification}, 2024.
+
+\bibitem{openai2023funccall}
+OpenAI, ``{Function Calling},'' OpenAI API Documentation, 2023.
+
+\bibitem{langchain2024tools}
+{LangChain}, ``{Tools and Toolkits},'' LangChain Documentation, 2024.
+
+\bibitem{safe2023modules}
+{Safe}, ``{Safe Modules Documentation},''
+  \url{https://docs.safe.global/advanced/smart-account-modules}, 2023.
+
+\bibitem{erc4337}
+V.~Buterin, Y.~Weiss, D.~Tirosh, S.~Nacshon, A.~Frolov, and A.~Wahrst{\"a}tter,
+  ``{ERC-4337: Account Abstraction Using Alt Mempool},'' Ethereum EIPs, 2023.
+
+\bibitem{erc7579}
+zeroknots, A.~Frolov, K.~Ernst, and T.~Philogene, ``{ERC-7579: Minimal Modular
+  Smart Accounts},'' Ethereum EIPs, 2024.
+
 \bibitem{greshake2023injection}
 K.~Greshake, S.~Abdelnabi, S.~Mishra, C.~Endres, T.~Holz, and M.~Fritz, ``{Not
   What You've Signed Up For: Compromising Real-World LLM-Integrated
   Applications with Indirect Prompt Injection},'' in \emph{AISec Workshop at
   CCS}, 2023.
 
+\bibitem{invariantlabs2025mcp}
+{Invariant Labs}, ``{MCP Security Analysis: Tool Poisoning Attacks},''
+  \url{https://invariantlabs.ai/blog/mcp-security-analysis}, 2025.
+
+\bibitem{hou2025mcp}
+X.~Hou, Y.~Zhao, S.~Wang, and H.~Wang, ``{Security Analysis of MCP-Based
+  Multi-Agent Systems},'' \emph{arXiv preprint}, 2025.
+
 \bibitem{zhan2024systematic}
 Q.~Zhan, Z.~Liang, Z.~Ying, and D.~Kang, ``{InjecAgent: Benchmarking Indirect
   Prompt Injections in Tool-Integrated LLM Agents},'' \emph{arXiv preprint
   arXiv:2403.02691}, 2024.
 
-\bibitem{yi2024benchmarking}
-J.~Yi, Y.~Xie, B.~Zhu, E.~Kiciman, G.~Sun, X.~Xie, and F.~Wu, ``{Benchmarking
-  and Defending Against Indirect Prompt Injection Attacks on Large Language
-  Models},'' \emph{arXiv preprint arXiv:2312.14197}, 2024.
-
 \bibitem{debenedetti2024agentdojo}
 E.~Debenedetti, J.~Zhang, M.~Balunovi{\'c}, L.~Beurer-Kellner, M.~Fischer, and
   F.~Tram{\`e}r, ``{AgentDojo: A Dynamic Environment to Assess Attacks and
   Defenses for LLM Agents},'' \emph{arXiv preprint arXiv:2406.13352}, 2024.
+
+\bibitem{yi2024benchmarking}
+J.~Yi, Y.~Xie, B.~Zhu, E.~Kiciman, G.~Sun, X.~Xie, and F.~Wu, ``{Benchmarking
+  and Defending Against Indirect Prompt Injection Attacks on Large Language
+  Models},'' \emph{arXiv preprint arXiv:2312.14197}, 2024.
 
 \bibitem{liu2024formalizing}
 Y.~Liu, G.~Deng, Y.~Li, K.~Wang, T.~Zhang, Y.~Liu, H.~Wang, Y.~Zheng, and
@@ -88,25 +118,30 @@ J.~Feist, G.~Grieco, and A.~Groce, ``{Slither: A Static Analysis Framework for
 L.~Luu, D.-H. Chu, H.~Olickel, P.~Saxena, and A.~Hobor, ``{Making Smart
   Contracts Smarter},'' in \emph{CCS}, 2016.
 
-\bibitem{chen2020defects}
-J.~Chen, X.~Xia, D.~Lo, J.~Grundy, X.~Luo, and T.~Chen, ``{Defining Smart
-  Contract Defects on Ethereum},'' \emph{IEEE TSE}, 2020.
-
-\bibitem{invariantlabs2025mcp}
-{Invariant Labs}, ``{MCP Security Analysis: Tool Poisoning Attacks},''
-  \url{https://invariantlabs.ai/blog/mcp-security-analysis}, 2025.
-
-\bibitem{hou2025mcp}
-X.~Hou, Y.~Zhao, S.~Wang, and H.~Wang, ``{Security Analysis of MCP-Based
-  Multi-Agent Systems},'' \emph{arXiv preprint}, 2025.
-
 \bibitem{owasp2025llmtop10}
 {OWASP Foundation}, ``{OWASP Top 10 for Large Language Model Applications},''
   \url{https://owasp.org/www-project-top-10-for-large-language-model-applications/},
   2025.
 
-\bibitem{owasp2023api}
-------, ``{OWASP API Security Top 10 -- 2023},''
-  \url{https://owasp.org/API-Security/}, 2023.
+\bibitem{shi2025toolhijacker}
+Y.~Shi \emph{et~al.}, ``{ToolHijacker: Hijacking Tool Selection in LLM Agents
+  via Adversarial Tool Injection},'' \emph{arXiv preprint arXiv:2504.19793},
+  2025.
+
+\bibitem{lin2025stac}
+Z.~Lin \emph{et~al.}, ``{STAC: Sequential Tool Attack Chains Against LLM
+  Agents},'' \emph{arXiv preprint arXiv:2509.25624}, 2025.
+
+\bibitem{lee2024infection}
+D.~Lee \emph{et~al.}, ``{Prompt Infection: LLM-to-LLM Prompt Injection Within
+  Multi-Agent Systems},'' \emph{arXiv preprint arXiv:2410.07283}, 2024.
+
+\bibitem{agentarmor2025}
+{AgentArmor Team}, ``{AgentArmor: Runtime Program Dependence Graph Defense for
+  LLM Agents},'' \emph{arXiv preprint arXiv:2508.01249}, 2025.
+
+\bibitem{invariantlabs2025tfa}
+{Invariant Labs}, ``{Toxic Flow Analysis: Early Preview},''
+  \url{https://invariantlabs.ai/blog/toxic-flow-analysis}, 2025.
 
 \end{thebibliography}

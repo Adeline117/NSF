@@ -1,26 +1,33 @@
 \relax 
+\citation{anthropic2024mcp}
+\citation{openai2023funccall}
+\citation{langchain2024tools}
+\citation{safe2023modules}
+\citation{erc4337}
+\citation{erc7579}
+\citation{greshake2023injection}
+\citation{invariantlabs2025mcp}
+\citation{hou2025mcp}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\newlabel{sec:intro}{{I}{1}{}{section.1}{}}
+\citation{invariantlabs2025mcp}
+\citation{greshake2023injection}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Background and Threat Model}{2}{}\protected@file@percent }
+\newlabel{sec:background}{{II}{2}{}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}System Model}{2}{}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Trust boundaries in the agent-tool pipeline.}}{2}{}\protected@file@percent }
 \newlabel{tab:trust-boundaries}{{I}{2}{}{table.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Attack surfaces with representative CWE mappings. Full per-pattern mappings appear in Appendix~A.}}{2}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Attack surfaces with representative CWE mappings.}}{2}{}\protected@file@percent }
 \newlabel{tab:attack-surfaces}{{II}{2}{}{table.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Trust Boundaries}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Attacker Model}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Attack Surfaces (S1--S5)}{2}{}\protected@file@percent }
 \citation{greshake2023injection}
 \citation{zhan2024systematic}
-\citation{yi2024benchmarking}
 \citation{debenedetti2024agentdojo}
+\citation{yi2024benchmarking}
 \citation{liu2024formalizing}
 \citation{ruan2024toolemu}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Web3-Specific Attack Vectors (W1--W4)}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-F}}Harness Requirements (H1--H6)}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-G}}Scope}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {III}Related Work}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Indirect Prompt Injection}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}LLM Agent Risk Assessment}{3}{}\protected@file@percent }
 \citation{xi2025ai}
 \citation{wang2024survey}
 \citation{schick2024toolformer}
@@ -29,65 +36,118 @@
 \citation{tsankov2018securify}
 \citation{feijo2023slither}
 \citation{luu2016oyente}
-\citation{chen2020defects}
 \citation{invariantlabs2025mcp}
 \citation{hou2025mcp}
 \citation{owasp2025llmtop10}
-\citation{owasp2023api}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Smart Contract Security}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}MCP Security and OWASP LLM Top 10}{4}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Taxonomy summary.}}{4}{}\protected@file@percent }
-\newlabel{tab:taxonomy-summary}{{III}{4}{}{table.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Vulnerability Taxonomy}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {V}Static Analysis Methodology}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Results}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Server Catalog and Selection}{5}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Stratified catalog used for the cross-protocol scan.}}{6}{}\protected@file@percent }
-\newlabel{tab:catalog}{{IV}{6}{}{table.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Per-protocol scan statistics for the 138-server catalog. Mean risk uses the recalibrated linear\_p90 scheme.}}{6}{}\protected@file@percent }
-\newlabel{tab:scan-stats}{{V}{6}{}{table.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}138-Server Scan Statistics}{6}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Top-15 vulnerability categories across 138 servers.}}{6}{}\protected@file@percent }
-\newlabel{tab:top-categories}{{VI}{6}{}{table.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Top-4 category $\times $ protocol contingency. Chi-squared statistic $= 1{,}573.4$, dof $= 9$, $p < 10^{-300}$, Cram\'{e}r's $V = 0.291$ (medium effect size).}}{6}{}\protected@file@percent }
-\newlabel{tab:chi-squared}{{VII}{6}{}{table.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Cross-Protocol Comparison}{6}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Raw base-score distribution on the 62-server pilot.}}{7}{}\protected@file@percent }
-\newlabel{tab:base-score-dist}{{VIII}{7}{}{table.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Risk score calibration options on the pilot corpus. All three candidates preserve Spearman rank correlation ${>}0.947$ with the pilot scheme while shrinking saturation to single digits.}}{7}{}\protected@file@percent }
-\newlabel{tab:calibration}{{IX}{7}{}{table.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}Risk Score Calibration}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}LLM-in-the-Loop Dynamic Testing}{7}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {X}{\ignorespaces LLM-in-the-loop dynamic harness: 16 scenarios against Claude Opus 4.6. Aggregate: 2 attack successes (12.5\%), 7 refused/warned (43.75\%), 7 safe-proceed (43.75\%).}}{8}{}\protected@file@percent }
-\newlabel{tab:dynamic-harness}{{X}{8}{}{table.10}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {XI}{\ignorespaces Disclosure status as of the submission date. All 25 reports are prepared in GHSA-compatible format and will be filed prior to the camera-ready deadline.}}{8}{}\protected@file@percent }
-\newlabel{tab:disclosure}{{XI}{8}{}{table.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Responsible Disclosure}{8}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VIII}Limitations and Future Work}{9}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {IX}Conclusion}{9}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {X}Appendix A: Vulnerability Pattern Catalog}{9}{}\protected@file@percent }
+\citation{invariantlabs2025mcp}
+\citation{shi2025toolhijacker}
+\citation{greshake2023injection}
+\citation{lin2025stac}
+\citation{lee2024infection}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Web3-Specific Attack Vectors (W1--W4)}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-F}}Harness Requirements (H1--H6)}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-G}}Scope}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}Related Work}{3}{}\protected@file@percent }
+\newlabel{sec:related}{{III}{3}{}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Indirect Prompt Injection}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}LLM Agent Risk Assessment}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Smart Contract Security}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}MCP Security and OWASP LLM Top 10}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Positioning TCPI Against Prior Art}{3}{}\protected@file@percent }
+\citation{agentarmor2025}
+\citation{invariantlabs2025tfa}
+\citation{invariantlabs2025tfa}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Tool-Chain Prompt Injection}{4}{}\protected@file@percent }
+\newlabel{sec:tcpi}{{IV}{4}{}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Formal Definition}{4}{}\protected@file@percent }
+\newlabel{sec:tcpi-def}{{\mbox  {IV-A}}{4}{}{subsection.4.1}{}}
+\newlabel{def:tcpi}{{1}{4}{}{definition.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Distinction from prior injection classes. Each class differs from TCPI by the channel the attacker controls and the absence of the LLM parameter-synthesis condition.}}{4}{}\protected@file@percent }
+\newlabel{tab:tcpi-not}{{III}{4}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Undecidability Theorem}{4}{}\protected@file@percent }
+\newlabel{sec:tcpi-theorem}{{\mbox  {IV-B}}{4}{}{subsection.4.2}{}}
+\newlabel{thm:undecidable}{{1}{4}{}{theorem.1}{}}
+\citation{shi2025toolhijacker}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Seven Variants (V1--V7)}{5}{}\protected@file@percent }
+\newlabel{sec:tcpi-variants}{{\mbox  {IV-C}}{5}{}{subsection.4.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Seven TCPI variants. Each exploits a structurally distinct dimension of the agent substrate. ASR from 200-rollout harness. Three variants (V4, V6, V7) open entirely new threat surfaces not covered by any prior work.}}{6}{}\protected@file@percent }
+\newlabel{tab:variants}{{IV}{6}{}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Taxonomy summary.}}{6}{}\protected@file@percent }
+\newlabel{tab:taxonomy-summary}{{V}{6}{}{table.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Vulnerability Taxonomy and Static Analysis}{6}{}\protected@file@percent }
+\newlabel{sec:taxonomy}{{V}{6}{}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Static Analyzer}{6}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces TCPI attack success rates by variant ($n = 200$ per cell). Single-hop and null baselines are near 0\%, confirming that the attack channel is the tool-chain, not direct injection.}}{7}{}\protected@file@percent }
+\newlabel{tab:tcpi-asr}{{VI}{7}{}{table.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Empirical Validation}{7}{}\protected@file@percent }
+\newlabel{sec:results}{{VI}{7}{}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}TCPI Harness Results}{7}{}\protected@file@percent }
+\newlabel{sec:tcpi-harness}{{\mbox  {VI-A}}{7}{}{subsection.6.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Stratified server catalog.}}{7}{}\protected@file@percent }
+\newlabel{tab:catalog}{{VII}{7}{}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Top-10 vulnerability categories across 138 servers (raw).}}{7}{}\protected@file@percent }
+\newlabel{tab:top-categories}{{VIII}{7}{}{table.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}138-Server Static Scan (Precision-Adjusted)}{7}{}\protected@file@percent }
+\newlabel{sec:static-scan}{{\mbox  {VI-B}}{7}{}{subsection.6.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Per-protocol scan statistics (raw counts).}}{8}{}\protected@file@percent }
+\newlabel{tab:scan-stats}{{IX}{8}{}{table.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {X}{\ignorespaces Per-category precision (excluding uncertain) and precision-adjusted counts. Conservative uses lower precision bound; liberal uses upper.}}{8}{}\protected@file@percent }
+\newlabel{tab:precision}{{X}{8}{}{table.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XI}{\ignorespaces Precision-adjusted contingency table (conservative). $\chi ^2 = 415.8$, dof $= 9$, $p \approx 0$, Cram\'{e}r's $V = 0.29$.}}{8}{}\protected@file@percent }
+\newlabel{tab:chi-adjusted}{{XI}{8}{}{table.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XII}{\ignorespaces Risk score calibration options. All candidates preserve Spearman $> 0.947$.}}{8}{}\protected@file@percent }
+\newlabel{tab:calibration}{{XII}{8}{}{table.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}LLM Dynamic Testing --- 16 Scenarios}{8}{}\protected@file@percent }
+\newlabel{sec:dynamic}{{\mbox  {VI-C}}{8}{}{subsection.6.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XIII}{\ignorespaces LLM-in-the-loop dynamic harness: 16 scenarios against Claude Opus 4.6. 2 attack successes (12.5\%), 7 refused/warned (43.75\%), 7 safe-proceed (43.75\%).}}{9}{}\protected@file@percent }
+\newlabel{tab:dynamic-harness}{{XIII}{9}{}{table.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}End-to-End Demo: V1 on Ethereum}{9}{}\protected@file@percent }
+\newlabel{sec:demo}{{\mbox  {VI-D}}{9}{}{subsection.6.4}{}}
+\citation{agentarmor2025}
+\@writefile{lot}{\contentsline {table}{\numberline {XIV}{\ignorespaces Disclosure status as of submission. All 25 reports are prepared in GHSA-compatible format.}}{10}{}\protected@file@percent }
+\newlabel{tab:disclosure}{{XIV}{10}{}{table.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Responsible Disclosure}{10}{}\protected@file@percent }
+\newlabel{sec:disclosure}{{VII}{10}{}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Discussion}{10}{}\protected@file@percent }
+\newlabel{sec:discussion}{{VIII}{10}{}{section.8}{}}
+\citation{owasp2025llmtop10}
+\citation{agentarmor2025}
+\citation{invariantlabs2025tfa}
+\@writefile{toc}{\contentsline {section}{\numberline {IX}Limitations}{11}{}\protected@file@percent }
+\newlabel{sec:limitations}{{IX}{11}{}{section.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {X}Conclusion}{12}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{X}{12}{}{section.10}{}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  A: Vulnerability Pattern Catalog}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  B: Risk Score Calibration Details}{12}{}\protected@file@percent }
 \bibstyle{IEEEtran}
 \bibdata{main}
-\bibcite{greshake2023injection}{1}
-\bibcite{zhan2024systematic}{2}
-\bibcite{yi2024benchmarking}{3}
-\@writefile{toc}{\contentsline {section}{\numberline {XI}Appendix B: Responsible Disclosure Templates}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {XII}Appendix C: Risk Score Calibration Details}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{10}{}\protected@file@percent }
-\bibcite{debenedetti2024agentdojo}{4}
-\bibcite{liu2024formalizing}{5}
-\bibcite{ruan2024toolemu}{6}
-\bibcite{xi2025ai}{7}
-\bibcite{wang2024survey}{8}
-\bibcite{schick2024toolformer}{9}
-\bibcite{qin2024toolllm}{10}
-\bibcite{atzei2017survey}{11}
-\bibcite{tsankov2018securify}{12}
-\bibcite{feijo2023slither}{13}
-\bibcite{luu2016oyente}{14}
-\bibcite{chen2020defects}{15}
-\bibcite{invariantlabs2025mcp}{16}
-\bibcite{hou2025mcp}{17}
-\bibcite{owasp2025llmtop10}{18}
-\bibcite{owasp2023api}{19}
-\gdef \@abspage@last{11}
+\bibcite{anthropic2024mcp}{1}
+\bibcite{openai2023funccall}{2}
+\bibcite{langchain2024tools}{3}
+\bibcite{safe2023modules}{4}
+\bibcite{erc4337}{5}
+\bibcite{erc7579}{6}
+\bibcite{greshake2023injection}{7}
+\bibcite{invariantlabs2025mcp}{8}
+\bibcite{hou2025mcp}{9}
+\bibcite{zhan2024systematic}{10}
+\bibcite{debenedetti2024agentdojo}{11}
+\bibcite{yi2024benchmarking}{12}
+\bibcite{liu2024formalizing}{13}
+\bibcite{ruan2024toolemu}{14}
+\bibcite{xi2025ai}{15}
+\bibcite{wang2024survey}{16}
+\bibcite{schick2024toolformer}{17}
+\bibcite{qin2024toolllm}{18}
+\bibcite{atzei2017survey}{19}
+\bibcite{tsankov2018securify}{20}
+\bibcite{feijo2023slither}{21}
+\bibcite{luu2016oyente}{22}
+\bibcite{owasp2025llmtop10}{23}
+\bibcite{shi2025toolhijacker}{24}
+\bibcite{lin2025stac}{25}
+\bibcite{lee2024infection}{26}
+\bibcite{agentarmor2025}{27}
+\bibcite{invariantlabs2025tfa}{28}
+\@writefile{toc}{\contentsline {section}{References}{13}{}\protected@file@percent }
+\gdef \@abspage@last{13}
