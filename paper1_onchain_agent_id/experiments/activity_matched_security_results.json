@@ -1,0 +1,173 @@
+{
+  "timestamp": "2026-04-16T15:24:55.277588",
+  "description": "Activity-matched security comparison: tests whether the human>agent unlimited_approve_ratio reversal survives after matching by transaction count (nearest-neighbor) and propensity score matching.",
+  "dataset": {
+    "n_total": 1147,
+    "n_agents": 533,
+    "n_humans": 614,
+    "n_features": 23
+  },
+  "activity_levels": {
+    "agent_tx_mean": 958.9,
+    "agent_tx_median": 459.0,
+    "human_tx_mean": 861.1,
+    "human_tx_median": 330.0
+  },
+  "unmatched_comparison": {
+    "unlimited_approve_ratio": {
+      "agent_mean": 0.4957,
+      "human_mean": 0.473,
+      "direction": "agent > human",
+      "mann_whitney_p": 0.106888
+    },
+    "approve_revoke_ratio": {
+      "agent_mean": 0.0611,
+      "human_mean": 0.0892,
+      "direction": "human > agent",
+      "mann_whitney_p": 0.013118
+    },
+    "unverified_contract_approve_ratio": {
+      "agent_mean": 0.8045,
+      "human_mean": 0.7635,
+      "direction": "agent > human",
+      "mann_whitney_p": 0.000427
+    },
+    "multi_protocol_interaction_count": {
+      "agent_mean": 3.3996,
+      "human_mean": 3.8371,
+      "direction": "human > agent",
+      "mann_whitney_p": 0.006051
+    },
+    "flash_loan_usage": {
+      "agent_mean": 0.0094,
+      "human_mean": 0.0081,
+      "direction": "agent > human",
+      "mann_whitney_p": 0.822598
+    }
+  },
+  "nn_matching": {
+    "method": "Nearest-neighbor on n_transactions (1:1 without replacement)",
+    "n_matched_pairs": 533,
+    "matching_quality": {
+      "tx_diff_mean": 502.6,
+      "tx_diff_median": 22.0,
+      "tx_diff_max": 8944.0,
+      "matched_agent_tx_mean": 958.9,
+      "matched_human_tx_mean": 978.1
+    },
+    "security_comparison": {
+      "unlimited_approve_ratio": {
+        "agent_mean": 0.4957,
+        "agent_std": 0.3404,
+        "human_mean": 0.4653,
+        "human_std": 0.2939,
+        "mean_difference": 0.0304,
+        "direction": "agent > human",
+        "cohens_d_paired": 0.0677,
+        "wilcoxon_p": 0.06606,
+        "mann_whitney_p": 0.050563,
+        "significant_0.05": false
+      },
+      "approve_revoke_ratio": {
+        "agent_mean": 0.0611,
+        "agent_std": 0.1567,
+        "human_mean": 0.0934,
+        "human_std": 0.1891,
+        "mean_difference": -0.0324,
+        "direction": "human > agent",
+        "cohens_d_paired": -0.1341,
+        "wilcoxon_p": 0.000116,
+        "mann_whitney_p": 0.000276,
+        "significant_0.05": true
+      },
+      "unverified_contract_approve_ratio": {
+        "agent_mean": 0.8045,
+        "agent_std": 0.3098,
+        "human_mean": 0.7719,
+        "human_std": 0.3282,
+        "mean_difference": 0.0326,
+        "direction": "agent > human",
+        "cohens_d_paired": 0.0795,
+        "wilcoxon_p": 0.006474,
+        "mann_whitney_p": 0.000967,
+        "significant_0.05": true
+      },
+      "multi_protocol_interaction_count": {
+        "agent_mean": 3.3996,
+        "agent_std": 2.5256,
+        "human_mean": 4.1107,
+        "human_std": 2.6843,
+        "mean_difference": -0.7111,
+        "direction": "human > agent",
+        "cohens_d_paired": -0.2344,
+        "wilcoxon_p": 0.0,
+        "mann_whitney_p": 1.3e-05,
+        "significant_0.05": true
+      },
+      "flash_loan_usage": {
+        "agent_mean": 0.0094,
+        "agent_std": 0.0964,
+        "human_mean": 0.0094,
+        "human_std": 0.0964,
+        "mean_difference": 0.0,
+        "direction": "equal",
+        "cohens_d_paired": 0.0,
+        "wilcoxon_p": 1.0,
+        "mann_whitney_p": 1.0,
+        "significant_0.05": false
+      }
+    }
+  },
+  "propensity_score_matching": {
+    "method": "Logistic regression on all 23 features, caliper=0.25*std(PS), 1:1 without replacement",
+    "n_matched_pairs": 318,
+    "security_comparison": {
+      "unlimited_approve_ratio": {
+        "agent_mean": 0.5069,
+        "human_mean": 0.5266,
+        "mean_difference": -0.0198,
+        "direction": "human > agent",
+        "cohens_d_paired": -0.0449,
+        "wilcoxon_p": 0.685323,
+        "significant_0.05": false
+      },
+      "approve_revoke_ratio": {
+        "agent_mean": 0.0795,
+        "human_mean": 0.0788,
+        "mean_difference": 0.0007,
+        "direction": "agent > human",
+        "cohens_d_paired": 0.0029,
+        "wilcoxon_p": 0.847597,
+        "significant_0.05": false
+      },
+      "unverified_contract_approve_ratio": {
+        "agent_mean": 0.8059,
+        "human_mean": 0.8119,
+        "mean_difference": -0.0061,
+        "direction": "human > agent",
+        "cohens_d_paired": -0.0159,
+        "wilcoxon_p": 0.734218,
+        "significant_0.05": false
+      },
+      "multi_protocol_interaction_count": {
+        "agent_mean": 4.0346,
+        "human_mean": 4.0629,
+        "mean_difference": -0.0283,
+        "direction": "human > agent",
+        "cohens_d_paired": -0.0076,
+        "wilcoxon_p": 0.842869,
+        "significant_0.05": false
+      },
+      "flash_loan_usage": {
+        "agent_mean": 0.0126,
+        "human_mean": 0.0126,
+        "mean_difference": 0.0,
+        "direction": "equal",
+        "cohens_d_paired": 0.0,
+        "wilcoxon_p": 1.0,
+        "significant_0.05": false
+      }
+    }
+  },
+  "diagnosis": "REVERSAL PERSISTS BUT NOT SIGNIFICANT: Direction unchanged after matching, but the paired test is not significant (p > 0.05). The effect may be real but weak, or the matched sample is too small for power."
+}

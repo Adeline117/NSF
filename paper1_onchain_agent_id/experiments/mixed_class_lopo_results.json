@@ -1,0 +1,372 @@
+{
+  "timestamp": "2026-04-16T15:26:01.421934",
+  "description": "Mixed-class behavioral cluster LOPO: clusters addresses by K-Means on features, holds out one cluster at a time. Each cluster has both agents and humans (mixed-class), fixing the single-class fold problem in the original LOPO.",
+  "dataset": {
+    "n_samples": 1147,
+    "n_agents": 533,
+    "n_humans": 614,
+    "n_features": 23,
+    "feature_names": [
+      "tx_interval_mean",
+      "tx_interval_std",
+      "tx_interval_skewness",
+      "active_hour_entropy",
+      "night_activity_ratio",
+      "weekend_ratio",
+      "burst_frequency",
+      "gas_price_round_number_ratio",
+      "gas_price_trailing_zeros_mean",
+      "gas_limit_precision",
+      "gas_price_cv",
+      "eip1559_priority_fee_precision",
+      "gas_price_nonce_correlation",
+      "unique_contracts_ratio",
+      "top_contract_concentration",
+      "method_id_diversity",
+      "contract_to_eoa_ratio",
+      "sequential_pattern_score",
+      "unlimited_approve_ratio",
+      "approve_revoke_ratio",
+      "unverified_contract_approve_ratio",
+      "multi_protocol_interaction_count",
+      "flash_loan_usage"
+    ]
+  },
+  "clustering": {
+    "method": "K-Means (k=5), fitted on StandardScaler(X)",
+    "n_clusters": 5,
+    "n_mixed_class_clusters": 5,
+    "cluster_info": {
+      "0": {
+        "n_total": 271,
+        "n_agents": 111,
+        "n_humans": 160,
+        "agent_ratio": 0.4096,
+        "is_mixed_class": true,
+        "category_distribution": {
+          "gitcoin_donor": 75,
+          "human_ens_interaction": 35,
+          "compound_v3_liquidator": 35,
+          "pooltogether_depositor": 33,
+          "chainlink_keeper": 32,
+          "keep3r_executor": 22,
+          "gelato_executor": 19,
+          "ens_reverse_setter": 14,
+          "expanded_human": 3,
+          "curated_mev_bot": 2,
+          "pilot_agent": 1
+        }
+      },
+      "1": {
+        "n_total": 434,
+        "n_agents": 272,
+        "n_humans": 162,
+        "agent_ratio": 0.6267,
+        "is_mixed_class": true,
+        "category_distribution": {
+          "defi_hf_trader": 157,
+          "human_ens_interaction": 87,
+          "chainlink_keeper": 40,
+          "gitcoin_donor": 37,
+          "compound_v3_liquidator": 34,
+          "gelato_executor": 23,
+          "pooltogether_depositor": 20,
+          "keep3r_executor": 15,
+          "ens_reverse_setter": 10,
+          "expanded_human": 4,
+          "human_ens_interaction_governance_voter": 3,
+          "pilot_agent": 2,
+          "expanded_mev_bot": 1,
+          "curated_human": 1
+        }
+      },
+      "2": {
+        "n_total": 262,
+        "n_agents": 75,
+        "n_humans": 187,
+        "agent_ratio": 0.2863,
+        "is_mixed_class": true,
+        "category_distribution": {
+          "ens_reverse_setter": 85,
+          "human_ens_interaction": 38,
+          "defi_hf_trader": 37,
+          "pooltogether_depositor": 27,
+          "compound_v3_liquidator": 21,
+          "gitcoin_donor": 20,
+          "expanded_human": 12,
+          "chainlink_keeper": 6,
+          "expanded_mev_bot": 5,
+          "keep3r_executor": 3,
+          "curated_human": 3,
+          "gelato_executor": 2,
+          "human_ens_interaction_governance_voter": 2,
+          "flash_loan_user": 1
+        }
+      },
+      "3": {
+        "n_total": 88,
+        "n_agents": 20,
+        "n_humans": 68,
+        "agent_ratio": 0.2273,
+        "is_mixed_class": true,
+        "category_distribution": {
+          "ens_reverse_setter": 31,
+          "gitcoin_donor": 14,
+          "pooltogether_depositor": 9,
+          "compound_v3_liquidator": 7,
+          "keep3r_executor": 6,
+          "human_exchange_depositor": 6,
+          "chainlink_keeper": 6,
+          "human_ens_interaction": 4,
+          "curated_human": 2,
+          "expanded_human": 2,
+          "expanded_mev_bot": 1
+        }
+      },
+      "4": {
+        "n_total": 92,
+        "n_agents": 55,
+        "n_humans": 37,
+        "agent_ratio": 0.5978,
+        "is_mixed_class": true,
+        "category_distribution": {
+          "chainlink_keeper": 24,
+          "human_exchange_depositor": 22,
+          "pilot_agent": 12,
+          "curated_mev_bot": 8,
+          "defi_hf_trader": 5,
+          "expanded_human": 4,
+          "ens_reverse_setter": 4,
+          "gelato_executor": 3,
+          "expanded_mev_bot": 3,
+          "pilot_human": 3,
+          "human_ens_interaction": 3,
+          "curated_human": 1
+        }
+      }
+    }
+  },
+  "cluster_lopo": {
+    "RandomForest": {
+      "model": "RandomForest",
+      "n_clusters_evaluated": 5,
+      "n_clusters_with_auc": 5,
+      "mean_per_cluster_auc": 0.7583,
+      "std_per_cluster_auc": 0.0787,
+      "min_per_cluster_auc": 0.6866,
+      "max_per_cluster_auc": 0.9032,
+      "pooled_auc": 0.7415,
+      "pooled_accuracy": 0.68,
+      "pooled_f1": 0.5757,
+      "pooled_precision": 0.75,
+      "pooled_recall": 0.4672,
+      "per_cluster": {
+        "0": {
+          "n_test": 271,
+          "n_test_agents": 111,
+          "n_test_humans": 160,
+          "n_train": 876,
+          "n_train_agents": 422,
+          "n_train_humans": 454,
+          "accuracy": 0.6716,
+          "f1": 0.4606,
+          "precision": 0.7037,
+          "recall": 0.3423,
+          "auc": 0.6866,
+          "both_classes_in_test": true
+        },
+        "1": {
+          "n_test": 434,
+          "n_test_agents": 272,
+          "n_test_humans": 162,
+          "n_train": 713,
+          "n_train_agents": 261,
+          "n_train_humans": 452,
+          "accuracy": 0.6037,
+          "f1": 0.5981,
+          "precision": 0.8205,
+          "recall": 0.4706,
+          "auc": 0.7087,
+          "both_classes_in_test": true
+        },
+        "2": {
+          "n_test": 262,
+          "n_test_agents": 75,
+          "n_test_humans": 187,
+          "n_train": 885,
+          "n_train_agents": 458,
+          "n_train_humans": 427,
+          "accuracy": 0.7405,
+          "f1": 0.4035,
+          "precision": 0.5897,
+          "recall": 0.3067,
+          "auc": 0.7142,
+          "both_classes_in_test": true
+        },
+        "3": {
+          "n_test": 88,
+          "n_test_agents": 20,
+          "n_test_humans": 68,
+          "n_train": 1059,
+          "n_train_agents": 513,
+          "n_train_humans": 546,
+          "accuracy": 0.7273,
+          "f1": 0.4545,
+          "precision": 0.4167,
+          "recall": 0.5,
+          "auc": 0.7787,
+          "both_classes_in_test": true
+        },
+        "4": {
+          "n_test": 92,
+          "n_test_agents": 55,
+          "n_test_humans": 37,
+          "n_train": 1055,
+          "n_train_agents": 478,
+          "n_train_humans": 577,
+          "accuracy": 0.8478,
+          "f1": 0.8772,
+          "precision": 0.8475,
+          "recall": 0.9091,
+          "auc": 0.9032,
+          "both_classes_in_test": true
+        }
+      }
+    },
+    "GradientBoosting": {
+      "model": "GradientBoosting",
+      "n_clusters_evaluated": 5,
+      "n_clusters_with_auc": 5,
+      "mean_per_cluster_auc": 0.72,
+      "std_per_cluster_auc": 0.0766,
+      "min_per_cluster_auc": 0.6637,
+      "max_per_cluster_auc": 0.8688,
+      "pooled_auc": 0.7529,
+      "pooled_accuracy": 0.701,
+      "pooled_f1": 0.6276,
+      "pooled_precision": 0.7448,
+      "pooled_recall": 0.5422,
+      "per_cluster": {
+        "0": {
+          "n_test": 271,
+          "n_test_agents": 111,
+          "n_test_humans": 160,
+          "n_train": 876,
+          "n_train_agents": 422,
+          "n_train_humans": 454,
+          "accuracy": 0.6531,
+          "f1": 0.4125,
+          "precision": 0.6735,
+          "recall": 0.2973,
+          "auc": 0.6666,
+          "both_classes_in_test": true
+        },
+        "1": {
+          "n_test": 434,
+          "n_test_agents": 272,
+          "n_test_humans": 162,
+          "n_train": 713,
+          "n_train_agents": 261,
+          "n_train_humans": 452,
+          "accuracy": 0.7028,
+          "f1": 0.7476,
+          "precision": 0.7992,
+          "recall": 0.7022,
+          "auc": 0.7148,
+          "both_classes_in_test": true
+        },
+        "2": {
+          "n_test": 262,
+          "n_test_agents": 75,
+          "n_test_humans": 187,
+          "n_train": 885,
+          "n_train_agents": 458,
+          "n_train_humans": 427,
+          "accuracy": 0.7061,
+          "f1": 0.2222,
+          "precision": 0.4583,
+          "recall": 0.1467,
+          "auc": 0.6637,
+          "both_classes_in_test": true
+        },
+        "3": {
+          "n_test": 88,
+          "n_test_agents": 20,
+          "n_test_humans": 68,
+          "n_train": 1059,
+          "n_train_agents": 513,
+          "n_train_humans": 546,
+          "accuracy": 0.6818,
+          "f1": 0.3333,
+          "precision": 0.3182,
+          "recall": 0.35,
+          "auc": 0.686,
+          "both_classes_in_test": true
+        },
+        "4": {
+          "n_test": 92,
+          "n_test_agents": 55,
+          "n_test_humans": 37,
+          "n_train": 1055,
+          "n_train_agents": 478,
+          "n_train_humans": 577,
+          "accuracy": 0.837,
+          "f1": 0.8624,
+          "precision": 0.8704,
+          "recall": 0.8545,
+          "auc": 0.8688,
+          "both_classes_in_test": true
+        }
+      }
+    }
+  },
+  "random_cv": {
+    "RandomForest": {
+      "auc_mean": 0.8029,
+      "auc_std": 0.027,
+      "accuracy_mean": 0.7299,
+      "f1_mean": 0.681
+    },
+    "GradientBoosting": {
+      "auc_mean": 0.8018,
+      "auc_std": 0.0271,
+      "accuracy_mean": 0.7295,
+      "f1_mean": 0.6982
+    }
+  },
+  "k_sensitivity": {
+    "3": {
+      "n_mixed_clusters": 3,
+      "n_clusters": 3,
+      "mean_fold_auc": 0.7672,
+      "pooled_auc": 0.7423
+    },
+    "5": {
+      "n_mixed_clusters": 5,
+      "n_clusters": 5,
+      "mean_fold_auc": 0.72,
+      "pooled_auc": 0.7529
+    },
+    "7": {
+      "n_mixed_clusters": 7,
+      "n_clusters": 7,
+      "mean_fold_auc": 0.686,
+      "pooled_auc": 0.7554
+    },
+    "10": {
+      "n_mixed_clusters": 10,
+      "n_clusters": 10,
+      "mean_fold_auc": 0.7061,
+      "pooled_auc": 0.7568
+    }
+  },
+  "comparison": {
+    "original_lopo_gbm_pooled_auc": 0.4221,
+    "cluster_lopo_gbm_pooled_auc": 0.7529,
+    "random_cv_gbm_mean_auc": 0.8018,
+    "delta_cluster_vs_original": 0.3308,
+    "delta_cluster_vs_random_cv": -0.0489
+  },
+  "diagnosis": "DOMAIN SHIFT CONFIRMED: Cluster-LOPO pooled AUC = 0.7529 >> original LOPO = 0.4221. The original LOPO's collapse to 0.42 was caused by single-class domain shift (each category being all-agent or all-human), NOT by the classifier's inability to separate agents from humans. With mixed-class behavioral clusters, the classifier maintains strong discrimination ability.",
+  "elapsed_seconds": 28.19
+}

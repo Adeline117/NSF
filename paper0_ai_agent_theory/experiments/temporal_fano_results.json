@@ -1,0 +1,304 @@
+{
+  "timestamp": "2026-04-16T15:26:43.384883",
+  "description": "Temporal Fano bound: computes MI and Fano ceiling separately on train (early blocks) and test (late blocks) to diagnose whether the IID Fano bound (97.2%) breaks down temporally.",
+  "dataset": {
+    "n_total_agents": 2744,
+    "n_with_temporal_data": 2744,
+    "n_train": 1372,
+    "n_test": 1372,
+    "median_split_block": 12161365,
+    "n_features": 31,
+    "feature_set": "X_31 (23 behavioral + 8 AI)",
+    "num_classes": 8,
+    "train_class_dist": {
+      "0": 129,
+      "1": 20,
+      "2": 444,
+      "3": 71,
+      "4": 14,
+      "5": 30,
+      "6": 653,
+      "7": 11
+    },
+    "test_class_dist": {
+      "0": 1,
+      "1": 34,
+      "2": 1225,
+      "4": 20,
+      "5": 65,
+      "6": 13,
+      "7": 14
+    }
+  },
+  "iid_baseline": {
+    "H_Y_bits": 1.6967,
+    "MI_joint_bits": 1.4374,
+    "H_Y_given_X_bits": 0.2593,
+    "fano": {
+      "h_y_bits": 1.6967,
+      "mi_bits": 1.4374,
+      "h_cond_bits": 0.2593,
+      "num_classes": 8,
+      "p_error_lower_loose": 0.0,
+      "p_error_lower_tight": 0.0276,
+      "accuracy_ceiling_loose": 1.0,
+      "accuracy_ceiling_tight": 0.9724
+    }
+  },
+  "train_split": {
+    "H_Y_bits": 1.9112,
+    "MI_joint_bits": 1.483,
+    "H_Y_given_X_bits": 0.4282,
+    "fano": {
+      "h_y_bits": 1.9112,
+      "mi_bits": 1.483,
+      "h_cond_bits": 0.4282,
+      "num_classes": 8,
+      "p_error_lower_loose": 0.0,
+      "p_error_lower_tight": 0.0502,
+      "accuracy_ceiling_loose": 1.0,
+      "accuracy_ceiling_tight": 0.9498
+    }
+  },
+  "test_split": {
+    "H_Y_bits": 0.7143,
+    "MI_joint_bits": 0.6337,
+    "H_Y_given_X_bits": 0.0806,
+    "fano": {
+      "h_y_bits": 0.7143,
+      "mi_bits": 0.6337,
+      "h_cond_bits": 0.0806,
+      "num_classes": 7,
+      "p_error_lower_loose": 0.0,
+      "p_error_lower_tight": 0.0072,
+      "accuracy_ceiling_loose": 1.0,
+      "accuracy_ceiling_tight": 0.9928
+    }
+  },
+  "cross_temporal": {
+    "description": "MI estimated by building k-NN on train-era feature space and querying test-era points. Measures how well train-era feature structure predicts test-era taxonomy labels.",
+    "H_Y_test_bits": 0.7143,
+    "MI_cross_bits": 0.421,
+    "H_Y_given_X_cross_bits": 0.2933,
+    "fano": {
+      "h_y_bits": 0.7143,
+      "mi_bits": 0.421,
+      "h_cond_bits": 0.2933,
+      "num_classes": 7,
+      "p_error_lower_loose": 0.0,
+      "p_error_lower_tight": 0.0328,
+      "accuracy_ceiling_loose": 1.0,
+      "accuracy_ceiling_tight": 0.9672
+    }
+  },
+  "mi_deltas": {
+    "MI_train_minus_test": 0.8492,
+    "MI_full_minus_test": 0.8037,
+    "MI_full_minus_test_pct": 55.9,
+    "MI_full_minus_cross": 1.0164,
+    "MI_full_minus_cross_pct": 70.7,
+    "fano_ceiling_train": 0.9498,
+    "fano_ceiling_test": 0.9928,
+    "fano_ceiling_cross": 0.9672,
+    "fano_ceiling_drop_train_to_test": -0.043
+  },
+  "per_feature_mi_comparison": {
+    "tx_interval_mean": {
+      "MI_train_bits": 0.0054,
+      "MI_test_bits": 0.0613,
+      "delta_bits": 0.0559,
+      "drop_pct": 1038.4
+    },
+    "tx_interval_std": {
+      "MI_train_bits": 0.031,
+      "MI_test_bits": 0.0541,
+      "delta_bits": 0.0231,
+      "drop_pct": 74.4
+    },
+    "tx_interval_skewness": {
+      "MI_train_bits": 0.0139,
+      "MI_test_bits": 0.0673,
+      "delta_bits": 0.0534,
+      "drop_pct": 384.1
+    },
+    "active_hour_entropy": {
+      "MI_train_bits": 0.0716,
+      "MI_test_bits": 0.1056,
+      "delta_bits": 0.034,
+      "drop_pct": 47.4
+    },
+    "night_activity_ratio": {
+      "MI_train_bits": 0.0255,
+      "MI_test_bits": 0.0505,
+      "delta_bits": 0.025,
+      "drop_pct": 97.7
+    },
+    "weekend_ratio": {
+      "MI_train_bits": 0.0341,
+      "MI_test_bits": 0.0738,
+      "delta_bits": 0.0396,
+      "drop_pct": 116.2
+    },
+    "burst_frequency": {
+      "MI_train_bits": 0.3024,
+      "MI_test_bits": 0.1295,
+      "delta_bits": -0.1729,
+      "drop_pct": -57.2
+    },
+    "gas_price_round_number_ratio": {
+      "MI_train_bits": 0.8029,
+      "MI_test_bits": 0.1328,
+      "delta_bits": -0.6701,
+      "drop_pct": -83.5
+    },
+    "gas_price_trailing_zeros_mean": {
+      "MI_train_bits": 0.7716,
+      "MI_test_bits": 0.1333,
+      "delta_bits": -0.6383,
+      "drop_pct": -82.7
+    },
+    "gas_limit_precision": {
+      "MI_train_bits": 0.1422,
+      "MI_test_bits": 0.0665,
+      "delta_bits": -0.0757,
+      "drop_pct": -53.3
+    },
+    "gas_price_cv": {
+      "MI_train_bits": 0.0,
+      "MI_test_bits": 0.0558,
+      "delta_bits": 0.0558,
+      "drop_pct": 0.0
+    },
+    "eip1559_priority_fee_precision": {
+      "MI_train_bits": 0.0192,
+      "MI_test_bits": 0.0089,
+      "delta_bits": -0.0104,
+      "drop_pct": -53.9
+    },
+    "gas_price_nonce_correlation": {
+      "MI_train_bits": 0.2309,
+      "MI_test_bits": 0.0279,
+      "delta_bits": -0.2031,
+      "drop_pct": -87.9
+    },
+    "unique_contracts_ratio": {
+      "MI_train_bits": 0.091,
+      "MI_test_bits": 0.0784,
+      "delta_bits": -0.0126,
+      "drop_pct": -13.8
+    },
+    "top_contract_concentration": {
+      "MI_train_bits": 0.2127,
+      "MI_test_bits": 0.0447,
+      "delta_bits": -0.1681,
+      "drop_pct": -79.0
+    },
+    "method_id_diversity": {
+      "MI_train_bits": 0.1724,
+      "MI_test_bits": 0.1076,
+      "delta_bits": -0.0648,
+      "drop_pct": -37.6
+    },
+    "contract_to_eoa_ratio": {
+      "MI_train_bits": 0.1417,
+      "MI_test_bits": 0.0334,
+      "delta_bits": -0.1083,
+      "drop_pct": -76.4
+    },
+    "sequential_pattern_score": {
+      "MI_train_bits": 0.3406,
+      "MI_test_bits": 0.113,
+      "delta_bits": -0.2276,
+      "drop_pct": -66.8
+    },
+    "unlimited_approve_ratio": {
+      "MI_train_bits": 0.1961,
+      "MI_test_bits": 0.1005,
+      "delta_bits": -0.0956,
+      "drop_pct": -48.8
+    },
+    "approve_revoke_ratio": {
+      "MI_train_bits": 0.1058,
+      "MI_test_bits": 0.0089,
+      "delta_bits": -0.0969,
+      "drop_pct": -91.6
+    },
+    "unverified_contract_approve_ratio": {
+      "MI_train_bits": 0.1859,
+      "MI_test_bits": 0.1021,
+      "delta_bits": -0.0838,
+      "drop_pct": -45.1
+    },
+    "multi_protocol_interaction_count": {
+      "MI_train_bits": 0.2272,
+      "MI_test_bits": 0.0749,
+      "delta_bits": -0.1523,
+      "drop_pct": -67.0
+    },
+    "flash_loan_usage": {
+      "MI_train_bits": 0.0,
+      "MI_test_bits": 0.0,
+      "delta_bits": 0.0,
+      "drop_pct": 0.0
+    },
+    "gas_price_precision": {
+      "MI_train_bits": 0.8026,
+      "MI_test_bits": 0.4074,
+      "delta_bits": -0.3952,
+      "drop_pct": -49.2
+    },
+    "hour_entropy": {
+      "MI_train_bits": 0.3006,
+      "MI_test_bits": 0.3937,
+      "delta_bits": 0.093,
+      "drop_pct": 30.9
+    },
+    "behavioral_consistency": {
+      "MI_train_bits": 0.254,
+      "MI_test_bits": 0.3738,
+      "delta_bits": 0.1198,
+      "drop_pct": 47.2
+    },
+    "action_sequence_perplexity": {
+      "MI_train_bits": 0.4328,
+      "MI_test_bits": 0.4079,
+      "delta_bits": -0.0248,
+      "drop_pct": -5.7
+    },
+    "error_recovery_pattern": {
+      "MI_train_bits": 0.3078,
+      "MI_test_bits": 0.3645,
+      "delta_bits": 0.0567,
+      "drop_pct": 18.4
+    },
+    "response_latency_variance": {
+      "MI_train_bits": 0.2581,
+      "MI_test_bits": 0.3695,
+      "delta_bits": 0.1114,
+      "drop_pct": 43.1
+    },
+    "gas_nonce_gap_regularity": {
+      "MI_train_bits": 0.3489,
+      "MI_test_bits": 0.391,
+      "delta_bits": 0.0422,
+      "drop_pct": 12.1
+    },
+    "eip1559_tip_precision": {
+      "MI_train_bits": 0.9605,
+      "MI_test_bits": 0.4504,
+      "delta_bits": -0.5101,
+      "drop_pct": -53.1
+    }
+  },
+  "per_feature_sum_mi_train_bits": 7.7895,
+  "per_feature_sum_mi_test_bits": 4.7888,
+  "per_feature_sum_delta_bits": -3.0007,
+  "paper1_temporal_holdout_auc": {
+    "random_cv_auc_gbm": 0.8018,
+    "temporal_holdout_auc_gbm": 0.6645,
+    "delta": -0.1373,
+    "note": "From paper1 temporal_holdout_results.json (GBM)"
+  },
+  "diagnosis": "DUAL SHIFT (label + feature distributions): H(Y) drops 37% from train to test due to label distribution shift (test is 89% one class). Raw MI drops from 1.483 to 0.634 bits (ratio 0.43), but the Fano ceiling RISES to 99.3% because the near-pure test set is intrinsically easier. The CROSS-TEMPORAL MI = 0.421 bits (ceiling 96.7%) reveals the real degradation: train-era feature neighborhoods lose 34% of the within-test MI, confirming covariate shift. Per-feature: gas_price features collapse (-83%), while AI-detection features (behavioral_consistency, error_recovery_pattern) are temporally stable. This explains the Paper 1 temporal holdout AUC drop from 0.80 to 0.67.",
+  "key_interpretation": "IID Fano ceiling = 97.2%. Train Fano ceiling = 95.0%. Test Fano ceiling = 99.3%. Cross-temporal Fano ceiling = 96.7%. MI drops from 1.4830 (train) to 0.6337 (test) bits."
+}
