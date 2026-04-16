@@ -1,0 +1,5 @@
+# TCPI demo — Python dependencies.
+# Foundry-only paths (forge test + dry_run.py) don't need these.
+web3>=7.0            # on-chain calls from the MCP server
+# Optional, only for path 3 (live Claude agent):
+#   pip install mcp claude-agent-sdk anthropic
