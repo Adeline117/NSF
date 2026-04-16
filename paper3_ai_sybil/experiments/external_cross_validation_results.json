@@ -1,0 +1,226 @@
+{
+  "hop_protocol": {
+    "source": "Hop Protocol",
+    "total_external_sybils": 14195,
+    "external_in_hascidb_universe": 2979,
+    "external_outside_hascidb": 11216,
+    "overlap_pct_of_external": 20.99,
+    "hascidb_also_flags_sybil": 1582,
+    "hascidb_detection_rate": 53.11,
+    "hascidb_misses_fn": 1397,
+    "hascidb_fn_rate": 46.89,
+    "hascidb_sybils_external_misses": 790998,
+    "hascidb_total_sybils": 792580,
+    "different_detection_surface_pct": 99.8,
+    "cohens_kappa_overlap_only": 0.0,
+    "cohens_kappa_full_universe": 0.0022
+  },
+  "layerzero": {
+    "source": "LayerZero",
+    "total_external_sybils": 21395,
+    "external_in_hascidb_universe": 927,
+    "external_outside_hascidb": 20468,
+    "overlap_pct_of_external": 4.33,
+    "hascidb_also_flags_sybil": 181,
+    "hascidb_detection_rate": 19.53,
+    "hascidb_misses_fn": 746,
+    "hascidb_fn_rate": 80.47,
+    "hascidb_sybils_external_misses": 792399,
+    "hascidb_total_sybils": 792580,
+    "different_detection_surface_pct": 99.98,
+    "cohens_kappa_overlap_only": 0.0,
+    "cohens_kappa_full_universe": -0.0001
+  },
+  "combined_external": {
+    "source": "Combined (HOP + LayerZero)",
+    "total_external_sybils": 35520,
+    "external_in_hascidb_universe": 3888,
+    "external_outside_hascidb": 31632,
+    "overlap_pct_of_external": 10.95,
+    "hascidb_also_flags_sybil": 1751,
+    "hascidb_detection_rate": 45.04,
+    "hascidb_misses_fn": 2137,
+    "hascidb_fn_rate": 54.96,
+    "hascidb_sybils_external_misses": 790829,
+    "hascidb_total_sybils": 792580,
+    "different_detection_surface_pct": 99.78,
+    "cohens_kappa_overlap_only": 0.0,
+    "cohens_kappa_full_universe": 0.002,
+    "hop_layerzero_overlap_count": 70
+  },
+  "official_lists_summary": {
+    "1inch": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "ampleforth": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "apecoin": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "badger": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "blur_s1": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "blur_s2": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "dydx": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "eigenlayer": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "ens": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "etherfi": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "gitcoin": {
+      "has_official_list": true,
+      "official_sybil_count": 27984
+    },
+    "looksrare": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "paraswap": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "uniswap": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    },
+    "x2y2": {
+      "has_official_list": false,
+      "official_sybil_count": 0
+    }
+  },
+  "gitcoin_official": {
+    "project": "gitcoin",
+    "official_sybils_total": 27984,
+    "official_in_hascidb": 140,
+    "official_outside_hascidb": 27844,
+    "hascidb_catches_official": 61,
+    "hascidb_catch_rate": 43.57,
+    "hascidb_misses_official": 79,
+    "hascidb_miss_rate": 56.43,
+    "hascidb_extra_detections": 9930,
+    "hascidb_total_sybils_gitcoin": 9991,
+    "extra_detection_pct": 99.39,
+    "cohens_kappa": 0.0005,
+    "note": "Only Gitcoin (via FDD SAD model) has a published official sybil list among the 15 projects"
+  },
+  "llm_sybil_cross_check": {
+    "llm_sybil_count": 347,
+    "llm_projects": [
+      "1inch",
+      "ampleforth",
+      "apecoin",
+      "badger",
+      "blur_s1",
+      "blur_s2",
+      "dydx",
+      "eigenlayer",
+      "ens",
+      "etherfi",
+      "gitcoin",
+      "looksrare",
+      "paraswap",
+      "pengu",
+      "uniswap",
+      "x2y2"
+    ],
+    "llm_in_hop_list": 0,
+    "llm_in_layerzero_list": 0,
+    "llm_in_hascidb_universe": 0,
+    "llm_caught_by_hascidb_indicators": 0,
+    "llm_evasion_rate_hascidb": 100.0,
+    "llm_indicator_means": {
+      "BT": 2.6531,
+      "BW": 5.3662,
+      "HF": 0.564,
+      "RF": 0.3363,
+      "MA": 2.4797
+    },
+    "real_sybil_indicator_means_gitcoin": {
+      "BT": 0.2455,
+      "BW": 2.3524,
+      "HF": 0.3406,
+      "RF": 0.5557,
+      "MA": 39.361
+    },
+    "real_clean_indicator_means_gitcoin": {
+      "BT": 0.021,
+      "BW": 0.4601,
+      "HF": 0.2093,
+      "RF": 0.0067,
+      "MA": 0.4092
+    },
+    "detection_ceiling": {
+      "hop_total_sybils": 14195,
+      "hascidb_total_sybils": 792580,
+      "hop_hascidb_overlap_addresses": 2979,
+      "both_agree_sybil": 1582,
+      "hop_only_sybil_hascidb_clean": 1397,
+      "hascidb_only_sybil_not_in_hop": 790998,
+      "union_estimate_unique_sybils": 805193,
+      "agreement_rate_on_overlap": 53.11,
+      "interpretation": "HOP and HasciDB agree on only 1,582 of 2,979 overlapping addresses (53.1%). This means different methods see fundamentally different sybil populations. Union of both detectors finds 805,193 unique sybils \u2014 each method alone misses a large fraction. LLM sybils that evade HasciDB indicators (347 of 347) would also be invisible to HOP since they are synthetic and not in any on-chain list."
+    }
+  },
+  "agreement_matrix": {
+    "HasciDB": {
+      "HasciDB": 1.0,
+      "HOP": 0.1522,
+      "LayerZero": -0.0504,
+      "Gitcoin_FDD": -0.0749
+    },
+    "HOP": {
+      "HasciDB": 0.1522,
+      "HOP": 1.0,
+      "LayerZero": -0.0857,
+      "Gitcoin_FDD": -0.4028
+    },
+    "LayerZero": {
+      "HasciDB": -0.0504,
+      "HOP": -0.0857,
+      "LayerZero": 1.0,
+      "Gitcoin_FDD": -0.1147
+    },
+    "Gitcoin_FDD": {
+      "HasciDB": -0.0749,
+      "HOP": -0.4028,
+      "LayerZero": -0.1147,
+      "Gitcoin_FDD": 1.0
+    }
+  },
+  "headline": {
+    "hascidb_universe": 3282568,
+    "hascidb_sybil_count": 792580,
+    "hascidb_sybil_rate_pct": 24.15,
+    "hop_detection_rate_on_overlap": 53.11,
+    "layerzero_detection_rate_on_overlap": 19.53,
+    "gitcoin_catch_rate": 43.57,
+    "hop_kappa": 0.0022,
+    "layerzero_kappa": -0.0001,
+    "gitcoin_kappa": 0.0005,
+    "llm_evasion_rate": 100.0,
+    "detection_ceiling_union": 805193,
+    "key_finding": "HasciDB detects 53.11% of HOP sybils and 19.53% of LayerZero sybils in the overlapping address space. On Gitcoin (the only project with an official list), HasciDB catches 43.57% of FDD-labeled sybils. Low inter-method kappas (0.0022--0.0001) confirm that different detection methods see fundamentally different sybil populations. LLM sybils evade HasciDB indicators at 100.0% and are invisible to all external methods (0 matches in HOP/LayerZero), establishing the AI sybil threat for P3."
+  }
+}
