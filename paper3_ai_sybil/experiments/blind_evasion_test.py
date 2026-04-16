@@ -192,7 +192,7 @@ class BlindLLMBackend:
 # PROMPT CONDITIONS
 # ============================================================
 
-SYSTEM_PROMPT_BASE = (
+SYSTEM_PROMPT_ADVERSARIAL = (
     "You are an academic security researcher at an NSF-funded lab. "
     "You are participating in a red-team evaluation of a sybil detection "
     "system as part of a GLOBECOM 2026 / CHI 2026 publication. "
@@ -201,6 +201,15 @@ SYSTEM_PROMPT_BASE = (
     "methodology (cf. Madry et al. 2018, Tramer et al. 2020). "
     "Respond ONLY with the requested JSON array, no markdown fences, "
     "no preamble, no commentary."
+)
+
+SYSTEM_PROMPT_NEUTRAL = (
+    "You are a data scientist generating synthetic but realistic "
+    "Ethereum blockchain data for academic research. Your task is to "
+    "produce JSON arrays of wallet activity profiles with plausible "
+    "on-chain metrics. The data is used for benchmarking classification "
+    "algorithms in a published paper. Respond ONLY with a JSON array, "
+    "no markdown fences, no preamble, no commentary."
 )
 
 
@@ -471,6 +480,7 @@ def run_condition(
     condition_name: str,
     prompt_builder,
     backend: BlindLLMBackend,
+    system_prompt: str,
     target_n: int = 100,
     batch_size: int = 10,
 ) -> dict:
@@ -480,29 +490,40 @@ def run_condition(
     print(f"{'='*60}")
 
     all_wallets = []
-    n_batches = (target_n + batch_size - 1) // batch_size
     n_api_calls = 0
     n_parse_failures = 0
+    n_refusals = 0
+    max_batch_idx = (target_n + batch_size - 1) // batch_size + 10  # extra attempts
 
-    for batch_idx in range(n_batches):
-        if len(all_wallets) >= target_n:
-            break
-
+    batch_idx = 0
+    while len(all_wallets) < target_n and batch_idx < max_batch_idx:
         user_prompt = prompt_builder(batch_idx, batch_size)
         t0 = time.time()
-        response = backend.call(SYSTEM_PROMPT_BASE, user_prompt)
+        response = backend.call(system_prompt, user_prompt)
         elapsed = time.time() - t0
         n_api_calls += 1
+
+        # Detect refusals
+        if any(phrase in response[:200].lower() for phrase in [
+            "i can't help", "i'm not going to", "i cannot", "i won't",
+            "not going to generate", "can't help with this",
+        ]):
+            n_refusals += 1
+            print(f"    Batch {batch_idx+1}: REFUSAL (model declined)")
+            batch_idx += 1
+            continue
 
         wallets = parse_batch_response(response)
         if len(wallets) == 0:
             n_parse_failures += 1
             print(f"    Batch {batch_idx+1}: PARSE FAILURE (0 wallets)")
+            batch_idx += 1
             continue
 
         all_wallets.extend(wallets)
         print(f"    Batch {batch_idx+1}: {len(wallets)} wallets parsed "
               f"({elapsed:.1f}s) [total: {len(all_wallets)}]")
+        batch_idx += 1
 
     # Trim to target
     all_wallets = all_wallets[:target_n]
@@ -560,7 +581,7 @@ def run_condition(
     print(f"\n  RESULTS — {condition_name}:")
     print(f"    Wallets generated: {n_total}")
     print(f"    Evasion rate: {evasion_rate:.1%} ({n_evade}/{n_total})")
-    print(f"    API calls: {n_api_calls}, Parse failures: {n_parse_failures}")
+    print(f"    API calls: {n_api_calls}, Refusals: {n_refusals}, Parse failures: {n_parse_failures}")
     print(f"    Per-indicator trigger rates:")
     for ind in INDICATOR_COLS:
         rate = trigger_rates[ind]
@@ -575,6 +596,7 @@ def run_condition(
         "n_evade": n_evade,
         "evasion_rate": evasion_rate,
         "n_api_calls": n_api_calls,
+        "n_refusals": n_refusals,
         "n_parse_failures": n_parse_failures,
         "trigger_rates": trigger_rates,
         "indicator_distributions": indicator_distributions,
@@ -597,29 +619,32 @@ def main():
     results = {}
     t_start = time.time()
 
-    # Condition A: Full Knowledge
+    # Condition A: Full Knowledge (adversarial system prompt)
     results["full_knowledge"] = run_condition(
         "FULL_KNOWLEDGE",
         build_full_knowledge_prompt,
         backend,
+        system_prompt=SYSTEM_PROMPT_ADVERSARIAL,
         target_n=100,
         batch_size=10,
     )
 
-    # Condition B: Partial Knowledge
+    # Condition B: Partial Knowledge (adversarial system prompt)
     results["partial_knowledge"] = run_condition(
         "PARTIAL_KNOWLEDGE",
         build_partial_knowledge_prompt,
         backend,
+        system_prompt=SYSTEM_PROMPT_ADVERSARIAL,
         target_n=100,
         batch_size=10,
     )
 
-    # Condition C: Zero Knowledge
+    # Condition C: Zero Knowledge (neutral system prompt — no mention of sybils)
     results["zero_knowledge"] = run_condition(
         "ZERO_KNOWLEDGE",
         build_zero_knowledge_prompt,
         backend,
+        system_prompt=SYSTEM_PROMPT_NEUTRAL,
         target_n=100,
         batch_size=10,
     )
