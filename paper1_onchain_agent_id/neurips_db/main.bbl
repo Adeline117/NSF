@@ -1,0 +1,65 @@
+\begin{thebibliography}{10}
+
+\bibitem{cresci2017paradigm}
+Stefano Cresci, Roberto Di~Pietro, Marinella Petrocchi, Angelo Spognardi, and
+  Maurizio Tesconi.
+\newblock The paradigm-shift of social spambots: Evidence, theories, and tools
+  for the arms race.
+\newblock In {\em Proc. of the Web Conference Companion (WWW)}, 2017.
+
+\bibitem{gebru2018datasheets}
+Timnit Gebru, Jamie Morgenstern, Briana Vecchione, Jennifer~Wortman Vaughan,
+  Hanna Wallach, Hal Daum{\'e}~III, and Kate Crawford.
+\newblock Datasheets for datasets.
+\newblock {\em arXiv preprint arXiv:1803.09010}, 2018.
+
+\bibitem{he2026agentsurvey}
+Yu~He et~al.
+\newblock A survey on {AI} agents on blockchain.
+\newblock {\em arXiv:2601.04583}, 2026.
+
+\bibitem{li2024telegram}
+Yichen Li, Stefanos Chaliasos, and Benjamin Livshits.
+\newblock Telegram trading bots: An empirical study.
+\newblock In {\em Proc. Financial Cryptography (FC)}, 2024.
+
+\bibitem{patel2021phishing}
+V.~Patel et~al.
+\newblock {GNN}-based ethereum phishing detection.
+\newblock In {\em Proc. BigData}, 2021.
+
+\bibitem{shamsi2023gnnsurvey}
+Kiarash Shamsi et~al.
+\newblock A survey of {GNN}s for blockchain analytics.
+\newblock {\em arXiv preprint}, 2023.
+
+\bibitem{tikhomirov2021phishing}
+Sergei Tikhomirov and Valery Ivanitskiy.
+\newblock Detecting phishing addresses on {E}thereum via transaction graph.
+\newblock In {\em Proc. of the Web Conference (WWW) Companion}, 2021.
+
+\bibitem{varol2017online}
+Onur Varol, Emilio Ferrara, Clayton~A. Davis, Filippo Menczer, and Alessandro
+  Flammini.
+\newblock Online human-bot interactions: Detection, estimation, and
+  characterization.
+\newblock In {\em Proc. ICWSM}, 2017.
+
+\bibitem{victor2023fingerprinting}
+Friedhelm Victor, Andrea Weintraud, and Merve Haliloglu.
+\newblock Behavioral fingerprinting of blockchain bots.
+\newblock {\em arXiv preprint}, 2023.
+
+\bibitem{wang2024airisks}
+X.~Wang et~al.
+\newblock Risks of {AI} agents with cryptocurrency access.
+\newblock {\em arXiv preprint}, 2024.
+
+\bibitem{weber2019antimoney}
+Mark Weber, Giacomo Domeniconi, Jie Chen, Daniel Karl~I. Weidele, Claudio
+  Bellei, Tom Robinson, and Charles~E. Leiserson.
+\newblock Anti-money laundering in bitcoin: Experimenting with graph
+  convolutional networks for financial forensics.
+\newblock In {\em KDD Anti-Money Laundering Workshop}, 2019.
+
+\end{thebibliography}
