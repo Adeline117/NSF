@@ -1,0 +1,222 @@
+\begin{thebibliography}{10}
+
+\bibitem{daian2020flashboys}
+Philip Daian, Steven Goldfeder, Tyler Kell, Yunqi Li, Xueyuan Zhao, Iddo
+  Bentov, Lorenz Breidenbach, and Ari Juels.
+\newblock Flash boys 2.0: Frontrunning in decentralized exchanges, miner
+  extractable value, and consensus instability.
+\newblock In {\em IEEE Symposium on Security and Privacy (S\&P)}. IEEE, 2020.
+
+\bibitem{qin2022quantifying}
+Kaihua Qin, Liyi Zhou, and Arthur Gervais.
+\newblock Quantifying blockchain extractable value: How dark is the forest?
+\newblock In {\em IEEE Symposium on Security and Privacy (S\&P)}. IEEE, 2022.
+
+\bibitem{eu_ai_act_2024}
+{European Union}.
+\newblock Regulation (eu) 2024/1689 of the european parliament and of the
+  council laying down harmonised rules on artificial intelligence (ai act).
+\newblock Official Journal of the European Union, L~series, 2024.
+
+\bibitem{us_eo_14110}
+{The White House}.
+\newblock Executive order 14110 on the safe, secure, and trustworthy
+  development and use of artificial intelligence.
+\newblock Federal Register, 88 FR 75191, 2023.
+
+\bibitem{uk_ai_regulation_2023}
+{UK Department for Science, Innovation and Technology}.
+\newblock A pro-innovation approach to ai regulation.
+\newblock Command Paper CP 815, 2023.
+
+\bibitem{varol2017}
+Onur Varol, Emilio Ferrara, Clayton~A. Davis, Filippo Menczer, and Alessandro
+  Flammini.
+\newblock Online human-bot interactions: Detection, estimation, and
+  characterization.
+\newblock {\em Proceedings of the International AAAI Conference on Web and
+  Social Media}, 11(1), 2017.
+
+\bibitem{cresci2020detecting}
+Stefano Cresci.
+\newblock Detecting malicious social bots: Story of a never-ending clash.
+\newblock {\em Communications of the ACM}, 63(10), 2020.
+
+\bibitem{torres2021frontrunner}
+Christof~Ferreira Torres, Ramiro Camino, and Radu State.
+\newblock Frontrunner jones and the raiders of the dark forest: An empirical
+  study of frontrunning on the ethereum blockchain.
+\newblock In {\em USENIX Security Symposium}. USENIX Association, 2021.
+
+\bibitem{francois2020actors}
+Camille Fran{\c{c}}ois.
+\newblock Actors, behaviors, content: A disinformation abc.
+\newblock {\em Transatlantic Working Group on Content Moderation}, 2020.
+
+\bibitem{mitchell2023detectgpt}
+Eric Mitchell, Yoonho Lee, Alexander Khazatsky, Christopher~D. Manning, and
+  Chelsea Finn.
+\newblock Detectgpt: Zero-shot machine-generated text detection using
+  probability curvature.
+\newblock {\em ICML}, 2023.
+
+\bibitem{sadasivan2023}
+Vinu~Sankar Sadasivan, Aounon Kumar, Sriram Balasubramanian, Wenxiao Wang, and
+  Soheil Feizi.
+\newblock Can ai-generated text be reliably detected?
+\newblock {\em arXiv preprint arXiv:2303.11156}, 2023.
+
+\bibitem{wang2024survey}
+Lei Wang, Chen Ma, Xueyang Feng, et~al.
+\newblock A survey on large language model based autonomous agents.
+\newblock {\em Frontiers of Computer Science}, 18(6), 2024.
+
+\bibitem{xi2023rise}
+Zhiheng Xi, Wenxiang Chen, Xin Guo, et~al.
+\newblock The rise and potential of large language model based agents: A
+  survey.
+\newblock {\em arXiv preprint arXiv:2309.07864}, 2023.
+
+\bibitem{park2023generative}
+Joon~Sung Park, Joseph~C. O'Brien, Carrie~J. Cai, Meredith~Ringel Morris, Percy
+  Liang, and Michael~S. Bernstein.
+\newblock Generative agents: Interactive simulacra of human behavior.
+\newblock In {\em UIST '23}. ACM, 2023.
+
+\bibitem{chan2023harms}
+Alan Chan, Rebecca Salganik, Alva Markelius, et~al.
+\newblock Harms from increasingly agentic algorithmic systems.
+\newblock 2023.
+
+\bibitem{cover2006}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock {\em Elements of Information Theory}.
+\newblock Wiley-Interscience, 2 edition, 2006.
+
+\bibitem{biship2006prml}
+Christopher~M. Bishop.
+\newblock {\em Pattern Recognition and Machine Learning}.
+\newblock Springer, 2006.
+
+\bibitem{autonolas2022}
+{Autonolas}.
+\newblock Autonolas whitepaper: Off-chain services co-owned and co-operated.
+\newblock \url{https://www.autonolas.network/whitepaper.pdf}, 2022.
+
+\bibitem{eliza2024}
+{AI16Z Team}.
+\newblock Eliza: The ai16z agent framework.
+\newblock \url{https://github.com/ai16z/eliza}, 2024.
+
+\bibitem{flashbots2021}
+{Flashbots}.
+\newblock Mev-boost and proposer-builder separation.
+\newblock \url{https://docs.flashbots.net/}, 2021.
+
+\bibitem{kraskov2004estimating}
+Alexander Kraskov, Harald St{\"o}gbauer, and Peter Grassberger.
+\newblock Estimating mutual information.
+\newblock {\em Physical Review E}, 69(6):066138, 2004.
+
+\bibitem{yao2023react}
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan,
+  and Yuan Cao.
+\newblock React: Synergizing reasoning and acting in language models.
+\newblock In {\em ICLR}, 2023.
+
+\bibitem{schick2023toolformer}
+Timo Schick, Jane Dwivedi-Yu, Roberto Dess{\`\i}, Roberta Raileanu, Maria
+  Lomeli, Luke Zettlemoyer, Nicola Cancedda, and Thomas Scialom.
+\newblock Toolformer: Language models can teach themselves to use tools.
+\newblock In {\em NeurIPS}, 2023.
+
+\bibitem{costan2016intelsgx}
+Victor Costan and Srinivas Devadas.
+\newblock Intel sgx explained.
+\newblock {\em IACR Cryptology ePrint Archive}, 2016.
+
+\bibitem{tramer2018}
+Florian Tram{\`e}r and Dan Boneh.
+\newblock Slalom: Fast, verifiable and private execution of neural networks in
+  trusted hardware.
+\newblock In {\em ICLR}, 2019.
+
+\bibitem{boneh2020zkp}
+Dan Boneh, Anca Nitulescu, et~al.
+\newblock A survey of succinct non-interactive arguments of knowledge.
+\newblock {\em Commun.\ ACM}, 2020.
+
+\bibitem{sun2023attestedinference}
+Jiachen Sun et~al.
+\newblock Attested inference: Integrity proofs for machine learning outputs.
+\newblock {\em IEEE S\&P Workshops}, 2023.
+
+\bibitem{anderljung2023frontier}
+Markus Anderljung et~al.
+\newblock Frontier ai regulation: Managing emerging risks to public safety.
+\newblock {\em arXiv preprint arXiv:2307.03718}, 2023.
+
+\bibitem{bengio2024managing}
+Yoshua Bengio, Geoffrey Hinton, Andrew Yao, et~al.
+\newblock Managing extreme ai risks amid rapid progress.
+\newblock {\em Science}, 384(6698), 2024.
+
+\bibitem{raji2020closing}
+Inioluwa~Deborah Raji et~al.
+\newblock Closing the ai accountability gap: Defining an end-to-end framework
+  for internal algorithmic auditing.
+\newblock {\em FAccT}, 2020.
+
+\bibitem{metaxa2021auditing}
+Danaë Metaxa et~al.
+\newblock Auditing algorithms: Understanding algorithmic systems from the
+  outside in.
+\newblock {\em Foundations and Trends in HCI}, 2021.
+
+\bibitem{koshiyama2021algorithmic}
+Adriano Koshiyama et~al.
+\newblock Towards algorithm auditing: A survey on managing legal, ethical and
+  technological risks of ai, ml and associated algorithms.
+\newblock {\em Journal of Risk Management}, 2021.
+
+\bibitem{franklin1996agent}
+Stan Franklin and Art Graesser.
+\newblock Is it an agent, or just a program? a taxonomy for autonomous agents.
+\newblock In {\em ATAL}. Springer-Verlag, 1996.
+
+\bibitem{wooldridge1995intelligent}
+Michael Wooldridge and Nicholas~R. Jennings.
+\newblock Intelligent agents: Theory and practice.
+\newblock {\em The Knowledge Engineering Review}, 10(2):115--152, 1995.
+
+\bibitem{jennings1998roadmap}
+Nicholas~R. Jennings, Katia Sycara, and Michael Wooldridge.
+\newblock A roadmap of agent research and development.
+\newblock {\em Autonomous Agents and Multi-Agent Systems}, 1(1):7--38, 1998.
+
+\bibitem{gao2017estimating}
+Weihao Gao, Sreeram Kannan, Sewoong Oh, and Pramod Viswanath.
+\newblock Estimating mutual information for discrete-continuous mixtures.
+\newblock {\em NeurIPS}, 2017.
+
+\bibitem{paninski2003}
+Liam Paninski.
+\newblock Estimation of entropy and mutual information.
+\newblock {\em Neural Computation}, 15(6):1191--1253, 2003.
+
+\bibitem{efron1979bootstrap}
+Bradley Efron.
+\newblock Bootstrap methods: Another look at the jackknife.
+\newblock {\em The Annals of Statistics}, 7(1):1--26, 1979.
+
+\bibitem{scott2015hdbscan}
+Leland McInnes, John Healy, and Steve Astels.
+\newblock Hdbscan: Hierarchical density-based clustering.
+\newblock {\em Journal of Open Source Software}, 2017.
+
+\bibitem{cohen1988statistical}
+Jacob Cohen.
+\newblock {\em Statistical Power Analysis for the Behavioral Sciences}.
+\newblock Lawrence Erlbaum Associates, 2 edition, 1988.
+
+\end{thebibliography}

@@ -1,0 +1,468 @@
+% ============================================================================
+% Bibliography for the NatMI version of Paper 0. Extends paper0/latex/main.bib
+% with the information-theoretic, policy, and cross-domain references needed
+% for the reframed manuscript.
+% ============================================================================
+
+% ---- Information theory, estimation, classical ML bounds ------------------
+
+@book{cover2006,
+  title     = {Elements of Information Theory},
+  author    = {Cover, Thomas M. and Thomas, Joy A.},
+  edition   = {2},
+  year      = {2006},
+  publisher = {Wiley-Interscience}
+}
+
+@article{kraskov2004estimating,
+  title   = {Estimating Mutual Information},
+  author  = {Kraskov, Alexander and St{\"o}gbauer, Harald and Grassberger, Peter},
+  journal = {Physical Review E},
+  volume  = {69},
+  number  = {6},
+  pages   = {066138},
+  year    = {2004}
+}
+
+@book{biship2006prml,
+  title     = {Pattern Recognition and Machine Learning},
+  author    = {Bishop, Christopher M.},
+  year      = {2006},
+  publisher = {Springer}
+}
+
+@article{fano1961,
+  title   = {Transmission of Information: A Statistical Theory of Communications},
+  author  = {Fano, Robert M.},
+  journal = {MIT Press / American Journal of Physics},
+  year    = {1961}
+}
+
+@article{scott2015hdbscan,
+  title     = {HDBSCAN: Hierarchical Density-Based Clustering},
+  author    = {McInnes, Leland and Healy, John and Astels, Steve},
+  journal   = {Journal of Open Source Software},
+  year      = {2017}
+}
+
+% ---- AI governance / policy ----------------------------------------------
+
+@misc{eu_ai_act_2024,
+  title        = {Regulation (EU) 2024/1689 of the European Parliament and of the Council laying down harmonised rules on artificial intelligence (AI Act)},
+  author       = {{European Union}},
+  year         = {2024},
+  howpublished = {Official Journal of the European Union, L~series}
+}
+
+@misc{us_eo_14110,
+  title        = {Executive Order 14110 on the Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence},
+  author       = {{The White House}},
+  year         = {2023},
+  howpublished = {Federal Register, 88 FR 75191}
+}
+
+@misc{uk_ai_regulation_2023,
+  title        = {A Pro-Innovation Approach to AI Regulation},
+  author       = {{UK Department for Science, Innovation and Technology}},
+  year         = {2023},
+  howpublished = {Command Paper CP 815}
+}
+
+@article{bengio2024managing,
+  title   = {Managing Extreme AI Risks amid Rapid Progress},
+  author  = {Bengio, Yoshua and Hinton, Geoffrey and Yao, Andrew and others},
+  journal = {Science},
+  volume  = {384},
+  number  = {6698},
+  year    = {2024}
+}
+
+% ---- AI agent detection / provenance / watermarking ---------------------
+
+@article{mitchell2023detectgpt,
+  title   = {DetectGPT: Zero-Shot Machine-Generated Text Detection Using Probability Curvature},
+  author  = {Mitchell, Eric and Lee, Yoonho and Khazatsky, Alexander and Manning, Christopher D. and Finn, Chelsea},
+  journal = {ICML},
+  year    = {2023}
+}
+
+@article{sadasivan2023,
+  title   = {Can AI-Generated Text be Reliably Detected?},
+  author  = {Sadasivan, Vinu Sankar and Kumar, Aounon and Balasubramanian, Sriram and Wang, Wenxiao and Feizi, Soheil},
+  journal = {arXiv preprint arXiv:2303.11156},
+  year    = {2023}
+}
+
+@article{kirchenbauer2023watermark,
+  title   = {A Watermark for Large Language Models},
+  author  = {Kirchenbauer, John and Geiping, Jonas and Wen, Yuxin and Katz, Jonathan and Miers, Ian and Goldstein, Tom},
+  journal = {ICML},
+  year    = {2023}
+}
+
+@article{varol2017,
+  title   = {Online Human-Bot Interactions: Detection, Estimation, and Characterization},
+  author  = {Varol, Onur and Ferrara, Emilio and Davis, Clayton A. and Menczer, Filippo and Flammini, Alessandro},
+  journal = {Proceedings of the International AAAI Conference on Web and Social Media},
+  volume  = {11},
+  number  = {1},
+  year    = {2017}
+}
+
+@article{cresci2020detecting,
+  title   = {Detecting Malicious Social Bots: Story of a Never-Ending Clash},
+  author  = {Cresci, Stefano},
+  journal = {Communications of the ACM},
+  volume  = {63},
+  number  = {10},
+  year    = {2020}
+}
+
+@article{francois2020actors,
+  title   = {Actors, Behaviors, Content: A Disinformation ABC},
+  author  = {Fran{\c{c}}ois, Camille},
+  journal = {Transatlantic Working Group on Content Moderation},
+  year    = {2020}
+}
+
+% ---- Blockchain agent & MEV empirics (subset of paper0 main.bib) --------
+
+@inproceedings{daian2020flashboys,
+  title     = {Flash Boys 2.0: Frontrunning in Decentralized Exchanges, Miner Extractable Value, and Consensus Instability},
+  author    = {Daian, Philip and Goldfeder, Steven and Kell, Tyler and Li, Yunqi and Zhao, Xueyuan and Bentov, Iddo and Breidenbach, Lorenz and Juels, Ari},
+  booktitle = {IEEE Symposium on Security and Privacy (S\&P)},
+  year      = {2020},
+  publisher = {IEEE}
+}
+
+@inproceedings{qin2022quantifying,
+  title     = {Quantifying Blockchain Extractable Value: How Dark is the Forest?},
+  author    = {Qin, Kaihua and Zhou, Liyi and Gervais, Arthur},
+  booktitle = {IEEE Symposium on Security and Privacy (S\&P)},
+  year      = {2022},
+  publisher = {IEEE}
+}
+
+@inproceedings{torres2021frontrunner,
+  title     = {Frontrunner Jones and the Raiders of the Dark Forest: An Empirical Study of Frontrunning on the Ethereum Blockchain},
+  author    = {Torres, Christof Ferreira and Camino, Ramiro and State, Radu},
+  booktitle = {USENIX Security Symposium},
+  year      = {2021},
+  publisher = {USENIX Association}
+}
+
+@misc{autonolas2022,
+  title        = {Autonolas Whitepaper: Off-chain services co-owned and co-operated},
+  author       = {{Autonolas}},
+  year         = {2022},
+  howpublished = {\url{https://www.autonolas.network/whitepaper.pdf}}
+}
+
+@misc{eliza2024,
+  title        = {Eliza: The AI16Z Agent Framework},
+  author       = {{AI16Z Team}},
+  year         = {2024},
+  howpublished = {\url{https://github.com/ai16z/eliza}}
+}
+
+@misc{flashbots2021,
+  title        = {MEV-Boost and Proposer-Builder Separation},
+  author       = {{Flashbots}},
+  year         = {2021},
+  howpublished = {\url{https://docs.flashbots.net/}}
+}
+
+@misc{erc4337,
+  title        = {ERC-4337: Account Abstraction Using Alt Mempool},
+  author       = {Vitalik Buterin and Yoav Weiss and Dror Tirosh and Shahaf Nacson and Alex Forshtat and Kristof Gazso and Tjaden Hess},
+  year         = {2023},
+  howpublished = {\url{https://eips.ethereum.org/EIPS/eip-4337}}
+}
+
+% ---- Classical AI / agent foundations ----------------------------------
+
+@book{russellnorvig2020,
+  title     = {Artificial Intelligence: A Modern Approach},
+  author    = {Russell, Stuart and Norvig, Peter},
+  edition   = {4},
+  year      = {2020},
+  publisher = {Pearson}
+}
+
+@article{wooldridge1995intelligent,
+  title   = {Intelligent Agents: Theory and Practice},
+  author  = {Wooldridge, Michael and Jennings, Nicholas R.},
+  journal = {The Knowledge Engineering Review},
+  volume  = {10},
+  number  = {2},
+  pages   = {115--152},
+  year    = {1995}
+}
+
+@inproceedings{franklin1996agent,
+  title     = {Is it an Agent, or Just a Program? A Taxonomy for Autonomous Agents},
+  author    = {Franklin, Stan and Graesser, Art},
+  booktitle = {ATAL},
+  year      = {1996},
+  publisher = {Springer-Verlag}
+}
+
+@incollection{maes1995modeling,
+  title     = {Modeling Adaptive Autonomous Agents},
+  author    = {Maes, Pattie},
+  booktitle = {Artificial Life: An Overview},
+  year      = {1995},
+  publisher = {MIT Press}
+}
+
+@article{parasuraman2000model,
+  title   = {A Model for Types and Levels of Human Interaction with Automation},
+  author  = {Parasuraman, Raja and Sheridan, Thomas B. and Wickens, Christopher D.},
+  journal = {IEEE Transactions on Systems, Man, and Cybernetics---Part A: Systems and Humans},
+  volume  = {30},
+  number  = {3},
+  pages   = {286--297},
+  year    = {2000}
+}
+
+@book{shneiderman2022hcai,
+  title     = {Human-Centered AI},
+  author    = {Shneiderman, Ben},
+  year      = {2022},
+  publisher = {Oxford University Press}
+}
+
+@inproceedings{horvitz1999principles,
+  title     = {Principles of Mixed-Initiative User Interaction},
+  author    = {Horvitz, Eric},
+  booktitle = {CHI '99},
+  year      = {1999},
+  publisher = {ACM}
+}
+
+@inproceedings{park2023generative,
+  title     = {Generative Agents: Interactive Simulacra of Human Behavior},
+  author    = {Park, Joon Sung and O'Brien, Joseph C. and Cai, Carrie J. and Morris, Meredith Ringel and Liang, Percy and Bernstein, Michael S.},
+  booktitle = {UIST '23},
+  year      = {2023},
+  publisher = {ACM}
+}
+
+@article{chan2023harms,
+  title     = {Harms from Increasingly Agentic Algorithmic Systems},
+  author    = {Chan, Alan and Salganik, Rebecca and Markelius, Alva and others},
+  booktitle = {FAccT '23},
+  year      = {2023}
+}
+
+@article{shavit2023practices,
+  title   = {Practices for Governing Agentic AI Systems},
+  author  = {Shavit, Yonadav and Agarwal, Sandhini and Brundage, Miles and Adler, Steven and O'Keefe, Cullen and Campbell, Rosie and Lee, Teddy and Mishkin, Pamela and others},
+  journal = {OpenAI Research Paper},
+  year    = {2023}
+}
+
+@article{xi2023rise,
+  title   = {The Rise and Potential of Large Language Model Based Agents: A Survey},
+  author  = {Xi, Zhiheng and Chen, Wenxiang and Guo, Xin and others},
+  journal = {arXiv preprint arXiv:2309.07864},
+  year    = {2023}
+}
+
+@article{wang2024survey,
+  title   = {A Survey on Large Language Model based Autonomous Agents},
+  author  = {Wang, Lei and Ma, Chen and Feng, Xueyang and others},
+  journal = {Frontiers of Computer Science},
+  volume  = {18},
+  number  = {6},
+  year    = {2024}
+}
+
+@inproceedings{yao2023react,
+  title     = {ReAct: Synergizing Reasoning and Acting in Language Models},
+  author    = {Yao, Shunyu and Zhao, Jeffrey and Yu, Dian and Du, Nan and Shafran, Izhak and Narasimhan, Karthik and Cao, Yuan},
+  booktitle = {ICLR},
+  year      = {2023}
+}
+
+@inproceedings{schick2023toolformer,
+  title     = {Toolformer: Language Models Can Teach Themselves to Use Tools},
+  author    = {Schick, Timo and Dwivedi-Yu, Jane and Dess{\`\i}, Roberto and Raileanu, Roberta and Lomeli, Maria and Zettlemoyer, Luke and Cancedda, Nicola and Scialom, Thomas},
+  booktitle = {NeurIPS},
+  year      = {2023}
+}
+
+@article{mialon2023augmented,
+  title   = {Augmented Language Models: A Survey},
+  author  = {Mialon, Gr{\'e}goire and others},
+  journal = {TMLR},
+  year    = {2023}
+}
+
+@article{shoham1993agent,
+  title   = {Agent-Oriented Programming},
+  author  = {Shoham, Yoav},
+  journal = {Artificial Intelligence},
+  volume  = {60},
+  number  = {1},
+  pages   = {51--92},
+  year    = {1993}
+}
+
+@book{dennett1987intentional,
+  title     = {The Intentional Stance},
+  author    = {Dennett, Daniel C.},
+  year      = {1987},
+  publisher = {MIT Press}
+}
+
+@article{bratman1987intention,
+  title   = {Intention, Plans, and Practical Reason},
+  author  = {Bratman, Michael E.},
+  journal = {Harvard University Press},
+  year    = {1987}
+}
+
+@article{jennings1998roadmap,
+  title   = {A Roadmap of Agent Research and Development},
+  author  = {Jennings, Nicholas R. and Sycara, Katia and Wooldridge, Michael},
+  journal = {Autonomous Agents and Multi-Agent Systems},
+  volume  = {1},
+  number  = {1},
+  pages   = {7--38},
+  year    = {1998}
+}
+
+% ---- Statistics / methodology footing ------------------------------------
+
+@article{efron1979bootstrap,
+  title   = {Bootstrap Methods: Another Look at the Jackknife},
+  author  = {Efron, Bradley},
+  journal = {The Annals of Statistics},
+  volume  = {7},
+  number  = {1},
+  pages   = {1--26},
+  year    = {1979}
+}
+
+@book{cohen1988statistical,
+  title     = {Statistical Power Analysis for the Behavioral Sciences},
+  author    = {Cohen, Jacob},
+  edition   = {2},
+  year      = {1988},
+  publisher = {Lawrence Erlbaum Associates}
+}
+
+@article{paninski2003,
+  title   = {Estimation of Entropy and Mutual Information},
+  author  = {Paninski, Liam},
+  journal = {Neural Computation},
+  volume  = {15},
+  number  = {6},
+  pages   = {1191--1253},
+  year    = {2003}
+}
+
+@article{gao2017estimating,
+  title   = {Estimating Mutual Information for Discrete-Continuous Mixtures},
+  author  = {Gao, Weihao and Kannan, Sreeram and Oh, Sewoong and Viswanath, Pramod},
+  journal = {NeurIPS},
+  year    = {2017}
+}
+
+% ---- Hardware / execution attestation ------------------------------------
+
+@inproceedings{tramer2018,
+  title     = {Slalom: Fast, Verifiable and Private Execution of Neural Networks in Trusted Hardware},
+  author    = {Tram{\`e}r, Florian and Boneh, Dan},
+  booktitle = {ICLR},
+  year      = {2019}
+}
+
+@article{costan2016intelsgx,
+  title   = {Intel SGX Explained},
+  author  = {Costan, Victor and Devadas, Srinivas},
+  journal = {IACR Cryptology ePrint Archive},
+  year    = {2016}
+}
+
+@article{sun2023attestedinference,
+  title   = {Attested Inference: Integrity Proofs for Machine Learning Outputs},
+  author  = {Sun, Jiachen and others},
+  journal = {IEEE S\&P Workshops},
+  year    = {2023}
+}
+
+@article{boneh2020zkp,
+  title   = {A Survey of Succinct Non-Interactive Arguments of Knowledge},
+  author  = {Boneh, Dan and Nitulescu, Anca and others},
+  journal = {Commun.\ ACM},
+  year    = {2020}
+}
+
+% ---- Additional cross-domain agent context ------------------------------
+
+@article{bommasani2021foundation,
+  title   = {On the Opportunities and Risks of Foundation Models},
+  author  = {Bommasani, Rishi and others},
+  journal = {arXiv preprint arXiv:2108.07258},
+  year    = {2021}
+}
+
+@article{weidinger2022taxonomy,
+  title   = {Taxonomy of Risks Posed by Language Models},
+  author  = {Weidinger, Laura and others},
+  journal = {FAccT},
+  year    = {2022}
+}
+
+@article{brundage2020toward,
+  title   = {Toward Trustworthy AI Development: Mechanisms for Supporting Verifiable Claims},
+  author  = {Brundage, Miles and others},
+  journal = {arXiv preprint arXiv:2004.07213},
+  year    = {2020}
+}
+
+@article{anderljung2023frontier,
+  title   = {Frontier AI Regulation: Managing Emerging Risks to Public Safety},
+  author  = {Anderljung, Markus and others},
+  journal = {arXiv preprint arXiv:2307.03718},
+  year    = {2023}
+}
+
+@article{raji2020closing,
+  title   = {Closing the AI Accountability Gap: Defining an End-to-End Framework for Internal Algorithmic Auditing},
+  author  = {Raji, Inioluwa Deborah and others},
+  journal = {FAccT},
+  year    = {2020}
+}
+
+@article{hacker2023regulating,
+  title   = {Regulating ChatGPT and Other Large Generative AI Models},
+  author  = {Hacker, Philipp and Engel, Andreas and Mauer, Marco},
+  journal = {FAccT},
+  year    = {2023}
+}
+
+@article{birhane2021algorithmic,
+  title   = {Algorithmic Injustice: A Relational Ethics Approach},
+  author  = {Birhane, Abeba},
+  journal = {Patterns},
+  volume  = {2},
+  number  = {2},
+  year    = {2021}
+}
+
+@article{metaxa2021auditing,
+  title   = {Auditing Algorithms: Understanding Algorithmic Systems from the Outside In},
+  author  = {Metaxa, Danaë and others},
+  journal = {Foundations and Trends in HCI},
+  year    = {2021}
+}
+
+@article{koshiyama2021algorithmic,
+  title   = {Towards Algorithm Auditing: A Survey on Managing Legal, Ethical and Technological Risks of AI, ML and Associated Algorithms},
+  author  = {Koshiyama, Adriano and others},
+  journal = {Journal of Risk Management},
+  year    = {2021}
+}

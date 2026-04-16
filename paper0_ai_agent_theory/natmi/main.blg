@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: unsrt.bst
+Database file #1: main.bib
+Warning--empty journal in chan2023harms
+You've used 40 entries,
+            1791 wiz_defined-function locations,
+            635 strings with 9743 characters,
+and the built_in function-call counts, 7109 in all, are:
+= -- 554
+> -- 410
+< -- 0
++ -- 154
+- -- 114
+* -- 363
+:= -- 1230
+add.period$ -- 125
+call.type$ -- 40
+change.case$ -- 39
+chr.to.int$ -- 0
+cite$ -- 41
+duplicate$ -- 345
+empty$ -- 737
+format.name$ -- 114
+if$ -- 1576
+int.to.chr$ -- 0
+int.to.str$ -- 40
+missing$ -- 37
+newline$ -- 203
+num.names$ -- 40
+pop$ -- 159
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 125
+stack$ -- 0
+substring$ -- 106
+swap$ -- 47
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 49
+width$ -- 42
+write$ -- 417
+(There was 1 warning)
