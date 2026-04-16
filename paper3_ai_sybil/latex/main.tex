@@ -46,7 +46,7 @@ A 10-round best-response adversarial protocol between an LLM attacker (Claude Op
 At convergence, the attacker's optimal blend ratio reaches 0.93, meaning sybil profiles are 93\% identical to legitimate wallets---the residual 7\% of detectable signal concentrates in \texttt{behavioral\_consistency}, the single feature the attacker cannot fully suppress without abandoning coherent behavior (top-1 in 30/30 seed-rounds).
 At blend 0.93, sybil profiles share 93\% of their distributional mass with legitimate wallets; that the classifier approaches chance under near-identical distributions is expected. The non-trivial finding is that \texttt{behavioral\_consistency} retains discriminative power even at this extreme blend, and that the convergence point is stable across seeds.
 Closed-loop adversarial training with Claude Opus---where the LLM sees the detector's top features each round and generates targeted sybils---achieves Round-1 evasion of 0.980, exceeding the parametric attacker's 0.691 by 28.9 percentage points. This proves parametric approximations understate real-world LLM attacker capability.
-We contribute a reusable leakage-audit checklist (validated by our own post-mortem: AUC 0.953$\to$0.609 after fix) and argue that this ceiling result should redirect the sybil detection community from building better classifiers to building costlier execution environments, identity-layer defenses, and full-graph structural analysis.
+We contribute a reusable leakage-audit checklist (validated by our own post-mortem: AUC 0.926$\to$0.609 after fix) and argue that this ceiling result should redirect the sybil detection community from building better classifiers to building costlier execution environments, identity-layer defenses, and full-graph structural analysis.
 \end{abstract}
 
 \maketitle
@@ -94,7 +94,7 @@ Throughout this paper the adversary is an LLM-powered wallet operator with:
   \item \textbf{Last-feature-standing analysis.} \texttt{behavioral\_consistency} ranks top-1 in all 30 seed-rounds, but its importance converges from 0.36 to 0.17 as the attacker pushes blend ratios to 0.93---quantifying the irreducible residual and explaining why even it approaches irrelevance (Section~\ref{sec:equilibrium}).
   \item \textbf{Closed-loop LLM adversarial training.} A 10-round closed-loop protocol where Claude Opus sees the detector's top-3 feature importances each round and generates targeted sybils achieves Round-1 evasion 0.980 vs.\ the parametric attacker's 0.691 ($\Delta{=}+28.9$pp), proving that parametric baselines are lower bounds on LLM attacker capability (Section~\ref{sec:closedloop}).
   \item \textbf{Paradigm-shift argument.} We argue that the 0.58 detection floor is not a call for better classifiers but for a migration to problem-space defenses (execution cost), identity-layer mechanisms (BrightID, Gitcoin Passport, World ID), and full-graph structural analysis (Section~\ref{sec:discussion}).
-  \item \textbf{Synthetic-feature audit protocol.} A 3-step checklist (Algorithm~\ref{alg:audit}) for detecting label leakage, validated by our own post-mortem (AUC 0.953$\to$0.609). Cross-axis LOPO mean AUC 0.617 and independent-label transfer AUC 0.586 establish honest baselines (Sections~\ref{sec:crossaxis},~\ref{sec:leakage}).
+  \item \textbf{Synthetic-feature audit protocol.} A 3-step checklist (Algorithm~\ref{alg:audit}) for detecting label leakage, validated by our own post-mortem (AUC 0.926$\to$0.609). Cross-axis LOPO mean AUC 0.617 and independent-label transfer AUC 0.586 establish honest baselines (Sections~\ref{sec:crossaxis},~\ref{sec:leakage}).
 \end{enumerate}
 
 \input{../../shared/figures/fig_pipeline.tex}
@@ -704,6 +704,9 @@ Rd & CL AUC & LLM Eva. & Param.\ Eva. & $\Delta$ (LLM$-$Param) \\
 \label{fig:closedloop}
 \end{figure}
 
+\noindent\textbf{Per-seed Round-1 sample sizes.}
+We note that seed~314 returned only 3 LLM sybils at Round~1 (API batch failure); the other two seeds returned 100 each. The per-seed Round-1 evasion rates are 0.94 (seed~42, $n{=}100$), 1.00 (seed~137, $n{=}100$), and 1.00 (seed~314, $n{=}3$). The headline $+28.9$pp gap is driven primarily by seeds~42 and 137; seed~314's contribution is unreliable due to small $N$. An $N$-weighted mean excluding seed~314 gives LLM evasion $0.970$ vs.\ parametric $0.692$, a gap of $+27.8$pp---qualitatively unchanged.
+
 \noindent\textbf{Key findings.}
 \begin{enumerate}
   \item \textbf{Round-1 evasion gap} (Figure~\ref{fig:closedloop}). The LLM's 0.980 evasion vs.\ the parametric 0.691 at Round~1 (same $D_1$) demonstrates that the LLM found evasion strategies \emph{outside the scalar-blend family}. The parametric attacker interpolates toward the real-wallet centroid; the LLM identifies specific feature combinations that exploit detector blind spots.
@@ -721,7 +724,7 @@ This is, to our knowledge, the first closed-loop LLM adversarial training result
 \subsection{Enhanced Detector After Leakage Fix}
 \label{sec:leakage}
 
-In our pilot, a 13-feature detector (5 HasciDB + 8 AI) appeared to score AUC 0.953. However, the helper \texttt{augment\_with\_ai\_features} sampled from label-conditional Beta distributions, leaking the label. Table~\ref{tab:leakfix} shows the correction:
+In our pilot, a 13-feature detector (5 HasciDB + 8 AI) appeared to score AUC 0.926. However, the helper \texttt{augment\_with\_ai\_features} sampled from label-conditional Beta distributions, leaking the label. Table~\ref{tab:leakfix} shows the correction:
 
 \begin{table}[t]
 \caption{Enhanced detector with and without label leakage in \texttt{augment\_with\_ai\_features}. 4-project LOPO validation.}
@@ -802,6 +805,10 @@ Under independence, joint evasion $p_1 \cdot p_2 \cdot p_3 \approx 0.20$ across 
 
 The closed-loop experiment (\S\ref{sec:closedloop}) shows that Round-1 LLM evasion (0.980) exceeds parametric evasion (0.691) by $+$28.9pp against the \emph{same} detector.
 The scalar-blend family is a one-dimensional subspace of the LLM's strategy space; the LLM targets specific feature combinations that exploit decision-boundary geometry. Prior LLM adversarial work operates in NL or code domains~\cite{chao2023jailbreaking,deng2024llm_pentesting}; our protocol is the first on structured numerical features. The practical recommendation: adversarial evaluation must include closed-loop LLM attackers, not only parametric baselines.
+
+\subsection{Reconciling the 0.578 Floor and 0.992 Closed-Loop AUC}
+
+The apparent contradiction between the parametric floor (0.578) and the closed-loop detector AUC (0.992) resolves once we distinguish attacker and defender perspectives. The 0.578 measures the parametric attacker's ability to degrade the detector under best-response convergence; the 0.992 measures the retrained detector's ability to classify a fixed pool of LLM-generated sybils after 10 rounds of closed-loop training. The LLM attacker is harder to evade initially ($+28.9$pp at Round~1) but its sybils are more homogeneous---generated from a single model under fixed prompting constraints---allowing the detector to specialize. The meaningful comparison is: against a static detector (no retraining), the LLM achieves 98\% evasion while the parametric attacker achieves 69\%. Against an adaptive detector (retraining each round), both converge to high AUC. The practical threat therefore depends on retraining frequency: defenders who retrain after each batch of claims neutralize the LLM advantage within ${\sim}$4 rounds, but most deployed systems do not retrain at this cadence.
 
 \subsection{Reconciling Cross-Paper Numbers}
 
@@ -887,7 +894,7 @@ Our most important number is \textbf{0.578}---the empirical convergence point of
 
 This result rests on three pillars. First, cross-modality evasion is near-total: LLM sybils evade rules (100\%), ML (100\%), GBM (99.9\%), and graph detection (94--100\%) at \$12 in API cost. Second, a 10-round best-response protocol converges to AUC $0.578 \pm 0.005$ across 3 seeds, with \texttt{behavioral\_consistency} as the last feature standing (top-1 in 30/30 seed-rounds) yet converging toward irrelevance at blend ratio ${\sim}0.93$. Third, closed-loop LLM adversarial training achieves Round-1 evasion 0.980 vs.\ the parametric 0.691 ($\Delta{=}+28.9$pp), proving parametric benchmarks are lower bounds on attacker capability.
 
-The detection floor should redirect the sybil detection community from building better classifiers to building costlier execution environments, identity-layer attestation (BrightID, Gitcoin Passport, World~ID), and full-graph structural analysis. We also contribute a 3-step leakage-audit checklist (AUC 0.953$\to$0.609 post-fix) and cross-axis baselines (LOPO AUC 0.617).
+The detection floor should redirect the sybil detection community from building better classifiers to building costlier execution environments, identity-layer attestation (BrightID, Gitcoin Passport, World~ID), and full-graph structural analysis. We also contribute a 3-step leakage-audit checklist (AUC 0.926$\to$0.609 post-fix) and cross-axis baselines (LOPO AUC 0.617).
 
 The broader lesson extends beyond airdrops: any detection system operating on behavioral features in a low-dimensional space with a narrow problem-space gap likely faces a similar convergence under adaptive LLM attack. Closed-loop LLM adversarial training---not parametric best-response---should become the standard evaluation for security-critical classifiers.
 
