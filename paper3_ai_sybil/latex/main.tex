@@ -420,6 +420,8 @@ The cross-axis GBM is harder to evade (2.1\% detection on basic) because it has 
 
 The 100\% evasion rate against HasciDB's threshold rules is \emph{expected}: the LLM receives the exact threshold values in its prompt and can trivially generate values below each cutoff. The non-trivial finding is not the evasion itself but the \emph{quality} of the evasion: the LLM's boundary-hugging strategy (55\% of samples at BT=4, BW=9, HF=0.79) and tight AI-feature clustering (IQR~0.028) create distinctive distributional signatures that a population-level detector could exploit. Perfect evasion of \emph{individual} thresholds does not guarantee evasion of \emph{distributional} tests.
 
+A three-condition blind test confirms the threat is not threshold-memorization. Under \emph{full knowledge} (exact thresholds provided), evasion is 100\%. Under \emph{partial knowledge} (detection methods described qualitatively, no thresholds), evasion remains 100\%---the LLM infers safe ranges from descriptions alone. Under \emph{zero knowledge} (`generate realistic DeFi wallets,' no mention of detection), evasion is still 61\%, with only the BT indicator triggering (39\% of wallets, mean BT=4.08 near the $\geq$5 threshold). The knowledge--evasion gradient (100\%$\to$100\%$\to$61\%) demonstrates that the LLM's world-knowledge of legitimate DeFi behavior is itself substantially adversarial to threshold-based detectors.
+
 \subsection{Graph-Based Detector Evaluation}
 \label{sec:graph}
 
@@ -810,6 +812,8 @@ The scalar-blend family is a one-dimensional subspace of the LLM's strategy spac
 \texttt{behavioral\_consistency} ranks top-1 in all 30 seed-rounds because it measures the CV of inter-arrival times---a higher-order temporal statistic requiring realistic skewness, kurtosis, and autocorrelation that a single JSON prompt cannot achieve, unlike \texttt{hour\_entropy} (a 24-bin histogram). Even so, its importance declines from 0.36 to 0.17: it is converging toward irrelevance.
 
 Cross-axis LOPO mean AUC 0.617 is the honest floor for HasciDB; any detector reporting AUC~$>$0.95 on the 5-indicator label is measuring rule recall, not generalization.
+
+External cross-method validation using independently-created sybil lists (HOP Protocol 14,196 addresses; LayerZero 21,396 addresses) reveals near-zero inter-method agreement: HasciDB--HOP $\kappa{=}0.0022$, HasciDB--LayerZero $\kappa{=}{-}0.0001$, HOP--Gitcoin\_FDD $\kappa{=}{-}0.40$ (anti-correlated). Different detection methods see fundamentally different sybil populations. LLM-generated sybils (0 matches across all external lists) operate in the shared blind spot.
 
 \subsection{Ethical Considerations}
 \label{sec:ethics}

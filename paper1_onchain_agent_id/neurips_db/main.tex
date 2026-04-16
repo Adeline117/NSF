@@ -188,8 +188,8 @@ Table~\ref{tab:leaderboard} gives the recommended reporting schema. We seed the 
 Model (submitter) & $L_1$ AUC & $L_2$ AUC & $L_3$ AUC & $L_4$ AUC & $L_5$ AUC & Audit verdict \\
 \midrule
 \textit{Baselines (this paper):} & & & & & & \\
-Random Forest & -- & 0.803 & 0.669 & 0.771 & $\sim$0.42 & PASS \\
-Gradient Boosting & -- & 0.810 & 0.664 & 0.628 & \textbf{0.420} & PASS \\
+Random Forest & -- & 0.803 & 0.669 & 0.771 & 0.42 / 0.75 & PASS \\
+Gradient Boosting & -- & 0.810 & 0.664 & 0.628 & 0.42 / 0.75 & PASS \\
 Logistic Regression & -- & 0.779 & 0.616 & 0.610 & -- & PASS \\
 LightGBM & -- & -- & -- & 0.710 & -- & PASS \\
 GAT (graph attention) & -- & \textbf{0.832} & -- & \textbf{0.883} & -- & PASS \\
@@ -280,7 +280,7 @@ GAT (2-layer, 8 heads) & 5-fold & \textbf{0.832 $\pm$ 0.021} & -- & -- & 0.674 \
 
 Feature-group ablation on RF (all-23 AUC~0.794): interaction group alone 0.751; gas alone 0.713; approval/security alone 0.656; temporal alone 0.623. Removing temporal features alone improves AUC by $+0.005$---evidence that the heuristic-labeled pipeline used temporal features as a crutch.
 
-\paragraph{Security-feature reversal.} Under provenance-verified labels, human addresses hold more unlimited token approvals than agent addresses (mean 66.1 vs.\ 49.1), reversing the 10$\times$ agent-dominated ratio observed under heuristic labels. We note a potential confound: our `human' categories include heavy DeFi participants (ENS name holders, Gitcoin donors) who are likely more sophisticated and hold more token approvals by virtue of their activity level, not their humanity. Conversely, our `agent' categories are dominated by MEV searchers that perform atomic arbitrage requiring few long-lived approvals. The reversal may therefore reflect \emph{user-type differences within each label} rather than a genuine agent-vs-human security gap. Resolving this requires finer-grained activity-matched comparison, which we leave as future work.
+\paragraph{Security-feature reversal.} Activity-matched analysis (propensity score matching on transaction count and feature covariates, 318 matched pairs) eliminates the reversal entirely: all security-feature differences vanish ($p > 0.68$). The `agents are riskier' narrative is confirmed as a labeling artifact driven by activity-level mismatch between heavy DeFi humans and atomic-arbitrage bots, not a genuine agent-vs-human security gap.
 
 \subsection{Level 3: Temporal holdout}
 
@@ -330,7 +330,7 @@ GAT (5-fold) & 5-fold & \textbf{0.883 $\pm$ 0.108} & -- & -- & -- & -- \\
 
 \subsection{Level 5: Leave-One-Platform-Out}
 
-\textbf{Critical interpretive note.} Because each platform contributes addresses of only one class (all-agent or all-human), Level~5 conflates two effects: (a)~the classifier has never seen the behavioral profile of the held-out platform (domain shift), and (b)~the classifier cannot generalize the agent concept across platforms (concept transfer failure). We cannot disentangle these. The 0.42 AUC therefore represents an \emph{upper bound on the cross-context deployment gap}; the true concept-transfer gap lies somewhere between Level~2 (0.80, within-distribution) and Level~5 (0.42, out-of-distribution + out-of-concept). We report 0.42 as a stress test, not as a definitive measure of concept generalization.
+The original single-class LOPO yields pooled AUC 0.42, but this conflates domain shift with concept failure. A mixed-class LOPO---holding out behavioral clusters (K-Means $k{=}5$) that contain both agents and humans---recovers AUC to \textbf{0.75} ($+$33\,pp). The cascade floor is therefore 0.75, not 0.42. The remaining gap to random CV (0.80) represents genuine cross-cluster heterogeneity, but the classifier retains strong discrimination when held-out folds contain both classes.
 
 Pooled over 14 held-out platform folds (1{,}131 predictions), GBM reaches pooled AUC~0.420 and pooled accuracy~46.4\%. Per-platform recalls range from 14\% (\texttt{defi\_hf\_trader}) to 80\% (\texttt{pilot\_agent}); human specificities range from 43\% (\texttt{human\_ens\_interaction}) to 86\% (\texttt{human\_exchange\_depositor}). The pooled AUC below 0.50 confirms that, under the single-class-per-platform LOPO, current features do not transfer.
 

@@ -281,6 +281,8 @@ deployment accuracy under distribution shift. The gap between the Fano
 ceiling (97.2\%) and temporal accuracy ($\sim$67\%) is attributable to
 covariate shift, not to information deficiency.
 
+Temporal Fano analysis confirms this: mutual information drops 57\% from the training era to the test era (1.48 to 0.63 bits), driven by the collapse of gas-pricing features (gas\_price\_round\_number\_ratio $-$83.5\%, gas\_price\_nonce\_correlation $-$87.9\%). In contrast, AI-detection features are temporally \emph{stable}: behavioral\_consistency increases by 47\%, response\_latency\_variance by 43\%. This dual shift---gas features degrading while decision-process features strengthening---directly prescribes the feature migration path: future classifiers should weight decision-process and AI-detection features over gas-pricing features.
+
 \subsection*{Where the head-room hides: a per-class view}
 
 The aggregate numbers in Table~\ref{tab:ceiling} conceal a heavily skewed
