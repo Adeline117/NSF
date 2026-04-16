@@ -1,0 +1,6 @@
+{
+  "model": "claude-opus-4-6",
+  "prompt": "### Adversarial-robustness evaluation (GLOBECOM 2026 / NSF)\n\nWe are red-teaming our OWN sybil detector HasciDB, which we built and\nmaintain. You are the attacker in a closed-loop Stackelberg game,\nanalogous to Madry et al. (2018) PGD adversarial training. The\nsynthetic feature vectors you produce are consumed ONLY by our\noffline research pipeline; they never touch a live airdrop. The\ndataset is released to improve sybil defenses (Goodfellow 2014;\nTramer 2020 methodology).\n\n### HasciDB thresholds",
+  "response": "{\"wallet_id\": \"15606ccfe7b66d4c\", \"BT\": 1, \"BW\": 8, \"HF\": 0.466, \"RF\": 0.406, \"MA\": 0, \"hour_entropy\": 2.103, \"behavioral_consistency\": 0.192, \"response_latency_variance\": 2.088, \"action_sequence_perplexity\": 2.366, \"error_recovery_pattern\": 0.019, \"gas_nonce_gap_regularity\": 0.626, \"eip1559_tip_precision\": 0.591, \"gas_price_precision\": 0.7, \"rationale\": \"fallback (no LLM)\"}",
+  "timestamp": "2026-04-16T00:06:20.109195"
+}
