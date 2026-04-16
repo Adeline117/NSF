@@ -280,6 +280,8 @@ GAT (2-layer, 8 heads) & 5-fold & \textbf{0.832 $\pm$ 0.021} & -- & -- & 0.674 \
 
 Feature-group ablation on RF (all-23 AUC~0.794): interaction group alone 0.751; gas alone 0.713; approval/security alone 0.656; temporal alone 0.623. Removing temporal features alone improves AUC by $+0.005$---evidence that the heuristic-labeled pipeline used temporal features as a crutch.
 
+\paragraph{Security-feature reversal.} Under provenance-verified labels, human addresses hold more unlimited token approvals than agent addresses (mean 66.1 vs.\ 49.1), reversing the 10$\times$ agent-dominated ratio observed under heuristic labels. We note a potential confound: our `human' categories include heavy DeFi participants (ENS name holders, Gitcoin donors) who are likely more sophisticated and hold more token approvals by virtue of their activity level, not their humanity. Conversely, our `agent' categories are dominated by MEV searchers that perform atomic arbitrage requiring few long-lived approvals. The reversal may therefore reflect \emph{user-type differences within each label} rather than a genuine agent-vs-human security gap. Resolving this requires finer-grained activity-matched comparison, which we leave as future work.
+
 \subsection{Level 3: Temporal holdout}
 
 Table~\ref{tab:level3} shows a 13--16~AUC-point drop from random CV to temporal holdout across all tabular models. Precision rises (the classifier becomes more conservative) but recall collapses: RF temporal recall is 0.309. Practitioners deploying against post-training-cutoff agents should expect to catch fewer than half of them without retraining.
@@ -327,6 +329,8 @@ GAT (5-fold) & 5-fold & \textbf{0.883 $\pm$ 0.108} & -- & -- & -- & -- \\
 \end{table}
 
 \subsection{Level 5: Leave-One-Platform-Out}
+
+\textbf{Critical interpretive note.} Because each platform contributes addresses of only one class (all-agent or all-human), Level~5 conflates two effects: (a)~the classifier has never seen the behavioral profile of the held-out platform (domain shift), and (b)~the classifier cannot generalize the agent concept across platforms (concept transfer failure). We cannot disentangle these. The 0.42 AUC therefore represents an \emph{upper bound on the cross-context deployment gap}; the true concept-transfer gap lies somewhere between Level~2 (0.80, within-distribution) and Level~5 (0.42, out-of-distribution + out-of-concept). We report 0.42 as a stress test, not as a definitive measure of concept generalization.
 
 Pooled over 14 held-out platform folds (1{,}131 predictions), GBM reaches pooled AUC~0.420 and pooled accuracy~46.4\%. Per-platform recalls range from 14\% (\texttt{defi\_hf\_trader}) to 80\% (\texttt{pilot\_agent}); human specificities range from 43\% (\texttt{human\_ens\_interaction}) to 86\% (\texttt{human\_exchange\_depositor}). The pooled AUC below 0.50 confirms that, under the single-class-per-platform LOPO, current features do not transfer.
 
