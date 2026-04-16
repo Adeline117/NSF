@@ -418,6 +418,8 @@ An LLM that reads these thresholds can trivially plan below them.
 This is not a weakness of the specific thresholds---it is a fundamental limitation of any detection system that publishes its decision boundary in closed form.
 The cross-axis GBM is harder to evade (2.1\% detection on basic) because it has learned correlations \textit{between} indicators that the adversary must jointly satisfy, but even this correlation structure is defeated when the LLM plans all features jointly (advanced tier: 0.1\% detection).
 
+The 100\% evasion rate against HasciDB's threshold rules is \emph{expected}: the LLM receives the exact threshold values in its prompt and can trivially generate values below each cutoff. The non-trivial finding is not the evasion itself but the \emph{quality} of the evasion: the LLM's boundary-hugging strategy (55\% of samples at BT=4, BW=9, HF=0.79) and tight AI-feature clustering (IQR~0.028) create distinctive distributional signatures that a population-level detector could exploit. Perfect evasion of \emph{individual} thresholds does not guarantee evasion of \emph{distributional} tests.
+
 \subsection{Graph-Based Detector Evaluation}
 \label{sec:graph}
 
@@ -446,6 +448,8 @@ Graph (Louvain)          & 99.4\% & 94.3\% & 100\%  \\
 \label{sec:real-graph}
 \textbf{Update with real graph data.}
 We subsequently evaluated Louvain on actual Ethereum transfer graphs constructed from 999 Etherscan API-fetched transaction histories. The real graph confirms and strengthens the proxy result: NMI drops from the proxy's 0.10 to 0.04--0.07 on the real graph, and LLM sybil evasion remains at 100\%.
+
+We acknowledge that LLM-generated sybils are synthetic feature vectors without on-chain transaction histories; they appear as isolated nodes in any transfer graph. The near-zero NMI for LLM sybils is therefore trivially expected. The more informative finding is the NMI for \emph{real} HasciDB sybils: even addresses with full transaction histories yield community--label NMI of only 0.04--0.07, indicating that Louvain community structure carries near-zero sybil signal even for real entities.
 
 Table~\ref{tab:graph_stats} provides per-project graph statistics and detection performance on real Sybils. Detection effectiveness varies dramatically: looksrare achieves recall 0.400 (driven by its high MA rate of 29.8\%), while pengu achieves recall 0.000 (Sybil rate only 5.5\% with near-zero MA). This heterogeneity suggests that graph-based detection is effective primarily against multi-account clusters, not against operational Sybils that avoid fund-flow patterns.
 
@@ -667,6 +671,8 @@ Table~\ref{tab:closedloop} reports per-round results (3-seed mean).
 At Round~1, the LLM achieves evasion rate $0.980$ vs.\ the parametric attacker's $0.691$---a gap of $+28.9$ percentage points ($\Delta = 0.289$).
 This gap is the central finding: \textbf{parametric approximations understate real-world LLM attacker capability by nearly 30 percentage points.}
 
+The +28.9\,pp gap is a \emph{transient, first-round} advantage: by Round~10, both attackers converge to similar AUC (closed-loop 0.992 vs.\ parametric 0.982, $\Delta{=}$+1.0\,pp). We headline the Round-1 gap because it represents the \emph{initial deployment risk}: a defender deploying a static detector faces a 98\% evasion rate from an LLM adversary versus 69\% from a parametric one. The convergence by Round~10 shows that iterative retraining closes the gap, but most deployed systems do not retrain after every batch of claims.
+
 \begin{table}[t]
 \caption{Closed-loop LLM adversarial training vs.\ parametric baseline (3-seed mean). ``CL AUC'' is the detector AUC when trained against closed-loop sybils; ``LLM Eva.''\ is the LLM evasion rate; ``Param.\ Eva.''\ is the parametric-probe evasion rate against the same detector.}
 \label{tab:closedloop}
@@ -794,6 +800,10 @@ Under independence, joint evasion $p_1 \cdot p_2 \cdot p_3 \approx 0.20$ across 
 
 The closed-loop experiment (\S\ref{sec:closedloop}) shows that Round-1 LLM evasion (0.980) exceeds parametric evasion (0.691) by $+$28.9pp against the \emph{same} detector.
 The scalar-blend family is a one-dimensional subspace of the LLM's strategy space; the LLM targets specific feature combinations that exploit decision-boundary geometry. Prior LLM adversarial work operates in NL or code domains~\cite{chao2023jailbreaking,deng2024llm_pentesting}; our protocol is the first on structured numerical features. The practical recommendation: adversarial evaluation must include closed-loop LLM attackers, not only parametric baselines.
+
+\subsection{Reconciling Cross-Paper Numbers}
+
+\textbf{Reconciling cross-paper numbers.} Paper~0's Fano ceiling (97.2\%) characterizes the information content of 31 behavioral features under i.i.d.\ evaluation. Paper~1's temporal holdout (AUC~0.67) measures operational accuracy under distribution shift. Our detection floor (0.578) measures feature-space detection under adversarial pressure on 8 AI-specific features. These three numbers are not contradictory: they measure different dimensions of the same problem (information content, temporal robustness, and adversarial robustness, respectively). Together they paint a complete picture: the features \emph{contain} the signal (Fano), but the signal \emph{degrades} over time (temporal) and \emph{erodes} under attack (adversarial).
 
 \subsection{Why \texttt{behavioral\_consistency} Survives}
 
