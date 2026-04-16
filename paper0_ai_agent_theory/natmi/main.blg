@@ -3,46 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: unsrt.bst
 Database file #1: main.bib
-Warning--empty journal in chan2023harms
-You've used 40 entries,
+You've used 39 entries,
             1791 wiz_defined-function locations,
-            635 strings with 9743 characters,
-and the built_in function-call counts, 7109 in all, are:
-= -- 554
-> -- 410
+            631 strings with 9659 characters,
+and the built_in function-call counts, 6996 in all, are:
+= -- 543
+> -- 406
 < -- 0
-+ -- 154
-- -- 114
-* -- 363
-:= -- 1230
-add.period$ -- 125
-call.type$ -- 40
++ -- 152
+- -- 113
+* -- 361
+:= -- 1208
+add.period$ -- 122
+call.type$ -- 39
 change.case$ -- 39
 chr.to.int$ -- 0
-cite$ -- 41
-duplicate$ -- 345
-empty$ -- 737
-format.name$ -- 114
-if$ -- 1576
+cite$ -- 39
+duplicate$ -- 339
+empty$ -- 729
+format.name$ -- 113
+if$ -- 1553
 int.to.chr$ -- 0
-int.to.str$ -- 40
-missing$ -- 37
-newline$ -- 203
-num.names$ -- 40
-pop$ -- 159
+int.to.str$ -- 39
+missing$ -- 35
+newline$ -- 198
+num.names$ -- 39
+pop$ -- 154
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 125
+skip$ -- 123
 stack$ -- 0
 substring$ -- 106
-swap$ -- 47
+swap$ -- 48
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 49
-width$ -- 42
-write$ -- 417
-(There was 1 warning)
+warning$ -- 0
+while$ -- 48
+width$ -- 41
+write$ -- 408

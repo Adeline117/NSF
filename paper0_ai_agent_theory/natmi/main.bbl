@@ -86,17 +86,12 @@ Joon~Sung Park, Joseph~C. O'Brien, Carrie~J. Cai, Meredith~Ringel Morris, Percy
 \bibitem{chan2023harms}
 Alan Chan, Rebecca Salganik, Alva Markelius, et~al.
 \newblock Harms from increasingly agentic algorithmic systems.
-\newblock 2023.
+\newblock In {\em FAccT '23}, 2023.
 
 \bibitem{cover2006}
 Thomas~M. Cover and Joy~A. Thomas.
 \newblock {\em Elements of Information Theory}.
 \newblock Wiley-Interscience, 2 edition, 2006.
-
-\bibitem{biship2006prml}
-Christopher~M. Bishop.
-\newblock {\em Pattern Recognition and Machine Learning}.
-\newblock Springer, 2006.
 
 \bibitem{autonolas2022}
 {Autonolas}.

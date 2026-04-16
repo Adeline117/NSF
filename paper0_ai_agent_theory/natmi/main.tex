@@ -46,8 +46,8 @@ $I(X;Y)$ and the label entropy $H(Y)$. Applied to an 8-category taxonomy
 spanning 2{,}744 blockchain addresses---a setting chosen because its public
 transaction record allows exact measurement of $I(X;Y)$---we find a ceiling
 of $97.2\%$; the best supervised classifier reaches $95.3\%$. The gap is
-$1.7$--$3.0$ percentage points: behavioral detection is already at the
-information-theoretic limit. Unsupervised discovery saturates at
+$1.7$--$4.6$ percentage points across feature sets: behavioral detection
+is already near the information-theoretic limit. Unsupervised discovery saturates at
 $2$--$3$ clusters regardless of feature set (HDBSCAN: $2$; K-Means silhouette:
 $3$). A mechanistic decomposition separates two signal channels: execution
 speed is a \emph{tool} signature (LLM-driven DeFi operations run at $216$\,s
@@ -122,7 +122,7 @@ action history is publicly observable: transactions on the Ethereum public
 ledger. On this corpus, across three increasingly expressive behavioral
 feature sets ($X_{23}$, $X_{31}$, $X_{47}$), the tightest achievable ceiling
 is $97.2\%$. Real classifiers trained on the same data reach
-$95.3\%$\,\cite{biship2006prml}. \emph{The gap is roughly two percentage
+$95.3\%$. \emph{The gap is roughly two percentage
 points: behavioral detection is already at the information-theoretic limit.}
 
 Crucially, this limit is not a consequence of dataset size, labeling noise,
@@ -236,13 +236,13 @@ regularity, and gas-price microstructure).
 Figure~\ref{fig:ceiling} plots the Fano accuracy ceiling against measured
 $I(X;Y)$, with the three feature sets superimposed. As $I(X;Y)$ approaches
 $H(Y)$ the ceiling approaches unity; in our data it plateaus in a narrow
-band between $96.8\%$ and $97.7\%$. Measured classifier accuracies sit
+band between $96.8\%$ and $97.2\%$. Measured classifier accuracies sit
 $1.7$--$4.6$ percentage points below the ceiling
 (Table~\ref{tab:ceiling}).
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.75\linewidth]{../experiments/fig_mi_vs_accuracy.png}
+  \includegraphics[width=0.75\linewidth]{figures/fig1_mi_vs_accuracy.pdf}
   \caption{\textbf{The information-theoretic ceiling for AI agent detection.}
   The Fano accuracy ceiling (solid) as a function of mutual information
   $I(X;Y)$, together with three measured feature sets ($X_{23}$, $X_{31}$,
@@ -276,19 +276,19 @@ $1.7$--$4.6$ percentage points below the ceiling
 \subsection*{Where the head-room hides: a per-class view}
 
 The aggregate numbers in Table~\ref{tab:ceiling} conceal a heavily skewed
-distribution of discriminability across categories. Four of the eight
+distribution of discriminability across categories. Three of the eight
 categories---Deterministic Script, Simple Trading Bot, DeFi Management
-Agent, MEV Searcher---yield per-class F1 scores above $0.91$ under a
-Gradient Boosting classifier with the $X_{31}$ feature set, with three of
-the four above $0.98$. Three of the remaining four---Cross-Chain Bridge
+Agent---yield per-class F1 scores above $0.95$ under a Gradient Boosting
+classifier with the $X_{31}$ feature set; a fourth, MEV Searcher, reaches
+$0.84$. Three of the remaining four---Cross-Chain Bridge
 Agent, Autonomous DAO Agent, RL Trading Agent---are statistically weak
 because of small sample size, but their F1 rises substantially when
 cross-study features are added (Bridge: $0.31 \to 0.76$; DAO:
 $0.14 \to 0.43$). The eighth category, LLM-Powered Agent, is the only one
 that remains stubborn: its F1 rises from $0.38$ under $X_{23}$ to
-$0.53$ only when all $47$ features are used, and never exceeds $0.60$ in
-any configuration we tested. Under $X_{31}$, LLM-Powered precision is
-$0.80$ but recall is only $0.39$---meaning the classifier can confirm a
+$0.49$ when decision-process features are added, and never exceeds
+$0.54$ in any configuration we tested. Under $X_{31}$, LLM-Powered precision is
+$0.84$ but recall is only $0.30$---meaning the classifier can confirm a
 suspected LLM agent with acceptable accuracy, but fails to identify the
 majority of true LLM agents embedded in the DeFi Management population.
 
@@ -324,7 +324,7 @@ the structure is \emph{not discoverable} from behavior alone.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.75\linewidth]{../figures/fig_cluster_sweep.pdf}
+  \includegraphics[width=0.75\linewidth]{figures/fig2_cluster_saturation.pdf}
   \caption{\textbf{Unsupervised clustering saturates at $2$--$3$ groups
   regardless of feature-set expressiveness.} K-Means silhouette across $k
   \in \{3, \dots, 15\}$ peaks at $k = 3$ ($0.151$), with a secondary plateau
@@ -409,7 +409,7 @@ management agents reveals an asymmetry
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.75\linewidth]{../figures/fig3_ablation.pdf}
+  \includegraphics[width=0.75\linewidth]{figures/fig3_execution_vs_decision.pdf}
   \caption{\textbf{Execution time is a tool signature; decision interval is
   an agent signature.} Left panel: median DeFi execution time for LLM-driven
   agents (blue, $216$\,s) is \emph{faster} than for rule-based DeFi managers
@@ -451,7 +451,7 @@ the reasoning step executes at model-inference speed.
 This decomposition has three consequences. First, it justifies our
 earlier empirical observation that decision-process features (error
 recovery patterns, session dynamics, inter-decision gaps) raise LLM-agent
-F1 by $15.3$ percentage points while transaction-content features leave
+F1 by $10.9$ percentage points while transaction-content features leave
 it flat. Second, it suggests that any regime seeking durable execution-
 layer signatures should target the quantity that is physically
 grounded---decision interval---rather than surface-level transactional
@@ -479,7 +479,7 @@ $I(X;Y)$ near $H(Y)$---holds
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.8\linewidth]{../experiments/polygon_cross_chain_comparison.png}
+  \includegraphics[width=0.8\linewidth]{figures/fig4_cross_chain.pdf}
   \caption{\textbf{Cross-chain validation on Polygon proof-of-stake
   ($n = 29$ addresses).} Top: direct transfer of an Ethereum-trained
   classifier to Polygon yields $22.2\%$ five-class accuracy, barely above
@@ -566,8 +566,8 @@ dispute the normative case for such distinctions. It shows that
 \emph{behavioral} enforcement of them is bounded: on an eight-category
 taxonomy with open data, the best possible classifier falls $2.8$
 percentage points short of perfect, and the hardest category (LLM-driven
-agents against rule-based managers) leaves $46$--$60\%$ of true
-instances misclassified even at the ceiling. A regime that relies on
+agents against rule-based managers) leaves $65$--$70\%$ of true
+instances misclassified. A regime that relies on
 post-hoc behavioral auditing to enforce category-specific rules will
 systematically misclassify a non-trivial minority of actors.
 
