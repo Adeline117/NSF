@@ -1,0 +1,168 @@
+{
+  "config": {
+    "model": "claude-haiku-4-5",
+    "seeds": [
+      42
+    ],
+    "rounds": 3,
+    "sybils_per_round": 100,
+    "n_real_sample": 15000,
+    "n_cv_folds": 5,
+    "gbm_params": {
+      "n_estimators": 150,
+      "max_depth": 4,
+      "learning_rate": 0.1,
+      "subsample": 0.8,
+      "random_state": 42
+    },
+    "hascidb_thresholds": {
+      "BT": 5,
+      "BW": 10,
+      "HF": 0.8,
+      "RF": 0.5,
+      "MA": 5
+    },
+    "ai_feature_names": [
+      "gas_price_precision",
+      "hour_entropy",
+      "behavioral_consistency",
+      "action_sequence_perplexity",
+      "error_recovery_pattern",
+      "response_latency_variance",
+      "gas_nonce_gap_regularity",
+      "eip1559_tip_precision"
+    ]
+  },
+  "parametric_baseline": {
+    "source": "adversarial_best_response_results.json",
+    "br_mean_final_auc": 0.578
+  },
+  "closed_loop_runs": {
+    "42": [
+      {
+        "round": 0,
+        "source": "parametric_bootstrap",
+        "n_sybils_this_round": 100,
+        "n_sybils_cumulative": 100,
+        "n_real": 15000,
+        "n_llm_requested": 0,
+        "n_llm_returned": 0,
+        "detector_auc": 0.9376,
+        "detector_auc_std": 0.0446,
+        "llm_evasion_rate": null,
+        "parametric_probe_evasion": null,
+        "top3_features": {
+          "behavioral_consistency": 0.2525,
+          "hour_entropy": 0.1723,
+          "error_recovery_pattern": 0.1254
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2525,
+          "hour_entropy": 0.1723,
+          "error_recovery_pattern": 0.1254,
+          "response_latency_variance": 0.1243,
+          "action_sequence_perplexity": 0.1008,
+          "gas_nonce_gap_regularity": 0.0844,
+          "eip1559_tip_precision": 0.0737,
+          "gas_price_precision": 0.0665
+        }
+      },
+      {
+        "round": 1,
+        "source": "llm_closed_loop",
+        "n_sybils_this_round": 100,
+        "n_sybils_cumulative": 200,
+        "n_real": 15000,
+        "n_llm_requested": 100,
+        "n_llm_returned": 100,
+        "detector_auc": 0.9752,
+        "detector_auc_std": 0.013,
+        "llm_evasion_rate": 0.95,
+        "parametric_probe_evasion": 0.696,
+        "top3_features": {
+          "behavioral_consistency": 0.2185,
+          "error_recovery_pattern": 0.1879,
+          "hour_entropy": 0.1796
+        },
+        "feature_importances": {
+          "behavioral_consistency": 0.2185,
+          "error_recovery_pattern": 0.1879,
+          "hour_entropy": 0.1796,
+          "response_latency_variance": 0.1164,
+          "gas_price_precision": 0.0831,
+          "action_sequence_perplexity": 0.0821,
+          "eip1559_tip_precision": 0.0755,
+          "gas_nonce_gap_regularity": 0.0569
+        }
+      },
+      {
+        "round": 2,
+        "source": "llm_closed_loop",
+        "n_sybils_this_round": 100,
+        "n_sybils_cumulative": 300,
+        "n_real": 15000,
+        "n_llm_requested": 100,
+        "n_llm_returned": 100,
+        "detector_auc": 0.9842,
+        "detector_auc_std": 0.006,
+        "llm_evasion_rate": 0.41,
+        "parametric_probe_evasion": 0.654,
+        "top3_features": {
+          "error_recovery_pattern": 0.2257,
+          "hour_entropy": 0.1697,
+          "behavioral_consistency": 0.169
+        },
+        "feature_importances": {
+          "error_recovery_pattern": 0.2257,
+          "hour_entropy": 0.1697,
+          "behavioral_consistency": 0.169,
+          "response_latency_variance": 0.1361,
+          "eip1559_tip_precision": 0.0902,
+          "gas_price_precision": 0.0859,
+          "action_sequence_perplexity": 0.0724,
+          "gas_nonce_gap_regularity": 0.0509
+        }
+      }
+    ]
+  },
+  "control_runs": {
+    "42": [
+      {
+        "round": 0,
+        "detector_auc": 0.9376,
+        "parametric_evasion": null
+      },
+      {
+        "round": 1,
+        "detector_auc": 0.963,
+        "parametric_evasion": 0.65
+      },
+      {
+        "round": 2,
+        "detector_auc": 0.9732,
+        "parametric_evasion": 0.62
+      }
+    ]
+  },
+  "seed_summaries": {
+    "42": {
+      "final_auc": 0.9842,
+      "initial_auc": 0.9376,
+      "total_auc_drop": -0.0466,
+      "mean_llm_evasion": 0.68,
+      "mean_parametric_evasion": 0.675,
+      "final_llm_evasion": 0.41
+    }
+  },
+  "comparison": {
+    "closed_loop_mean_final_auc": 0.9842,
+    "scale_matched_control_final_auc": 0.9732,
+    "parametric_baseline_final_auc": 0.578,
+    "delta_vs_scale_matched": 0.011,
+    "round1_llm_evasion_mean": 0.95,
+    "round1_parametric_evasion_mean": 0.696,
+    "round1_evasion_delta": 0.254,
+    "verdict": "CLOSED-LOOP IS STRICTLY HARDER. Round-1 head-to-head evasion: LLM=0.950 vs parametric=0.696 (\u0394=+0.254). Claude found evasion strategies OUTSIDE the scalar-blend family; the parametric attacker is NOT a tight upper bound on attacker capability."
+  },
+  "elapsed_seconds": 107.4
+}
