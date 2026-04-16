@@ -273,6 +273,14 @@ $1.7$--$4.6$ percentage points below the ceiling
   \label{tab:ceiling}
 \end{table}
 
+We note that this bound applies to the i.i.d.\ classification setting.
+Under temporal distribution shift (see companion Paper~1), operational
+accuracy drops to approximately 67\%, well below the Fano ceiling. Our
+bound characterizes the \emph{information content} of the feature set, not
+deployment accuracy under distribution shift. The gap between the Fano
+ceiling (97.2\%) and temporal accuracy ($\sim$67\%) is attributable to
+covariate shift, not to information deficiency.
+
 \subsection*{Where the head-room hides: a per-class view}
 
 The aggregate numbers in Table~\ref{tab:ceiling} conceal a heavily skewed
@@ -321,6 +329,15 @@ distinct classes therefore dissolves, in behavior space, into $2$--$3$
 super-clusters (Figure~\ref{fig:clustering}). Supervised classifiers
 \emph{can} learn the full eight-way partition when labels are supplied, but
 the structure is \emph{not discoverable} from behavior alone.
+
+Supervised accuracy (92--95\%) measures \emph{classifiability given labeled
+training data}; unsupervised clustering (2--3 clusters) measures
+\emph{discoverability without labels}. These are distinct properties, and
+their divergence is itself the central finding: the eight categories are
+real and learnable, but they are not naturally emergent from behavioral
+data. A regulator who has a labeled training set can build a detector; one
+who must discover agent categories from unlabeled transaction streams
+cannot.
 
 \begin{figure}[t]
   \centering
@@ -452,7 +469,13 @@ This decomposition has three consequences. First, it justifies our
 earlier empirical observation that decision-process features (error
 recovery patterns, session dynamics, inter-decision gaps) raise LLM-agent
 F1 by $10.9$ percentage points while transaction-content features leave
-it flat. Second, it suggests that any regime seeking durable execution-
+it flat. The improvement from $0.38$ to $0.49$ is directionally correct
+but not a solved problem: the classifier still misclassifies roughly half
+of LLM-Powered Agents. We term this a \emph{partial breakthrough}---it
+demonstrates that decision-process features carry signal that
+transaction-content features miss, but a production-ready LLM-agent
+detector remains out of reach with current features.
+Second, it suggests that any regime seeking durable execution-
 layer signatures should target the quantity that is physically
 grounded---decision interval---rather than surface-level transactional
 style. Third, and most broadly, it implies that the behavioral ceiling

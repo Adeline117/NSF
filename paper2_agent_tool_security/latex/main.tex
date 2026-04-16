@@ -579,6 +579,8 @@ Program equivalence for Turing-complete languages is undecidable
 undecidable.
 \end{proof}
 
+\textbf{Scope of Theorem~1.} Rice's theorem implies that \emph{any} non-trivial semantic property of programs is undecidable for static analyzers in the general case. Our theorem is therefore not surprising in isolation. Its value lies in three specifics: (1)~it identifies TCPI as a \emph{concrete, common} instance of this general undecidability --- one that appears in 138 real-world tool servers; (2)~it shows that the undecidability persists even when each tool individually passes static security review, because the vulnerability emerges from \emph{composition}; and (3)~it motivates runtime defenses (output sanitization, tool-call policy engines) as the only viable mitigation class, since static prevention is provably insufficient.
+
 \textbf{Remarks.}  (i) The theorem is conditional on $M$ having
 non-zero TCPI susceptibility on the Output$\to$Parameter variant,
 which we measure empirically in \S\ref{sec:tcpi-harness}.  A fully
@@ -1288,6 +1290,8 @@ paper's trace figure (\texttt{forge test -vvvv}).
 This is the first on-chain demonstration of TCPI with real ERC-20
 settlement.  No prior attack paper in this family has moved from
 simulated sandboxes to a live chain where tokens actually move.
+
+\textbf{Threat model clarification.} Our demo assumes the attacker controls Tool~A's output (\texttt{MaliciousOracle.sol}). In practice, this control can arise through: (a)~the attacker deploys a malicious tool and registers it in the MCP tool directory (no vetting required); (b)~an honest tool is compromised via supply-chain attack; or (c)~an honest tool returns user-controlled content that becomes a TCPI vector (e.g., a web-search tool returning attacker-crafted snippets). Our demo validates step~2 of a three-step attack chain (compromise~$\to$ injection~$\to$ exfiltration); the compromise step is orthogonal and has been extensively studied in prior work on tool poisoning~\cite{invariantlabs2025mcp}.
 
 
 %% ====================================================================
