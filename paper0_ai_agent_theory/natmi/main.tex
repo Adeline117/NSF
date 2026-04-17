@@ -294,7 +294,7 @@ deployment accuracy under distribution shift. The gap between the Fano
 ceiling (97.2\%) and temporal accuracy ($\sim$67\%) is attributable to
 covariate shift, not to information deficiency.
 
-Temporal Fano analysis confirms this: mutual information drops 57\% from the training era to the test era (1.48 to 0.63 bits), driven by the collapse of gas-pricing features (gas\_price\_round\_number\_ratio $-$83.5\%, gas\_price\_nonce\_correlation $-$87.9\%). In contrast, AI-detection features are temporally \emph{stable}: behavioral\_consistency increases by 47\%, response\_latency\_variance by 43\%. This dual shift---gas features degrading while decision-process features strengthening---directly prescribes the feature migration path: future classifiers should weight decision-process and AI-detection features over gas-pricing features.
+A temporal Fano analysis (Supplementary Note~4) confirms this diagnosis: mutual information drops $57\%$ across eras, driven by gas-pricing feature collapse, while decision-process features remain stable---prescribing a clear feature-migration path for future classifiers.
 
 \subsection*{Where the head-room hides: a per-class view}
 
@@ -386,55 +386,24 @@ entirely by the classifier catching up to the ceiling, not by the ceiling
 moving. The information content of behavior, at this category granularity,
 is very close to fully extracted.
 
-Why does adding features not raise the ceiling? Two mechanisms are at
-work. The first is redundancy: the new features we add are correlated with
-features already in $X_{23}$, so the \emph{marginal} $I(X_j; Y)$ they
-contribute is mostly already absorbed by the joint estimator. Inspecting
-the per-feature mutual information table in Supplementary Table~S3, the
-single feature with the highest marginal information content is
-$\texttt{eip1559\_tip\_precision}$ at $1.066$ bits ($0.739$ nats),
-capturing $74\%$ of the joint $I(X_{31};Y) = 1.437$ bits---confirming
-very substantial redundancy among individual features. (Note: per-feature
-MI is estimated in nats by \texttt{sklearn}; joint MI is estimated in bits
-via our $k$-NN plug-in. Conversions use
-$1 \text{ nat} = \log_2 e \approx 1.443 \text{ bits}$.) The second mechanism is the category-level information floor:
-the taxonomy contains at least one pair (LLM-Powered Agent vs.\ DeFi
-Management Agent) whose conditional distribution over the feature space
-is near-identical. No matter how many features we add, the distributions
-will not separate until the feature family includes a dimension along
-which LLM and rule-based agents differ at deployment time---which requires
-decision-process observation that transaction-content features do not
-provide.
-
-We verify the second claim directly by measuring the pairwise Kullback--
-Leibler divergence between the class-conditional empirical distributions
-$\hat{p}(X \mid Y = k)$ for every pair of classes. The pair
-$(k, k') = (\text{LLM}, \text{DeFi Management})$ has the smallest pairwise
-KL divergence in the taxonomy ($0.21$ bits under $X_{31}$), while
-$(\text{Deterministic Script}, \text{MEV Searcher})$ has the largest
-($3.87$ bits). In an eight-class problem, the aggregate ceiling is
-bottlenecked by the closest pair. Feature engineering that does not
-specifically attack the LLM/DeFi boundary cannot move the ceiling, no
-matter how much additional $I(X_j; Y)$ it supplies for other pairs.
+Two mechanisms explain the saturation (detailed per-feature MI
+decomposition in Supplementary Note~5). First, feature redundancy: a
+single feature (\texttt{eip1559\_tip\_precision}) captures $74\%$ of the
+joint $I(X_{31};Y)$, so additional features contribute diminishing
+marginal information. Second, a category-level information floor: the
+LLM-Powered / DeFi Management pair has the smallest pairwise
+KL divergence in the taxonomy ($0.21$ bits), forming a bottleneck that
+no amount of feature engineering can overcome without accessing the
+decision-process layer that the transaction channel does not expose.
 
 \subsection*{Cross-architecture validation}
 
-A natural objection is that the ceiling might be an artefact of Ethereum's
-specific gas-auction microstructure, which contributes many of the
-discriminative features. We test this by replicating on Polygon, a
-proof-of-stake chain with a near-constant $\sim$30 gwei base fee and a
-2-second block time---structurally different from Ethereum's volatile
-EIP-1559 auction and $12$-second blocks. Of $44$ addresses with known
-Polygon activity, $29$ were extracted, of which $27$ were retained after class filtering. Applying the
-Ethereum-trained $23$-feature classifier directly to Polygon data yields
-$22.2\%$ accuracy on a five-class restriction, barely above the $20\%$
-random baseline. Training and evaluating exclusively on Polygon yields
-$51.7\%$ (logistic regression)---well below the Ethereum ceiling, as
-expected given the sample size and the different feature distribution.
-
-The result is consistent with the information-theoretic interpretation:
-different chain architectures create different channels, and mutual
-information estimated on one does not lift the ceiling on another.
+A cross-chain replication on Polygon ($n=27$ addresses; near-constant
+${\sim}30$\,gwei base fee, $2$-second blocks) yields $22.2\%$ transfer
+accuracy---barely above the $20\%$ random baseline---confirming that
+different architectures create different channels and that $I(X;Y)$
+estimated on one does not transfer to another (details in Supplementary
+Note~6 and Figure~\ref{fig:crosschain}).
 
 % ===========================================================================
 \section*{Mechanistic Insight: Execution vs.\ Decision Signatures}
@@ -521,52 +490,30 @@ than any single-channel regime.
 \section*{Cross-Domain Validation}
 % ===========================================================================
 
-We argued in the Introduction that the Ethereum corpus is a test bed.
 The Fano methodology is domain-general, but the specific ceiling we
-report is a property of the Ethereum observation channel. Three lines
-of evidence support the \emph{within-blockchain} robustness of the
-saturation finding, though cross-domain generalization remains an open
-empirical question.
-
-\paragraph{Architecture-level replication.} The Polygon replication
-(above) shows that the ceiling survives a change of ledger architecture.
-Features engineered on Ethereum do not transfer; features re-engineered on
-Polygon hit a lower ceiling, but the structural pattern---saturation of
-$I(X;Y)$ near $H(Y)$---holds
-(Figure~\ref{fig:crosschain}).
+report is a property of the Ethereum observation channel. Four lines
+of evidence support the robustness of the saturation finding.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/fig4_cross_chain.pdf}
   \caption{\textbf{Cross-chain validation on Polygon proof-of-stake
-  ($n = 27$ addresses after class filtering).} Top: direct transfer of an Ethereum-trained
+  ($n = 27$ addresses after class filtering).} Direct transfer of an Ethereum-trained
   classifier to Polygon yields $22.2\%$ five-class accuracy, barely above
-  the $20\%$ random baseline; re-training on Polygon yields $51.7\%$.
-  Bottom: the Polygon gas-price and inter-transaction interval
-  distributions are structurally compressed relative to Ethereum
-  (near-constant $\sim$$30$ gwei fees; $2$-second block time), consistent
-  with an information-theoretic bound that is intrinsically tighter on
-  Polygon than on Ethereum.}
+  the $20\%$ random baseline; re-training on Polygon yields $51.7\%$.}
   \label{fig:crosschain}
 \end{figure}
 
-\paragraph{Cross-study feature transfer.} We imported eight AI-detection
-features developed independently on a sybil-detection corpus
-(\texttt{gas\_price\_precision}, \texttt{hour\_entropy},
-\texttt{behavioral\_consistency}, \texttt{action\_sequence\_perplexity},
-\texttt{error\_recovery\_pattern}, \texttt{response\_latency\_variance},
-\texttt{gas\_nonce\_gap\_regularity}, \texttt{eip1559\_tip\_precision}).
-These features were never tuned for our taxonomy. Adding them lifts
-measured accuracy from $92.2\%$ to $95.3\%$ and the Fano ceiling from
-$96.8\%$ to $97.2\%$---but the head-room closes from $4.6$ to $2.0$
-percentage points, meaning the classifier benefits but the ceiling barely
-moves. This is exactly what an information-theoretic bound predicts.
+\paragraph{Cross-study feature transfer.} Eight AI-detection features
+imported from an independent sybil-detection corpus lift measured accuracy
+from $92.2\%$ to $95.3\%$ and the Fano ceiling from $96.8\%$ to
+$97.2\%$---but the head-room closes from $4.6$ to $2.0$ percentage
+points, meaning the classifier benefits while the ceiling barely moves.
 
-\paragraph{Density-based validation (HDBSCAN).} HDBSCAN, which makes no
-assumption about cluster count or shape, corroborates K-Means: at
+\paragraph{Density-based validation.} HDBSCAN corroborates K-Means: at
 \texttt{min\_cluster\_size} of $20$ and $50$, it finds $2$ density
-clusters, with $16$--$26\%$ noise. A method with entirely different
-inductive bias converges on the same coarse structure.
+clusters, with $16$--$26\%$ noise---converging on the same $2$--$3$-cluster
+coarse structure.
 
 \paragraph{Provenance-anchored ground truth.} To guard against the
 concern that our result is driven by label-generation choices, we
@@ -600,18 +547,12 @@ contribution to the aggregate number at about $5$ percentage points, and
 to the LLM-specific ceiling at $<1$ percentage point.
 
 \paragraph{Limit: platforms without public event logs.} Our direct
-measurement of $I(X;Y)$ relies on the fact that Ethereum's action history
-is fully observable. On platforms where behavior is proprietary
-(advertising auctions, e-commerce recommenders), $I(X;Y)$ cannot be
-estimated from the outside---but the same Fano inequality applies.
-Whether the ceiling is more or less forgiving on such platforms is an
-open empirical question that depends on the specific feature families
-available; the Polygon cross-chain result ($22\%$ transfer accuracy)
-demonstrates that even structurally similar domains require
-feature-specific recalibration.
-A conservative reading of our result is that the
-$2$-percentage-point head-room we report characterizes the Ethereum
-channel under the studied taxonomy, and that extrapolation to other
+measurement of $I(X;Y)$ relies on Ethereum's fully observable action
+history. On proprietary platforms, $I(X;Y)$ cannot be estimated externally,
+but the same Fano inequality applies.
+A conservative reading is that the
+$2$-percentage-point head-room characterizes the Ethereum
+channel under the studied taxonomy; extrapolation to other
 domains requires independent estimation of $I(X;Y)$ in each setting.
 
 % ===========================================================================
