@@ -16,7 +16,8 @@
 
 \begin{document}
 \title{Tool-Chain Prompt Injection: A Systemic Vulnerability\\in AI Agent Interfaces}
-\author{NSF Project Team}
+\author{\IEEEauthorblockN{Adeline Wen}
+\IEEEauthorblockA{Decentralized Computing Lab\\University of Washington}}
 \maketitle
 
 \begin{abstract}
@@ -140,8 +141,7 @@ the ``vulnerability'' is not in any single tool's code but in the
    (c) a 16-scenario LLM-in-the-loop dynamic harness; and (d) an
    end-to-end on-chain demonstration via Foundry (5/5 tests pass).
 
-\item \textbf{Responsible disclosure and open-source release}: 25
-   vulnerability reports for the highest-risk repositories; full
+\item \textbf{Open-source release}: full
    analyzer, taxonomy, TCPI harness, Foundry demo, and scan data
    released under a permissive license.
 \end{enumerate}
@@ -1150,41 +1150,24 @@ simulated sandboxes to a live chain where tokens actually move.
 \label{sec:disclosure}
 %% ====================================================================
 
-We prepared 25 vulnerability reports covering the highest-risk
-repositories under the recalibrated linear\_p90 scheme (all 25 scored
-above 60).  Each report contains: an introductory context section, a
-per-finding table (file, line, pattern, severity, CWE), an impact
-discussion, and a remediation checklist drawn from the vulnerability
-catalog.  Reports are GHSA-compatible and tracked in
-\texttt{disclosure/tracking.md}.
+We prepared vulnerability reports for the 25 highest-risk repositories
+under the recalibrated linear\_p90 scheme (all 25 scored above~60) and
+conducted an initial outreach.  Maintainer feedback revealed that our
+automated scanner's precision (28--33\%) produced too many false
+positives for responsible disclosure without manual validation.  We
+withdrew all reports and are conducting per-finding manual review before
+re-engaging.  This experience underscores the gap between automated
+pattern detection and actionable security reports --- a lesson we
+integrate into our discussion of static-analysis limitations
+(Section~\ref{sec:discussion}).
 
-\textbf{Disclosure window.}  We follow a 90-day disclosure window in
-line with Google Project Zero and CERT guidance.  For critical Web3 findings --- in particular
-\texttt{private\_key\_exposure} in widely-used MCP wallet servers ---
-we offer a 14-day expedited remediation path.
-
-As of April 16, 2026, we have sent vulnerability notifications to all 25 high-risk repositories via GitHub issues (23 successfully delivered, 2 repositories had issues disabled). All notifications include a 90-day disclosure window (deadline: July 15, 2026). Issue URLs are recorded in our tracking log and are publicly verifiable.
-
-\begin{table}[t]
-\centering\small
-\caption{Disclosure status as of submission.  All 25 reports are
-prepared in GHSA-compatible format.}
-\label{tab:disclosure}
-\begin{tabular}{ll}
-\toprule
-Status & Count \\
-\midrule
-Reports prepared & 25 \\
-Notifications sent & 23 \\
-Issues disabled (alt.\ contact pending) & 2 \\
-Acknowledged & 0 \\
-Fix in progress & 0 \\
-Fixed & 0 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Reports follow a shared template: header, summary, per-finding table (ID, category, severity, file, line, remediation), disclosure timeline, and contact information.
+\textbf{Disclosure methodology.}  Our disclosure framework follows a
+90-day window in line with Google Project Zero and CERT guidance, with a
+14-day expedited remediation path for critical Web3 findings such as
+\texttt{private\_key\_exposure} in widely-used MCP wallet servers.
+Reports are prepared in GHSA-compatible format and tracked in
+\texttt{disclosure/tracking.md}.  We will re-initiate disclosure once
+manual validation is complete.
 
 \textbf{Ethics.}  All scanning targets public source code.  Dynamic harness targets are synthetic servers we wrote; no third-party server, mempool, or live wallet was exploited.  The LLM harness runs against Anthropic's API under standard ToS.  No human subjects; IRB-exempt.  The Foundry demo runs on local \texttt{anvil}; no public-chain funds were at risk.  Exploit code is proof-of-concept only.
 
@@ -1341,8 +1324,7 @@ paths, and cryptographic data commitments --- because the
 vulnerability lives in the composition, not the components.
 
 We release the full TCPI formalization, harness, Foundry demo,
-138-server analyzer, taxonomy, scan data, and 25
-responsible-disclosure reports to the community.
+138-server analyzer, taxonomy, and scan data to the community.
 
 
 %% ====================================================================
