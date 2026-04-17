@@ -1,0 +1,137 @@
+{
+  "summary": {
+    "total_projects": 15,
+    "with_official_list": 1,
+    "without_official_list": 14
+  },
+  "projects": [
+    {
+      "project": "1inch",
+      "official_csv": "1inch_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "1inch did not publish an official sybil address list for its December 2020 1INCH airdrop. Eligibility required interaction with 1inch before December 24 2020 and either: (a) at least 1 trade before September 15, (b) at least 4 trades total, or (c) at least $20 total trade volume. While 1inch excluded bots from a later Lunar New Year airdrop (early 2021) and excluded sybil wallets from an Optimism airdrop (2022), no official sybil address list was ever published for any of these distributions. The original airdrop had minimal anti-sybil measures beyond the interaction requirements."
+    },
+    {
+      "project": "ampleforth",
+      "official_csv": "ampleforth_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "Ampleforth (FORTH airdrop, Apr 2021) did not apply any sybil filtering. Early 2021 airdrop predated anti-sybil practices. No official list published."
+    },
+    {
+      "project": "apecoin",
+      "official_csv": "apecoin_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "ApeCoin did not perform sybil filtering for its March 2022 APE airdrop. Eligibility was strictly based on NFT ownership: holders of BAYC (10094 APE), MAYC (2042 APE), and BAKC (paired with BAYC/MAYC) could claim tokens. Since BAYC/MAYC NFTs have significant floor prices (tens of ETH), the economic cost of acquiring eligible NFTs made sybil attacks impractical. The claim was tied to specific NFT token IDs on-chain, making it deterministic and sybil-resistant by design. No excluded address list was needed or published."
+    },
+    {
+      "project": "badger",
+      "official_csv": "badger_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "No public sybil list. Badger DAO did not apply sybil filtering. Eligibility was based on 19 categories of DeFi governance participation and Bitcoin-in-DeFi activity which served as implicit barriers."
+    },
+    {
+      "project": "blur_s1",
+      "official_csv": "blur_s1_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "Blur did not publish an official sybil address list for its February 2023 BLUR airdrop (Season 1) or subsequent seasons. Blur retroactively filtered wash trades from Season 1 rewards and penalized gaming behaviors such as transferring NFTs between addresses to farm loyalty points. Blur incentivized liquidity (listing NFTs) rather than volume to reduce wash trading incentives. While Blur performed internal on-chain analysis to identify and exclude wash trading and gaming, no public sybil or excluded-address list was ever published. The filtering methodology remains proprietary."
+    },
+    {
+      "project": "blur_s2",
+      "official_csv": "blur_s2_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "Blur did not publish an official sybil address list for its February 2023 BLUR airdrop (Season 1) or subsequent seasons. Blur retroactively filtered wash trades from Season 1 rewards and penalized gaming behaviors such as transferring NFTs between addresses to farm loyalty points. Blur incentivized liquidity (listing NFTs) rather than volume to reduce wash trading incentives. While Blur performed internal on-chain analysis to identify and exclude wash trading and gaming, no public sybil or excluded-address list was ever published. The filtering methodology remains proprietary."
+    },
+    {
+      "project": "dydx",
+      "official_csv": "dydx_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "dYdX did not publish an official sybil address list for its September 2021 DYDX airdrop. Eligibility was based on historical trading volume tiers (minimum $1 traded on the platform before July 26 2021). The primary exclusion was geographic: users who traded from US IP addresses were ineligible due to securities law concerns. No public sybil detection methodology or excluded-address list was ever released. The volume-based tiered system (310 DYDX for >$1 traded up to 9529 DYDX for >$1M traded) served as an implicit economic filter against low-effort sybil farming."
+    },
+    {
+      "project": "eigenlayer",
+      "official_csv": "eigenlayer_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "EigenLayer conducted sybil checks before finalizing its EIGEN stakedrop (Season 1 Phase 1 in May 2024 and Phase 2 in September 2024) but did not publish an official sybil address list. The Eigen Foundation reclaimed 10 million tokens after mitigating a sybil attack in Phase 1, redistributing them in Phase 2. A linear distribution model was used partly to reduce sybil incentives. Geographic restrictions excluded users from the US, China, Russia, Canada, and sanctioned regions via IP and VPN detection. Despite confirmed sybil filtering activity, no public list of excluded sybil addresses was ever released."
+    },
+    {
+      "project": "ens",
+      "official_csv": "ens_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "ENS did not publish an official sybil address list for its November 2021 ENS token airdrop. Eligibility was based on .eth domain name registration and renewal history. Since registering ENS domains requires paying registration fees (annual cost in ETH), the economic cost served as a natural sybil deterrent. The airdrop formula weighted account age and domain ownership duration, rewarding long-term users. No sybil filtering was applied or needed because the payment-based eligibility model made large-scale sybil farming economically impractical."
+    },
+    {
+      "project": "etherfi",
+      "official_csv": "etherfi_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "Ether.fi reclaimed tokens from detected sybils and redistributed in Season 2/3, but the excluded address list was never published."
+    },
+    {
+      "project": "gitcoin",
+      "official_csv": "gitcoin_official_sybils.csv",
+      "has_official_list": true,
+      "official_sybil_count": 27984,
+      "official_head3": [
+        {
+          "address": "0x00000000000cd56832ce5dfbcbff02e7ec639bc9",
+          "label": "sybil"
+        },
+        {
+          "address": "0x000000005ebfb5a950f8fdf3248e99614a7ff220",
+          "label": "sybil"
+        },
+        {
+          "address": "0x00030f4b6e66c1e83d36d35be888534dad275bd0",
+          "label": "sybil"
+        }
+      ],
+      "hascidb_total_addresses": 23878,
+      "hascidb_sybil_count": 9991,
+      "official_in_hascidb_universe": 140,
+      "agreed_sybils": 61,
+      "recall_on_overlapping": 0.435714,
+      "recall_overall": 0.00218,
+      "hascidb_only_sybils": 9930,
+      "hascidb_sybil_pct_not_in_official": 0.993895,
+      "official_missed_by_hascidb": 79,
+      "status": "validated"
+    },
+    {
+      "project": "looksrare",
+      "official_csv": "looksrare_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "LooksRare did not publish an official sybil address list for its January 2022 LOOKS airdrop. Eligibility required a minimum combined 3 ETH trading volume on OpenSea between June 16 and December 16 2021 (blocks 12642194-13812868). The 3 ETH minimum volume threshold served as an economic barrier against sybil farming. Claiming also required listing an NFT on LooksRare, adding friction. Over 124k addresses were eligible. No sybil detection or address exclusion list was published."
+    },
+    {
+      "project": "paraswap",
+      "official_csv": "paraswap_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "No public sybil list. ParaSwap applied anti-sybil filtering during eligibility determination (group size > 5 with < $200 portfolio excluded) but did not publish the excluded address list."
+    },
+    {
+      "project": "uniswap",
+      "official_csv": "uniswap_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "Uniswap did not publish an official sybil address list for its September 2020 UNI airdrop. Every address that had interacted with Uniswap v1 or v2 before September 1 2020 received 400 UNI tokens (~250k addresses). As one of the earliest major DeFi airdrops, no sybil filtering methodology was applied. The only exclusions discussed were proxy contract users (e.g. Dharma, Matcha) who interacted via intermediary contracts rather than directly, which was later addressed through governance proposals. No sybil detection or excluded-address list was ever published."
+    },
+    {
+      "project": "x2y2",
+      "official_csv": "x2y2_official_sybils.csv",
+      "has_official_list": false,
+      "status": "no ground truth available",
+      "note": "X2Y2 did not perform sybil filtering for its February 2022 airdrop. All 861417 addresses that traded on OpenSea from day 1 to Ethereum block 13916166 (first block of 2022) were eligible regardless of volume. 12% of total X2Y2 supply (120M tokens) was allocated. Claiming required listing NFTs on X2Y2 (higher claim amounts required more listings). The broad eligibility with no minimum volume meant no sybil filtering was applied or needed. No excluded address list was published."
+    }
+  ]
+}
