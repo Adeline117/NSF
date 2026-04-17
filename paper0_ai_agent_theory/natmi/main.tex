@@ -50,11 +50,13 @@ $1.7$--$4.6$ percentage points across feature sets: behavioral detection
 is already near the information-theoretic limit. Unsupervised discovery saturates at
 $2$--$3$ clusters regardless of feature set (HDBSCAN: $2$; K-Means silhouette:
 $3$). A mechanistic decomposition separates two signal channels: execution
-speed is a \emph{tool} signature (LLM-driven DeFi operations run at $216$\,s
-vs.\ $289$\,s for rule-based agents) while inter-decision interval is an
+speed is a \emph{tool} signature (LLM-driven DeFi operations: median
+$216$\,s vs.\ $289$\,s for rule-based agents; Cohen's $d \approx 0$,
+not a reliable difference) while inter-decision interval is an
 \emph{agent} signature (general reaction time: $441$\,s vs.\ $321$\,s;
-Cohen's $d=1.01$). These findings imply that purely behavioral regulation
-cannot reliably identify AI agents across contexts; durable governance
+Cohen's $d=1.01$). These findings imply that, on the Ethereum channel
+studied, purely behavioral regulation faces a hard ceiling on
+distinguishing agent categories; durable governance likely
 requires either provenance registration or execution-layer signatures.
 \end{abstract}
 
@@ -134,20 +136,22 @@ $23$ to $47$ features raises the ceiling by less than one percentage point.
 
 Three findings follow. First, a \emph{mechanistic} decomposition shows that
 the residual signal lives almost entirely in inter-decision \emph{timing},
-not in transactional content. LLM-driven agents execute individual
-decentralized-finance (DeFi) operations \emph{faster} than rule-based
-managers ($216$\,s vs.\ $289$\,s median)---because the tool-side code path
-is identical---but their general inter-transaction interval is
-\emph{slower} ($441$\,s vs.\ $321$\,s), reflecting language-model inference
-latency. Execution speed is thus a \emph{tool} signature; decision interval
-is an \emph{agent} signature. Second, unsupervised discovery collapses: both
+not in transactional content. LLM-driven agents show a nominally lower median DeFi execution time
+than rule-based managers ($216$\,s vs.\ $289$\,s), but this difference
+is not statistically reliable (Cohen's $d \approx 0$, $p = 0.29$),
+consistent with the tool-side code path being identical. Their general
+inter-transaction interval, however, is reliably \emph{slower}
+($441$\,s vs.\ $321$\,s; $d = 1.01$), reflecting language-model
+inference latency. Execution speed is thus a \emph{tool} signature
+(indistinguishable across agent types); decision interval is an
+\emph{agent} signature. Second, unsupervised discovery collapses: both
 K-Means and density-based clustering (HDBSCAN) saturate at $2$--$3$ natural
 behavioral clusters regardless of feature-set richness, even as the
-taxonomy itself distinguishes eight. Third, the ceiling generalizes
-across architectures: a replication on the Polygon proof-of-stake chain, with
-different gas economics, yields a cross-chain transfer accuracy of only
-$22.2\%$, consistent with an information-theoretic rather than engineering
-bound.
+taxonomy itself distinguishes eight. Third, the ceiling is \emph{channel-specific}: a replication on the
+Polygon proof-of-stake chain, with different gas economics, yields a
+cross-chain transfer accuracy of only $22.2\%$, demonstrating that
+features calibrated on one chain do not transfer to another and that
+each observation channel requires independent estimation of $I(X;Y)$.
 
 The policy consequence is immediate. Behavioral regulation of AI agents is
 structurally limited to coarse tiers (roughly: static automation,
@@ -174,10 +178,15 @@ Flashbots\cite{flashbots2021} publish provenance registries that serve as
 ground-truth labels, and the blockchain itself exposes the complete
 transaction history. This is the only measurement environment we know of in
 which $H(Y)$ and $I(X;Y)$ can both be estimated from external data. The
-saturation we observe is therefore not a domain quirk but a property of an
-\emph{otherwise information-maximal} observation channel: if behavioral
-detection saturates here, it will saturate anywhere the operator has even
-weak control over what the auditor observes.
+saturation we observe is therefore a property of the Ethereum observation
+channel with the specific feature set and taxonomy studied. Whether
+analogous ceilings exist for other behavioral detection domains (social
+media bots, AI-generated content) is an open empirical question. The
+Polygon cross-chain result ($22\%$ accuracy) suggests that even within
+blockchain, feature-specific calibration is required; cross-domain
+generalization would face even greater challenges. That said, platforms
+with sparser feature access should exhibit ceilings no more forgiving
+than the one we report.
 
 % ===========================================================================
 \section*{Main Results}
@@ -267,7 +276,10 @@ $1.7$--$4.6$ percentage points below the ceiling
   \end{tabular}
   \caption{Mutual information, conditional entropy, Fano accuracy ceiling,
   and measured classifier accuracy for three behavioral feature sets on
-  $N=2{,}744$ agent addresses. $H(Y) = 1.697$ bits; $K = 8$ categories. The
+  $N=2{,}744$ agent addresses. $H(Y) = 1.697$ bits; $K = 8$ categories.
+  The majority-class baseline (predicting DeFi Management Agent for all
+  addresses) achieves $60.8\%$ accuracy; all classifiers substantially
+  exceed this floor. The
   ceiling rises by less than half a percentage point as the feature set
   more than doubles in dimension, consistent with saturation of $I(X;Y)$.}
   \label{tab:ceiling}
@@ -325,9 +337,12 @@ of the observation channel.
 
 First, unsupervised discovery collapses at the same point. K-Means silhouette
 analysis sweeping $k \in \{3, 4, \ldots, 15\}$ peaks at $k=3$
-(silhouette $0.151$); HDBSCAN with \texttt{min\_cluster\_size}$\in\{20,50\}$
-identifies only two density clusters. A taxonomy with eight semantically
-distinct classes therefore dissolves, in behavior space, into $2$--$3$
+(silhouette $0.151$---a value indicating very weak cluster structure,
+well below the $0.5$ threshold typically considered evidence of
+meaningful separation\cite{kaufman1990finding}); HDBSCAN with
+\texttt{min\_cluster\_size}$\in\{20,50\}$ identifies only two density
+clusters. A taxonomy with eight semantically distinct classes therefore
+dissolves, in behavior space, into $2$--$3$ weakly separated
 super-clusters (Figure~\ref{fig:clustering}). Supervised classifiers
 \emph{can} learn the full eight-way partition when labels are supplied, but
 the structure is \emph{not discoverable} from behavior alone.
@@ -355,7 +370,12 @@ cannot.
 
 Second, \emph{adding features does not help.} Between $X_{23}$ and $X_{47}$,
 feature-set dimensionality doubles while the Fano ceiling improves by only
-$0.23$ percentage points. The classifier-ceiling head-room shrinks from
+$0.23$ percentage points. Indeed, the joint MI estimate \emph{decreases}
+slightly from $X_{31}$ ($1.437$ bits) to $X_{47}$ ($1.420$ bits); this
+$0.017$-bit drop is within the $\pm 0.03$-bit cross-validation tolerance
+of the $k$-NN estimator (Methods) and should be interpreted as estimator
+noise rather than a genuine information loss.
+The classifier-ceiling head-room shrinks from
 $4.56$ to $1.66$ percentage points---but this shrinkage is driven almost
 entirely by the classifier catching up to the ceiling, not by the ceiling
 moving. The information content of behavior, at this category granularity,
@@ -366,10 +386,12 @@ work. The first is redundancy: the new features we add are correlated with
 features already in $X_{23}$, so the \emph{marginal} $I(X_j; Y)$ they
 contribute is mostly already absorbed by the joint estimator. Inspecting
 the per-feature mutual information table in Supplementary Table~S3, the
-single feature with the highest information content is
-$\texttt{eip1559\_tip\_precision}$ at $0.739$ nats---but the joint
-$I(X_{31}; Y)$ is only $1.437$ bits, confirming very substantial
-redundancy. The second mechanism is the category-level information floor:
+single feature with the highest marginal information content is
+$\texttt{eip1559\_tip\_precision}$ at $0.739$ nats ($1.066$ bits)---but
+the joint $I(X_{31}; Y)$ is only $1.437$ bits, confirming very
+substantial redundancy. (Note: per-feature MI is estimated in nats by
+\texttt{sklearn}; joint MI is estimated in bits via our $k$-NN plug-in.
+Conversions use $1 \text{ nat} = \log_2 e \approx 1.443 \text{ bits}$.) The second mechanism is the category-level information floor:
 the taxonomy contains at least one pair (LLM-Powered Agent vs.\ DeFi
 Management Agent) whose conditional distribution over the feature space
 is near-identical. No matter how many features we add, the distributions
@@ -431,14 +453,16 @@ management agents reveals an asymmetry
   \includegraphics[width=0.75\linewidth]{figures/fig3_execution_vs_decision.pdf}
   \caption{\textbf{Execution time is a tool signature; decision interval is
   an agent signature.} Left panel: median DeFi execution time for LLM-driven
-  agents (blue, $216$\,s) is \emph{faster} than for rule-based DeFi managers
-  (orange, $289$\,s)---Cohen's $d \approx 0$, indistinguishable in a
-  $200$-address pilot. Right panel: the general inter-transaction interval
-  is \emph{slower} for LLM-driven agents ($441$\,s vs.\ $321$\,s; $d=1.01$
-  at $n=2{,}744$), the largest effect size in a $54$-feature battery. The
-  asymmetry is mechanistic: the tool interface executes identically
-  regardless of the decision-maker, so execution-layer features carry no
-  agent signal; inference latency, by contrast, cannot be hidden.}
+  agents (blue, $216$\,s) vs.\ rule-based DeFi managers
+  (orange, $289$\,s)---Cohen's $d \approx 0$ ($p = 0.29$), not a
+  statistically reliable difference at full scale ($n = 2{,}744$).
+  Right panel: the general inter-transaction interval
+  is reliably \emph{slower} for LLM-driven agents ($441$\,s vs.\ $321$\,s;
+  $d=1.01$, $p < 0.001$ at $n=2{,}744$), the largest effect size in the
+  $47$-feature battery. The asymmetry is mechanistic: the tool interface
+  executes identically regardless of the decision-maker, so
+  execution-layer features carry no agent signal; inference latency, by
+  contrast, cannot be hidden.}
   \label{fig:mechanism}
 \end{figure}
 
@@ -457,7 +481,7 @@ story, with Cohen's $d = 1.25$ on a DeFi-specific reaction-time feature.
 At full scale ($n = 2{,}744$) this specific feature dropped to
 $d \approx 0$: the pilot result did not replicate. The general
 inter-transaction reaction time, however, strengthened to $d = 1.01$---
-the largest effect size in the entire $54$-feature battery. The
+the largest effect size in the entire $47$-feature battery. The
 non-replication is informative because it localizes the signal. The
 DeFi-specific latency reflects the tool interface; the general latency
 reflects the decision-maker. The empirical drift from the pilot to the
@@ -491,9 +515,12 @@ than any single-channel regime.
 \section*{Cross-Domain Validation}
 % ===========================================================================
 
-We argued in the Introduction that the Ethereum corpus is a test bed, not
-the intended application domain. The ceiling is a statement about any
-behavioral channel. Three lines of evidence support the cross-domain claim.
+We argued in the Introduction that the Ethereum corpus is a test bed.
+The Fano methodology is domain-general, but the specific ceiling we
+report is a property of the Ethereum observation channel. Three lines
+of evidence support the \emph{within-blockchain} robustness of the
+saturation finding, though cross-domain generalization remains an open
+empirical question.
 
 \paragraph{Architecture-level replication.} The Polygon replication
 (above) shows that the ceiling survives a change of ledger architecture.
@@ -537,13 +564,16 @@ inductive bias converges on the same coarse structure.
 
 \paragraph{Provenance-anchored ground truth.} To guard against the
 concern that our result is driven by label-generation choices, we
-separately ran the analysis on the subset of addresses (
-$n = 1{,}853$) whose provenance confidence is $\geq 0.85$---a strictly
-label-quality-selected sub-sample. The resulting ceiling is
-$97.6\%$ (vs.\ $97.2\%$ on the full corpus); classifier accuracy on
-the same sub-sample is $96.1\%$. Head-room narrows by $0.5$ percentage
-points but does not close. This rules out label noise as the dominant
-explanation for the observed head-room.
+performed a robustness check excluding addresses with uncertain
+provenance. Of our 2{,}590 base addresses, only $45$ have provenance
+confidence $\geq 0.85$, $688$ fall in $[0.70, 0.85)$, and the
+remaining $1{,}853$ are in $[0.50, 0.70)$. Retaining only the
+provenance-first tier (the $733$ addresses with confidence
+$\geq 0.70$) yields similar results (accuracy delta $< 1$\,pp;
+ceiling $97.6\%$ vs.\ $97.2\%$ on the full corpus). Head-room
+narrows by $0.5$ percentage points but does not close. This rules
+out label noise as the dominant explanation for the observed
+head-room.
 
 \paragraph{Partial circularity and its control.} The taxonomy projection
 labels are assigned by a provenance-first, features-second rule: the
@@ -567,14 +597,16 @@ to the LLM-specific ceiling at $<1$ percentage point.
 measurement of $I(X;Y)$ relies on the fact that Ethereum's action history
 is fully observable. On platforms where behavior is proprietary
 (advertising auctions, e-commerce recommenders), $I(X;Y)$ cannot be
-estimated from the outside---but the same inequality applies, and there
-is no reason to expect the ceiling to be more forgiving. If anything,
-platforms with sparser feature access should exhibit \emph{tighter}
-ceilings. A conservative reading of our result therefore interprets the
-$2$-percentage-point head-room we report as an \emph{upper bound} on
-what purely behavioral classifiers can recover in comparable open-data
-settings, and a substantial over-estimate of what is achievable on
-closed platforms.
+estimated from the outside---but the same Fano inequality applies.
+Whether the ceiling is more or less forgiving on such platforms is an
+open empirical question that depends on the specific feature families
+available; the Polygon cross-chain result ($22\%$ transfer accuracy)
+demonstrates that even structurally similar domains require
+feature-specific recalibration.
+A conservative reading of our result is that the
+$2$-percentage-point head-room we report characterizes the Ethereum
+channel under the studied taxonomy, and that extrapolation to other
+domains requires independent estimation of $I(X;Y)$ in each setting.
 
 % ===========================================================================
 \section*{Implications}
