@@ -1,0 +1,30 @@
+{
+  "model": "claude-haiku-4-5",
+  "via": "claude_agent_sdk",
+  "variants": [
+    {
+      "variant": "V4",
+      "asr": 0.0,
+      "hits": 0,
+      "n": 30
+    },
+    {
+      "variant": "V5",
+      "asr": 0.0,
+      "hits": 0,
+      "n": 30
+    },
+    {
+      "variant": "V6",
+      "asr": 0.0,
+      "hits": 0,
+      "n": 30
+    },
+    {
+      "variant": "V7",
+      "asr": 0.0,
+      "hits": 0,
+      "n": 30
+    }
+  ]
+}
