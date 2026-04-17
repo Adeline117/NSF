@@ -105,7 +105,7 @@ Throughout this paper the adversary is an LLM-powered wallet operator with:
 
 \subsection{HasciDB: The Baseline Detector Under Attack}
 
-HasciDB~\cite{hascidb2026} is a consensus-driven Sybil framework built on five rule-based indicators. Two are \textit{operational}: Burst Transactions (BT), Burst Wallets (BW), and Hop Frequency (HF); two are \textit{fund-flow}: Repeat Funding (RF) and Multi-Account (MA). A wallet is Sybil iff \texttt{ops\_flag = (BT>=5) OR (BW>=10) OR (HF>0.80)} or \texttt{fund\_flag = (RF>0.50) OR (MA>=5)} fires.
+HasciDB~\cite{hascidb2026} is a consensus-driven Sybil framework built on five rule-based indicators. Three are \textit{operational}: Burst Transactions (BT), Burst Wallets (BW), and Hop Frequency (HF); two are \textit{fund-flow}: Repeat Funding (RF) and Multi-Account (MA). A wallet is Sybil iff \texttt{ops\_flag = (BT>=5) OR (BW>=10) OR (HF>0.80)} or \texttt{fund\_flag = (RF>0.50) OR (MA>=5)} fires.
 
 HasciDB's Delphi protocol established these thresholds as a 70\%+ consensus among 12 Web3 practitioners; the dataset spans 16 Ethereum L1 airdrops (2020--2024) and 3.6M eligible addresses. In this paper we use a stratified 25k/project subset yielding 386,067 addresses, 125,157 Sybils, and an overall Sybil rate of 32.4\%.
 
@@ -623,12 +623,12 @@ A fixed-schedule protocol (blend increasing from 0.45 to 0.97 on a predetermined
 
 Table~\ref{tab:feat_evolution} traces the feature importance evolution across rounds.
 Two trends are notable.
-First, the importance distribution \textit{flattens}: the Gini coefficient of feature importances drops from 0.58 (round~0) to 0.21 (round~9), indicating that the detector shifts from relying heavily on one feature to distributing weight across all features as the adversary progressively neutralizes each one.
+First, the importance distribution \textit{flattens}: the Gini coefficient of feature importances drops from 0.54 (round~0) to 0.15 (round~9), indicating that the detector shifts from relying heavily on one feature to distributing weight across all features as the adversary progressively neutralizes each one.
 Second, while \texttt{behavioral\_consistency} and \texttt{hour\_entropy} decline monotonically, \texttt{error\_recovery\_pattern} is non-monotonic: it peaks at round~2 (0.156) as the LLM targets the top-2 features, then declines as it too is targeted.
 The top-3 features (behavioral\_consistency + response\_latency\_variance + hour\_entropy or error\_recovery\_pattern) account for 73--84\% of total importance in rounds 0--4, declining to 46\% by round~9.
 
 \begin{table}[t]
-\caption{Feature importance evolution across adversarial rounds. Top-3 features shown; remaining 5 features share the balance.}
+\caption{Three selected features tracked across adversarial rounds (behavioral\_consistency, hour\_entropy, response\_latency\_variance); Top-3\% shows the actual top-3 importance sum. Remaining 5 features share the balance.\protect\footnotemark}
 \label{tab:feat_evolution}
 \small
 \begin{tabular}{rrrrr}
@@ -644,6 +644,7 @@ Rd & behav\_cons & resp\_lat & hour\_ent & Top-3 \% \\
 \bottomrule
 \end{tabular}
 \end{table}
+\footnotetext{Values shown are from the fixed-schedule protocol (Section~4.4); the best-response 3-seed means (Section~4.8) differ slightly but show the same qualitative pattern.}
 
 \textbf{Convergence interpretation.} AUC $\approx$0.58 is a \emph{practical detection floor}: the defender has exhausted the 8-feature space, and the attacker cannot further degrade detection without violating domain constraints (blend already at 0.90--0.95). The residual 0.078 above chance is the \textit{cost of mimicry}---attributable to \texttt{behavioral\_consistency}'s structural invariant (CV of inter-arrival times)---persistent but insufficient for reliable detection. A 3-round robustness check with a different blend schedule confirms consistent dynamics.
 
@@ -772,7 +773,7 @@ This confirms high-fidelity feature-to-problem-space translation for isolated wa
 The central result is \textbf{0.578}---the convergence point of best-response adversarial training in the 8-feature behavioral space. Three lines of evidence support interpreting this as a \emph{practical detection floor}:
 \textbf{(1)}~AUC converges to $0.578 \pm 0.005$ across 3 seeds with $|\Delta\text{AUC}|{<}0.01$ for the last 3 rounds; a fixed-schedule protocol yields 0.599, confirming the result is not a schedule artifact.
 \textbf{(2)}~At blend ${\sim}0.93$, sybils share 93\% of their distributional mass with real wallets; the residual 0.078 above chance concentrates in \texttt{behavioral\_consistency} (CV of inter-arrival times), a structural invariant the LLM cannot replicate without real-time traffic modeling.
-\textbf{(3)}~Feature-importance Gini drops from 0.58 to 0.21, indicating the detector has exhausted all 8 dimensions.
+\textbf{(3)}~Feature-importance Gini drops from 0.54 to 0.15, indicating the detector has exhausted all 8 dimensions.
 
 This is a practical observation, not a theoretical optimality proof. Fundamentally different features could exceed this floor, but within the 8-feature space, multiple starting conditions converge to the same point: \emph{change the problem}, do not keep optimizing within the bounded paradigm.
 
@@ -820,7 +821,7 @@ The apparent contradiction between the parametric floor (0.578) and the closed-l
 
 Cross-axis LOPO mean AUC 0.617 is the honest floor for HasciDB; any detector reporting AUC~$>$0.95 on the 5-indicator label is measuring rule recall, not generalization.
 
-External cross-method validation using independently-created sybil lists (HOP Protocol 14,196 addresses; LayerZero 21,396 addresses) reveals near-zero inter-method agreement: HasciDB--HOP $\kappa{=}0.0022$, HasciDB--LayerZero $\kappa{=}{-}0.0001$, HOP--Gitcoin\_FDD $\kappa{=}{-}0.40$ (anti-correlated). Different detection methods see fundamentally different sybil populations. LLM-generated sybils (0 matches across all external lists) operate in the shared blind spot.
+External cross-method validation using independently-created sybil lists (HOP Protocol 14,195 addresses; LayerZero 21,395 addresses) reveals near-zero inter-method agreement: HasciDB--HOP $\kappa{=}0.0022$, HasciDB--LayerZero $\kappa{=}{-}0.0001$, HOP--Gitcoin\_FDD $\kappa{=}{-}0.40$ (anti-correlated). Different detection methods see fundamentally different sybil populations. LLM-generated sybils (0 matches across all external lists) operate in the shared blind spot.
 
 \subsection{Ethical Considerations}
 \label{sec:ethics}

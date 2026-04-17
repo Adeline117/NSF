@@ -51,9 +51,9 @@ is already near the information-theoretic limit. Unsupervised discovery saturate
 $2$--$3$ clusters regardless of feature set (HDBSCAN: $2$; K-Means silhouette:
 $3$). A mechanistic decomposition separates two signal channels: execution
 speed is a \emph{tool} signature (LLM-driven DeFi operations: median
-$216$\,s vs.\ $289$\,s for rule-based agents; Cohen's $d \approx 0$,
+$216$\,s vs.\ ${\sim}289$\,s for rule-based agents; Cohen's $d \approx 0$,
 not a reliable difference) while inter-decision interval is an
-\emph{agent} signature (general reaction time: $441$\,s vs.\ $321$\,s;
+\emph{agent} signature (general reaction time: $441$\,s vs.\ ${\sim}321$\,s;
 Cohen's $d=1.01$). These findings imply that, on the Ethereum channel
 studied, purely behavioral regulation faces a hard ceiling on
 distinguishing agent categories; durable governance likely
@@ -137,11 +137,11 @@ $23$ to $47$ features raises the ceiling by less than one percentage point.
 Three findings follow. First, a \emph{mechanistic} decomposition shows that
 the residual signal lives almost entirely in inter-decision \emph{timing},
 not in transactional content. LLM-driven agents show a nominally lower median DeFi execution time
-than rule-based managers ($216$\,s vs.\ $289$\,s), but this difference
+than rule-based managers ($216$\,s vs.\ ${\sim}289$\,s), but this difference
 is not statistically reliable (Cohen's $d \approx 0$, $p = 0.29$),
 consistent with the tool-side code path being identical. Their general
 inter-transaction interval, however, is reliably \emph{slower}
-($441$\,s vs.\ $321$\,s; $d = 1.01$), reflecting language-model
+($441$\,s vs.\ ${\sim}321$\,s; $d = 1.01$), reflecting language-model
 inference latency. Execution speed is thus a \emph{tool} signature
 (indistinguishable across agent types); decision interval is an
 \emph{agent} signature. Second, unsupervised discovery collapses: both
@@ -306,8 +306,8 @@ classifier with the $X_{31}$ feature set; a fourth, MEV Searcher, reaches
 $0.84$. Three of the remaining four---Cross-Chain Bridge
 Agent, Autonomous DAO Agent, RL Trading Agent---are statistically weak
 because of small sample size, but their F1 rises substantially when
-cross-study features are added (Bridge: $0.31 \to 0.76$; DAO:
-$0.14 \to 0.43$). The eighth category, LLM-Powered Agent, is the only one
+cross-study features are added (Bridge: $0.29 \to 0.76$; DAO:
+$0.23 \to 0.43$; per-class F1 varies by $\pm$0.05 across cross-validation runs due to small class sizes). The eighth category, LLM-Powered Agent, is the only one
 that remains stubborn: its F1 rises from $0.38$ under $X_{23}$ to
 $0.49$ when decision-process features are added, and never exceeds
 $0.54$ in any configuration we tested. Under $X_{31}$, LLM-Powered precision is
@@ -425,7 +425,7 @@ discriminative features. We test this by replicating on Polygon, a
 proof-of-stake chain with a near-constant $\sim$30 gwei base fee and a
 2-second block time---structurally different from Ethereum's volatile
 EIP-1559 auction and $12$-second blocks. Of $44$ addresses with known
-Polygon activity, $29$ cleared a minimum-activity threshold. Applying the
+Polygon activity, $29$ were extracted, of which $27$ were retained after class filtering. Applying the
 Ethereum-trained $23$-feature classifier directly to Polygon data yields
 $22.2\%$ accuracy on a five-class restriction, barely above the $20\%$
 random baseline. Training and evaluating exclusively on Polygon yields
@@ -460,10 +460,10 @@ management agents reveals an asymmetry
   \caption{\textbf{Execution time is a tool signature; decision interval is
   an agent signature.} Left panel: median DeFi execution time for LLM-driven
   agents (blue, $216$\,s) vs.\ rule-based DeFi managers
-  (orange, $289$\,s)---Cohen's $d \approx 0$ ($p = 0.29$), not a
+  (orange, ${\sim}289$\,s)---Cohen's $d \approx 0$ ($p = 0.29$), not a
   statistically reliable difference at full scale ($n = 2{,}744$).
   Right panel: the general inter-transaction interval
-  is reliably \emph{slower} for LLM-driven agents ($441$\,s vs.\ $321$\,s;
+  is reliably \emph{slower} for LLM-driven agents ($441$\,s vs.\ ${\sim}321$\,s;
   $d=1.01$, $p < 0.001$ at $n=2{,}744$), the largest effect size in the
   $47$-feature battery. The asymmetry is mechanistic: the tool interface
   executes identically regardless of the decision-maker, so
@@ -539,7 +539,7 @@ $I(X;Y)$ near $H(Y)$---holds
   \centering
   \includegraphics[width=0.8\linewidth]{figures/fig4_cross_chain.pdf}
   \caption{\textbf{Cross-chain validation on Polygon proof-of-stake
-  ($n = 29$ addresses).} Top: direct transfer of an Ethereum-trained
+  ($n = 27$ addresses after class filtering).} Top: direct transfer of an Ethereum-trained
   classifier to Polygon yields $22.2\%$ five-class accuracy, barely above
   the $20\%$ random baseline; re-training on Polygon yields $51.7\%$.
   Bottom: the Polygon gas-price and inter-transaction interval
@@ -890,8 +890,7 @@ interval, faster on execution) is stable in every stratum.
 
 \subsection*{Cross-chain replication}
 
-Polygon features were extracted via the Polygonscan API for the $29$
-addresses clearing a $\geq 5$-transaction activity threshold. The
+Polygon features were extracted via the Polygonscan API for $29$ addresses clearing a $\geq 5$-transaction activity threshold; $27$ were retained after class filtering. The
 Ethereum-trained Gradient Boosting classifier was applied directly to
 Polygon features without retraining. A separate Polygon-only five-fold
 stratified cross-validation was run for comparison. Three taxonomy
@@ -904,7 +903,7 @@ that dominate the Ethereum classifier, and the $2$-second Polygon block
 time compresses the timing features into a narrower range than the
 $12$-second Ethereum blocks permit. These two mechanisms jointly explain
 the $22.2\%$ transfer accuracy; Polygon-only retraining recovers $51.7\%$
-accuracy with a sample size of $29$, consistent with an information-
+accuracy with a sample size of $27$ (after class filtering), consistent with an information-
 theoretic bound that is intrinsically tighter on Polygon than on
 Ethereum.
 
