@@ -770,6 +770,9 @@ When $T_A$ returns honest output, the attacker predicate is never
 satisfied, confirming that the attack requires the adversarial
 $o_A^*$.
 
+\textbf{Finding 4: TCPI resistance is model-size-independent within the Claude family.}
+Multi-model validation across the Claude family (Haiku, Sonnet, Opus) shows consistent TCPI resistance: all three model sizes refuse V1 (Output$\to$Parameter) attacks, with only Haiku showing marginal V2 susceptibility (6\%, 3/50). TCPI resistance appears model-size-independent within this family; cross-family testing (GPT-4o, Llama) remains future work.
+
 
 \subsection{138-Server Static Scan (Precision-Adjusted)}
 \label{sec:static-scan}

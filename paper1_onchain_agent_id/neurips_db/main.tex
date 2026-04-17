@@ -279,6 +279,8 @@ GAT (2-layer, 8 heads) & 5-fold & \textbf{0.832 $\pm$ 0.021} & -- & -- & 0.674 \
 
 Feature-group ablation on RF (all-23 AUC~0.794): interaction group alone 0.751; gas alone 0.713; approval/security alone 0.656; temporal alone 0.623 (computed on the v3 N=563 subset; v4 feature-group ablation is pending). Removing temporal features alone improves AUC by $+0.005$---evidence that the heuristic-labeled pipeline used temporal features as a crutch.
 
+As external validation, we reimplemented Niedermayer et al.'s (2024) 7-feature Random Forest on our benchmark. At Level~2, their method achieves AUC 0.779 ($-$4.7\,pp vs.\ our 0.826). At Level~3 (temporal), their AUC is 0.684 ($-$1.7\,pp) but their F1 is 0.653 ($+$5.1\,pp vs.\ our 0.602), suggesting the simpler model generalizes recall better under distribution shift. At Level~5, both methods collapse below 0.50. This confirms the benchmark supports cross-method comparison and that the cascade pattern is method-independent.
+
 \paragraph{Security-feature reversal.} Under nearest-neighbor matching (533 pairs), \texttt{approve\_revoke\_ratio} and \texttt{multi\_protocol\_interaction\_count} remain significant ($p < 0.001$). Under propensity score matching (318 pairs), all differences vanish ($p > 0.68$). The reversal is therefore sensitive to matching methodology: nearest-neighbor matching preserves some agent--human differences, while propensity score matching eliminates all of them. We present both results to avoid over-claiming in either direction.
 
 \subsection{Level 3: Temporal holdout}
