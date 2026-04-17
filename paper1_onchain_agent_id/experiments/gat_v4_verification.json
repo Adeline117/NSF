@@ -1,0 +1,51 @@
+{
+  "run_timestamp": "20260416_162917",
+  "fatal2_status": "RESOLVED",
+  "description": "FATAL-2 claimed the GAT 0.832 has no data file. FINDING: The GAT 0.832 IS backed by data in mine_addresses_v4_results.json with 5-fold per-fold AUCs. The temporal holdout GAT result (0.666) is in gat_temporal_holdout_results.json.",
+  "verified_gat_auc_v4": 0.8318,
+  "verified_gat_std_v4": 0.0213,
+  "verified_per_fold_auc": [
+    0.8062,
+    0.8499,
+    0.8393,
+    0.807,
+    0.8566
+  ],
+  "verified_n_samples": 1147,
+  "can_rerun_gat": false,
+  "all_sources_found": {
+    "mine_addresses_v4_results.json": {
+      "mean_auc": 0.8318,
+      "std_auc": 0.0213,
+      "mean_f1": 0.6743,
+      "n_edges": 905,
+      "n_folds": 5,
+      "per_fold_auc": [
+        0.8062,
+        0.8499,
+        0.8393,
+        0.807,
+        0.8566
+      ],
+      "dataset_n": 1147
+    },
+    "gat_temporal_holdout_results.json": {
+      "mean_auc": 0.666,
+      "std_auc": 0.0062,
+      "n_seeds": 5,
+      "dataset_n": 1147,
+      "context": "temporal holdout (NOT random CV)"
+    },
+    "expanded/gnn_results.json (full_3316)": {
+      "mean_auc": 0.9341,
+      "std_auc": 0.0113,
+      "note": "This is on the OLD 3316 set, NOT v4 n=1147"
+    },
+    "expanded/gnn_results.json (trusted_64)": {
+      "mean_auc": 0.8825,
+      "std_auc": 0.1076,
+      "note": "This is on the 64-address trusted subset of 3316"
+    }
+  },
+  "elapsed_seconds": 0.0
+}

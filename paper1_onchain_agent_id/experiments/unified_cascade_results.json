@@ -1,0 +1,234 @@
+{
+  "run_timestamp": "20260416_162753",
+  "description": "Unified cascade: ALL five levels computed with the SAME model (RandomForest) on the SAME dataset (v4, n=1,147). Fixes FATAL-1: the original cascade mixed GBM/RF and different datasets. Level 4 uses the 70-address strict core (fixes FATAL-3: previously reported as n=64 but is actually n=70).",
+  "model_config": {
+    "model": "RandomForest",
+    "params": {
+      "n_estimators": 200,
+      "max_depth": 4,
+      "min_samples_leaf": 3,
+      "random_state": 42,
+      "n_jobs": -1
+    }
+  },
+  "dataset": {
+    "name": "v4",
+    "n_samples": 1147,
+    "n_agents": 533,
+    "n_humans": 614,
+    "n_features": 23
+  },
+  "levels": {
+    "level1": {
+      "level": 1,
+      "name": "C1-C4 leaky labels (RF 10x10-fold CV)",
+      "dataset": "v4 n=1,147 subset with C1-C4 labels",
+      "n_samples": 1129,
+      "n_agents": 860,
+      "n_humans": 269,
+      "model": "RandomForest",
+      "auc": 0.8439,
+      "auc_std": 0.0518,
+      "f1": 0.9284,
+      "note": "Leaky labels: heuristic C1-C4 rules, NOT ground truth."
+    },
+    "level2": {
+      "level": 2,
+      "name": "Provenance labels, RF 10x10-fold CV",
+      "dataset": "v4 n=1,147",
+      "n_samples": 1147,
+      "n_agents": 533,
+      "n_humans": 614,
+      "model": "RandomForest",
+      "auc": 0.8045,
+      "auc_std": 0.0405,
+      "f1": 0.6799,
+      "precision": 0.7563,
+      "recall": 0.6214,
+      "accuracy": 0.7298
+    },
+    "level3": {
+      "level": 3,
+      "name": "Temporal holdout (RF)",
+      "dataset": "v4 n=1,147",
+      "n_total": 1147,
+      "n_train": 573,
+      "n_test": 574,
+      "split_block": 12321026,
+      "train_agents": 170,
+      "train_humans": 403,
+      "test_agents": 363,
+      "test_humans": 211,
+      "model": "RandomForest",
+      "auc": 0.6693,
+      "f1": 0.4471,
+      "precision": 0.8116,
+      "recall": 0.3085,
+      "accuracy": 0.5174
+    },
+    "level4": {
+      "level": 4,
+      "name": "Strict curated core LOO-CV (RF)",
+      "dataset": "v4 strict core n=70",
+      "n_samples": 70,
+      "n_agents": 35,
+      "n_humans": 35,
+      "model": "RandomForest",
+      "auc": 0.76,
+      "f1": 0.6667,
+      "precision": 0.7097,
+      "recall": 0.6286,
+      "accuracy": 0.6857
+    },
+    "level5": {
+      "level": 5,
+      "name": "Leave-One-Platform-Out (RF)",
+      "dataset": "v4 n=1,147",
+      "n_samples": 1147,
+      "n_platforms_evaluated": 14,
+      "model": "RandomForest",
+      "pooled_auc": 0.3966,
+      "pooled_f1": 0.3552,
+      "pooled_accuracy": 0.4704,
+      "pooled_precision": 0.4156,
+      "pooled_recall": 0.3102,
+      "total_predictions": 1131,
+      "per_platform": {
+        "chainlink_keeper": {
+          "n_test": 108,
+          "n_test_agents": 108,
+          "n_test_humans": 0,
+          "accuracy": 0.537,
+          "f1": 0.6988,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "compound_v3_liquidator": {
+          "n_test": 97,
+          "n_test_agents": 97,
+          "n_test_humans": 0,
+          "accuracy": 0.1031,
+          "f1": 0.1869,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "curated_mev_bot": {
+          "n_test": 10,
+          "n_test_agents": 10,
+          "n_test_humans": 0,
+          "accuracy": 0.7,
+          "f1": 0.8235,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "defi_hf_trader": {
+          "n_test": 199,
+          "n_test_agents": 199,
+          "n_test_humans": 0,
+          "accuracy": 0.201,
+          "f1": 0.3347,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "ens_reverse_setter": {
+          "n_test": 144,
+          "n_test_agents": 0,
+          "n_test_humans": 144,
+          "accuracy": 0.7569,
+          "f1": 0.0,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "expanded_human": {
+          "n_test": 25,
+          "n_test_agents": 0,
+          "n_test_humans": 25,
+          "accuracy": 0.72,
+          "f1": 0.0,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "expanded_mev_bot": {
+          "n_test": 10,
+          "n_test_agents": 10,
+          "n_test_humans": 0,
+          "accuracy": 0.2,
+          "f1": 0.3333,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "gelato_executor": {
+          "n_test": 47,
+          "n_test_agents": 47,
+          "n_test_humans": 0,
+          "accuracy": 0.5319,
+          "f1": 0.6944,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "gitcoin_donor": {
+          "n_test": 146,
+          "n_test_agents": 0,
+          "n_test_humans": 146,
+          "accuracy": 0.5068,
+          "f1": 0.0,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "human_ens_interaction": {
+          "n_test": 167,
+          "n_test_agents": 0,
+          "n_test_humans": 167,
+          "accuracy": 0.4551,
+          "f1": 0.0,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "human_exchange_depositor": {
+          "n_test": 28,
+          "n_test_agents": 0,
+          "n_test_humans": 28,
+          "accuracy": 0.7857,
+          "f1": 0.0,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "keep3r_executor": {
+          "n_test": 46,
+          "n_test_agents": 46,
+          "n_test_humans": 0,
+          "accuracy": 0.2174,
+          "f1": 0.3571,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "pilot_agent": {
+          "n_test": 15,
+          "n_test_agents": 15,
+          "n_test_humans": 0,
+          "accuracy": 0.8667,
+          "f1": 0.9286,
+          "auc": null,
+          "auc_note": "single-class platform"
+        },
+        "pooltogether_depositor": {
+          "n_test": 89,
+          "n_test_agents": 0,
+          "n_test_humans": 89,
+          "accuracy": 0.764,
+          "f1": 0.0,
+          "auc": null,
+          "auc_note": "single-class platform"
+        }
+      }
+    }
+  },
+  "cascade_summary": {
+    "Level 1 (leaky C1-C4)": 0.8439,
+    "Level 2 (10-fold CV)": 0.8045,
+    "Level 3 (temporal holdout)": 0.6693,
+    "Level 4 (strict core N=70)": 0.76,
+    "Level 5 (LOPO pooled)": 0.3966
+  },
+  "elapsed_seconds": 41.68
+}
