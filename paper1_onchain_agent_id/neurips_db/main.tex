@@ -28,7 +28,7 @@ Auditing On-Chain Agent-vs-Human Classifiers}
 \maketitle
 
 \begin{abstract}
-Existing benchmarks for detecting automated activity on public blockchains treat label quality as an afterthought: addresses are labeled by the same behavioral heuristics that serve as classifier features, producing apparent AUCs above~0.95 that vanish once label leakage is controlled. We release \textbf{OnChainAgentID}, a provenance-verified benchmark of 1{,}147 Ethereum addresses (533 agents, 614 humans) drawn from 18 operational categories whose labels are anchored to non-behavioral provenance (on-chain registries, relay-attested MEV bots, ENS registration events, Gitcoin donations, PoolTogether deposits, etc.). The benchmark defines a fixed \emph{five-level evaluation protocol}---in-sample fit, random 10-fold CV, temporal holdout, a 70-address strict curated core, and leave-one-platform-out---that exposes three distinct failure modes: label--feature entanglement, temporal drift, and cross-platform non-transfer. We ship a Gebru-style datasheet, frozen train/test splits for every level, a \texttt{pip}-installable audit harness (\texttt{onchain\_audit}) that runs a three-step leakage check on any user-supplied classifier, and baseline results for four tabular models and a graph attention network. On our baselines, a single Random Forest on the same 1{,}147-address dataset yields AUC 0.84 (in-sample on heuristic labels), 0.80 (random 10-fold), 0.67 (temporal holdout), 0.76 (strict core), and 0.40 (single-class LOPO) / 0.75 (mixed-class LOPO)---all numbers use the same model and dataset for direct comparability, and the progression is one we argue \emph{every} submission to this benchmark should report. The benchmark is released under CC~BY~4.0 with a Zenodo DOI; the audit harness is MIT-licensed. Our goal is to give blockchain-ML researchers a shared, leakage-resistant evaluation substrate so that future agent-detection claims can be compared on equal footing and audited for free.
+Existing benchmarks for detecting automated activity on public blockchains treat label quality as an afterthought: addresses are labeled by the same behavioral heuristics that serve as classifier features, producing apparent AUCs above~0.95 that vanish once label leakage is controlled. We release \textbf{OnChainAgentID}, a provenance-verified benchmark of 1{,}147 Ethereum addresses (533 agents, 614 humans) drawn from 18 operational categories whose labels are anchored to non-behavioral provenance (on-chain registries, relay-attested MEV bots, ENS registration events, Gitcoin donations, PoolTogether deposits, etc.). The benchmark defines a fixed \emph{five-level evaluation protocol}---in-sample fit, random 10-fold CV, temporal holdout, a 70-address strict curated core, and leave-one-platform-out---that exposes three distinct failure modes: label--feature entanglement, temporal drift, and cross-platform non-transfer. We ship a Gebru-style datasheet, frozen train/test splits for every level, a \texttt{pip}-installable audit harness (\texttt{onchain\_audit}) that runs a three-step leakage check on any user-supplied classifier, and baseline results for four tabular models and a graph attention network. On our baselines, a single Random Forest on the same 1{,}147-address dataset yields AUC 0.84 (in-sample on heuristic labels), 0.80 (random 10-fold), 0.67 (temporal holdout), 0.76 (strict core), and 0.40 (single-class LOPO) / 0.74 (mixed-class LOPO)---all numbers use the same model and dataset for direct comparability, and the progression is one we argue \emph{every} submission to this benchmark should report. The benchmark is released under CC~BY~4.0 with a Zenodo DOI; the audit harness is MIT-licensed. Our goal is to give blockchain-ML researchers a shared, leakage-resistant evaluation substrate so that future agent-detection claims can be compared on equal footing and audited for free.
 \end{abstract}
 
 \section{Introduction}
@@ -59,7 +59,7 @@ Published blockchain bot-detection results rely on labels produced by behavioral
 \end{enumerate}
 
 \paragraph{What this paper is not.}
-It is not a new agent-detection \emph{method}. The five-level collapse from 0.84 to 0.40 on our own pipeline is included as a self-audit case study (\S\ref{sec:audit}) demonstrating how to apply the toolkit, not as a methodological proposal. The contributions here are the dataset, the evaluation protocol, the harness, and the baselines---artifacts, not algorithms.
+It is not a new agent-detection \emph{method}. The five-level collapse from 0.84 to 0.40/0.74 on our own pipeline is included as a self-audit case study (\S\ref{sec:audit}) demonstrating how to apply the toolkit, not as a methodological proposal. The contributions here are the dataset, the evaluation protocol, the harness, and the baselines---artifacts, not algorithms.
 
 \section{Related Datasets}
 \label{sec:related}
@@ -143,7 +143,7 @@ A full Gebru et al.~\cite{gebru2018datasheets} datasheet ships at \texttt{benchm
 
 The core methodological contribution of OnChainAgentID is a \emph{fixed} five-level evaluation protocol that every submission should report. Each level probes a distinct failure mode; the gap between levels quantifies the magnitude of the exposed failure. All splits are shipped as frozen JSON in \texttt{benchmark/splits/}.
 
-\paragraph{Level 1 (in-sample fit / leaky-label reference).} RF 10$\times$10-fold CV on the same 1{,}147 addresses relabeled with the heuristic C1--C4 oracle (860 agents, 269 humans). AUC~0.844$\pm$0.052. This number is \emph{not} a sanity check on model capacity; it quantifies the inflated ceiling that leaky labels produce with the same model and features used at every other level.
+\paragraph{Level 1 (in-sample fit / leaky-label reference).} RF 10$\times$10-fold CV on 1{,}129 of the 1{,}147 addresses (18 could not be assigned C1--C4 labels) relabeled with the heuristic C1--C4 oracle (860 agents, 269 humans). AUC~0.844$\pm$0.052. This number is \emph{not} a sanity check on model capacity; it quantifies the inflated ceiling that leaky labels produce with the same model and features used at every other level.
 
 \paragraph{Level 2 (random stratified 10-fold CV).} \texttt{level2\_random\_10fold.json}: 10 stratified folds, seed~42, $\sim$115 test addresses each. \emph{Report:} mean $\pm$ std of AUC, F1, precision, recall. This is an upper bound under within-distribution assumptions.
 
@@ -188,11 +188,11 @@ Table~\ref{tab:leaderboard} gives the recommended reporting schema. We seed the 
 Model (submitter) & $L_1$ AUC & $L_2$ AUC & $L_3$ AUC & $L_4$ AUC & $L_5$ AUC & Audit verdict \\
 \midrule
 \textit{Baselines (this paper):} & & & & & & \\
-Random Forest & 0.844 & 0.805 & 0.669 & 0.760 & 0.40 / 0.75 & PASS \\
+Random Forest & 0.844 & 0.805 & 0.669 & 0.760 & 0.40 / 0.74 & PASS \\
 Gradient Boosting & -- & 0.810 & 0.664 & 0.628 & 0.40 / 0.75 & PASS \\
 Logistic Regression & -- & 0.779 & 0.616 & 0.610 & -- & PASS \\
 LightGBM & -- & -- & -- & 0.710 & -- & PASS \\
-GAT (graph attention) & -- & \textbf{0.832} & -- & \textbf{0.832} & -- & PASS \\
+GAT (graph attention) & -- & \textbf{0.832} & -- & --- & -- & PASS \\
 \midrule
 \textit{Leaky reference (do not cite as SOTA):} & & & & & & \\
 RF on C1--C4 heuristic labels & 0.844 & -- & -- & -- & -- & FAIL \\
@@ -278,7 +278,7 @@ GAT (2-layer, 8 heads) & 5-fold & \textbf{0.832 $\pm$ 0.021} & -- & -- & 0.674 \
 \end{tabular}
 \end{table}
 
-Feature-group ablation on RF (all-23 AUC~0.794): interaction group alone 0.751; gas alone 0.713; approval/security alone 0.656; temporal alone 0.623. Removing temporal features alone improves AUC by $+0.005$---evidence that the heuristic-labeled pipeline used temporal features as a crutch.
+Feature-group ablation on RF (all-23 AUC~0.794): interaction group alone 0.751; gas alone 0.713; approval/security alone 0.656; temporal alone 0.623 (computed on the v3 N=563 subset; v4 feature-group ablation is pending). Removing temporal features alone improves AUC by $+0.005$---evidence that the heuristic-labeled pipeline used temporal features as a crutch.
 
 \paragraph{Security-feature reversal.} Under nearest-neighbor matching (533 pairs), \texttt{approve\_revoke\_ratio} and \texttt{multi\_protocol\_interaction\_count} remain significant ($p < 0.001$). Under propensity score matching (318 pairs), all differences vanish ($p > 0.68$). The reversal is therefore sensitive to matching methodology: nearest-neighbor matching preserves some agent--human differences, while propensity score matching eliminates all of them. We present both results to avoid over-claiming in either direction.
 
@@ -307,12 +307,12 @@ Logistic Regression & Temporal holdout & 0.616 & 0.739 & 0.422 & 0.537 \\
 
 \subsection{Level 4: Strict curated core (N=70)}
 
-On the 70-address strict core, RF reaches LOO AUC~0.760; GAT reaches 0.832$\pm$0.021 (verified: 5-fold CV per-fold AUCs 0.806, 0.850, 0.839, 0.807, 0.857; source: \texttt{mine\_addresses\_v4\_results.json}). Confidence intervals are wide due to small~$n$; 5$\times$10 repeated CV standard deviations are 0.08--0.12.
+On the 70-address strict core, RF reaches LOO AUC~0.760. Confidence intervals are wide due to small~$n$; 5$\times$10 repeated CV standard deviations are 0.08--0.12. GAT was not evaluated on the N=70 strict core; the 0.832 AUC reported for GAT is a Level~2 (full provenance, N=1{,}147) result.
 
 \begin{table}[h]
 \centering
 \small
-\caption{Level 4 (strict curated core, N=70) baselines.}
+\caption{Level 4 (strict curated core, N=70) baselines.$^\dagger$}
 \label{tab:level4}
 \begin{tabular}{llccccc}
 \toprule
@@ -320,19 +320,21 @@ Model & Protocol & AUC & Prec. & Recall & F1 & Accuracy \\
 \midrule
 Random Forest & LOO & 0.760 & 0.710 & 0.629 & 0.667 & 0.686 \\
 Random Forest & 5$\times$10-CV & 0.803 $\pm$ 0.102 & 0.801 & 0.714 & 0.736 & 0.745 \\
-Gradient Boosting & LOO & 0.628 & 0.588 & 0.606 & 0.597 & 0.578 \\
-Logistic Regression & LOO & 0.610 & 0.667 & 0.606 & 0.635 & 0.641 \\
-LightGBM & LOO & 0.710 & -- & -- & 0.727 & 0.719 \\
-GAT (5-fold) & 5-fold & \textbf{0.832 $\pm$ 0.021} & -- & -- & -- & -- \\
+Gradient Boosting$^\dagger$ & LOO & 0.628 & 0.588 & 0.606 & 0.597 & 0.578 \\
+Logistic Regression$^\dagger$ & LOO & 0.610 & 0.667 & 0.606 & 0.635 & 0.641 \\
+LightGBM$^\dagger$ & LOO & 0.710 & -- & -- & 0.727 & 0.719 \\
 \bottomrule
 \end{tabular}
+
+\smallskip
+\noindent{\footnotesize $^\dagger$LightGBM, GB, and LR results are from the earlier 64-address strict set; only RF has been re-evaluated on the v4 70-address core.}
 \end{table}
 
 \subsection{Level 5: Leave-One-Platform-Out}
 
-The original single-class LOPO yields pooled RF AUC 0.40 (0.397), but this conflates domain shift with concept failure. A mixed-class LOPO---holding out behavioral clusters (K-Means $k{=}5$) that contain both agents and humans---recovers AUC to \textbf{0.75} ($+$33\,pp). The cascade floor is therefore 0.75, not 0.40. The remaining gap to random CV (0.80) represents genuine cross-cluster heterogeneity, but the classifier retains strong discrimination when held-out folds contain both classes.
+The original single-class LOPO yields pooled RF AUC 0.40 (0.397), but this conflates domain shift with concept failure. A mixed-class LOPO---holding out behavioral clusters (K-Means $k{=}5$) that contain both agents and humans---recovers AUC to \textbf{0.74} (RF) / 0.75 (GBM) ($+$33\,pp). The cascade floor is therefore 0.74, not 0.40. The remaining gap to random CV (0.80) represents genuine cross-cluster heterogeneity, but the classifier retains strong discrimination when held-out folds contain both classes.
 
-Pooled over 14 held-out platform folds (1{,}131 predictions), RF reaches pooled AUC~0.397 and pooled accuracy~47.0\%. Per-platform recalls range from 14\% (\texttt{defi\_hf\_trader}) to 80\% (\texttt{pilot\_agent}); human specificities range from 43\% (\texttt{human\_ens\_interaction}) to 86\% (\texttt{human\_exchange\_depositor}). The pooled AUC below 0.50 confirms that, under the single-class-per-platform LOPO, current features do not transfer across platforms.
+Pooled over 14 held-out platform folds (1{,}131 predictions), RF reaches pooled AUC~0.397 and pooled accuracy~47.0\%. Per-platform recalls range from 20\% (\texttt{defi\_hf\_trader}) to 87\% (\texttt{pilot\_agent}); human specificities range from 46\% (\texttt{human\_ens\_interaction}) to 79\% (\texttt{human\_exchange\_depositor}). The pooled AUC below 0.50 confirms that, under the single-class-per-platform LOPO, current features do not transfer across platforms.
 
 \begin{table}[h]
 \centering
@@ -393,7 +395,7 @@ All 1{,}147 addresses are pseudonymous public blockchain identifiers; no persona
 \section{Conclusion}
 \label{sec:conclusion}
 
-OnChainAgentID packages a 1{,}147-address provenance-verified Ethereum dataset, a five-level evaluation protocol with frozen splits, a \texttt{pip}-installable leakage-audit harness, and baseline results for four tabular models and a graph attention network. The benchmark's design responds to a structural gap in blockchain classification research: existing datasets do not publish machine-checkable mining rules, do not ship cross-platform splits, and do not bundle a leakage-auditing tool. We hope the combination of frozen splits, a datasheet, a leaderboard template, and a one-command audit harness lowers the activation energy for honest agent-detection evaluation. The five-level collapse we observe on our own baselines (0.84 $\to$ 0.80 $\to$ 0.67 $\to$ 0.76 $\to$ 0.40/0.75) is offered not as a method contribution but as a self-audit case study: an existence proof that without all five levels, high agent-detection AUCs cannot be distinguished from label or platform fingerprints. All artifacts are released under CC~BY~4.0 (data) and MIT (code), with a Zenodo DOI issued at camera-ready.
+OnChainAgentID packages a 1{,}147-address provenance-verified Ethereum dataset, a five-level evaluation protocol with frozen splits, a \texttt{pip}-installable leakage-audit harness, and baseline results for four tabular models and a graph attention network. The benchmark's design responds to a structural gap in blockchain classification research: existing datasets do not publish machine-checkable mining rules, do not ship cross-platform splits, and do not bundle a leakage-auditing tool. We hope the combination of frozen splits, a datasheet, a leaderboard template, and a one-command audit harness lowers the activation energy for honest agent-detection evaluation. The five-level collapse we observe on our own baselines (0.84 $\to$ 0.80 $\to$ 0.67 $\to$ 0.76 $\to$ 0.40/0.74) is offered not as a method contribution but as a self-audit case study: an existence proof that without all five levels, high agent-detection AUCs cannot be distinguished from label or platform fingerprints. All artifacts are released under CC~BY~4.0 (data) and MIT (code), with a Zenodo DOI issued at camera-ready.
 
 \section*{Reproducibility Checklist}
 
