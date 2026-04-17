@@ -813,12 +813,13 @@ The apparent contradiction between the parametric floor (0.578) and the closed-l
 
 \subsection{Reconciling Cross-Paper Numbers}
 
-\textbf{Reconciling cross-paper numbers.} Paper~0's Fano ceiling (97.2\%) characterizes the information content of 31 behavioral features under i.i.d.\ evaluation. Paper~1's temporal holdout (AUC~0.67) measures operational accuracy under distribution shift. Our detection floor (0.578) measures feature-space detection under adversarial pressure on 8 AI-specific features. These three numbers are not contradictory: they measure different dimensions of the same problem (information content, temporal robustness, and adversarial robustness, respectively). Together they paint a complete picture: the features \emph{contain} the signal (Fano), but the signal \emph{degrades} over time (temporal) and \emph{erodes} under attack (adversarial).
+Paper~0's Fano ceiling (97.2\%) characterizes the information content of 31 behavioral features under i.i.d.\ evaluation. Paper~1's temporal holdout (AUC~0.67) measures operational accuracy under distribution shift. Our detection floor (0.578) measures feature-space detection under adversarial pressure on 8 AI-specific features. These three numbers are not contradictory: they measure different dimensions of the same problem (information content, temporal robustness, and adversarial robustness, respectively). Together they paint a complete picture: the features \emph{contain} the signal (Fano), but the signal \emph{degrades} over time (temporal) and \emph{erodes} under attack (adversarial).
 
 \subsection{Why \texttt{behavioral\_consistency} Survives}
 
 \texttt{behavioral\_consistency} ranks top-1 in all 30 seed-rounds because it measures the CV of inter-arrival times---a higher-order temporal statistic requiring realistic skewness, kurtosis, and autocorrelation that a single JSON prompt cannot achieve, unlike \texttt{hour\_entropy} (a 24-bin histogram). Even so, its importance declines from 0.36 to 0.17: it is converging toward irrelevance.
 
+\paragraph{Honest Floor and External Validation.}
 Cross-axis LOPO mean AUC 0.617 is the honest floor for HasciDB; any detector reporting AUC~$>$0.95 on the 5-indicator label is measuring rule recall, not generalization.
 
 External cross-method validation using independently-created sybil lists (HOP Protocol 14,195 addresses; LayerZero 21,395 addresses) reveals near-zero inter-method agreement: HasciDB--HOP $\kappa{=}0.0022$, HasciDB--LayerZero $\kappa{=}{-}0.0001$, HOP--Gitcoin\_FDD $\kappa{=}{-}0.40$ (anti-correlated). Different detection methods see fundamentally different sybil populations. LLM-generated sybils (0 matches across all external lists) operate in the shared blind spot.
