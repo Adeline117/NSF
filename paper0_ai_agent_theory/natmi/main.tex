@@ -277,9 +277,10 @@ $1.7$--$4.6$ percentage points below the ceiling
   \caption{Mutual information, conditional entropy, Fano accuracy ceiling,
   and measured classifier accuracy for three behavioral feature sets on
   $N=2{,}744$ agent addresses. $H(Y) = 1.697$ bits; $K = 8$ categories.
-  The majority-class baseline (predicting DeFi Management Agent for all
-  addresses) achieves $60.8\%$ accuracy; all classifiers substantially
-  exceed this floor. The
+  A majority-class baseline (always predicting DeFi Management Agent)
+  achieves $60.8\%$ accuracy; the classifier's $95.3\%$ substantially
+  exceeds this, though macro-F1 ($0.69$) is the more appropriate metric
+  given the class imbalance. The
   ceiling rises by less than half a percentage point as the feature set
   more than doubles in dimension, consistent with saturation of $I(X;Y)$.}
   \label{tab:ceiling}
@@ -337,9 +338,11 @@ of the observation channel.
 
 First, unsupervised discovery collapses at the same point. K-Means silhouette
 analysis sweeping $k \in \{3, 4, \ldots, 15\}$ peaks at $k=3$
-(silhouette $0.151$---a value indicating very weak cluster structure,
-well below the $0.5$ threshold typically considered evidence of
-meaningful separation\cite{kaufman1990finding}); HDBSCAN with
+(silhouette $0.151$---a value conventionally interpreted as weak-to-no
+cluster structure, well below the $0.5$ threshold typically considered
+evidence of meaningful separation\cite{kaufman1990finding}; the $k{=}3$
+peak is `least bad' rather than `good,' confirming that behavioral
+features do not form well-separated clusters at any $k$); HDBSCAN with
 \texttt{min\_cluster\_size}$\in\{20,50\}$ identifies only two density
 clusters. A taxonomy with eight semantically distinct classes therefore
 dissolves, in behavior space, into $2$--$3$ weakly separated
@@ -373,8 +376,10 @@ feature-set dimensionality doubles while the Fano ceiling improves by only
 $0.23$ percentage points. Indeed, the joint MI estimate \emph{decreases}
 slightly from $X_{31}$ ($1.437$ bits) to $X_{47}$ ($1.420$ bits); this
 $0.017$-bit drop is within the $\pm 0.03$-bit cross-validation tolerance
-of the $k$-NN estimator (Methods) and should be interpreted as estimator
-noise rather than a genuine information loss.
+of the $k$-NN estimator (Methods). The slight MI decrease from $X_{31}$
+(1.437) to $X_{47}$ (1.420) is within the estimator's sampling noise
+($\pm$0.8\,pp at $k{=}5$ neighbors); we do not interpret this as
+meaningful.
 The classifier-ceiling head-room shrinks from
 $4.56$ to $1.66$ percentage points---but this shrinkage is driven almost
 entirely by the classifier catching up to the ceiling, not by the ceiling
@@ -387,11 +392,12 @@ features already in $X_{23}$, so the \emph{marginal} $I(X_j; Y)$ they
 contribute is mostly already absorbed by the joint estimator. Inspecting
 the per-feature mutual information table in Supplementary Table~S3, the
 single feature with the highest marginal information content is
-$\texttt{eip1559\_tip\_precision}$ at $0.739$ nats ($1.066$ bits)---but
-the joint $I(X_{31}; Y)$ is only $1.437$ bits, confirming very
-substantial redundancy. (Note: per-feature MI is estimated in nats by
-\texttt{sklearn}; joint MI is estimated in bits via our $k$-NN plug-in.
-Conversions use $1 \text{ nat} = \log_2 e \approx 1.443 \text{ bits}$.) The second mechanism is the category-level information floor:
+$\texttt{eip1559\_tip\_precision}$ at $1.066$ bits ($0.739$ nats),
+capturing $74\%$ of the joint $I(X_{31};Y) = 1.437$ bits---confirming
+very substantial redundancy among individual features. (Note: per-feature
+MI is estimated in nats by \texttt{sklearn}; joint MI is estimated in bits
+via our $k$-NN plug-in. Conversions use
+$1 \text{ nat} = \log_2 e \approx 1.443 \text{ bits}$.) The second mechanism is the category-level information floor:
 the taxonomy contains at least one pair (LLM-Powered Agent vs.\ DeFi
 Management Agent) whose conditional distribution over the feature space
 is near-identical. No matter how many features we add, the distributions
