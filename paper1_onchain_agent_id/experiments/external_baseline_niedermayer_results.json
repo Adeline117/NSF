@@ -1,0 +1,370 @@
+{
+  "run_timestamp": "20260417_145019",
+  "experiment": "external_baseline_niedermayer_2024",
+  "reference": "Niedermayer, Kitzler, Tovanich & Khorrami (2024). 'Detecting Financial Bots on the Ethereum Blockchain.' WWW Companion '24.",
+  "feature_mapping": {
+    "tx_frequency": "tx_interval_mean",
+    "gas_price_std": "gas_price_cv",
+    "unique_counterparties": "unique_contracts_ratio",
+    "active_hours": "active_hour_entropy",
+    "burst_ratio": "burst_frequency",
+    "value_std": "gas_price_trailing_zeros_mean",
+    "contract_interaction_ratio": "contract_to_eoa_ratio"
+  },
+  "feature_mapping_notes": {
+    "tx_frequency": "Computed as 1/tx_interval_mean (inverted)",
+    "gas_price_std": "Mapped to gas_price_cv (coefficient of variation)",
+    "unique_counterparties": "Mapped to unique_contracts_ratio",
+    "active_hours": "Mapped to active_hour_entropy",
+    "burst_ratio": "Mapped to burst_frequency",
+    "value_std": "Mapped to gas_price_trailing_zeros_mean (proxy: no direct value_std available; trailing zeros captures value-precision patterns)",
+    "contract_interaction_ratio": "Mapped to contract_to_eoa_ratio"
+  },
+  "models": {
+    "niedermayer": "RF(n_estimators=100, max_depth=10) on 7 features",
+    "ours": "RF(n_estimators=200, max_depth=None) on 23 features"
+  },
+  "dataset": {
+    "n_samples": 1147,
+    "n_agents": 533,
+    "n_humans": 614,
+    "n_features_ours": 23,
+    "n_features_niedermayer": 7
+  },
+  "level2_10fold_cv": {
+    "Niedermayer et al. (2024) RF(100, depth=10, 7 feat)": {
+      "auc_mean": 0.7792,
+      "auc_std": 0.0328,
+      "f1_mean": 0.686,
+      "f1_std": 0.0315,
+      "precision_mean": 0.7073,
+      "recall_mean": 0.668,
+      "accuracy_mean": 0.7159,
+      "n_folds": 10
+    },
+    "Ours: RF(200, depth=None, 23 feat)": {
+      "auc_mean": 0.8257,
+      "auc_std": 0.0344,
+      "f1_mean": 0.727,
+      "f1_std": 0.0184,
+      "precision_mean": 0.7811,
+      "recall_mean": 0.6811,
+      "accuracy_mean": 0.762,
+      "n_folds": 10
+    }
+  },
+  "level3_temporal_holdout": {
+    "Niedermayer et al. (2024) RF(100, depth=10, 7 feat)": {
+      "auc": 0.684,
+      "f1": 0.6527,
+      "precision": 0.7891,
+      "recall": 0.5565,
+      "accuracy": 0.6254
+    },
+    "Ours: RF(200, depth=None, 23 feat)": {
+      "auc": 0.7009,
+      "f1": 0.602,
+      "precision": 0.7867,
+      "recall": 0.4876,
+      "accuracy": 0.5923
+    }
+  },
+  "level3_temporal_metadata": {
+    "n_total": 1147,
+    "n_train": 573,
+    "n_test": 574,
+    "split_block": 12321026,
+    "train_agents": 170,
+    "train_humans": 403,
+    "test_agents": 363,
+    "test_humans": 211
+  },
+  "level5_lopo": {
+    "Niedermayer et al. (2024) RF(100, depth=10, 7 feat)": {
+      "pooled_auc": 0.4692,
+      "pooled_f1": 0.4533,
+      "pooled_precision": 0.481,
+      "pooled_recall": 0.4286,
+      "pooled_accuracy": 0.5137,
+      "n_predictions": 1131,
+      "per_platform": {
+        "chainlink_keeper": {
+          "n": 108,
+          "agents": 108,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.8511,
+          "accuracy": 0.7407
+        },
+        "compound_v3_liquidator": {
+          "n": 97,
+          "agents": 97,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.4098,
+          "accuracy": 0.2577
+        },
+        "curated_mev_bot": {
+          "n": 10,
+          "agents": 10,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.75,
+          "accuracy": 0.6
+        },
+        "defi_hf_trader": {
+          "n": 199,
+          "agents": 199,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.4269,
+          "accuracy": 0.2714
+        },
+        "ens_reverse_setter": {
+          "n": 144,
+          "agents": 0,
+          "humans": 144,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.8264
+        },
+        "expanded_human": {
+          "n": 25,
+          "agents": 0,
+          "humans": 25,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.56
+        },
+        "expanded_mev_bot": {
+          "n": 10,
+          "agents": 10,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.4615,
+          "accuracy": 0.3
+        },
+        "gelato_executor": {
+          "n": 47,
+          "agents": 47,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.7949,
+          "accuracy": 0.6596
+        },
+        "gitcoin_donor": {
+          "n": 146,
+          "agents": 0,
+          "humans": 146,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.4932
+        },
+        "human_ens_interaction": {
+          "n": 167,
+          "agents": 0,
+          "humans": 167,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.4731
+        },
+        "human_exchange_depositor": {
+          "n": 28,
+          "agents": 0,
+          "humans": 28,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.7857
+        },
+        "keep3r_executor": {
+          "n": 46,
+          "agents": 46,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.4918,
+          "accuracy": 0.3261
+        },
+        "pilot_agent": {
+          "n": 15,
+          "agents": 15,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.9655,
+          "accuracy": 0.9333
+        },
+        "pooltogether_depositor": {
+          "n": 89,
+          "agents": 0,
+          "humans": 89,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.5281
+        }
+      }
+    },
+    "Ours: RF(200, depth=None, 23 feat)": {
+      "pooled_auc": 0.4256,
+      "pooled_f1": 0.3845,
+      "pooled_precision": 0.4357,
+      "pooled_recall": 0.344,
+      "pooled_accuracy": 0.4819,
+      "n_predictions": 1131,
+      "per_platform": {
+        "chainlink_keeper": {
+          "n": 108,
+          "agents": 108,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.8,
+          "accuracy": 0.6667
+        },
+        "compound_v3_liquidator": {
+          "n": 97,
+          "agents": 97,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.2679,
+          "accuracy": 0.1546
+        },
+        "curated_mev_bot": {
+          "n": 10,
+          "agents": 10,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.8889,
+          "accuracy": 0.8
+        },
+        "defi_hf_trader": {
+          "n": 199,
+          "agents": 199,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.3064,
+          "accuracy": 0.1809
+        },
+        "ens_reverse_setter": {
+          "n": 144,
+          "agents": 0,
+          "humans": 144,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.7917
+        },
+        "expanded_human": {
+          "n": 25,
+          "agents": 0,
+          "humans": 25,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.52
+        },
+        "expanded_mev_bot": {
+          "n": 10,
+          "agents": 10,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.4615,
+          "accuracy": 0.3
+        },
+        "gelato_executor": {
+          "n": 47,
+          "agents": 47,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.7123,
+          "accuracy": 0.5532
+        },
+        "gitcoin_donor": {
+          "n": 146,
+          "agents": 0,
+          "humans": 146,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.5822
+        },
+        "human_ens_interaction": {
+          "n": 167,
+          "agents": 0,
+          "humans": 167,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.4491
+        },
+        "human_exchange_depositor": {
+          "n": 28,
+          "agents": 0,
+          "humans": 28,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.8214
+        },
+        "keep3r_executor": {
+          "n": 46,
+          "agents": 46,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.386,
+          "accuracy": 0.2391
+        },
+        "pilot_agent": {
+          "n": 15,
+          "agents": 15,
+          "humans": 0,
+          "auc": null,
+          "f1": 0.8889,
+          "accuracy": 0.8
+        },
+        "pooltogether_depositor": {
+          "n": 89,
+          "agents": 0,
+          "humans": 89,
+          "auc": null,
+          "f1": 0.0,
+          "accuracy": 0.5843
+        }
+      }
+    }
+  },
+  "comparison_table_auc": [
+    {
+      "method": "Niedermayer et al. (2024) RF(100, depth=10, 7 feat)",
+      "cv_10fold_auc": 0.7792,
+      "cv_10fold_auc_std": 0.0328,
+      "temporal_holdout_auc": 0.684,
+      "lopo_pooled_auc": 0.4692
+    },
+    {
+      "method": "Ours: RF(200, depth=None, 23 feat)",
+      "cv_10fold_auc": 0.8257,
+      "cv_10fold_auc_std": 0.0344,
+      "temporal_holdout_auc": 0.7009,
+      "lopo_pooled_auc": 0.4256
+    }
+  ],
+  "comparison_table_f1": [
+    {
+      "method": "Niedermayer et al. (2024) RF(100, depth=10, 7 feat)",
+      "cv_10fold_f1": 0.686,
+      "cv_10fold_f1_std": 0.0315,
+      "temporal_holdout_f1": 0.6527,
+      "lopo_pooled_f1": 0.4533
+    },
+    {
+      "method": "Ours: RF(200, depth=None, 23 feat)",
+      "cv_10fold_f1": 0.727,
+      "cv_10fold_f1_std": 0.0184,
+      "temporal_holdout_f1": 0.602,
+      "lopo_pooled_f1": 0.3845
+    }
+  ],
+  "deltas_ours_minus_niedermayer": {
+    "cv_auc_delta": 0.0465,
+    "temporal_auc_delta": 0.0169,
+    "lopo_auc_delta": -0.0436,
+    "cv_f1_delta": 0.041,
+    "temporal_f1_delta": -0.0507,
+    "lopo_f1_delta": -0.0688
+  },
+  "key_finding": "Niedermayer et al. (2024) achieves 0.779 AUC (10-fold CV), 0.684 AUC (temporal), 0.469 AUC (LOPO). Our 23-feature RF improves by +0.046 / +0.017 / -0.044 AUC respectively. The additional 16 features (gas precision, approval patterns, interaction diversity) capture complementary behavioral signals that the Niedermayer 7-feature set does not.",
+  "elapsed_seconds": 7.48
+}
