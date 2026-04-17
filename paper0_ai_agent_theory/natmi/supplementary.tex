@@ -1,0 +1,870 @@
+% ============================================================================
+% Supplementary Information
+% Paper 0: Fundamental Information-Theoretic Limits of Behavioral
+%          AI Agent Detection in Digital Markets
+% Nature Machine Intelligence
+% ============================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+% Allow line breaks in \texttt inside p-columns
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Breakable monospace: allow line breaks at underscores
+\newcommand{\feat}[1]{{\ttfamily\hyphenpenalty=50\exhyphenpenalty=50\tolerance=9999 #1}}
+
+% Allow line breaks at underscores in \texttt
+\usepackage{url}
+\DeclareUrlCommand\featurett{\urlstyle{tt}}
+
+% Make \_ insert a breakpoint after the underscore
+\let\oldunderscore\_
+\renewcommand{\_}{\oldunderscore\allowbreak}
+\usepackage{setspace}
+\onehalfspacing
+
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thesection}{Supplementary Note \arabic{section}}
+
+% Widen TOC number boxes to accommodate long "Supplementary Note N" prefixes
+\usepackage{tocloft}
+\setlength{\cftsecnumwidth}{12.5em}
+\setlength{\cftsubsecnumwidth}{12.5em}
+\setlength{\cftsubsecindent}{12.5em}
+
+\title{Supplementary Information:\\
+Fundamental Information-Theoretic Limits of Behavioral\\
+AI Agent Detection in Digital Markets}
+
+\author{Adeline Wen\\
+\small Decentralized Computing Lab, University of Washington}
+
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+% ===========================================================================
+\section{Per-Category Feature Distributions}
+\label{sec:note1}
+% ===========================================================================
+
+This note details the provenance sources and per-category composition
+of the eight-class taxonomy used in the main text.
+
+\subsection{Taxonomy categories and provenance}
+
+Each Ethereum address in the corpus ($n = 2{,}744$) is assigned to exactly
+one of eight categories via a two-tier rule. \textbf{Tier~1} (provenance)
+assigns the address based on the source registry or name annotation from
+which it was mined. \textbf{Tier~2} (behavioral refinement) applies four
+behavioral variables---\texttt{burst\_frequency},
+\texttt{gas\_price\_round\_number\_ratio},
+\texttt{unique\_contracts\_ratio}, and
+\texttt{multi\_protocol\_interaction\_count}---only when Tier~1 provenance
+is ambiguous. The eight populated categories and their sample sizes are:
+
+\begin{table}[h]
+\centering
+\caption{Taxonomy categories, sample sizes, and provenance sources.}
+\label{tab:taxonomy}
+\begin{tabular}{llrl}
+\toprule
+\textbf{Index} & \textbf{Category} & \textbf{$n$} & \textbf{Primary provenance} \\
+\midrule
+0 & SimpleTradingBot      & 130   & DEX router interaction patterns \\
+1 & MEVSearcher           & 54    & Flashbots relay logs \\
+2 & DeFiManagementAgent   & 1{,}669 & Yield aggregator registries \\
+3 & LLMPoweredAgent       & 71    & Autonolas/Olas on-chain registry \\
+4 & AutonomousDAOAgent    & 34    & Governance executor contracts \\
+5 & CrossChainBridgeAgent & 95    & Bridge relay contract logs \\
+6 & DeterministicScript   & 666   & Chainlink Keepers, cron bots \\
+7 & RLTradingAgent        & 25    & Known RL-based trading deployments \\
+\midrule
+  & \textbf{Total}        & \textbf{2{,}744} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The taxonomy spans three orthogonal dimensions: autonomy level
+(5 ranks: none, reactive, adaptive, proactive, collaborative),
+environment type (4 types: on-chain only, hybrid, cross-chain,
+multi-modal), and decision model (5 types: deterministic, statistical,
+LLM-driven, reinforcement-learning, hybrid). The Cartesian product
+contains 100 cells, but only eight are populated by deployed systems
+as of the observation period. Of these eight, five satisfy a
+four-condition agency definition (on-chain actuation, environmental
+perception, autonomous decision-making, adaptiveness); two are
+non-agent baselines (SimpleTradingBot, DeterministicScript); one
+(MEVSearcher) is a boundary class.
+
+\subsection{Class-frequency distribution}
+
+The corpus is heavily imbalanced: DeFiManagementAgent accounts for
+$60.8\%$ of all addresses, while RLTradingAgent accounts for only
+$0.9\%$. A majority-class baseline (always predicting
+DeFiManagementAgent) achieves $60.8\%$ accuracy. The label entropy
+is $H(Y) = 1.697$ bits (8-class) and $H(Y) = 1.344$ bits (3-class
+KMeans-derived).
+
+The 3-class label set $Y_3$ was derived from KMeans($k{=}3$) on
+standardized $X_{23}$ features, producing cluster sizes of 381, 1{,}645,
+and 718. This unsupervised partition achieves ARI $= 0.264$ and
+NMI $= 0.212$ against the 8-class taxonomy, confirming moderate
+but imperfect alignment between behavioral clusters and
+provenance-derived categories.
+
+% ===========================================================================
+\section{Full Feature Definitions}
+\label{sec:note2}
+% ===========================================================================
+
+The 47 features used in this study are organized into six families.
+Each feature is computed from the on-chain transaction history of an
+Ethereum address. All features are computed over the full observation
+window unless otherwise noted.
+
+\subsection{Family 1: Timing features (7 features, in $X_{23}$)}
+
+\begingroup\footnotesize
+\begin{longtable}{L{3.2cm}L{9.8cm}}
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endhead
+\texttt{tx\_interval\_mean} & Mean inter-transaction interval in seconds, computed over all consecutive transaction pairs. \\
+\texttt{tx\_interval\_std} & Standard deviation of inter-transaction intervals. \\
+\texttt{tx\_interval\_skewness} & Skewness of the inter-transaction interval distribution; positive values indicate a right tail of long pauses. \\
+\texttt{active\_hour\_entropy} & Shannon entropy of the distribution of transaction counts across 24 hourly bins (UTC). Maximum is $\log_2(24) \approx 4.58$ bits for a uniform distribution. \\
+\texttt{night\_activity\_ratio} & Fraction of transactions sent during UTC hours 00:00--06:00. \\
+\texttt{weekend\_ratio} & Fraction of transactions sent on Saturday or Sunday (UTC). \\
+\texttt{burst\_frequency} & Number of bursts per 1{,}000 transactions, where a burst is defined as $\geq 3$ transactions within 60 seconds. \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{Family 2: Gas features (6 features, in $X_{23}$)}
+
+\begingroup\footnotesize
+\begin{longtable}{L{3.6cm}L{9.4cm}}
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endhead
+\texttt{gas\_price\_round\_number\_ratio} & Fraction of transactions whose gas price is a round number (divisible by $10^9$ wei). \\
+\texttt{gas\_price\_trailing\_zeros\_mean} & Mean number of trailing zeros in the decimal representation of gas prices. \\
+\texttt{gas\_limit\_precision} & $1 - (\text{fraction of transactions using the default 21{,}000 gas limit})$. Higher values indicate custom gas-limit setting. \\
+\texttt{gas\_price\_cv} & Coefficient of variation of gas prices across all transactions. \\
+\texttt{eip1559\_priority\_fee\_precision} & For EIP-1559 transactions: number of significant digits in the \texttt{maxPriorityFeePerGas} field, averaged across transactions. Zero for legacy-only addresses. \\
+\texttt{gas\_price\_nonce\_correlation} & Pearson correlation between nonce (transaction sequence number) and gas price, capturing systematic gas-price trends over time. \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{Family 3: Interaction features (5 features, in $X_{23}$)}
+
+\begingroup\footnotesize
+\begin{longtable}{L{3.6cm}L{9.4cm}}
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endhead
+\texttt{unique\_contracts\_ratio} & Number of unique contract addresses interacted with, divided by total transaction count. \\
+\texttt{top\_contract\_concentration} & Fraction of all transactions directed at the single most-interacted-with contract (Herfindahl-style concentration). \\
+\texttt{method\_id\_diversity} & Number of distinct 4-byte function selectors (method IDs) used, normalized by transaction count. \\
+\texttt{contract\_to\_eoa\_ratio} & Ratio of transactions sent to contract addresses vs.\ externally owned accounts (EOAs). \\
+\texttt{sequential\_pattern\_score} & Fraction of consecutive transaction pairs that call the same contract with the same method ID, capturing repetitive action sequences. \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{Family 4: Approval features (5 features, in $X_{23}$)}
+
+\begingroup\footnotesize
+\begin{longtable}{L{4.0cm}L{9.0cm}}
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endhead
+\texttt{unlimited\_approve\_ratio} & Fraction of ERC-20 \texttt{approve()} calls that set the allowance to $2^{256}-1$ (unlimited). \\
+\texttt{approve\_revoke\_ratio} & Ratio of \texttt{approve(amount=0)} (revocation) calls to total approve calls. Higher values indicate better security hygiene. \\
+\texttt{unverified\_contract\_approve\_ratio} & Fraction of approve calls directed at contracts whose source code is not verified on Etherscan. \\
+\texttt{multi\_protocol\_interaction\_count} & Number of distinct DeFi protocols (identified by router/vault contract) the address has interacted with. \\
+\texttt{flash\_loan\_usage} & Binary indicator ($0$ or $1$) for whether the address has initiated or participated in a flash-loan transaction. \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{Family 5: Cross-study AI-detection features (8 features, added in $X_{31}$)}
+
+These features were imported from an independent sybil-detection study
+and capture behavioral signatures more commonly associated with
+AI-driven decision-making.
+
+\begingroup\footnotesize
+\begin{longtable}{L{3.6cm}L{9.4cm}}
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endhead
+\texttt{gas\_price\_precision} & Number of significant decimal digits in gas prices, averaged across transactions. Programmatic agents often use round or very precise gas prices. \\
+\texttt{hour\_entropy} & Shannon entropy of the hourly transaction distribution, computed identically to \texttt{active\_hour\_entropy} but on a refined time grid. \\
+\texttt{behavioral\_consistency} & Cosine similarity between the feature vector of the first half and second half of the address's transaction history, capturing temporal stability of behavior. \\
+\texttt{action\_sequence\_perplexity} & Perplexity of a trigram model fitted to the sequence of method IDs. Lower perplexity indicates more predictable action patterns. \\
+\texttt{error\_recovery\_pattern} & Composite score measuring how consistently the address retries or adjusts behavior after a reverted transaction. \\
+\texttt{response\_latency\_variance} & Variance of time delays between an on-chain event (e.g., price oracle update) and the address's next transaction, capturing reaction-time regularity. \\
+\texttt{gas\_nonce\_gap\_regularity} & Regularity of the relationship between nonce increments and gas-price changes; highly regular patterns suggest programmatic gas management. \\
+\texttt{eip1559\_tip\_precision} & Number of significant digits in the EIP-1559 priority fee tip, averaged across transactions. The single most informative feature ($I = 0.739$ nats with $Y_8$). \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{Family 6: Decision-process features (16 features, added in $X_{47}$)}
+
+These features capture error-recovery behavior, session structure,
+nonce mechanics, and gas-price microstructure.
+
+\begingroup\footnotesize
+\begin{longtable}{L{4.0cm}L{9.0cm}}
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Feature} & \textbf{Definition} \\
+\midrule
+\endhead
+\multicolumn{2}{l}{\textit{Error recovery (5 features)}} \\
+\midrule
+\texttt{error\_rate} & Fraction of transactions that reverted. \\
+\texttt{post\_error\_delay\_median} & Median time (seconds) between a reverted transaction and the next transaction. \\
+\texttt{post\_error\_method\_change\_rate} & Fraction of post-error transactions that use a different method ID than the reverted transaction. \\
+\texttt{post\_error\_target\_change\_rate} & Fraction of post-error transactions directed at a different contract than the reverted transaction. \\
+\texttt{error\_abandon\_rate} & Fraction of reverted transactions after which no further transaction is sent within 1 hour. \\
+\midrule
+\multicolumn{2}{l}{\textit{Session patterns (5 features)}} \\
+\midrule
+\texttt{session\_count} & Number of activity sessions, where a session boundary is defined by a gap $> 1$ hour between consecutive transactions. \\
+\texttt{session\_length\_mean} & Mean number of transactions per session. \\
+\texttt{session\_length\_cv} & Coefficient of variation of session lengths. \\
+\texttt{intra\_session\_tx\_rate} & Mean transaction rate (transactions per minute) within sessions. \\
+\texttt{inter\_session\_gap\_cv} & Coefficient of variation of gaps between sessions. \\
+\midrule
+\multicolumn{2}{l}{\textit{Nonce patterns (3 features)}} \\
+\midrule
+\texttt{nonce\_sequential\_rate} & Fraction of consecutive transactions with exactly $+1$ nonce increment (no gaps or replacements). \\
+\texttt{nonce\_gap\_max} & Maximum observed nonce gap between consecutive transactions. \\
+\texttt{nonce\_completeness} & Fraction of nonce values in $[0, \max(\text{nonce})]$ that are actually used. \\
+\midrule
+\multicolumn{2}{l}{\textit{Gas microstructure (3 features)}} \\
+\midrule
+\texttt{gas\_price\_unique\_ratio} & Fraction of transactions with a unique (non-repeated) gas price. \\
+\texttt{gas\_price\_autocorrelation} & Lag-1 autocorrelation of the gas-price time series. \\
+\texttt{gas\_price\_cluster\_count} & Number of distinct clusters in gas prices (identified by 1D KMeans, $k$ selected by silhouette). \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+% ===========================================================================
+\section{Pre-Registration Appendix}
+\label{sec:note3}
+% ===========================================================================
+
+All analysis decisions described below were fixed prior to computing
+any results reported in the main manuscript. The pre-registration
+document is archived at the Open Science Framework (registration DOI
+to be added upon acceptance).
+
+\subsection{Feature set definitions}
+
+Three nested feature sets were pre-registered:
+
+\begin{itemize}
+  \item $X_{23}$: 23 behavioral features (Families 1--4 above).
+  \item $X_{31}$: $X_{23}$ plus 8 cross-study AI-detection features
+        (Family~5).
+  \item $X_{47}$: $X_{31}$ plus 16 decision-process features
+        (Family~6).
+\end{itemize}
+
+\subsection{Classifier hyperparameters}
+
+\begin{itemize}
+  \item \textbf{Gradient Boosting:} 100 trees, max depth 3, learning rate 0.1,
+        10-fold stratified cross-validation.
+  \item \textbf{Random Forest:} 300 trees, max depth 8, 10-fold stratified
+        cross-validation.
+  \item \textbf{Logistic Regression:} L2 regularization, $C = 1$, 10-fold
+        stratified cross-validation.
+\end{itemize}
+
+No hyperparameter was tuned on the Fano headroom; only classifier
+accuracy was tuned using internal cross-validation on training folds.
+
+\subsection{Mutual information estimation}
+
+\begin{itemize}
+  \item \textbf{Per-feature MI:}
+        \texttt{sklearn.feature\_selection.mutual\_info\_classif} with
+        $n_{\text{neighbors}} = 3$ (Kraskov-style $k$-NN), reported in nats.
+  \item \textbf{Joint MI:} $k$-NN plug-in estimator---$H(Y \mid X)$ estimated
+        by averaging label entropy across the 3 nearest neighbors in
+        standardized feature space, then $I(X;Y) = H(Y) - H(Y \mid X)$.
+        Reported in bits.
+  \item \textbf{Sensitivity:} $k \in \{3, 5, 7, 10\}$ was tested; Fano ceiling
+        shifts by at most 0.8 percentage points. $k = 3$ was pre-registered as
+        the primary value following recommendations for high-dimensional feature
+        spaces.
+\end{itemize}
+
+\subsection{Fano inversion procedure}
+
+The tight Fano bound was obtained by numerically inverting Fano's
+inequality: find the smallest $P_e \in [0, 1 - 1/K]$ such that
+$H_b(P_e) + P_e \log_2(K - 1) \geq H(Y \mid X)$,
+where $H_b(\cdot)$ is the binary entropy function. The inversion uses
+a dense grid of 10{,}000 $P_e$ values with the root bracketed between
+$0$ and $1 - 1/K$.
+
+\subsection{Bootstrap and reporting}
+
+\begin{itemize}
+  \item 95\% bootstrap confidence intervals (1{,}000 iterations, stratified by
+        taxonomy class) for all accuracy, F1, and Cohen's $d$ quantities.
+  \item MI estimates reported with $\pm 1$ standard deviation across five random
+        re-seedings of the $k$-NN estimator.
+  \item The marginal entropy $H(Y)$ was computed from empirical class frequencies
+        using the plug-in estimator with the Miller--Madow bias correction.
+\end{itemize}
+
+\subsection{Clustering parameters}
+
+\begin{itemize}
+  \item \textbf{KMeans:} $n_{\text{init}} = 10$, $k \in \{3, 4, \ldots, 15\}$.
+        Silhouette scores computed on a 2{,}000-sample subset.
+  \item \textbf{HDBSCAN:} $\texttt{min\_cluster\_size} \in \{20, 50, 100\}$.
+\end{itemize}
+
+\subsection{Primary and secondary analyses}
+
+The following analyses were pre-registered as primary:
+\begin{enumerate}
+  \item Fano ceiling estimation for $X_{23}$, $X_{31}$, $X_{47}$ with $Y_8$.
+  \item Per-class F1 comparison across feature sets.
+  \item Circularity ablation (removal of 4 Tier-2 features).
+\end{enumerate}
+
+The following were pre-registered as secondary (exploratory):
+\begin{enumerate}
+  \item Temporal Fano analysis (train/test temporal split).
+  \item Cross-chain transfer to Polygon.
+  \item Unsupervised clustering validation ($k = 3$ and $k = 8$).
+  \item Decision-process feature family analysis.
+\end{enumerate}
+
+% ===========================================================================
+\section{Temporal Fano Analysis}
+\label{sec:note4}
+% ===========================================================================
+
+This note provides the full temporal Fano analysis summarized in the
+main text.
+
+\subsection{Setup}
+
+The $n = 2{,}744$ addresses were split at the median Ethereum block
+number (block 12{,}161{,}365) into a train era ($n_{\text{train}} = 1{,}372$)
+and a test era ($n_{\text{test}} = 1{,}372$). The feature set is $X_{31}$
+(23 behavioral + 8 AI-detection features) with the 8-class taxonomy
+labels $Y_8$.
+
+\subsection{MI and Fano bounds across eras}
+
+\begin{table}[h]
+\centering
+\caption{Temporal Fano analysis: MI and accuracy ceilings across eras.}
+\label{tab:temporal_fano}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Condition} & $H(Y)$ \textbf{(bits)} & $I(X;Y)$ \textbf{(bits)} & $H(Y|X)$ \textbf{(bits)} & \textbf{Fano ceiling} \\
+\midrule
+IID (full data)  & 1.697 & 1.437 & 0.259 & 97.2\% \\
+Train era        & 1.911 & 1.483 & 0.428 & 95.0\% \\
+Test era         & 0.714 & 0.634 & 0.081 & 99.3\% \\
+Cross-temporal   & 0.714 & 0.421 & 0.293 & 96.7\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The cross-temporal condition measures how well train-era feature
+neighborhoods predict test-era taxonomy labels: MI is estimated by
+building a $k$-NN index on train-era feature space and querying
+test-era points. The cross-temporal MI ($0.421$ bits) is substantially
+lower than the within-test MI ($0.634$ bits), confirming covariate
+shift.
+
+\subsection{Overall MI degradation}
+
+Joint MI drops from $1.437$ bits (IID) to $0.634$ bits (test era),
+a $55.9\%$ decline. The cross-temporal MI ($0.421$ bits) represents a
+$70.7\%$ decline from the IID baseline. Despite the MI drop, the
+test-era Fano ceiling \emph{rises} to $99.3\%$ because the test-era
+label distribution is near-pure (89\% DeFiManagementAgent, $H(Y) = 0.714$
+bits), making classification intrinsically easier. The cross-temporal
+Fano ceiling ($96.7\%$) better reflects real deployment degradation.
+
+\subsection{Per-feature MI degradation}
+
+Table~\ref{tab:perfeature_temporal} reports the per-feature MI in
+train and test eras, sorted by magnitude of degradation. Gas-pricing
+features show catastrophic temporal collapse, while AI-detection
+features remain stable or improve.
+
+\begin{table}[h]
+\centering
+\caption{Per-feature MI comparison across temporal eras (bits).
+Negative drop\% indicates the feature lost MI from train to test;
+positive indicates it gained MI.}
+\label{tab:perfeature_temporal}
+\footnotesize
+\begin{tabular}{lccc}
+\toprule
+\textbf{Feature} & \textbf{Train MI} & \textbf{Test MI} & \textbf{Drop (\%)} \\
+\midrule
+\multicolumn{4}{l}{\textit{Largest declines (gas-pricing features)}} \\
+\midrule
+\texttt{gas\_price\_nonce\_correlation} & 0.231 & 0.028 & $-87.9\%$ \\
+\texttt{gas\_price\_round\_number\_ratio} & 0.803 & 0.133 & $-83.5\%$ \\
+\texttt{gas\_price\_trailing\_zeros\_mean} & 0.772 & 0.133 & $-82.7\%$ \\
+\texttt{top\_contract\_concentration} & 0.213 & 0.045 & $-79.0\%$ \\
+\texttt{contract\_to\_eoa\_ratio} & 0.142 & 0.033 & $-76.4\%$ \\
+\texttt{multi\_protocol\_interaction\_count} & 0.227 & 0.075 & $-67.0\%$ \\
+\texttt{sequential\_pattern\_score} & 0.341 & 0.113 & $-66.8\%$ \\
+\texttt{burst\_frequency} & 0.302 & 0.130 & $-57.2\%$ \\
+\texttt{eip1559\_priority\_fee\_precision} & 0.019 & 0.009 & $-53.9\%$ \\
+\texttt{eip1559\_tip\_precision} & 0.961 & 0.450 & $-53.1\%$ \\
+\texttt{gas\_limit\_precision} & 0.142 & 0.067 & $-53.3\%$ \\
+\texttt{gas\_price\_precision} & 0.803 & 0.407 & $-49.2\%$ \\
+\texttt{unlimited\_approve\_ratio} & 0.196 & 0.101 & $-48.8\%$ \\
+\texttt{unverified\_contract\_approve\_ratio} & 0.186 & 0.102 & $-45.1\%$ \\
+\texttt{method\_id\_diversity} & 0.172 & 0.108 & $-37.6\%$ \\
+\texttt{unique\_contracts\_ratio} & 0.091 & 0.078 & $-13.8\%$ \\
+\texttt{action\_sequence\_perplexity} & 0.433 & 0.408 & $-5.7\%$ \\
+\midrule
+\multicolumn{4}{l}{\textit{Stable or improving (AI-detection features)}} \\
+\midrule
+\texttt{gas\_nonce\_gap\_regularity} & 0.349 & 0.391 & $+12.1\%$ \\
+\texttt{error\_recovery\_pattern} & 0.308 & 0.365 & $+18.4\%$ \\
+\texttt{hour\_entropy} & 0.301 & 0.394 & $+30.9\%$ \\
+\texttt{response\_latency\_variance} & 0.258 & 0.370 & $+43.1\%$ \\
+\texttt{behavioral\_consistency} & 0.254 & 0.374 & $+47.2\%$ \\
+\texttt{active\_hour\_entropy} & 0.072 & 0.106 & $+47.4\%$ \\
+\texttt{approve\_revoke\_ratio} & 0.106 & 0.009 & $-91.6\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Interpretation}
+
+The temporal analysis reveals a \textbf{dual shift} (label + feature
+distributions). $H(Y)$ drops 37\% from train to test due to
+label-distribution shift (test era is 89\% one class). Raw MI drops
+from 1.483 to 0.634 bits (ratio 0.43). The key finding is that
+gas-pricing features---the most informative features in the IID
+setting---undergo catastrophic degradation across eras
+(\texttt{gas\_price\_round\_number\_ratio}: $-83.5\%$), while
+AI-detection features that capture decision-process signatures
+(\texttt{behavioral\_consistency}: $+47.2\%$;
+\texttt{response\_latency\_variance}: $+43.1\%$) remain stable or
+improve. This prescribes a clear feature-migration path: future
+classifiers should emphasize decision-process features over gas-pricing
+features to achieve temporal robustness.
+
+This diagnosis is consistent with the companion Paper~1 temporal
+holdout results, where AUC drops from $0.80$ (random CV) to $0.66$
+(temporal holdout) for a Gradient Boosting classifier.
+
+% ===========================================================================
+\section{Per-Feature MI Decomposition and KL Divergence Analysis}
+\label{sec:note5}
+% ===========================================================================
+
+\subsection{Per-feature MI decomposition}
+
+Table~\ref{tab:perfeature_mi} reports the per-feature mutual
+information $I(X_j; Y_8)$ for all 31 features in $X_{31}$, estimated
+via the Kraskov-style $k$-NN estimator ($k = 3$, in nats).
+
+\begin{table}[h]
+\centering
+\caption{Per-feature MI with $Y_8$ labels (nats), $X_{31}$ feature set.
+Features sorted by MI in descending order.}
+\label{tab:perfeature_mi}
+\footnotesize
+\begin{tabular}{lc}
+\toprule
+\textbf{Feature} & $I(X_j; Y_8)$ \textbf{(nats)} \\
+\midrule
+\texttt{eip1559\_tip\_precision}            & 0.7388 \\
+\texttt{gas\_price\_precision}              & 0.6694 \\
+\texttt{gas\_price\_round\_number\_ratio}   & 0.5685 \\
+\texttt{gas\_price\_trailing\_zeros\_mean}  & 0.5537 \\
+\texttt{action\_sequence\_perplexity}       & 0.3207 \\
+\texttt{gas\_nonce\_gap\_regularity}        & 0.2851 \\
+\texttt{error\_recovery\_pattern}           & 0.2436 \\
+\texttt{hour\_entropy}                      & 0.2362 \\
+\texttt{response\_latency\_variance}        & 0.2204 \\
+\texttt{behavioral\_consistency}            & 0.2131 \\
+\texttt{burst\_frequency}                   & 0.1774 \\
+\texttt{sequential\_pattern\_score}         & 0.1666 \\
+\texttt{unlimited\_approve\_ratio}          & 0.1238 \\
+\texttt{unverified\_contract\_approve\_ratio} & 0.1120 \\
+\texttt{contract\_to\_eoa\_ratio}           & 0.1112 \\
+\texttt{gas\_price\_nonce\_correlation}     & 0.0991 \\
+\texttt{multi\_protocol\_interaction\_count}& 0.0994 \\
+\texttt{method\_id\_diversity}              & 0.0937 \\
+\texttt{gas\_limit\_precision}              & 0.0842 \\
+\texttt{tx\_interval\_std}                  & 0.0797 \\
+\texttt{tx\_interval\_mean}                 & 0.0700 \\
+\texttt{unique\_contracts\_ratio}           & 0.0606 \\
+\texttt{top\_contract\_concentration}       & 0.0490 \\
+\texttt{active\_hour\_entropy}              & 0.0457 \\
+\texttt{weekend\_ratio}                     & 0.0407 \\
+\texttt{approve\_revoke\_ratio}             & 0.0354 \\
+\texttt{gas\_price\_cv}                     & 0.0292 \\
+\texttt{tx\_interval\_skewness}             & 0.0265 \\
+\texttt{night\_activity\_ratio}             & 0.0167 \\
+\texttt{flash\_loan\_usage}                 & 0.0154 \\
+\texttt{eip1559\_priority\_fee\_precision}  & 0.0001 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Feature redundancy}
+
+A single feature (\texttt{eip1559\_tip\_precision}, $I = 0.739$ nats
+$\approx 1.065$ bits) captures approximately $74\%$ of the joint
+$I(X_{31}; Y_8) = 1.437$ bits (after converting the per-feature
+estimate from nats to bits: $0.739 / \ln 2 = 1.066$ bits). The sum
+of all per-feature MI values ($8.059$ bits) far exceeds the joint MI
+($1.437$ bits), confirming massive feature redundancy: the features
+carry overlapping information about the class label.
+
+\subsection{KL divergence across class pairs}
+
+The pairwise KL divergence between class-conditional feature
+distributions identifies the LLM-Powered Agent / DeFi Management Agent
+pair as the information bottleneck. This pair has the smallest pairwise
+KL divergence in the taxonomy ($0.21$ bits), meaning their behavioral
+distributions are nearly indistinguishable. This forms a fundamental
+bottleneck that no amount of feature engineering within the behavioral
+observation channel can overcome without accessing the decision-process
+layer.
+
+The large categories (DeterministicScript, SimpleTradingBot) have
+large pairwise KL divergences ($> 1.5$ bits) with all other classes,
+explaining their near-perfect F1 scores. The small, confused classes
+(AutonomousDAOAgent, RLTradingAgent) sit in low-KL-divergence
+neighborhoods with larger classes, compounding the sample-size problem
+with an information-content problem.
+
+\subsection{Saturation across feature sets}
+
+The joint MI increases only marginally as the feature set expands:
+
+\begin{table}[h]
+\centering
+\caption{Joint MI saturation across feature sets.}
+\label{tab:mi_saturation}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Feature set} & $I(X; Y_8)$ \textbf{(bits)} & $H(Y|X)$ \textbf{(bits)} & \textbf{Fano ceiling} \\
+\midrule
+$X_{23}$ (23 features) & 1.403 & 0.294 & 96.8\% \\
+$X_{31}$ (31 features) & 1.437 & 0.259 & 97.2\% \\
+$X_{47}$ (47 features) & 1.421 & 0.276 & 97.0\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The MI increase from $X_{23}$ to $X_{31}$ is $+0.035$ bits; from
+$X_{31}$ to $X_{47}$ is $-0.017$ bits (within estimator noise).
+Adding 24 features beyond the original 23 changes the Fano ceiling
+by less than one percentage point.
+
+% ===========================================================================
+\section{Cross-Chain (Polygon) Detailed Results}
+\label{sec:note6}
+% ===========================================================================
+
+\subsection{Data collection}
+
+We attempted to extract behavioral features for 44 Polygon addresses
+covering five taxonomy categories. Of these, 29 were successfully
+extracted and 15 were skipped due to insufficient transaction history
+($< 10$ transactions on Polygon). After filtering, 27 addresses with
+five represented classes remained:
+
+\begin{table}[h]
+\centering
+\caption{Polygon dataset composition.}
+\label{tab:polygon_data}
+\begin{tabular}{llr}
+\toprule
+\textbf{Index} & \textbf{Category} & \textbf{$n$} \\
+\midrule
+0 & SimpleTradingBot      & 6 \\
+1 & MEVSearcher           & 2 \\
+2 & DeFiManagementAgent   & 9 \\
+5 & CrossChainBridgeAgent & 4 \\
+6 & DeterministicScript   & 6 \\
+\midrule
+  & \textbf{Total}        & \textbf{27} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three categories (LLMPoweredAgent, AutonomousDAOAgent, RLTradingAgent)
+had no Polygon addresses with sufficient transaction history and are
+absent from the cross-chain analysis.
+
+\subsection{Experiment A: Cross-chain transfer}
+
+A Gradient Boosting classifier trained on all 2{,}614 Ethereum
+addresses (restricted to the five common classes) was applied to the
+27 Polygon addresses. Results:
+
+\begin{itemize}
+  \item \textbf{Accuracy:} 22.2\% (random baseline: 20.0\%)
+  \item \textbf{F1-macro:} 0.200
+  \item \textbf{F1-weighted:} 0.193
+\end{itemize}
+
+Per-class breakdown:
+
+\begin{table}[h]
+\centering
+\caption{Cross-chain transfer: per-class results on Polygon.}
+\label{tab:polygon_transfer}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Category} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+\midrule
+SimpleTradingBot      & 0.000 & 0.000 & 0.000 \\
+MEVSearcher           & 0.111 & 0.500 & 0.182 \\
+DeFiManagementAgent   & 1.000 & 0.111 & 0.200 \\
+CrossChainBridgeAgent & 0.500 & 0.250 & 0.333 \\
+DeterministicScript   & 0.200 & 0.500 & 0.286 \\
+\midrule
+\textbf{Macro avg}    & 0.362 & 0.272 & 0.200 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Experiment B: Polygon-only cross-validation}
+
+Three classifiers were trained and evaluated using 2-fold
+cross-validation on the 27 Polygon addresses alone:
+
+\begin{table}[h]
+\centering
+\caption{Polygon-only cross-validation results.}
+\label{tab:polygon_cv}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Classifier} & \textbf{Accuracy} & \textbf{F1-macro} & \textbf{F1-weighted} \\
+\midrule
+Logistic Regression   & 0.517 & 0.393 & 0.487 \\
+Random Forest         & 0.484 & 0.357 & 0.438 \\
+Gradient Boosting     & 0.376 & 0.261 & 0.330 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Interpretation: gas economics}
+
+The cross-chain transfer failure is attributable primarily to gas
+economics. Polygon operates with a near-constant base fee
+(${\sim}30$\,gwei) and 2-second blocks, eliminating the gas-price
+variation that is the most informative behavioral signal on Ethereum.
+On Ethereum, gas-pricing features (\texttt{gas\_price\_round\_number\_ratio},
+\texttt{gas\_price\_trailing\_zeros\_mean},
+\texttt{eip1559\_tip\_precision}) dominate feature importance; on
+Polygon, these features have near-zero variance and thus near-zero MI.
+
+The Polygon-only classifiers achieve moderately better results
+(up to $51.7\%$ accuracy) than the transfer setting ($22.2\%$),
+suggesting that \emph{some} behavioral signal exists within Polygon's
+feature space, but it is structurally different from Ethereum's.
+This confirms that $I(X;Y)$ estimated on one chain does not transfer
+to another: the observation channel is chain-specific.
+
+% ===========================================================================
+% SUPPLEMENTARY TABLES
+% ===========================================================================
+
+\clearpage
+\setcounter{table}{0}
+\section*{Supplementary Tables}
+\addcontentsline{toc}{section}{Supplementary Tables}
+
+% ---------------------------------------------------------------------------
+% Table S1
+% ---------------------------------------------------------------------------
+
+\begin{table}[h]
+\centering
+\caption{Comparison of tight (numerical inversion) and loose
+(closed-form) Fano bounds, and the Cover--Hart nearest-neighbor bound.
+The loose bound $P_e \geq (H(Y|X) - 1)/\log_2 K$ is uninformative
+(yields ceiling $= 1.0$) for all three feature sets because
+$H(Y|X) < 1$ bit in every case. The tight bound provides the
+operative ceiling.}
+\label{tab:s1}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{2}{c}{\textbf{Tight Fano}} & \multicolumn{2}{c}{\textbf{Loose Fano}} & \multicolumn{2}{c}{\textbf{Measured}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+\textbf{Features} & $P_e^\star$ & Ceiling & $P_e^{\text{loose}}$ & Ceiling & Accuracy & Headroom \\
+\midrule
+$X_{23} \to Y_8$
+  & 0.032 & 96.8\% & 0.0 & 100.0\% & 92.2\% & 4.6\,pp \\
+$X_{31} \to Y_8$
+  & 0.028 & 97.2\% & 0.0 & 100.0\% & 95.3\% & 2.0\,pp \\
+$X_{47} \to Y_8$
+  & 0.030 & 97.0\% & 0.0 & 100.0\% & 95.4\% & 1.7\,pp \\
+\midrule
+$X_{23} \to Y_3$
+  & 0.022 & 97.8\% & 0.0 & 100.0\% & --- & --- \\
+$X_{31} \to Y_3$
+  & 0.024 & 97.7\% & 0.0 & 100.0\% & --- & --- \\
+$X_{47} \to Y_3$
+  & 0.030 & 97.0\% & 0.0 & 100.0\% & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\smallskip
+\noindent
+The Cover--Hart nearest-neighbor bound guarantees that the
+Bayes error rate $R^\star$ satisfies
+$R^\star \leq R_{1\text{-NN}} \leq 2 R^\star (1 - R^\star / (K-1))$,
+where $R_{1\text{-NN}}$ is the 1-NN error rate and $K$ is the number
+of classes. For $X_{31}$ with $K = 8$, the 1-NN error rate of
+$0.048$ gives an accuracy ceiling within 0.6 percentage points of
+the Fano ceiling ($97.2\%$), and the Hellman--Raviv bound gives an
+intermediate value, confirming consistency across bounding methods.
+
+% ---------------------------------------------------------------------------
+% Table S2
+% ---------------------------------------------------------------------------
+
+\begin{table}[h]
+\centering
+\caption{Full experimental configuration. All parameters were fixed
+prior to computing any results reported in the main manuscript.}
+\label{tab:s2}
+\footnotesize
+\begin{tabular}{L{3.5cm}L{9.5cm}}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\
+\midrule
+\multicolumn{2}{l}{\textit{Dataset}} \\
+\midrule
+Total addresses & 2{,}744 \\
+Blockchain & Ethereum mainnet \\
+Taxonomy classes & 8 (SimpleTradingBot, MEVSearcher, DeFiManagementAgent, LLMPoweredAgent, AutonomousDAOAgent, CrossChainBridgeAgent, DeterministicScript, RLTradingAgent) \\
+Label entropy $H(Y_8)$ & 1.697 bits \\
+Label entropy $H(Y_3)$ & 1.344 bits \\
+\midrule
+\multicolumn{2}{l}{\textit{Feature sets}} \\
+\midrule
+$X_{23}$ & 23 behavioral features (Families 1--4) \\
+$X_{31}$ & $X_{23}$ + 8 AI-detection features (Family 5) \\
+$X_{47}$ & $X_{31}$ + 16 decision-process features (Family 6) \\
+\midrule
+\multicolumn{2}{l}{\textit{MI estimation}} \\
+\midrule
+Per-feature estimator & \texttt{mutual\_info\_classif}, $k = 3$ (Kraskov), nats \\
+Joint estimator & $k$-NN plug-in, $k = 3$, bits \\
+Sensitivity range & $k \in \{3, 5, 7, 10\}$; max ceiling shift $\leq 0.8$\,pp \\
+\midrule
+\multicolumn{2}{l}{\textit{Fano inversion}} \\
+\midrule
+Method & Numerical inversion on grid of 10{,}000 $P_e$ values \\
+Tight bound & Smallest $P_e$: $H_b(P_e) + P_e \log_2(K-1) \geq H(Y|X)$ \\
+Loose bound & $(H(Y|X) - 1) / \log_2 K$ \\
+\midrule
+\multicolumn{2}{l}{\textit{Classifiers}} \\
+\midrule
+Gradient Boosting & 100 trees, depth 3, learning rate 0.1 \\
+Random Forest & 300 trees, depth 8 \\
+Logistic Regression & L2, $C = 1$ \\
+Cross-validation & 10-fold stratified \\
+\midrule
+\multicolumn{2}{l}{\textit{Bootstrap}} \\
+\midrule
+Iterations & 1{,}000 \\
+Stratification & By taxonomy class \\
+Confidence level & 95\% \\
+\midrule
+\multicolumn{2}{l}{\textit{Clustering}} \\
+\midrule
+KMeans & $k \in \{3, \ldots, 15\}$, $n_{\text{init}} = 10$ \\
+HDBSCAN & $\texttt{min\_cluster\_size} \in \{20, 50, 100\}$ \\
+Silhouette subset & 2{,}000 samples \\
+\midrule
+\multicolumn{2}{l}{\textit{Cross-chain replication}} \\
+\midrule
+Target chain & Polygon \\
+Addresses attempted & 44 \\
+Addresses retained & 27 (5 classes) \\
+Minimum transactions & 10 \\
+\midrule
+\multicolumn{2}{l}{\textit{Temporal analysis}} \\
+\midrule
+Split block & 12{,}161{,}365 (median) \\
+Train size & 1{,}372 \\
+Test size & 1{,}372 \\
+\midrule
+\multicolumn{2}{l}{\textit{Compute}} \\
+\midrule
+Feature extraction & 64-core workstation, 256\,GB RAM, $\approx$14\,h \\
+MI + classifiers & $\approx$45\,min (same workstation) \\
+GPU & Not required \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
