@@ -466,6 +466,28 @@ Note~6 and Figure~\ref{fig:crosschain}).
 \section*{Mechanistic Insight: Execution vs.\ Decision Signatures}
 % ===========================================================================
 
+% FLUID: evasion simulation results [2026-04-20]
+\paragraph{Adversarial robustness.}
+We simulate an LLM agent adding timing noise to mimic a DeFi Management
+Agent by perturbing five timing features toward the DeFi class distribution
+at noise level $\sigma \in \{0, 0.25, \ldots, 2.0\}$.
+At $\sigma = 1.0$ (timing features drawn from the DeFi distribution),
+Cohen's $d$ collapses from $1.76$ to $0.10$ (negligible), but the Fano
+ceiling \emph{rises} from $97.2\%$ to $97.4\%$ and overall accuracy
+improves to $95.7\%$. This paradox arises because evasion makes LLM
+agents resemble the majority class (DeFi Management, $n = 1{,}669$),
+improving population-level classification while rendering individual
+LLM agents undetectable. At $\sigma = 2.0$, LLM-class F1 \emph{rises}
+to $0.81$ because the added noise overshoots the DeFi distribution,
+creating a new detectable signature.
+The policy implication is sharp: the Fano ceiling bounds
+\emph{category-level} classification accuracy, not \emph{individual-agent}
+identification. An adversary who adjusts timing to blend into the majority
+class evades detection without violating the information-theoretic bound.
+Regulation that targets specific agent categories (e.g., LLM-driven)
+cannot rely on behavioral observation alone, even though the ceiling
+for the coarser question (``is this address automated?'') remains tight.
+
 The ceiling tells us how much signal the channel carries; it does not tell
 us \emph{where} the signal lives. We now show that the residual
 discriminative information is concentrated in a specific physical channel:

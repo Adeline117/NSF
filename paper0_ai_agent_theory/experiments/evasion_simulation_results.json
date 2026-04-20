@@ -1,0 +1,71 @@
+{
+  "sweep": [
+    {
+      "sigma": 0.0,
+      "cohens_d": 1.7589,
+      "accuracy": 0.9519,
+      "llm_f1": 0.4902,
+      "mi_bits": 1.4374,
+      "fano_ceiling": 0.9724
+    },
+    {
+      "sigma": 0.25,
+      "cohens_d": 1.3719,
+      "accuracy": 0.9537,
+      "llm_f1": 0.551,
+      "mi_bits": null,
+      "fano_ceiling": null
+    },
+    {
+      "sigma": 0.5,
+      "cohens_d": 1.0018,
+      "accuracy": 0.9552,
+      "llm_f1": 0.5657,
+      "mi_bits": null,
+      "fano_ceiling": null
+    },
+    {
+      "sigma": 0.75,
+      "cohens_d": 0.496,
+      "accuracy": 0.9585,
+      "llm_f1": 0.7091,
+      "mi_bits": null,
+      "fano_ceiling": null
+    },
+    {
+      "sigma": 1.0,
+      "cohens_d": 0.1013,
+      "accuracy": 0.9566,
+      "llm_f1": 0.6415,
+      "mi_bits": 1.451,
+      "fano_ceiling": 0.9741
+    },
+    {
+      "sigma": 1.5,
+      "cohens_d": 0.0804,
+      "accuracy": 0.9603,
+      "llm_f1": 0.7395,
+      "mi_bits": null,
+      "fano_ceiling": null
+    },
+    {
+      "sigma": 2.0,
+      "cohens_d": -0.2462,
+      "accuracy": 0.9632,
+      "llm_f1": 0.8067,
+      "mi_bits": 1.4626,
+      "fano_ceiling": 0.9756
+    }
+  ],
+  "evasion_cost_sigma": 1.0,
+  "n_total": 2744,
+  "n_llm": 71,
+  "n_defi": 1669,
+  "timing_features_targeted": [
+    "tx_interval_mean",
+    "tx_interval_std",
+    "tx_interval_skewness",
+    "burst_frequency",
+    "response_latency_variance"
+  ]
+}
