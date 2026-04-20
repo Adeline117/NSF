@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "paper": "P1",
+    "title": "OnChainAgentID: Provenance-Verified Benchmark for On-Chain Agent-vs-Human Classifiers",
+    "venue": "NeurIPS Datasets & Benchmarks",
+    "last_updated": "2026-04-20",
+    "schema_version": "1.0"
+  },
+
+  "dataset_n_addresses": 1147,
+  "dataset_n_agents": 533,
+  "dataset_n_humans": 614,
+  "dataset_n_features": 23,
+  "dataset_n_categories": 18,
+  "dataset_strict_core_n": 70,
+
+  "cascade_level1_leaky_auc": 0.8439,
+  "cascade_level2_cv_auc": 0.8045,
+  "cascade_level3_temporal_auc": 0.6693,
+  "cascade_level4_strict_core_auc": 0.76,
+  "cascade_level5_lopo_auc": 0.3966,
+
+  "random_cv_rf_auc": 0.8029,
+  "random_cv_rf_auc_std": 0.027,
+  "random_cv_gbm_auc": 0.8018,
+
+  "temporal_holdout_rf_auc": 0.6693,
+  "temporal_holdout_rf_f1": 0.4471,
+  "temporal_holdout_rf_precision": 0.8116,
+  "temporal_holdout_gbm_auc": 0.6645,
+  "temporal_holdout_gbm_f1": 0.6043,
+  "temporal_vs_cv_delta": -0.1336,
+
+  "lopo_rf_pooled_auc": 0.3966,
+  "lopo_rf_pooled_f1": 0.3552,
+  "lopo_gbm_pooled_auc": 0.4221,
+
+  "mixed_class_lopo_rf_auc": 0.7415,
+  "mixed_class_lopo_rf_mean_cluster_auc": 0.7583,
+  "mixed_class_lopo_rf_std_cluster_auc": 0.0787,
+  "mixed_class_lopo_gbm_auc": 0.7529,
+  "mixed_class_lopo_delta_vs_original": 0.3308,
+  "mixed_class_lopo_delta_vs_cv": -0.0489,
+
+  "gat_temporal_mean_auc": 0.666,
+  "gat_temporal_std_auc": 0.0062,
+  "gat_temporal_mean_f1": 0.3535,
+  "graphsage_temporal_mean_auc": 0.6677,
+  "graphsage_temporal_std_auc": 0.0217,
+  "graphsage_temporal_mean_f1": 0.635,
+  "gnn_vs_rf_delta": -0.0033,
+
+  "baseline_heuristic_cv_auc": 0.4275,
+  "baseline_single_feature_cv_auc": 0.6484,
+  "baseline_logreg_gas_cv_auc": 0.7175,
+  "baseline_proposed_rf_cv_auc": 0.8039,
+  "baseline_proposed_rf_cv_auc_std": 0.0352,
+
+  "external_niedermayer_cv_auc": 0.7792,
+  "external_niedermayer_cv_auc_std": 0.0328,
+  "external_niedermayer_temporal_auc": 0.684,
+  "external_niedermayer_lopo_auc": 0.4692,
+  "external_ours_cv_auc": 0.8257,
+  "external_ours_cv_auc_std": 0.0344,
+  "external_ours_temporal_auc": 0.7009,
+  "external_ours_lopo_auc": 0.4256,
+  "external_delta_cv_auc": 0.0465,
+
+  "etherscan_validation_consistency_rate": 0.935,
+  "etherscan_validation_n_queried": 200,
+  "etherscan_validation_n_inconsistent": 13
+}

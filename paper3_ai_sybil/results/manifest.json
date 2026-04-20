@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "paper": "P3",
+    "title": "Closed-Loop LLM Adversarial Training Reveals Feature-Space Sybil Detection Has a Hard Floor",
+    "venue": "ACM CCS 2026",
+    "last_updated": "2026-04-20",
+    "schema_version": "1.0"
+  },
+
+  "best_response_initial_auc_mean": 0.9855,
+  "best_response_auc_floor_mean": 0.5781,
+  "best_response_auc_floor_std": 0.005,
+  "best_response_equilibrium_auc_mean": 0.5839,
+  "best_response_equilibrium_auc_std": 0.0026,
+  "best_response_equilibrium_blend_mean": 0.93,
+  "best_response_max_evasion_rate": 0.974,
+  "best_response_final_evasion_rate_mean": 0.029,
+  "best_response_total_auc_drop_mean": 0.407,
+  "best_response_n_rounds": 10,
+  "best_response_n_seeds": 3,
+
+  "equilibrium_initial_auc": 0.9847,
+  "equilibrium_final_auc": 0.599,
+  "equilibrium_total_auc_drop": 0.3857,
+  "equilibrium_final_blend": 0.97,
+  "equilibrium_max_evasion_rate": 0.9567,
+  "equilibrium_final_evasion_rate": 0.07,
+
+  "closed_loop_final_auc_mean": 0.9924,
+  "closed_loop_round1_llm_evasion_mean": 0.98,
+  "closed_loop_round1_parametric_evasion_mean": 0.691,
+  "closed_loop_round1_evasion_delta": 0.289,
+  "closed_loop_parametric_baseline_final_auc": 0.578,
+
+  "evasion_threshold_rules": 1.0,
+  "evasion_lightgbm_ml": 0.999,
+  "evasion_graph_basic": 0.9935,
+  "evasion_graph_moderate": 0.9427,
+  "evasion_graph_advanced": 1.0,
+
+  "large_scale_n_projects": 16,
+  "large_scale_n_addresses": 386000,
+  "large_scale_cross_axis_gbm_mean_auc": 0.6175,
+  "large_scale_temporal_mean_auc": 0.6215,
+  "large_scale_evasion_cross_axis_basic": 0.9786,
+  "large_scale_evasion_cross_axis_advanced": 0.9994,
+
+  "official_sybil_gitcoin_official_count": 27984,
+  "official_sybil_hascidb_catch_rate": 0.4357,
+  "official_sybil_overlap_in_hascidb": 140,
+
+  "leakage_fix_honest_auc": 0.6089,
+  "leakage_fix_leaky_auc": 0.9257,
+  "leakage_fix_inflation": 0.3168,
+  "leakage_fix_honest_ai_only_auc": 0.5012,
+
+  "external_hop_detection_rate": 0.5311,
+  "external_layerzero_detection_rate": 0.1953,
+  "external_hop_kappa": 0.0022,
+  "external_layerzero_kappa": -0.0001,
+  "external_llm_evasion_all": 1.0,
+  "external_union_unique_sybils": 805193,
+  "external_hascidb_universe": 3282568,
+  "external_hascidb_sybil_count": 792580,
+
+  "behavioral_consistency_top1_in_n_rounds": 30,
+  "behavioral_consistency_top1_total_rounds": 30
+}

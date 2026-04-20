@@ -1,0 +1,80 @@
+{
+  "_meta": {
+    "paper": "P0",
+    "title": "Fundamental Information-Theoretic Limits of Behavioral AI Agent Detection",
+    "venue": "Nature Machine Intelligence",
+    "last_updated": "2026-04-20",
+    "schema_version": "1.0"
+  },
+
+  "n_samples": 2744,
+  "n_features_full": 31,
+  "n_features_base": 23,
+  "n_classes": 8,
+
+  "gbm_accuracy_31feat": 0.9526,
+  "gbm_accuracy_31feat_std": 0.0073,
+  "gbm_f1_macro_31feat": 0.6869,
+  "gbm_f1_macro_31feat_std": 0.0732,
+  "gbm_f1_weighted_31feat": 0.9435,
+
+  "fano_MI_joint_bits_31feat": 1.4374,
+  "fano_accuracy_ceiling_31feat": 0.9724,
+  "fano_accuracy_ceiling_23feat": 0.968,
+  "fano_error_lower_bound_31feat": 0.0276,
+  "fano_headroom_pp_31feat": 1.98,
+  "fano_headroom_pp_23feat": 4.56,
+
+  "accuracy_gain_23_to_31feat": 0.0306,
+  "f1macro_gain_23_to_31feat": 0.1069,
+  "top_feature_eip1559_tip_precision_importance": 0.3403,
+
+  "rt_cohens_d_llm_vs_defi_median": 1.0135,
+  "rt_cohens_d_llm_vs_defi_median_p": 0.0037,
+  "rt_cohens_d_llm_vs_defi_median_ci_lo": 0.32,
+  "rt_cohens_d_llm_vs_defi_median_ci_hi": 1.62,
+  "rt_cohens_d_llm_vs_defi_p10": 0.6275,
+  "rt_mev_same_block_fraction_median": 0.2889,
+  "rt_total_defi_txs": 936012,
+  "rt_llm_median_reaction_s": 441,
+  "rt_rule_median_reaction_s": 321,
+  "rt_llm_defi_exec_median_s": 216,
+  "rt_rule_defi_exec_median_s": 289,
+
+  "ablation_accuracy_drop_23_to_19": -0.0474,
+  "ablation_accuracy_drop_31_to_27": -0.0456,
+  "ablation_f1macro_drop_23_to_19": -0.1194,
+  "ablation_f1macro_drop_31_to_27": -0.1323,
+  "ablation_hdbscan_silhouette": 0.3094,
+  "ablation_kmeans_k3_silhouette": 0.1596,
+
+  "dp_baseline_23feat_accuracy": 0.9224,
+  "dp_47feat_accuracy": 0.9537,
+  "dp_47feat_f1_macro": 0.6838,
+  "dp_accuracy_gain_23_to_47": 0.0313,
+  "dp_llm_f1_gain": 0.1092,
+  "dp_crosschain_f1_gain": 0.4709,
+
+  "cluster_best_k": 5,
+  "cluster_best_k5_ari": 0.3189,
+  "cluster_best_k5_nmi": 0.3398,
+  "cluster_k8_ari": 0.2225,
+  "cluster_k8_nmi": 0.3132,
+  "cluster_k8_mean_purity": 0.7788,
+  "cluster_pca_variance_explained_2d": 0.3701,
+  "cluster_hdbscan_n_clusters": 2,
+  "cluster_kmeans_optimal_silhouette_k": 3,
+
+  "onchain_n_addresses_tested": 16,
+  "onchain_platform_agents_pass_rate": 0.80,
+  "onchain_known_agents_pass_rate": 0.75,
+  "onchain_false_positives": 1,
+  "onchain_false_negatives": 1,
+  "onchain_C1_ablation_fp_count": 7,
+
+  "taxonomy_c1_unique_to_our_framework": true,
+  "taxonomy_our_web3_score": 5,
+  "taxonomy_best_prior_web3_score": 2,
+  "taxonomy_our_conditions_coverage": 4,
+  "taxonomy_best_prior_conditions_coverage": 3
+}
