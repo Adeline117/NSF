@@ -1,0 +1,32 @@
+{
+  "run_timestamp": "20260420_142609",
+  "description": "Bootstrap 95% confidence intervals (percentile method, 1000 resamples) for key AUC numbers reported in Paper 1. Level 2 = random 10-fold CV; Level 3 = temporal holdout; Level 5 = mixed-class behavioral cluster LOPO.",
+  "n_bootstrap": 1000,
+  "seed": 42,
+  "dataset": {
+    "n_samples": 1147,
+    "n_agents": 533,
+    "n_humans": 614,
+    "n_features": 23
+  },
+  "level2_rf_auc": 0.8028,
+  "level2_rf_auc_ci_lo": 0.7776,
+  "level2_rf_auc_ci_hi": 0.8264,
+  "level2_n_samples": 1147,
+  "level2_n_folds": 10,
+  "level2_n_valid_resamples": 1000,
+  "level3_rf_auc": 0.6693,
+  "level3_rf_auc_ci_lo": 0.6283,
+  "level3_rf_auc_ci_hi": 0.7158,
+  "level3_n_train": 573,
+  "level3_n_test": 574,
+  "level3_split_block": 12321026,
+  "level3_n_valid_resamples": 1000,
+  "level5_mixed_rf_auc": 0.7415,
+  "level5_mixed_rf_auc_ci_lo": 0.7121,
+  "level5_mixed_rf_auc_ci_hi": 0.7685,
+  "level5_n_clusters": 5,
+  "level5_n_pooled_predictions": 1147,
+  "level5_n_valid_resamples": 1000,
+  "elapsed_seconds": 4.73
+}

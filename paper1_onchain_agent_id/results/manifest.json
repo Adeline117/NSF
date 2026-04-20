@@ -76,5 +76,12 @@
   "gat_mixed_class_lopo_mean_cluster_auc_std": 0.0085,
   "gat_mixed_class_lopo_n_seeds": 5,
   "gat_vs_rf_lopo_delta": -0.0235,
-  "gat_vs_gbm_lopo_delta": -0.0349
+  "gat_vs_gbm_lopo_delta": -0.0349,
+
+  "bootstrap_level2_rf_auc_ci_lo": 0.7776,
+  "bootstrap_level2_rf_auc_ci_hi": 0.8264,
+  "bootstrap_level3_rf_auc_ci_lo": 0.6283,
+  "bootstrap_level3_rf_auc_ci_hi": 0.7158,
+  "bootstrap_level5_mixed_rf_auc_ci_lo": 0.7121,
+  "bootstrap_level5_mixed_rf_auc_ci_hi": 0.7685
 }

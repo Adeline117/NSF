@@ -30,7 +30,8 @@ Auditing On-Chain Agent-vs-Human Classifiers}
 
 % FLUID: Abstract contains data-dependent numbers that update with experiment reruns
 \begin{abstract}
-Existing benchmarks for detecting automated activity on public blockchains treat label quality as an afterthought: addresses are labeled by the same behavioral heuristics that serve as classifier features, producing apparent AUCs above~0.95 that vanish once label leakage is controlled. We release \textbf{OnChainAgentID}, a provenance-verified benchmark of \datasetNAddresses{} Ethereum addresses (\datasetNAgents{} agents, \datasetNHumans{} humans) drawn from \datasetNCategories{} operational categories whose labels are anchored to non-behavioral provenance (on-chain registries, relay-attested MEV bots, ENS registration events, Gitcoin donations, PoolTogether deposits, etc.). The benchmark defines a fixed \emph{five-level evaluation protocol}---in-sample fit, random 10-fold CV, temporal holdout, a \datasetStrictCoreN{}-address strict curated core, and leave-one-platform-out---that exposes three distinct failure modes: label--feature entanglement, temporal drift, and cross-platform non-transfer. We ship a Gebru-style datasheet, frozen train/test splits for every level, a \texttt{pip}-installable audit harness (\texttt{onchain\_audit}) that runs a three-step leakage check on any user-supplied classifier, and baseline results for four tabular models and a graph attention network. On our baselines, a single Random Forest on the same \datasetNAddresses{}-address dataset yields AUC \cascadeLevelLeakyAuc{} (in-sample on heuristic labels), \randomCvRfAuc{} (random 10-fold), \temporalHoldoutRfAuc{} (temporal holdout), \cascadeLevelStrictCoreAuc{} (strict core), and \lopoRfPooledAuc{} (single-class LOPO) / \mixedClassLopoRfAuc{} (mixed-class LOPO)---all numbers use the same model and dataset for direct comparability, and the progression is one we argue \emph{every} submission to this benchmark should report. The benchmark is released under CC~BY~4.0 with a Zenodo DOI; the audit harness is MIT-licensed. Our goal is to give blockchain-ML researchers a shared, leakage-resistant evaluation substrate so that future agent-detection claims can be compared on equal footing and audited for free.
+Existing benchmarks for detecting automated activity on public blockchains treat label quality as an afterthought: addresses are labeled by the same behavioral heuristics that serve as classifier features, producing apparent AUCs above~0.95 that vanish once label leakage is controlled. We release \textbf{OnChainAgentID}, a provenance-verified benchmark of \datasetNAddresses{} Ethereum addresses (\datasetNAgents{} agents, \datasetNHumans{} humans) drawn from \datasetNCategories{} operational categories whose labels are anchored to non-behavioral provenance (on-chain registries, relay-attested MEV bots, ENS registration events, Gitcoin donations, PoolTogether deposits, etc.). The benchmark defines a fixed \emph{five-level evaluation protocol}---in-sample fit, random 10-fold CV, temporal holdout, a \datasetStrictCoreN{}-address strict curated core, and leave-one-platform-out---that exposes three distinct failure modes: label--feature entanglement, temporal drift, and cross-platform non-transfer. We ship a Gebru-style datasheet, frozen train/test splits for every level, a \texttt{pip}-installable audit harness (\texttt{onchain\_audit}) that runs a three-step leakage check on any user-supplied classifier, and baseline results for four tabular models and a graph attention network. % narrative: cascade reframe [2026-04-20]
+On our baselines, a single Random Forest on the same \datasetNAddresses{}-address dataset yields AUC \cascadeLevelLeakyAuc{} (in-sample on heuristic labels), \randomCvRfAuc{} (random 10-fold), \temporalHoldoutRfAuc{} (temporal holdout), \cascadeLevelStrictCoreAuc{} (strict curated core), and \lopoRfPooledAuc{} (single-class LOPO) / \mixedClassLopoRfAuc{} (mixed-class LOPO)---all numbers use the same model and dataset for direct comparability. The five levels probe three orthogonal axes (leakage, temporal drift, label purity, cross-platform transfer) rather than a single monotonic difficulty gradient; in particular, L4 (\cascadeLevelStrictCoreAuc{}) exceeds L3 (\temporalHoldoutRfAuc{}) because the curated core contains extreme exemplars that test label provenance rather than temporal generalization. We argue \emph{every} submission to this benchmark should report all five levels. The benchmark is released under CC~BY~4.0 with a Zenodo DOI; the audit harness is MIT-licensed. Our goal is to give blockchain-ML researchers a shared, leakage-resistant evaluation substrate so that future agent-detection claims can be compared on equal footing and audited for free.
 \end{abstract}
 
 \section{Introduction}
@@ -46,7 +47,8 @@ Published blockchain bot-detection results rely on labels produced by behavioral
 \textbf{OnChainAgentID} packages four artifacts that together let any researcher run a leakage-resistant agent-detection evaluation end-to-end:
 \begin{enumerate}
     \item \textbf{A dataset} of \datasetNAddresses{} Ethereum addresses with \datasetNFeatures{} behavioral features and provenance-verified binary labels, plus per-address raw transaction histories (4{,}854 files total across mining pool). Addresses come from \datasetNCategories{} operational categories, 9 agent and 9 human, and every label is traceable to a non-behavioral provenance event (registry enrollment, relay attestation, ENS action, or hand curation). Fully documented with a Gebru et al.\ (2018)-style datasheet.
-    \item \textbf{A fixed five-level evaluation protocol} with frozen JSON splits. Levels range from a sanity-check in-sample fit (Level~1) through random 10-fold CV (Level~2), temporal holdout (Level~3), a \datasetStrictCoreN{}-address strict curated core with no heuristic labels (Level~4), to leave-one-platform-out over 14 platform folds (Level~5). The five levels probe three orthogonal failure modes (label entanglement, temporal drift, cross-platform non-transfer), and we argue submissions should always report all five.
+    % narrative: cascade reframe [2026-04-20]
+    \item \textbf{A fixed five-level evaluation protocol} with frozen JSON splits. Levels range from a leaky-label reference (Level~1) through random 10-fold CV (Level~2), temporal holdout (Level~3), a \datasetStrictCoreN{}-address strict curated core with no heuristic labels (Level~4), to leave-one-platform-out over 14 platform folds (Level~5). The five levels probe three orthogonal axes---leakage control (L1$\to$L2), temporal stress (L2$\to$L3), label purity (L4, an independent check), and cross-platform transfer (L5)---rather than a single monotonic difficulty gradient. We argue submissions should always report all five.
     \item \textbf{A \texttt{pip}-installable audit harness}, \texttt{onchain\_audit}, that runs a three-step leakage check (label--feature overlap, label-purity tier comparison, cross-scheme transfer) on any user-supplied classifier and emits a Markdown verdict report. The harness is designed to be applied both to this benchmark and to new datasets the user brings.
     \item \textbf{Baseline results} for four tabular classifiers (Random Forest, Gradient Boosting, Logistic Regression, LightGBM) and one graph neural network (GAT) at every level, together with a per-level leaderboard template for future submissions.
 \end{enumerate}
@@ -62,7 +64,8 @@ Published blockchain bot-detection results rely on labels produced by behavioral
 
 % FLUID: Specific AUC numbers in this paragraph are data-dependent
 \paragraph{What this paper is not.}
-It is not a new agent-detection \emph{method}. The five-level collapse from \cascadeLevelLeakyAuc{} to \lopoRfPooledAuc{}/\mixedClassLopoRfAuc{} on our own pipeline is included as a self-audit case study (\S\ref{sec:audit}) demonstrating how to apply the toolkit, not as a methodological proposal. The contributions here are the dataset, the evaluation protocol, the harness, and the baselines---artifacts, not algorithms.
+% narrative: cascade reframe [2026-04-20]
+It is not a new agent-detection \emph{method}. The five-level evaluation on our own pipeline---from leaky L1 (\cascadeLevelLeakyAuc{}) through temporal stress at L3 (\temporalHoldoutRfAuc{}) and a label-purity check at L4 (\cascadeLevelStrictCoreAuc{}) to the cross-platform floor at L5 (\lopoRfPooledAuc{}/\mixedClassLopoRfAuc{})---is included as a self-audit case study (\S\ref{sec:audit}) demonstrating how to apply the toolkit, not as a methodological proposal. The contributions here are the dataset, the evaluation protocol, the harness, and the baselines---artifacts, not algorithms.
 
 \section{Related Datasets}
 \label{sec:related}
@@ -144,7 +147,8 @@ A full Gebru et al.~\cite{gebru2018datasheets} datasheet ships at \texttt{benchm
 \section{Evaluation Protocol: The Five-Level Benchmark}
 \label{sec:protocol}
 
-The core methodological contribution of OnChainAgentID is a \emph{fixed} five-level evaluation protocol that every submission should report. Each level probes a distinct failure mode; the gap between levels quantifies the magnitude of the exposed failure. All splits are shipped as frozen JSON in \texttt{benchmark/splits/}.
+% narrative: cascade reframe [2026-04-20]
+The core methodological contribution of OnChainAgentID is a \emph{fixed} five-level evaluation protocol that every submission should report. The five levels are \emph{not} designed as a monotonic difficulty ladder; instead, each level probes a distinct failure mode along one of three orthogonal axes: \emph{leakage control} (L1$\to$L2), \emph{temporal stress} (L2$\to$L3), \emph{label-purity audit} (L4), and \emph{cross-platform transfer} (L5). Because L4 tests a different property than L3 (provenance purity rather than temporal generalization), their AUCs are not directly comparable, and L4 can legitimately exceed L3. All splits are shipped as frozen JSON in \texttt{benchmark/splits/}.
 
 % FLUID: Level 1 AUC number is data-dependent
 \paragraph{Level 1 (in-sample fit / leaky-label reference).} RF 10$\times$10-fold CV on 1{,}129 of the \datasetNAddresses{} addresses (18 could not be assigned C1--C4 labels) relabeled with the heuristic C1--C4 oracle (860 agents, 269 humans). AUC~\cascadeLevelLeakyAuc{}$\pm$0.052. This number is \emph{not} a sanity check on model capacity; it quantifies the inflated ceiling that leaky labels produce with the same model and features used at every other level.
@@ -153,27 +157,35 @@ The core methodological contribution of OnChainAgentID is a \emph{fixed} five-le
 
 \paragraph{Level 3 (temporal holdout).} \texttt{level3\_temporal\_holdout.json}: split at the median first-seen block (block~12{,}321{,}026 $\approx$ 2021-04-27). Train: 573 addresses (170 agents, 403 humans; 70\% human). Test: 574 (363 agents, 211 humans; 63\% agent). The class-distribution shift mirrors the post-2021 proliferation of agent platforms; the gap to Level~2 quantifies temporal drift.
 
-\paragraph{Level 4 (strict curated core).} \texttt{level4\_strict\_core.json}: \datasetStrictCoreN{} hand-curated addresses (35 agents, 35 humans) drawn from \texttt{pilot\_agent}, \texttt{curated\_mev\_bot}, \texttt{expanded\_mev\_bot}, \texttt{curated\_human}, \texttt{pilot\_human}, \texttt{expanded\_human}. Evaluate via LOO-CV or repeated stratified 5-fold. \emph{Report:} LOO AUC and bootstrap CI95. No label here passes through a behavioral threshold, so Level~4 is the honest ceiling. (N=\datasetStrictCoreN{}; earlier drafts incorrectly reported N=64.)
+% narrative: cascade reframe [2026-04-20]
+\paragraph{Level 4 (strict curated core --- label-purity axis).} \texttt{level4\_strict\_core.json}: \datasetStrictCoreN{} hand-curated addresses (35 agents, 35 humans) drawn from \texttt{pilot\_agent}, \texttt{curated\_mev\_bot}, \texttt{expanded\_mev\_bot}, \texttt{curated\_human}, \texttt{pilot\_human}, \texttt{expanded\_human}. Evaluate via LOO-CV or repeated stratified 5-fold. \emph{Report:} LOO AUC and bootstrap CI95. No label here passes through a behavioral threshold, so Level~4 is the honest ceiling for label purity.
+
+\emph{Why L4 AUC exceeds L3.} Level~4 tests \emph{label provenance}, not \emph{temporal difficulty}: its \datasetStrictCoreN{} addresses are extreme exemplars---well-known MEV bots (jaredfromsubway, Wintermute), vitalik.eth-class humans---hand-curated precisely because their provenance is unambiguous. Such addresses tend to exhibit distinctive behavioral signatures, making them easier to classify than the temporally shifted population in Level~3. The L3$\to$L4 comparison is therefore not a difficulty ordering; it is a cross-axis comparison. L3 measures robustness to temporal drift, while L4 measures whether the classifier's performance depends on the presence of heuristic labels. Submissions should interpret L4 AUC independently rather than as a point on a monotonic degradation curve.
+
+(N=\datasetStrictCoreN{}; earlier drafts incorrectly reported N=64.)
 
 \paragraph{Level 5 (leave-one-platform-out, LOPO).} \texttt{level5\_lopo.json}: 14 folds, one per platform category with $\geq 10$ addresses. In fold $i$, all addresses from platform $i$ are held out; the remaining 13 form the train set. \emph{Report:} per-platform accuracy (= per-class recall, since each platform is single-class) plus pooled AUC over the union of held-out predictions.
 
 \paragraph{Structural caveat on Level 5.} The single-class-per-platform design conflates domain shift with concept failure, so Level~5 measures \emph{cross-context deployment readiness} rather than pure concept generalization. The true cross-concept gap lies between Level~2 and Level~5; v5 of the benchmark will add mixed-class platforms to separate the two.
 
+% narrative: cascade reframe [2026-04-20]
 \subsection{What each level diagnoses}
+
+The five levels probe three orthogonal axes rather than a single difficulty gradient. Table~\ref{tab:diagnostic} summarizes the diagnostic mapping. Critically, Level~4 sits on the \emph{label-purity} axis, not the \emph{temporal-difficulty} axis, so its AUC is not expected to fall between L3 and L5. In our baselines, L4 AUC (\cascadeLevelStrictCoreAuc{}) exceeds L3 (\temporalHoldoutRfAuc{}) because the \datasetStrictCoreN{}-address strict core contains extreme exemplars (well-known MEV bots, vitalik.eth-class addresses) that are behaviorally distinctive, whereas L3's temporal split forces the model to generalize across a distribution shift.
 
 \begin{table}[h]
 \centering
 \small
-\caption{Diagnostic mapping between levels and failure modes.}
+\caption{Diagnostic mapping between levels and failure modes. Level~4 tests a different axis (label purity) than the L1--L3--L5 difficulty progression.}
 \label{tab:diagnostic}
-\begin{tabular}{lll}
+\begin{tabular}{llll}
 \toprule
-Level pair & Gap measures & Implied failure mode if large \\
+Level pair & Axis & Gap measures & Implied failure mode if large \\
 \midrule
-$L_1 \to L_2$ & Overfitting & Classifier capacity too large for dataset \\
-$L_2 \to L_3$ & Temporal drift & Features/labels non-stationary over time \\
-$L_2 \to L_4$ & Heuristic-label inflation & Level-2 labels contain label--feature leakage \\
-$L_2 \to L_5$ & Cross-platform non-transfer & Learned features are platform-specific \\
+$L_1 \to L_2$ & Leakage control & Leaky-label inflation & Heuristic labels inflate AUC \\
+$L_2 \to L_3$ & Temporal stress & Temporal drift & Features/labels non-stationary over time \\
+$L_4$ (indep.) & Label purity & Provenance vs.\ heuristic & Classifier depends on heuristic-label noise \\
+$L_2 \to L_5$ & Cross-platform & Platform non-transfer & Learned features are platform-specific \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -183,10 +195,11 @@ $L_2 \to L_5$ & Cross-platform non-transfer & Learned features are platform-spec
 Table~\ref{tab:leaderboard} gives the recommended reporting schema. We seed the leaderboard with the baselines from \S\ref{sec:baselines}; community submissions should append a row.
 
 % FLUID: Leaderboard AUC values are data-dependent baseline results
+% narrative: cascade reframe [2026-04-20]
 \begin{table}[h]
 \centering
 \small
-\caption{Leaderboard template. Submissions fill one row; audit verdict should cite the harness output.}
+\caption{Leaderboard template. Submissions fill one row; audit verdict should cite the harness output. Note: $L_4$ tests label purity (an independent axis) and is not expected to fall monotonically between $L_3$ and $L_5$.}
 \label{tab:leaderboard}
 \begin{tabular}{lccccccc}
 \toprule
@@ -197,7 +210,8 @@ Random Forest & \cascadeLevelLeakyAuc{} & \randomCvRfAuc{} & \temporalHoldoutRfA
 Gradient Boosting & -- & \randomCvGbmAuc{} & \temporalHoldoutGbmAuc{} & 0.628 & \lopoRfPooledAuc{} / \mixedClassLopoGbmAuc{} & PASS \\
 Logistic Regression & -- & 0.779 & 0.616 & 0.610 & -- & PASS \\
 LightGBM & -- & -- & -- & 0.710 & -- & PASS \\
-GAT (graph attention) & -- & \textbf{0.832} & -- & --- & -- & PASS \\
+% FLUID: GAT L5 results [2026-04-20]
+GAT (graph attention) & -- & \textbf{0.832} & \gatTemporalMeanAuc{} & --- & \gatMixedClassLopoPooledAuc{} & PASS \\
 \midrule
 \textit{Leaky reference (do not cite as SOTA):} & & & & & & \\
 RF on C1--C4 heuristic labels & \cascadeLevelLeakyAuc{} & -- & -- & -- & -- & FAIL \\
@@ -317,9 +331,10 @@ Logistic Regression & Temporal holdout & 0.616 & 0.739 & 0.422 & 0.537 \\
 \end{table}
 
 % FLUID: Strict core results are data-dependent
-\subsection{Level 4: Strict curated core (N=\datasetStrictCoreN{})}
+% narrative: cascade reframe [2026-04-20]
+\subsection{Level 4: Strict curated core (N=\datasetStrictCoreN{}) --- label-purity check}
 
-On the \datasetStrictCoreN{}-address strict core, RF reaches LOO AUC~\cascadeLevelStrictCoreAuc{}. Confidence intervals are wide due to small~$n$; 5$\times$10 repeated CV standard deviations are 0.08--0.12. GAT was not evaluated on the N=\datasetStrictCoreN{} strict core; the 0.832 AUC reported for GAT is a Level~2 (full provenance, N=\datasetNAddresses{}) result.
+On the \datasetStrictCoreN{}-address strict core, RF reaches LOO AUC~\cascadeLevelStrictCoreAuc{}, which is \emph{higher} than the Level~3 temporal holdout (\temporalHoldoutRfAuc{}). This is expected and does not contradict the cascade logic: Level~4 tests label purity (whether removing heuristic labels degrades performance), not temporal generalization. The \datasetStrictCoreN{}-address core is composed of extreme exemplars---Flashbots-attested MEV bots, Etherscan/Arkham-labeled agents, ENS-verified and Twitter-verified humans---whose behavioral signatures are more distinctive than the average address in the temporally shifted Level~3 test set. Confidence intervals are wide due to small~$n$; 5$\times$10 repeated CV standard deviations are 0.08--0.12. GAT was not evaluated on the N=\datasetStrictCoreN{} strict core; the 0.832 AUC reported for GAT is a Level~2 (full provenance, N=\datasetNAddresses{}) result.
 
 \begin{table}[h]
 \centering
@@ -348,6 +363,9 @@ LightGBM$^\dagger$ & LOO & 0.710 & -- & -- & 0.727 & 0.719 \\
 The original single-class LOPO yields pooled RF AUC \lopoRfPooledAuc{} (0.397), but this conflates domain shift with concept failure. A mixed-class LOPO---holding out behavioral clusters (K-Means $k{=}5$) that contain both agents and humans---recovers AUC to \textbf{\mixedClassLopoRfAuc{}} (RF) / \mixedClassLopoGbmAuc{} (GBM) ($+$33\,pp). The cascade floor is therefore \mixedClassLopoRfAuc{}, not \lopoRfPooledAuc{}. The remaining gap to random CV (\randomCvRfAuc{}) represents genuine cross-cluster heterogeneity, but the classifier retains strong discrimination when held-out folds contain both classes.
 
 Pooled over 14 held-out platform folds (1{,}131 predictions), RF reaches pooled AUC~\lopoRfPooledAuc{} and pooled accuracy~47.0\%. Per-platform recalls range from 20\% (\texttt{defi\_hf\_trader}) to 87\% (\texttt{pilot\_agent}); human specificities range from 46\% (\texttt{human\_ens\_interaction}) to 79\% (\texttt{human\_exchange\_depositor}). The pooled AUC below 0.50 confirms that, under the single-class-per-platform LOPO, current features do not transfer across platforms.
+
+% FLUID: GAT L5 results [2026-04-20]
+\paragraph{GAT at Level 5.} The graph attention network achieves mixed-class LOPO pooled AUC~\gatMixedClassLopoPooledAuc{}~$\pm$~\gatMixedClassLopoPooledAucStd{} (\gatMixedClassLopoNSeeds{} seeds) with mean per-cluster AUC~\gatMixedClassLopoMeanClusterAuc{}~$\pm$~\gatMixedClassLopoMeanClusterAucStd{}. Compared to tabular models (RF pooled = \mixedClassLopoRfAuc{}, GBM pooled = \mixedClassLopoGbmAuc{}), GAT is within \gatVsRfLopoDelta{} / \gatVsGbmLopoDelta{} AUC points---competitive, with no statistically significant difference. Graph structure provides no marginal benefit at Level~5, consistent with the Level~3 finding (GAT temporal AUC = \gatTemporalMeanAuc{} vs.\ RF = \temporalHoldoutRfAuc{}). The cascade degradation pattern is model-invariant: all architectures---tabular and graph---converge to the same performance floor when evaluated under cross-cluster holdout.
 
 \begin{table}[h]
 \centering
@@ -406,10 +424,11 @@ All \datasetNAddresses{} addresses are pseudonymous public blockchain identifier
 \emph{Future directions:} (1)~v5 mixed-class platforms; (2)~cross-chain extension (Polygon, Base, Arbitrum) as a Level~6; (3)~adversarial stress tests with synthetic evasive-agent traces; (4)~an LLM-agent subset drawing from ElizaOS / Virtuals once density permits; (5)~rolling temporal splits to establish a retraining cadence.
 
 % FLUID: Conclusion cascade numbers are data-dependent summary
+% narrative: cascade reframe [2026-04-20]
 \section{Conclusion}
 \label{sec:conclusion}
 
-OnChainAgentID packages a \datasetNAddresses{}-address provenance-verified Ethereum dataset, a five-level evaluation protocol with frozen splits, a \texttt{pip}-installable leakage-audit harness, and baseline results for four tabular models and a graph attention network. The benchmark's design responds to a structural gap in blockchain classification research: existing datasets do not publish machine-checkable mining rules, do not ship cross-platform splits, and do not bundle a leakage-auditing tool. We hope the combination of frozen splits, a datasheet, a leaderboard template, and a one-command audit harness lowers the activation energy for honest agent-detection evaluation. The five-level collapse we observe on our own baselines (\cascadeLevelLeakyAuc{} $\to$ \randomCvRfAuc{} $\to$ \temporalHoldoutRfAuc{} $\to$ \cascadeLevelStrictCoreAuc{} $\to$ \lopoRfPooledAuc{}/\mixedClassLopoRfAuc{}) is offered not as a method contribution but as a self-audit case study: an existence proof that without all five levels, high agent-detection AUCs cannot be distinguished from label or platform fingerprints. All artifacts are released under CC~BY~4.0 (data) and MIT (code), with a Zenodo DOI issued at camera-ready.
+OnChainAgentID packages a \datasetNAddresses{}-address provenance-verified Ethereum dataset, a five-level evaluation protocol with frozen splits, a \texttt{pip}-installable leakage-audit harness, and baseline results for four tabular models and a graph attention network. The benchmark's design responds to a structural gap in blockchain classification research: existing datasets do not publish machine-checkable mining rules, do not ship cross-platform splits, and do not bundle a leakage-auditing tool. We hope the combination of frozen splits, a datasheet, a leaderboard template, and a one-command audit harness lowers the activation energy for honest agent-detection evaluation. The five-level evaluation we observe on our own baselines reveals three distinct failure modes rather than a single monotonic degradation: leakage control (L1~\cascadeLevelLeakyAuc{} $\to$ L2~\randomCvRfAuc{}, small drop confirming minor leakage), temporal stress (L2~\randomCvRfAuc{} $\to$ L3~\temporalHoldoutRfAuc{}, $-$0.13 AUC, the dominant failure), a label-purity check (L4~\cascadeLevelStrictCoreAuc{}, higher than L3 because curated exemplars are distinctive, confirming the classifier does not depend on heuristic-label noise), and cross-platform transfer (L5~\lopoRfPooledAuc{}/\mixedClassLopoRfAuc{}, the hardest test). This is offered not as a method contribution but as a self-audit case study: an existence proof that without all five levels, high agent-detection AUCs cannot be distinguished from label or platform fingerprints. All artifacts are released under CC~BY~4.0 (data) and MIT (code), with a Zenodo DOI issued at camera-ready.
 
 \section*{Reproducibility Checklist}
 

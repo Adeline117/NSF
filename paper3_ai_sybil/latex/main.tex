@@ -794,10 +794,12 @@ The central result is \textbf{\bestResponseAucFloorMean{}}---the convergence poi
 \textbf{(1)}~AUC converges to a plateau of $0.580$ (95\% CI: $[0.577, 0.584]$) across \bestResponseNSeeds{} seeds over \bestResponseNRounds{} rounds, with equilibrium oscillation in a narrow $[0.56, 0.61]$ band; a fixed-schedule protocol yields \equilibriumFinalAuc{}, confirming the result is not a schedule artifact.
 \textbf{(2)}~At blend ${\sim}\bestResponseEquilibriumBlendMean{}$, sybils share 93\% of their distributional mass with real wallets; the residual 0.078 above chance concentrates in \texttt{behavioral\_consistency} (CV of inter-arrival times), a structural invariant the LLM cannot replicate without real-time traffic modeling.
 \textbf{(3)}~Feature-importance Gini drops from 0.54 to 0.15, indicating the detector has exhausted all 8 dimensions.
+% FLUID: alternative defender results [2026-04-20]
+\textbf{(4)}~The floor is \emph{defender-invariant}. Running the same best-response protocol with three architectures---GBM (AUC $0.584 \pm 0.003$), MLP (two hidden layers, $0.590 \pm 0.008$), and Random Forest (500 trees, $0.577 \pm 0.002$)---yields equilibrium AUCs within $0.013$ of each other ($3$ seeds each, $10$ rounds). No defender architecture escapes the floor.
 
 % FLUID: narrative strength adjusted [2026-04-20]
-This is a practical observation, not a theoretical optimality proof. Fundamentally different features could exceed this floor, but within the 8-feature space, multiple starting conditions converge to the same point: \emph{change the problem}, do not keep optimizing within the bounded paradigm.
-This floor is conditioned on the feature set and defender architecture tested; a fundamentally different detection paradigm (e.g., full-graph structural analysis over the complete Ethereum transfer graph, or identity-layer attestation) is not bounded by this result.
+This is a practical observation, not a theoretical optimality proof. Fundamentally different features could exceed this floor, but within the 8-feature space, multiple starting conditions and defender architectures converge to the same point: \emph{change the problem}, do not keep optimizing within the bounded paradigm.
+This floor is conditioned on the feature set tested; a fundamentally different detection paradigm (e.g., full-graph structural analysis over the complete Ethereum transfer graph, or identity-layer attestation) is not bounded by this result.
 
 \subsection{Game-Theoretic Framing}
 

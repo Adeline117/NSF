@@ -78,5 +78,13 @@
   "extended_plateau_center": 0.5805,
   "extended_plateau_center_ci_lo": 0.5771,
   "extended_plateau_center_ci_hi": 0.584,
-  "extended_conservative_floor": 0.5698
+  "extended_conservative_floor": 0.5698,
+
+  "alt_defender_gbm_floor": 0.5839,
+  "alt_defender_gbm_floor_std": 0.0026,
+  "alt_defender_mlp_floor": 0.5898,
+  "alt_defender_mlp_floor_std": 0.0079,
+  "alt_defender_rf_floor": 0.577,
+  "alt_defender_rf_floor_std": 0.0024,
+  "alt_defender_max_spread": 0.013
 }
