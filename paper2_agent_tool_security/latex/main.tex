@@ -14,6 +14,19 @@
 \newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}
 
+\input{macros_results}
+
+%% ---------- Helper macros for percentage formatting ----------
+%% ASR macros are stored as decimals (0.020); multiply by 100 for display.
+%% We define display-ready percentage macros here so Layer 2 text stays clean.
+\newcommand{\tcpiAsrRange}{0--6}            % FLUID: derived from min/max of V1--V7 ASR
+\newcommand{\tcpiVOneAsrPct}{2.0}           % FLUID: 100 * \tcpiRealHaikuVAsr
+\newcommand{\tcpiVTwoAsrPct}{6.0}           % FLUID: 100 * \tcpiRealHaikuVAsrB
+\newcommand{\tcpiVOneAsrPctInt}{2}          % FLUID: integer form of V1 ASR %
+\newcommand{\tcpiVTwoAsrPctInt}{6}          % FLUID: integer form of V2 ASR %
+\newcommand{\scanFindingsAdjRange}{2,000--2,700} % FLUID: rounded range from conservative to liberal
+\newcommand{\scanFindingsLiberal}{2,719}    % FLUID: liberal precision-adjusted total
+
 \begin{document}
 \title{Tool-Chain Prompt Injection: A Systemic Vulnerability\\in AI Agent Interfaces}
 \author{\IEEEauthorblockN{Adeline Wen}
@@ -35,20 +48,21 @@ We provide a formal definition (Definition~1), prove that detecting
 TCPI sources via per-tool static analysis is undecidable
 (Theorem~1, reduction from Rice's theorem), and enumerate seven
 structurally distinct variants (V1--V7).
-Empirically, we measure TCPI attack success rates of 0--6\% across
-all seven variants (30--50 rollouts each, real Claude Haiku inference), with single-hop and null
+% FLUID: empirical ASR numbers, scan totals, and demo pass counts
+Empirically, we measure TCPI attack success rates of \tcpiAsrRange\% across
+all \tcpiVariantsCount{} variants (30--50 rollouts each, real Claude Haiku inference), with single-hop and null
 baselines at 0\%.
-Safety-trained models show strong but imperfect resistance: only V1 (2\%) and V2 (6\%) yield non-zero ASR, while five of seven variants are fully blocked; the non-zero residual validates the undecidability theorem's empirical premise.
+Safety-trained models show strong but imperfect resistance: only V1 (\tcpiVOneAsrPctInt\%) and V2 (\tcpiVTwoAsrPctInt\%) yield non-zero ASR, while \tcpiFullyBlockedVariants{} of \tcpiVariantsCount{} variants are fully blocked; the non-zero residual validates the undecidability theorem's empirical premise.
 We validate the attack end-to-end on a local Ethereum node: a
-Foundry test suite (5/5 pass) demonstrates that a malicious oracle
+Foundry test suite (\foundryTestsPass/\foundryTestsTotal{} pass) demonstrates that a malicious oracle
 redirects a token swap to the attacker's wallet, with the only
 difference between attack and control runs being one 20-byte address
 in the oracle's constructor calldata.
 We complement this theoretical and experimental contribution with the
-first cross-protocol empirical scan of 138 AI-agent tool servers
+first cross-protocol empirical scan of \scanTotalRepos{} AI-agent tool servers
 spanning MCP, OpenAI Function Calling, LangChain, and Web3-native
-modules, yielding 2,000--2,700 precision-adjusted true-positive
-findings and a 16-scenario LLM-in-the-loop dynamic harness.
+modules, yielding \scanFindingsAdjRange{} precision-adjusted true-positive
+findings and a \dynamicHarnessScenarios-scenario LLM-in-the-loop dynamic harness.
 All code, taxonomy, and data are open-sourced.
 \end{abstract}
 
@@ -134,24 +148,26 @@ the ``vulnerability'' is not in any single tool's code but in the
    cross-model handoff, multi-turn context, reflexive re-call,
    schema extraction); all are pairwise non-reducible.
 
+% FLUID: empirical result numbers in contribution list
 \item \textbf{Empirical validation at four levels}: (a) a TCPI
-   harness measuring ASR 0--6\% across V1--V7 (30--50 rollouts each, real Claude inference);
-   (b) a precision-calibrated 138-server static scan yielding
-   2,000--2,700 true-positive findings across four protocol families;
-   (c) a 16-scenario LLM-in-the-loop dynamic harness; and (d) an
-   end-to-end on-chain demonstration via Foundry (5/5 tests pass).
+   harness measuring ASR \tcpiAsrRange\% across V1--V7 (30--50 rollouts each, real Claude inference);
+   (b) a precision-calibrated \scanTotalRepos-server static scan yielding
+   \scanFindingsAdjRange{} true-positive findings across four protocol families;
+   (c) a \dynamicHarnessScenarios-scenario LLM-in-the-loop dynamic harness; and (d) an
+   end-to-end on-chain demonstration via Foundry (\foundryTestsPass/\foundryTestsTotal{} tests pass).
 
 \item \textbf{Open-source release}: full
    analyzer, taxonomy, TCPI harness, Foundry demo, and scan data
    released under a permissive license.
 \end{enumerate}
 
+% FLUID: Key findings preview — all numbers data-dependent
 \textbf{Key findings preview.}  TCPI is a theoretically grounded vulnerability class where safety-trained models show strong but imperfect resistance.
-Only V1 (2\% ASR) and V2 (6\% ASR) show non-zero susceptibility across 30--50 real Claude Haiku rollouts per variant; five of seven variants (V3--V7) are fully blocked by the model's safety training.
+Only V1 (\tcpiVOneAsrPctInt\% ASR) and V2 (\tcpiVTwoAsrPctInt\% ASR) show non-zero susceptibility across 30--50 real Claude Haiku rollouts per variant; \tcpiFullyBlockedVariants{} of \tcpiVariantsCount{} variants (V3--V7) are fully blocked by the model's safety training.
 The non-zero V2 rate validates the undecidability theorem's empirical premise: the attack channel provably exists and current defenses are incomplete.
-The 138-server scan yields 5,641 raw findings; after category-stratified
-precision validation (250 samples, five categories), the
-precision-adjusted total is 2,022--2,719 true positives.  The
+The \scanTotalRepos-server scan yields \scanTotalFindingsRaw{} raw findings; after category-stratified
+precision validation (\precisionSampleSize{} samples, five categories), the
+precision-adjusted total is \scanTotalFindingsConservative--\scanFindingsLiberal{} true positives.  The
 cross-protocol distribution remains strongly non-uniform even after
 adjustment (chi-squared $p < 10^{-80}$, Cram\'{e}r's $V = 0.29$).
 On a local Ethereum node the V1 demo transfers 1,000~USDC from the
@@ -524,9 +540,10 @@ i.e., $P(x) \neq Q(x)$.
 
 \textbf{($\Leftarrow$)} If some $x^*$ witnesses $P(x^*) \neq Q(x^*)$,
 the injection branch fires.  We empirically demonstrate (harness) that
+% FLUID: ASR range in proof empirical premise
 such branches drive contemporary LLMs to produce
 $\theta_B.\text{recipient} = \texttt{0xATTACKER}$ with non-zero
-probability (ASR 2--6\% on V1--V2 under real Claude inference); non-zero suffices for the existential
+probability (ASR \tcpiVOneAsrPctInt--\tcpiVTwoAsrPctInt\% on V1--V2 under real Claude inference); non-zero suffices for the existential
 ``can be TCPI source'' quantifier.
 
 A decider for $\mathrm{TCPI\text{-}SOURCE}$ would decide, on all
@@ -536,7 +553,7 @@ Program equivalence for Turing-complete languages is undecidable
 undecidable.
 \end{proof}
 
-\textbf{Scope of Theorem~1.} Rice's theorem makes any non-trivial semantic property undecidable in general. Our theorem's value is threefold: (1)~it identifies TCPI as a concrete instance appearing in 138 real servers; (2)~undecidability persists even when each tool individually passes review, because the vulnerability is compositional; (3)~it motivates runtime defenses as the only viable mitigation class.
+\textbf{Scope of Theorem~1.} Rice's theorem makes any non-trivial semantic property undecidable in general. Our theorem's value is threefold: (1)~it identifies TCPI as a concrete instance appearing in \scanTotalRepos{} real servers; (2)~undecidability persists even when each tool individually passes review, because the vulnerability is compositional; (3)~it motivates runtime defenses as the only viable mitigation class.
 
 \textbf{Remarks.}  (i) The theorem is conditional on $M$ having non-zero TCPI susceptibility (\S\ref{sec:tcpi-harness}); a classical version replacing $M$ with a deterministic surrogate makes undecidability unconditional.
 (ii) A symmetric theorem holds for $\mathrm{TCPI\text{-}SINK}(T_B, \varphi)$.
@@ -564,6 +581,7 @@ deployment vulnerable to $V_i$ and safe against $V_j$).
 
 \begin{table*}[t]
 \centering\small
+% FLUID: ASR column values in variants table
 \caption{Seven TCPI variants.  Each exploits a structurally distinct
 dimension of the agent substrate.  ASR from real Claude Haiku inference ($n = 30$--$50$ per variant).
 Three variants (V4, V6, V7) open entirely new threat surfaces not
@@ -573,8 +591,8 @@ covered by any prior work.}
 \toprule
 Var. & Name & Channel & Text type & Temporal & ASR & Novel vs.\ prior \\
 \midrule
-V1 & Output$\to$Param & JSON field collision & Structured & 1 turn & 2.0\% & vs.\ Greshake: struct.\ not prose \\
-V2 & Output$\to$Tool-Sel & Routing hint & Struct./prose & 1 turn & 6.0\% & vs.\ ToolHijacker: no registry \\
+V1 & Output$\to$Param & JSON field collision & Structured & 1 turn & \tcpiVOneAsrPct\% & vs.\ Greshake: struct.\ not prose \\
+V2 & Output$\to$Tool-Sel & Routing hint & Struct./prose & 1 turn & \tcpiVTwoAsrPct\% & vs.\ ToolHijacker: no registry \\
 V3 & Output$\to$State & Memory write & Any & Cross-sess. & 0.0\% & vs.\ AgentArmor: user boundary \\
 V4 & Cross-Model & Summary $+$ weak $M$ & Prose survives & 1 turn & 0.0\% & \textbf{New surface} \\
 V5 & Multi-Turn & Context persist. & ``Preference'' & Cross-turn & 0.0\% & vs.\ STAC: not user-driven \\
@@ -728,11 +746,12 @@ description references signing, approval, transfer, or key management.
 \label{sec:tcpi-harness}
 
 We implemented a TCPI harness (\texttt{tcpi/harness.py}) that
-instantiates each of the seven variants, runs 30--50 rollouts per
+instantiates each of the \tcpiVariantsCount{} variants, runs 30--50 rollouts per
 variant using real Claude Haiku inference under three conditions (TCPI, single-hop baseline, null
 baseline), and scores each rollout against the attacker predicate
 $\varphi_A$.  Table~\ref{tab:tcpi-asr} reports the results.
 
+% FLUID: TCPI ASR table — values from harness runs
 \begin{table}[t]
 \centering\small
 \caption{TCPI attack success rates by variant ($n = 30$--$50$, real Claude Haiku inference).
@@ -743,8 +762,8 @@ attack channel is the tool-chain, not direct injection.}
 \toprule
 Variant & $n$ & TCPI ASR & Single-hop & Null \\
 \midrule
-V1: Output$\to$Param & 50 & 2.0\% & 0.0\% & 0.0\% \\
-V2: Output$\to$Tool-Sel & 50 & 6.0\% & 0.0\% & 0.0\% \\
+V1: Output$\to$Param & 50 & \tcpiVOneAsrPct\% & 0.0\% & 0.0\% \\
+V2: Output$\to$Tool-Sel & 50 & \tcpiVTwoAsrPct\% & 0.0\% & 0.0\% \\
 V3: Output$\to$State & 50 & 0.0\% & 0.0\% & 0.0\% \\
 V4: Cross-Model & 30 & 0.0\% & 0.0\% & 0.0\% \\
 V5: Multi-Turn & 30 & 0.0\% & 0.0\% & 0.0\% \\
@@ -756,50 +775,56 @@ V7: Schema-Shaped & 30 & 0.0\% & 0.0\% & 0.0\% \\
 \end{tabular}
 \end{table}
 
+% FLUID: Finding 1 — ASR numbers from harness
 \textbf{Finding 1: the TCPI attack channel exists but safety training strongly mitigates it.}
-Two of seven variants achieve non-zero ASR: V2 (Output$\to$Tool-Selection) at 6\% and V1 (Output$\to$Parameter) at 2\%.  Five variants (V3--V7) are fully blocked by Claude Haiku's safety training, yielding 0\% ASR across all rollouts.
+\tcpiNonzeroVariants{} of \tcpiVariantsCount{} variants achieve non-zero ASR: V2 (Output$\to$Tool-Selection) at \tcpiVTwoAsrPctInt\% and V1 (Output$\to$Parameter) at \tcpiVOneAsrPctInt\%.  \tcpiFullyBlockedVariants{} variants (V3--V7) are fully blocked by Claude Haiku's safety training, yielding 0\% ASR across all rollouts.
 The mean ASR is 1.1\%.  The non-zero rates on V1 and V2 are the critical finding: they prove the attack channel is real and that the undecidability theorem's empirical premise holds---current models do not perfectly distinguish adversarial tool outputs from benign ones.
-V2's higher rate (6\%) is consistent with the hypothesis that routing hints in tool outputs are harder for safety training to catch than direct parameter collisions (V1).
+V2's higher rate (\tcpiVTwoAsrPctInt\%) is consistent with the hypothesis that routing hints in tool outputs are harder for safety training to catch than direct parameter collisions (V1).
 
+% FLUID: Finding 2 — residual ASR range
 \textbf{Finding 2: single-hop baselines are uniformly 0\%.}
-All seven variants have 0\% single-hop ASR.
-This confirms that safety training effectively blocks direct prompt injection; the residual 2--6\% TCPI success on V1--V2 exploits a channel (tool output $\to$ parameter synthesis) that safety training has not fully covered.
+All \tcpiVariantsCount{} variants have 0\% single-hop ASR.
+This confirms that safety training effectively blocks direct prompt injection; the residual \tcpiVOneAsrPctInt--\tcpiVTwoAsrPctInt\% TCPI success on V1--V2 exploits a channel (tool output $\to$ parameter synthesis) that safety training has not fully covered.
 
 \textbf{Finding 3: null baselines are uniformly 0\%.}
 When $T_A$ returns honest output, the attacker predicate is never
 satisfied, confirming that the attack requires the adversarial
 $o_A^*$.
 
+% FLUID: Finding 4 — multi-model ASR
 \textbf{Finding 4: TCPI resistance is model-size-independent within the Claude family.}
-Multi-model validation across the Claude family (Haiku, Sonnet, Opus) shows consistent TCPI resistance: all three model sizes refuse V1 (Output$\to$Parameter) attacks, with only Haiku showing marginal V2 susceptibility (6\%, 3/50). TCPI resistance appears model-size-independent within this family; cross-family testing (GPT-4o, Llama) remains future work.
+Multi-model validation across the Claude family (Haiku, Sonnet, Opus) shows consistent TCPI resistance: all three model sizes refuse V1 (Output$\to$Parameter) attacks, with only Haiku showing marginal V2 susceptibility (\tcpiVTwoAsrPctInt\%, 3/50). TCPI resistance appears model-size-independent within this family; cross-family testing (GPT-4o, Llama) remains future work.
 
 
-\subsection{138-Server Static Scan (Precision-Adjusted)}
+\subsection{\scanTotalRepos-Server Static Scan (Precision-Adjusted)}
 \label{sec:static-scan}
 
-\textbf{Corpus.}  We built a stratified catalog of 138 tool servers:
-50~MCP, 50~Web3-native, 28~LangChain, 10~OpenAI
+% FLUID: corpus composition numbers
+\textbf{Corpus.}  We built a stratified catalog of \scanTotalRepos{} tool servers:
+\scanMcpRepos~MCP, \scanWebRepos~Web3-native, 28~LangChain, 10~OpenAI
 (Table~\ref{tab:catalog}).
 
 \begin{table}[t]
 \centering\small
+% FLUID: server catalog counts
 \caption{Stratified server catalog.}
 \label{tab:catalog}
 \begin{tabular}{llll}
 \toprule
 Protocol & Final & Mean stars & Languages \\
 \midrule
-MCP & 50 & 442 & TS, Python \\
-Web3-native & 50 & 52 & Solidity, TS \\
+MCP & \scanMcpRepos & 442 & TS, Python \\
+Web3-native & \scanWebRepos & 52 & Solidity, TS \\
 LangChain & 28 & 15 & Python \\
 OpenAI & 10 & 3 & Python, TS, Rust \\
-\textbf{Total} & \textbf{138} & --- & --- \\
+\textbf{Total} & \textbf{\scanTotalRepos} & --- & --- \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Raw results.}  The scan yielded \textbf{5,641 raw findings}:
-637~critical, 1,434~high, 3,570~medium (Table~\ref{tab:scan-stats}).
+% FLUID: raw scan finding totals
+\textbf{Raw results.}  The scan yielded \textbf{\scanTotalFindingsRaw{} raw findings}:
+\scanSeverityCritical~critical, \scanSeverityHigh~high, \scanSeverityMedium~medium (Table~\ref{tab:scan-stats}).
 MCP servers have the highest mean finding count (58.7) while
 Web3-native modules have the highest critical fraction (276/910 =
 30.3\% vs.\ 7.7\% for MCP).
@@ -813,7 +838,7 @@ findings: \texttt{missing\_input\_validation} (2,841),
 
 \begin{table}[t]
 \centering\small
-\caption{Top-10 vulnerability categories across 138 servers (raw).}
+\caption{Top-10 vulnerability categories across \scanTotalRepos{} servers (raw).}
 \label{tab:top-categories}
 \begin{tabular}{llll}
 \toprule
@@ -837,7 +862,7 @@ hardcoded\_creds & 85 & 1.5\% & S3 \\
 \centering
 \includegraphics[width=\columnwidth]{fig_category_protocol_heatmap.pdf}
 \caption{Category--protocol heatmap of raw finding counts across the
-138-server corpus.  Missing input validation dominates every protocol;
+\scanTotalRepos-server corpus.  Missing input validation dominates every protocol;
 cross-tool escalation concentrates in MCP; private key exposure
 concentrates in Web3-native modules.}
 \label{fig:category-protocol-heatmap}
@@ -875,22 +900,24 @@ at the medium tier.}
 
 \begin{table}[t]
 \centering\small
+% FLUID: per-protocol scan statistics table
 \caption{Per-protocol scan statistics (raw counts).}
 \label{tab:scan-stats}
 \begin{tabular}{lllllll}
 \toprule
 Protocol & Repos & Total & Mean & Crit. & High & Med. \\
 \midrule
-MCP & 50 & 2,937 & 58.7 & 226 & 1,015 & 1,696 \\
-Web3 & 50 & 910 & 18.2 & 276 & 201 & 433 \\
+MCP & \scanMcpRepos & 2,937 & 58.7 & 226 & 1,015 & 1,696 \\
+Web3 & \scanWebRepos & 910 & 18.2 & 276 & 201 & 433 \\
 LangChain & 28 & 1,246 & 44.5 & 114 & 156 & 976 \\
 OpenAI & 10 & 548 & 54.8 & 21 & 62 & 465 \\
-\textbf{All} & \textbf{138} & \textbf{5,641} & \textbf{40.9} & \textbf{637} & \textbf{1,434} & \textbf{3,570} \\
+\textbf{All} & \textbf{\scanTotalRepos} & \textbf{\scanTotalFindingsRaw} & \textbf{40.9} & \textbf{\scanSeverityCritical} & \textbf{\scanSeverityHigh} & \textbf{\scanSeverityMedium} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Precision validation.}  We sampled 50 findings from each top-5 category (250 total), classified by manual code review (Table~\ref{tab:precision}).
+% FLUID: precision validation sample size
+\textbf{Precision validation.}  We sampled 50 findings from each top-5 category (\precisionSampleSize{} total), classified by manual code review (Table~\ref{tab:precision}).
 
 \begin{table}[t]
 \centering\small
@@ -910,7 +937,7 @@ excessive\_perm & 289 & 40.0\% & 81 & 168 \\
 \midrule
 Top-5 subtotal & 4,702 & --- & 1,755 & 2,412 \\
 Other 16 cats & 939 & (est.) & 267 & 307 \\
-\textbf{Grand total} & \textbf{5,641} & --- & \textbf{2,022} & \textbf{2,719} \\
+\textbf{Grand total} & \textbf{\scanTotalFindingsRaw} & --- & \textbf{\scanTotalFindingsConservative} & \textbf{\scanFindingsLiberal} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -918,9 +945,10 @@ Other 16 cats & 939 & (est.) & 267 & 307 \\
 The dominant false-positive sources are: test/spec files (56 of 146
 FPs), code comments (29), and test keys (24).
 
-\textbf{Finding 4: precision-adjusted findings are 2,000--2,700.}
+% FLUID: Finding 4 — precision-adjusted totals
+\textbf{Finding 4: precision-adjusted findings are \scanFindingsAdjRange.}
 Even the conservative lower bound exceeds 2,000 true-positive
-vulnerabilities across 138 servers --- a mean of ${\sim}$15
+vulnerabilities across \scanTotalRepos{} servers --- a mean of ${\sim}$15
 true-positive findings per server.
 
 \textbf{Finding 5: cross-protocol distribution remains non-uniform.}
@@ -969,33 +997,34 @@ Spearman $> 0.947$.}
 Scheme & Param & Sat. & Mean & Spearman \\
 \midrule
 linear (pilot) & 200 & 29/62 & 60.6 & --- \\
-linear\_p90 & 1,460.7 & 12/138 & 53.4 & 0.948 \\
+linear\_p90 & 1,460.7 & 12/\scanTotalRepos & 53.4 & 0.948 \\
 linear\_p95 & 1,861.0 & 4/62 & 21.5 & 0.948 \\
 log\_asymp. & $k{=}144$ & 12/62 & 57.8 & 0.948 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Under \texttt{linear\_p90} applied to the 138-server corpus, the
+% FLUID: rating distribution under linear_p90
+Under \texttt{linear\_p90} applied to the \scanTotalRepos-server corpus, the
 rating distribution is: 34~critical, 32~high, 31~medium, 18~low,
 23~safe.  Mean risk is 53.4 (Figure~\ref{fig:risk-score-distribution}).
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_risk_score_distribution.pdf}
-\caption{Risk score distribution across 138 servers under the
+\caption{Risk score distribution across \scanTotalRepos{} servers under the
 \texttt{linear\_p90} calibration.  Twelve repositories saturate at
 score~$\geq 99$; the distribution is right-skewed with mean~53.4.}
 \label{fig:risk-score-distribution}
 \end{figure}
 
 
-\subsection{LLM Dynamic Testing --- 16 Scenarios}
+\subsection{LLM Dynamic Testing --- \dynamicHarnessScenarios{} Scenarios}
 \label{sec:dynamic}
 
 We implemented an LLM-in-the-loop dynamic harness
 (\texttt{dynamic\_testing/llm\_dynamic\_harness.py}) that drives
-Claude Opus 4.6 through 16 adversarial scenarios covering the five
+Claude Opus 4.6 through \dynamicHarnessScenarios{} adversarial scenarios covering the five
 attack surfaces.  For each scenario the LLM is the subject under
 test: the attack succeeds iff the live model performs the harmful
 action.  Unlike prior MCP dynamic tests that exercise protocol
@@ -1010,7 +1039,8 @@ outcome labels (attack success, refused/warned, safe-proceed).
 
 \begin{table*}[t]
 \centering\small
-\caption{LLM-in-the-loop dynamic harness: 16 scenarios against Claude
+% FLUID: dynamic harness scenario count and outcome percentages
+\caption{LLM-in-the-loop dynamic harness: \dynamicHarnessScenarios{} scenarios against Claude
 Opus 4.6.  2 attack successes (12.5\%), 7 refused/warned (43.75\%),
 7 safe-proceed (43.75\%).}
 \label{tab:dynamic-harness}
@@ -1042,13 +1072,13 @@ SC-001 & Conflicting outputs state confusion & S5-SC-001 & S5 & refused/warned \
 \centering
 \includegraphics[width=\columnwidth]{fig_dynamic_harness_matrix.pdf}
 \caption{Dynamic harness outcome matrix.  Each cell shows the outcome
-(attack success, refused/warned, safe-proceed) for one of the 16
+(attack success, refused/warned, safe-proceed) for one of the \dynamicHarnessScenarios{}
 scenarios against Claude Opus 4.6, grouped by attack surface.}
 \label{fig:dynamic-harness-matrix}
 \end{figure}
 
 \textbf{Finding 7: the LLM mitigates the most obvious attacks.}
-Of the 16 scenarios, Claude Opus 4.6 refused or warned on seven:
+Of the \dynamicHarnessScenarios{} scenarios, Claude Opus 4.6 refused or warned on seven:
 private-key-in-chat (PK-001), zero-address send (TV-001),
 delegatecall to unverified contract (DC-001), zero-slippage DEX swap
 (MEV-002), admin-role grant (PE-001), and stale-price state confusion
@@ -1079,12 +1109,13 @@ output (suggesting \texttt{uint256.max} approval) flows into the
 agent's parameter synthesis for the approval call.  TP-002 corresponds
 to a combination of V1 and V2: the poisoned tool description contains
 a cross-reference that steers both tool selection (V2) and parameter
-synthesis (V1).  The 0--6\% ASR measured in the TCPI harness
+synthesis (V1).  The \tcpiAsrRange\% ASR measured in the TCPI harness
 (\S\ref{sec:tcpi-harness}) predicts that some attacks will succeed; MEV-001's success independently confirms the V1 channel remaining partially open.
 
 \textbf{Limitations of the dynamic harness.}  The harness currently
 uses single-turn prompts and a single model.  Multi-turn adversarial
 workflows, other frontier models, and open-weights models are immediate targets.
+% END FLUID dynamic harness
 
 
 \subsection{End-to-End Demo: V1 on Ethereum}
@@ -1092,7 +1123,7 @@ workflows, other frontier models, and open-weights models are immediate targets.
 
 We demonstrate V1 (Output$\to$Parameter) end-to-end on a local
 Ethereum node (anvil).  The Foundry test suite
-(\texttt{tcpi/demo/test/TCPIAttack.t.sol}, 5/5 pass) verifies the
+(\texttt{tcpi/demo/test/TCPIAttack.t.sol}, \foundryTestsPass/\foundryTestsTotal{} pass) verifies the
 full attack chain:
 
 \begin{enumerate}[nosep]
@@ -1156,6 +1187,7 @@ simulated sandboxes to a live chain where tokens actually move.
 We prepared vulnerability reports for the 25 highest-risk repositories
 under the recalibrated linear\_p90 scheme (all 25 scored above~60) and
 conducted an initial outreach.  Maintainer feedback revealed that our
+% FLUID: precision range from validation
 automated scanner's precision (28--33\%) produced too many false
 positives for responsible disclosure without manual validation.  We
 withdrew all reports and are conducting per-finding manual review before
@@ -1184,9 +1216,10 @@ manual validation is complete.
 implies that per-tool auditing products (MCP-scan, registry auditors, our own \texttt{analyzer.py}) cannot, in general, decide whether a tool is a TCPI source.
 The vulnerability is emergent---a property of the LLM's parameter synthesis across a tool \emph{pair}---shifting the defense burden from tool authors to system integrators who control global composition.
 
+% FLUID: discussion of ASR findings
 \textbf{Safety training is strong but incomplete on tool outputs.}
-The 0\% single-hop ASR combined with 0--6\% TCPI ASR reveals that safety training has substantially but not perfectly transferred to the tool-output channel.
-The residual 2\% (V1) and 6\% (V2) rates show adversarial outputs occasionally bypass safety training even when identical payloads via user prompts are blocked 100\%.
+The 0\% single-hop ASR combined with \tcpiAsrRange\% TCPI ASR reveals that safety training has substantially but not perfectly transferred to the tool-output channel.
+The residual \tcpiVOneAsrPctInt\% (V1) and \tcpiVTwoAsrPctInt\% (V2) rates show adversarial outputs occasionally bypass safety training even when identical payloads via user prompts are blocked 100\%.
 The model treats $o_A$ as factual data, not as a potential instruction---precisely the confusion Definition~\ref{def:tcpi}'s condition~(4) captures.
 This non-zero ASR validates Theorem~\ref{thm:undecidable}'s empirical premise while showing current frontier models are far from the worst case.
 
@@ -1214,6 +1247,7 @@ on-chain demo, the oracle could sign the rate quote with its own
 private key, and the swap contract could verify the signature ---
 eliminating the LLM's role in threading the recipient address.
 
+% FLUID: protocol implications — S5 raw count
 \textbf{Protocol implications.}  S5 (cross-tool) is the second-largest attack surface (1,265 raw findings, 22.4\%), and TCPI formally explains why S5 is hard: the vulnerability is non-local.  MCP's specification lacks cross-tool information-flow policy; our results argue for adding one.
 
 \textbf{Broader impact.}  TCPI affects every multi-tool agent, not
@@ -1224,7 +1258,7 @@ The blockchain demo is a concrete worst case because fund transfers
 are irreversible, but the attack primitive is protocol-agnostic and
 domain-agnostic.
 
-\textbf{Relationship between static scan and TCPI.}  The 138-server
+\textbf{Relationship between static scan and TCPI.}  The \scanTotalRepos-server
 static scan and the TCPI formalization address different but
 complementary facets of the same problem.  The static scan detects
 \emph{enabling conditions} for attacks: missing input validation
@@ -1236,12 +1270,13 @@ blocks.  The defense strategy must therefore layer: static scanning
 catches the low-hanging fruit (S2, S3 patterns), while runtime taint
 tracking and system-level policies address the emergent TCPI threat.
 
+% FLUID: precision interpretation — totals
 \textbf{Risk score interpretation under precision adjustment.}
-The precision-adjusted total (2,022--2,719) is roughly 36--48\% of
-the raw count (5,641).  This does \emph{not} mean the remaining
+The precision-adjusted total (\scanTotalFindingsConservative--\scanFindingsLiberal) is roughly 36--48\% of
+the raw count (\scanTotalFindingsRaw).  This does \emph{not} mean the remaining
 findings are harmless --- our precision audit is category-stratified
-over the top-5 categories only, and the ``uncertain'' bucket (33 of
-250 samples, 13.2\%) contains findings where nearby validation logic
+over the top-5 categories only, and the ``uncertain'' bucket (\precisionUncertainCount{} of
+\precisionSampleSize{} samples, 13.2\%) contains findings where nearby validation logic
 \emph{may} exist but could not be confirmed without dynamic testing.
 The risk scores reported in this paper use \emph{raw} counts because
 the scoring formula was designed to tolerate false positives via the
@@ -1253,9 +1288,10 @@ proposes a runtime Program Dependence Graph (PDG) that detects
 cross-resource 2-hop pollution --- a defense that is
 \emph{consistent} with Theorem~\ref{thm:undecidable} because it
 operates at runtime, not via per-tool static analysis.
+% FLUID: AgentArmor comparison — our ASR range
 AgentArmor's empirical evaluation reports 3\% ASR on their
-benchmark; our 0--6\% ASR across seven variants with real Claude Haiku inference is comparable in magnitude.
-The key difference is coverage: our seven structurally distinct variants with formal non-reducibility proofs span a broader attack surface, and the non-zero rates on V1 (2\%) and V2 (6\%) identify the specific channels where residual vulnerability persists.
+benchmark; our \tcpiAsrRange\% ASR across \tcpiVariantsCount{} variants with real Claude Haiku inference is comparable in magnitude.
+The key difference is coverage: our \tcpiVariantsCount{} structurally distinct variants with formal non-reducibility proofs span a broader attack surface, and the non-zero rates on V1 (\tcpiVOneAsrPctInt\%) and V2 (\tcpiVTwoAsrPctInt\%) identify the specific channels where residual vulnerability persists.
 Invariant Labs' Toxic
 Flow Analysis~\cite{invariantlabs2025tfa} informally models tool
 flows via a ``lethal trifecta'' pattern; TCPI contributes the formal
@@ -1268,21 +1304,23 @@ explicitly identifies as open problems.
 \label{sec:limitations}
 %% ====================================================================
 
+% FLUID: limitations — harness scale and ASR CIs
 \textbf{TCPI harness scale.}  The harness runs 30--50 rollouts per variant with real Claude Haiku inference.
-ASRs (0--6\%) reflect genuine model behavior but yield wide confidence intervals (e.g., V2's 6\% = 3/50, 95\% CI: 1.3--16.5\%).
+ASRs (\tcpiAsrRange\%) reflect genuine model behavior but yield wide confidence intervals (e.g., V2's \tcpiVTwoAsrPctInt\% = 3/50, 95\% CI: 1.3--16.5\%).
 Scaling to 500+ rollouts per variant and testing additional models (GPT-4, Gemini, open-weights) is future work.
 The on-chain demo independently confirms V1 end-to-end with real contract execution.
 
 \textbf{Static analyzer precision.}  Our regex-based analyzer trades
+% FLUID: per-category precision bounds
 precision for coverage: overall precision is ${\sim}$33\%, ranging
 from 12.2\% (state confusion) to 57.1\% (missing input validation).
 An AST-based analyzer using tree-sitter would improve both precision
 and recall, and would enable inter-procedural dataflow patterns
 that our regex predicates cannot express.
 
-\textbf{Corpus and demo scope.}  Our 138 servers are a stratified
+\textbf{Corpus and demo scope.}  Our \scanTotalRepos{} servers are a stratified
 sample of open-source GitHub projects; closed-source and enterprise
-deployments are out of scope.  The LLM harness runs 16 scenarios
+deployments are out of scope.  The LLM harness runs \dynamicHarnessScenarios{} scenarios
 against one model; expanding to 50+ scenarios and
 5+ models is a clear next step.
 The Foundry demo runs on a local
@@ -1306,14 +1344,16 @@ provably prevent all V1--V7 variants?
 We discovered, formalized, and empirically validated Tool-Chain Prompt
 Injection (TCPI) --- a new attack in which an adversary controls only
 one tool's output and thereby hijacks the parameters the LLM
-synthesizes for a different tool.  Definition~\ref{def:tcpi} isolates
+synthesizes for a different tool.
+% FLUID: conclusion — all empirical numbers below
+Definition~\ref{def:tcpi} isolates
 TCPI from all prior injection classes; Theorem~\ref{thm:undecidable}
-proves that per-tool static detection is undecidable.  Seven variants
-(V1--V7) achieve 0--6\% ASR under real Claude inference---safety training strongly resists the attack, but the non-zero residual on V1 (2\%) and V2 (6\%) proves the channel exists---while single-hop baselines are uniformly 0\%.
-A 138-server cross-protocol scan yields 2,000--2,700
+proves that per-tool static detection is undecidable.  \tcpiVariantsCount{} variants
+(V1--V7) achieve \tcpiAsrRange\% ASR under real Claude inference---safety training strongly resists the attack, but the non-zero residual on V1 (\tcpiVOneAsrPctInt\%) and V2 (\tcpiVTwoAsrPctInt\%) proves the channel exists---while single-hop baselines are uniformly 0\%.
+A \scanTotalRepos-server cross-protocol scan yields \scanFindingsAdjRange{}
 precision-adjusted true positives ($\chi^2$ $p \approx 0$;
 Cram\'{e}r's $V = 0.29$).  An LLM-in-the-loop dynamic harness
-(16 scenarios, Figure~\ref{fig:dynamic-harness-matrix}) shows Claude
+(\dynamicHarnessScenarios{} scenarios, Figure~\ref{fig:dynamic-harness-matrix}) shows Claude
 Opus 4.6 catches obvious attacks but fails on realistic DeFi
 workflows, and an end-to-end V1 demo moves real ERC-20 tokens from
 user to attacker with only 20~bytes of constructor calldata changed.
@@ -1327,7 +1367,7 @@ paths, and cryptographic data commitments --- because the
 vulnerability lives in the composition, not the components.
 
 We release the full TCPI formalization, harness, Foundry demo,
-138-server analyzer, taxonomy, and scan data to the community.
+\scanTotalRepos-server analyzer, taxonomy, and scan data to the community.
 
 
 %% ====================================================================
@@ -1398,7 +1438,7 @@ CWE-284).
 
 \section{Risk Score Calibration Details}
 
-The pilot scheme ($\texttt{expected\_max} = 200$) saturated 29/62 repos (47\%).  We adopted \texttt{linear\_p90} ($\texttt{score} = \mathrm{clip}(100 \times \texttt{base} / 1460.7,\; 0,\; 100)$), reducing saturation to 12/138 (8.7\%) with Spearman $\rho = 0.948$.  Rejected alternatives: \texttt{linear\_p95} ($1{,}861.0$) under-separates critical repos; \texttt{log\_asymptotic} ($k{=}144$) penalizes minor findings unpredictably.  Rating distribution: 34 critical / 32 high / 31 medium / 18 low / 23 safe (Figure~\ref{fig:risk-score-distribution}).
+The pilot scheme ($\texttt{expected\_max} = 200$) saturated 29/62 repos (47\%).  We adopted \texttt{linear\_p90} ($\texttt{score} = \mathrm{clip}(100 \times \texttt{base} / 1460.7,\; 0,\; 100)$), reducing saturation to 12/\scanTotalRepos{} (8.7\%) with Spearman $\rho = 0.948$.  Rejected alternatives: \texttt{linear\_p95} ($1{,}861.0$) under-separates critical repos; \texttt{log\_asymptotic} ($k{=}144$) penalizes minor findings unpredictably.  Rating distribution: 34 critical / 32 high / 31 medium / 18 low / 23 safe (Figure~\ref{fig:risk-score-distribution}).
 
 
 %% ====================================================================

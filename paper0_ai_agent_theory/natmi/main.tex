@@ -21,6 +21,8 @@
 \usepackage{setspace}
 \onehalfspacing
 
+\input{macros_results}
+
 \title{Fundamental Information-Theoretic Limits of Behavioral\\ AI Agent Detection in Digital Markets}
 
 \author[1]{Adeline Wen}
@@ -33,6 +35,7 @@
 
 % ---------------------------------------------------------------------------
 % ABSTRACT (target: 200 words)
+% FLUID: All numbers depend on experiment results (manifest.json)
 % ---------------------------------------------------------------------------
 \begin{abstract}
 \noindent
@@ -42,19 +45,19 @@ behavioral-detection regimes. We ask whether such regimes can, in principle,
 identify AI agents from observable behavior alone. Using Fano's inequality,
 we prove that any classifier that maps behavioral features $X$ to agent
 category $Y$ obeys an accuracy ceiling determined by the mutual information
-$I(X;Y)$ and the label entropy $H(Y)$. Applied to an 8-category taxonomy
-spanning 2{,}744 blockchain addresses---a setting chosen because its public
+$I(X;Y)$ and the label entropy $H(Y)$. Applied to an \nClasses-category taxonomy
+spanning \nSamples{} blockchain addresses---a setting chosen because its public
 transaction record allows exact measurement of $I(X;Y)$---we find a ceiling
-of $97.2\%$; the best supervised classifier reaches $95.3\%$. The gap is
-$1.7$--$4.6$ percentage points across feature sets: behavioral detection
+of $\fanoAccuracyCeilingfeat$; the best supervised classifier reaches $\gbmAccuracyfeat$.
+Table~\ref{tab:ceiling} reports the gap across feature sets: behavioral detection
 is already near the information-theoretic limit. Unsupervised discovery saturates at
-$2$--$3$ clusters regardless of feature set (HDBSCAN: $2$; K-Means silhouette:
-$3$). A mechanistic decomposition separates two signal channels: execution
+$\clusterHdbscanNClusters$--$\clusterKmeansOptimalSilhouetteK$ clusters regardless of feature set (HDBSCAN: $\clusterHdbscanNClusters$; K-Means silhouette:
+$\clusterKmeansOptimalSilhouetteK$). A mechanistic decomposition separates two signal channels: execution
 speed is a \emph{tool} signature (LLM-driven DeFi operations: median
-$216$\,s vs.\ ${\sim}289$\,s for rule-based agents; Cohen's $d \approx 0$,
+$\rtLlmDefiExecMedianS$\,s vs.\ ${\sim}\rtRuleDefiExecMedianS$\,s for rule-based agents; Cohen's $d \approx 0$,
 not a reliable difference) while inter-decision interval is an
-\emph{agent} signature (general reaction time: $441$\,s vs.\ ${\sim}321$\,s;
-Cohen's $d=1.01$). These findings imply that, on the Ethereum channel
+\emph{agent} signature (general reaction time: $\rtLlmMedianReactionS$\,s vs.\ ${\sim}\rtRuleMedianReactionS$\,s;
+Cohen's $d=\rtCohensDLlmVsDefiMedian$). These findings imply that, on the Ethereum channel
 studied, purely behavioral regulation faces a hard ceiling on
 distinguishing agent categories; durable governance likely
 requires either provenance registration or execution-layer signatures.
@@ -114,17 +117,18 @@ ceiling. Our analysis applies most directly to the categorical question,
 but the methodology---estimate $I(X;Y)$, invert Fano, report the
 head-room---generalizes to the others.
 
+% FLUID: corpus size, ceiling, classifier accuracy depend on manifest
 We show that this assumption is wrong, and quantify how wrong it is. Treating
 the classification pipeline $X \to \hat{Y}$ as a communication channel,
 Fano's inequality\cite{cover2006} supplies an accuracy ceiling that depends
 only on the label entropy $H(Y)$ and the mutual information $I(X;Y)$ between
 features and labels. We estimate both quantities directly on a corpus of
-$2{,}744$ real agent deployments, using a setting in which the complete
+$\nSamples$ real agent deployments, using a setting in which the complete
 action history is publicly observable: transactions on the Ethereum public
 ledger. On this corpus, across three increasingly expressive behavioral
-feature sets ($X_{23}$, $X_{31}$, $X_{47}$), the tightest achievable ceiling
-is $97.2\%$. Real classifiers trained on the same data reach
-$95.3\%$. \emph{The gap is roughly two percentage
+feature sets ($X_{\nFeaturesBase}$, $X_{\nFeaturesFull}$, $X_{47}$), the tightest achievable ceiling
+is $\fanoAccuracyCeilingfeat$. Real classifiers trained on the same data reach
+$\gbmAccuracyfeat$. \emph{The gap is roughly two percentage
 points: behavioral detection is already at the information-theoretic limit.}
 
 Crucially, this limit is not a consequence of dataset size, labeling noise,
@@ -132,22 +136,23 @@ or specific model choice. It is a property of the observation channel itself.
 Adding features increases $I(X;Y)$ only up to a saturation point set by the
 confusability of behavioral categories; beyond that point, further
 engineering yields vanishing returns. We show this empirically: going from
-$23$ to $47$ features raises the ceiling by less than one percentage point.
+$\nFeaturesBase$ to $47$ features raises the ceiling by less than one percentage point.
 
+% FLUID: all reaction-time numbers, Cohen's d, cluster counts depend on manifest
 Three findings follow. First, a \emph{mechanistic} decomposition shows that
 the residual signal lives almost entirely in inter-decision \emph{timing},
 not in transactional content. LLM-driven agents show a nominally lower median DeFi execution time
-than rule-based managers ($216$\,s vs.\ ${\sim}289$\,s), but this difference
+than rule-based managers ($\rtLlmDefiExecMedianS$\,s vs.\ ${\sim}\rtRuleDefiExecMedianS$\,s), but this difference
 is not statistically reliable (Cohen's $d \approx 0$, $p = 0.29$),
 consistent with the tool-side code path being identical. Their general
 inter-transaction interval, however, is reliably \emph{slower}
-($441$\,s vs.\ ${\sim}321$\,s; $d = 1.01$), reflecting language-model
+($\rtLlmMedianReactionS$\,s vs.\ ${\sim}\rtRuleMedianReactionS$\,s; $d = \rtCohensDLlmVsDefiMedian$), reflecting language-model
 inference latency. Execution speed is thus a \emph{tool} signature
 (indistinguishable across agent types); decision interval is an
 \emph{agent} signature. Second, unsupervised discovery collapses: both
-K-Means and density-based clustering (HDBSCAN) saturate at $2$--$3$ natural
+K-Means and density-based clustering (HDBSCAN) saturate at $\clusterHdbscanNClusters$--$\clusterKmeansOptimalSilhouetteK$ natural
 behavioral clusters regardless of feature-set richness, even as the
-taxonomy itself distinguishes eight. Third, the ceiling is \emph{channel-specific}: a replication on the
+taxonomy itself distinguishes \nClasses{}. Third, the ceiling is \emph{channel-specific}: a replication on the
 Polygon proof-of-stake chain, with different gas economics, yields a
 cross-chain transfer accuracy of only $22.2\%$, demonstrating that
 features calibrated on one chain do not transfer to another and that
@@ -222,46 +227,51 @@ meaningful sense: for a uniform class prior and moderate $K$, a classifier
 that attains the Bayes-optimal decision rule under a deterministic channel
 exhibits a head-room of zero. An actual head-room therefore indexes how
 far a given classifier lags behind the Bayes predictor. In our setting,
-the head-room at $X_{31}$ is $1.98$ percentage points---the smallest
+% FLUID: headroom value depends on fano_headroom_pp_31feat
+the head-room at $X_{\nFeaturesFull}$ is $\fanoHeadroomPpfeat$ percentage points---the smallest
 head-room we are aware of in the AI-agent-detection literature, and
 therefore (in a specific, checkable sense) an approximate upper bound on
 the utility of further classifier engineering alone.
 
 \subsection*{Empirical estimation}
 
+% FLUID: corpus size, n_classes, feature-set dimensions depend on manifest
 We estimate $I(X;Y)$ using a Kraskov-style $k$-nearest-neighbour plug-in
-estimator\cite{kraskov2004estimating} applied to a corpus of $2{,}744$
+estimator\cite{kraskov2004estimating} applied to a corpus of $\nSamples$
 Ethereum addresses drawn from three agent platforms (Autonolas, Fetch.ai,
 AI Arena) and targeted mining of governance multisigs, cross-chain bridges,
 and reinforcement-learning strategy vaults. Each address is assigned to one
-of $K=8$ taxonomy categories by a provenance-anchored rule set, yielding
+of $K=\nClasses$ taxonomy categories by a provenance-anchored rule set, yielding
 $H(Y) = 1.697$ bits. We evaluate three feature sets of increasing
-expressiveness: $X_{23}$ (transaction-content features),
-$X_{31}$ ($X_{23}$ augmented with cross-study AI-detection features from an
-independent sybil study), and $X_{47}$ ($X_{31}$ augmented with
+expressiveness: $X_{\nFeaturesBase}$ (transaction-content features),
+$X_{\nFeaturesFull}$ ($X_{\nFeaturesBase}$ augmented with cross-study AI-detection features from an
+independent sybil study), and $X_{47}$ ($X_{\nFeaturesFull}$ augmented with
 decision-process features capturing error recovery, session dynamics, nonce
 regularity, and gas-price microstructure).
 
+% FLUID: ceiling band and headroom values depend on manifest
 Figure~\ref{fig:ceiling} plots the Fano accuracy ceiling against measured
 $I(X;Y)$, with the three feature sets superimposed. As $I(X;Y)$ approaches
 $H(Y)$ the ceiling approaches unity; in our data it plateaus in a narrow
-band between $96.8\%$ and $97.2\%$. Measured classifier accuracies sit
-$1.7$--$4.6$ percentage points below the ceiling
+band between $\fanoAccuracyCeilingfeatB$ and $\fanoAccuracyCeilingfeat$. Measured classifier accuracies sit
+$\fanoHeadroomPpfeat$--$\fanoHeadroomPpfeatB$ percentage points below the ceiling
 (Table~\ref{tab:ceiling}).
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.75\linewidth]{figures/fig1_mi_vs_accuracy.pdf}
+  % FLUID: caption numbers depend on feature-set dimensions and headroom
   \caption{\textbf{The information-theoretic ceiling for AI agent detection.}
   The Fano accuracy ceiling (solid) as a function of mutual information
-  $I(X;Y)$, together with three measured feature sets ($X_{23}$, $X_{31}$,
+  $I(X;Y)$, together with three measured feature sets ($X_{\nFeaturesBase}$, $X_{\nFeaturesFull}$,
   $X_{47}$) and the accuracy each achieves empirically (markers). The
   shaded band is the residual head-room: the gap between what the best
   observed classifier achieves and what Fano's inequality permits. At
-  $X_{31}$ the head-room is $1.98$ percentage points.}
+  $X_{\nFeaturesFull}$ the head-room is $\fanoHeadroomPpfeat$ percentage points.}
   \label{fig:ceiling}
 \end{figure}
 
+% FLUID: entire table depends on MI estimation and classifier results
 \begin{table}[t]
   \centering
   \small
@@ -269,17 +279,17 @@ $1.7$--$4.6$ percentage points below the ceiling
     \toprule
     Feature set & $I(X;Y)$ (bits) & $H(Y\mid X)$ (bits) & Fano ceiling & Measured acc.\ \\
     \midrule
-    $X_{23}$ & $1.403$ & $0.294$ & $96.80\%$ & $92.24\%$ \\
-    $X_{31}$ & $1.437$ & $0.259$ & $\mathbf{97.24\%}$ & $\mathbf{95.26\%}$ \\
-    $X_{47}$ & $1.420$ & $0.276$ & $97.03\%$ & $95.37\%$ \\
+    $X_{\nFeaturesBase}$ & $1.403$ & $0.294$ & \fanoAccuracyCeilingfeatB & \dpBaselinefeatAccuracy \\
+    $X_{\nFeaturesFull}$ & \fanoMiJointBitsfeat & $0.259$ & $\mathbf{\fanoAccuracyCeilingfeat}$ & $\mathbf{\gbmAccuracyfeat}$ \\
+    $X_{47}$ & $1.420$ & $0.276$ & $0.970$ & \dpfeatAccuracy \\
     \bottomrule
   \end{tabular}
   \caption{Mutual information, conditional entropy, Fano accuracy ceiling,
   and measured classifier accuracy for three behavioral feature sets on
-  $N=2{,}744$ agent addresses. $H(Y) = 1.697$ bits; $K = 8$ categories.
+  $N=\nSamples$ agent addresses. $H(Y) = 1.697$ bits; $K = \nClasses$ categories.
   A majority-class baseline (always predicting DeFi Management Agent)
-  achieves $60.8\%$ accuracy; the classifier's $95.3\%$ substantially
-  exceeds this, though macro-F1 ($0.69$) is the more appropriate metric
+  achieves $60.8\%$ accuracy; the classifier's $\gbmAccuracyfeat$ substantially
+  exceeds this, though macro-F1 ($\gbmFMacrofeat$) is the more appropriate metric
   given the class imbalance. The
   ceiling rises by less than half a percentage point as the feature set
   more than doubles in dimension, consistent with saturation of $I(X;Y)$.}
@@ -291,26 +301,27 @@ Under temporal distribution shift (see companion Paper~1), operational
 accuracy drops to approximately 67\%, well below the Fano ceiling. Our
 bound characterizes the \emph{information content} of the feature set, not
 deployment accuracy under distribution shift. The gap between the Fano
-ceiling (97.2\%) and temporal accuracy ($\sim$67\%) is attributable to
+ceiling ($\fanoAccuracyCeilingfeat$) and temporal accuracy ($\sim$67\%) is attributable to
 covariate shift, not to information deficiency.
 
 A temporal Fano analysis (Supplementary Note~4) confirms this diagnosis: mutual information drops $57\%$ across eras, driven by gas-pricing feature collapse, while decision-process features remain stable---prescribing a clear feature-migration path for future classifiers.
 
+% FLUID: per-class F1 values depend on classifier results
 \subsection*{Where the head-room hides: a per-class view}
 
 The aggregate numbers in Table~\ref{tab:ceiling} conceal a heavily skewed
-distribution of discriminability across categories. Three of the eight
+distribution of discriminability across categories. Three of the \nClasses{}
 categories---Deterministic Script, Simple Trading Bot, DeFi Management
 Agent---yield per-class F1 scores above $0.95$ under a Gradient Boosting
-classifier with the $X_{31}$ feature set; a fourth, MEV Searcher, reaches
+classifier with the $X_{\nFeaturesFull}$ feature set; a fourth, MEV Searcher, reaches
 $0.84$. Three of the remaining four---Cross-Chain Bridge
 Agent, Autonomous DAO Agent, RL Trading Agent---are statistically weak
 because of small sample size, but their F1 rises substantially when
 cross-study features are added (Bridge: $0.29 \to 0.76$; DAO:
 $0.23 \to 0.43$; per-class F1 varies by $\pm$0.05 across cross-validation runs due to small class sizes). The eighth category, LLM-Powered Agent, is the only one
-that remains stubborn: its F1 rises from $0.38$ under $X_{23}$ to
+that remains stubborn: its F1 rises from $0.38$ under $X_{\nFeaturesBase}$ to
 $0.49$ when decision-process features are added, and never exceeds
-$0.54$ in any configuration we tested. Under $X_{31}$, LLM-Powered precision is
+$0.54$ in any configuration we tested. Under $X_{\nFeaturesFull}$, LLM-Powered precision is
 $0.84$ but recall is only $0.30$---meaning the classifier can confirm a
 suspected LLM agent with acceptable accuracy, but fails to identify the
 majority of true LLM agents embedded in the DeFi Management population.
@@ -330,6 +341,7 @@ agents'' as a monolithic class: it is about how much information any
 finite behavioral feature vector can carry about the sub-structure of
 \emph{kinds} of AI agent.
 
+% FLUID: cluster counts and silhouette values depend on manifest
 \subsection*{Saturation is structural, not an artefact of feature
 engineering}
 
@@ -337,65 +349,70 @@ Two independent lines of evidence confirm that the saturation is a property
 of the observation channel.
 
 First, unsupervised discovery collapses at the same point. K-Means silhouette
-analysis sweeping $k \in \{3, 4, \ldots, 15\}$ peaks at $k=3$
-(silhouette $0.151$---a value conventionally interpreted as weak-to-no
+analysis sweeping $k \in \{3, 4, \ldots, 15\}$ peaks at $k=\clusterKmeansOptimalSilhouetteK$
+(silhouette $\ablationKmeansKSilhouette$---a value conventionally interpreted as weak-to-no
 cluster structure, well below the $0.5$ threshold typically considered
-evidence of meaningful separation\cite{kaufman1990finding}; the $k{=}3$
+evidence of meaningful separation\cite{kaufman1990finding}; the $k{=}\clusterKmeansOptimalSilhouetteK$
 peak is `least bad' rather than `good,' confirming that behavioral
 features do not form well-separated clusters at any $k$); HDBSCAN with
-\texttt{min\_cluster\_size}$\in\{20,50\}$ identifies only two density
-clusters. A taxonomy with eight semantically distinct classes therefore
-dissolves, in behavior space, into $2$--$3$ weakly separated
+\texttt{min\_cluster\_size}$\in\{20,50\}$ identifies only $\clusterHdbscanNClusters$ density
+clusters. A taxonomy with \nClasses{} semantically distinct classes therefore
+dissolves, in behavior space, into $\clusterHdbscanNClusters$--$\clusterKmeansOptimalSilhouetteK$ weakly separated
 super-clusters (Figure~\ref{fig:clustering}). Supervised classifiers
-\emph{can} learn the full eight-way partition when labels are supplied, but
+\emph{can} learn the full \nClasses-way partition when labels are supplied, but
 the structure is \emph{not discoverable} from behavior alone.
 
+% FLUID: accuracy range and cluster range depend on manifest
 Supervised accuracy (92--95\%) measures \emph{classifiability given labeled
-training data}; unsupervised clustering (2--3 clusters) measures
+training data}; unsupervised clustering ($\clusterHdbscanNClusters$--$\clusterKmeansOptimalSilhouetteK$ clusters) measures
 \emph{discoverability without labels}. These are distinct properties, and
-their divergence is itself the central finding: the eight categories are
+their divergence is itself the central finding: the \nClasses{} categories are
 real and learnable, but they are not naturally emergent from behavioral
 data. A regulator who has a labeled training set can build a detector; one
 who must discover agent categories from unlabeled transaction streams
 cannot.
 
+% FLUID: cluster counts, silhouette, best-k depend on manifest
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.75\linewidth]{figures/fig2_cluster_saturation.pdf}
-  \caption{\textbf{Unsupervised clustering saturates at $2$--$3$ groups
+  \caption{\textbf{Unsupervised clustering saturates at $\clusterHdbscanNClusters$--$\clusterKmeansOptimalSilhouetteK$ groups
   regardless of feature-set expressiveness.} K-Means silhouette across $k
-  \in \{3, \dots, 15\}$ peaks at $k = 3$ ($0.151$), with a secondary plateau
-  at $k = 5$. HDBSCAN (density-based, no pre-specified $k$) finds two
-  density clusters. The taxonomy's eight categories (colored markers in
+  \in \{3, \dots, 15\}$ peaks at $k = \clusterKmeansOptimalSilhouetteK$ ($\ablationKmeansKSilhouette$), with a secondary plateau
+  at $k = \clusterBestK$. HDBSCAN (density-based, no pre-specified $k$) finds $\clusterHdbscanNClusters$
+  density clusters. The taxonomy's \nClasses{} categories (colored markers in
   the inset PCA projection) do not separate in the unsupervised geometry.}
   \label{fig:clustering}
 \end{figure}
 
-Second, \emph{adding features does not help.} Between $X_{23}$ and $X_{47}$,
+% FLUID: MI values, headroom values depend on manifest
+Second, \emph{adding features does not help.} Between $X_{\nFeaturesBase}$ and $X_{47}$,
 feature-set dimensionality doubles while the Fano ceiling improves by only
 $0.23$ percentage points. Indeed, the joint MI estimate \emph{decreases}
-slightly from $X_{31}$ ($1.437$ bits) to $X_{47}$ ($1.420$ bits); this
+slightly from $X_{\nFeaturesFull}$ ($\fanoMiJointBitsfeat$ bits) to $X_{47}$ ($1.420$ bits); this
 $0.017$-bit drop is within the $\pm 0.03$-bit cross-validation tolerance
-of the $k$-NN estimator (Methods). The slight MI decrease from $X_{31}$
-(1.437) to $X_{47}$ (1.420) is within the estimator's sampling noise
+of the $k$-NN estimator (Methods). The slight MI decrease from $X_{\nFeaturesFull}$
+(\fanoMiJointBitsfeat) to $X_{47}$ (1.420) is within the estimator's sampling noise
 ($\pm$0.8\,pp at $k{=}5$ neighbors); we do not interpret this as
 meaningful.
 The classifier-ceiling head-room shrinks from
-$4.56$ to $1.66$ percentage points---but this shrinkage is driven almost
+$\fanoHeadroomPpfeatB$ to $1.66$ percentage points---but this shrinkage is driven almost
 entirely by the classifier catching up to the ceiling, not by the ceiling
 moving. The information content of behavior, at this category granularity,
 is very close to fully extracted.
 
+% FLUID: feature importance depends on manifest (top_feature_eip1559_tip_precision_importance)
 Two mechanisms explain the saturation (detailed per-feature MI
 decomposition in Supplementary Note~5). First, feature redundancy: a
 single feature (\texttt{eip1559\_tip\_precision}) captures $74\%$ of the
-joint $I(X_{31};Y)$, so additional features contribute diminishing
+joint $I(X_{\nFeaturesFull};Y)$, so additional features contribute diminishing
 marginal information. Second, a category-level information floor: the
 LLM-Powered / DeFi Management pair has the smallest pairwise
 KL divergence in the taxonomy ($0.21$ bits), forming a bottleneck that
 no amount of feature engineering can overcome without accessing the
 decision-process layer that the transaction channel does not expose.
 
+% FLUID: cross-chain accuracy depends on cross-chain experiment
 \subsection*{Cross-architecture validation}
 
 A cross-chain replication on Polygon ($n=27$ addresses; near-constant
@@ -414,7 +431,8 @@ us \emph{where} the signal lives. We now show that the residual
 discriminative information is concentrated in a specific physical channel:
 inter-decision timing.
 
-Across 936{,}000 DeFi transactions in our corpus, we decompose inter-event
+% FLUID: total DeFi txs depends on manifest (rt_total_defi_txs)
+Across \rtTotalDefiTxs{} DeFi transactions in our corpus, we decompose inter-event
 latency into two quantities. The first is \emph{execution time}: the
 median latency between the submission of a DeFi-specific transaction and
 its confirmation. The second is the \emph{decision interval}: the median
@@ -426,14 +444,15 @@ management agents reveals an asymmetry
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.75\linewidth]{figures/fig3_execution_vs_decision.pdf}
+  % FLUID: all reaction-time values, Cohen's d, n depend on manifest
   \caption{\textbf{Execution time is a tool signature; decision interval is
   an agent signature.} Left panel: median DeFi execution time for LLM-driven
-  agents (blue, $216$\,s) vs.\ rule-based DeFi managers
-  (orange, ${\sim}289$\,s)---Cohen's $d \approx 0$ ($p = 0.29$), not a
-  statistically reliable difference at full scale ($n = 2{,}744$).
+  agents (blue, $\rtLlmDefiExecMedianS$\,s) vs.\ rule-based DeFi managers
+  (orange, ${\sim}\rtRuleDefiExecMedianS$\,s)---Cohen's $d \approx 0$ ($p = 0.29$), not a
+  statistically reliable difference at full scale ($n = \nSamples$).
   Right panel: the general inter-transaction interval
-  is reliably \emph{slower} for LLM-driven agents ($441$\,s vs.\ ${\sim}321$\,s;
-  $d=1.01$, $p < 0.001$ at $n=2{,}744$), the largest effect size in the
+  is reliably \emph{slower} for LLM-driven agents ($\rtLlmMedianReactionS$\,s vs.\ ${\sim}\rtRuleMedianReactionS$\,s;
+  $d=\rtCohensDLlmVsDefiMedian$, $p < 0.001$ at $n=\nSamples$), the largest effect size in the
   $47$-feature battery. The asymmetry is mechanistic: the tool interface
   executes identically regardless of the decision-maker, so
   execution-layer features carry no agent signal; inference latency, by
@@ -453,9 +472,9 @@ it can infer.
 
 An initial pilot on a $200$-address subset had suggested a complementary
 story, with Cohen's $d = 1.25$ on a DeFi-specific reaction-time feature.
-At full scale ($n = 2{,}744$) this specific feature dropped to
+At full scale ($n = \nSamples$) this specific feature dropped to
 $d \approx 0$: the pilot result did not replicate. The general
-inter-transaction reaction time, however, strengthened to $d = 1.01$---
+inter-transaction reaction time, however, strengthened to $d = \rtCohensDLlmVsDefiMedian$---
 the largest effect size in the entire $47$-feature battery. The
 non-replication is informative because it localizes the signal. The
 DeFi-specific latency reflects the tool interface; the general latency
@@ -466,10 +485,11 @@ Toolformer-style systems\cite{yao2023react,schick2023toolformer}, this
 maps cleanly onto the design: the tool call executes at tool speed, while
 the reasoning step executes at model-inference speed.
 
+% FLUID: LLM F1 gain depends on manifest (dp_llm_f1_gain)
 This decomposition has three consequences. First, it justifies our
 earlier empirical observation that decision-process features (error
 recovery patterns, session dynamics, inter-decision gaps) raise LLM-agent
-F1 by $10.9$ percentage points while transaction-content features leave
+F1 by $+\dpLlmFGain$ (absolute) while transaction-content features leave
 it flat. The improvement from $0.38$ to $0.49$ is directionally correct
 but not a solved problem: the classifier still misclassifies roughly half
 of LLM-Powered Agents. We term this a \emph{partial breakthrough}---it
@@ -497,6 +517,7 @@ of evidence support the robustness of the saturation finding.
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/fig4_cross_chain.pdf}
+  % FLUID: cross-chain accuracy numbers depend on cross-chain experiment
   \caption{\textbf{Cross-chain validation on Polygon proof-of-stake
   ($n = 27$ addresses after class filtering).} Direct transfer of an Ethereum-trained
   classifier to Polygon yields $22.2\%$ five-class accuracy, barely above
@@ -504,15 +525,17 @@ of evidence support the robustness of the saturation finding.
   \label{fig:crosschain}
 \end{figure}
 
+% FLUID: accuracy, ceiling, headroom values depend on manifest
 \paragraph{Cross-study feature transfer.} Eight AI-detection features
 imported from an independent sybil-detection corpus lift measured accuracy
-from $92.2\%$ to $95.3\%$ and the Fano ceiling from $96.8\%$ to
-$97.2\%$---but the head-room closes from $4.6$ to $2.0$ percentage
+from $\dpBaselinefeatAccuracy$ to $\gbmAccuracyfeat$ and the Fano ceiling from $\fanoAccuracyCeilingfeatB$ to
+$\fanoAccuracyCeilingfeat$---but the head-room closes from $\fanoHeadroomPpfeatB$ to $\fanoHeadroomPpfeat$ percentage
 points, meaning the classifier benefits while the ceiling barely moves.
 
+% FLUID: cluster count depends on manifest (cluster_hdbscan_n_clusters)
 \paragraph{Density-based validation.} HDBSCAN corroborates K-Means: at
-\texttt{min\_cluster\_size} of $20$ and $50$, it finds $2$ density
-clusters, with $16$--$26\%$ noise---converging on the same $2$--$3$-cluster
+\texttt{min\_cluster\_size} of $20$ and $50$, it finds $\clusterHdbscanNClusters$ density
+clusters, with $16$--$26\%$ noise---converging on the same $\clusterHdbscanNClusters$--$\clusterKmeansOptimalSilhouetteK$-cluster
 coarse structure.
 
 \paragraph{Provenance-anchored ground truth.} To guard against the
@@ -523,11 +546,12 @@ confidence $\geq 0.85$, $688$ fall in $[0.70, 0.85)$, and the
 remaining $1{,}853$ are in $[0.50, 0.70)$. Retaining only the
 provenance-first tier (the $733$ addresses with confidence
 $\geq 0.70$) yields similar results (accuracy delta $< 1$\,pp;
-ceiling $97.6\%$ vs.\ $97.2\%$ on the full corpus). Head-room
+ceiling $97.6\%$ vs.\ $\fanoAccuracyCeilingfeat$ on the full corpus). Head-room
 narrows by $0.5$ percentage points but does not close. This rules
 out label noise as the dominant explanation for the observed
 head-room.
 
+% FLUID: ablation accuracy drop depends on manifest (ablation_accuracy_drop_23_to_19)
 \paragraph{Partial circularity and its control.} The taxonomy projection
 labels are assigned by a provenance-first, features-second rule: the
 name/registry of the mining source determines the category with
@@ -539,7 +563,7 @@ shared variables ($\texttt{burst\_frequency}$,
 $\texttt{gas\_price\_round\_number\_ratio}$,
 $\texttt{unique\_contracts\_ratio}$,
 $\texttt{multi\_protocol\_interaction\_count}$) are removed from the
-classifier. Accuracy falls from $92.2\%$ to $87.4\%$ and macro-F1 from
+classifier. Accuracy falls from $\dpBaselinefeatAccuracy$ to $87.4\%$ and macro-F1 from
 $0.58$ to $0.46$; crucially, the classes \emph{not} defined by any of
 these four variables---including LLM-Powered Agent
 ($0.44 \to 0.45$)---are unaffected. This bounds the circularity
@@ -569,9 +593,9 @@ such as the EU AI Act\cite{eu_ai_act_2024} and the U.S.\ Executive Order
 example, stricter disclosure for ``systemic risk'' foundation-model
 deployments, or labeling of AI-generated content. Our analysis does not
 dispute the normative case for such distinctions. It shows that
-\emph{behavioral} enforcement of them is bounded: on an eight-category
-taxonomy with open data, the best possible classifier falls $2.8$
-percentage points short of perfect, and the hardest category (LLM-driven
+\emph{behavioral} enforcement of them is bounded: on an \nClasses-category
+taxonomy with open data, the best possible classifier has a minimum error
+probability of $\fanoErrorLowerBoundfeat$ (Table~\ref{tab:ceiling}), and the hardest category (LLM-driven
 agents against rule-based managers) leaves $65$--$70\%$ of true
 instances misclassified. A regime that relies on
 post-hoc behavioral auditing to enforce category-specific rules will
@@ -668,7 +692,7 @@ ceiling is $\pm 0.4$ percentage points. (ii) Our corpus over-represents
 three Web3 agent platforms and under-represents two (DAO execution
 modules and RL strategy vaults). Targeted mining mitigates this, but
 bootstrap confidence intervals for the weakest category (RL) remain wide.
-(iii) The ceiling is stated for a fixed taxonomy granularity of $K=8$;
+(iii) The ceiling is stated for a fixed taxonomy granularity of $K=\nClasses$;
 coarser partitions exhibit uniformly larger ceilings (for a natural
 three-cluster partition, $H(Y) = 1.34$ bits and the ceiling exceeds
 $97\%$ across all feature sets). (iv) The argument extends naturally to
@@ -708,8 +732,8 @@ provenance mining (Autonolas, Fetch.ai, AI Arena, curated Flashbots
 searcher lists). A targeted Phase-2 mining pass added $154$ addresses
 to populate three categories under-represented in the base mining
 (DAO execution modules, $n=34$; cross-chain bridges, $n=95$; reinforcement-
-learning strategy vaults, $n=25$), yielding $N=2{,}744$ addresses across
-eight categories. Features were extracted from public transaction logs via
+learning strategy vaults, $n=25$), yielding $N=\nSamples$ addresses across
+\nClasses{} categories. Features were extracted from public transaction logs via
 Etherscan and an Ethereum archive-node RPC, with winsorization at the
 $[1,99]$ percentile range and z-score standardization. The observation
 window is fixed at each address's first $500$ transactions (median
@@ -726,8 +750,8 @@ The taxonomy spans three orthogonal dimensions---autonomy level
 environment type ($4$ types: on-chain only, hybrid, cross-chain,
 multi-modal), and decision model ($5$ types: deterministic, statistical,
 LLM-driven, reinforcement-learning, hybrid). The Cartesian product of
-these dimensions contains $100$ cells, but only eight are populated by
-deployed systems as of the observation period. These collapse into eight
+these dimensions contains $100$ cells, but only \nClasses{} are populated by
+deployed systems as of the observation period. These collapse into \nClasses{}
 populated categories: Deterministic Script, Simple Trading Bot, MEV
 Searcher, Cross-Chain Bridge Agent, RL Trading Agent, DeFi Management
 Agent, LLM-Powered Agent, and Autonomous DAO Agent. Of these, five
@@ -750,7 +774,7 @@ was estimated via a $k$-NN plug-in: $H(Y \mid X)$ was approximated by
 averaging label entropy across the three nearest neighbors in
 standardized feature space, then $I(X;Y) = H(Y) - H(Y \mid X)$. All
 quantities are reported in bits. We cross-validated this estimator
-against a discretized histogram estimator on $K = 3$ and $K = 8$
+against a discretized histogram estimator on $K = 3$ and $K = \nClasses$
 partitions and obtained agreement within $\pm 0.03$ bits. Sensitivity
 analysis on $k \in \{3, 5, 7, 10\}$ shifts the Fano ceiling by at most
 $0.8$ percentage points; we report $k = 3$ in the main text because it is
@@ -767,9 +791,10 @@ $H(P_e) + P_e \log_2(K - 1) \geq H(Y \mid X)$. The resulting
 $P_e^{\star}$ is the tightest lower bound on classifier error, and
 $1 - P_e^{\star}$ is the reported ceiling. A looser closed-form
 bound $P_e \geq (H(Y \mid X) - 1) / \log_2 K$ is included for
-comparison in Supplementary Table~S1. For $X_{31}$, the loose bound
+comparison in Supplementary Table~S1. % FLUID: ceiling and error bound depend on manifest
+For $X_{\nFeaturesFull}$, the loose bound
 yields an accuracy ceiling of $1.0$ (uninformative) while the tight
-bound yields $0.9724$ ($P_e^\star = 0.0276$); we always use the tight
+bound yields $\fanoAccuracyCeilingfeat$ ($P_e^\star = \fanoErrorLowerBoundfeat$); we always use the tight
 bound. The inversion is performed by a standard numerical root-finder
 on a dense grid of $10{,}000$ $P_e$ values, with the root bracketed
 between $0$ and $1 - 1/K$ to guarantee existence and uniqueness. We
@@ -806,7 +831,7 @@ provenance taxonomy labels. We additionally report results for spectral
 clustering (radial-basis-function affinity, median-distance bandwidth;
 silhouette peaks at $k = 3$) and Gaussian mixture modelling (full
 covariance; Bayesian Information Criterion minimized at $k = 4$), both
-of which corroborate the $2$--$3$-cluster saturation. These robustness
+of which corroborate the $\clusterHdbscanNClusters$--$\clusterKmeansOptimalSilhouetteK$-cluster saturation. These robustness
 checks together rule out the possibility that the saturation is an
 artefact of the Euclidean metric assumption in K-Means or of the
 density-based inductive bias in HDBSCAN.
@@ -821,8 +846,8 @@ Decision interval was defined as the median inter-transaction gap in the
 address's full transaction history. Cohen's $d$\cite{cohen1988statistical}
 was computed as the standardized mean difference between the LLM-driven
 and rule-based DeFi management populations, using the pooled standard
-deviation. Both quantities were computed on the full $2{,}744$-address
-corpus covering $936{,}000$ DeFi-targeted transactions. The
+deviation. Both quantities were computed on the full $\nSamples$-address
+corpus covering $\rtTotalDefiTxs$ DeFi-targeted transactions. The
 execution-time comparison uses only the subset of addresses with at
 least $20$ DeFi-targeted transactions (LLM: $n = 54$; rule-based:
 $n = 1{,}287$). The decision-interval comparison uses all addresses with
@@ -877,7 +902,7 @@ many contracts the address interacts with, method diversity, and
 contract-to-EOA activity ratios. Family~4 (five approval features)
 captures approval-revocation hygiene, unlimited-approve frequency, and
 interactions with flash-loan primitives. Family~5 (eight cross-study AI
-features, added in $X_{31}$) captures response-latency variance,
+features, added in $X_{\nFeaturesFull}$) captures response-latency variance,
 behavioral consistency, action-sequence perplexity, and nonce-gap
 regularity, imported from an independent sybil-detection study.
 Family~6 (sixteen decision-process features, added in $X_{47}$) captures
@@ -924,7 +949,7 @@ reproduction on a blank Ubuntu $22.04$ VM with $64$~GB RAM.
 \subsection*{Compute resources}
 
 Feature extraction was performed on a workstation with $64$~cores and
-$256$~GB RAM (wall-clock $\approx 14$~h for the full $2{,}744$-address
+$256$~GB RAM (wall-clock $\approx 14$~h for the full $\nSamples$-address
 corpus, dominated by Ethereum archive-node queries). Mutual-information
 estimation and classifier training together consume approximately
 $45$~minutes on the same workstation; the bottleneck is the $k$-NN
@@ -947,7 +972,7 @@ agents attempting to \emph{evade} behavioral detection cannot easily
 hide below the ceiling without also suppressing their own activity; the
 remaining head-room is too small to offer reliable safe harbour. On the
 other hand, the fact that execution-time and decision-interval features
-separate LLM-driven from rule-based agents with Cohen's $d = 1.01$
+separate LLM-driven from rule-based agents with Cohen's $d = \rtCohensDLlmVsDefiMedian$
 suggests a specific avenue by which an adversary could introduce
 intentional latency noise into an LLM agent to mimic a rule-based one.
 We report this finding because (i) the detection community is better
