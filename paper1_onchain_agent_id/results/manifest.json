@@ -68,5 +68,13 @@
 
   "etherscan_validation_consistency_rate": 0.935,
   "etherscan_validation_n_queried": 200,
-  "etherscan_validation_n_inconsistent": 13
+  "etherscan_validation_n_inconsistent": 13,
+
+  "gat_mixed_class_lopo_pooled_auc": 0.718,
+  "gat_mixed_class_lopo_pooled_auc_std": 0.0153,
+  "gat_mixed_class_lopo_mean_cluster_auc": 0.7533,
+  "gat_mixed_class_lopo_mean_cluster_auc_std": 0.0085,
+  "gat_mixed_class_lopo_n_seeds": 5,
+  "gat_vs_rf_lopo_delta": -0.0235,
+  "gat_vs_gbm_lopo_delta": -0.0349
 }

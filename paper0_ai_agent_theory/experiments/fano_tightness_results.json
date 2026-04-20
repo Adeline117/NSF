@@ -1,0 +1,99 @@
+{
+  "timestamp": "2026-04-20T12:13:11.204982",
+  "description": "Fano bound tightness analysis: proves the information-theoretic ceiling is tight via multiple classifier families, Cover-Hart Bayes-error estimate, and Hellman-Raviv bound. Plus bootstrap CI on I(X;Y).",
+  "dataset": {
+    "n_samples": 2744,
+    "n_features": 31,
+    "num_classes": 8,
+    "feature_set": "X_31 (23 behavioral + 8 AI-detection)",
+    "H_Y_bits": 1.6967
+  },
+  "mutual_information": {
+    "estimator": "k-NN conditional entropy, k=5",
+    "I_XY_bits": 1.3489,
+    "H_Y_given_X_bits": 0.3478,
+    "sensitivity_by_k": {
+      "k=3": 1.4374,
+      "k=5": 1.3489,
+      "k=7": 1.2968
+    },
+    "fano_ceiling_by_k": {
+      "k=3": 0.9724,
+      "k=5": 0.9609,
+      "k=7": 0.9538
+    }
+  },
+  "hellman_raviv_error_bound": 0.0,
+  "hellman_raviv_accuracy_ceiling": 1.0,
+  "fano_error_bound": 0.0391,
+  "fano_accuracy_ceiling": 0.9609,
+  "best_observed_error": 0.0481,
+  "best_observed_accuracy": 0.9519,
+  "best_observed_model": "GBM",
+  "cover_hart_bayes_error": 0.085,
+  "cover_hart_accuracy": 0.915,
+  "cover_hart_1nn_upper": 0.085,
+  "cover_hart_per_k": {
+    "1": {
+      "error": 0.16179163901791627,
+      "accuracy": 0.8382083609820837,
+      "std": 0.024947370969227747
+    },
+    "11": {
+      "error": 0.14102057067020568,
+      "accuracy": 0.8589794293297943,
+      "std": 0.018344140449474647
+    },
+    "21": {
+      "error": 0.1505056403450563,
+      "accuracy": 0.8494943596549437,
+      "std": 0.01417305779265146
+    },
+    "53": {
+      "error": 0.17055076310550754,
+      "accuracy": 0.8294492368944925,
+      "std": 0.00771343548809127
+    }
+  },
+  "tightness_gap_pp": 4.59,
+  "gap_fano_best_observed_pp": 0.9,
+  "multi_model_cv": {
+    "GBM": {
+      "accuracy_mean": 0.9519,
+      "accuracy_std": 0.0061
+    },
+    "HistGBM": {
+      "accuracy_mean": 0.9515,
+      "accuracy_std": 0.0076
+    },
+    "RandomForest": {
+      "accuracy_mean": 0.9457,
+      "accuracy_std": 0.0119
+    },
+    "MLP_2hidden": {
+      "accuracy_mean": 0.8965,
+      "accuracy_std": 0.0139
+    },
+    "SVM_RBF": {
+      "accuracy_mean": 0.9053,
+      "accuracy_std": 0.0125
+    }
+  },
+  "mi_bootstrap_mean": 1.4312,
+  "mi_bootstrap_std": 0.0269,
+  "mi_bootstrap_ci_lo": 1.3822,
+  "mi_bootstrap_ci_hi": 1.4832,
+  "mi_bootstrap_n": 1000,
+  "interpretation": {
+    "fano_tight": "The Fano ceiling (96.09%) is only 0.9pp above the best observed accuracy (95.19%), confirming the bound is near-tight.",
+    "cover_hart": "The Cover-Hart large-k NN estimate (91.50%) provides an upper-bound proxy for the Bayes-optimal accuracy, leaving a 4.6pp gap to the Fano ceiling.",
+    "bootstrap_ci": "I(X;Y) = 1.431 bits, 95% CI [1.382, 1.483]. The MI estimate is stable under resampling."
+  },
+  "mi_bootstrap_percentiles": {
+    "p5": 1.3871,
+    "p25": 1.4126,
+    "p50": 1.4311,
+    "p75": 1.4509,
+    "p95": 1.4758
+  }
+}

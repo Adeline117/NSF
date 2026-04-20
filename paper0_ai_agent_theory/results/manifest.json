@@ -76,5 +76,22 @@
   "taxonomy_our_web3_score": 5,
   "taxonomy_best_prior_web3_score": 2,
   "taxonomy_our_conditions_coverage": 4,
-  "taxonomy_best_prior_conditions_coverage": 3
+  "taxonomy_best_prior_conditions_coverage": 3,
+
+  "fano_tightness_gap_pp": 0.9,
+  "fano_ceiling_k5": 0.9609,
+  "fano_error_bound_k5": 0.0391,
+  "best_observed_accuracy_multimodel": 0.9519,
+  "best_observed_model": "GBM",
+  "cover_hart_bayes_accuracy": 0.915,
+  "cover_hart_bayes_error": 0.085,
+  "mi_bootstrap_mean": 1.4312,
+  "mi_bootstrap_std": 0.0269,
+  "mi_bootstrap_ci_lo": 1.3822,
+  "mi_bootstrap_ci_hi": 1.4832,
+  "mi_bootstrap_n": 1000,
+  "histgbm_accuracy": 0.9515,
+  "rf_accuracy": 0.9457,
+  "mlp_accuracy": 0.8965,
+  "svm_rbf_accuracy": 0.9053
 }

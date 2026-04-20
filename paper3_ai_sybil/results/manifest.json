@@ -64,5 +64,19 @@
   "external_hascidb_sybil_count": 792580,
 
   "behavioral_consistency_top1_in_n_rounds": 30,
-  "behavioral_consistency_top1_total_rounds": 30
+  "behavioral_consistency_top1_total_rounds": 30,
+
+  "extended_n_seeds": 7,
+  "extended_n_rounds": 15,
+  "extended_mean_auc_round10": 0.579,
+  "extended_mean_auc_round10_std": 0.0054,
+  "extended_mean_auc_round15": 0.5889,
+  "extended_mean_auc_round15_std": 0.0116,
+  "extended_floor_point": 0.5889,
+  "extended_floor_ci_lo": 0.5782,
+  "extended_floor_ci_hi": 0.5996,
+  "extended_plateau_center": 0.5805,
+  "extended_plateau_center_ci_lo": 0.5771,
+  "extended_plateau_center_ci_hi": 0.584,
+  "extended_conservative_floor": 0.5698
 }

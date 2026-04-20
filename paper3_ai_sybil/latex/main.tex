@@ -17,7 +17,8 @@
 
 \begin{document}
 
-\title{Closed-Loop LLM Adversarial Training Reveals Feature-Space Sybil Detection Has a Hard Floor at AUC \bestResponseAucFloorMean{}}
+% FLUID: narrative strength adjusted [2026-04-20]
+\title{Closed-Loop LLM Adversarial Training Reveals Feature-Space Sybil Detection Has a Practical Detection Floor at AUC \bestResponseAucFloorMean{}}
 \author{Adeline Wen}
 \affiliation{\institution{Decentralized Computing Lab, University of Washington}\country{USA}}
 
@@ -42,14 +43,16 @@
 \keywords{Sybil detection, adversarial machine learning, large language models, blockchain, airdrop, feature-space evasion}
 
 % FLUID: Abstract — all numeric claims are data-dependent
+% FLUID: narrative strength adjusted [2026-04-20]
 \begin{abstract}
-How good can feature-space sybil detection get against an adaptive adversary?
-We evaluate LLM-driven sybil evasion across four detector modalities, \largeScaleNProjects{} Ethereum airdrop campaigns, and \largeScaleNAddresses{} addresses. Cross-modality evasion is near-total: \evasionThresholdRules{}00\% against threshold rules, \evasionLightgbmMl{}0\% against gradient-boosted ML, and \evasionGraphModerate{}--\evasionGraphAdvanced{}00\% against proxy graph detectors.
-A \bestResponseNRounds{}-round best-response adversarial protocol between an LLM attacker (Claude Opus 4.6) and a retrained GBM defender converges to AUC $\bestResponseAucFloorMean{} \pm \bestResponseAucFloorStd{}$ across \bestResponseNSeeds{} seeds, establishing a \emph{practical detection floor} for feature-space approaches.
-At convergence, the attacker's optimal blend ratio reaches \bestResponseEquilibriumBlendMean{}, meaning sybil profiles are 93\% identical to legitimate wallets---the residual 7\% of detectable signal concentrates in \texttt{behavioral\_consistency}, the single feature the attacker cannot fully suppress without abandoning coherent behavior (top-1 in \behavioralConsistencyTopInNRounds{}/\behavioralConsistencyTopTotalRounds{} seed-rounds).
-At blend \bestResponseEquilibriumBlendMean{}, sybil profiles share 93\% of their distributional mass with legitimate wallets; that the classifier approaches chance under near-identical distributions is expected. The non-trivial finding is that \texttt{behavioral\_consistency} retains discriminative power even at this extreme blend, and that the convergence point is stable across seeds.
-Closed-loop adversarial training with Claude Opus---where the LLM sees the detector's top features each round and generates targeted sybils---achieves Round-1 evasion of \closedLoopRoundLlmEvasionMean{}, exceeding the parametric attacker's \closedLoopRoundParametricEvasionMean{} by \closedLoopRoundEvasionDelta{}$\times 100$ percentage points. This proves parametric approximations understate real-world LLM attacker capability.
-We contribute a reusable leakage-audit checklist (validated by our own post-mortem: AUC \leakageFixLeakyAuc{}$\to$\leakageFixHonestAuc{} after fix) and argue that this ceiling result should redirect the sybil detection community from building better classifiers to building costlier execution environments, identity-layer defenses, and full-graph structural analysis.
+How good can feature-space sybil detection get against an adaptive adversary---and how much do parametric baselines understate the threat?
+We evaluate LLM-driven sybil evasion across four detector modalities, \largeScaleNProjects{} Ethereum airdrop campaigns, and \largeScaleNAddresses{} addresses, and report two central findings.
+\textbf{(1)~Practical detection floor.} A \bestResponseNRounds{}-round best-response adversarial protocol between an LLM attacker (Claude Opus 4.6) and a retrained GBM defender converges to AUC $\bestResponseAucFloorMean{} \pm \bestResponseAucFloorStd{}$ across \bestResponseNSeeds{} seeds, establishing a \emph{practical detection floor} for feature-space approaches conditioned on the 8-feature behavioral set and GBM defender architecture tested.
+\textbf{(2)~LLM--parametric gap.} Closed-loop adversarial training---where the LLM sees the detector's top features each round and generates targeted sybils---achieves Round-1 evasion of \closedLoopRoundLlmEvasionMean{}, exceeding the parametric attacker's \closedLoopRoundParametricEvasionMean{} by $+$\closedLoopRoundEvasionDelta{}$\times 100$ percentage points. Parametric approximations understate real-world LLM attacker capability by nearly 29pp.
+Cross-modality evasion is near-total: \evasionThresholdRules{}00\% against threshold rules, \evasionLightgbmMl{}0\% against gradient-boosted ML, and \evasionGraphModerate{}--\evasionGraphAdvanced{}00\% against proxy graph detectors.
+At convergence, the attacker's optimal blend ratio reaches \bestResponseEquilibriumBlendMean{}, meaning sybil profiles share 93\% of their distributional mass with legitimate wallets---the residual 7\% of detectable signal concentrates in \texttt{behavioral\_consistency}, the single feature the attacker cannot fully suppress without abandoning coherent behavior (top-1 in \behavioralConsistencyTopInNRounds{}/\behavioralConsistencyTopTotalRounds{} seed-rounds).
+The non-trivial finding is that \texttt{behavioral\_consistency} retains discriminative power even at this extreme blend, and that the convergence point is stable across seeds.
+We contribute a reusable leakage-audit checklist (validated by our own post-mortem: AUC \leakageFixLeakyAuc{}$\to$\leakageFixHonestAuc{} after fix) and argue that these results should redirect the sybil detection community from building better classifiers to building costlier execution environments, identity-layer defenses, and full-graph structural analysis.
 \end{abstract}
 
 \maketitle
@@ -791,7 +794,9 @@ The central result is \textbf{\bestResponseAucFloorMean{}}---the convergence poi
 \textbf{(2)}~At blend ${\sim}\bestResponseEquilibriumBlendMean{}$, sybils share 93\% of their distributional mass with real wallets; the residual 0.078 above chance concentrates in \texttt{behavioral\_consistency} (CV of inter-arrival times), a structural invariant the LLM cannot replicate without real-time traffic modeling.
 \textbf{(3)}~Feature-importance Gini drops from 0.54 to 0.15, indicating the detector has exhausted all 8 dimensions.
 
+% FLUID: narrative strength adjusted [2026-04-20]
 This is a practical observation, not a theoretical optimality proof. Fundamentally different features could exceed this floor, but within the 8-feature space, multiple starting conditions converge to the same point: \emph{change the problem}, do not keep optimizing within the bounded paradigm.
+This floor is conditioned on the feature set and defender architecture tested; a fundamentally different detection paradigm (e.g., full-graph structural analysis over the complete Ethereum transfer graph, or identity-layer attestation) is not bounded by this result.
 
 \subsection{Game-Theoretic Framing}
 
@@ -915,9 +920,10 @@ The floor claim would weaken if: (a)~a full-graph detector achieves $\ge$50\% re
 \label{sec:conclusion}
 
 % FLUID: Conclusion restates key numbers
-Our most important number is \textbf{\bestResponseAucFloorMean{}}---the empirical convergence point of best-response adversarial training, establishing a practical detection floor for feature-space sybil detection under adaptive LLM attack.
+% FLUID: narrative strength adjusted [2026-04-20]
+This paper establishes two central results. First, \textbf{\bestResponseAucFloorMean{}}---the empirical convergence point of best-response adversarial training---represents a practical detection floor for feature-space sybil detection under adaptive LLM attack, conditioned on the 8-feature behavioral set and GBM defender architecture tested. Second, closed-loop LLM adversarial training achieves Round-1 evasion \closedLoopRoundLlmEvasionMean{} vs.\ the parametric \closedLoopRoundParametricEvasionMean{} ($\Delta{=}+$\closedLoopRoundEvasionDelta{}$\times 100$pp), proving parametric benchmarks are lower bounds on attacker capability---a $+$28.9pp underestimation with immediate implications for any defense calibrated against parametric adversaries alone.
 
-This result rests on three pillars. First, cross-modality evasion is near-total: LLM sybils evade rules (\evasionThresholdRules{}00\%), ML (\evasionThresholdRules{}00\%), GBM (\evasionLightgbmMl{}0\%), and graph detection (\evasionGraphModerate{}--\evasionGraphAdvanced{}00\%) at \$12 in API cost. Second, a \bestResponseNRounds{}-round best-response protocol converges to AUC $\bestResponseAucFloorMean{} \pm \bestResponseAucFloorStd{}$ across \bestResponseNSeeds{} seeds, with \texttt{behavioral\_consistency} as the last feature standing (top-1 in \behavioralConsistencyTopInNRounds{}/\behavioralConsistencyTopTotalRounds{} seed-rounds) yet converging toward irrelevance at blend ratio ${\sim}\bestResponseEquilibriumBlendMean{}$. Third, closed-loop LLM adversarial training achieves Round-1 evasion \closedLoopRoundLlmEvasionMean{} vs.\ the parametric \closedLoopRoundParametricEvasionMean{} ($\Delta{=}+$\closedLoopRoundEvasionDelta{}$\times 100$pp), proving parametric benchmarks are lower bounds on attacker capability.
+These findings rest on three pillars. First, cross-modality evasion is near-total: LLM sybils evade rules (\evasionThresholdRules{}00\%), ML (\evasionThresholdRules{}00\%), GBM (\evasionLightgbmMl{}0\%), and graph detection (\evasionGraphModerate{}--\evasionGraphAdvanced{}00\%) at \$12 in API cost. Second, a \bestResponseNRounds{}-round best-response protocol converges to AUC $\bestResponseAucFloorMean{} \pm \bestResponseAucFloorStd{}$ across \bestResponseNSeeds{} seeds, with \texttt{behavioral\_consistency} as the last feature standing (top-1 in \behavioralConsistencyTopInNRounds{}/\behavioralConsistencyTopTotalRounds{} seed-rounds) yet converging toward irrelevance at blend ratio ${\sim}\bestResponseEquilibriumBlendMean{}$. Third, the $+$\closedLoopRoundEvasionDelta{}$\times 100$pp LLM--parametric gap demonstrates that all prior parametric adversarial benchmarks understate the real-world threat.
 
 The detection floor should redirect the sybil detection community from building better classifiers to building costlier execution environments, identity-layer attestation (BrightID, Gitcoin Passport, World~ID), and full-graph structural analysis. We also contribute a 3-step leakage-audit checklist (AUC \leakageFixLeakyAuc{}$\to$\leakageFixHonestAuc{} post-fix) and cross-axis baselines (LOPO AUC \largeScaleCrossAxisGbmMeanAuc{}).
 
