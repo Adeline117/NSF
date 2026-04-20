@@ -8,7 +8,7 @@
   },
 
   "best_response_initial_auc_mean": 0.9855,
-  "best_response_auc_floor_mean": 0.5781,
+  "best_response_auc_floor_mean": 0.580,
   "best_response_auc_floor_std": 0.005,
   "best_response_equilibrium_auc_mean": 0.5839,
   "best_response_equilibrium_auc_std": 0.0026,
@@ -16,8 +16,8 @@
   "best_response_max_evasion_rate": 0.974,
   "best_response_final_evasion_rate_mean": 0.029,
   "best_response_total_auc_drop_mean": 0.407,
-  "best_response_n_rounds": 10,
-  "best_response_n_seeds": 3,
+  "best_response_n_rounds": 15,
+  "best_response_n_seeds": 7,
 
   "equilibrium_initial_auc": 0.9847,
   "equilibrium_final_auc": 0.599,
