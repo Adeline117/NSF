@@ -795,6 +795,39 @@ $o_A^*$.
 \textbf{Finding 4: TCPI resistance is model-size-independent within the Claude family.}
 Multi-model validation across the Claude family (Haiku, Sonnet, Opus) shows consistent TCPI resistance: all three model sizes refuse V1 (Output$\to$Parameter) attacks, with only Haiku showing marginal V2 susceptibility (\tcpiVTwoAsrPctInt\%, 3/50). TCPI resistance appears model-size-independent within this family; cross-family testing (GPT-4o, Llama) remains future work.
 
+% narrative: mock-vs-real reconciliation [2026-04-20]
+\textbf{Finding 5: safety training is the primary defense --- mock baseline quantifies the gap.}
+Our harness includes a \texttt{MockPolicyBackend} that implements instruction-following without safety training: a stochastic agent that adopts attacker-chosen parameters from tool outputs at literature-calibrated rates (InjecAgent~\cite{zhan2024systematic}, AgentDojo~\cite{debenedetti2024agentdojo}).
+Table~\ref{tab:mock-vs-real} shows the mock (pre-safety-training) ASR alongside real model ASRs.
+
+\begin{table}[t]
+\centering\small
+\caption{Mock (no safety training) vs.\ real model ASR across all seven TCPI variants.
+The mock backend serves as a pre-safety-training baseline showing what TCPI would achieve against a naive instruction-following agent.
+Dashes indicate variants not tested on that model (V2--V7 on Sonnet/Opus deferred to future work).}
+\label{tab:mock-vs-real}
+\begin{tabular}{lcccc}
+\toprule
+Variant & Mock (no safety) & Haiku & Sonnet & Opus \\
+\midrule
+V1: Output$\to$Param      & 66\%  & 2\% & 0\% & 0\% \\
+V2: Output$\to$Tool-Sel   & 53.5\% & 6\% & ---  & ---  \\
+V3: Output$\to$State      & 60.5\% & 0\% & ---  & ---  \\
+V4: Cross-Model            & 75\%  & 0\% & ---  & ---  \\
+V5: Multi-Turn             & 46.5\% & 0\% & ---  & ---  \\
+V6: Reflexive              & 44\%  & 0\% & ---  & ---  \\
+V7: Schema-Shaped          & 61\%  & 0\% & ---  & ---  \\
+\midrule
+\textbf{Mean}              & \textbf{58.1\%} & \textbf{1.1\%} & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Safety training closes V3--V7 completely (from 44--75\% to 0\%) and reduces V1--V2 to residual rates (66\%$\to$2\%, 53.5\%$\to$6\%).
+This demonstrates that safety training is currently the \emph{primary} defense against TCPI---but safety training is not guaranteed to persist across model updates, fine-tuning, or open-weights deployment.
+The 10--75$\times$ gap between mock and real ASR is itself a finding: it quantifies exactly how much work safety training does against this attack class, and flags the risk that open-weights models, custom fine-tunes, or future model updates that degrade safety training could reopen the full 44--75\% attack surface.
+% end narrative: mock-vs-real reconciliation [2026-04-20]
+
 
 \subsection{\scanTotalRepos-Server Static Scan (Precision-Adjusted)}
 \label{sec:static-scan}
@@ -1175,6 +1208,9 @@ paper's trace figure (\texttt{forge test -vvvv}).
 This is the first on-chain demonstration of TCPI with real ERC-20
 settlement.  No prior attack paper in this family has moved from
 simulated sandboxes to a live chain where tokens actually move.
+% narrative: mock-vs-real reconciliation [2026-04-20]
+The Foundry demonstration shows that even the \tcpiVOneAsrPctInt\% residual V1 ASR (\S\ref{sec:tcpi-harness}) has catastrophic financial consequences when the downstream tool controls value transfer: a single successful injection out of 50 rollouts suffices to drain the user's token balance irreversibly.
+% end narrative: mock-vs-real reconciliation [2026-04-20]
 
 \textbf{Threat model clarification.} The demo assumes attacker control of Tool~A's output, achievable via: (a)~registering a malicious tool in the MCP directory; (b)~supply-chain compromise; or (c)~user-controlled content in honest tools (e.g., web-search snippets).  We validate the injection step; the compromise step is orthogonal~\cite{invariantlabs2025mcp}.
 

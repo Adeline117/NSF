@@ -1,0 +1,1183 @@
+{
+  "timestamp": "2026-04-20T15:04:06.055874",
+  "description": "K-sensitivity analysis for mixed-class cluster LOPO. Tests whether the pooled AUC at k=5 is stable or cherry-picked by evaluating k = 3, 4, 5, 6, 7, 8, 10.",
+  "dataset": {
+    "n_samples": 1147,
+    "n_agents": 533,
+    "n_humans": 614,
+    "n_features": 23
+  },
+  "k_values_tested": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10
+  ],
+  "results_by_k": {
+    "3": {
+      "k": 3,
+      "all_clusters_mixed": true,
+      "n_mixed_clusters": 3,
+      "cluster_composition": {
+        "0": {
+          "n_total": 836,
+          "n_agents": 395,
+          "n_humans": 441,
+          "is_mixed": true
+        },
+        "1": {
+          "n_total": 211,
+          "n_agents": 82,
+          "n_humans": 129,
+          "is_mixed": true
+        },
+        "2": {
+          "n_total": 100,
+          "n_agents": 56,
+          "n_humans": 44,
+          "is_mixed": true
+        }
+      },
+      "models": {
+        "RandomForest": {
+          "model": "RandomForest",
+          "k": 3,
+          "n_clusters_evaluated": 3,
+          "n_clusters_with_both_classes": 3,
+          "mean_per_cluster_auc": 0.7943,
+          "std_per_cluster_auc": 0.0836,
+          "min_per_cluster_auc": 0.7148,
+          "max_per_cluster_auc": 0.9099,
+          "pooled_auc": 0.7368,
+          "pooled_accuracy": 0.6696,
+          "pooled_f1": 0.6421,
+          "per_cluster": {
+            "0": {
+              "n_test": 836,
+              "n_test_agents": 395,
+              "n_test_humans": 441,
+              "auc": 0.7148,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 211,
+              "n_test_agents": 82,
+              "n_test_humans": 129,
+              "auc": 0.7582,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 100,
+              "n_test_agents": 56,
+              "n_test_humans": 44,
+              "auc": 0.9099,
+              "both_classes_in_test": true
+            }
+          }
+        },
+        "GradientBoosting": {
+          "model": "GradientBoosting",
+          "k": 3,
+          "n_clusters_evaluated": 3,
+          "n_clusters_with_both_classes": 3,
+          "mean_per_cluster_auc": 0.7672,
+          "std_per_cluster_auc": 0.0539,
+          "min_per_cluster_auc": 0.7269,
+          "max_per_cluster_auc": 0.8433,
+          "pooled_auc": 0.7423,
+          "pooled_accuracy": 0.6757,
+          "pooled_f1": 0.6242,
+          "per_cluster": {
+            "0": {
+              "n_test": 836,
+              "n_test_agents": 395,
+              "n_test_humans": 441,
+              "auc": 0.7314,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 211,
+              "n_test_agents": 82,
+              "n_test_humans": 129,
+              "auc": 0.7269,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 100,
+              "n_test_agents": 56,
+              "n_test_humans": 44,
+              "auc": 0.8433,
+              "both_classes_in_test": true
+            }
+          }
+        }
+      }
+    },
+    "4": {
+      "k": 4,
+      "all_clusters_mixed": true,
+      "n_mixed_clusters": 4,
+      "cluster_composition": {
+        "0": {
+          "n_total": 185,
+          "n_agents": 75,
+          "n_humans": 110,
+          "is_mixed": true
+        },
+        "1": {
+          "n_total": 269,
+          "n_agents": 80,
+          "n_humans": 189,
+          "is_mixed": true
+        },
+        "2": {
+          "n_total": 98,
+          "n_agents": 55,
+          "n_humans": 43,
+          "is_mixed": true
+        },
+        "3": {
+          "n_total": 595,
+          "n_agents": 323,
+          "n_humans": 272,
+          "is_mixed": true
+        }
+      },
+      "models": {
+        "RandomForest": {
+          "model": "RandomForest",
+          "k": 4,
+          "n_clusters_evaluated": 4,
+          "n_clusters_with_both_classes": 4,
+          "mean_per_cluster_auc": 0.7806,
+          "std_per_cluster_auc": 0.0772,
+          "min_per_cluster_auc": 0.7161,
+          "max_per_cluster_auc": 0.9121,
+          "pooled_auc": 0.7656,
+          "pooled_accuracy": 0.6992,
+          "pooled_f1": 0.6601,
+          "per_cluster": {
+            "0": {
+              "n_test": 185,
+              "n_test_agents": 75,
+              "n_test_humans": 110,
+              "auc": 0.7555,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 269,
+              "n_test_agents": 80,
+              "n_test_humans": 189,
+              "auc": 0.7161,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 98,
+              "n_test_agents": 55,
+              "n_test_humans": 43,
+              "auc": 0.9121,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 595,
+              "n_test_agents": 323,
+              "n_test_humans": 272,
+              "auc": 0.7386,
+              "both_classes_in_test": true
+            }
+          }
+        },
+        "GradientBoosting": {
+          "model": "GradientBoosting",
+          "k": 4,
+          "n_clusters_evaluated": 4,
+          "n_clusters_with_both_classes": 4,
+          "mean_per_cluster_auc": 0.7445,
+          "std_per_cluster_auc": 0.0866,
+          "min_per_cluster_auc": 0.645,
+          "max_per_cluster_auc": 0.8791,
+          "pooled_auc": 0.7571,
+          "pooled_accuracy": 0.6983,
+          "pooled_f1": 0.6512,
+          "per_cluster": {
+            "0": {
+              "n_test": 185,
+              "n_test_agents": 75,
+              "n_test_humans": 110,
+              "auc": 0.701,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 269,
+              "n_test_agents": 80,
+              "n_test_humans": 189,
+              "auc": 0.645,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 98,
+              "n_test_agents": 55,
+              "n_test_humans": 43,
+              "auc": 0.8791,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 595,
+              "n_test_agents": 323,
+              "n_test_humans": 272,
+              "auc": 0.7532,
+              "both_classes_in_test": true
+            }
+          }
+        }
+      }
+    },
+    "5": {
+      "k": 5,
+      "all_clusters_mixed": true,
+      "n_mixed_clusters": 5,
+      "cluster_composition": {
+        "0": {
+          "n_total": 271,
+          "n_agents": 111,
+          "n_humans": 160,
+          "is_mixed": true
+        },
+        "1": {
+          "n_total": 434,
+          "n_agents": 272,
+          "n_humans": 162,
+          "is_mixed": true
+        },
+        "2": {
+          "n_total": 262,
+          "n_agents": 75,
+          "n_humans": 187,
+          "is_mixed": true
+        },
+        "3": {
+          "n_total": 88,
+          "n_agents": 20,
+          "n_humans": 68,
+          "is_mixed": true
+        },
+        "4": {
+          "n_total": 92,
+          "n_agents": 55,
+          "n_humans": 37,
+          "is_mixed": true
+        }
+      },
+      "models": {
+        "RandomForest": {
+          "model": "RandomForest",
+          "k": 5,
+          "n_clusters_evaluated": 5,
+          "n_clusters_with_both_classes": 5,
+          "mean_per_cluster_auc": 0.7583,
+          "std_per_cluster_auc": 0.0787,
+          "min_per_cluster_auc": 0.6866,
+          "max_per_cluster_auc": 0.9032,
+          "pooled_auc": 0.7415,
+          "pooled_accuracy": 0.68,
+          "pooled_f1": 0.5757,
+          "per_cluster": {
+            "0": {
+              "n_test": 271,
+              "n_test_agents": 111,
+              "n_test_humans": 160,
+              "auc": 0.6866,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 434,
+              "n_test_agents": 272,
+              "n_test_humans": 162,
+              "auc": 0.7087,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 262,
+              "n_test_agents": 75,
+              "n_test_humans": 187,
+              "auc": 0.7142,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 88,
+              "n_test_agents": 20,
+              "n_test_humans": 68,
+              "auc": 0.7787,
+              "both_classes_in_test": true
+            },
+            "4": {
+              "n_test": 92,
+              "n_test_agents": 55,
+              "n_test_humans": 37,
+              "auc": 0.9032,
+              "both_classes_in_test": true
+            }
+          }
+        },
+        "GradientBoosting": {
+          "model": "GradientBoosting",
+          "k": 5,
+          "n_clusters_evaluated": 5,
+          "n_clusters_with_both_classes": 5,
+          "mean_per_cluster_auc": 0.72,
+          "std_per_cluster_auc": 0.0766,
+          "min_per_cluster_auc": 0.6637,
+          "max_per_cluster_auc": 0.8688,
+          "pooled_auc": 0.7529,
+          "pooled_accuracy": 0.701,
+          "pooled_f1": 0.6276,
+          "per_cluster": {
+            "0": {
+              "n_test": 271,
+              "n_test_agents": 111,
+              "n_test_humans": 160,
+              "auc": 0.6666,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 434,
+              "n_test_agents": 272,
+              "n_test_humans": 162,
+              "auc": 0.7148,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 262,
+              "n_test_agents": 75,
+              "n_test_humans": 187,
+              "auc": 0.6637,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 88,
+              "n_test_agents": 20,
+              "n_test_humans": 68,
+              "auc": 0.686,
+              "both_classes_in_test": true
+            },
+            "4": {
+              "n_test": 92,
+              "n_test_agents": 55,
+              "n_test_humans": 37,
+              "auc": 0.8688,
+              "both_classes_in_test": true
+            }
+          }
+        }
+      }
+    },
+    "6": {
+      "k": 6,
+      "all_clusters_mixed": true,
+      "n_mixed_clusters": 6,
+      "cluster_composition": {
+        "0": {
+          "n_total": 48,
+          "n_agents": 9,
+          "n_humans": 39,
+          "is_mixed": true
+        },
+        "1": {
+          "n_total": 45,
+          "n_agents": 40,
+          "n_humans": 5,
+          "is_mixed": true
+        },
+        "2": {
+          "n_total": 351,
+          "n_agents": 121,
+          "n_humans": 230,
+          "is_mixed": true
+        },
+        "3": {
+          "n_total": 247,
+          "n_agents": 76,
+          "n_humans": 171,
+          "is_mixed": true
+        },
+        "4": {
+          "n_total": 154,
+          "n_agents": 61,
+          "n_humans": 93,
+          "is_mixed": true
+        },
+        "5": {
+          "n_total": 302,
+          "n_agents": 226,
+          "n_humans": 76,
+          "is_mixed": true
+        }
+      },
+      "models": {
+        "RandomForest": {
+          "model": "RandomForest",
+          "k": 6,
+          "n_clusters_evaluated": 6,
+          "n_clusters_with_both_classes": 6,
+          "mean_per_cluster_auc": 0.7079,
+          "std_per_cluster_auc": 0.0773,
+          "min_per_cluster_auc": 0.625,
+          "max_per_cluster_auc": 0.849,
+          "pooled_auc": 0.7188,
+          "pooled_accuracy": 0.6521,
+          "pooled_f1": 0.6122,
+          "per_cluster": {
+            "0": {
+              "n_test": 48,
+              "n_test_agents": 9,
+              "n_test_humans": 39,
+              "auc": 0.849,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 45,
+              "n_test_agents": 40,
+              "n_test_humans": 5,
+              "auc": 0.625,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 351,
+              "n_test_agents": 121,
+              "n_test_humans": 230,
+              "auc": 0.6343,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 247,
+              "n_test_agents": 76,
+              "n_test_humans": 171,
+              "auc": 0.6993,
+              "both_classes_in_test": true
+            },
+            "4": {
+              "n_test": 154,
+              "n_test_agents": 61,
+              "n_test_humans": 93,
+              "auc": 0.7604,
+              "both_classes_in_test": true
+            },
+            "5": {
+              "n_test": 302,
+              "n_test_agents": 226,
+              "n_test_humans": 76,
+              "auc": 0.6791,
+              "both_classes_in_test": true
+            }
+          }
+        },
+        "GradientBoosting": {
+          "model": "GradientBoosting",
+          "k": 6,
+          "n_clusters_evaluated": 6,
+          "n_clusters_with_both_classes": 6,
+          "mean_per_cluster_auc": 0.7165,
+          "std_per_cluster_auc": 0.0512,
+          "min_per_cluster_auc": 0.6476,
+          "max_per_cluster_auc": 0.8091,
+          "pooled_auc": 0.77,
+          "pooled_accuracy": 0.7027,
+          "pooled_f1": 0.662,
+          "per_cluster": {
+            "0": {
+              "n_test": 48,
+              "n_test_agents": 9,
+              "n_test_humans": 39,
+              "auc": 0.8091,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 45,
+              "n_test_agents": 40,
+              "n_test_humans": 5,
+              "auc": 0.735,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 351,
+              "n_test_agents": 121,
+              "n_test_humans": 230,
+              "auc": 0.6809,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 247,
+              "n_test_agents": 76,
+              "n_test_humans": 171,
+              "auc": 0.6937,
+              "both_classes_in_test": true
+            },
+            "4": {
+              "n_test": 154,
+              "n_test_agents": 61,
+              "n_test_humans": 93,
+              "auc": 0.7328,
+              "both_classes_in_test": true
+            },
+            "5": {
+              "n_test": 302,
+              "n_test_agents": 226,
+              "n_test_humans": 76,
+              "auc": 0.6476,
+              "both_classes_in_test": true
+            }
+          }
+        }
+      }
+    },
+    "7": {
+      "k": 7,
+      "all_clusters_mixed": true,
+      "n_mixed_clusters": 7,
+      "cluster_composition": {
+        "0": {
+          "n_total": 43,
+          "n_agents": 39,
+          "n_humans": 4,
+          "is_mixed": true
+        },
+        "1": {
+          "n_total": 261,
+          "n_agents": 206,
+          "n_humans": 55,
+          "is_mixed": true
+        },
+        "2": {
+          "n_total": 230,
+          "n_agents": 71,
+          "n_humans": 159,
+          "is_mixed": true
+        },
+        "3": {
+          "n_total": 188,
+          "n_agents": 85,
+          "n_humans": 103,
+          "is_mixed": true
+        },
+        "4": {
+          "n_total": 70,
+          "n_agents": 15,
+          "n_humans": 55,
+          "is_mixed": true
+        },
+        "5": {
+          "n_total": 305,
+          "n_agents": 108,
+          "n_humans": 197,
+          "is_mixed": true
+        },
+        "6": {
+          "n_total": 50,
+          "n_agents": 9,
+          "n_humans": 41,
+          "is_mixed": true
+        }
+      },
+      "models": {
+        "RandomForest": {
+          "model": "RandomForest",
+          "k": 7,
+          "n_clusters_evaluated": 7,
+          "n_clusters_with_both_classes": 7,
+          "mean_per_cluster_auc": 0.7266,
+          "std_per_cluster_auc": 0.0805,
+          "min_per_cluster_auc": 0.6297,
+          "max_per_cluster_auc": 0.8726,
+          "pooled_auc": 0.7345,
+          "pooled_accuracy": 0.667,
+          "pooled_f1": 0.5962,
+          "per_cluster": {
+            "0": {
+              "n_test": 43,
+              "n_test_agents": 39,
+              "n_test_humans": 4,
+              "auc": 0.7115,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 261,
+              "n_test_agents": 206,
+              "n_test_humans": 55,
+              "auc": 0.6297,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 230,
+              "n_test_agents": 71,
+              "n_test_humans": 159,
+              "auc": 0.685,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 188,
+              "n_test_agents": 85,
+              "n_test_humans": 103,
+              "auc": 0.7342,
+              "both_classes_in_test": true
+            },
+            "4": {
+              "n_test": 70,
+              "n_test_agents": 15,
+              "n_test_humans": 55,
+              "auc": 0.8061,
+              "both_classes_in_test": true
+            },
+            "5": {
+              "n_test": 305,
+              "n_test_agents": 108,
+              "n_test_humans": 197,
+              "auc": 0.6473,
+              "both_classes_in_test": true
+            },
+            "6": {
+              "n_test": 50,
+              "n_test_agents": 9,
+              "n_test_humans": 41,
+              "auc": 0.8726,
+              "both_classes_in_test": true
+            }
+          }
+        },
+        "GradientBoosting": {
+          "model": "GradientBoosting",
+          "k": 7,
+          "n_clusters_evaluated": 7,
+          "n_clusters_with_both_classes": 7,
+          "mean_per_cluster_auc": 0.686,
+          "std_per_cluster_auc": 0.0629,
+          "min_per_cluster_auc": 0.6303,
+          "max_per_cluster_auc": 0.8184,
+          "pooled_auc": 0.7554,
+          "pooled_accuracy": 0.6888,
+          "pooled_f1": 0.6338,
+          "per_cluster": {
+            "0": {
+              "n_test": 43,
+              "n_test_agents": 39,
+              "n_test_humans": 4,
+              "auc": 0.641,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 261,
+              "n_test_agents": 206,
+              "n_test_humans": 55,
+              "auc": 0.6337,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 230,
+              "n_test_agents": 71,
+              "n_test_humans": 159,
+              "auc": 0.6303,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 188,
+              "n_test_agents": 85,
+              "n_test_humans": 103,
+              "auc": 0.7236,
+              "both_classes_in_test": true
+            },
+            "4": {
+              "n_test": 70,
+              "n_test_agents": 15,
+              "n_test_humans": 55,
+              "auc": 0.697,
+              "both_classes_in_test": true
+            },
+            "5": {
+              "n_test": 305,
+              "n_test_agents": 108,
+              "n_test_humans": 197,
+              "auc": 0.6582,
+              "both_classes_in_test": true
+            },
+            "6": {
+              "n_test": 50,
+              "n_test_agents": 9,
+              "n_test_humans": 41,
+              "auc": 0.8184,
+              "both_classes_in_test": true
+            }
+          }
+        }
+      }
+    },
+    "8": {
+      "k": 8,
+      "all_clusters_mixed": true,
+      "n_mixed_clusters": 8,
+      "cluster_composition": {
+        "0": {
+          "n_total": 232,
+          "n_agents": 188,
+          "n_humans": 44,
+          "is_mixed": true
+        },
+        "1": {
+          "n_total": 78,
+          "n_agents": 28,
+          "n_humans": 50,
+          "is_mixed": true
+        },
+        "2": {
+          "n_total": 63,
+          "n_agents": 14,
+          "n_humans": 49,
+          "is_mixed": true
+        },
+        "3": {
+          "n_total": 221,
+          "n_agents": 69,
+          "n_humans": 152,
+          "is_mixed": true
+        },
+        "4": {
+          "n_total": 177,
+          "n_agents": 80,
+          "n_humans": 97,
+          "is_mixed": true
+        },
+        "5": {
+          "n_total": 49,
+          "n_agents": 9,
+          "n_humans": 40,
+          "is_mixed": true
+        },
+        "6": {
+          "n_total": 286,
+          "n_agents": 108,
+          "n_humans": 178,
+          "is_mixed": true
+        },
+        "7": {
+          "n_total": 41,
+          "n_agents": 37,
+          "n_humans": 4,
+          "is_mixed": true
+        }
+      },
+      "models": {
+        "RandomForest": {
+          "model": "RandomForest",
+          "k": 8,
+          "n_clusters_evaluated": 8,
+          "n_clusters_with_both_classes": 8,
+          "mean_per_cluster_auc": 0.7356,
+          "std_per_cluster_auc": 0.0733,
+          "min_per_cluster_auc": 0.6232,
+          "max_per_cluster_auc": 0.8306,
+          "pooled_auc": 0.7589,
+          "pooled_accuracy": 0.6844,
+          "pooled_f1": 0.6132,
+          "per_cluster": {
+            "0": {
+              "n_test": 232,
+              "n_test_agents": 188,
+              "n_test_humans": 44,
+              "auc": 0.6232,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 78,
+              "n_test_agents": 28,
+              "n_test_humans": 50,
+              "auc": 0.7743,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 63,
+              "n_test_agents": 14,
+              "n_test_humans": 49,
+              "auc": 0.8017,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 221,
+              "n_test_agents": 69,
+              "n_test_humans": 152,
+              "auc": 0.6866,
+              "both_classes_in_test": true
+            },
+            "4": {
+              "n_test": 177,
+              "n_test_agents": 80,
+              "n_test_humans": 97,
+              "auc": 0.7595,
+              "both_classes_in_test": true
+            },
+            "5": {
+              "n_test": 49,
+              "n_test_agents": 9,
+              "n_test_humans": 40,
+              "auc": 0.8306,
+              "both_classes_in_test": true
+            },
+            "6": {
+              "n_test": 286,
+              "n_test_agents": 108,
+              "n_test_humans": 178,
+              "auc": 0.6316,
+              "both_classes_in_test": true
+            },
+            "7": {
+              "n_test": 41,
+              "n_test_agents": 37,
+              "n_test_humans": 4,
+              "auc": 0.777,
+              "both_classes_in_test": true
+            }
+          }
+        },
+        "GradientBoosting": {
+          "model": "GradientBoosting",
+          "k": 8,
+          "n_clusters_evaluated": 8,
+          "n_clusters_with_both_classes": 8,
+          "mean_per_cluster_auc": 0.684,
+          "std_per_cluster_auc": 0.0845,
+          "min_per_cluster_auc": 0.5473,
+          "max_per_cluster_auc": 0.8556,
+          "pooled_auc": 0.7627,
+          "pooled_accuracy": 0.6992,
+          "pooled_f1": 0.6365,
+          "per_cluster": {
+            "0": {
+              "n_test": 232,
+              "n_test_agents": 188,
+              "n_test_humans": 44,
+              "auc": 0.6215,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 78,
+              "n_test_agents": 28,
+              "n_test_humans": 50,
+              "auc": 0.7379,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 63,
+              "n_test_agents": 14,
+              "n_test_humans": 49,
+              "auc": 0.6953,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 221,
+              "n_test_agents": 69,
+              "n_test_humans": 152,
+              "auc": 0.6506,
+              "both_classes_in_test": true
+            },
+            "4": {
+              "n_test": 177,
+              "n_test_agents": 80,
+              "n_test_humans": 97,
+              "auc": 0.7041,
+              "both_classes_in_test": true
+            },
+            "5": {
+              "n_test": 49,
+              "n_test_agents": 9,
+              "n_test_humans": 40,
+              "auc": 0.8556,
+              "both_classes_in_test": true
+            },
+            "6": {
+              "n_test": 286,
+              "n_test_agents": 108,
+              "n_test_humans": 178,
+              "auc": 0.66,
+              "both_classes_in_test": true
+            },
+            "7": {
+              "n_test": 41,
+              "n_test_agents": 37,
+              "n_test_humans": 4,
+              "auc": 0.5473,
+              "both_classes_in_test": true
+            }
+          }
+        }
+      }
+    },
+    "10": {
+      "k": 10,
+      "all_clusters_mixed": true,
+      "n_mixed_clusters": 10,
+      "cluster_composition": {
+        "0": {
+          "n_total": 40,
+          "n_agents": 9,
+          "n_humans": 31,
+          "is_mixed": true
+        },
+        "1": {
+          "n_total": 60,
+          "n_agents": 14,
+          "n_humans": 46,
+          "is_mixed": true
+        },
+        "2": {
+          "n_total": 104,
+          "n_agents": 15,
+          "n_humans": 89,
+          "is_mixed": true
+        },
+        "3": {
+          "n_total": 21,
+          "n_agents": 18,
+          "n_humans": 3,
+          "is_mixed": true
+        },
+        "4": {
+          "n_total": 118,
+          "n_agents": 66,
+          "n_humans": 52,
+          "is_mixed": true
+        },
+        "5": {
+          "n_total": 80,
+          "n_agents": 29,
+          "n_humans": 51,
+          "is_mixed": true
+        },
+        "6": {
+          "n_total": 269,
+          "n_agents": 87,
+          "n_humans": 182,
+          "is_mixed": true
+        },
+        "7": {
+          "n_total": 41,
+          "n_agents": 31,
+          "n_humans": 10,
+          "is_mixed": true
+        },
+        "8": {
+          "n_total": 244,
+          "n_agents": 192,
+          "n_humans": 52,
+          "is_mixed": true
+        },
+        "9": {
+          "n_total": 170,
+          "n_agents": 72,
+          "n_humans": 98,
+          "is_mixed": true
+        }
+      },
+      "models": {
+        "RandomForest": {
+          "model": "RandomForest",
+          "k": 10,
+          "n_clusters_evaluated": 10,
+          "n_clusters_with_both_classes": 10,
+          "mean_per_cluster_auc": 0.7235,
+          "std_per_cluster_auc": 0.086,
+          "min_per_cluster_auc": 0.6337,
+          "max_per_cluster_auc": 0.8853,
+          "pooled_auc": 0.7516,
+          "pooled_accuracy": 0.6678,
+          "pooled_f1": 0.5863,
+          "per_cluster": {
+            "0": {
+              "n_test": 40,
+              "n_test_agents": 9,
+              "n_test_humans": 31,
+              "auc": 0.8853,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 60,
+              "n_test_agents": 14,
+              "n_test_humans": 46,
+              "auc": 0.7811,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 104,
+              "n_test_agents": 15,
+              "n_test_humans": 89,
+              "auc": 0.6337,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 21,
+              "n_test_agents": 18,
+              "n_test_humans": 3,
+              "auc": 0.6667,
+              "both_classes_in_test": true
+            },
+            "4": {
+              "n_test": 118,
+              "n_test_agents": 66,
+              "n_test_humans": 52,
+              "auc": 0.7471,
+              "both_classes_in_test": true
+            },
+            "5": {
+              "n_test": 80,
+              "n_test_agents": 29,
+              "n_test_humans": 51,
+              "auc": 0.7742,
+              "both_classes_in_test": true
+            },
+            "6": {
+              "n_test": 269,
+              "n_test_agents": 87,
+              "n_test_humans": 182,
+              "auc": 0.6465,
+              "both_classes_in_test": true
+            },
+            "7": {
+              "n_test": 41,
+              "n_test_agents": 31,
+              "n_test_humans": 10,
+              "auc": 0.8226,
+              "both_classes_in_test": true
+            },
+            "8": {
+              "n_test": 244,
+              "n_test_agents": 192,
+              "n_test_humans": 52,
+              "auc": 0.6428,
+              "both_classes_in_test": true
+            },
+            "9": {
+              "n_test": 170,
+              "n_test_agents": 72,
+              "n_test_humans": 98,
+              "auc": 0.6348,
+              "both_classes_in_test": true
+            }
+          }
+        },
+        "GradientBoosting": {
+          "model": "GradientBoosting",
+          "k": 10,
+          "n_clusters_evaluated": 10,
+          "n_clusters_with_both_classes": 10,
+          "mean_per_cluster_auc": 0.7061,
+          "std_per_cluster_auc": 0.08,
+          "min_per_cluster_auc": 0.6162,
+          "max_per_cluster_auc": 0.8996,
+          "pooled_auc": 0.7568,
+          "pooled_accuracy": 0.6853,
+          "pooled_f1": 0.6335,
+          "per_cluster": {
+            "0": {
+              "n_test": 40,
+              "n_test_agents": 9,
+              "n_test_humans": 31,
+              "auc": 0.8996,
+              "both_classes_in_test": true
+            },
+            "1": {
+              "n_test": 60,
+              "n_test_agents": 14,
+              "n_test_humans": 46,
+              "auc": 0.6863,
+              "both_classes_in_test": true
+            },
+            "2": {
+              "n_test": 104,
+              "n_test_agents": 15,
+              "n_test_humans": 89,
+              "auc": 0.6674,
+              "both_classes_in_test": true
+            },
+            "3": {
+              "n_test": 21,
+              "n_test_agents": 18,
+              "n_test_humans": 3,
+              "auc": 0.6667,
+              "both_classes_in_test": true
+            },
+            "4": {
+              "n_test": 118,
+              "n_test_agents": 66,
+              "n_test_humans": 52,
+              "auc": 0.7086,
+              "both_classes_in_test": true
+            },
+            "5": {
+              "n_test": 80,
+              "n_test_agents": 29,
+              "n_test_humans": 51,
+              "auc": 0.7478,
+              "both_classes_in_test": true
+            },
+            "6": {
+              "n_test": 269,
+              "n_test_agents": 87,
+              "n_test_humans": 182,
+              "auc": 0.6425,
+              "both_classes_in_test": true
+            },
+            "7": {
+              "n_test": 41,
+              "n_test_agents": 31,
+              "n_test_humans": 10,
+              "auc": 0.7806,
+              "both_classes_in_test": true
+            },
+            "8": {
+              "n_test": 244,
+              "n_test_agents": 192,
+              "n_test_humans": 52,
+              "auc": 0.6162,
+              "both_classes_in_test": true
+            },
+            "9": {
+              "n_test": 170,
+              "n_test_agents": 72,
+              "n_test_humans": 98,
+              "auc": 0.645,
+              "both_classes_in_test": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "rf_pooled_aucs": {
+      "3": 0.7368,
+      "4": 0.7656,
+      "5": 0.7415,
+      "6": 0.7188,
+      "7": 0.7345,
+      "8": 0.7589,
+      "10": 0.7516
+    },
+    "gbm_pooled_aucs": {
+      "3": 0.7423,
+      "4": 0.7571,
+      "5": 0.7529,
+      "6": 0.77,
+      "7": 0.7554,
+      "8": 0.7627,
+      "10": 0.7568
+    },
+    "rf_mean_across_k": 0.744,
+    "rf_std_across_k": 0.0148,
+    "rf_range_across_k": 0.0468,
+    "gbm_mean_across_k": 0.7567,
+    "gbm_std_across_k": 0.0079,
+    "gbm_range_across_k": 0.0277,
+    "all_k_have_all_mixed_clusters": true
+  },
+  "stability_assessment": "RF pooled AUC across k=[3, 4, 5, 6, 7, 8, 10]: mean=0.7440, std=0.0148, range=0.0468. GBM pooled AUC: mean=0.7567, std=0.0079, range=0.0277. The pooled AUC is STABLE across k (range < 0.05 AUC). The k=5 result is NOT cherry-picked; any k in [3,10] yields similar performance.",
+  "elapsed_seconds": 17.14
+}
