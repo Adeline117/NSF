@@ -1,0 +1,95 @@
+{
+  "run_timestamp": "20260420_200356",
+  "description": "Feature-group ablation on OnChainAgentID v4 (N=1147, 23 features). For each of 4 groups: (1) train RF on ONLY that group, (2) train RF with that group REMOVED. 10x10 repeated stratified CV.",
+  "dataset": {
+    "n_samples": 1147,
+    "n_agents": 533,
+    "n_humans": 614,
+    "n_features": 23
+  },
+  "full_model": {
+    "auc": 0.8242100587911179,
+    "auc_std": 0.03920396250147406,
+    "features_used": 23
+  },
+  "group_only": {
+    "temporal": {
+      "auc": 0.6808612645652049,
+      "auc_std": 0.04309114937420214,
+      "n_features": 7,
+      "features": [
+        "tx_interval_mean",
+        "tx_interval_std",
+        "tx_interval_skewness",
+        "active_hour_entropy",
+        "night_activity_ratio",
+        "weekend_ratio",
+        "burst_frequency"
+      ]
+    },
+    "gas": {
+      "auc": 0.7125573064658406,
+      "auc_std": 0.04772178926982485,
+      "n_features": 6,
+      "features": [
+        "gas_price_round_number_ratio",
+        "gas_price_trailing_zeros_mean",
+        "gas_limit_precision",
+        "gas_price_cv",
+        "eip1559_priority_fee_precision",
+        "gas_price_nonce_correlation"
+      ]
+    },
+    "interaction": {
+      "auc": 0.7142949177038905,
+      "auc_std": 0.04592196282241585,
+      "n_features": 5,
+      "features": [
+        "unique_contracts_ratio",
+        "top_contract_concentration",
+        "method_id_diversity",
+        "contract_to_eoa_ratio",
+        "sequential_pattern_score"
+      ]
+    },
+    "approval_security": {
+      "auc": 0.6019054360627653,
+      "auc_std": 0.04643079648577916,
+      "n_features": 5,
+      "features": [
+        "unlimited_approve_ratio",
+        "approve_revoke_ratio",
+        "unverified_contract_approve_ratio",
+        "multi_protocol_interaction_count",
+        "flash_loan_usage"
+      ]
+    }
+  },
+  "group_removed": {
+    "temporal": {
+      "auc": 0.8167495697557409,
+      "auc_std": 0.04143704180399703,
+      "n_features": 16,
+      "delta_vs_full": -0.0075
+    },
+    "gas": {
+      "auc": 0.7729626848793855,
+      "auc_std": 0.038645916010863146,
+      "n_features": 17,
+      "delta_vs_full": -0.0512
+    },
+    "interaction": {
+      "auc": 0.7994707496726744,
+      "auc_std": 0.03893391026105867,
+      "n_features": 18,
+      "delta_vs_full": -0.0247
+    },
+    "approval_security": {
+      "auc": 0.8086010012486967,
+      "auc_std": 0.04176649994675709,
+      "n_features": 18,
+      "delta_vs_full": -0.0156
+    }
+  },
+  "elapsed_seconds": 38.07
+}

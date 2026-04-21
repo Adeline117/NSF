@@ -201,12 +201,13 @@ Table~\ref{tab:leaderboard} gives the recommended reporting schema. We seed the 
 \small
 \caption{Leaderboard template. Submissions fill one row; audit verdict should cite the harness output. Note: $L_4$ tests label purity (an independent axis) and is not expected to fall monotonically between $L_3$ and $L_5$.}
 \label{tab:leaderboard}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lccccccc}
 \toprule
-Model (submitter) & $L_1$ AUC & $L_2$ AUC & $L_3$ AUC & $L_4$ AUC & $L_5$ AUC & Audit verdict \\
+Model (submitter) & $L_1$ AUC & $L_2$ AUC (95\% CI) & $L_3$ AUC (95\% CI) & $L_4$ AUC & $L_5$ AUC (95\% CI) & Audit \\
 \midrule
 \textit{Baselines (this paper):} & & & & & & \\
-Random Forest & \cascadeLevelLeakyAuc{} & \randomCvRfAuc{} & \temporalHoldoutRfAuc{} & \cascadeLevelStrictCoreAuc{} & \lopoRfPooledAuc{} / \mixedClassLopoRfAuc{} & PASS \\
+Random Forest & \cascadeLevelLeakyAuc{} & \randomCvRfAuc{} {[\bootstrapLevelRfAucCiLo{}, \bootstrapLevelRfAucCiHi{}]} & \temporalHoldoutRfAuc{} {[\bootstrapLevelRfAucCiLoB{}, \bootstrapLevelRfAucCiHiB{}]} & \cascadeLevelStrictCoreAuc{} & \lopoRfPooledAuc{} / \mixedClassLopoRfAuc{} {[\bootstrapLevelMixedRfAucCiLo{}, \bootstrapLevelMixedRfAucCiHi{}]} & PASS \\
 Gradient Boosting & -- & \randomCvGbmAuc{} & \temporalHoldoutGbmAuc{} & 0.628 & \lopoRfPooledAuc{} / \mixedClassLopoGbmAuc{} & PASS \\
 Logistic Regression & -- & 0.779 & 0.616 & 0.610 & -- & PASS \\
 LightGBM & -- & -- & -- & 0.710 & -- & PASS \\
@@ -216,7 +217,8 @@ GAT (graph attention) & -- & \textbf{0.832} & \gatTemporalMeanAuc{} & --- & \gat
 \textit{Leaky reference (do not cite as SOTA):} & & & & & & \\
 RF on C1--C4 heuristic labels & \cascadeLevelLeakyAuc{} & -- & -- & -- & -- & FAIL \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \section{Audit Toolkit}
@@ -279,7 +281,7 @@ We report baseline numbers from four tabular models (Random Forest, Gradient Boo
 % FLUID: All baseline numbers in this section are data-dependent
 \subsection{Level 2: Random 10-fold CV on N=\datasetNAddresses{}}
 
-Table~\ref{tab:level2} reports the core random-CV baseline. GAT is the best overall model (AUC~0.832 $\pm$ 0.021) and RF is the best tabular model (AUC~\randomCvRfAuc{}). Standard deviations are small because the per-fold test size is $\sim$115.
+Table~\ref{tab:level2} reports the core random-CV baseline. GAT is the best overall model (AUC~0.832 $\pm$ 0.021) and RF is the best tabular model (AUC~\randomCvRfAuc{}, 95\% bootstrap CI [\bootstrapLevelRfAucCiLo{}, \bootstrapLevelRfAucCiHi{}]). Standard deviations are small because the per-fold test size is $\sim$115.
 
 \begin{table}[h]
 \centering
@@ -299,7 +301,7 @@ GAT (2-layer, 8 heads) & 5-fold & \textbf{0.832 $\pm$ 0.021} & -- & -- & 0.674 \
 \end{tabular}
 \end{table}
 
-Feature-group ablation on RF (all-\datasetNFeatures{} AUC~0.794): interaction group alone 0.751; gas alone 0.713; approval/security alone 0.656; temporal alone 0.623 (computed on the v3 N=563 subset; v4 feature-group ablation is pending). Removing temporal features alone improves AUC by $+0.005$---evidence that the heuristic-labeled pipeline used temporal features as a crutch.
+Feature-group ablation on RF (all-\datasetNFeatures{} AUC~0.824, v4 N=\datasetNAddresses{}): \emph{group-only} AUC---interaction 0.714, gas 0.713, temporal 0.681, approval/security 0.602; \emph{group-removed} AUC---without gas $-$0.051 (largest drop, to 0.773), without interaction $-$0.025 (0.799), without approval/security $-$0.016 (0.809), without temporal $-$0.008 (0.817). Gas features are the single most informative group and the hardest to replace; temporal features contribute least marginal lift, consistent with the hypothesis that the prior heuristic-labeled pipeline over-relied on temporal cues. Full results: \texttt{experiments/feature\_group\_ablation\_v4\_results.json}.
 
 % FLUID: External validation numbers are data-dependent
 As external validation, we reimplemented Niedermayer et al.'s (2024) 7-feature Random Forest on our benchmark. At Level~2, their method achieves AUC \externalNiedermayerCvAuc{} ($-$4.7\,pp vs.\ our \externalOursCvAuc{}). At Level~3 (temporal), their AUC is \externalNiedermayerTemporalAuc{} ($-$1.7\,pp) but their F1 is 0.653 ($+$5.1\,pp vs.\ our 0.602), suggesting the simpler model generalizes recall better under distribution shift. At Level~5, both methods collapse below 0.50. This confirms the benchmark supports cross-method comparison and that the cascade pattern is method-independent.
@@ -309,7 +311,7 @@ As external validation, we reimplemented Niedermayer et al.'s (2024) 7-feature R
 % FLUID: Temporal holdout results are data-dependent
 \subsection{Level 3: Temporal holdout}
 
-Table~\ref{tab:level3} shows a 13--16~AUC-point drop from random CV to temporal holdout across all tabular models. Precision rises (the classifier becomes more conservative) but recall collapses: RF temporal recall is 0.309. Practitioners deploying against post-training-cutoff agents should expect to catch fewer than half of them without retraining.
+Table~\ref{tab:level3} shows a 13--16~AUC-point drop from random CV to temporal holdout across all tabular models (RF temporal AUC~\temporalHoldoutRfAuc{}, 95\% bootstrap CI [\bootstrapLevelRfAucCiLoB{}, \bootstrapLevelRfAucCiHiB{}]). The L2-to-L3 drop of 0.13 AUC is significant (non-overlapping 95\% CIs: [\bootstrapLevelRfAucCiLo{}, \bootstrapLevelRfAucCiHi{}] vs.\ [\bootstrapLevelRfAucCiLoB{}, \bootstrapLevelRfAucCiHiB{}]). Precision rises (the classifier becomes more conservative) but recall collapses: RF temporal recall is 0.309. Practitioners deploying against post-training-cutoff agents should expect to catch fewer than half of them without retraining.
 
 \begin{table}[h]
 \centering
@@ -360,7 +362,7 @@ LightGBM$^\dagger$ & LOO & 0.710 & -- & -- & 0.727 & 0.719 \\
 % FLUID: LOPO results are data-dependent
 \subsection{Level 5: Leave-One-Platform-Out}
 
-The original single-class LOPO yields pooled RF AUC \lopoRfPooledAuc{} (0.397), but this conflates domain shift with concept failure. A mixed-class LOPO---holding out behavioral clusters (K-Means $k{=}5$) that contain both agents and humans---recovers AUC to \textbf{\mixedClassLopoRfAuc{}} (RF) / \mixedClassLopoGbmAuc{} (GBM) ($+$33\,pp). The cascade floor is therefore \mixedClassLopoRfAuc{}, not \lopoRfPooledAuc{}. The remaining gap to random CV (\randomCvRfAuc{}) represents genuine cross-cluster heterogeneity, but the classifier retains strong discrimination when held-out folds contain both classes.
+The original single-class LOPO yields pooled RF AUC \lopoRfPooledAuc{} (0.397), but this conflates domain shift with concept failure. A mixed-class LOPO---holding out behavioral clusters (K-Means $k{=}5$) that contain both agents and humans---recovers AUC to \textbf{\mixedClassLopoRfAuc{}} (RF, 95\% bootstrap CI [\bootstrapLevelMixedRfAucCiLo{}, \bootstrapLevelMixedRfAucCiHi{}]) / \mixedClassLopoGbmAuc{} (GBM) ($+$33\,pp). The cascade floor is therefore \mixedClassLopoRfAuc{}, not \lopoRfPooledAuc{}. The remaining gap to random CV (\randomCvRfAuc{}) represents genuine cross-cluster heterogeneity, but the classifier retains strong discrimination when held-out folds contain both classes.
 
 \paragraph{Sensitivity to $k$.} To confirm that $k{=}5$ is not cherry-picked, we sweep $k \in \{3,4,5,6,7,8,10\}$. RF pooled AUC ranges from 0.72 to 0.77 (mean 0.744, $\sigma$=0.015); GBM pooled AUC ranges from 0.74 to 0.77 (mean 0.757, $\sigma$=0.008). All clusters are mixed-class at every $k$ tested. The total AUC range is $<$0.05 for both models, confirming that the mixed-class LOPO result is stable and not an artifact of the clustering granularity. Full results: \texttt{experiments/lopo\_k\_sensitivity\_results.json}.
 

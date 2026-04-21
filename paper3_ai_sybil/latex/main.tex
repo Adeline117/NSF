@@ -661,10 +661,28 @@ Rd & behav\_cons & resp\_lat & hour\_ent & Top-3 \% \\
 \bottomrule
 \end{tabular}
 \end{table}
-\footnotetext{Values shown are from the fixed-schedule protocol (Section~4.4); the best-response 3-seed means (Section~4.8) differ slightly but show the same qualitative pattern.}
+\footnotetext{Values shown are from the fixed-schedule protocol (Section~4.4); the best-response 7-seed means (Section~4.8) differ slightly but show the same qualitative pattern.}
 
 \textbf{Convergence interpretation.} AUC $\approx$\bestResponseAucFloorMean{} is a \emph{practical detection floor}: the defender has exhausted the 8-feature space, and the attacker cannot further degrade detection without violating domain constraints (blend already at 0.90--0.95). The residual 0.078 above chance is the \textit{cost of mimicry}---attributable to \texttt{behavioral\_consistency}'s structural invariant (CV of inter-arrival times)---persistent but insufficient for reliable detection. A 3-round robustness check with a different blend schedule confirms consistent dynamics.
 
+\begin{table}[t]
+\caption{Detection floor across defender architectures. Each architecture runs the full best-response protocol (10 rounds, 3 seeds). Eq.\ AUC is the mean $\pm$ std over last 3 rounds $\times$ seeds; Eq.\ Blend is the attacker's equilibrium blend ratio.}
+\label{tab:defender_arch}
+\small
+\begin{tabular}{lllc}
+\toprule
+Defender & Eq.\ AUC (mean $\pm$ std) & Eq.\ Blend & Converged \\
+\midrule
+GBM (150 trees, depth 4) & $0.584 \pm 0.003$ & 0.93 & 3/3 \\
+MLP (64$\to$32, ReLU, Adam) & $0.590 \pm 0.008$ & 0.88 & 3/3 \\
+Random Forest (500 trees) & $0.577 \pm 0.002$ & 0.93 & 3/3 \\
+\midrule
+\textbf{Max spread} & \textbf{0.013} & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The detection floor is architecture-invariant (Table~\ref{tab:defender_arch}): all three defender families converge to within 0.013 AUC of each other. The MLP's marginally higher floor (+0.006) likely reflects its smoother decision boundary retaining slightly more signal at high blend ratios; the RF's marginally lower floor ($-$0.007) reflects overfitting to the training-set blend distribution. Neither difference is statistically significant (pairwise paired $t(2)$, all $p > 0.25$).
 
 % FLUID: Closed-loop LLM adversarial training results
 \subsection{Closed-Loop LLM Adversarial Training}
@@ -675,7 +693,7 @@ A real LLM adversary is not so constrained.
 We therefore run a \emph{closed-loop} protocol in which Claude Opus 4.6 receives the detector's top-3 feature importances and current evasion rate after every round, and generates 100 targeted sybils per round---not by blending, but by \textit{planning against the detector's weaknesses}.
 
 \noindent\textbf{Protocol.}
-Each closed-loop run proceeds over \bestResponseNRounds{} rounds with \bestResponseNSeeds{} seeds (42, 137, 314).
+Each closed-loop run proceeds over \bestResponseNRounds{} rounds with 3 seeds (42, 137, 314).
 Round~0 bootstraps from the parametric attacker (100 sybils at blend 0.45).
 In each subsequent round, the LLM receives:
 (1)~the detector's top-3 feature importances,
@@ -684,18 +702,18 @@ In each subsequent round, the LLM receives:
 It then generates 100 targeted sybil feature vectors.
 The detector retrains on all cumulative sybils plus 15,000 real wallets.
 A scale-matched parametric control runs in parallel with the same number of sybils per round but using scalar-blend generation.
-In total the experiment involves 30 batch API calls across \bestResponseNSeeds{} seeds, generating ${\sim}$3,000 LLM sybils, completing in 81 minutes at a cost of ${\sim}$\$30--50.
+In total the experiment involves 30 batch API calls across 3 seeds, generating ${\sim}$3,000 LLM sybils, completing in 81 minutes at a cost of ${\sim}$\$30--50.
 
 \noindent\textbf{Head-to-head comparison at Round~1.}
 The critical comparison uses the \emph{same detector} $D_1$ (trained on Round-0 data) and measures evasion of LLM-generated vs.\ parametric sybils.
-Table~\ref{tab:closedloop} reports per-round results (\bestResponseNSeeds{}-seed mean).
+Table~\ref{tab:closedloop} reports per-round results (3-seed mean).
 At Round~1, the LLM achieves evasion rate $\closedLoopRoundLlmEvasionMean{}$ vs.\ the parametric attacker's $\closedLoopRoundParametricEvasionMean{}$---a gap of $+$\closedLoopRoundEvasionDelta{}$\times 100$ percentage points ($\Delta = \closedLoopRoundEvasionDelta{}$).
 This gap is the central finding: \textbf{parametric approximations understate real-world LLM attacker capability by nearly 30 percentage points.}
 
 The +\closedLoopRoundEvasionDelta{}$\times 100$\,pp gap is a \emph{transient, first-round} advantage: by Round-10, both attackers converge to similar AUC (closed-loop \closedLoopFinalAucMean{} vs.\ parametric 0.982, $\Delta{=}$+1.0\,pp). We headline the Round-1 gap because it represents the \emph{initial deployment risk}: a defender deploying a static detector faces a 98\% evasion rate from an LLM adversary versus 69\% from a parametric one. The convergence by Round-10 shows that iterative retraining closes the gap, but most deployed systems do not retrain after every batch of claims.
 
 \begin{table}[t]
-\caption{Closed-loop LLM adversarial training vs.\ parametric baseline (\bestResponseNSeeds{}-seed mean). ``CL AUC'' is the detector AUC when trained against closed-loop sybils; ``LLM Eva.''\ is the LLM evasion rate; ``Param.\ Eva.''\ is the parametric-probe evasion rate against the same detector.}
+\caption{Closed-loop LLM adversarial training vs.\ parametric baseline (3-seed mean). ``CL AUC'' is the detector AUC when trained against closed-loop sybils; ``LLM Eva.''\ is the LLM evasion rate; ``Param.\ Eva.''\ is the parametric-probe evasion rate against the same detector.}
 \label{tab:closedloop}
 \small
 \begin{tabular}{rrrrr}
@@ -719,7 +737,7 @@ Rd & CL AUC & LLM Eva. & Param.\ Eva. & $\Delta$ (LLM$-$Param) \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.75\columnwidth]{fig_closed_loop_comparison.pdf}
-\caption{Round-1 evasion: LLM (Claude Opus) achieves \closedLoopRoundLlmEvasionMean{} vs.\ parametric (scalar blend) \closedLoopRoundParametricEvasionMean{} against the same detector ($\Delta{=}+$\closedLoopRoundEvasionDelta{}$\times 100$pp, \bestResponseNSeeds{}-seed mean $\pm$ std).}
+\caption{Round-1 evasion: LLM (Claude Opus) achieves \closedLoopRoundLlmEvasionMean{} vs.\ parametric (scalar blend) \closedLoopRoundParametricEvasionMean{} against the same detector ($\Delta{=}+$\closedLoopRoundEvasionDelta{}$\times 100$pp, 3-seed mean $\pm$ std).}
 \label{fig:closedloop}
 \end{figure}
 
@@ -795,7 +813,7 @@ The central result is \textbf{\bestResponseAucFloorMean{}}---the convergence poi
 \textbf{(2)}~At blend ${\sim}\bestResponseEquilibriumBlendMean{}$, sybils share 93\% of their distributional mass with real wallets; the residual 0.078 above chance concentrates in \texttt{behavioral\_consistency} (CV of inter-arrival times), a structural invariant the LLM cannot replicate without real-time traffic modeling.
 \textbf{(3)}~Feature-importance Gini drops from 0.54 to 0.15, indicating the detector has exhausted all 8 dimensions.
 % FLUID: alternative defender results [2026-04-20]
-\textbf{(4)}~The floor is \emph{defender-invariant}. Running the same best-response protocol with three architectures---GBM (AUC $0.584 \pm 0.003$), MLP (two hidden layers, $0.590 \pm 0.008$), and Random Forest (500 trees, $0.577 \pm 0.002$)---yields equilibrium AUCs within $0.013$ of each other ($3$ seeds each, $10$ rounds). No defender architecture escapes the floor.
+\textbf{(4)}~The floor is \emph{defender-invariant} (Table~\ref{tab:defender_arch}). Running the same best-response protocol with three architectures---GBM, MLP, and Random Forest---yields equilibrium AUCs within $0.013$ of each other ($3$ seeds each, $10$ rounds). No defender architecture escapes the floor.
 
 % FLUID: narrative strength adjusted [2026-04-20]
 This is a practical observation, not a theoretical optimality proof. Fundamentally different features could exceed this floor, but within the 8-feature space, multiple starting conditions and defender architectures converge to the same point: \emph{change the problem}, do not keep optimizing within the bounded paradigm.

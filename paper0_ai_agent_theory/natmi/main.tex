@@ -291,8 +291,9 @@ $\fanoHeadroomPpfeat$--$\fanoHeadroomPpfeatB$ percentage points below the ceilin
   $N=\nSamples$ agent addresses. $H(Y) = 1.697$ bits; $K = \nClasses$ categories.
   A majority-class baseline (always predicting DeFi Management Agent)
   achieves $60.8\%$ accuracy; the classifier's $\gbmAccuracyfeat$ substantially
-  exceeds this, though macro-F1 ($\gbmFMacrofeat$) is the more appropriate metric
-  given the class imbalance. The
+  exceeds this. Balanced accuracy (weighting each class equally) is $68.2\%$,
+  confirming performance across minority classes; macro-F1 is $\gbmFMacrofeat$.
+  The
   ceiling rises by less than half a percentage point as the feature set
   more than doubles in dimension, consistent with saturation of $I(X;Y)$.}
   \label{tab:ceiling}
@@ -350,7 +351,12 @@ A temporal Fano analysis (Supplementary Note~4) confirms this diagnosis: mutual 
 \subsection*{Where the head-room hides: a per-class view}
 
 The aggregate numbers in Table~\ref{tab:ceiling} conceal a heavily skewed
-distribution of discriminability across categories. Three of the \nClasses{}
+distribution of discriminability across categories.
+Balanced accuracy ($68.2\%$; i.e., the unweighted mean of per-class recalls)
+confirms that the classifier performs well beyond majority-class voting
+($60.8\%$) but that minority-class performance drags the class-averaged metric
+far below the headline overall accuracy.
+Three of the \nClasses{}
 categories---Deterministic Script, Simple Trading Bot, DeFi Management
 Agent---yield per-class F1 scores above $0.95$ under a Gradient Boosting
 classifier with the $X_{\nFeaturesFull}$ feature set; a fourth, MEV Searcher, reaches
